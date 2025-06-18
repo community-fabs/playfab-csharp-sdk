@@ -1,0 +1,8 @@
+﻿@using CommunityFabs.NET.Generator.Templates.Models;
+@model LegacyDatatype;
+public enum @Model.Name {
+@foreach (var property in Model.EnumValues!)
+{
+    @(Html.Raw($"    {property.Name},\r\n"))
+}
+}

@@ -5,11 +5,16 @@ var outPath = Path.Combine(Utils.GetProjectRoot(), "..", "CommunityFabs.NET.Sdk"
 
 Utils.RecursiveDelete(outPath, "*.cs");
 
-for (int i = 1; i <= 10; i++)
-{
-    var className = $"GeneratedClass{i}";
-    var rendered = await RazorTemplateEngine.RenderAsync("/Views/Model.cshtml", className);
+var toc = await ApiDetails.GetTableOfContents();
+var combinedSdkApiRefs = toc.Documents!
+    .Where(docRef => docRef.SdkGenMakeMethods != null && docRef.SdkGenMakeMethods.Contains("makeCombinedAPI"));
 
-    var filePath = Path.Combine(outPath, "Models", $"{className}.cs");
+foreach (var docReference in combinedSdkApiRefs)
+{
+    var apiDoc = await ApiDetails.GetLegacyDocument(docReference.RelPath!);
+    var modelsFileName = $"PlayFab{apiDoc.Name}ApiModels";
+    var rendered = await RazorTemplateEngine.RenderAsync("/Views/Models/ApiModel.cshtml", apiDoc);
+
+    var filePath = Path.Combine(outPath, "Models", $"{modelsFileName}.cs");
     await File.WriteAllTextAsync(filePath, rendered);
 }

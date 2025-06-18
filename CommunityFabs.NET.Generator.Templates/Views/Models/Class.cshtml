@@ -1,0 +1,14 @@
+﻿@using CommunityFabs.NET.Generator.Templates.Models;
+@model LegacyDatatype;
+@if (Model.HasSummary())
+{
+    @Html.Raw($"/// <summary>\r\n/// {Model.Description}\r\n/// </summary>\r\n")
+}
+@if (Model.Deprecation != null) {
+    @Html.Raw($"[Obsolete(\"{Model.Deprecation.GetDeprecationMessage()}\")]\r\n")
+}
+public class @Model.Name {
+@foreach (var property in Model.Properties!) {
+    @(Html.Raw($"    public {(property.IsRequired() ? "required " : "")}{property.GetTypeName()}{(property.Optional ?? false ? '?' : "")} {property.Name} {{ get; set; }}\r\n"))
+}
+}

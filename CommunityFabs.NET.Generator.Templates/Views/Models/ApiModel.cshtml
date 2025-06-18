@@ -1,0 +1,12 @@
+﻿@using CommunityFabs.NET.Generator.Templates.Models;
+@model LegacyApiDocument;
+namespace CommunityFabs.NET.Sdk.Models.@Model.Name;
+
+@foreach (var datatype in Model.Datatypes!)
+{
+    var model = datatype.Value;
+    @(model.IsEnum ?? false ?
+        await Html.PartialAsync("Models/Enum", model) :
+        await Html.PartialAsync("Models/Class", model))
+    @Html.Raw("\r\n")
+}
