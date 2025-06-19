@@ -1,4 +1,4 @@
-﻿namespace CommunityFabs.NET.Sdk;
+﻿namespace CommunityFabs.NET.Sdk.Models;
 
 /// <summary>
 /// This is a base-class for all Api-request objects.
