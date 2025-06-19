@@ -4,6 +4,9 @@ namespace CommunityFabs.NET.Sdk.Models.State;
 /// Creates a link to previously stored state. Caller may be title or title player entity.
 /// </summary>
 public class CreateLinkRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     public LinkService LinkService { get; set; }
     public required string StateId { get; set; }
@@ -17,6 +20,9 @@ public class CreateLinkResponse : PlayFabResultCommon {
 /// Request to create a state.
 /// </summary>
 public class CreateStateRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public required DateTime Expiry { get; set; }
@@ -40,6 +46,9 @@ public class CreateStateResponse : PlayFabResultCommon {
 /// Deletes a link. Caller can be title or title player entity.
 /// </summary>
 public class DeleteLinkRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string StateId { get; set; }
 }
@@ -48,6 +57,9 @@ public class DeleteLinkRequest : PlayFabRequestCommon {
 /// Deletes state. Caller may be title or title player entity.
 /// </summary>
 public class DeleteStateRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Id { get; set; }
 }
@@ -65,6 +77,9 @@ public class ExpirySetting {
 /// Get public and private metadata for a link. Caller must be a title player entity.
 /// </summary>
 public class GetLinkMetadataRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string LinkToken { get; set; }
 }
@@ -82,6 +97,9 @@ public class GetLinkMetadataResponse : PlayFabResultCommon {
 /// Request to get state.
 /// </summary>
 public class GetStateRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Id { get; set; }
     public string? PlatformToken { get; set; }
@@ -120,6 +138,9 @@ public class LinkSetting {
 /// Lists ids of states created or retrieved by an entity.
 /// </summary>
 public class ListStateIdsRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 

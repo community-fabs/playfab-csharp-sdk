@@ -2,23 +2,16 @@
 @model LegacyDatatype;
 @if (Model.HasSummary())
 {
-    @Html.Raw($"/// <summary>\r\n/// {Model.Description}\r\n/// </summary>\r\n")
+    @Html.Raw(Model.GenerateSummary())
 }
-@if (Model.Deprecation != null) {
+@if (Model.Deprecation != null)
+{
     @Html.Raw($"[Obsolete(\"{Model.Deprecation.GetDeprecationMessage()}\")]\r\n")
 }
-@{
-    var baseClass = "";
-    if (Model.IsRequest ?? false)
-    {
-        baseClass = "PlayFabRequestCommon";
-    } else if (Model.IsResult ?? false)
-    {
-        baseClass = "PlayFabResultCommon";
-    }
-}
-public class @Model.Name @(!string.IsNullOrEmpty(baseClass) ? $": {baseClass} " : ""){
-@foreach (var property in Model.Properties!) {
+public class @Model.Name @(!string.IsNullOrEmpty(Model.GetBaseClass()) ? $": {Model.GetBaseClass()} " : ""){
+@foreach (var property in Model.Properties!)
+{
+    @(Html.Raw(property.GenerateSummary("    /// ")))
     @(Html.Raw($"    public {(property.IsRequired() ? "required " : "")}{property.GetTypeName()}{(property.Optional ?? false ? '?' : "")} {property.Name} {{ get; set; }}\r\n"))
 }
 }
