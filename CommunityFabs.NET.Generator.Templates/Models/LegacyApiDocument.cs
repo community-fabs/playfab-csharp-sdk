@@ -73,7 +73,7 @@ public class LegacyDatatype
         return !string.IsNullOrEmpty(Description);
     }
 
-    public string GenerateSummary(string linePrefix = "/// ")
+    public string GetSummary(string linePrefix = "/// ")
     {
         if (!HasSummary())
         {
@@ -175,7 +175,7 @@ public class LegacyProperty
         return !string.IsNullOrEmpty(Description);
     }
 
-    public string GenerateSummary(string linePrefix = "/// ")
+    public string GetSummary(string linePrefix = "/// ")
     {
         if (!HasSummary())
         {
@@ -282,4 +282,67 @@ public class LegacyApiCall
 
     [JsonPropertyName("errors")]
     public List<string>? Errors { get; set; }
+
+    public string GetDocumentationLink()
+    {
+        if (string.IsNullOrEmpty(Url))
+        {
+            return string.Empty;
+        }
+        var apiName = Url.Split('/')[1]!.ToLowerInvariant();
+        var apiCategory = Subgroup?.ToLowerInvariant().Replace(" ", "-") ?? "unknown";
+        return $"https://docs.microsoft.com/rest/api/playfab/{apiName}/{apiCategory}/{Name?.ToLowerInvariant()}";
+    }
+
+    public string GetSummary(string prefix = "/// ")
+    {
+        if (string.IsNullOrEmpty(Summary))
+        {
+            return string.Empty;
+        }
+        var summaryLines = Utils.SplitDescription(Summary.Trim());
+        var summary = new StringBuilder();
+        summary.AppendLine($"{prefix}<summary>");
+        foreach (var line in summaryLines)
+        {
+            summary.AppendLine($"{prefix}{line}");
+        }
+
+        if (!string.IsNullOrEmpty(RequestExample))
+        {
+            var apiName = Url!.Split('/')[1]!.ToLowerInvariant();
+            var requestLines = RequestExample.Split("\n");
+            summary.AppendLine($"{prefix}<example><br/>Example:<code>");
+            if (requestLines.Length == 1)
+            {
+                summary.AppendLine($"{prefix}var response = {apiName}Api.{Name}Async({requestLines[0]});");
+            }
+            else
+            {
+                summary.AppendLine($"{prefix}var response = {apiName}Api.{Name}Async({requestLines[0]});");
+                for (int i = 1; i < requestLines.Length; i++)
+                {
+                    if (i == requestLines.Length - 1)
+                    {
+                        // add closing parentheses to the last line
+                        summary.AppendLine($"{prefix}{requestLines[i]});");
+                        break;
+                    }
+
+                    summary.AppendLine($"{prefix}{requestLines[i]}");
+                }
+            }
+            summary.AppendLine($"{prefix}</code></example>");
+        }
+        
+        var docLink = GetDocumentationLink();
+        if (!string.IsNullOrEmpty(docLink))
+        {
+            summary.AppendLine($"{prefix}<br/><see href=\"{docLink}\">Microsoft Documentation</see>");
+        }
+
+        summary.AppendLine($"{prefix}</summary>");
+
+        return summary.ToString();
+    }
 }

@@ -2,7 +2,7 @@
 @model LegacyDatatype;
 @if (Model.HasSummary())
 {
-    @Html.Raw(Model.GenerateSummary())
+    @Html.Raw(Model.GetSummary())
 }
 @if (Model.Deprecation != null)
 {
@@ -11,7 +11,7 @@
 public class @Model.Name @(!string.IsNullOrEmpty(Model.GetBaseClass()) ? $": {Model.GetBaseClass()} " : ""){
 @foreach (var property in Model.Properties!)
 {
-    @(Html.Raw(property.GenerateSummary("    /// ")))
+    @(Html.Raw(property.GetSummary("    /// ")))
     @(Html.Raw($"    public {(property.IsRequired() ? "required " : "")}{property.GetTypeName()}{(property.Optional ?? false ? '?' : "")} {property.Name} {{ get; set; }}\r\n"))
 }
 }
