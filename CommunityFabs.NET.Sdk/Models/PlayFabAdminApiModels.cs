@@ -3,7 +3,7 @@ namespace CommunityFabs.NET.Sdk.Models.Admin;
 /// <summary>
 /// If the task instance has already completed, there will be no-op.
 /// </summary>
-public class AbortTaskInstanceRequest {
+public class AbortTaskInstanceRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string TaskInstanceId { get; set; }
 }
@@ -80,7 +80,7 @@ public class AddInventoryItemV2Content {
     public string? StackId { get; set; }
 }
 
-public class AddLocalizedNewsRequest {
+public class AddLocalizedNewsRequest : PlayFabRequestCommon {
     public required string Body { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Language { get; set; }
@@ -88,34 +88,34 @@ public class AddLocalizedNewsRequest {
     public required string Title { get; set; }
 }
 
-public class AddLocalizedNewsResult {
+public class AddLocalizedNewsResult : PlayFabResultCommon {
 }
 
-public class AddNewsRequest {
+public class AddNewsRequest : PlayFabRequestCommon {
     public required string Body { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public DateTime? Timestamp { get; set; }
     public required string Title { get; set; }
 }
 
-public class AddNewsResult {
+public class AddNewsResult : PlayFabResultCommon {
     public string? NewsId { get; set; }
 }
 
 /// <summary>
 /// This API will trigger a player_tag_added event and add a tag with the given TagName and PlayFabID to the corresponding player profile. TagName can be used for segmentation and it is limited to 256 characters. Also there is a limit on the number of tags a title can have.
 /// </summary>
-public class AddPlayerTagRequest {
+public class AddPlayerTagRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string PlayFabId { get; set; }
     public required string TagName { get; set; }
 }
 
-public class AddPlayerTagResult {
+public class AddPlayerTagResult : PlayFabResultCommon {
 }
 
 [Obsolete("Do not use")]
-public class AddServerBuildRequest {
+public class AddServerBuildRequest : PlayFabRequestCommon {
     public List<Region>? ActiveRegions { get; set; }
     public required string BuildId { get; set; }
     public string? CommandLineTemplate { get; set; }
@@ -127,7 +127,7 @@ public class AddServerBuildRequest {
 }
 
 [Obsolete("Do not use")]
-public class AddServerBuildResult {
+public class AddServerBuildResult : PlayFabResultCommon {
     public List<Region>? ActiveRegions { get; set; }
     public string? BuildId { get; set; }
     public string? CommandLineTemplate { get; set; }
@@ -140,7 +140,7 @@ public class AddServerBuildResult {
     public string? TitleId { get; set; }
 }
 
-public class AddUserVirtualCurrencyRequest {
+public class AddUserVirtualCurrencyRequest : PlayFabRequestCommon {
     public int Amount { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string PlayFabId { get; set; }
@@ -150,7 +150,7 @@ public class AddUserVirtualCurrencyRequest {
 /// <summary>
 /// This operation is additive. Any new currencies defined in the array will be added to the set of those available for the title, while any CurrencyCode identifiers matching existing ones in the game will be overwritten with the new values.
 /// </summary>
-public class AddVirtualCurrencyTypesRequest {
+public class AddVirtualCurrencyTypesRequest : PlayFabRequestCommon {
     public required List<VirtualCurrencyData> VirtualCurrencies { get; set; }
 }
 
@@ -207,16 +207,16 @@ public class BanRequest {
 /// <summary>
 /// The existence of each user will not be verified. When banning by IP or MAC address, multiple players may be affected, so use this feature with caution. Returns information about the new bans.
 /// </summary>
-public class BanUsersRequest {
+public class BanUsersRequest : PlayFabRequestCommon {
     public required List<BanRequest> Bans { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class BanUsersResult {
+public class BanUsersResult : PlayFabResultCommon {
     public List<BanInfo>? BanData { get; set; }
 }
 
-public class BlankResult {
+public class BlankResult : PlayFabResultCommon {
 }
 
 /// <summary>
@@ -268,12 +268,12 @@ public class CatalogItemContainerInfo {
 /// <summary>
 /// This returns the total number of these items available.
 /// </summary>
-public class CheckLimitedEditionItemAvailabilityRequest {
+public class CheckLimitedEditionItemAvailabilityRequest : PlayFabRequestCommon {
     public string? CatalogVersion { get; set; }
     public required string ItemId { get; set; }
 }
 
-public class CheckLimitedEditionItemAvailabilityResult {
+public class CheckLimitedEditionItemAvailabilityResult : PlayFabResultCommon {
     public int Amount { get; set; }
 }
 
@@ -626,7 +626,7 @@ public enum CountryCode {
 /// <summary>
 /// Task name is unique within a title. Using a task name that's already taken will cause a name conflict error. Too many create-task requests within a short time will cause a create conflict error.
 /// </summary>
-public class CreateActionsOnPlayerSegmentTaskRequest {
+public class CreateActionsOnPlayerSegmentTaskRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public bool IsActive { get; set; }
@@ -638,7 +638,7 @@ public class CreateActionsOnPlayerSegmentTaskRequest {
 /// <summary>
 /// Task name is unique within a title. Using a task name that's already taken will cause a name conflict error. Too many create-task requests within a short time will cause a create conflict error.
 /// </summary>
-public class CreateCloudScriptAzureFunctionsTaskRequest {
+public class CreateCloudScriptAzureFunctionsTaskRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public bool IsActive { get; set; }
@@ -650,7 +650,7 @@ public class CreateCloudScriptAzureFunctionsTaskRequest {
 /// <summary>
 /// Task name is unique within a title. Using a task name that's already taken will cause a name conflict error. Too many create-task requests within a short time will cause a create conflict error.
 /// </summary>
-public class CreateCloudScriptTaskRequest {
+public class CreateCloudScriptTaskRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public bool IsActive { get; set; }
@@ -662,7 +662,7 @@ public class CreateCloudScriptTaskRequest {
 /// <summary>
 /// Task name is unique within a title. Using a task name that's already taken will cause a name conflict error. Too many create-task requests within a short time will cause a create conflict error.
 /// </summary>
-public class CreateInsightsScheduledScalingTaskRequest {
+public class CreateInsightsScheduledScalingTaskRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public bool IsActive { get; set; }
@@ -671,7 +671,7 @@ public class CreateInsightsScheduledScalingTaskRequest {
     public string? Schedule { get; set; }
 }
 
-public class CreateOpenIdConnectionRequest {
+public class CreateOpenIdConnectionRequest : PlayFabRequestCommon {
     public required string ClientId { get; set; }
     public required string ClientSecret { get; set; }
     public required string ConnectionId { get; set; }
@@ -684,41 +684,41 @@ public class CreateOpenIdConnectionRequest {
 /// <summary>
 /// Player Shared Secret Keys are used for the call to Client/GetTitlePublicKey, which exchanges the shared secret for an RSA CSP blob to be used to encrypt the payload of account creation requests when that API requires a signature header.
 /// </summary>
-public class CreatePlayerSharedSecretRequest {
+public class CreatePlayerSharedSecretRequest : PlayFabRequestCommon {
     public string? FriendlyName { get; set; }
 }
 
-public class CreatePlayerSharedSecretResult {
+public class CreatePlayerSharedSecretResult : PlayFabResultCommon {
     public string? SecretKey { get; set; }
 }
 
 /// <summary>
 /// Statistics are numeric values, with each statistic in the title also generating a leaderboard. The ResetInterval enables automatically resetting leaderboards on a specified interval. Upon reset, the statistic updates to a new version with no values (effectively removing all players from the leaderboard). The previous version's statistic values are also archived for retrieval, if needed (see GetPlayerStatisticVersions). Statistics not created via a call to CreatePlayerStatisticDefinition by default have a VersionChangeInterval of Never, meaning they do not reset on a schedule, but they can be set to do so via a call to UpdatePlayerStatisticDefinition. Once a statistic has been reset (sometimes referred to as versioned or incremented), the now-previous version can still be written to for up a short, pre-defined period (currently 10 seconds), to prevent issues with levels completing around the time of the reset. Also, once reset, the historical statistics for players in the title may be retrieved using the URL specified in the version information (GetPlayerStatisticVersions). The AggregationMethod determines what action is taken when a new statistic value is submitted - always update with the new value (Last), use the highest of the old and new values (Max), use the smallest (Min), or add them together (Sum).
 /// </summary>
-public class CreatePlayerStatisticDefinitionRequest {
+public class CreatePlayerStatisticDefinitionRequest : PlayFabRequestCommon {
     public StatisticAggregationMethod? AggregationMethod { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string StatisticName { get; set; }
     public StatisticResetIntervalOption? VersionChangeInterval { get; set; }
 }
 
-public class CreatePlayerStatisticDefinitionResult {
+public class CreatePlayerStatisticDefinitionResult : PlayFabResultCommon {
     public PlayerStatisticDefinition? Statistic { get; set; }
 }
 
 /// <summary>
 /// Send all the segment details part of CreateSegmentRequest
 /// </summary>
-public class CreateSegmentRequest {
+public class CreateSegmentRequest : PlayFabRequestCommon {
     public required SegmentModel SegmentModel { get; set; }
 }
 
-public class CreateSegmentResponse {
+public class CreateSegmentResponse : PlayFabResultCommon {
     public string? ErrorMessage { get; set; }
     public string? SegmentId { get; set; }
 }
 
-public class CreateTaskResult {
+public class CreateTaskResult : PlayFabResultCommon {
     public string? TaskId { get; set; }
 }
 
@@ -916,7 +916,7 @@ public class CustomPropertyStringSegmentFilter {
     public string? PropertyValue { get; set; }
 }
 
-public class DeleteContentRequest {
+public class DeleteContentRequest : PlayFabRequestCommon {
     public required string Key { get; set; }
 }
 
@@ -928,11 +928,11 @@ public class DeletedPropertyDetails {
 /// <summary>
 /// The request must contain the name of the sink to be deleted. 
 /// </summary>
-public class DeleteEventSinkRequest {
+public class DeleteEventSinkRequest : PlayFabRequestCommon {
     public required string Name { get; set; }
 }
 
-public class DeleteEventSinkResult {
+public class DeleteEventSinkResult : PlayFabResultCommon {
 }
 
 public class DeleteInventoryItemsV2SegmentAction {
@@ -950,12 +950,12 @@ public class DeleteInventoryItemV2Content {
 /// <summary>
 /// Deletes all data associated with the master player account, including data from all titles the player has played, such as statistics, custom data, inventory, purchases, virtual currency balances, characters, group memberships, publisher data, credential data, account linkages, friends list, PlayStream event data, and telemetry event data. Removes the player from all leaderboards and player search indexes. Note, this API queues the player for deletion and returns a receipt immediately. Record the receipt ID for future reference. It may take some time before all player data is fully deleted. Upon completion of the deletion, an email will be sent to the notification email address configured for the title confirming the deletion. Until the player data is fully deleted, attempts to recreate the player with the same user account in the same title will fail with the 'AccountDeleted' error. It is highly recommended to know the impact of the deletion by calling GetPlayedTitleList, before calling this API.
 /// </summary>
-public class DeleteMasterPlayerAccountRequest {
+public class DeleteMasterPlayerAccountRequest : PlayFabRequestCommon {
     public string? MetaData { get; set; }
     public required string PlayFabId { get; set; }
 }
 
-public class DeleteMasterPlayerAccountResult {
+public class DeleteMasterPlayerAccountResult : PlayFabResultCommon {
     public string? JobReceiptId { get; set; }
     public List<string>? TitleIds { get; set; }
 }
@@ -963,27 +963,27 @@ public class DeleteMasterPlayerAccountResult {
 /// <summary>
 /// Deletes any PlayStream or telemetry event associated with the player from PlayFab. Note, this API queues the data for asynchronous deletion. It may take some time before the data is deleted.
 /// </summary>
-public class DeleteMasterPlayerEventDataRequest {
+public class DeleteMasterPlayerEventDataRequest : PlayFabRequestCommon {
     public required string PlayFabId { get; set; }
 }
 
-public class DeleteMasterPlayerEventDataResult {
+public class DeleteMasterPlayerEventDataResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// This API lets developers delete a membership subscription.
 /// </summary>
-public class DeleteMembershipSubscriptionRequest {
+public class DeleteMembershipSubscriptionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string MembershipId { get; set; }
     public required string PlayFabId { get; set; }
     public required string SubscriptionId { get; set; }
 }
 
-public class DeleteMembershipSubscriptionResult {
+public class DeleteMembershipSubscriptionResult : PlayFabResultCommon {
 }
 
-public class DeleteOpenIdConnectionRequest {
+public class DeleteOpenIdConnectionRequest : PlayFabRequestCommon {
     public required string ConnectionId { get; set; }
 }
 
@@ -993,14 +993,14 @@ public class DeletePlayerContent {
 /// <summary>
 /// Deletes custom properties for the specified player. The list of provided property names must be non-empty.
 /// </summary>
-public class DeletePlayerCustomPropertiesRequest {
+public class DeletePlayerCustomPropertiesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int? ExpectedPropertiesVersion { get; set; }
     public required string PlayFabId { get; set; }
     public required List<string> PropertyNames { get; set; }
 }
 
-public class DeletePlayerCustomPropertiesResult {
+public class DeletePlayerCustomPropertiesResult : PlayFabResultCommon {
     public List<DeletedPropertyDetails>? DeletedProperties { get; set; }
     public string? PlayFabId { get; set; }
     public int PropertiesVersion { get; set; }
@@ -1009,11 +1009,11 @@ public class DeletePlayerCustomPropertiesResult {
 /// <summary>
 /// Deletes all data associated with the player, including statistics, custom data, inventory, purchases, virtual currency balances, characters and shared group memberships. Removes the player from all leaderboards and player search indexes. Does not delete PlayStream event history associated with the player. Does not delete the publisher user account that created the player in the title nor associated data such as username, password, email address, account linkages, or friends list. Note, this API queues the player for deletion and returns immediately. It may take several minutes or more before all player data is fully deleted. Until the player data is fully deleted, attempts to recreate the player with the same user account in the same title will fail with the 'AccountDeleted' error.
 /// </summary>
-public class DeletePlayerRequest {
+public class DeletePlayerRequest : PlayFabRequestCommon {
     public required string PlayFabId { get; set; }
 }
 
-public class DeletePlayerResult {
+public class DeletePlayerResult : PlayFabResultCommon {
 }
 
 public class DeletePlayerSegmentAction {
@@ -1022,11 +1022,11 @@ public class DeletePlayerSegmentAction {
 /// <summary>
 /// Player Shared Secret Keys are used for the call to Client/GetTitlePublicKey, which exchanges the shared secret for an RSA CSP blob to be used to encrypt the payload of account creation requests when that API requires a signature header.
 /// </summary>
-public class DeletePlayerSharedSecretRequest {
+public class DeletePlayerSharedSecretRequest : PlayFabRequestCommon {
     public string? SecretKey { get; set; }
 }
 
-public class DeletePlayerSharedSecretResult {
+public class DeletePlayerSharedSecretResult : PlayFabResultCommon {
 }
 
 public class DeletePlayerStatisticSegmentAction {
@@ -1036,63 +1036,63 @@ public class DeletePlayerStatisticSegmentAction {
 /// <summary>
 /// Send segment id planning to delete part of DeleteSegmentRequest object
 /// </summary>
-public class DeleteSegmentRequest {
+public class DeleteSegmentRequest : PlayFabRequestCommon {
     public required string SegmentId { get; set; }
 }
 
-public class DeleteSegmentsResponse {
+public class DeleteSegmentsResponse : PlayFabResultCommon {
     public string? ErrorMessage { get; set; }
 }
 
 /// <summary>
 /// This non-reversible operation will permanently delete the requested store.
 /// </summary>
-public class DeleteStoreRequest {
+public class DeleteStoreRequest : PlayFabRequestCommon {
     public string? CatalogVersion { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string StoreId { get; set; }
 }
 
-public class DeleteStoreResult {
+public class DeleteStoreResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// After a task is deleted, for tracking purposes, the task instances belonging to this task will still remain. They will become orphaned and does not belongs to any task. Executions of any in-progress task instances will continue. If the task specified does not exist, the deletion is considered a success.
 /// </summary>
-public class DeleteTaskRequest {
+public class DeleteTaskRequest : PlayFabRequestCommon {
     public NameIdentifier? Identifier { get; set; }
 }
 
 /// <summary>
 /// Will delete all the title data associated with the given override label.
 /// </summary>
-public class DeleteTitleDataOverrideRequest {
+public class DeleteTitleDataOverrideRequest : PlayFabRequestCommon {
     public required string OverrideLabel { get; set; }
 }
 
-public class DeleteTitleDataOverrideResult {
+public class DeleteTitleDataOverrideResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Deletes all data associated with the title, including catalog, virtual currencies, leaderboard statistics, Cloud Script revisions, segment definitions, event rules, tasks, add-ons, secret keys, data encryption keys, and permission policies. Removes the title from its studio and removes all associated developer roles and permissions. Does not delete PlayStream event history associated with the title. Note, this API queues the title for deletion and returns immediately. It may take several hours or more before all title data is fully deleted. All player accounts in the title must be deleted before deleting the title. If any player accounts exist, the API will return a 'TitleContainsUserAccounts' error. Until the title data is fully deleted, attempts to call APIs with the title will fail with the 'TitleDeleted' error.
 /// </summary>
-public class DeleteTitleRequest {
+public class DeleteTitleRequest : PlayFabRequestCommon {
 }
 
-public class DeleteTitleResult {
+public class DeleteTitleResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Note that this action cannot be undone. It will unlink all accounts and remove all PII information, as well as reset any statistics and leaderboards and clear out any stored custom data for the user.
 /// </summary>
 [Obsolete("Do not use")]
-public class DeleteUsersRequest {
+public class DeleteUsersRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required List<string> PlayFabIds { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class DeleteUsersResult {
+public class DeleteUsersResult : PlayFabResultCommon {
 }
 
 public enum EffectType {
@@ -1111,7 +1111,7 @@ public enum EmailVerificationStatus {
     Confirmed,
 }
 
-public class EmptyResponse {
+public class EmptyResponse : PlayFabResultCommon {
 }
 
 /// <summary>
@@ -1187,22 +1187,22 @@ public class ExecuteFunctionResult {
 /// <summary>
 /// Exports all data associated with the master player account, including data from all titles the player has played, such as statistics, custom data, inventory, purchases, virtual currency balances, characters, group memberships, publisher data, credential data, account linkages, friends list, PlayStream event data, and telemetry event data. Note, this API queues the player for export and returns a receipt immediately. Record the receipt ID for future reference. It may take some time before the export is available for download. Upon completion of the export, an email containing the URL to download the export dump will be sent to the notification email address configured for the title.
 /// </summary>
-public class ExportMasterPlayerDataRequest {
+public class ExportMasterPlayerDataRequest : PlayFabRequestCommon {
     public required string PlayFabId { get; set; }
 }
 
-public class ExportMasterPlayerDataResult {
+public class ExportMasterPlayerDataResult : PlayFabResultCommon {
     public string? JobReceiptId { get; set; }
 }
 
 /// <summary>
 /// Request must contain the Segment ID
 /// </summary>
-public class ExportPlayersInSegmentRequest {
+public class ExportPlayersInSegmentRequest : PlayFabRequestCommon {
     public required string SegmentId { get; set; }
 }
 
-public class ExportPlayersInSegmentResult {
+public class ExportPlayersInSegmentResult : PlayFabResultCommon {
     public string? ExportId { get; set; }
     public string? SegmentId { get; set; }
 }
@@ -2177,49 +2177,49 @@ public class GetActionGroupResult {
     public required string Name { get; set; }
 }
 
-public class GetActionsOnPlayersInSegmentTaskInstanceResult {
+public class GetActionsOnPlayersInSegmentTaskInstanceResult : PlayFabResultCommon {
     public ActionsOnPlayersInSegmentTaskParameter? Parameter { get; set; }
     public ActionsOnPlayersInSegmentTaskSummary? Summary { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class GetAllActionGroupsRequest {
+public class GetAllActionGroupsRequest : PlayFabRequestCommon {
 }
 
 [Obsolete("Do not use")]
-public class GetAllActionGroupsResult {
+public class GetAllActionGroupsResult : PlayFabResultCommon {
     public required List<GetActionGroupResult> ActionGroups { get; set; }
 }
 
 /// <summary>
 /// Request has no paramaters.
 /// </summary>
-public class GetAllSegmentsRequest {
+public class GetAllSegmentsRequest : PlayFabRequestCommon {
 }
 
-public class GetAllSegmentsResult {
+public class GetAllSegmentsResult : PlayFabResultCommon {
     public List<GetSegmentResult>? Segments { get; set; }
 }
 
-public class GetCatalogItemsRequest {
+public class GetCatalogItemsRequest : PlayFabRequestCommon {
     public string? CatalogVersion { get; set; }
 }
 
-public class GetCatalogItemsResult {
+public class GetCatalogItemsResult : PlayFabResultCommon {
     public List<CatalogItem>? Catalog { get; set; }
 }
 
-public class GetCloudScriptAzureFunctionsTaskInstanceResult {
+public class GetCloudScriptAzureFunctionsTaskInstanceResult : PlayFabResultCommon {
     public CloudScriptAzureFunctionsTaskParameter? Parameter { get; set; }
     public CloudScriptAzureFunctionsTaskSummary? Summary { get; set; }
 }
 
-public class GetCloudScriptRevisionRequest {
+public class GetCloudScriptRevisionRequest : PlayFabRequestCommon {
     public int? Revision { get; set; }
     public int? Version { get; set; }
 }
 
-public class GetCloudScriptRevisionResult {
+public class GetCloudScriptRevisionResult : PlayFabResultCommon {
     public required DateTime CreatedAt { get; set; }
     public List<CloudScriptFile>? Files { get; set; }
     public bool IsPublished { get; set; }
@@ -2227,68 +2227,68 @@ public class GetCloudScriptRevisionResult {
     public int Version { get; set; }
 }
 
-public class GetCloudScriptTaskInstanceResult {
+public class GetCloudScriptTaskInstanceResult : PlayFabResultCommon {
     public CloudScriptTaskParameter? Parameter { get; set; }
     public CloudScriptTaskSummary? Summary { get; set; }
 }
 
-public class GetCloudScriptVersionsRequest {
+public class GetCloudScriptVersionsRequest : PlayFabRequestCommon {
 }
 
-public class GetCloudScriptVersionsResult {
+public class GetCloudScriptVersionsResult : PlayFabResultCommon {
     public List<CloudScriptVersionStatus>? Versions { get; set; }
 }
 
-public class GetContentListRequest {
+public class GetContentListRequest : PlayFabRequestCommon {
     public string? Prefix { get; set; }
 }
 
-public class GetContentListResult {
+public class GetContentListResult : PlayFabResultCommon {
     public List<ContentInfo>? Contents { get; set; }
     public int ItemCount { get; set; }
     public UInt32 TotalSize { get; set; }
 }
 
-public class GetContentUploadUrlRequest {
+public class GetContentUploadUrlRequest : PlayFabRequestCommon {
     public string? ContentType { get; set; }
     public required string Key { get; set; }
 }
 
-public class GetContentUploadUrlResult {
+public class GetContentUploadUrlResult : PlayFabResultCommon {
     public string? URL { get; set; }
 }
 
 /// <summary>
 /// Gets the download URL for the requested report data (in CSV form). The reports available through this API call are those available in the Game Manager, in the Analytics->Reports tab.
 /// </summary>
-public class GetDataReportRequest {
+public class GetDataReportRequest : PlayFabRequestCommon {
     public int Day { get; set; }
     public int Month { get; set; }
     public required string ReportName { get; set; }
     public int Year { get; set; }
 }
 
-public class GetDataReportResult {
+public class GetDataReportResult : PlayFabResultCommon {
     public string? DownloadUrl { get; set; }
 }
 
 /// <summary>
 /// Request has no parameters.
 /// </summary>
-public class GetEventSinksRequest {
+public class GetEventSinksRequest : PlayFabRequestCommon {
 }
 
-public class GetEventSinksResult {
+public class GetEventSinksResult : PlayFabResultCommon {
     public required List<EventSink> Sinks { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class GetMatchmakerGameInfoRequest {
+public class GetMatchmakerGameInfoRequest : PlayFabRequestCommon {
     public required string LobbyId { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class GetMatchmakerGameInfoResult {
+public class GetMatchmakerGameInfoResult : PlayFabResultCommon {
     public string? BuildVersion { get; set; }
     public DateTime? EndTime { get; set; }
     public string? LobbyId { get; set; }
@@ -2308,32 +2308,32 @@ public class GetMatchmakerGameInfoResult {
 /// These details are used by the PlayFab matchmaking service to determine if an existing Game Server Instance has room for additional users, and by the PlayFab game server management service to determine when a new Game Server Host should be created in order to prevent excess load on existing Hosts.
 /// </summary>
 [Obsolete("Do not use")]
-public class GetMatchmakerGameModesRequest {
+public class GetMatchmakerGameModesRequest : PlayFabRequestCommon {
     public required string BuildVersion { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class GetMatchmakerGameModesResult {
+public class GetMatchmakerGameModesResult : PlayFabResultCommon {
     public List<GameModeInfo>? GameModes { get; set; }
 }
 
 /// <summary>
 /// Useful for identifying titles of which the player's data will be deleted by DeleteMasterPlayer.
 /// </summary>
-public class GetPlayedTitleListRequest {
+public class GetPlayedTitleListRequest : PlayFabRequestCommon {
     public required string PlayFabId { get; set; }
 }
 
-public class GetPlayedTitleListResult {
+public class GetPlayedTitleListResult : PlayFabResultCommon {
     public List<string>? TitleIds { get; set; }
 }
 
-public class GetPlayerCustomPropertyRequest {
+public class GetPlayerCustomPropertyRequest : PlayFabRequestCommon {
     public required string PlayFabId { get; set; }
     public required string PropertyName { get; set; }
 }
 
-public class GetPlayerCustomPropertyResult {
+public class GetPlayerCustomPropertyResult : PlayFabResultCommon {
     public string? PlayFabId { get; set; }
     public int PropertiesVersion { get; set; }
     public CustomPropertyDetails? Property { get; set; }
@@ -2342,50 +2342,50 @@ public class GetPlayerCustomPropertyResult {
 /// <summary>
 /// Gets a player ID from an auth token. The token expires after 30 minutes and cannot be used to look up a player when expired.
 /// </summary>
-public class GetPlayerIdFromAuthTokenRequest {
+public class GetPlayerIdFromAuthTokenRequest : PlayFabRequestCommon {
     public required string Token { get; set; }
     public AuthTokenType TokenType { get; set; }
 }
 
-public class GetPlayerIdFromAuthTokenResult {
+public class GetPlayerIdFromAuthTokenResult : PlayFabResultCommon {
     public string? PlayFabId { get; set; }
 }
 
 /// <summary>
 /// This API allows for access to details regarding a user in the PlayFab service, usually for purposes of customer support. Note that data returned may be Personally Identifying Information (PII), such as email address, and so care should be taken in how this data is stored and managed. Since this call will always return the relevant information for users who have accessed the title, the recommendation is to not store this data locally.
 /// </summary>
-public class GetPlayerProfileRequest {
+public class GetPlayerProfileRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string PlayFabId { get; set; }
     public PlayerProfileViewConstraints? ProfileConstraints { get; set; }
 }
 
-public class GetPlayerProfileResult {
+public class GetPlayerProfileResult : PlayFabResultCommon {
     public PlayerProfileModel? PlayerProfile { get; set; }
 }
 
-public class GetPlayerSegmentsResult {
+public class GetPlayerSegmentsResult : PlayFabResultCommon {
     public List<GetSegmentResult>? Segments { get; set; }
 }
 
 /// <summary>
 /// Player Shared Secret Keys are used for the call to Client/GetTitlePublicKey, which exchanges the shared secret for an RSA CSP blob to be used to encrypt the payload of account creation requests when that API requires a signature header.
 /// </summary>
-public class GetPlayerSharedSecretsRequest {
+public class GetPlayerSharedSecretsRequest : PlayFabRequestCommon {
 }
 
-public class GetPlayerSharedSecretsResult {
+public class GetPlayerSharedSecretsResult : PlayFabResultCommon {
     public List<SharedSecret>? SharedSecrets { get; set; }
 }
 
 /// <summary>
 /// Request must contain the ExportId
 /// </summary>
-public class GetPlayersInSegmentExportRequest {
+public class GetPlayersInSegmentExportRequest : PlayFabRequestCommon {
     public required string ExportId { get; set; }
 }
 
-public class GetPlayersInSegmentExportResponse {
+public class GetPlayersInSegmentExportResponse : PlayFabResultCommon {
     public string? IndexUrl { get; set; }
     public string? State { get; set; }
 }
@@ -2393,7 +2393,7 @@ public class GetPlayersInSegmentExportResponse {
 /// <summary>
 /// Initial request must contain at least a Segment ID. Subsequent requests must contain the Segment ID as well as the Continuation Token. Failure to send the Continuation Token will result in a new player segment list being generated. Each time the Continuation Token is passed in the length of the Total Seconds to Live is refreshed. If too much time passes between requests to the point that a subsequent request is past the Total Seconds to Live an error will be returned and paging will be terminated. This API is resource intensive and should not be used in scenarios which might generate high request volumes. Only one request to this API at a time should be made per title. Concurrent requests to the API may be rejected with the APIConcurrentRequestLimitExceeded error.
 /// </summary>
-public class GetPlayersInSegmentRequest {
+public class GetPlayersInSegmentRequest : PlayFabRequestCommon {
     public string? ContinuationToken { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool? GetProfilesAsync { get; set; }
@@ -2402,28 +2402,28 @@ public class GetPlayersInSegmentRequest {
     public required string SegmentId { get; set; }
 }
 
-public class GetPlayersInSegmentResult {
+public class GetPlayersInSegmentResult : PlayFabResultCommon {
     public string? ContinuationToken { get; set; }
     public List<PlayerProfile>? PlayerProfiles { get; set; }
     public int ProfilesInSegment { get; set; }
 }
 
-public class GetPlayersSegmentsRequest {
+public class GetPlayersSegmentsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string PlayFabId { get; set; }
 }
 
-public class GetPlayerStatisticDefinitionsRequest {
+public class GetPlayerStatisticDefinitionsRequest : PlayFabRequestCommon {
 }
 
 /// <summary>
 /// Statistics are numeric values, with each statistic in the title also generating a leaderboard. The ResetInterval defines the period of time at which the leaderboard for the statistic will automatically reset. Upon reset, the statistic updates to a new version with no values (effectively removing all players from the leaderboard). The previous version's statistic values are also archived for retrieval, if needed (see GetPlayerStatisticVersions). Statistics not created via a call to CreatePlayerStatisticDefinition by default have a VersionChangeInterval of Never, meaning they do not reset on a schedule, but they can be set to do so via a call to UpdatePlayerStatisticDefinition. Once a statistic has been reset (sometimes referred to as versioned or incremented), the previous version can still be written to for up a short, pre-defined period (currently 10 seconds), to prevent issues with levels completing around the time of the reset. Also, once reset, the historical statistics for players in the title may be retrieved using the URL specified in the version information (GetPlayerStatisticVersions). The AggregationMethod defines what action is taken when a new statistic value is submitted - always update with the new value (Last), use the highest of the old and new values (Max), use the smallest (Min), or add them together (Sum).
 /// </summary>
-public class GetPlayerStatisticDefinitionsResult {
+public class GetPlayerStatisticDefinitionsResult : PlayFabResultCommon {
     public List<PlayerStatisticDefinition>? Statistics { get; set; }
 }
 
-public class GetPlayerStatisticVersionsRequest {
+public class GetPlayerStatisticVersionsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? StatisticName { get; set; }
 }
@@ -2431,20 +2431,20 @@ public class GetPlayerStatisticVersionsRequest {
 /// <summary>
 /// Statistics are numeric values, with each statistic in the title also generating a leaderboard. The information returned in the results defines the state of a specific version of a statistic, including when it was or will become the currently active version, when it will (or did) become a previous version, and its archival state if it is no longer the active version. For a statistic which has been reset, once the archival status is Complete, the full set of statistics for all players in the leaderboard for that version may be retrieved via the ArchiveDownloadUrl. Statistics which have not been reset (incremented/versioned) will only have a single version which is not scheduled to reset.
 /// </summary>
-public class GetPlayerStatisticVersionsResult {
+public class GetPlayerStatisticVersionsResult : PlayFabResultCommon {
     public List<PlayerStatisticVersion>? StatisticVersions { get; set; }
 }
 
 /// <summary>
 /// This API will return a list of canonical tags which includes both namespace and tag's name. If namespace is not provided, the result is a list of all canonical tags. TagName can be used for segmentation and Namespace is limited to 128 characters.
 /// </summary>
-public class GetPlayerTagsRequest {
+public class GetPlayerTagsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Namespace { get; set; }
     public required string PlayFabId { get; set; }
 }
 
-public class GetPlayerTagsResult {
+public class GetPlayerTagsResult : PlayFabResultCommon {
     public required string PlayFabId { get; set; }
     public required List<string> Tags { get; set; }
 }
@@ -2452,11 +2452,11 @@ public class GetPlayerTagsResult {
 /// <summary>
 /// Views the requested policy. Today, the only supported policy is 'ApiPolicy'.
 /// </summary>
-public class GetPolicyRequest {
+public class GetPolicyRequest : PlayFabRequestCommon {
     public string? PolicyName { get; set; }
 }
 
-public class GetPolicyResponse {
+public class GetPolicyResponse : PlayFabResultCommon {
     public string? PolicyName { get; set; }
     public int PolicyVersion { get; set; }
     public List<PermissionStatement>? Statements { get; set; }
@@ -2465,19 +2465,19 @@ public class GetPolicyResponse {
 /// <summary>
 /// This API is designed to return publisher-specific values which can be read, but not written to, by the client. This data is shared across all titles assigned to a particular publisher, and can be used for cross-game coordination. Only titles assigned to a publisher can use this API. For more information email helloplayfab@microsoft.com. This AdminAPI call for getting title data guarantees no delay in between update and retrieval of newly set data.
 /// </summary>
-public class GetPublisherDataRequest {
+public class GetPublisherDataRequest : PlayFabRequestCommon {
     public required List<string> Keys { get; set; }
 }
 
-public class GetPublisherDataResult {
+public class GetPublisherDataResult : PlayFabResultCommon {
     public Dictionary<string, string>? Data { get; set; }
 }
 
-public class GetRandomResultTablesRequest {
+public class GetRandomResultTablesRequest : PlayFabRequestCommon {
     public string? CatalogVersion { get; set; }
 }
 
-public class GetRandomResultTablesResult {
+public class GetRandomResultTablesResult : PlayFabResultCommon {
     public Dictionary<string, RandomResultTableListing>? Tables { get; set; }
 }
 
@@ -2490,17 +2490,17 @@ public class GetSegmentResult {
 /// <summary>
 /// Given input segment ids, return list of segments.
 /// </summary>
-public class GetSegmentsRequest {
+public class GetSegmentsRequest : PlayFabRequestCommon {
     public required List<string> SegmentIds { get; set; }
 }
 
-public class GetSegmentsResponse {
+public class GetSegmentsResponse : PlayFabResultCommon {
     public string? ErrorMessage { get; set; }
     public List<SegmentModel>? Segments { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class GetServerBuildInfoRequest {
+public class GetServerBuildInfoRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
 }
 
@@ -2508,7 +2508,7 @@ public class GetServerBuildInfoRequest {
 /// Information about a particular server build
 /// </summary>
 [Obsolete("Do not use")]
-public class GetServerBuildInfoResult {
+public class GetServerBuildInfoResult : PlayFabResultCommon {
     public List<Region>? ActiveRegions { get; set; }
     public string? BuildId { get; set; }
     public string? Comment { get; set; }
@@ -2523,12 +2523,12 @@ public class GetServerBuildInfoResult {
 /// <summary>
 /// A store contains an array of references to items defined in the catalog, along with the prices for the item, in both real world and virtual currencies. These prices act as an override to any prices defined in the catalog. In this way, the base definitions of the items may be defined in the catalog, with all associated properties, while the pricing can be set for each store, as needed. This allows for subsets of goods to be defined for different purposes (in order to simplify showing some, but not all catalog items to users, based upon different characteristics), along with unique prices. Note that all prices defined in the catalog and store definitions for the item are considered valid, and that a compromised client can be made to send a request for an item based upon any of these definitions. If no price is specified in the store for an item, the price set in the catalog should be displayed to the user.
 /// </summary>
-public class GetStoreItemsRequest {
+public class GetStoreItemsRequest : PlayFabRequestCommon {
     public string? CatalogVersion { get; set; }
     public required string StoreId { get; set; }
 }
 
-public class GetStoreItemsResult {
+public class GetStoreItemsResult : PlayFabResultCommon {
     public string? CatalogVersion { get; set; }
     public StoreMarketingModel? MarketingData { get; set; }
     public SourceType? Source { get; set; }
@@ -2539,65 +2539,65 @@ public class GetStoreItemsResult {
 /// <summary>
 /// The result includes detail information that's specific to a CloudScript task. Only CloudScript tasks configured as "Run Cloud Script function once" will be retrieved. To get a list of task instances by task, status, or time range, use GetTaskInstances.
 /// </summary>
-public class GetTaskInstanceRequest {
+public class GetTaskInstanceRequest : PlayFabRequestCommon {
     public required string TaskInstanceId { get; set; }
 }
 
 /// <summary>
 /// Only the most recent 100 task instances are returned, ordered by start time descending. The results are generic basic information for task instances. To get detail information specific to each task type, use Get*TaskInstance based on its corresponding task type.
 /// </summary>
-public class GetTaskInstancesRequest {
+public class GetTaskInstancesRequest : PlayFabRequestCommon {
     public DateTime? StartedAtRangeFrom { get; set; }
     public DateTime? StartedAtRangeTo { get; set; }
     public TaskInstanceStatus? StatusFilter { get; set; }
     public NameIdentifier? TaskIdentifier { get; set; }
 }
 
-public class GetTaskInstancesResult {
+public class GetTaskInstancesResult : PlayFabResultCommon {
     public List<TaskInstanceBasicSummary>? Summaries { get; set; }
 }
 
-public class GetTasksRequest {
+public class GetTasksRequest : PlayFabRequestCommon {
     public NameIdentifier? Identifier { get; set; }
 }
 
-public class GetTasksResult {
+public class GetTasksResult : PlayFabResultCommon {
     public List<ScheduledTask>? Tasks { get; set; }
 }
 
 /// <summary>
 /// This API method is designed to return title specific values which can be read by the client. For example, a developer could choose to store values which modify the user experience, such as enemy spawn rates, weapon strengths, movement speeds, etc. This allows a developer to update the title without the need to create, test, and ship a new build. If an override label is specified in the request, the overrides are applied automatically and returned with the title data. Note that due to caching, there may up to a minute delay in between updating title data and a query returning the newest value.
 /// </summary>
-public class GetTitleDataRequest {
+public class GetTitleDataRequest : PlayFabRequestCommon {
     public List<string>? Keys { get; set; }
     public string? OverrideLabel { get; set; }
 }
 
-public class GetTitleDataResult {
+public class GetTitleDataResult : PlayFabResultCommon {
     public Dictionary<string, string>? Data { get; set; }
 }
 
 /// <summary>
 /// Get all bans for a user, including inactive and expired bans. 
 /// </summary>
-public class GetUserBansRequest {
+public class GetUserBansRequest : PlayFabRequestCommon {
     public required string PlayFabId { get; set; }
 }
 
-public class GetUserBansResult {
+public class GetUserBansResult : PlayFabResultCommon {
     public List<BanInfo>? BanData { get; set; }
 }
 
 /// <summary>
 /// Data is stored as JSON key-value pairs. If the Keys parameter is provided, the data object returned will only contain the data specific to the indicated Keys. Otherwise, the full set of custom user data will be returned.
 /// </summary>
-public class GetUserDataRequest {
+public class GetUserDataRequest : PlayFabRequestCommon {
     public UInt32? IfChangedFromDataVersion { get; set; }
     public List<string>? Keys { get; set; }
     public required string PlayFabId { get; set; }
 }
 
-public class GetUserDataResult {
+public class GetUserDataResult : PlayFabResultCommon {
     public Dictionary<string, UserDataRecord>? Data { get; set; }
     public UInt32 DataVersion { get; set; }
     public string? PlayFabId { get; set; }
@@ -2606,12 +2606,12 @@ public class GetUserDataResult {
 /// <summary>
 /// All items currently in the user inventory will be returned, irrespective of how they were acquired (via purchasing, grants, coupons, etc.). Items that are expired, fully consumed, or are no longer valid are not considered to be in the user's current inventory, and so will not be not included. There can be a delay of up to a half a second for inventory changes to be reflected in the GetUserInventory API response.
 /// </summary>
-public class GetUserInventoryRequest {
+public class GetUserInventoryRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string PlayFabId { get; set; }
 }
 
-public class GetUserInventoryResult {
+public class GetUserInventoryResult : PlayFabResultCommon {
     public List<ItemInstance>? Inventory { get; set; }
     public string? PlayFabId { get; set; }
     public Dictionary<string, int>? VirtualCurrency { get; set; }
@@ -2657,7 +2657,7 @@ public class GrantItemSegmentAction {
 /// <summary>
 /// This function directly adds inventory items to user inventories. As a result of this operations, the user will not be charged any transaction fee, regardless of the inventory item catalog definition. Please note that the processing time for inventory grants and purchases increases fractionally the more items are in the inventory, and the more items are in the grant/purchase operation.
 /// </summary>
-public class GrantItemsToUsersRequest {
+public class GrantItemsToUsersRequest : PlayFabRequestCommon {
     public string? CatalogVersion { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required List<ItemGrant> ItemGrants { get; set; }
@@ -2666,7 +2666,7 @@ public class GrantItemsToUsersRequest {
 /// <summary>
 /// Please note that the order of the items in the response may not match the order of items in the request.
 /// </summary>
-public class GrantItemsToUsersResult {
+public class GrantItemsToUsersResult : PlayFabResultCommon {
     public List<GrantedItemInstance>? ItemGrantResults { get; set; }
 }
 
@@ -2683,14 +2683,14 @@ public class GrantVirtualCurrencySegmentAction {
 /// <summary>
 /// This operation will increment the global counter for the number of these items available. This number cannot be decremented, except by actual grants.
 /// </summary>
-public class IncrementLimitedEditionItemAvailabilityRequest {
+public class IncrementLimitedEditionItemAvailabilityRequest : PlayFabRequestCommon {
     public int Amount { get; set; }
     public string? CatalogVersion { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ItemId { get; set; }
 }
 
-public class IncrementLimitedEditionItemAvailabilityResult {
+public class IncrementLimitedEditionItemAvailabilityResult : PlayFabResultCommon {
 }
 
 public class IncrementPlayerStatisticContent {
@@ -2706,12 +2706,12 @@ public class IncrementPlayerStatisticSegmentAction {
 /// <summary>
 /// Statistics are numeric values, with each statistic in the title also generating a leaderboard. When this call is made on a given statistic, this forces a reset of that statistic. Upon reset, the statistic updates to a new version with no values (effectively removing all players from the leaderboard). The previous version's statistic values are also archived for retrieval, if needed (see GetPlayerStatisticVersions). Statistics not created via a call to CreatePlayerStatisticDefinition by default have a VersionChangeInterval of Never, meaning they do not reset on a schedule, but they can be set to do so via a call to UpdatePlayerStatisticDefinition. Once a statistic has been reset (sometimes referred to as versioned or incremented), the now-previous version can still be written to for up a short, pre-defined period (currently 10 seconds), to prevent issues with levels completing around the time of the reset. Also, once reset, the historical statistics for players in the title may be retrieved using the URL specified in the version information (GetPlayerStatisticVersions).
 /// </summary>
-public class IncrementPlayerStatisticVersionRequest {
+public class IncrementPlayerStatisticVersionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? StatisticName { get; set; }
 }
 
-public class IncrementPlayerStatisticVersionResult {
+public class IncrementPlayerStatisticVersionResult : PlayFabResultCommon {
     public PlayerStatisticVersion? StatisticVersion { get; set; }
 }
 
@@ -2776,35 +2776,35 @@ public class LinkedUserAccountSegmentFilter {
 }
 
 [Obsolete("Do not use")]
-public class ListBuildsRequest {
+public class ListBuildsRequest : PlayFabRequestCommon {
 }
 
 [Obsolete("Do not use")]
-public class ListBuildsResult {
+public class ListBuildsResult : PlayFabResultCommon {
     public List<GetServerBuildInfoResult>? Builds { get; set; }
 }
 
-public class ListOpenIdConnectionRequest {
+public class ListOpenIdConnectionRequest : PlayFabRequestCommon {
 }
 
-public class ListOpenIdConnectionResponse {
+public class ListOpenIdConnectionResponse : PlayFabResultCommon {
     public List<OpenIdConnection>? Connections { get; set; }
 }
 
-public class ListPlayerCustomPropertiesRequest {
+public class ListPlayerCustomPropertiesRequest : PlayFabRequestCommon {
     public required string PlayFabId { get; set; }
 }
 
-public class ListPlayerCustomPropertiesResult {
+public class ListPlayerCustomPropertiesResult : PlayFabResultCommon {
     public string? PlayFabId { get; set; }
     public List<CustomPropertyDetails>? Properties { get; set; }
     public int PropertiesVersion { get; set; }
 }
 
-public class ListVirtualCurrencyTypesRequest {
+public class ListVirtualCurrencyTypesRequest : PlayFabRequestCommon {
 }
 
-public class ListVirtualCurrencyTypesResult {
+public class ListVirtualCurrencyTypesResult : PlayFabResultCommon {
     public List<VirtualCurrencyData>? VirtualCurrencies { get; set; }
 }
 
@@ -2857,14 +2857,14 @@ public class LogStatement {
 /// <summary>
 /// This API allows for access to details regarding a user in the PlayFab service, usually for purposes of customer support. Note that data returned may be Personally Identifying Information (PII), such as email address, and so care should be taken in how this data is stored and managed. Since this call will always return the relevant information for users who have accessed the title, the recommendation is to not store this data locally.
 /// </summary>
-public class LookupUserAccountInfoRequest {
+public class LookupUserAccountInfoRequest : PlayFabRequestCommon {
     public string? Email { get; set; }
     public string? PlayFabId { get; set; }
     public string? TitleDisplayName { get; set; }
     public string? Username { get; set; }
 }
 
-public class LookupUserAccountInfoResult {
+public class LookupUserAccountInfoResult : PlayFabResultCommon {
     public UserAccountInfo? UserInfo { get; set; }
 }
 
@@ -2881,17 +2881,17 @@ public class MembershipModel {
 /// These details are used by the PlayFab matchmaking service to determine if an existing Game Server Instance has room for additional users, and by the PlayFab game server management service to determine when a new Game Server Host should be created in order to prevent excess load on existing Hosts. This operation is not additive. Using it will cause the game mode definition for the game server executable in question to be created from scratch. If there is an existing game server mode definition for the given BuildVersion, it will be deleted and replaced with the data specified in this call.
 /// </summary>
 [Obsolete("Do not use")]
-public class ModifyMatchmakerGameModesRequest {
+public class ModifyMatchmakerGameModesRequest : PlayFabRequestCommon {
     public required string BuildVersion { get; set; }
     public required List<GameModeInfo> GameModes { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class ModifyMatchmakerGameModesResult {
+public class ModifyMatchmakerGameModesResult : PlayFabResultCommon {
 }
 
 [Obsolete("Do not use")]
-public class ModifyServerBuildRequest {
+public class ModifyServerBuildRequest : PlayFabRequestCommon {
     public List<Region>? ActiveRegions { get; set; }
     public required string BuildId { get; set; }
     public string? CommandLineTemplate { get; set; }
@@ -2904,7 +2904,7 @@ public class ModifyServerBuildRequest {
 }
 
 [Obsolete("Do not use")]
-public class ModifyServerBuildResult {
+public class ModifyServerBuildResult : PlayFabResultCommon {
     public List<Region>? ActiveRegions { get; set; }
     public string? BuildId { get; set; }
     public string? CommandLineTemplate { get; set; }
@@ -2917,7 +2917,7 @@ public class ModifyServerBuildResult {
     public string? TitleId { get; set; }
 }
 
-public class ModifyUserVirtualCurrencyResult {
+public class ModifyUserVirtualCurrencyResult : PlayFabResultCommon {
     public int Balance { get; set; }
     public int BalanceChange { get; set; }
     public string? PlayFabId { get; set; }
@@ -3129,13 +3129,13 @@ public class RandomResultTableListing {
     public required string TableId { get; set; }
 }
 
-public class RefundPurchaseRequest {
+public class RefundPurchaseRequest : PlayFabRequestCommon {
     public required string OrderId { get; set; }
     public required string PlayFabId { get; set; }
     public string? Reason { get; set; }
 }
 
-public class RefundPurchaseResponse {
+public class RefundPurchaseResponse : PlayFabResultCommon {
     public string? PurchaseStatus { get; set; }
 }
 
@@ -3152,60 +3152,60 @@ public enum Region {
 /// <summary>
 /// This API will trigger a player_tag_removed event and remove a tag with the given TagName and PlayFabID from the corresponding player profile. TagName can be used for segmentation and it is limited to 256 characters
 /// </summary>
-public class RemovePlayerTagRequest {
+public class RemovePlayerTagRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string PlayFabId { get; set; }
     public required string TagName { get; set; }
 }
 
-public class RemovePlayerTagResult {
+public class RemovePlayerTagResult : PlayFabResultCommon {
 }
 
 [Obsolete("Do not use")]
-public class RemoveServerBuildRequest {
+public class RemoveServerBuildRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class RemoveServerBuildResult {
+public class RemoveServerBuildResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Virtual currencies to be removed cannot have entries in any catalog nor store for the title. Note that this operation will not remove player balances for the removed currencies; if a deleted currency is recreated at any point, user balances will be in an undefined state.
 /// </summary>
-public class RemoveVirtualCurrencyTypesRequest {
+public class RemoveVirtualCurrencyTypesRequest : PlayFabRequestCommon {
     public required List<VirtualCurrencyData> VirtualCurrencies { get; set; }
 }
 
 /// <summary>
 /// Note that this action cannot be un-done. All statistics for this character will be deleted, removing the user from all leaderboards for the game.
 /// </summary>
-public class ResetCharacterStatisticsRequest {
+public class ResetCharacterStatisticsRequest : PlayFabRequestCommon {
     public required string CharacterId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string PlayFabId { get; set; }
 }
 
-public class ResetCharacterStatisticsResult {
+public class ResetCharacterStatisticsResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Resets a player's password taking in a new password based and validating the user based off of a token sent to the playerto their email. The token expires after 30 minutes.
 /// </summary>
-public class ResetPasswordRequest {
+public class ResetPasswordRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Password { get; set; }
     public required string Token { get; set; }
 }
 
-public class ResetPasswordResult {
+public class ResetPasswordResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// This method is intended for use with test accounts, to allow a developer to reset and test a game experience from the start. Note that in order to reset an account, you must know the username. If the account does not have a username, you must add one with AddUsernamePassword in the client API prior to calling this method.
 /// </summary>
 [Obsolete("Do not use")]
-public class ResetUsersRequest {
+public class ResetUsersRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required List<UserCredentials> Users { get; set; }
 }
@@ -3213,12 +3213,12 @@ public class ResetUsersRequest {
 /// <summary>
 /// Note that this action cannot be un-done. All statistics for this user will be deleted, removing the user from all leaderboards for the game.
 /// </summary>
-public class ResetUserStatisticsRequest {
+public class ResetUserStatisticsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string PlayFabId { get; set; }
 }
 
-public class ResetUserStatisticsResult {
+public class ResetUserStatisticsResult : PlayFabResultCommon {
 }
 
 public enum ResolutionOutcome {
@@ -3227,14 +3227,14 @@ public enum ResolutionOutcome {
     Manual,
 }
 
-public class ResolvePurchaseDisputeRequest {
+public class ResolvePurchaseDisputeRequest : PlayFabRequestCommon {
     public required string OrderId { get; set; }
     public ResolutionOutcome Outcome { get; set; }
     public required string PlayFabId { get; set; }
     public string? Reason { get; set; }
 }
 
-public class ResolvePurchaseDisputeResponse {
+public class ResolvePurchaseDisputeResponse : PlayFabResultCommon {
     public string? PurchaseStatus { get; set; }
 }
 
@@ -3252,22 +3252,22 @@ public enum ResultTableNodeType {
 /// <summary>
 /// Setting the active state of all non-expired bans for a user to Inactive. Expired bans with an Active state will be ignored, however. Returns information about applied updates only.
 /// </summary>
-public class RevokeAllBansForUserRequest {
+public class RevokeAllBansForUserRequest : PlayFabRequestCommon {
     public required string PlayFabId { get; set; }
 }
 
-public class RevokeAllBansForUserResult {
+public class RevokeAllBansForUserResult : PlayFabResultCommon {
     public List<BanInfo>? BanData { get; set; }
 }
 
 /// <summary>
 /// Setting the active state of all bans requested to Inactive regardless of whether that ban has already expired. BanIds that do not exist will be skipped. Returns information about applied updates only. 
 /// </summary>
-public class RevokeBansRequest {
+public class RevokeBansRequest : PlayFabRequestCommon {
     public required List<string> BanIds { get; set; }
 }
 
-public class RevokeBansResult {
+public class RevokeBansResult : PlayFabResultCommon {
     public List<BanInfo>? BanData { get; set; }
 }
 
@@ -3280,7 +3280,7 @@ public class RevokeInventoryItem {
 /// <summary>
 /// In cases where the inventory item in question is a "crate", and the items it contained have already been dispensed, this will not revoke access or otherwise remove the items which were dispensed.
 /// </summary>
-public class RevokeInventoryItemRequest {
+public class RevokeInventoryItemRequest : PlayFabRequestCommon {
     public string? CharacterId { get; set; }
     public required string ItemInstanceId { get; set; }
     public required string PlayFabId { get; set; }
@@ -3289,15 +3289,15 @@ public class RevokeInventoryItemRequest {
 /// <summary>
 /// In cases where the inventory item in question is a "crate", and the items it contained have already been dispensed, this will not revoke access or otherwise remove the items which were dispensed.
 /// </summary>
-public class RevokeInventoryItemsRequest {
+public class RevokeInventoryItemsRequest : PlayFabRequestCommon {
     public required List<RevokeInventoryItem> Items { get; set; }
 }
 
-public class RevokeInventoryItemsResult {
+public class RevokeInventoryItemsResult : PlayFabResultCommon {
     public List<RevokeItemError>? Errors { get; set; }
 }
 
-public class RevokeInventoryResult {
+public class RevokeInventoryResult : PlayFabResultCommon {
 }
 
 public class RevokeItemError {
@@ -3308,12 +3308,12 @@ public class RevokeItemError {
 /// <summary>
 /// The returned task instance ID can be used to query for task execution status.
 /// </summary>
-public class RunTaskRequest {
+public class RunTaskRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public NameIdentifier? Identifier { get; set; }
 }
 
-public class RunTaskResult {
+public class RunTaskResult : PlayFabResultCommon {
     public string? TaskInstanceId { get; set; }
 }
 
@@ -3861,13 +3861,13 @@ public class SegmentTrigger {
 /// <summary>
 /// If the account in question is a "temporary" account (for example, one that was created via a call to LoginFromIOSDeviceID), thisfunction will have no effect. Only PlayFab accounts which have valid email addresses will be able to receive a password reset email using this API.
 /// </summary>
-public class SendAccountRecoveryEmailRequest {
+public class SendAccountRecoveryEmailRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Email { get; set; }
     public string? EmailTemplateId { get; set; }
 }
 
-public class SendAccountRecoveryEmailResult {
+public class SendAccountRecoveryEmailResult : PlayFabResultCommon {
 }
 
 public class SendEmailContent {
@@ -3877,83 +3877,83 @@ public class SendEmailContent {
 /// <summary>
 /// The request must contain a valid sink to which PlayFab has write permissions. The sink destination types can be found in the PlayFab documentation.
 /// </summary>
-public class SetEventSinkRequest {
+public class SetEventSinkRequest : PlayFabRequestCommon {
     public required EventSink Sink { get; set; }
 }
 
-public class SetEventSinkResult {
+public class SetEventSinkResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// This API lets developers set overrides for membership expirations, independent of any subscriptions setting it.
 /// </summary>
-public class SetMembershipOverrideRequest {
+public class SetMembershipOverrideRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required DateTime ExpirationTime { get; set; }
     public required string MembershipId { get; set; }
     public required string PlayFabId { get; set; }
 }
 
-public class SetMembershipOverrideResult {
+public class SetMembershipOverrideResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// APIs that require signatures require that the player have a configured Player Secret Key that is used to sign all requests. Players that don't have a secret will be blocked from making API calls until it is configured. To create a signature header add a SHA256 hashed string containing UTF8 encoded JSON body as it will be sent to the server, the current time in UTC formatted to ISO 8601, and the players secret formatted as 'body.date.secret'. Place the resulting hash into the header X-PlayFab-Signature, along with a header X-PlayFab-Timestamp of the same UTC timestamp used in the signature.
 /// </summary>
-public class SetPlayerSecretRequest {
+public class SetPlayerSecretRequest : PlayFabRequestCommon {
     public string? PlayerSecret { get; set; }
     public required string PlayFabId { get; set; }
 }
 
-public class SetPlayerSecretResult {
+public class SetPlayerSecretResult : PlayFabResultCommon {
 }
 
-public class SetPublishedRevisionRequest {
+public class SetPublishedRevisionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int Revision { get; set; }
     public int Version { get; set; }
 }
 
-public class SetPublishedRevisionResult {
+public class SetPublishedRevisionResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// This API is designed to store publisher-specific values which can be read, but not written to, by the client. This data is shared across all titles assigned to a particular publisher, and can be used for cross-game coordination. Only titles assigned to a publisher can use this API. This operation is additive. If a Key does not exist in the current dataset, it will be added with the specified Value. If it already exists, the Value for that key will be overwritten with the new Value. For more information email helloplayfab@microsoft.com
 /// </summary>
-public class SetPublisherDataRequest {
+public class SetPublisherDataRequest : PlayFabRequestCommon {
     public required string Key { get; set; }
     public string? Value { get; set; }
 }
 
-public class SetPublisherDataResult {
+public class SetPublisherDataResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Will set the given key values in the specified override or the primary title data based on whether the label is provided or not.
 /// </summary>
-public class SetTitleDataAndOverridesRequest {
+public class SetTitleDataAndOverridesRequest : PlayFabRequestCommon {
     public required List<TitleDataKeyValue> KeyValues { get; set; }
     public string? OverrideLabel { get; set; }
 }
 
-public class SetTitleDataAndOverridesResult {
+public class SetTitleDataAndOverridesResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// This operation is additive. If a Key does not exist in the current dataset, it will be added with the specified Value. If it already exists, the Value for that key will be overwritten with the new Value.
 /// </summary>
-public class SetTitleDataRequest {
+public class SetTitleDataRequest : PlayFabRequestCommon {
     public required string Key { get; set; }
     public string? Value { get; set; }
 }
 
-public class SetTitleDataResult {
+public class SetTitleDataResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// When using the Apple Push Notification service (APNS) or the development version (APNS_SANDBOX), the APNS Private Key should be used as the Credential in this call. With Google Cloud Messaging (GCM), the Android API Key should be used. The current ARN (if one exists) can be overwritten by setting the OverwriteOldARN boolean to true.
 /// </summary>
-public class SetupPushNotificationRequest {
+public class SetupPushNotificationRequest : PlayFabRequestCommon {
     public required string Credential { get; set; }
     public string? Key { get; set; }
     public string? Name { get; set; }
@@ -3961,7 +3961,7 @@ public class SetupPushNotificationRequest {
     public PushSetupPlatform Platform { get; set; }
 }
 
-public class SetupPushNotificationResult {
+public class SetupPushNotificationResult : PlayFabResultCommon {
     public string? ARN { get; set; }
 }
 
@@ -4083,7 +4083,7 @@ public class SubtractInventoryItemV2Content {
     public string? StackId { get; set; }
 }
 
-public class SubtractUserVirtualCurrencyRequest {
+public class SubtractUserVirtualCurrencyRequest : PlayFabRequestCommon {
     public int Amount { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string PlayFabId { get; set; }
@@ -4157,28 +4157,28 @@ public class UpdateBanRequest {
 /// <summary>
 /// For each ban, only updates the values that are set. Leave any value to null for no change. If a ban could not be found, the rest are still applied. Returns information about applied updates only.
 /// </summary>
-public class UpdateBansRequest {
+public class UpdateBansRequest : PlayFabRequestCommon {
     public required List<UpdateBanRequest> Bans { get; set; }
 }
 
-public class UpdateBansResult {
+public class UpdateBansResult : PlayFabResultCommon {
     public List<BanInfo>? BanData { get; set; }
 }
 
 /// <summary>
 /// When used for SetCatalogItems, this operation is not additive. Using it will cause the indicated catalog version to be created from scratch. If there is an existing catalog with the version number in question, it will be deleted and replaced with only the items specified in this call. When used for UpdateCatalogItems, this operation is additive. Items with ItemId values not currently in the catalog will be added, while those with ItemId values matching items currently in the catalog will overwrite those items with the given values.
 /// </summary>
-public class UpdateCatalogItemsRequest {
+public class UpdateCatalogItemsRequest : PlayFabRequestCommon {
     public List<CatalogItem>? Catalog { get; set; }
     public string? CatalogVersion { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool? SetAsDefaultCatalog { get; set; }
 }
 
-public class UpdateCatalogItemsResult {
+public class UpdateCatalogItemsResult : PlayFabResultCommon {
 }
 
-public class UpdateCloudScriptRequest {
+public class UpdateCloudScriptRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? DeveloperPlayFabId { get; set; }
     public required List<CloudScriptFile> Files { get; set; }
@@ -4186,12 +4186,12 @@ public class UpdateCloudScriptRequest {
     public int? Version { get; set; }
 }
 
-public class UpdateCloudScriptResult {
+public class UpdateCloudScriptResult : PlayFabResultCommon {
     public int Revision { get; set; }
     public int Version { get; set; }
 }
 
-public class UpdateOpenIdConnectionRequest {
+public class UpdateOpenIdConnectionRequest : PlayFabRequestCommon {
     public string? ClientId { get; set; }
     public string? ClientSecret { get; set; }
     public required string ConnectionId { get; set; }
@@ -4204,14 +4204,14 @@ public class UpdateOpenIdConnectionRequest {
 /// <summary>
 /// Performs an additive update of the custom properties for the specified player. In updating the player's custom properties, properties which already exist will have their values overwritten. No other properties will be changed apart from those specified in the call.
 /// </summary>
-public class UpdatePlayerCustomPropertiesRequest {
+public class UpdatePlayerCustomPropertiesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int? ExpectedPropertiesVersion { get; set; }
     public required string PlayFabId { get; set; }
     public required List<UpdateProperty> Properties { get; set; }
 }
 
-public class UpdatePlayerCustomPropertiesResult {
+public class UpdatePlayerCustomPropertiesResult : PlayFabResultCommon {
     public string? PlayFabId { get; set; }
     public int PropertiesVersion { get; set; }
 }
@@ -4219,39 +4219,39 @@ public class UpdatePlayerCustomPropertiesResult {
 /// <summary>
 /// Player Shared Secret Keys are used for the call to Client/GetTitlePublicKey, which exchanges the shared secret for an RSA CSP blob to be used to encrypt the payload of account creation requests when that API requires a signature header.
 /// </summary>
-public class UpdatePlayerSharedSecretRequest {
+public class UpdatePlayerSharedSecretRequest : PlayFabRequestCommon {
     public bool Disabled { get; set; }
     public string? FriendlyName { get; set; }
     public string? SecretKey { get; set; }
 }
 
-public class UpdatePlayerSharedSecretResult {
+public class UpdatePlayerSharedSecretResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Statistics are numeric values, with each statistic in the title also generating a leaderboard. The ResetInterval enables automatically resetting leaderboards on a specified interval. Upon reset, the statistic updates to a new version with no values (effectively removing all players from the leaderboard). The previous version's statistic values are also archived for retrieval, if needed (see GetPlayerStatisticVersions). Statistics not created via a call to CreatePlayerStatisticDefinition by default have a VersionChangeInterval of Never, meaning they do not reset on a schedule, but they can be set to do so via a call to UpdatePlayerStatisticDefinition. Once a statistic has been reset (sometimes referred to as versioned or incremented), the now-previous version can still be written to for up a short, pre-defined period (currently 10 seconds), to prevent issues with levels completing around the time of the reset. Also, once reset, the historical statistics for players in the title may be retrieved using the URL specified in the version information (GetPlayerStatisticVersions). The AggregationMethod determines what action is taken when a new statistic value is submitted - always update with the new value (Last), use the highest of the old and new values (Max), use the smallest (Min), or add them together (Sum).
 /// </summary>
-public class UpdatePlayerStatisticDefinitionRequest {
+public class UpdatePlayerStatisticDefinitionRequest : PlayFabRequestCommon {
     public StatisticAggregationMethod? AggregationMethod { get; set; }
     public required string StatisticName { get; set; }
     public StatisticResetIntervalOption? VersionChangeInterval { get; set; }
 }
 
-public class UpdatePlayerStatisticDefinitionResult {
+public class UpdatePlayerStatisticDefinitionResult : PlayFabResultCommon {
     public PlayerStatisticDefinition? Statistic { get; set; }
 }
 
 /// <summary>
 /// Updates permissions for your title. Policies affect what is allowed to happen on your title. Your policy is a collection of statements that, together, govern particular area for your title. Today, the only allowed policy is called 'ApiPolicy' and it governs what API calls are allowed. To verify that you have the latest version always download the current policy from GetPolicy before uploading a new policy. PlayFab updates the base policy periodically and will automatically apply it to the uploaded policy. Overwriting the combined policy blindly may result in unexpected API errors.
 /// </summary>
-public class UpdatePolicyRequest {
+public class UpdatePolicyRequest : PlayFabRequestCommon {
     public bool OverwritePolicy { get; set; }
     public required string PolicyName { get; set; }
     public int PolicyVersion { get; set; }
     public required List<PermissionStatement> Statements { get; set; }
 }
 
-public class UpdatePolicyResponse {
+public class UpdatePolicyResponse : PlayFabResultCommon {
     public string? PolicyName { get; set; }
     public List<PermissionStatement>? Statements { get; set; }
 }
@@ -4264,23 +4264,23 @@ public class UpdateProperty {
 /// <summary>
 /// This operation is additive. Tables with TableId values not currently defined will be added, while those with TableId values matching Tables currently in the catalog will be overwritten with the given values.
 /// </summary>
-public class UpdateRandomResultTablesRequest {
+public class UpdateRandomResultTablesRequest : PlayFabRequestCommon {
     public string? CatalogVersion { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public List<RandomResultTable>? Tables { get; set; }
 }
 
-public class UpdateRandomResultTablesResult {
+public class UpdateRandomResultTablesResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Update segment properties data which are planning to update
 /// </summary>
-public class UpdateSegmentRequest {
+public class UpdateSegmentRequest : PlayFabRequestCommon {
     public required SegmentModel SegmentModel { get; set; }
 }
 
-public class UpdateSegmentResponse {
+public class UpdateSegmentResponse : PlayFabResultCommon {
     public string? ErrorMessage { get; set; }
     public string? SegmentId { get; set; }
 }
@@ -4288,7 +4288,7 @@ public class UpdateSegmentResponse {
 /// <summary>
 /// When used for SetStoreItems, this operation is not additive. Using it will cause the indicated virtual store to be created from scratch. If there is an existing store with the same storeId, it will be deleted and replaced with only the items specified in this call. When used for UpdateStoreItems, this operation is additive. Items with ItemId values not currently in the store will be added, while those with ItemId values matching items currently in the catalog will overwrite those items with the given values. In both cases, a store contains an array of references to items defined in the catalog, along with the prices for the item, in both real world and virtual currencies. These prices act as an override to any prices defined in the catalog. In this way, the base definitions of the items may be defined in the catalog, with all associated properties, while the pricing can be set for each store, as needed. This allows for subsets of goods to be defined for different purposes (in order to simplify showing some, but not all catalog items to users, based upon different characteristics), along with unique prices. Note that all prices defined in the catalog and store definitions for the item are considered valid, and that a compromised client can be made to send a request for an item based upon any of these definitions. If no price is specified in the store for an item, the price set in the catalog should be displayed to the user.
 /// </summary>
-public class UpdateStoreItemsRequest {
+public class UpdateStoreItemsRequest : PlayFabRequestCommon {
     public string? CatalogVersion { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public StoreMarketingModel? MarketingData { get; set; }
@@ -4296,13 +4296,13 @@ public class UpdateStoreItemsRequest {
     public required string StoreId { get; set; }
 }
 
-public class UpdateStoreItemsResult {
+public class UpdateStoreItemsResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Note that when calling this API, all properties of the task have to be provided, including properties that you do not want to change. Parameters not specified would be set to default value. If the task name in the update request is new, a task rename operation will be executed before updating other fields of the task. WARNING: Renaming of a task may break logics where the task name is used as an identifier.
 /// </summary>
-public class UpdateTaskRequest {
+public class UpdateTaskRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public NameIdentifier? Identifier { get; set; }
@@ -4316,7 +4316,7 @@ public class UpdateTaskRequest {
 /// <summary>
 /// This function performs an additive update of the arbitrary JSON object containing the custom data for the user. In updating the custom data object, keys which already exist in the object will have their values overwritten, while keys with null values will be removed. No other key-value pairs will be changed apart from those specified in the call.
 /// </summary>
-public class UpdateUserDataRequest {
+public class UpdateUserDataRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public Dictionary<string, string>? Data { get; set; }
     public List<string>? KeysToRemove { get; set; }
@@ -4324,14 +4324,14 @@ public class UpdateUserDataRequest {
     public required string PlayFabId { get; set; }
 }
 
-public class UpdateUserDataResult {
+public class UpdateUserDataResult : PlayFabResultCommon {
     public UInt32 DataVersion { get; set; }
 }
 
 /// <summary>
 /// This function performs an additive update of the arbitrary JSON object containing the custom data for the user. In updating the custom data object, keys which already exist in the object will have their values overwritten, keys with null values will be removed. No other key-value pairs will be changed apart from those specified in the call.
 /// </summary>
-public class UpdateUserInternalDataRequest {
+public class UpdateUserInternalDataRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public Dictionary<string, string>? Data { get; set; }
     public List<string>? KeysToRemove { get; set; }
@@ -4341,13 +4341,13 @@ public class UpdateUserInternalDataRequest {
 /// <summary>
 /// In addition to the PlayFab username, titles can make use of a DisplayName which is also a unique identifier, but specific to the title. This allows for unique names which more closely match the theme or genre of a title, for example. This API enables changing that name, whether due to a customer request, an offensive name choice, etc.
 /// </summary>
-public class UpdateUserTitleDisplayNameRequest {
+public class UpdateUserTitleDisplayNameRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string DisplayName { get; set; }
     public required string PlayFabId { get; set; }
 }
 
-public class UpdateUserTitleDisplayNameResult {
+public class UpdateUserTitleDisplayNameResult : PlayFabResultCommon {
     public string? DisplayName { get; set; }
 }
 

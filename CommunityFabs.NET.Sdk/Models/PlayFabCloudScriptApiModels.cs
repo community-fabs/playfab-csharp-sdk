@@ -288,7 +288,7 @@ public enum EmailVerificationStatus {
     Confirmed,
 }
 
-public class EmptyResult {
+public class EmptyResult : PlayFabResultCommon {
 }
 
 /// <summary>
@@ -306,7 +306,7 @@ public class EventHubFunctionModel {
     public string? FunctionName { get; set; }
 }
 
-public class ExecuteCloudScriptResult {
+public class ExecuteCloudScriptResult : PlayFabResultCommon {
     public int APIRequestsIssued { get; set; }
     public ScriptExecutionError? Error { get; set; }
     public required double ExecutionTimeSeconds { get; set; }
@@ -324,7 +324,7 @@ public class ExecuteCloudScriptResult {
 /// <summary>
 /// Executes CloudScript with the entity profile that is defined in the request.
 /// </summary>
-public class ExecuteEntityCloudScriptRequest {
+public class ExecuteEntityCloudScriptRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required string FunctionName { get; set; }
@@ -337,7 +337,7 @@ public class ExecuteEntityCloudScriptRequest {
 /// <summary>
 /// Executes an Azure Function with the profile of the entity that is defined in the request.
 /// </summary>
-public class ExecuteFunctionRequest {
+public class ExecuteFunctionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required string FunctionName { get; set; }
@@ -345,7 +345,7 @@ public class ExecuteFunctionRequest {
     public bool? GeneratePlayStreamEvent { get; set; }
 }
 
-public class ExecuteFunctionResult {
+public class ExecuteFunctionResult : PlayFabResultCommon {
     public FunctionExecutionError? Error { get; set; }
     public int ExecutionTimeMilliseconds { get; set; }
     public string? FunctionName { get; set; }
@@ -365,12 +365,12 @@ public class FunctionModel {
     public string? TriggerType { get; set; }
 }
 
-public class GetFunctionRequest {
+public class GetFunctionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string FunctionName { get; set; }
 }
 
-public class GetFunctionResult {
+public class GetFunctionResult : PlayFabResultCommon {
     public string? ConnectionString { get; set; }
     public string? FunctionUrl { get; set; }
     public string? QueueName { get; set; }
@@ -389,26 +389,26 @@ public class LinkedPlatformAccountModel {
     public string? Username { get; set; }
 }
 
-public class ListEventHubFunctionsResult {
+public class ListEventHubFunctionsResult : PlayFabResultCommon {
     public List<EventHubFunctionModel>? Functions { get; set; }
 }
 
 /// <summary>
 /// A title can have many functions, ListHttpFunctions will return a list of all the currently registered HTTP triggered functions for a given title.
 /// </summary>
-public class ListFunctionsRequest {
+public class ListFunctionsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class ListFunctionsResult {
+public class ListFunctionsResult : PlayFabResultCommon {
     public List<FunctionModel>? Functions { get; set; }
 }
 
-public class ListHttpFunctionsResult {
+public class ListHttpFunctionsResult : PlayFabResultCommon {
     public List<HttpFunctionModel>? Functions { get; set; }
 }
 
-public class ListQueuedFunctionsResult {
+public class ListQueuedFunctionsResult : PlayFabResultCommon {
     public List<QueuedFunctionModel>? Functions { get; set; }
 }
 
@@ -503,19 +503,19 @@ public class PlayStreamEventEnvelopeModel {
     public string? EventSettings { get; set; }
 }
 
-public class PostFunctionResultForEntityTriggeredActionRequest {
+public class PostFunctionResultForEntityTriggeredActionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required EntityKey Entity { get; set; }
     public required ExecuteFunctionResult FunctionResult { get; set; }
 }
 
-public class PostFunctionResultForFunctionExecutionRequest {
+public class PostFunctionResultForFunctionExecutionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required EntityKey Entity { get; set; }
     public required ExecuteFunctionResult FunctionResult { get; set; }
 }
 
-public class PostFunctionResultForPlayerTriggeredActionRequest {
+public class PostFunctionResultForPlayerTriggeredActionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required ExecuteFunctionResult FunctionResult { get; set; }
@@ -523,7 +523,7 @@ public class PostFunctionResultForPlayerTriggeredActionRequest {
     public PlayStreamEventEnvelopeModel? PlayStreamEventEnvelope { get; set; }
 }
 
-public class PostFunctionResultForScheduledTaskRequest {
+public class PostFunctionResultForScheduledTaskRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required ExecuteFunctionResult FunctionResult { get; set; }
@@ -549,14 +549,14 @@ public class QueuedFunctionModel {
 /// <summary>
 /// A title can have many functions, RegisterEventHubFunction associates a function name with an event hub name and connection string.
 /// </summary>
-public class RegisterEventHubFunctionRequest {
+public class RegisterEventHubFunctionRequest : PlayFabRequestCommon {
     public required string ConnectionString { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string EventHubName { get; set; }
     public required string FunctionName { get; set; }
 }
 
-public class RegisterHttpFunctionRequest {
+public class RegisterHttpFunctionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string FunctionName { get; set; }
     public required string FunctionUrl { get; set; }
@@ -565,7 +565,7 @@ public class RegisterHttpFunctionRequest {
 /// <summary>
 /// A title can have many functions, RegisterQueuedFunction associates a function name with a queue name and connection string.
 /// </summary>
-public class RegisterQueuedFunctionRequest {
+public class RegisterQueuedFunctionRequest : PlayFabRequestCommon {
     public required string ConnectionString { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string FunctionName { get; set; }
@@ -615,7 +615,7 @@ public enum TriggerType {
     EventHub,
 }
 
-public class UnregisterFunctionRequest {
+public class UnregisterFunctionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string FunctionName { get; set; }
 }

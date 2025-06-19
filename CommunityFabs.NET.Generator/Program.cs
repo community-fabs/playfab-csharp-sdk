@@ -2,8 +2,11 @@
 using Razor.Templating.Core;
 
 var outPath = Path.Combine(Utils.GetProjectRoot(), "..", "CommunityFabs.NET.Sdk");
+var staticPath = Path.Combine(Utils.GetProjectRoot(), "..", "CommunityFabs.NET.Generator.Templates", "Static");
 
 Utils.RecursiveDelete(outPath, "*.cs");
+
+Utils.RecursiveCopy(staticPath, outPath);
 
 var toc = await ApiDetails.GetTableOfContents();
 var combinedSdkApiRefs = toc.Documents!

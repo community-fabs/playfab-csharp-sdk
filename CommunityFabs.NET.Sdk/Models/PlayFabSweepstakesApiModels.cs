@@ -3,7 +3,7 @@ namespace CommunityFabs.NET.Sdk.Models.Sweepstakes;
 /// <summary>
 /// Given a title entity token and sweepstake details, will create a new sweepstake for the title.
 /// </summary>
-public class CreateSweepstakeRequest {
+public class CreateSweepstakeRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required DateTime DrawingDate { get; set; }
     public required DateTime EndDate { get; set; }
@@ -13,19 +13,19 @@ public class CreateSweepstakeRequest {
     public required DateTime StartDate { get; set; }
 }
 
-public class CreateSweepstakeResponse {
+public class CreateSweepstakeResponse : PlayFabResultCommon {
     public string? Name { get; set; }
 }
 
 /// <summary>
 /// Given a title entity token and sweepstake name, will return the sweepstakes of that title.
 /// </summary>
-public class GetSweepstakeRequest {
+public class GetSweepstakeRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Name { get; set; }
 }
 
-public class GetSweepstakeResponse {
+public class GetSweepstakeResponse : PlayFabResultCommon {
     public List<Sweepstake>? Sweepstakes { get; set; }
 }
 

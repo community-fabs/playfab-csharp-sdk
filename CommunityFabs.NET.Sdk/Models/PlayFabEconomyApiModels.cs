@@ -10,7 +10,7 @@ public class AddInventoryItemsOperation {
 /// <summary>
 /// Given an entity type, entity identifier and container details, will add the specified inventory items.
 /// </summary>
-public class AddInventoryItemsRequest {
+public class AddInventoryItemsRequest : PlayFabRequestCommon {
     public int? Amount { get; set; }
     public string? CollectionId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -22,7 +22,7 @@ public class AddInventoryItemsRequest {
     public InitialValues? NewStackValues { get; set; }
 }
 
-public class AddInventoryItemsResponse {
+public class AddInventoryItemsResponse : PlayFabResultCommon {
     public string? ETag { get; set; }
     public string? IdempotencyId { get; set; }
     public List<string>? TransactionIds { get; set; }
@@ -166,12 +166,12 @@ public class CategoryRatingConfig {
 /// <summary>
 /// The version of the catalog to upload.
 /// </summary>
-public class CompleteVersionedCatalogUploadRequest {
+public class CompleteVersionedCatalogUploadRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Version { get; set; }
 }
 
-public class CompleteVersionedCatalogUploadResponse {
+public class CompleteVersionedCatalogUploadResponse : PlayFabResultCommon {
     public string? Version { get; set; }
 }
 
@@ -453,47 +453,47 @@ public enum CountryCode {
 /// <summary>
 /// The item will not be published to the public catalog until the PublishItem API is called for the item.
 /// </summary>
-public class CreateDraftItemRequest {
+public class CreateDraftItemRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public CatalogItem? Item { get; set; }
     public bool Publish { get; set; }
 }
 
-public class CreateDraftItemResponse {
+public class CreateDraftItemResponse : PlayFabResultCommon {
     public CatalogItem? Item { get; set; }
 }
 
 /// <summary>
 /// Upload URLs point to Azure Blobs; clients must follow the Microsoft Azure Storage Blob Service REST API pattern for uploading content. The response contains upload URLs and IDs for each file. The IDs and URLs returned must be added to the item metadata and committed using the CreateDraftItem or UpdateDraftItem Item APIs.
 /// </summary>
-public class CreateUploadUrlsRequest {
+public class CreateUploadUrlsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public List<UploadInfo>? Files { get; set; }
 }
 
-public class CreateUploadUrlsResponse {
+public class CreateUploadUrlsResponse : PlayFabResultCommon {
     public List<UploadUrlMetadata>? UploadUrls { get; set; }
 }
 
 /// <summary>
 /// The version of the catalog from which to create the URL.
 /// </summary>
-public class CreateVersionedCatalogUploadURLRequest {
+public class CreateVersionedCatalogUploadURLRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Version { get; set; }
 }
 
-public class CreateVersionedCatalogUploadURLResponse {
+public class CreateVersionedCatalogUploadURLResponse : PlayFabResultCommon {
     public string? Url { get; set; }
     public string? Version { get; set; }
 }
 
-public class CreateViewRequest {
+public class CreateViewRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public CatalogView? View { get; set; }
 }
 
-public class CreateViewResponse {
+public class CreateViewResponse : PlayFabResultCommon {
     public CatalogView? View { get; set; }
 }
 
@@ -507,25 +507,25 @@ public class DeepLinkFormat {
     public string? Platform { get; set; }
 }
 
-public class DeleteEntityItemReviewsRequest {
+public class DeleteEntityItemReviewsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeleteEntityItemReviewsResponse {
+public class DeleteEntityItemReviewsResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Delete an Inventory Collection by the specified Id for an Entity
 /// </summary>
-public class DeleteInventoryCollectionRequest {
+public class DeleteInventoryCollectionRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public string? ETag { get; set; }
 }
 
-public class DeleteInventoryCollectionResponse {
+public class DeleteInventoryCollectionResponse : PlayFabResultCommon {
 }
 
 public class DeleteInventoryItemsOperation {
@@ -535,7 +535,7 @@ public class DeleteInventoryItemsOperation {
 /// <summary>
 /// Given an entity type, entity identifier and container details, will delete the entity's inventory items
 /// </summary>
-public class DeleteInventoryItemsRequest {
+public class DeleteInventoryItemsRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
@@ -544,37 +544,37 @@ public class DeleteInventoryItemsRequest {
     public InventoryItemReference? Item { get; set; }
 }
 
-public class DeleteInventoryItemsResponse {
+public class DeleteInventoryItemsResponse : PlayFabResultCommon {
     public string? ETag { get; set; }
     public string? IdempotencyId { get; set; }
     public List<string>? TransactionIds { get; set; }
 }
 
-public class DeleteItemRequest {
+public class DeleteItemRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public string? Id { get; set; }
 }
 
-public class DeleteItemResponse {
+public class DeleteItemResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// The version of the catalog to delete.
 /// </summary>
-public class DeleteVersionedCatalogRequest {
+public class DeleteVersionedCatalogRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Version { get; set; }
 }
 
-public class DeleteViewRequest {
+public class DeleteViewRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? FriendlyId { get; set; }
     public string? Id { get; set; }
 }
 
-public class DeleteViewResponse {
+public class DeleteViewResponse : PlayFabResultCommon {
 }
 
 public class DisplayPropertyIndexInfo {
@@ -590,7 +590,7 @@ public enum DisplayPropertyType {
     SearchString,
 }
 
-public class EmptyResponse {
+public class EmptyResponse : PlayFabResultCommon {
 }
 
 /// <summary>
@@ -605,7 +605,7 @@ public class EntityKey {
 /// <summary>
 /// Execute a list of Inventory Operations for an Entity
 /// </summary>
-public class ExecuteInventoryOperationsRequest {
+public class ExecuteInventoryOperationsRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
@@ -614,7 +614,7 @@ public class ExecuteInventoryOperationsRequest {
     public List<InventoryOperation>? Operations { get; set; }
 }
 
-public class ExecuteInventoryOperationsResponse {
+public class ExecuteInventoryOperationsResponse : PlayFabResultCommon {
     public string? ETag { get; set; }
     public string? IdempotencyId { get; set; }
     public List<string>? TransactionIds { get; set; }
@@ -623,7 +623,7 @@ public class ExecuteInventoryOperationsResponse {
 /// <summary>
 /// Transfer the specified list of inventory items of an entity's container Id to another entity's container Id.
 /// </summary>
-public class ExecuteTransferOperationsRequest {
+public class ExecuteTransferOperationsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? GivingCollectionId { get; set; }
     public EntityKey? GivingEntity { get; set; }
@@ -634,7 +634,7 @@ public class ExecuteTransferOperationsRequest {
     public EntityKey? ReceivingEntity { get; set; }
 }
 
-public class ExecuteTransferOperationsResponse {
+public class ExecuteTransferOperationsResponse : PlayFabResultCommon {
     public string? GivingETag { get; set; }
     public List<string>? GivingTransactionIds { get; set; }
     public string? IdempotencyId { get; set; }
@@ -647,7 +647,7 @@ public class ExecuteTransferOperationsResponse {
 /// <summary>
 /// The version of the catalog to export.
 /// </summary>
-public class ExportVersionedCatalogRequest {
+public class ExportVersionedCatalogRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Version { get; set; }
 }
@@ -662,38 +662,38 @@ public class FilterOptions {
     public bool? IncludeAllItems { get; set; }
 }
 
-public class GetCatalogConfigRequest {
+public class GetCatalogConfigRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class GetCatalogConfigResponse {
+public class GetCatalogConfigResponse : PlayFabResultCommon {
     public CatalogConfig? Config { get; set; }
 }
 
-public class GetDraftItemRequest {
+public class GetDraftItemRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public string? Id { get; set; }
 }
 
-public class GetDraftItemResponse {
+public class GetDraftItemResponse : PlayFabResultCommon {
     public CatalogItem? Item { get; set; }
 }
 
-public class GetDraftItemsRequest {
+public class GetDraftItemsRequest : PlayFabRequestCommon {
     public List<CatalogAlternateId>? AlternateIds { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public List<string>? Ids { get; set; }
 }
 
-public class GetDraftItemsResponse {
+public class GetDraftItemsResponse : PlayFabResultCommon {
     public string? ContinuationToken { get; set; }
     public List<CatalogItem>? Items { get; set; }
 }
 
-public class GetEntityDraftItemsRequest {
+public class GetEntityDraftItemsRequest : PlayFabRequestCommon {
     public string? ContinuationToken { get; set; }
     public int Count { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -701,33 +701,33 @@ public class GetEntityDraftItemsRequest {
     public string? Filter { get; set; }
 }
 
-public class GetEntityDraftItemsResponse {
+public class GetEntityDraftItemsResponse : PlayFabResultCommon {
     public string? ContinuationToken { get; set; }
     public List<CatalogItem>? Items { get; set; }
 }
 
-public class GetEntityItemReviewRequest {
+public class GetEntityItemReviewRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public string? Id { get; set; }
 }
 
-public class GetEntityItemReviewResponse {
+public class GetEntityItemReviewResponse : PlayFabResultCommon {
     public Review? Review { get; set; }
 }
 
 /// <summary>
 /// Get a list of Inventory Collection Ids for the specified Entity
 /// </summary>
-public class GetInventoryCollectionIdsRequest {
+public class GetInventoryCollectionIdsRequest : PlayFabRequestCommon {
     public string? ContinuationToken { get; set; }
     public int Count { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetInventoryCollectionIdsResponse {
+public class GetInventoryCollectionIdsResponse : PlayFabResultCommon {
     public List<string>? CollectionIds { get; set; }
     public string? ContinuationToken { get; set; }
 }
@@ -735,7 +735,7 @@ public class GetInventoryCollectionIdsResponse {
 /// <summary>
 /// Given an entity type, entity identifier and container details, will get the entity's inventory items. 
 /// </summary>
-public class GetInventoryItemsRequest {
+public class GetInventoryItemsRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public string? ContinuationToken { get; set; }
     public int Count { get; set; }
@@ -744,7 +744,7 @@ public class GetInventoryItemsRequest {
     public string? Filter { get; set; }
 }
 
-public class GetInventoryItemsResponse {
+public class GetInventoryItemsResponse : PlayFabResultCommon {
     public string? ContinuationToken { get; set; }
     public string? ETag { get; set; }
     public List<InventoryItem>? Items { get; set; }
@@ -753,20 +753,20 @@ public class GetInventoryItemsResponse {
 /// <summary>
 /// Get the status of an Inventory Operation using an OperationToken.
 /// </summary>
-public class GetInventoryOperationStatusRequest {
+public class GetInventoryOperationStatusRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetInventoryOperationStatusResponse {
+public class GetInventoryOperationStatusResponse : PlayFabResultCommon {
     public string? OperationStatus { get; set; }
 }
 
 /// <summary>
 /// Given an item, return a set of bundles and stores containing the item.
 /// </summary>
-public class GetItemContainersRequest {
+public class GetItemContainersRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public string? ContinuationToken { get; set; }
     public int Count { get; set; }
@@ -775,34 +775,34 @@ public class GetItemContainersRequest {
     public string? Id { get; set; }
 }
 
-public class GetItemContainersResponse {
+public class GetItemContainersResponse : PlayFabResultCommon {
     public List<CatalogItem>? Containers { get; set; }
     public string? ContinuationToken { get; set; }
 }
 
-public class GetItemModerationStateRequest {
+public class GetItemModerationStateRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Id { get; set; }
 }
 
-public class GetItemModerationStateResponse {
+public class GetItemModerationStateResponse : PlayFabResultCommon {
     public ModerationState? State { get; set; }
 }
 
-public class GetItemPublishStatusRequest {
+public class GetItemPublishStatusRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public string? Id { get; set; }
 }
 
-public class GetItemPublishStatusResponse {
+public class GetItemPublishStatusResponse : PlayFabResultCommon {
     public PublishResult? Result { get; set; }
     public string? StatusMessage { get; set; }
 }
 
-public class GetItemRequest {
+public class GetItemRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
@@ -812,11 +812,11 @@ public class GetItemRequest {
 /// <summary>
 /// Get item result.
 /// </summary>
-public class GetItemResponse {
+public class GetItemResponse : PlayFabResultCommon {
     public CatalogItem? Item { get; set; }
 }
 
-public class GetItemReviewsRequest {
+public class GetItemReviewsRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public string? ContinuationToken { get; set; }
     public int Count { get; set; }
@@ -825,43 +825,43 @@ public class GetItemReviewsRequest {
     public string? OrderBy { get; set; }
 }
 
-public class GetItemReviewsResponse {
+public class GetItemReviewsResponse : PlayFabResultCommon {
     public string? ContinuationToken { get; set; }
     public List<Review>? Reviews { get; set; }
 }
 
-public class GetItemReviewSummaryRequest {
+public class GetItemReviewSummaryRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Id { get; set; }
 }
 
-public class GetItemReviewSummaryResponse {
+public class GetItemReviewSummaryResponse : PlayFabResultCommon {
     public Review? LeastFavorableReview { get; set; }
     public Review? MostFavorableReview { get; set; }
     public Rating? Rating { get; set; }
     public int ReviewsCount { get; set; }
 }
 
-public class GetItemsRequest {
+public class GetItemsRequest : PlayFabRequestCommon {
     public List<CatalogAlternateId>? AlternateIds { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public List<string>? Ids { get; set; }
 }
 
-public class GetItemsResponse {
+public class GetItemsResponse : PlayFabResultCommon {
     public List<CatalogItem>? Items { get; set; }
 }
 
 /// <summary>
 /// Gets the access tokens for Microsoft Store authentication.
 /// </summary>
-public class GetMicrosoftStoreAccessTokensRequest {
+public class GetMicrosoftStoreAccessTokensRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class GetMicrosoftStoreAccessTokensResponse {
+public class GetMicrosoftStoreAccessTokensResponse : PlayFabResultCommon {
     public string? CollectionsAccessToken { get; set; }
     public required DateTime CollectionsAccessTokenExpirationDate { get; set; }
 }
@@ -869,7 +869,7 @@ public class GetMicrosoftStoreAccessTokensResponse {
 /// <summary>
 /// Get transaction history for specified entity and collection.
 /// </summary>
-public class GetTransactionHistoryRequest {
+public class GetTransactionHistoryRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public string? ContinuationToken { get; set; }
     public int Count { get; set; }
@@ -879,7 +879,7 @@ public class GetTransactionHistoryRequest {
     public string? OrderBy { get; set; }
 }
 
-public class GetTransactionHistoryResponse {
+public class GetTransactionHistoryResponse : PlayFabResultCommon {
     public string? ContinuationToken { get; set; }
     public List<Transaction>? Transactions { get; set; }
 }
@@ -887,47 +887,47 @@ public class GetTransactionHistoryResponse {
 /// <summary>
 /// The version of the catalog and the id of the item.
 /// </summary>
-public class GetVersionedCatalogItemRequest {
+public class GetVersionedCatalogItemRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Id { get; set; }
     public string? Version { get; set; }
 }
 
-public class GetVersionedCatalogItemResponse {
+public class GetVersionedCatalogItemResponse : PlayFabResultCommon {
     public VersionedCatalogItem? Item { get; set; }
 }
 
 /// <summary>
 /// The version of the catalog from which to get the upload status.
 /// </summary>
-public class GetVersionedCatalogUploadStatusRequest {
+public class GetVersionedCatalogUploadStatusRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Version { get; set; }
 }
 
-public class GetVersionedCatalogUploadStatusResponse {
+public class GetVersionedCatalogUploadStatusResponse : PlayFabResultCommon {
     public string? Status { get; set; }
 }
 
-public class GetViewRequest {
+public class GetViewRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public string? FriendlyId { get; set; }
     public string? Id { get; set; }
 }
 
-public class GetViewResponse {
+public class GetViewResponse : PlayFabResultCommon {
     public CatalogView? View { get; set; }
 }
 
-public class GetViewsRequest {
+public class GetViewsRequest : PlayFabRequestCommon {
     public string? ContinuationToken { get; set; }
     public int? Count { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetViewsResponse {
+public class GetViewsResponse : PlayFabResultCommon {
     public string? ContinuationToken { get; set; }
     public List<CatalogView>? Views { get; set; }
 }
@@ -943,7 +943,7 @@ public enum HelpfulnessVote {
     Helpful,
 }
 
-public class IActionResult {
+public class IActionResult : PlayFabResultCommon {
 }
 
 public class Image {
@@ -992,14 +992,14 @@ public class KeywordSet {
 /// <summary>
 /// The list of available versioned catalogs.
 /// </summary>
-public class ListVersionedCatalogsRequest {
+public class ListVersionedCatalogsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
 /// <summary>
 /// List catalog versions.
 /// </summary>
-public class ListVersionedCatalogsResponse {
+public class ListVersionedCatalogsResponse : PlayFabResultCommon {
     public List<VersionedCatalog>? VersionedCatalogs { get; set; }
 }
 
@@ -1023,7 +1023,7 @@ public class Permissions {
 /// <summary>
 /// The call kicks off a workflow to publish the item to the public catalog. The Publish Status API should be used to monitor the publish job.
 /// </summary>
-public class PublishDraftItemRequest {
+public class PublishDraftItemRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
@@ -1031,7 +1031,7 @@ public class PublishDraftItemRequest {
     public string? Id { get; set; }
 }
 
-public class PublishDraftItemResponse {
+public class PublishDraftItemResponse : PlayFabResultCommon {
 }
 
 public enum PublishResult {
@@ -1055,7 +1055,7 @@ public class PurchaseInventoryItemsOperation {
 /// <summary>
 /// Purchase a single item or bundle, paying the associated price.
 /// </summary>
-public class PurchaseInventoryItemsRequest {
+public class PurchaseInventoryItemsRequest : PlayFabRequestCommon {
     public int? Amount { get; set; }
     public string? CollectionId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -1071,7 +1071,7 @@ public class PurchaseInventoryItemsRequest {
     public string? StoreId { get; set; }
 }
 
-public class PurchaseInventoryItemsResponse {
+public class PurchaseInventoryItemsResponse : PlayFabResultCommon {
     public string? ETag { get; set; }
     public string? IdempotencyId { get; set; }
     public List<string>? TransactionIds { get; set; }
@@ -1108,7 +1108,7 @@ public class RealMoneyPriceDetails {
 /// <summary>
 /// Redeem items from the Apple App Store.
 /// </summary>
-public class RedeemAppleAppStoreInventoryItemsRequest {
+public class RedeemAppleAppStoreInventoryItemsRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public CountryCode? CountryCode { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -1117,7 +1117,7 @@ public class RedeemAppleAppStoreInventoryItemsRequest {
     public string? Receipt { get; set; }
 }
 
-public class RedeemAppleAppStoreInventoryItemsResponse {
+public class RedeemAppleAppStoreInventoryItemsResponse : PlayFabResultCommon {
     public List<RedemptionFailure>? Failed { get; set; }
     public List<RedemptionSuccess>? Succeeded { get; set; }
     public List<string>? TransactionIds { get; set; }
@@ -1126,7 +1126,7 @@ public class RedeemAppleAppStoreInventoryItemsResponse {
 /// <summary>
 /// Redeem items from the Google Play Store.
 /// </summary>
-public class RedeemGooglePlayInventoryItemsRequest {
+public class RedeemGooglePlayInventoryItemsRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public CountryCode? CountryCode { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -1135,7 +1135,7 @@ public class RedeemGooglePlayInventoryItemsRequest {
     public List<GooglePlayProductPurchase>? Purchases { get; set; }
 }
 
-public class RedeemGooglePlayInventoryItemsResponse {
+public class RedeemGooglePlayInventoryItemsResponse : PlayFabResultCommon {
     public List<RedemptionFailure>? Failed { get; set; }
     public List<RedemptionSuccess>? Succeeded { get; set; }
     public List<string>? TransactionIds { get; set; }
@@ -1144,7 +1144,7 @@ public class RedeemGooglePlayInventoryItemsResponse {
 /// <summary>
 /// Redeem items from the Microsoft Store.
 /// </summary>
-public class RedeemMicrosoftStoreInventoryItemsRequest {
+public class RedeemMicrosoftStoreInventoryItemsRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public string? CollectionsIdKey { get; set; }
     public CountryCode? CountryCode { get; set; }
@@ -1154,7 +1154,7 @@ public class RedeemMicrosoftStoreInventoryItemsRequest {
     public string? XboxToken { get; set; }
 }
 
-public class RedeemMicrosoftStoreInventoryItemsResponse {
+public class RedeemMicrosoftStoreInventoryItemsResponse : PlayFabResultCommon {
     public List<RedemptionFailure>? Failed { get; set; }
     public List<RedemptionSuccess>? Succeeded { get; set; }
     public List<string>? TransactionIds { get; set; }
@@ -1163,7 +1163,7 @@ public class RedeemMicrosoftStoreInventoryItemsResponse {
 /// <summary>
 /// Redeem items from the Nintendo EShop.
 /// </summary>
-public class RedeemNintendoEShopInventoryItemsRequest {
+public class RedeemNintendoEShopInventoryItemsRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public CountryCode? CountryCode { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -1172,7 +1172,7 @@ public class RedeemNintendoEShopInventoryItemsRequest {
     public string? NintendoServiceAccountIdToken { get; set; }
 }
 
-public class RedeemNintendoEShopInventoryItemsResponse {
+public class RedeemNintendoEShopInventoryItemsResponse : PlayFabResultCommon {
     public List<RedemptionFailure>? Failed { get; set; }
     public List<RedemptionSuccess>? Succeeded { get; set; }
     public List<string>? TransactionIds { get; set; }
@@ -1181,7 +1181,7 @@ public class RedeemNintendoEShopInventoryItemsResponse {
 /// <summary>
 /// Redeem items from the PlayStation Store.
 /// </summary>
-public class RedeemPlayStationStoreInventoryItemsRequest {
+public class RedeemPlayStationStoreInventoryItemsRequest : PlayFabRequestCommon {
     public string? AuthorizationCode { get; set; }
     public string? CollectionId { get; set; }
     public CountryCode? CountryCode { get; set; }
@@ -1192,7 +1192,7 @@ public class RedeemPlayStationStoreInventoryItemsRequest {
     public string? ServiceLabel { get; set; }
 }
 
-public class RedeemPlayStationStoreInventoryItemsResponse {
+public class RedeemPlayStationStoreInventoryItemsResponse : PlayFabResultCommon {
     public List<RedemptionFailure>? Failed { get; set; }
     public List<RedemptionSuccess>? Succeeded { get; set; }
     public List<string>? TransactionIds { get; set; }
@@ -1201,7 +1201,7 @@ public class RedeemPlayStationStoreInventoryItemsResponse {
 /// <summary>
 /// Redeem inventory items from Steam.
 /// </summary>
-public class RedeemSteamInventoryItemsRequest {
+public class RedeemSteamInventoryItemsRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public CountryCode? CountryCode { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -1209,7 +1209,7 @@ public class RedeemSteamInventoryItemsRequest {
     public List<InventoryItemReference>? Items { get; set; }
 }
 
-public class RedeemSteamInventoryItemsResponse {
+public class RedeemSteamInventoryItemsResponse : PlayFabResultCommon {
     public List<RedemptionFailure>? Failed { get; set; }
     public List<RedemptionSuccess>? Succeeded { get; set; }
     public List<string>? TransactionIds { get; set; }
@@ -1228,7 +1228,7 @@ public class RedemptionSuccess {
     public required DateTime SuccessTimestamp { get; set; }
 }
 
-public class ReportItemRequest {
+public class ReportItemRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public ConcernCategory? ConcernCategory { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -1237,13 +1237,13 @@ public class ReportItemRequest {
     public string? Reason { get; set; }
 }
 
-public class ReportItemResponse {
+public class ReportItemResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Submit a report for an inappropriate review, allowing the submitting user to specify their concern.
 /// </summary>
-public class ReportItemReviewRequest {
+public class ReportItemReviewRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public ConcernCategory? ConcernCategory { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -1253,7 +1253,7 @@ public class ReportItemReviewRequest {
     public string? ReviewId { get; set; }
 }
 
-public class ReportItemReviewResponse {
+public class ReportItemReviewResponse : PlayFabResultCommon {
 }
 
 public class Review {
@@ -1276,7 +1276,7 @@ public class ReviewConfig {
     public List<CategoryRatingConfig>? CategoryRatings { get; set; }
 }
 
-public class ReviewItemRequest {
+public class ReviewItemRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
@@ -1284,7 +1284,7 @@ public class ReviewItemRequest {
     public Review? Review { get; set; }
 }
 
-public class ReviewItemResponse {
+public class ReviewItemResponse : PlayFabResultCommon {
 }
 
 public class ReviewTakedown {
@@ -1293,7 +1293,7 @@ public class ReviewTakedown {
     public string? ReviewId { get; set; }
 }
 
-public class SearchItemsRequest {
+public class SearchItemsRequest : PlayFabRequestCommon {
     public string? ContinuationToken { get; set; }
     public int Count { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -1306,12 +1306,12 @@ public class SearchItemsRequest {
     public StoreReference? Store { get; set; }
 }
 
-public class SearchItemsResponse {
+public class SearchItemsResponse : PlayFabResultCommon {
     public string? ContinuationToken { get; set; }
     public List<CatalogItem>? Items { get; set; }
 }
 
-public class SetItemModerationStateRequest {
+public class SetItemModerationStateRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Id { get; set; }
@@ -1319,7 +1319,7 @@ public class SetItemModerationStateRequest {
     public ModerationStatus? Status { get; set; }
 }
 
-public class SetItemModerationStateResponse {
+public class SetItemModerationStateResponse : PlayFabResultCommon {
 }
 
 public class StoreDetails {
@@ -1333,7 +1333,7 @@ public class StoreReference {
     public string? Id { get; set; }
 }
 
-public class SubmitItemReviewVoteRequest {
+public class SubmitItemReviewVoteRequest : PlayFabRequestCommon {
     public CatalogAlternateId? AlternateId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
@@ -1342,7 +1342,7 @@ public class SubmitItemReviewVoteRequest {
     public HelpfulnessVote? Vote { get; set; }
 }
 
-public class SubmitItemReviewVoteResponse {
+public class SubmitItemReviewVoteResponse : PlayFabResultCommon {
 }
 
 public class SubtractInventoryItemsOperation {
@@ -1355,7 +1355,7 @@ public class SubtractInventoryItemsOperation {
 /// <summary>
 /// Given an entity type, entity identifier and container details, will subtract the specified inventory items. 
 /// </summary>
-public class SubtractInventoryItemsRequest {
+public class SubtractInventoryItemsRequest : PlayFabRequestCommon {
     public int? Amount { get; set; }
     public string? CollectionId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -1367,7 +1367,7 @@ public class SubtractInventoryItemsRequest {
     public InventoryItemReference? Item { get; set; }
 }
 
-public class SubtractInventoryItemsResponse {
+public class SubtractInventoryItemsResponse : PlayFabResultCommon {
     public string? ETag { get; set; }
     public string? IdempotencyId { get; set; }
     public List<string>? TransactionIds { get; set; }
@@ -1376,12 +1376,12 @@ public class SubtractInventoryItemsResponse {
 /// <summary>
 /// Submit a request to takedown one or more reviews, removing them from public view. Authors will still be able to see their reviews after being taken down.
 /// </summary>
-public class TakedownItemReviewsRequest {
+public class TakedownItemReviewsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public List<ReviewTakedown>? Reviews { get; set; }
 }
 
-public class TakedownItemReviewsResponse {
+public class TakedownItemReviewsResponse : PlayFabResultCommon {
 }
 
 public class Transaction {
@@ -1442,7 +1442,7 @@ public class TransferInventoryItemsOperation {
 /// <summary>
 /// Transfer the specified inventory items of an entity's container Id to another entity's container Id.
 /// </summary>
-public class TransferInventoryItemsRequest {
+public class TransferInventoryItemsRequest : PlayFabRequestCommon {
     public int? Amount { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool DeleteEmptyStacks { get; set; }
@@ -1457,7 +1457,7 @@ public class TransferInventoryItemsRequest {
     public InventoryItemReference? ReceivingItem { get; set; }
 }
 
-public class TransferInventoryItemsResponse {
+public class TransferInventoryItemsResponse : PlayFabResultCommon {
     public string? GivingETag { get; set; }
     public List<string>? GivingTransactionIds { get; set; }
     public string? IdempotencyId { get; set; }
@@ -1466,21 +1466,21 @@ public class TransferInventoryItemsResponse {
     public List<string>? ReceivingTransactionIds { get; set; }
 }
 
-public class UpdateCatalogConfigRequest {
+public class UpdateCatalogConfigRequest : PlayFabRequestCommon {
     public CatalogConfig? Config { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class UpdateCatalogConfigResponse {
+public class UpdateCatalogConfigResponse : PlayFabResultCommon {
 }
 
-public class UpdateDraftItemRequest {
+public class UpdateDraftItemRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public CatalogItem? Item { get; set; }
     public bool Publish { get; set; }
 }
 
-public class UpdateDraftItemResponse {
+public class UpdateDraftItemResponse : PlayFabResultCommon {
     public CatalogItem? Item { get; set; }
 }
 
@@ -1491,7 +1491,7 @@ public class UpdateInventoryItemsOperation {
 /// <summary>
 /// Given an entity type, entity identifier and container details, will update the entity's inventory items
 /// </summary>
-public class UpdateInventoryItemsRequest {
+public class UpdateInventoryItemsRequest : PlayFabRequestCommon {
     public string? CollectionId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
@@ -1500,18 +1500,18 @@ public class UpdateInventoryItemsRequest {
     public InventoryItem? Item { get; set; }
 }
 
-public class UpdateInventoryItemsResponse {
+public class UpdateInventoryItemsResponse : PlayFabResultCommon {
     public string? ETag { get; set; }
     public string? IdempotencyId { get; set; }
     public List<string>? TransactionIds { get; set; }
 }
 
-public class UpdateViewRequest {
+public class UpdateViewRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public CatalogView? View { get; set; }
 }
 
-public class UpdateViewResponse {
+public class UpdateViewResponse : PlayFabResultCommon {
     public CatalogView? View { get; set; }
 }
 

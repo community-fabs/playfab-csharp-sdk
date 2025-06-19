@@ -13,20 +13,20 @@ public enum AnalysisTaskState {
 /// <summary>
 /// Given a title entity token and exclusion group details, will create a new exclusion group for the title.
 /// </summary>
-public class CreateExclusionGroupRequest {
+public class CreateExclusionGroupRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public required string Name { get; set; }
 }
 
-public class CreateExclusionGroupResult {
+public class CreateExclusionGroupResult : PlayFabResultCommon {
     public string? ExclusionGroupId { get; set; }
 }
 
 /// <summary>
 /// Given a title entity token and experiment details, will create a new experiment for the title.
 /// </summary>
-public class CreateExperimentRequest {
+public class CreateExperimentRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public UInt32? Duration { get; set; }
@@ -41,14 +41,14 @@ public class CreateExperimentRequest {
     public required List<Variant> Variants { get; set; }
 }
 
-public class CreateExperimentResult {
+public class CreateExperimentResult : PlayFabResultCommon {
     public string? ExperimentId { get; set; }
 }
 
 /// <summary>
 /// Given an entity token and an exclusion group ID this API deletes the exclusion group.
 /// </summary>
-public class DeleteExclusionGroupRequest {
+public class DeleteExclusionGroupRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ExclusionGroupId { get; set; }
 }
@@ -56,12 +56,12 @@ public class DeleteExclusionGroupRequest {
 /// <summary>
 /// Given an entity token and an experiment ID this API deletes the experiment. A running experiment must be stopped before it can be deleted.
 /// </summary>
-public class DeleteExperimentRequest {
+public class DeleteExperimentRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ExperimentId { get; set; }
 }
 
-public class EmptyResponse {
+public class EmptyResponse : PlayFabResultCommon {
 }
 
 /// <summary>
@@ -115,58 +115,58 @@ public enum ExperimentType {
 /// <summary>
 /// Given a title entity token will return the list of all exclusion groups for a title.
 /// </summary>
-public class GetExclusionGroupsRequest {
+public class GetExclusionGroupsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class GetExclusionGroupsResult {
+public class GetExclusionGroupsResult : PlayFabResultCommon {
     public List<ExperimentExclusionGroup>? ExclusionGroups { get; set; }
 }
 
 /// <summary>
 /// Given a title entity token and an exclusion group ID, will return the list of traffic allocations for the exclusion group.
 /// </summary>
-public class GetExclusionGroupTrafficRequest {
+public class GetExclusionGroupTrafficRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ExclusionGroupId { get; set; }
 }
 
-public class GetExclusionGroupTrafficResult {
+public class GetExclusionGroupTrafficResult : PlayFabResultCommon {
     public List<ExclusionGroupTrafficAllocation>? TrafficAllocations { get; set; }
 }
 
 /// <summary>
 /// Given a title entity token will return the list of all experiments for a title, including scheduled, started, stopped or completed experiments.
 /// </summary>
-public class GetExperimentsRequest {
+public class GetExperimentsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class GetExperimentsResult {
+public class GetExperimentsResult : PlayFabResultCommon {
     public List<Experiment>? Experiments { get; set; }
 }
 
 /// <summary>
 /// Given a title entity token and experiment details, will return the latest available scorecard.
 /// </summary>
-public class GetLatestScorecardRequest {
+public class GetLatestScorecardRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? ExperimentId { get; set; }
 }
 
-public class GetLatestScorecardResult {
+public class GetLatestScorecardResult : PlayFabResultCommon {
     public Scorecard? Scorecard { get; set; }
 }
 
 /// <summary>
 /// Given a title player or a title entity token, returns the treatment variants and variables assigned to the entity across all running experiments
 /// </summary>
-public class GetTreatmentAssignmentRequest {
+public class GetTreatmentAssignmentRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetTreatmentAssignmentResult {
+public class GetTreatmentAssignmentResult : PlayFabResultCommon {
     public TreatmentAssignment? TreatmentAssignment { get; set; }
 }
 
@@ -207,7 +207,7 @@ public class ScorecardDataRow {
 /// <summary>
 /// Given a title entity token and an experiment ID, this API starts the experiment.
 /// </summary>
-public class StartExperimentRequest {
+public class StartExperimentRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ExperimentId { get; set; }
 }
@@ -215,7 +215,7 @@ public class StartExperimentRequest {
 /// <summary>
 /// Given a title entity token and an experiment ID, this API stops the experiment if it is running.
 /// </summary>
-public class StopExperimentRequest {
+public class StopExperimentRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ExperimentId { get; set; }
 }
@@ -228,7 +228,7 @@ public class TreatmentAssignment {
 /// <summary>
 /// Given an entity token and exclusion group details this API updates the exclusion group.
 /// </summary>
-public class UpdateExclusionGroupRequest {
+public class UpdateExclusionGroupRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public required string ExclusionGroupId { get; set; }
@@ -238,7 +238,7 @@ public class UpdateExclusionGroupRequest {
 /// <summary>
 /// Given a title entity token and experiment details, this API updates the experiment. If an experiment is already running, only the description and duration properties can be updated.
 /// </summary>
-public class UpdateExperimentRequest {
+public class UpdateExperimentRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public UInt32? Duration { get; set; }

@@ -1,12 +1,12 @@
 namespace CommunityFabs.NET.Sdk.Models.Events;
 
-public class CreateTelemetryKeyRequest {
+public class CreateTelemetryKeyRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required string KeyName { get; set; }
 }
 
-public class CreateTelemetryKeyResponse {
+public class CreateTelemetryKeyResponse : PlayFabResultCommon {
     public TelemetryKeyDetails? NewKeyDetails { get; set; }
 }
 
@@ -60,31 +60,31 @@ public enum DataConnectionType {
     FabricKQL,
 }
 
-public class DeleteDataConnectionRequest {
+public class DeleteDataConnectionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
 
-public class DeleteDataConnectionResponse {
+public class DeleteDataConnectionResponse : PlayFabResultCommon {
     public bool WasDeleted { get; set; }
 }
 
-public class DeleteEventSamplingRatioRequest {
+public class DeleteEventSamplingRatioRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string EventName { get; set; }
     public required string EventNamespace { get; set; }
 }
 
-public class DeleteEventSamplingRatioResult {
+public class DeleteEventSamplingRatioResult : PlayFabResultCommon {
 }
 
-public class DeleteTelemetryKeyRequest {
+public class DeleteTelemetryKeyRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required string KeyName { get; set; }
 }
 
-public class DeleteTelemetryKeyResponse {
+public class DeleteTelemetryKeyResponse : PlayFabResultCommon {
     public bool WasKeyDeleted { get; set; }
 }
 
@@ -114,74 +114,74 @@ public class EventSamplingRatio {
     public int Ratio { get; set; }
 }
 
-public class GetDataConnectionRequest {
+public class GetDataConnectionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
 
-public class GetDataConnectionResponse {
+public class GetDataConnectionResponse : PlayFabResultCommon {
     public DataConnectionDetails? DataConnection { get; set; }
 }
 
-public class GetEventSamplingRatioRequest {
+public class GetEventSamplingRatioRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string EventName { get; set; }
     public required string EventNamespace { get; set; }
 }
 
-public class GetEventSamplingRatioResult {
+public class GetEventSamplingRatioResult : PlayFabResultCommon {
     public required string EventName { get; set; }
     public required string EventNamespace { get; set; }
     public int Ratio { get; set; }
 }
 
-public class GetEventSamplingRatiosRequest {
+public class GetEventSamplingRatiosRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class GetEventSamplingRatiosResult {
+public class GetEventSamplingRatiosResult : PlayFabResultCommon {
     public List<EventSamplingRatio>? Ratios { get; set; }
 }
 
-public class GetTelemetryKeyRequest {
+public class GetTelemetryKeyRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required string KeyName { get; set; }
 }
 
-public class GetTelemetryKeyResponse {
+public class GetTelemetryKeyResponse : PlayFabResultCommon {
     public TelemetryKeyDetails? KeyDetails { get; set; }
 }
 
-public class ListDataConnectionsRequest {
+public class ListDataConnectionsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class ListDataConnectionsResponse {
+public class ListDataConnectionsResponse : PlayFabResultCommon {
     public List<DataConnectionDetails>? DataConnections { get; set; }
 }
 
-public class ListTelemetryKeysRequest {
+public class ListTelemetryKeysRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class ListTelemetryKeysResponse {
+public class ListTelemetryKeysResponse : PlayFabResultCommon {
     public List<TelemetryKeyDetails>? KeyDetails { get; set; }
 }
 
-public class SetDataConnectionActiveRequest {
+public class SetDataConnectionActiveRequest : PlayFabRequestCommon {
     public bool Active { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
 
-public class SetDataConnectionActiveResponse {
+public class SetDataConnectionActiveResponse : PlayFabResultCommon {
     public DataConnectionDetails? DataConnection { get; set; }
     public bool WasUpdated { get; set; }
 }
 
-public class SetDataConnectionRequest {
+public class SetDataConnectionRequest : PlayFabRequestCommon {
     public required DataConnectionSettings ConnectionSettings { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool IsActive { get; set; }
@@ -189,28 +189,28 @@ public class SetDataConnectionRequest {
     public DataConnectionType Type { get; set; }
 }
 
-public class SetDataConnectionResponse {
+public class SetDataConnectionResponse : PlayFabResultCommon {
     public DataConnectionDetails? DataConnection { get; set; }
 }
 
-public class SetEventSamplingRatioRequest {
+public class SetEventSamplingRatioRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string EventName { get; set; }
     public required string EventNamespace { get; set; }
     public int Ratio { get; set; }
 }
 
-public class SetEventSamplingRatioResult {
+public class SetEventSamplingRatioResult : PlayFabResultCommon {
 }
 
-public class SetTelemetryKeyActiveRequest {
+public class SetTelemetryKeyActiveRequest : PlayFabRequestCommon {
     public bool Active { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required string KeyName { get; set; }
 }
 
-public class SetTelemetryKeyActiveResponse {
+public class SetTelemetryKeyActiveResponse : PlayFabResultCommon {
     public TelemetryKeyDetails? KeyDetails { get; set; }
     public bool WasKeyUpdated { get; set; }
 }
@@ -223,12 +223,12 @@ public class TelemetryKeyDetails {
     public string? Name { get; set; }
 }
 
-public class WriteEventsRequest {
+public class WriteEventsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required List<EventContents> Events { get; set; }
 }
 
-public class WriteEventsResponse {
+public class WriteEventsResponse : PlayFabResultCommon {
     public List<string>? AssignedEventIds { get; set; }
 }
 

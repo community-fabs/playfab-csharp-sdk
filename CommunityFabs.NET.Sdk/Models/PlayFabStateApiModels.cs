@@ -3,20 +3,20 @@ namespace CommunityFabs.NET.Sdk.Models.State;
 /// <summary>
 /// Creates a link to previously stored state. Caller may be title or title player entity.
 /// </summary>
-public class CreateLinkRequest {
+public class CreateLinkRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public LinkService LinkService { get; set; }
     public required string StateId { get; set; }
 }
 
-public class CreateLinkResponse {
+public class CreateLinkResponse : PlayFabResultCommon {
     public string? LinkToken { get; set; }
 }
 
 /// <summary>
 /// Request to create a state.
 /// </summary>
-public class CreateStateRequest {
+public class CreateStateRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Description { get; set; }
     public required DateTime Expiry { get; set; }
@@ -32,14 +32,14 @@ public class CreateStateRequest {
 /// <summary>
 /// Response from store state operation.
 /// </summary>
-public class CreateStateResponse {
+public class CreateStateResponse : PlayFabResultCommon {
     public string? Id { get; set; }
 }
 
 /// <summary>
 /// Deletes a link. Caller can be title or title player entity.
 /// </summary>
-public class DeleteLinkRequest {
+public class DeleteLinkRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string StateId { get; set; }
 }
@@ -47,12 +47,12 @@ public class DeleteLinkRequest {
 /// <summary>
 /// Deletes state. Caller may be title or title player entity.
 /// </summary>
-public class DeleteStateRequest {
+public class DeleteStateRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Id { get; set; }
 }
 
-public class EmptyResponse {
+public class EmptyResponse : PlayFabResultCommon {
 }
 
 public class ExpirySetting {
@@ -64,12 +64,12 @@ public class ExpirySetting {
 /// <summary>
 /// Get public and private metadata for a link. Caller must be a title player entity.
 /// </summary>
-public class GetLinkMetadataRequest {
+public class GetLinkMetadataRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string LinkToken { get; set; }
 }
 
-public class GetLinkMetadataResponse {
+public class GetLinkMetadataResponse : PlayFabResultCommon {
     public string? Intent { get; set; }
     public bool IsRevoked { get; set; }
     public LinkSetting? LinkSettings { get; set; }
@@ -81,7 +81,7 @@ public class GetLinkMetadataResponse {
 /// <summary>
 /// Request to get state.
 /// </summary>
-public class GetStateRequest {
+public class GetStateRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Id { get; set; }
     public string? PlatformToken { get; set; }
@@ -90,7 +90,7 @@ public class GetStateRequest {
 /// <summary>
 /// Response from retrieve state operation.
 /// </summary>
-public class GetStateResponse {
+public class GetStateResponse : PlayFabResultCommon {
     public required DateTime Created { get; set; }
     public string? Creator { get; set; }
     public string? Description { get; set; }
@@ -119,11 +119,11 @@ public class LinkSetting {
 /// <summary>
 /// Lists ids of states created or retrieved by an entity.
 /// </summary>
-public class ListStateIdsRequest {
+public class ListStateIdsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class ListStateIdsResponse {
+public class ListStateIdsResponse : PlayFabResultCommon {
     public IEnumerable_String? CreatedStates { get; set; }
     public IEnumerable_String? RedeemedStates { get; set; }
 }

@@ -187,7 +187,7 @@ public class BatchResults {
     public int RunTimeInSeconds { get; set; }
 }
 
-public class BuildAliasDetailsResponse {
+public class BuildAliasDetailsResponse : PlayFabResultCommon {
     public string? AliasId { get; set; }
     public string? AliasName { get; set; }
     public List<BuildSelectionCriterion>? BuildSelectionCriteria { get; set; }
@@ -237,25 +237,25 @@ public class BuildSummary {
 /// <summary>
 /// Cancels all tickets of which the player is a member in a given queue that are not cancelled or matched. This API is useful if you lose track of what tickets the player is a member of (if the title crashes for instance) and want to "reset". The Entity field is optional if the caller is a player and defaults to that player. Players may not cancel tickets for other people. The Entity field is required if the caller is a server (authenticated as the title).
 /// </summary>
-public class CancelAllMatchmakingTicketsForPlayerRequest {
+public class CancelAllMatchmakingTicketsForPlayerRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required string QueueName { get; set; }
 }
 
-public class CancelAllMatchmakingTicketsForPlayerResult {
+public class CancelAllMatchmakingTicketsForPlayerResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Cancels all backfill tickets of which the player is a member in a given queue that are not cancelled or matched. This API is useful if you lose track of what tickets the player is a member of (if the server crashes for instance) and want to "reset".
 /// </summary>
-public class CancelAllServerBackfillTicketsForPlayerRequest {
+public class CancelAllServerBackfillTicketsForPlayerRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required EntityKey Entity { get; set; }
     public required string QueueName { get; set; }
 }
 
-public class CancelAllServerBackfillTicketsForPlayerResult {
+public class CancelAllServerBackfillTicketsForPlayerResult : PlayFabResultCommon {
 }
 
 public enum CancellationReason {
@@ -267,37 +267,37 @@ public enum CancellationReason {
 /// <summary>
 /// Only servers and ticket members can cancel a ticket. The ticket can be in five different states when it is cancelled. 1: the ticket is waiting for members to join it, and it has not started matching. If the ticket is cancelled at this stage, it will never match. 2: the ticket is matching. If the ticket is cancelled, it will stop matching. 3: the ticket is matched. A matched ticket cannot be cancelled. 4: the ticket is already cancelled and nothing happens. 5: the ticket is waiting for a server. If the ticket is cancelled, server allocation will be stopped. A server may still be allocated due to a race condition, but that will not be reflected in the ticket. There may be race conditions between the ticket getting matched and the client making a cancellation request. The client must handle the possibility that the cancel request fails if a match is found before the cancellation request is processed. We do not allow resubmitting a cancelled ticket because players must consent to enter matchmaking again. Create a new ticket instead.
 /// </summary>
-public class CancelMatchmakingTicketRequest {
+public class CancelMatchmakingTicketRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string QueueName { get; set; }
     public required string TicketId { get; set; }
 }
 
-public class CancelMatchmakingTicketResult {
+public class CancelMatchmakingTicketResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Request to cancel the creation of a batch model. A Title can make this request.
 /// </summary>
-public class CancelModelRequest {
+public class CancelModelRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ModelId { get; set; }
     public required string ScenarioId { get; set; }
 }
 
-public class CancelModelResponse {
+public class CancelModelResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Only servers can cancel a backfill ticket. The ticket can be in three different states when it is cancelled. 1: the ticket is matching. If the ticket is cancelled, it will stop matching. 2: the ticket is matched. A matched ticket cannot be cancelled. 3: the ticket is already cancelled and nothing happens. There may be race conditions between the ticket getting matched and the server making a cancellation request. The server must handle the possibility that the cancel request fails if a match is found before the cancellation request is processed. We do not allow resubmitting a cancelled ticket. Create a new ticket instead.
 /// </summary>
-public class CancelServerBackfillTicketRequest {
+public class CancelServerBackfillTicketRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string QueueName { get; set; }
     public required string TicketId { get; set; }
 }
 
-public class CancelServerBackfillTicketResult {
+public class CancelServerBackfillTicketResult : PlayFabResultCommon {
 }
 
 public class Certificate {
@@ -361,21 +361,21 @@ public class CoreCapacityChange {
 /// <summary>
 /// Request to create a base model. A Title can make this request.
 /// </summary>
-public class CreateBaseModelRequest {
+public class CreateBaseModelRequest : PlayFabRequestCommon {
     public List<ModelCondition>? Conditions { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ModelName { get; set; }
     public required string ScenarioId { get; set; }
 }
 
-public class CreateBaseModelResponse {
+public class CreateBaseModelResponse : PlayFabResultCommon {
     public string? ModelId { get; set; }
 }
 
 /// <summary>
 /// Request to create a model for a scenario. This also begins a batch run over a set of MatchResults to create the model. A Title can make this request.
 /// </summary>
-public class CreateBatchModelRequest {
+public class CreateBatchModelRequest : PlayFabRequestCommon {
     public double? AnomalousMatchResultIgnoreThreshold { get; set; }
     public List<ModelCondition>? Conditions { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -388,14 +388,14 @@ public class CreateBatchModelRequest {
     public required string ScenarioId { get; set; }
 }
 
-public class CreateBatchModelResponse {
+public class CreateBatchModelResponse : PlayFabResultCommon {
     public string? ModelId { get; set; }
 }
 
 /// <summary>
 /// Creates a multiplayer server build alias and returns the created alias.
 /// </summary>
-public class CreateBuildAliasRequest {
+public class CreateBuildAliasRequest : PlayFabRequestCommon {
     public required string AliasName { get; set; }
     public List<BuildSelectionCriterion>? BuildSelectionCriteria { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -404,7 +404,7 @@ public class CreateBuildAliasRequest {
 /// <summary>
 /// Creates a multiplayer server build with a custom container and returns information about the build creation request.
 /// </summary>
-public class CreateBuildWithCustomContainerRequest {
+public class CreateBuildWithCustomContainerRequest : PlayFabRequestCommon {
     public bool? AreAssetsReadonly { get; set; }
     public required string BuildName { get; set; }
     public ContainerFlavor? ContainerFlavor { get; set; }
@@ -428,7 +428,7 @@ public class CreateBuildWithCustomContainerRequest {
     public VmStartupScriptParams? VmStartupScriptConfiguration { get; set; }
 }
 
-public class CreateBuildWithCustomContainerResponse {
+public class CreateBuildWithCustomContainerResponse : PlayFabResultCommon {
     public bool? AreAssetsReadonly { get; set; }
     public string? BuildId { get; set; }
     public string? BuildName { get; set; }
@@ -456,7 +456,7 @@ public class CreateBuildWithCustomContainerResponse {
 /// <summary>
 /// Creates a multiplayer server build with a managed container and returns information about the build creation request.
 /// </summary>
-public class CreateBuildWithManagedContainerRequest {
+public class CreateBuildWithManagedContainerRequest : PlayFabRequestCommon {
     public bool? AreAssetsReadonly { get; set; }
     public required string BuildName { get; set; }
     public ContainerFlavor? ContainerFlavor { get; set; }
@@ -479,7 +479,7 @@ public class CreateBuildWithManagedContainerRequest {
     public WindowsCrashDumpConfiguration? WindowsCrashDumpConfiguration { get; set; }
 }
 
-public class CreateBuildWithManagedContainerResponse {
+public class CreateBuildWithManagedContainerResponse : PlayFabResultCommon {
     public bool? AreAssetsReadonly { get; set; }
     public string? BuildId { get; set; }
     public string? BuildName { get; set; }
@@ -507,7 +507,7 @@ public class CreateBuildWithManagedContainerResponse {
 /// <summary>
 /// Creates a multiplayer server build with the game server running as a process and returns information about the build creation request.
 /// </summary>
-public class CreateBuildWithProcessBasedServerRequest {
+public class CreateBuildWithProcessBasedServerRequest : PlayFabRequestCommon {
     public bool? AreAssetsReadonly { get; set; }
     public required string BuildName { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -530,7 +530,7 @@ public class CreateBuildWithProcessBasedServerRequest {
     public VmStartupScriptParams? VmStartupScriptConfiguration { get; set; }
 }
 
-public class CreateBuildWithProcessBasedServerResponse {
+public class CreateBuildWithProcessBasedServerResponse : PlayFabResultCommon {
     public bool? AreAssetsReadonly { get; set; }
     public string? BuildId { get; set; }
     public string? BuildName { get; set; }
@@ -559,7 +559,7 @@ public class CreateBuildWithProcessBasedServerResponse {
 /// <summary>
 /// Request to create a lobby. A Server or client can create a lobby.
 /// </summary>
-public class CreateLobbyRequest {
+public class CreateLobbyRequest : PlayFabRequestCommon {
     public AccessPolicy? AccessPolicy { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public Dictionary<string, string>? LobbyData { get; set; }
@@ -572,7 +572,7 @@ public class CreateLobbyRequest {
     public bool UseConnections { get; set; }
 }
 
-public class CreateLobbyResult {
+public class CreateLobbyResult : PlayFabResultCommon {
     public required string ConnectionString { get; set; }
     public required string LobbyId { get; set; }
 }
@@ -580,7 +580,7 @@ public class CreateLobbyResult {
 /// <summary>
 /// The client specifies the creator's attributes and optionally a list of other users to match with.
 /// </summary>
-public class CreateMatchmakingTicketRequest {
+public class CreateMatchmakingTicketRequest : PlayFabRequestCommon {
     public required MatchmakingPlayer Creator { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public int GiveUpAfterSeconds { get; set; }
@@ -588,14 +588,14 @@ public class CreateMatchmakingTicketRequest {
     public required string QueueName { get; set; }
 }
 
-public class CreateMatchmakingTicketResult {
+public class CreateMatchmakingTicketResult : PlayFabResultCommon {
     public required string TicketId { get; set; }
 }
 
 /// <summary>
 /// Creates a remote user to log on to a VM for a multiplayer server build in a specific region. Returns user credential information necessary to log on.
 /// </summary>
-public class CreateRemoteUserRequest {
+public class CreateRemoteUserRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public DateTime? ExpirationTime { get; set; }
@@ -604,7 +604,7 @@ public class CreateRemoteUserRequest {
     public required string VmId { get; set; }
 }
 
-public class CreateRemoteUserResponse {
+public class CreateRemoteUserResponse : PlayFabResultCommon {
     public DateTime? ExpirationTime { get; set; }
     public string? Password { get; set; }
     public string? Username { get; set; }
@@ -613,21 +613,21 @@ public class CreateRemoteUserResponse {
 /// <summary>
 /// Request to create a scenario. A Title can make this request.
 /// </summary>
-public class CreateScenarioRequest {
+public class CreateScenarioRequest : PlayFabRequestCommon {
     public List<ScenarioConfigCondition>? Conditions { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public List<string>? Events { get; set; }
     public required string Name { get; set; }
 }
 
-public class CreateScenarioResponse {
+public class CreateScenarioResponse : PlayFabResultCommon {
     public string? ScenarioId { get; set; }
 }
 
 /// <summary>
 /// The server specifies all the members, their teams and their attributes, and the server details if applicable.
 /// </summary>
-public class CreateServerBackfillTicketRequest {
+public class CreateServerBackfillTicketRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int GiveUpAfterSeconds { get; set; }
     public required List<MatchmakingPlayerWithTeamAssignment> Members { get; set; }
@@ -635,14 +635,14 @@ public class CreateServerBackfillTicketRequest {
     public ServerDetails? ServerDetails { get; set; }
 }
 
-public class CreateServerBackfillTicketResult {
+public class CreateServerBackfillTicketResult : PlayFabResultCommon {
     public required string TicketId { get; set; }
 }
 
 /// <summary>
 /// The server specifies all the members and their attributes.
 /// </summary>
-public class CreateServerMatchmakingTicketRequest {
+public class CreateServerMatchmakingTicketRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int GiveUpAfterSeconds { get; set; }
     public required List<MatchmakingPlayer> Members { get; set; }
@@ -652,7 +652,7 @@ public class CreateServerMatchmakingTicketRequest {
 /// <summary>
 /// Creates a request to change a title's multiplayer server quotas.
 /// </summary>
-public class CreateTitleMultiplayerServersQuotaChangeRequest {
+public class CreateTitleMultiplayerServersQuotaChangeRequest : PlayFabRequestCommon {
     public string? ChangeDescription { get; set; }
     public required List<CoreCapacityChange> Changes { get; set; }
     public string? ContactEmail { get; set; }
@@ -661,7 +661,7 @@ public class CreateTitleMultiplayerServersQuotaChangeRequest {
     public DateTime? StartDate { get; set; }
 }
 
-public class CreateTitleMultiplayerServersQuotaChangeResponse {
+public class CreateTitleMultiplayerServersQuotaChangeResponse : PlayFabResultCommon {
     public string? RequestId { get; set; }
     public bool WasApproved { get; set; }
 }
@@ -701,19 +701,19 @@ public class CustomTeamSizeBalanceRuleExpansion {
 /// <summary>
 /// Request to deactivate a model. A Title can make this request.
 /// </summary>
-public class DeactivateModelRequest {
+public class DeactivateModelRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ModelId { get; set; }
     public required string ScenarioId { get; set; }
 }
 
-public class DeactivateModelResponse {
+public class DeactivateModelResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Deletes a multiplayer server game asset for a title.
 /// </summary>
-public class DeleteAssetRequest {
+public class DeleteAssetRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string FileName { get; set; }
 }
@@ -721,7 +721,7 @@ public class DeleteAssetRequest {
 /// <summary>
 /// Deletes a multiplayer server build alias.
 /// </summary>
-public class DeleteBuildAliasRequest {
+public class DeleteBuildAliasRequest : PlayFabRequestCommon {
     public required string AliasId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
 }
@@ -729,7 +729,7 @@ public class DeleteBuildAliasRequest {
 /// <summary>
 /// Removes a multiplayer server build's region.
 /// </summary>
-public class DeleteBuildRegionRequest {
+public class DeleteBuildRegionRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Region { get; set; }
@@ -738,7 +738,7 @@ public class DeleteBuildRegionRequest {
 /// <summary>
 /// Deletes a multiplayer server build.
 /// </summary>
-public class DeleteBuildRequest {
+public class DeleteBuildRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
 }
@@ -746,7 +746,7 @@ public class DeleteBuildRequest {
 /// <summary>
 /// Deletes a multiplayer server game certificate.
 /// </summary>
-public class DeleteCertificateRequest {
+public class DeleteCertificateRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
@@ -754,7 +754,7 @@ public class DeleteCertificateRequest {
 /// <summary>
 /// Removes the specified container image repository. After this operation, a 'docker pull' will fail for all the tags of the specified image. Morever, ListContainerImages will not return the specified image.
 /// </summary>
-public class DeleteContainerImageRequest {
+public class DeleteContainerImageRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? ImageName { get; set; }
 }
@@ -762,7 +762,7 @@ public class DeleteContainerImageRequest {
 /// <summary>
 /// Request to delete a lobby. Only servers can delete lobbies.
 /// </summary>
-public class DeleteLobbyRequest {
+public class DeleteLobbyRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? LobbyId { get; set; }
 }
@@ -770,19 +770,19 @@ public class DeleteLobbyRequest {
 /// <summary>
 /// Request to delete a model. A Title can make this request.
 /// </summary>
-public class DeleteModelRequest {
+public class DeleteModelRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ModelId { get; set; }
     public required string ScenarioId { get; set; }
 }
 
-public class DeleteModelResponse {
+public class DeleteModelResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Deletes a remote user to log on to a VM for a multiplayer server build in a specific region. Returns user credential information necessary to log on.
 /// </summary>
-public class DeleteRemoteUserRequest {
+public class DeleteRemoteUserRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Region { get; set; }
@@ -793,19 +793,19 @@ public class DeleteRemoteUserRequest {
 /// <summary>
 /// Request to delete a scenario configuration. A Title can make this request.
 /// </summary>
-public class DeleteScenarioRequest {
+public class DeleteScenarioRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool ForceDelete { get; set; }
     public required string ScenarioId { get; set; }
 }
 
-public class DeleteScenarioResponse {
+public class DeleteScenarioResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Deletes a multiplayer server game secret.
 /// </summary>
-public class DeleteSecretRequest {
+public class DeleteSecretRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
@@ -846,24 +846,24 @@ public class DynamicStandbyThreshold {
     public required double TriggerThresholdPercentage { get; set; }
 }
 
-public class EmptyResponse {
+public class EmptyResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Enables the multiplayer server feature for a title and returns the enabled status. The enabled status can be Initializing, Enabled, and Disabled. It can up to 20 minutes or more for the title to be enabled for the feature. On average, it can take up to 20 minutes for the title to be enabled for the feature.
 /// </summary>
-public class EnableMultiplayerServersForTitleRequest {
+public class EnableMultiplayerServersForTitleRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class EnableMultiplayerServersForTitleResponse {
+public class EnableMultiplayerServersForTitleResponse : PlayFabResultCommon {
     public TitleMultiplayerServerEnabledStatus? Status { get; set; }
 }
 
 /// <summary>
 /// Enables the parties feature for a title.
 /// </summary>
-public class EnablePartiesForTitleRequest {
+public class EnablePartiesForTitleRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
@@ -888,7 +888,7 @@ public enum ExternalFriendSources {
 /// <summary>
 /// Request to find friends lobbies. Only a client can find friend lobbies.
 /// </summary>
-public class FindFriendLobbiesRequest {
+public class FindFriendLobbiesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool? ExcludeFacebookFriends { get; set; }
     public bool? ExcludeSteamFriends { get; set; }
@@ -899,7 +899,7 @@ public class FindFriendLobbiesRequest {
     public string? XboxToken { get; set; }
 }
 
-public class FindFriendLobbiesResult {
+public class FindFriendLobbiesResult : PlayFabResultCommon {
     public required List<FriendLobbySummary> Lobbies { get; set; }
     public required PaginationResponse Pagination { get; set; }
 }
@@ -907,14 +907,14 @@ public class FindFriendLobbiesResult {
 /// <summary>
 /// Request to find lobbies.
 /// </summary>
-public class FindLobbiesRequest {
+public class FindLobbiesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Filter { get; set; }
     public string? OrderBy { get; set; }
     public PaginationRequest? Pagination { get; set; }
 }
 
-public class FindLobbiesResult {
+public class FindLobbiesResult : PlayFabResultCommon {
     public required List<LobbySummary> Lobbies { get; set; }
     public required PaginationResponse Pagination { get; set; }
 }
@@ -951,12 +951,12 @@ public class GameSecretReferenceParams {
 /// <summary>
 /// Gets a URL that can be used to download the specified asset.
 /// </summary>
-public class GetAssetDownloadUrlRequest {
+public class GetAssetDownloadUrlRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string FileName { get; set; }
 }
 
-public class GetAssetDownloadUrlResponse {
+public class GetAssetDownloadUrlResponse : PlayFabResultCommon {
     public string? AssetDownloadUrl { get; set; }
     public string? FileName { get; set; }
 }
@@ -964,12 +964,12 @@ public class GetAssetDownloadUrlResponse {
 /// <summary>
 /// Gets the URL to upload assets to.
 /// </summary>
-public class GetAssetUploadUrlRequest {
+public class GetAssetUploadUrlRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string FileName { get; set; }
 }
 
-public class GetAssetUploadUrlResponse {
+public class GetAssetUploadUrlResponse : PlayFabResultCommon {
     public string? AssetUploadUrl { get; set; }
     public string? FileName { get; set; }
 }
@@ -977,7 +977,7 @@ public class GetAssetUploadUrlResponse {
 /// <summary>
 /// Returns the details about a multiplayer server build alias.
 /// </summary>
-public class GetBuildAliasRequest {
+public class GetBuildAliasRequest : PlayFabRequestCommon {
     public required string AliasId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
 }
@@ -985,12 +985,12 @@ public class GetBuildAliasRequest {
 /// <summary>
 /// Returns the details about a multiplayer server build.
 /// </summary>
-public class GetBuildRequest {
+public class GetBuildRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class GetBuildResponse {
+public class GetBuildResponse : PlayFabResultCommon {
     public bool? AreAssetsReadonly { get; set; }
     public string? BuildId { get; set; }
     public string? BuildName { get; set; }
@@ -1018,26 +1018,26 @@ public class GetBuildResponse {
 /// <summary>
 /// Gets supported locales for the cognitive services where translation queries can be sent to.
 /// </summary>
-public class GetCognitiveServicesLocalesRequest {
+public class GetCognitiveServicesLocalesRequest : PlayFabRequestCommon {
     public CognitiveServicesType CognitiveServicesType { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Region { get; set; }
 }
 
-public class GetCognitiveServicesLocalesResponse {
+public class GetCognitiveServicesLocalesResponse : PlayFabResultCommon {
     public List<CognitiveServicesLocale>? Locales { get; set; }
 }
 
 /// <summary>
 /// Gets a token for the cognitive services where translation queries can be sent to.
 /// </summary>
-public class GetCognitiveServicesTokenRequest {
+public class GetCognitiveServicesTokenRequest : PlayFabRequestCommon {
     public CognitiveServicesType CognitiveServicesType { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Region { get; set; }
 }
 
-public class GetCognitiveServicesTokenResponse {
+public class GetCognitiveServicesTokenResponse : PlayFabResultCommon {
     public DateTime? ExpirationTimeUtc { get; set; }
     public string? ServiceEndpoint { get; set; }
     public string? Token { get; set; }
@@ -1046,11 +1046,11 @@ public class GetCognitiveServicesTokenResponse {
 /// <summary>
 /// Gets credentials to the container registry where game developers can upload custom container images to before creating a new build.
 /// </summary>
-public class GetContainerRegistryCredentialsRequest {
+public class GetContainerRegistryCredentialsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class GetContainerRegistryCredentialsResponse {
+public class GetContainerRegistryCredentialsResponse : PlayFabResultCommon {
     public string? DnsName { get; set; }
     public string? Password { get; set; }
     public string? Username { get; set; }
@@ -1059,38 +1059,38 @@ public class GetContainerRegistryCredentialsResponse {
 /// <summary>
 /// Request to get a lobby.
 /// </summary>
-public class GetLobbyRequest {
+public class GetLobbyRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? LobbyId { get; set; }
 }
 
-public class GetLobbyResult {
+public class GetLobbyResult : PlayFabResultCommon {
     public required Lobby Lobby { get; set; }
 }
 
 /// <summary>
 /// Gets the current configuration for a queue.
 /// </summary>
-public class GetMatchmakingQueueRequest {
+public class GetMatchmakingQueueRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? QueueName { get; set; }
 }
 
-public class GetMatchmakingQueueResult {
+public class GetMatchmakingQueueResult : PlayFabResultCommon {
     public MatchmakingQueueConfig? MatchmakingQueue { get; set; }
 }
 
 /// <summary>
 /// The ticket includes the invited players, their attributes if they have joined, the ticket status, the match Id when applicable, etc. Only servers, the ticket creator and the invited players can get the ticket.
 /// </summary>
-public class GetMatchmakingTicketRequest {
+public class GetMatchmakingTicketRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool EscapeObject { get; set; }
     public required string QueueName { get; set; }
     public required string TicketId { get; set; }
 }
 
-public class GetMatchmakingTicketResult {
+public class GetMatchmakingTicketResult : PlayFabResultCommon {
     public CancellationReason? CancellationReason { get; set; }
     public string? CancellationReasonString { get; set; }
     public UInt32? ChangeNumber { get; set; }
@@ -1108,7 +1108,7 @@ public class GetMatchmakingTicketResult {
 /// <summary>
 /// When matchmaking has successfully matched together a collection of tickets, it produces a 'match' with an Id. The match contains all of the players that were matched together, and their team assigments. Only servers and ticket members can get the match.
 /// </summary>
-public class GetMatchRequest {
+public class GetMatchRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool EscapeObject { get; set; }
     public required string MatchId { get; set; }
@@ -1116,7 +1116,7 @@ public class GetMatchRequest {
     public bool ReturnMemberAttributes { get; set; }
 }
 
-public class GetMatchResult {
+public class GetMatchResult : PlayFabResultCommon {
     public string? ArrangementString { get; set; }
     public required string MatchId { get; set; }
     public required List<MatchmakingPlayerWithTeamAssignment> Members { get; set; }
@@ -1127,38 +1127,38 @@ public class GetMatchResult {
 /// <summary>
 /// Request to get the details of a model of a scenario. A Title can make this request.
 /// </summary>
-public class GetModelDetailsRequest {
+public class GetModelDetailsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ModelId { get; set; }
     public required string ScenarioId { get; set; }
 }
 
-public class GetModelDetailsResponse {
+public class GetModelDetailsResponse : PlayFabResultCommon {
     public ModelDetails? ModelDetails { get; set; }
 }
 
 /// <summary>
 /// Request to get models for a specific scenario. A Title can make this request.
 /// </summary>
-public class GetModelsByScenarioRequest {
+public class GetModelsByScenarioRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ScenarioId { get; set; }
 }
 
-public class GetModelsByScenarioResponse {
+public class GetModelsByScenarioResponse : PlayFabResultCommon {
     public List<ModelSummary>? Models { get; set; }
 }
 
 /// <summary>
 /// Gets multiplayer server session details as well as the associated user connection tokens for a build in a specific region.
 /// </summary>
-public class GetMultiplayerServerAndTokenRequest {
+public class GetMultiplayerServerAndTokenRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string SessionId { get; set; }
     public required List<string> TokenPlayerIds { get; set; }
 }
 
-public class GetMultiplayerServerAndTokenResponse {
+public class GetMultiplayerServerAndTokenResponse : PlayFabResultCommon {
     public string? BuildId { get; set; }
     public List<ConnectedPlayer>? ConnectedPlayers { get; set; }
     public string? FQDN { get; set; }
@@ -1177,12 +1177,12 @@ public class GetMultiplayerServerAndTokenResponse {
 /// <summary>
 /// Gets multiplayer server session details for a build in a specific region.
 /// </summary>
-public class GetMultiplayerServerDetailsRequest {
+public class GetMultiplayerServerDetailsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string SessionId { get; set; }
 }
 
-public class GetMultiplayerServerDetailsResponse {
+public class GetMultiplayerServerDetailsResponse : PlayFabResultCommon {
     public string? BuildId { get; set; }
     public List<ConnectedPlayer>? ConnectedPlayers { get; set; }
     public string? FQDN { get; set; }
@@ -1200,20 +1200,20 @@ public class GetMultiplayerServerDetailsResponse {
 /// <summary>
 /// Gets multiplayer server logs for a specific server id in a region. The logs are available only after a server has terminated.
 /// </summary>
-public class GetMultiplayerServerLogsRequest {
+public class GetMultiplayerServerLogsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Region { get; set; }
     public required string ServerId { get; set; }
 }
 
-public class GetMultiplayerServerLogsResponse {
+public class GetMultiplayerServerLogsResponse : PlayFabResultCommon {
     public string? LogDownloadUrl { get; set; }
 }
 
 /// <summary>
 /// Gets multiplayer server logs for a specific server id in a region. The logs are available only after a server has terminated.
 /// </summary>
-public class GetMultiplayerSessionLogsBySessionIdRequest {
+public class GetMultiplayerSessionLogsBySessionIdRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string SessionId { get; set; }
 }
@@ -1221,7 +1221,7 @@ public class GetMultiplayerSessionLogsBySessionIdRequest {
 /// <summary>
 /// Request to get skill values of a set of players for multiple sets of conditions from a specific model. A Title, Server or Client can request a player's skill.
 /// </summary>
-public class GetPlayerSkillForConditionsFromModelRequest {
+public class GetPlayerSkillForConditionsFromModelRequest : PlayFabRequestCommon {
     public required List<ConditionsSet> Conditions { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool IncludeSkillBreakdown { get; set; }
@@ -1230,7 +1230,7 @@ public class GetPlayerSkillForConditionsFromModelRequest {
     public required string ScenarioId { get; set; }
 }
 
-public class GetPlayerSkillForConditionsFromModelResponse {
+public class GetPlayerSkillForConditionsFromModelResponse : PlayFabResultCommon {
     public bool IsModelPrimary { get; set; }
     public List<PlayerSkills>? Skills { get; set; }
 }
@@ -1238,7 +1238,7 @@ public class GetPlayerSkillForConditionsFromModelResponse {
 /// <summary>
 /// Request to get skill values of a set of players for multiple sets of conditions from the primary model of a given scenario. A Title, Server or Client can request a player's skill.
 /// </summary>
-public class GetPlayerSkillForConditionsRequest {
+public class GetPlayerSkillForConditionsRequest : PlayFabRequestCommon {
     public required List<ConditionsSet> Conditions { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool IncludeSkillBreakdown { get; set; }
@@ -1246,7 +1246,7 @@ public class GetPlayerSkillForConditionsRequest {
     public required string ScenarioId { get; set; }
 }
 
-public class GetPlayerSkillForConditionsResponse {
+public class GetPlayerSkillForConditionsResponse : PlayFabResultCommon {
     public string? ModelId { get; set; }
     public List<PlayerSkills>? Skills { get; set; }
 }
@@ -1254,7 +1254,7 @@ public class GetPlayerSkillForConditionsResponse {
 /// <summary>
 /// Request to get skill values of a set of players for a specific model. A Title, Server or Client can request a player's skill.
 /// </summary>
-public class GetPlayerSkillFromModelRequest {
+public class GetPlayerSkillFromModelRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? Conditions { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool IncludeSkillBreakdown { get; set; }
@@ -1263,7 +1263,7 @@ public class GetPlayerSkillFromModelRequest {
     public required string ScenarioId { get; set; }
 }
 
-public class GetPlayerSkillFromModelResponse {
+public class GetPlayerSkillFromModelResponse : PlayFabResultCommon {
     public bool IsModelPrimary { get; set; }
     public List<PlayerSkill>? Skills { get; set; }
 }
@@ -1271,7 +1271,7 @@ public class GetPlayerSkillFromModelResponse {
 /// <summary>
 /// Request to get skill values of a set of players from the primary model of a given scenario. A Title, Server or Client can request a player's skill.
 /// </summary>
-public class GetPlayerSkillRequest {
+public class GetPlayerSkillRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? Conditions { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool IncludeSkillBreakdown { get; set; }
@@ -1279,7 +1279,7 @@ public class GetPlayerSkillRequest {
     public required string ScenarioId { get; set; }
 }
 
-public class GetPlayerSkillResponse {
+public class GetPlayerSkillResponse : PlayFabResultCommon {
     public string? ModelId { get; set; }
     public List<PlayerSkill>? Skills { get; set; }
 }
@@ -1287,12 +1287,12 @@ public class GetPlayerSkillResponse {
 /// <summary>
 /// Returns the matchmaking statistics for a queue. These include the number of players matching and the statistics related to the time to match statistics in seconds (average and percentiles). Statistics are refreshed once every 5 minutes. Servers can access all statistics no matter what the ClientStatisticsVisibility is configured to. Clients can access statistics according to the ClientStatisticsVisibility. Client requests are forbidden if all visibility fields are false.
 /// </summary>
-public class GetQueueStatisticsRequest {
+public class GetQueueStatisticsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string QueueName { get; set; }
 }
 
-public class GetQueueStatisticsResult {
+public class GetQueueStatisticsResult : PlayFabResultCommon {
     public UInt32? NumberOfPlayersMatching { get; set; }
     public Statistics? TimeToMatchStatisticsInSeconds { get; set; }
 }
@@ -1300,14 +1300,14 @@ public class GetQueueStatisticsResult {
 /// <summary>
 /// Gets a remote login endpoint to a VM that is hosting a multiplayer server build in a specific region.
 /// </summary>
-public class GetRemoteLoginEndpointRequest {
+public class GetRemoteLoginEndpointRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Region { get; set; }
     public required string VmId { get; set; }
 }
 
-public class GetRemoteLoginEndpointResponse {
+public class GetRemoteLoginEndpointResponse : PlayFabResultCommon {
     public string? IPV4Address { get; set; }
     public int Port { get; set; }
 }
@@ -1315,37 +1315,37 @@ public class GetRemoteLoginEndpointResponse {
 /// <summary>
 /// Request to get a scenario configuration. A Title can make this request.
 /// </summary>
-public class GetScenarioConfigurationRequest {
+public class GetScenarioConfigurationRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ScenarioId { get; set; }
 }
 
-public class GetScenarioConfigurationResponse {
+public class GetScenarioConfigurationResponse : PlayFabResultCommon {
     public ScenarioConfiguration? ScenarioConfiguration { get; set; }
 }
 
 /// <summary>
 /// Request to get all scenario configurations of a title. A Title can make this request.
 /// </summary>
-public class GetScenarioConfigurationsRequest {
+public class GetScenarioConfigurationsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class GetScenarioConfigurationsResponse {
+public class GetScenarioConfigurationsResponse : PlayFabResultCommon {
     public List<ScenarioConfiguration>? ScenarioConfigurations { get; set; }
 }
 
 /// <summary>
 /// The ticket includes the players, their attributes, their teams, the ticket status, the match Id and the server details when applicable, etc. Only servers can get the ticket.
 /// </summary>
-public class GetServerBackfillTicketRequest {
+public class GetServerBackfillTicketRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool EscapeObject { get; set; }
     public required string QueueName { get; set; }
     public required string TicketId { get; set; }
 }
 
-public class GetServerBackfillTicketResult {
+public class GetServerBackfillTicketResult : PlayFabResultCommon {
     public CancellationReason? CancellationReason { get; set; }
     public string? CancellationReasonString { get; set; }
     public required DateTime Created { get; set; }
@@ -1361,34 +1361,34 @@ public class GetServerBackfillTicketResult {
 /// <summary>
 /// Gets the status of whether a title is enabled for the multiplayer server feature. The enabled status can be Initializing, Enabled, and Disabled.
 /// </summary>
-public class GetTitleEnabledForMultiplayerServersStatusRequest {
+public class GetTitleEnabledForMultiplayerServersStatusRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class GetTitleEnabledForMultiplayerServersStatusResponse {
+public class GetTitleEnabledForMultiplayerServersStatusResponse : PlayFabResultCommon {
     public TitleMultiplayerServerEnabledStatus? Status { get; set; }
 }
 
 /// <summary>
 /// Gets a title's server quota change request.
 /// </summary>
-public class GetTitleMultiplayerServersQuotaChangeRequest {
+public class GetTitleMultiplayerServersQuotaChangeRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string RequestId { get; set; }
 }
 
-public class GetTitleMultiplayerServersQuotaChangeResponse {
+public class GetTitleMultiplayerServersQuotaChangeResponse : PlayFabResultCommon {
     public QuotaChange? Change { get; set; }
 }
 
 /// <summary>
 /// Gets the quotas for a title in relation to multiplayer servers.
 /// </summary>
-public class GetTitleMultiplayerServersQuotasRequest {
+public class GetTitleMultiplayerServersQuotasRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class GetTitleMultiplayerServersQuotasResponse {
+public class GetTitleMultiplayerServersQuotasResponse : PlayFabResultCommon {
     public TitleMultiplayerServersQuotas? Quotas { get; set; }
 }
 
@@ -1400,7 +1400,7 @@ public class InstrumentationConfiguration {
 /// <summary>
 /// Request to invite a player to a lobby the caller is already a member of. Only a client can invite another player to a lobby.
 /// </summary>
-public class InviteToLobbyRequest {
+public class InviteToLobbyRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? InviteeEntity { get; set; }
     public string? LobbyId { get; set; }
@@ -1410,7 +1410,7 @@ public class InviteToLobbyRequest {
 /// <summary>
 /// Request to join an arranged lobby. Only a client can join an arranged lobby.
 /// </summary>
-public class JoinArrangedLobbyRequest {
+public class JoinArrangedLobbyRequest : PlayFabRequestCommon {
     public AccessPolicy? AccessPolicy { get; set; }
     public required string ArrangementString { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -1425,48 +1425,48 @@ public class JoinArrangedLobbyRequest {
 /// <summary>
 /// Preview: Request to join a lobby as a server. Only callable by a game_server entity and this is restricted to client owned lobbies which are using connections.
 /// </summary>
-public class JoinLobbyAsServerRequest {
+public class JoinLobbyAsServerRequest : PlayFabRequestCommon {
     public required string ConnectionString { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public Dictionary<string, string>? ServerData { get; set; }
     public required EntityKey ServerEntity { get; set; }
 }
 
-public class JoinLobbyAsServerResult {
+public class JoinLobbyAsServerResult : PlayFabResultCommon {
     public required string LobbyId { get; set; }
 }
 
 /// <summary>
 /// Request to join a lobby. Only a client can join a lobby.
 /// </summary>
-public class JoinLobbyRequest {
+public class JoinLobbyRequest : PlayFabRequestCommon {
     public string? ConnectionString { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public Dictionary<string, string>? MemberData { get; set; }
     public EntityKey? MemberEntity { get; set; }
 }
 
-public class JoinLobbyResult {
+public class JoinLobbyResult : PlayFabResultCommon {
     public required string LobbyId { get; set; }
 }
 
 /// <summary>
 /// Add the player to a matchmaking ticket and specify all of its matchmaking attributes. Players can join a ticket if and only if their EntityKeys are already listed in the ticket's Members list. The matchmaking service automatically starts matching the ticket against other matchmaking tickets once all players have joined the ticket. It is not possible to join a ticket once it has started matching.
 /// </summary>
-public class JoinMatchmakingTicketRequest {
+public class JoinMatchmakingTicketRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required MatchmakingPlayer Member { get; set; }
     public required string QueueName { get; set; }
     public required string TicketId { get; set; }
 }
 
-public class JoinMatchmakingTicketResult {
+public class JoinMatchmakingTicketResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Preview: Request for server to leave a lobby. Only a game_server entity can leave and this is restricted to client owned lobbies which are using connections.
 /// </summary>
-public class LeaveLobbyAsServerRequest {
+public class LeaveLobbyAsServerRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string LobbyId { get; set; }
     public required EntityKey ServerEntity { get; set; }
@@ -1475,7 +1475,7 @@ public class LeaveLobbyAsServerRequest {
 /// <summary>
 /// Request to leave a lobby. Only a client can leave a lobby.
 /// </summary>
-public class LeaveLobbyRequest {
+public class LeaveLobbyRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? LobbyId { get; set; }
     public EntityKey? MemberEntity { get; set; }
@@ -1517,13 +1517,13 @@ public class LinuxInstrumentationConfiguration {
 /// <summary>
 /// Returns a list of multiplayer server game asset summaries for a title.
 /// </summary>
-public class ListAssetSummariesRequest {
+public class ListAssetSummariesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int? PageSize { get; set; }
     public string? SkipToken { get; set; }
 }
 
-public class ListAssetSummariesResponse {
+public class ListAssetSummariesResponse : PlayFabResultCommon {
     public List<AssetSummary>? AssetSummaries { get; set; }
     public int PageSize { get; set; }
     public string? SkipToken { get; set; }
@@ -1532,13 +1532,13 @@ public class ListAssetSummariesResponse {
 /// <summary>
 /// Returns a list of summarized details of all multiplayer server builds for a title.
 /// </summary>
-public class ListBuildAliasesRequest {
+public class ListBuildAliasesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int? PageSize { get; set; }
     public string? SkipToken { get; set; }
 }
 
-public class ListBuildAliasesResponse {
+public class ListBuildAliasesResponse : PlayFabResultCommon {
     public List<BuildAliasDetailsResponse>? BuildAliases { get; set; }
     public int PageSize { get; set; }
     public string? SkipToken { get; set; }
@@ -1547,13 +1547,13 @@ public class ListBuildAliasesResponse {
 /// <summary>
 /// Returns a list of summarized details of all multiplayer server builds for a title.
 /// </summary>
-public class ListBuildSummariesRequest {
+public class ListBuildSummariesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int? PageSize { get; set; }
     public string? SkipToken { get; set; }
 }
 
-public class ListBuildSummariesResponse {
+public class ListBuildSummariesResponse : PlayFabResultCommon {
     public List<BuildSummary>? BuildSummaries { get; set; }
     public int PageSize { get; set; }
     public string? SkipToken { get; set; }
@@ -1562,13 +1562,13 @@ public class ListBuildSummariesResponse {
 /// <summary>
 /// Returns a list of multiplayer server game certificates for a title.
 /// </summary>
-public class ListCertificateSummariesRequest {
+public class ListCertificateSummariesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int? PageSize { get; set; }
     public string? SkipToken { get; set; }
 }
 
-public class ListCertificateSummariesResponse {
+public class ListCertificateSummariesResponse : PlayFabResultCommon {
     public List<CertificateSummary>? CertificateSummaries { get; set; }
     public int PageSize { get; set; }
     public string? SkipToken { get; set; }
@@ -1577,13 +1577,13 @@ public class ListCertificateSummariesResponse {
 /// <summary>
 /// Returns a list of the container images that have been uploaded to the container registry for a title.
 /// </summary>
-public class ListContainerImagesRequest {
+public class ListContainerImagesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int? PageSize { get; set; }
     public string? SkipToken { get; set; }
 }
 
-public class ListContainerImagesResponse {
+public class ListContainerImagesResponse : PlayFabResultCommon {
     public List<string>? Images { get; set; }
     public int PageSize { get; set; }
     public string? SkipToken { get; set; }
@@ -1592,14 +1592,14 @@ public class ListContainerImagesResponse {
 /// <summary>
 /// Returns a list of the tags for a particular container image that exists in the container registry for a title.
 /// </summary>
-public class ListContainerImageTagsRequest {
+public class ListContainerImageTagsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? ImageName { get; set; }
     public int? PageSize { get; set; }
     public string? SkipToken { get; set; }
 }
 
-public class ListContainerImageTagsResponse {
+public class ListContainerImageTagsResponse : PlayFabResultCommon {
     public int PageSize { get; set; }
     public string? SkipToken { get; set; }
     public List<string>? Tags { get; set; }
@@ -1608,31 +1608,31 @@ public class ListContainerImageTagsResponse {
 /// <summary>
 /// Gets a list of all the matchmaking queue configurations for the title.
 /// </summary>
-public class ListMatchmakingQueuesRequest {
+public class ListMatchmakingQueuesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class ListMatchmakingQueuesResult {
+public class ListMatchmakingQueuesResult : PlayFabResultCommon {
     public List<MatchmakingQueueConfig>? MatchMakingQueues { get; set; }
 }
 
 /// <summary>
 /// If the caller is a title, the EntityKey in the request is required. If the caller is a player, then it is optional. If it is provided it must match the caller's entity.
 /// </summary>
-public class ListMatchmakingTicketsForPlayerRequest {
+public class ListMatchmakingTicketsForPlayerRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required string QueueName { get; set; }
 }
 
-public class ListMatchmakingTicketsForPlayerResult {
+public class ListMatchmakingTicketsForPlayerResult : PlayFabResultCommon {
     public required List<string> TicketIds { get; set; }
 }
 
 /// <summary>
 /// Returns a list of multiplayer servers for a build in a specific region.
 /// </summary>
-public class ListMultiplayerServersRequest {
+public class ListMultiplayerServersRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public int? PageSize { get; set; }
@@ -1640,7 +1640,7 @@ public class ListMultiplayerServersRequest {
     public string? SkipToken { get; set; }
 }
 
-public class ListMultiplayerServersResponse {
+public class ListMultiplayerServersResponse : PlayFabResultCommon {
     public List<MultiplayerServerSummary>? MultiplayerServerSummaries { get; set; }
     public int PageSize { get; set; }
     public string? SkipToken { get; set; }
@@ -1649,12 +1649,12 @@ public class ListMultiplayerServersResponse {
 /// <summary>
 /// Returns a list of quality of service servers for party.
 /// </summary>
-public class ListPartyQosServersRequest {
+public class ListPartyQosServersRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Version { get; set; }
 }
 
-public class ListPartyQosServersResponse {
+public class ListPartyQosServersResponse : PlayFabResultCommon {
     public int PageSize { get; set; }
     public List<QosServer>? QosServers { get; set; }
     public string? SkipToken { get; set; }
@@ -1663,13 +1663,13 @@ public class ListPartyQosServersResponse {
 /// <summary>
 /// Returns a list of quality of service servers for a title.
 /// </summary>
-public class ListQosServersForTitleRequest {
+public class ListQosServersForTitleRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool? IncludeAllRegions { get; set; }
     public string? RoutingPreference { get; set; }
 }
 
-public class ListQosServersForTitleResponse {
+public class ListQosServersForTitleResponse : PlayFabResultCommon {
     public int PageSize { get; set; }
     public List<QosServer>? QosServers { get; set; }
     public string? SkipToken { get; set; }
@@ -1679,12 +1679,12 @@ public class ListQosServersForTitleResponse {
 /// Returns a list of quality of service servers.
 /// </summary>
 [Obsolete("Do not use")]
-public class ListQosServersRequest {
+public class ListQosServersRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class ListQosServersResponse {
+public class ListQosServersResponse : PlayFabResultCommon {
     public int PageSize { get; set; }
     public List<QosServer>? QosServers { get; set; }
     public string? SkipToken { get; set; }
@@ -1693,13 +1693,13 @@ public class ListQosServersResponse {
 /// <summary>
 /// Returns a list of multiplayer server game secrets for a title.
 /// </summary>
-public class ListSecretSummariesRequest {
+public class ListSecretSummariesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int? PageSize { get; set; }
     public string? SkipToken { get; set; }
 }
 
-public class ListSecretSummariesResponse {
+public class ListSecretSummariesResponse : PlayFabResultCommon {
     public int PageSize { get; set; }
     public List<SecretSummary>? SecretSummaries { get; set; }
     public string? SkipToken { get; set; }
@@ -1708,31 +1708,31 @@ public class ListSecretSummariesResponse {
 /// <summary>
 /// List all server backfill ticket Ids the user is a member of.
 /// </summary>
-public class ListServerBackfillTicketsForPlayerRequest {
+public class ListServerBackfillTicketsForPlayerRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required EntityKey Entity { get; set; }
     public required string QueueName { get; set; }
 }
 
-public class ListServerBackfillTicketsForPlayerResult {
+public class ListServerBackfillTicketsForPlayerResult : PlayFabResultCommon {
     public required List<string> TicketIds { get; set; }
 }
 
 /// <summary>
 /// List all server quota change requests for a title.
 /// </summary>
-public class ListTitleMultiplayerServersQuotaChangesRequest {
+public class ListTitleMultiplayerServersQuotaChangesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class ListTitleMultiplayerServersQuotaChangesResponse {
+public class ListTitleMultiplayerServersQuotaChangesResponse : PlayFabResultCommon {
     public List<QuotaChange>? Changes { get; set; }
 }
 
 /// <summary>
 /// Returns a list of virtual machines for a title.
 /// </summary>
-public class ListVirtualMachineSummariesRequest {
+public class ListVirtualMachineSummariesRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public int? PageSize { get; set; }
@@ -1740,7 +1740,7 @@ public class ListVirtualMachineSummariesRequest {
     public string? SkipToken { get; set; }
 }
 
-public class ListVirtualMachineSummariesResponse {
+public class ListVirtualMachineSummariesResponse : PlayFabResultCommon {
     public int PageSize { get; set; }
     public string? SkipToken { get; set; }
     public List<VirtualMachineSummary>? VirtualMachines { get; set; }
@@ -1764,7 +1764,7 @@ public class Lobby {
     public bool UseConnections { get; set; }
 }
 
-public class LobbyEmptyResult {
+public class LobbyEmptyResult : PlayFabResultCommon {
 }
 
 public class LobbyServer {
@@ -2069,18 +2069,18 @@ public class RegionSelectionRule {
 /// <summary>
 /// Deletes the configuration for a queue. This will permanently delete the configuration and players will no longer be able to match in the queue. All outstanding matchmaking tickets will be cancelled.
 /// </summary>
-public class RemoveMatchmakingQueueRequest {
+public class RemoveMatchmakingQueueRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? QueueName { get; set; }
 }
 
-public class RemoveMatchmakingQueueResult {
+public class RemoveMatchmakingQueueResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Request to remove a member from a lobby. Owners may remove other members from a lobby. Members cannot remove themselves (use LeaveLobby instead).
 /// </summary>
-public class RemoveMemberFromLobbyRequest {
+public class RemoveMemberFromLobbyRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? LobbyId { get; set; }
     public EntityKey? MemberEntity { get; set; }
@@ -2090,7 +2090,7 @@ public class RemoveMemberFromLobbyRequest {
 /// <summary>
 /// Requests a multiplayer server session from a particular build in any of the given preferred regions.
 /// </summary>
-public class RequestMultiplayerServerAndTokenRequest {
+public class RequestMultiplayerServerAndTokenRequest : PlayFabRequestCommon {
     public BuildAliasParams? BuildAliasParams { get; set; }
     public string? BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -2101,7 +2101,7 @@ public class RequestMultiplayerServerAndTokenRequest {
     public required List<string> TokenPlayerIds { get; set; }
 }
 
-public class RequestMultiplayerServerAndTokenResponse {
+public class RequestMultiplayerServerAndTokenResponse : PlayFabResultCommon {
     public string? BuildId { get; set; }
     public List<ConnectedPlayer>? ConnectedPlayers { get; set; }
     public string? FQDN { get; set; }
@@ -2120,7 +2120,7 @@ public class RequestMultiplayerServerAndTokenResponse {
 /// <summary>
 /// Requests a multiplayer server session from a particular build in any of the given preferred regions.
 /// </summary>
-public class RequestMultiplayerServerRequest {
+public class RequestMultiplayerServerRequest : PlayFabRequestCommon {
     public BuildAliasParams? BuildAliasParams { get; set; }
     public string? BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -2130,7 +2130,7 @@ public class RequestMultiplayerServerRequest {
     public required string SessionId { get; set; }
 }
 
-public class RequestMultiplayerServerResponse {
+public class RequestMultiplayerServerResponse : PlayFabResultCommon {
     public string? BuildId { get; set; }
     public List<ConnectedPlayer>? ConnectedPlayers { get; set; }
     public string? FQDN { get; set; }
@@ -2148,7 +2148,7 @@ public class RequestMultiplayerServerResponse {
 /// <summary>
 /// Requests a party session from a particular build if version is provided or in a set of builds if build alias params is provided, in any of the given preferred regions.
 /// </summary>
-public class RequestPartyRequest {
+public class RequestPartyRequest : PlayFabRequestCommon {
     public PartyBuildAliasParams? BuildAliasParams { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string PartyId { get; set; }
@@ -2157,7 +2157,7 @@ public class RequestPartyRequest {
     public string? Version { get; set; }
 }
 
-public class RequestPartyResponse {
+public class RequestPartyResponse : PlayFabResultCommon {
     public string? BuildId { get; set; }
     public List<ConnectedPlayer>? ConnectedPlayers { get; set; }
     public string? DTLSCertificateSHA2Thumbprint { get; set; }
@@ -2175,14 +2175,14 @@ public class RequestPartyResponse {
 /// <summary>
 /// Requests a party session from a particular set of builds if build alias params is provided, in any of the given preferred regions.
 /// </summary>
-public class RequestPartyServiceRequest {
+public class RequestPartyServiceRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required PartyNetworkConfiguration NetworkConfiguration { get; set; }
     public string? PartyId { get; set; }
     public required List<string> PreferredRegions { get; set; }
 }
 
-public class RequestPartyServiceResponse {
+public class RequestPartyServiceResponse : PlayFabResultCommon {
     public string? InvitationId { get; set; }
     public string? PartyId { get; set; }
     public string? SerializedNetworkDescriptor { get; set; }
@@ -2191,11 +2191,11 @@ public class RequestPartyServiceResponse {
 /// <summary>
 /// Gets new credentials to the container registry where game developers can upload custom container images to before creating a new build.
 /// </summary>
-public class RolloverContainerRegistryCredentialsRequest {
+public class RolloverContainerRegistryCredentialsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class RolloverContainerRegistryCredentialsResponse {
+public class RolloverContainerRegistryCredentialsResponse : PlayFabResultCommon {
     public string? DnsName { get; set; }
     public string? Password { get; set; }
     public string? Username { get; set; }
@@ -2289,18 +2289,18 @@ public class SetIntersectionRule {
 /// <summary>
 /// Use this API to create or update matchmaking queue configurations. The queue configuration defines the matchmaking rules. The matchmaking service will match tickets together according to the configured rules. Queue resources are not spun up by calling this API. Queues are created when the first ticket is submitted.
 /// </summary>
-public class SetMatchmakingQueueRequest {
+public class SetMatchmakingQueueRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required MatchmakingQueueConfig MatchmakingQueue { get; set; }
 }
 
-public class SetMatchmakingQueueResult {
+public class SetMatchmakingQueueResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Executes the shutdown callback from the GSDK and terminates the multiplayer server session. The callback in the GSDK will allow for graceful shutdown with a 15 minute timeoutIf graceful shutdown has not been completed before 15 minutes have elapsed, the multiplayer server session will be forcefully terminated on it's own.
 /// </summary>
-public class ShutdownMultiplayerServerRequest {
+public class ShutdownMultiplayerServerRequest : PlayFabRequestCommon {
     public string? BuildId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? Region { get; set; }
@@ -2344,7 +2344,7 @@ public class StringEqualityRuleExpansion {
 /// <summary>
 /// Request to subscribe to lobby resource notifications.
 /// </summary>
-public class SubscribeToLobbyResourceRequest {
+public class SubscribeToLobbyResourceRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required EntityKey EntityKey { get; set; }
     public required string PubSubConnectionHandle { get; set; }
@@ -2353,14 +2353,14 @@ public class SubscribeToLobbyResourceRequest {
     public SubscriptionType Type { get; set; }
 }
 
-public class SubscribeToLobbyResourceResult {
+public class SubscribeToLobbyResourceResult : PlayFabResultCommon {
     public required string Topic { get; set; }
 }
 
 /// <summary>
 /// Subscribe to match resource notifications. Match subscriptions have two types; MatchInvite and MatchTicketStatusChange
 /// </summary>
-public class SubscribeToMatchResourceRequest {
+public class SubscribeToMatchResourceRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required EntityKey EntityKey { get; set; }
     public required string PubSubConnectionHandle { get; set; }
@@ -2369,7 +2369,7 @@ public class SubscribeToMatchResourceRequest {
     public required string Type { get; set; }
 }
 
-public class SubscribeToMatchResourceResult {
+public class SubscribeToMatchResourceResult : PlayFabResultCommon {
     public required string Topic { get; set; }
 }
 
@@ -2419,7 +2419,7 @@ public class TrueSkillPlayer {
 /// <summary>
 /// Request to unsubscribe from lobby notifications.
 /// </summary>
-public class UnsubscribeFromLobbyResourceRequest {
+public class UnsubscribeFromLobbyResourceRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required EntityKey EntityKey { get; set; }
     public required string PubSubConnectionHandle { get; set; }
@@ -2431,7 +2431,7 @@ public class UnsubscribeFromLobbyResourceRequest {
 /// <summary>
 /// Unsubscribe from a Match resource's notifications. For MatchInvite, players are expected to unsubscribe once they can no longer accept invites. For MatchTicketStatusChange, players are expected to unsusbcribe once the ticket has reached a canceled or matched state.
 /// </summary>
-public class UnsubscribeFromMatchResourceRequest {
+public class UnsubscribeFromMatchResourceRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required EntityKey EntityKey { get; set; }
     public required string PubSubConnectionHandle { get; set; }
@@ -2440,13 +2440,13 @@ public class UnsubscribeFromMatchResourceRequest {
     public required string Type { get; set; }
 }
 
-public class UnsubscribeFromMatchResourceResult {
+public class UnsubscribeFromMatchResourceResult : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Removes the specified tag from the image. After this operation, a 'docker pull' will fail for the specified image and tag combination. Morever, ListContainerImageTags will not return the specified tag.
 /// </summary>
-public class UntagContainerImageRequest {
+public class UntagContainerImageRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? ImageName { get; set; }
     public string? Tag { get; set; }
@@ -2455,7 +2455,7 @@ public class UntagContainerImageRequest {
 /// <summary>
 /// Creates a multiplayer server build alias and returns the created alias.
 /// </summary>
-public class UpdateBuildAliasRequest {
+public class UpdateBuildAliasRequest : PlayFabRequestCommon {
     public required string AliasId { get; set; }
     public string? AliasName { get; set; }
     public List<BuildSelectionCriterion>? BuildSelectionCriteria { get; set; }
@@ -2465,7 +2465,7 @@ public class UpdateBuildAliasRequest {
 /// <summary>
 /// Updates a multiplayer server build's name.
 /// </summary>
-public class UpdateBuildNameRequest {
+public class UpdateBuildNameRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public required string BuildName { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -2474,7 +2474,7 @@ public class UpdateBuildNameRequest {
 /// <summary>
 /// Updates a multiplayer server build's region.
 /// </summary>
-public class UpdateBuildRegionRequest {
+public class UpdateBuildRegionRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public required BuildRegionParams BuildRegion { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -2483,7 +2483,7 @@ public class UpdateBuildRegionRequest {
 /// <summary>
 /// Updates a multiplayer server build's regions.
 /// </summary>
-public class UpdateBuildRegionsRequest {
+public class UpdateBuildRegionsRequest : PlayFabRequestCommon {
     public required string BuildId { get; set; }
     public required List<BuildRegionParams> BuildRegions { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -2492,7 +2492,7 @@ public class UpdateBuildRegionsRequest {
 /// <summary>
 /// Preview: Request to update the serverData and serverEntity in case of migration. Only a game_server entity can update this information and this is restricted to client owned lobbies which are using connections.
 /// </summary>
-public class UpdateLobbyAsServerRequest {
+public class UpdateLobbyAsServerRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string LobbyId { get; set; }
     public Dictionary<string, string>? ServerData { get; set; }
@@ -2503,7 +2503,7 @@ public class UpdateLobbyAsServerRequest {
 /// <summary>
 /// Request to update a lobby.
 /// </summary>
-public class UpdateLobbyRequest {
+public class UpdateLobbyRequest : PlayFabRequestCommon {
     public AccessPolicy? AccessPolicy { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public Dictionary<string, string>? LobbyData { get; set; }
@@ -2522,7 +2522,7 @@ public class UpdateLobbyRequest {
 /// <summary>
 /// Request to update properties of a model. A Title can make this request.
 /// </summary>
-public class UpdateModelRequest {
+public class UpdateModelRequest : PlayFabRequestCommon {
     public double? AnomalousMatchResultIgnoreThreshold { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ModelId { get; set; }
@@ -2530,25 +2530,25 @@ public class UpdateModelRequest {
     public required string ScenarioId { get; set; }
 }
 
-public class UpdateModelResponse {
+public class UpdateModelResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Request to update the primary model. A Title can make this request.
 /// </summary>
-public class UpdatePrimaryModelRequest {
+public class UpdatePrimaryModelRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string ModelId { get; set; }
     public required string ScenarioId { get; set; }
 }
 
-public class UpdatePrimaryModelResponse {
+public class UpdatePrimaryModelResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Request to update a scenario configuration. A Title can make this request.
 /// </summary>
-public class UpdateScenarioConfigurationRequest {
+public class UpdateScenarioConfigurationRequest : PlayFabRequestCommon {
     public List<string>? ConditionsToRemove { get; set; }
     public List<ScenarioConfigCondition>? ConditionsToUpdateOrAdd { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -2558,13 +2558,13 @@ public class UpdateScenarioConfigurationRequest {
     public required string ScenarioId { get; set; }
 }
 
-public class UpdateScenarioConfigurationResponse {
+public class UpdateScenarioConfigurationResponse : PlayFabResultCommon {
 }
 
 /// <summary>
 /// Uploads a multiplayer server game certificate.
 /// </summary>
-public class UploadCertificateRequest {
+public class UploadCertificateRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool? ForceUpdate { get; set; }
     public required Certificate GameCertificate { get; set; }
@@ -2573,12 +2573,12 @@ public class UploadCertificateRequest {
 /// <summary>
 /// Request to upload a match result. A Title or Server can upload a match result.
 /// </summary>
-public class UploadMatchResultRequest {
+public class UploadMatchResultRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required MatchResult MatchResult { get; set; }
 }
 
-public class UploadMatchResultResponse {
+public class UploadMatchResultResponse : PlayFabResultCommon {
     public string? MatchResultId { get; set; }
     public required DateTime UploadTimeUtc { get; set; }
 }
@@ -2586,7 +2586,7 @@ public class UploadMatchResultResponse {
 /// <summary>
 /// Uploads a multiplayer server game secret.
 /// </summary>
-public class UploadSecretRequest {
+public class UploadSecretRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool? ForceUpdate { get; set; }
     public required Secret GameSecret { get; set; }

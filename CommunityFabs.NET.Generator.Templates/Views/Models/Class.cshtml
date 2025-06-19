@@ -7,7 +7,17 @@
 @if (Model.Deprecation != null) {
     @Html.Raw($"[Obsolete(\"{Model.Deprecation.GetDeprecationMessage()}\")]\r\n")
 }
-public class @Model.Name {
+@{
+    var baseClass = "";
+    if (Model.IsRequest ?? false)
+    {
+        baseClass = "PlayFabRequestCommon";
+    } else if (Model.IsResult ?? false)
+    {
+        baseClass = "PlayFabResultCommon";
+    }
+}
+public class @Model.Name @(!string.IsNullOrEmpty(baseClass) ? $": {baseClass} " : ""){
 @foreach (var property in Model.Properties!) {
     @(Html.Raw($"    public {(property.IsRequired() ? "required " : "")}{property.GetTypeName()}{(property.Optional ?? false ? '?' : "")} {property.Name} {{ get; set; }}\r\n"))
 }

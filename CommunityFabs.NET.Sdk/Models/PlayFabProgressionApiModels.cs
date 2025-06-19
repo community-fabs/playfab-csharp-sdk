@@ -1,6 +1,6 @@
 namespace CommunityFabs.NET.Sdk.Models.Progression;
 
-public class CreateLeaderboardDefinitionRequest {
+public class CreateLeaderboardDefinitionRequest : PlayFabRequestCommon {
     public required List<LeaderboardColumn> Columns { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string EntityType { get; set; }
@@ -9,7 +9,7 @@ public class CreateLeaderboardDefinitionRequest {
     public required VersionConfiguration VersionConfiguration { get; set; }
 }
 
-public class CreateStatisticDefinitionRequest {
+public class CreateStatisticDefinitionRequest : PlayFabRequestCommon {
     public List<string>? AggregationSources { get; set; }
     public List<StatisticColumn>? Columns { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -18,33 +18,33 @@ public class CreateStatisticDefinitionRequest {
     public VersionConfiguration? VersionConfiguration { get; set; }
 }
 
-public class DeleteLeaderboardDefinitionRequest {
+public class DeleteLeaderboardDefinitionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
 
-public class DeleteLeaderboardEntriesRequest {
+public class DeleteLeaderboardEntriesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public List<string>? EntityIds { get; set; }
     public required string Name { get; set; }
 }
 
-public class DeleteStatisticDefinitionRequest {
+public class DeleteStatisticDefinitionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
 
-public class DeleteStatisticsRequest {
+public class DeleteStatisticsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required List<StatisticDelete> Statistics { get; set; }
 }
 
-public class DeleteStatisticsResponse {
+public class DeleteStatisticsResponse : PlayFabResultCommon {
     public EntityKey? Entity { get; set; }
 }
 
-public class EmptyResponse {
+public class EmptyResponse : PlayFabResultCommon {
 }
 
 /// <summary>
@@ -92,7 +92,7 @@ public enum ExternalFriendSources {
 /// <summary>
 /// Request to load a leaderboard.
 /// </summary>
-public class GetEntityLeaderboardRequest {
+public class GetEntityLeaderboardRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string LeaderboardName { get; set; }
     public UInt32 PageSize { get; set; }
@@ -103,7 +103,7 @@ public class GetEntityLeaderboardRequest {
 /// <summary>
 /// Leaderboard response
 /// </summary>
-public class GetEntityLeaderboardResponse {
+public class GetEntityLeaderboardResponse : PlayFabResultCommon {
     public List<LeaderboardColumn>? Columns { get; set; }
     public UInt32 EntryCount { get; set; }
     public DateTime? NextReset { get; set; }
@@ -111,7 +111,7 @@ public class GetEntityLeaderboardResponse {
     public UInt32 Version { get; set; }
 }
 
-public class GetFriendLeaderboardForEntityRequest {
+public class GetFriendLeaderboardForEntityRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public ExternalFriendSources? ExternalFriendSources { get; set; }
@@ -123,7 +123,7 @@ public class GetFriendLeaderboardForEntityRequest {
 /// <summary>
 /// Request to load a section of a leaderboard centered on a specific entity.
 /// </summary>
-public class GetLeaderboardAroundEntityRequest {
+public class GetLeaderboardAroundEntityRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required string LeaderboardName { get; set; }
@@ -131,12 +131,12 @@ public class GetLeaderboardAroundEntityRequest {
     public UInt32? Version { get; set; }
 }
 
-public class GetLeaderboardDefinitionRequest {
+public class GetLeaderboardDefinitionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
 
-public class GetLeaderboardDefinitionResponse {
+public class GetLeaderboardDefinitionResponse : PlayFabResultCommon {
     public required List<LeaderboardColumn> Columns { get; set; }
     public required DateTime Created { get; set; }
     public required string EntityType { get; set; }
@@ -150,19 +150,19 @@ public class GetLeaderboardDefinitionResponse {
 /// <summary>
 /// Request a leaderboard limited to a collection of entities.
 /// </summary>
-public class GetLeaderboardForEntitiesRequest {
+public class GetLeaderboardForEntitiesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required List<string> EntityIds { get; set; }
     public required string LeaderboardName { get; set; }
     public UInt32? Version { get; set; }
 }
 
-public class GetStatisticDefinitionRequest {
+public class GetStatisticDefinitionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
 
-public class GetStatisticDefinitionResponse {
+public class GetStatisticDefinitionResponse : PlayFabResultCommon {
     public List<string>? AggregationDestinations { get; set; }
     public List<string>? AggregationSources { get; set; }
     public List<StatisticColumn>? Columns { get; set; }
@@ -176,53 +176,53 @@ public class GetStatisticDefinitionResponse {
 }
 
 [Obsolete("Do not use")]
-public class GetStatisticDefinitionsRequest {
+public class GetStatisticDefinitionsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class GetStatisticDefinitionsResponse {
+public class GetStatisticDefinitionsResponse : PlayFabResultCommon {
     public List<StatisticDefinition>? StatisticDefinitions { get; set; }
 }
 
-public class GetStatisticsForEntitiesRequest {
+public class GetStatisticsForEntitiesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required List<EntityKey> Entities { get; set; }
     public List<string>? StatisticNames { get; set; }
 }
 
-public class GetStatisticsForEntitiesResponse {
+public class GetStatisticsForEntitiesResponse : PlayFabResultCommon {
     public Dictionary<string, StatisticColumnCollection>? ColumnDetails { get; set; }
     public List<EntityStatistics>? EntitiesStatistics { get; set; }
 }
 
-public class GetStatisticsRequest {
+public class GetStatisticsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public List<string>? StatisticNames { get; set; }
 }
 
-public class GetStatisticsResponse {
+public class GetStatisticsResponse : PlayFabResultCommon {
     public Dictionary<string, StatisticColumnCollection>? ColumnDetails { get; set; }
     public EntityKey? Entity { get; set; }
     public Dictionary<string, EntityStatisticValue>? Statistics { get; set; }
 }
 
-public class IncrementLeaderboardVersionRequest {
+public class IncrementLeaderboardVersionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
 
-public class IncrementLeaderboardVersionResponse {
+public class IncrementLeaderboardVersionResponse : PlayFabResultCommon {
     public UInt32 Version { get; set; }
 }
 
-public class IncrementStatisticVersionRequest {
+public class IncrementStatisticVersionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
 }
 
-public class IncrementStatisticVersionResponse {
+public class IncrementStatisticVersionResponse : PlayFabResultCommon {
     public UInt32 Version { get; set; }
 }
 
@@ -259,19 +259,19 @@ public class LinkedStatisticColumn {
     public required string LinkedStatisticName { get; set; }
 }
 
-public class ListLeaderboardDefinitionsRequest {
+public class ListLeaderboardDefinitionsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class ListLeaderboardDefinitionsResponse {
+public class ListLeaderboardDefinitionsResponse : PlayFabResultCommon {
     public List<LeaderboardDefinition>? LeaderboardDefinitions { get; set; }
 }
 
-public class ListStatisticDefinitionsRequest {
+public class ListStatisticDefinitionsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class ListStatisticDefinitionsResponse {
+public class ListStatisticDefinitionsResponse : PlayFabResultCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public List<StatisticDefinition>? StatisticDefinitions { get; set; }
 }
@@ -324,39 +324,39 @@ public class StatisticUpdate {
     public UInt32? Version { get; set; }
 }
 
-public class UnlinkLeaderboardFromStatisticRequest {
+public class UnlinkLeaderboardFromStatisticRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
     public required string StatisticName { get; set; }
 }
 
-public class UpdateLeaderboardDefinitionRequest {
+public class UpdateLeaderboardDefinitionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
     public int? SizeLimit { get; set; }
     public VersionConfiguration? VersionConfiguration { get; set; }
 }
 
-public class UpdateLeaderboardEntriesRequest {
+public class UpdateLeaderboardEntriesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public List<LeaderboardEntryUpdate>? Entries { get; set; }
     public required string LeaderboardName { get; set; }
 }
 
-public class UpdateStatisticDefinitionRequest {
+public class UpdateStatisticDefinitionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string Name { get; set; }
     public VersionConfiguration? VersionConfiguration { get; set; }
 }
 
-public class UpdateStatisticsRequest {
+public class UpdateStatisticsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public required List<StatisticUpdate> Statistics { get; set; }
     public string? TransactionId { get; set; }
 }
 
-public class UpdateStatisticsResponse {
+public class UpdateStatisticsResponse : PlayFabResultCommon {
     public Dictionary<string, StatisticColumnCollection>? ColumnDetails { get; set; }
     public EntityKey? Entity { get; set; }
     public Dictionary<string, EntityStatisticValue>? Statistics { get; set; }

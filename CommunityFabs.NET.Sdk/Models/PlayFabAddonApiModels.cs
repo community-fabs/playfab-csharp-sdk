@@ -1,6 +1,6 @@
 namespace CommunityFabs.NET.Sdk.Models.Addon;
 
-public class CreateOrUpdateAppleRequest {
+public class CreateOrUpdateAppleRequest : PlayFabRequestCommon {
     public required string AppBundleId { get; set; }
     public string? AppSharedSecret { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -10,10 +10,10 @@ public class CreateOrUpdateAppleRequest {
     public bool? RequireSecureAuthentication { get; set; }
 }
 
-public class CreateOrUpdateAppleResponse {
+public class CreateOrUpdateAppleResponse : PlayFabResultCommon {
 }
 
-public class CreateOrUpdateFacebookInstantGamesRequest {
+public class CreateOrUpdateFacebookInstantGamesRequest : PlayFabRequestCommon {
     public required string AppID { get; set; }
     public required string AppSecret { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -21,10 +21,10 @@ public class CreateOrUpdateFacebookInstantGamesRequest {
     public bool? ErrorIfExists { get; set; }
 }
 
-public class CreateOrUpdateFacebookInstantGamesResponse {
+public class CreateOrUpdateFacebookInstantGamesResponse : PlayFabResultCommon {
 }
 
-public class CreateOrUpdateFacebookRequest {
+public class CreateOrUpdateFacebookRequest : PlayFabRequestCommon {
     public required string AppID { get; set; }
     public required string AppSecret { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -33,10 +33,10 @@ public class CreateOrUpdateFacebookRequest {
     public required string NotificationEmail { get; set; }
 }
 
-public class CreateOrUpdateFacebookResponse {
+public class CreateOrUpdateFacebookResponse : PlayFabResultCommon {
 }
 
-public class CreateOrUpdateGoogleRequest {
+public class CreateOrUpdateGoogleRequest : PlayFabRequestCommon {
     public string? AppLicenseKey { get; set; }
     public string? AppPackageID { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -48,20 +48,20 @@ public class CreateOrUpdateGoogleRequest {
     public string? ServiceAccountKey { get; set; }
 }
 
-public class CreateOrUpdateGoogleResponse {
+public class CreateOrUpdateGoogleResponse : PlayFabResultCommon {
 }
 
-public class CreateOrUpdateKongregateRequest {
+public class CreateOrUpdateKongregateRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
     public bool? ErrorIfExists { get; set; }
     public required string SecretAPIKey { get; set; }
 }
 
-public class CreateOrUpdateKongregateResponse {
+public class CreateOrUpdateKongregateResponse : PlayFabResultCommon {
 }
 
-public class CreateOrUpdateNintendoRequest {
+public class CreateOrUpdateNintendoRequest : PlayFabRequestCommon {
     public string? ApplicationID { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
@@ -69,10 +69,10 @@ public class CreateOrUpdateNintendoRequest {
     public bool? ErrorIfExists { get; set; }
 }
 
-public class CreateOrUpdateNintendoResponse {
+public class CreateOrUpdateNintendoResponse : PlayFabResultCommon {
 }
 
-public class CreateOrUpdatePSNRequest {
+public class CreateOrUpdatePSNRequest : PlayFabRequestCommon {
     public string? ClientID { get; set; }
     public string? ClientSecret { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -82,10 +82,10 @@ public class CreateOrUpdatePSNRequest {
     public string? NextGenClientSecret { get; set; }
 }
 
-public class CreateOrUpdatePSNResponse {
+public class CreateOrUpdatePSNResponse : PlayFabResultCommon {
 }
 
-public class CreateOrUpdateSteamRequest {
+public class CreateOrUpdateSteamRequest : PlayFabRequestCommon {
     public required string ApplicationId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public bool? EnforceServiceSpecificTickets { get; set; }
@@ -95,10 +95,10 @@ public class CreateOrUpdateSteamRequest {
     public bool? UseSandbox { get; set; }
 }
 
-public class CreateOrUpdateSteamResponse {
+public class CreateOrUpdateSteamResponse : PlayFabResultCommon {
 }
 
-public class CreateOrUpdateToxModRequest {
+public class CreateOrUpdateToxModRequest : PlayFabRequestCommon {
     public required string AccountId { get; set; }
     public required string AccountKey { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -107,10 +107,10 @@ public class CreateOrUpdateToxModRequest {
     public bool? ErrorIfExists { get; set; }
 }
 
-public class CreateOrUpdateToxModResponse {
+public class CreateOrUpdateToxModResponse : PlayFabResultCommon {
 }
 
-public class CreateOrUpdateTwitchRequest {
+public class CreateOrUpdateTwitchRequest : PlayFabRequestCommon {
     public string? ClientID { get; set; }
     public string? ClientSecret { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -118,87 +118,87 @@ public class CreateOrUpdateTwitchRequest {
     public bool? ErrorIfExists { get; set; }
 }
 
-public class CreateOrUpdateTwitchResponse {
+public class CreateOrUpdateTwitchResponse : PlayFabResultCommon {
 }
 
-public class DeleteAppleRequest {
+public class DeleteAppleRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeleteAppleResponse {
+public class DeleteAppleResponse : PlayFabResultCommon {
 }
 
-public class DeleteFacebookInstantGamesRequest {
+public class DeleteFacebookInstantGamesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeleteFacebookInstantGamesResponse {
+public class DeleteFacebookInstantGamesResponse : PlayFabResultCommon {
 }
 
-public class DeleteFacebookRequest {
+public class DeleteFacebookRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeleteFacebookResponse {
+public class DeleteFacebookResponse : PlayFabResultCommon {
 }
 
-public class DeleteGoogleRequest {
+public class DeleteGoogleRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeleteGoogleResponse {
+public class DeleteGoogleResponse : PlayFabResultCommon {
 }
 
-public class DeleteKongregateRequest {
+public class DeleteKongregateRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeleteKongregateResponse {
+public class DeleteKongregateResponse : PlayFabResultCommon {
 }
 
-public class DeleteNintendoRequest {
+public class DeleteNintendoRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeleteNintendoResponse {
+public class DeleteNintendoResponse : PlayFabResultCommon {
 }
 
-public class DeletePSNRequest {
+public class DeletePSNRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeletePSNResponse {
+public class DeletePSNResponse : PlayFabResultCommon {
 }
 
-public class DeleteSteamRequest {
+public class DeleteSteamRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeleteSteamResponse {
+public class DeleteSteamResponse : PlayFabResultCommon {
 }
 
-public class DeleteToxModRequest {
+public class DeleteToxModRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeleteToxModResponse {
+public class DeleteToxModResponse : PlayFabResultCommon {
 }
 
-public class DeleteTwitchRequest {
+public class DeleteTwitchRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class DeleteTwitchResponse {
+public class DeleteTwitchResponse : PlayFabResultCommon {
 }
 
 /// <summary>
@@ -210,112 +210,112 @@ public class EntityKey {
     public string? TypeString { get; set; }
 }
 
-public class GetAppleRequest {
+public class GetAppleRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetAppleResponse {
+public class GetAppleResponse : PlayFabResultCommon {
     public string? AppBundleId { get; set; }
     public bool Created { get; set; }
     public bool? IgnoreExpirationDate { get; set; }
     public bool? RequireSecureAuthentication { get; set; }
 }
 
-public class GetFacebookInstantGamesRequest {
+public class GetFacebookInstantGamesRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetFacebookInstantGamesResponse {
+public class GetFacebookInstantGamesResponse : PlayFabResultCommon {
     public string? AppID { get; set; }
     public bool Created { get; set; }
 }
 
-public class GetFacebookRequest {
+public class GetFacebookRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetFacebookResponse {
+public class GetFacebookResponse : PlayFabResultCommon {
     public string? AppID { get; set; }
     public bool Created { get; set; }
     public string? NotificationEmail { get; set; }
 }
 
-public class GetGoogleRequest {
+public class GetGoogleRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetGoogleResponse {
+public class GetGoogleResponse : PlayFabResultCommon {
     public string? AppPackageID { get; set; }
     public bool Created { get; set; }
     public string? OAuthClientID { get; set; }
     public string? OauthCustomRedirectUri { get; set; }
 }
 
-public class GetKongregateRequest {
+public class GetKongregateRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetKongregateResponse {
+public class GetKongregateResponse : PlayFabResultCommon {
     public bool Created { get; set; }
 }
 
-public class GetNintendoRequest {
+public class GetNintendoRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetNintendoResponse {
+public class GetNintendoResponse : PlayFabResultCommon {
     public string? ApplicationID { get; set; }
     public bool Created { get; set; }
     public List<NintendoEnvironment>? Environments { get; set; }
 }
 
-public class GetPSNRequest {
+public class GetPSNRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetPSNResponse {
+public class GetPSNResponse : PlayFabResultCommon {
     public string? ClientID { get; set; }
     public bool Created { get; set; }
     public string? NextGenClientID { get; set; }
 }
 
-public class GetSteamRequest {
+public class GetSteamRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetSteamResponse {
+public class GetSteamResponse : PlayFabResultCommon {
     public string? ApplicationId { get; set; }
     public bool Created { get; set; }
     public bool? EnforceServiceSpecificTickets { get; set; }
     public bool? UseSandbox { get; set; }
 }
 
-public class GetToxModRequest {
+public class GetToxModRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetToxModResponse {
+public class GetToxModResponse : PlayFabResultCommon {
     public string? AccountId { get; set; }
     public string? AccountKey { get; set; }
     public bool Created { get; set; }
     public bool Enabled { get; set; }
 }
 
-public class GetTwitchRequest {
+public class GetTwitchRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetTwitchResponse {
+public class GetTwitchResponse : PlayFabResultCommon {
     public string? ClientID { get; set; }
     public bool Created { get; set; }
 }

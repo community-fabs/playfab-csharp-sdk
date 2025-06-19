@@ -29,4 +29,21 @@ public static class Utils
             File.Delete(file);
         }
     }
+
+    public static void RecursiveCopy(string source, string target)
+    {
+        if (!Directory.Exists(source))
+        {
+            throw new Exception($"Source directory '{source}' does not exist.");
+        }
+
+        var sourceFiles = Directory.GetFiles(source, "*.*", SearchOption.AllDirectories);
+        foreach (var file in sourceFiles)
+        {
+            var relativePath = Path.GetRelativePath(source, file);
+            var destinationPath = Path.Combine(target, relativePath);
+            Directory.CreateDirectory(Path.GetDirectoryName(destinationPath)!);
+            File.Copy(file, destinationPath, true);
+        }
+    }
 }

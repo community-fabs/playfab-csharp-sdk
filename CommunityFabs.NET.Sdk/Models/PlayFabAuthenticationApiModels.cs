@@ -3,12 +3,12 @@ namespace CommunityFabs.NET.Sdk.Models.Authentication;
 /// <summary>
 /// Create or return a game_server entity token. Caller must be a title entity.
 /// </summary>
-public class AuthenticateCustomIdRequest {
+public class AuthenticateCustomIdRequest : PlayFabRequestCommon {
     public required string CustomId { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class AuthenticateCustomIdResult {
+public class AuthenticateCustomIdResult : PlayFabResultCommon {
     public EntityTokenResponse? EntityToken { get; set; }
     public bool NewlyCreated { get; set; }
 }
@@ -16,12 +16,12 @@ public class AuthenticateCustomIdResult {
 /// <summary>
 /// Delete a game_server entity. The caller can be the game_server entity attempting to delete itself. Or a title entity attempting to delete game_server entities for this title.
 /// </summary>
-public class DeleteRequest {
+public class DeleteRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required EntityKey Entity { get; set; }
 }
 
-public class EmptyResponse {
+public class EmptyResponse : PlayFabResultCommon {
 }
 
 /// <summary>
@@ -51,12 +51,12 @@ public class EntityTokenResponse {
 /// <summary>
 /// This API must be called with X-SecretKey, X-Authentication or X-EntityToken headers. An optional EntityKey may be included to attempt to set the resulting EntityToken to a specific entity, however the entity must be a relation of the caller, such as the master_player_account of a character. If sending X-EntityToken the account will be marked as freshly logged in and will issue a new token. If using X-Authentication or X-EntityToken the header must still be valid and cannot be expired or revoked.
 /// </summary>
-public class GetEntityTokenRequest {
+public class GetEntityTokenRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public EntityKey? Entity { get; set; }
 }
 
-public class GetEntityTokenResponse {
+public class GetEntityTokenResponse : PlayFabResultCommon {
     public EntityKey? Entity { get; set; }
     public string? EntityToken { get; set; }
     public DateTime? TokenExpiration { get; set; }
@@ -106,12 +106,12 @@ public enum LoginIdentityProvider {
 /// <summary>
 /// Given an entity token, validates that it hasn't expired or been revoked and will return details of the owner.
 /// </summary>
-public class ValidateEntityTokenRequest {
+public class ValidateEntityTokenRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string EntityToken { get; set; }
 }
 
-public class ValidateEntityTokenResponse {
+public class ValidateEntityTokenResponse : PlayFabResultCommon {
     public EntityKey? Entity { get; set; }
     public IdentifiedDeviceType? IdentifiedDeviceType { get; set; }
     public LoginIdentityProvider? IdentityProvider { get; set; }

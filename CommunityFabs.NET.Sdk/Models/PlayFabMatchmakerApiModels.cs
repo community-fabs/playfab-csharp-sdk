@@ -4,24 +4,24 @@ namespace CommunityFabs.NET.Sdk.Models.Matchmaker;
 /// This API allows the external match-making service to confirm that the user has a valid Session Ticket for the title, in order to securely enable match-making. The client passes the user's Session Ticket to the external match-making service, which then passes the Session Ticket in as the AuthorizationTicket in this call.
 /// </summary>
 [Obsolete("Do not use")]
-public class AuthUserRequest {
+public class AuthUserRequest : PlayFabRequestCommon {
     public required string AuthorizationTicket { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class AuthUserResponse {
+public class AuthUserResponse : PlayFabResultCommon {
     public bool Authorized { get; set; }
     public string? PlayFabId { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class DeregisterGameRequest {
+public class DeregisterGameRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string LobbyId { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class DeregisterGameResponse {
+public class DeregisterGameResponse : PlayFabResultCommon {
 }
 
 /// <summary>
@@ -47,25 +47,25 @@ public class ItemInstance {
 }
 
 [Obsolete("Do not use")]
-public class PlayerJoinedRequest {
+public class PlayerJoinedRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string LobbyId { get; set; }
     public required string PlayFabId { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class PlayerJoinedResponse {
+public class PlayerJoinedResponse : PlayFabResultCommon {
 }
 
 [Obsolete("Do not use")]
-public class PlayerLeftRequest {
+public class PlayerLeftRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string LobbyId { get; set; }
     public required string PlayFabId { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class PlayerLeftResponse {
+public class PlayerLeftResponse : PlayFabResultCommon {
 }
 
 public enum Region {
@@ -79,7 +79,7 @@ public enum Region {
 }
 
 [Obsolete("Do not use")]
-public class RegisterGameRequest {
+public class RegisterGameRequest : PlayFabRequestCommon {
     public required string Build { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
     public required string GameMode { get; set; }
@@ -94,12 +94,12 @@ public class RegisterGameRequest {
 }
 
 [Obsolete("Do not use")]
-public class RegisterGameResponse {
+public class RegisterGameResponse : PlayFabResultCommon {
     public string? LobbyId { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class StartGameRequest {
+public class StartGameRequest : PlayFabRequestCommon {
     public required string Build { get; set; }
     public string? CustomCommandLineData { get; set; }
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -109,7 +109,7 @@ public class StartGameRequest {
 }
 
 [Obsolete("Do not use")]
-public class StartGameResponse {
+public class StartGameResponse : PlayFabResultCommon {
     public string? GameID { get; set; }
     public string? ServerHostname { get; set; }
     public string? ServerIPV4Address { get; set; }
@@ -119,14 +119,14 @@ public class StartGameResponse {
 }
 
 [Obsolete("Do not use")]
-public class UserInfoRequest {
+public class UserInfoRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int MinCatalogVersion { get; set; }
     public required string PlayFabId { get; set; }
 }
 
 [Obsolete("Do not use")]
-public class UserInfoResponse {
+public class UserInfoResponse : PlayFabResultCommon {
     public List<ItemInstance>? Inventory { get; set; }
     public bool IsDeveloper { get; set; }
     public string? PlayFabId { get; set; }

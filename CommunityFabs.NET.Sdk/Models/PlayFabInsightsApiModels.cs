@@ -1,10 +1,10 @@
 namespace CommunityFabs.NET.Sdk.Models.Insights;
 
-public class InsightsEmptyRequest {
+public class InsightsEmptyRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
 }
 
-public class InsightsGetDetailsResponse {
+public class InsightsGetDetailsResponse : PlayFabResultCommon {
     public UInt32 DataUsageMb { get; set; }
     public string? ErrorMessage { get; set; }
     public InsightsGetLimitsResponse? Limits { get; set; }
@@ -13,7 +13,7 @@ public class InsightsGetDetailsResponse {
     public int RetentionDays { get; set; }
 }
 
-public class InsightsGetLimitsResponse {
+public class InsightsGetLimitsResponse : PlayFabResultCommon {
     public int DefaultPerformanceLevel { get; set; }
     public int DefaultStorageRetentionDays { get; set; }
     public int StorageMaxRetentionDays { get; set; }
@@ -24,12 +24,12 @@ public class InsightsGetLimitsResponse {
 /// <summary>
 /// Returns the current status for the requested operation id.
 /// </summary>
-public class InsightsGetOperationStatusRequest {
+public class InsightsGetOperationStatusRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? OperationId { get; set; }
 }
 
-public class InsightsGetOperationStatusResponse {
+public class InsightsGetOperationStatusResponse : PlayFabResultCommon {
     public string? Message { get; set; }
     public required DateTime OperationCompletedTime { get; set; }
     public string? OperationId { get; set; }
@@ -43,16 +43,16 @@ public class InsightsGetOperationStatusResponse {
 /// <summary>
 /// Returns a list of operations that are in the pending state for the requested operation type.
 /// </summary>
-public class InsightsGetPendingOperationsRequest {
+public class InsightsGetPendingOperationsRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public string? OperationType { get; set; }
 }
 
-public class InsightsGetPendingOperationsResponse {
+public class InsightsGetPendingOperationsResponse : PlayFabResultCommon {
     public List<InsightsGetOperationStatusResponse>? PendingOperations { get; set; }
 }
 
-public class InsightsOperationResponse {
+public class InsightsOperationResponse : PlayFabResultCommon {
     public string? Message { get; set; }
     public string? OperationId { get; set; }
     public string? OperationType { get; set; }
@@ -72,7 +72,7 @@ public class InsightsPerformanceLevel {
 /// <summary>
 /// Sets the performance level to the requested value. Use the GetLimits method to get the allowed values.
 /// </summary>
-public class InsightsSetPerformanceRequest {
+public class InsightsSetPerformanceRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int PerformanceLevel { get; set; }
 }
@@ -80,7 +80,7 @@ public class InsightsSetPerformanceRequest {
 /// <summary>
 /// Sets the data storage retention to the requested value. Use the GetLimits method to get the range of allowed values.
 /// </summary>
-public class InsightsSetStorageRetentionRequest {
+public class InsightsSetStorageRetentionRequest : PlayFabRequestCommon {
     public Dictionary<string, string>? CustomTags { get; set; }
     public int RetentionDays { get; set; }
 }
