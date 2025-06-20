@@ -1,0 +1,5 @@
+﻿@using CommunityFabs.NET.Generator.Templates.Models;
+@model LegacyApiCall;
+    public async Task<@(Model.Result)> @(Model.Name)Async(@Model.Request request, Dictionary<string, string>? extraHeaders = null) {
+        return await PostData<@(Model.Result)>("@Model.Url", request, extraHeaders);
+    }

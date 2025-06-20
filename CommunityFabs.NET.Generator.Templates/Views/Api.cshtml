@@ -1,0 +1,11 @@
+﻿@using CommunityFabs.NET.Generator.Templates.Models;
+@model LegacyApiDocument;
+using CommunityFabs.NET.Sdk.Models.@Model.Name;
+namespace CommunityFabs.NET.Sdk.Interfaces;
+
+public class @($"IPlayFab{Model.Name}Api") {
+@foreach (var apiCall in Model.Calls!)
+{
+    @Html.Raw($"    public Task<{apiCall.Result}> {apiCall.Name}Async({apiCall.Request} request);\r\n")
+}
+}

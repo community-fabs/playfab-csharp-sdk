@@ -5,7 +5,7 @@ public interface IPlayFabDataApi {
     /// <summary>
     /// Abort pending file uploads to an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = fileApi.AbortFileUploadsAsync({);
+    /// var response = await fileApi.AbortFileUploadsAsync({);
     ///   "FileNames": [
     ///     "avatar",
     ///     "game_state"
@@ -19,11 +19,11 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/file/file/abortfileuploads">Microsoft Documentation</see>
     /// </summary>
-    public Task<AbortFileUploadsResponse> AbortFileUploadsAsync(AbortFileUploadsRequest request);
+    public Task<AbortFileUploadsResponse> AbortFileUploadsAsync(AbortFileUploadsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Delete files on an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = fileApi.DeleteFilesAsync({);
+    /// var response = await fileApi.DeleteFilesAsync({);
     ///   "FileNames": [
     ///     "game_state",
     ///     "avatar"
@@ -37,11 +37,11 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/file/file/deletefiles">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteFilesResponse> DeleteFilesAsync(DeleteFilesRequest request);
+    public Task<DeleteFilesResponse> DeleteFilesAsync(DeleteFilesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Finalize file uploads to an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = fileApi.FinalizeFileUploadsAsync({);
+    /// var response = await fileApi.FinalizeFileUploadsAsync({);
     ///   "ProfileVersion": 0,
     ///   "FileNames": [
     ///     "avatar",
@@ -56,11 +56,11 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/file/file/finalizefileuploads">Microsoft Documentation</see>
     /// </summary>
-    public Task<FinalizeFileUploadsResponse> FinalizeFileUploadsAsync(FinalizeFileUploadsRequest request);
+    public Task<FinalizeFileUploadsResponse> FinalizeFileUploadsAsync(FinalizeFileUploadsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves file metadata from an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = fileApi.GetFilesAsync({);
+    /// var response = await fileApi.GetFilesAsync({);
     ///   "Entity": {
     ///     "Id": "ID",
     ///     "Type": "title_player_account",
@@ -70,11 +70,11 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/file/file/getfiles">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetFilesResponse> GetFilesAsync(GetFilesRequest request);
+    public Task<GetFilesResponse> GetFilesAsync(GetFilesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves objects from an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = objectApi.GetObjectsAsync({);
+    /// var response = await objectApi.GetObjectsAsync({);
     ///   "Entity": {
     ///     "Id": "ABC90712ABC",
     ///     "Type": "title_player_account",
@@ -84,11 +84,11 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/object/object/getobjects">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetObjectsResponse> GetObjectsAsync(GetObjectsRequest request);
+    public Task<GetObjectsResponse> GetObjectsAsync(GetObjectsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Initiates file uploads to an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = fileApi.InitiateFileUploadsAsync({);
+    /// var response = await fileApi.InitiateFileUploadsAsync({);
     ///   "FileNames": [
     ///     "avatar",
     ///     "game_state"
@@ -102,11 +102,11 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/file/file/initiatefileuploads">Microsoft Documentation</see>
     /// </summary>
-    public Task<InitiateFileUploadsResponse> InitiateFileUploadsAsync(InitiateFileUploadsRequest request);
+    public Task<InitiateFileUploadsResponse> InitiateFileUploadsAsync(InitiateFileUploadsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets objects on an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = objectApi.SetObjectsAsync({);
+    /// var response = await objectApi.SetObjectsAsync({);
     ///   "ExpectedProfileVersion": 5,
     ///   "Objects": [
     ///     {
@@ -150,5 +150,5 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/object/object/setobjects">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetObjectsResponse> SetObjectsAsync(SetObjectsRequest request);
+    public Task<SetObjectsResponse> SetObjectsAsync(SetObjectsRequest request, Dictionary<string, string>? extraHeaders);
 }

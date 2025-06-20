@@ -28,6 +28,9 @@ public class LegacyApiDocument
 
     [JsonPropertyName("calls")]
     public List<LegacyApiCall>? Calls { get; set; }
+
+    [JsonPropertyName("errors")]
+    public Dictionary<string, ErrorCode> Errors { get; set; } = new Dictionary<string, ErrorCode>();
 }
 
 /// <summary>
@@ -315,11 +318,11 @@ public class LegacyApiCall
             summary.AppendLine($"{prefix}<example><br/>Example:<code>");
             if (requestLines.Length == 1)
             {
-                summary.AppendLine($"{prefix}var response = {apiName}Api.{Name}Async({requestLines[0]});");
+                summary.AppendLine($"{prefix}var response = await {apiName}Api.{Name}Async({requestLines[0]});");
             }
             else
             {
-                summary.AppendLine($"{prefix}var response = {apiName}Api.{Name}Async({requestLines[0]});");
+                summary.AppendLine($"{prefix}var response = await {apiName}Api.{Name}Async({requestLines[0]});");
                 for (int i = 1; i < requestLines.Length; i++)
                 {
                     if (i == requestLines.Length - 1)
@@ -345,4 +348,12 @@ public class LegacyApiCall
 
         return summary.ToString();
     }
+}
+
+public class ErrorCode
+{
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
 }

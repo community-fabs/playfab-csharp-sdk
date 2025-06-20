@@ -1,0 +1,17 @@
+﻿@using CommunityFabs.NET.Generator.Templates.Models;
+@model LegacyApiDocument;
+using CommunityFabs.NET.Sdk.Models.@Model.Name;
+using CommunityFabs.NET.Sdk.Models;
+namespace CommunityFabs.NET.Sdk.Interfaces;
+
+public class @($"PlayFab{Model.Name}InstanceApi : PlayFabBaseInstanceApi, IPlayFab{Model.Name}Api") {
+    public PlayFab@(Model.Name)InstanceApi() : base() { }
+    public PlayFab@(Model.Name)InstanceApi(PlayFabApiSettings apiSettings) : base(apiSettings) { }
+    public PlayFab@(Model.Name)InstanceApi(PlayFabAuthenticationContext context) : base(context) { }
+    public PlayFab@(Model.Name)InstanceApi(PlayFabApiSettings settings, PlayFabAuthenticationContext context) : base(settings, context) { }
+
+@foreach (var apiCall in Model.Calls!)
+{
+    @(await Html.PartialAsync("InstanceApiMethod", apiCall))
+}
+}

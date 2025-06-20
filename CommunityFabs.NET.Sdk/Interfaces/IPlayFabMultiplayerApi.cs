@@ -5,7 +5,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel all active tickets the player is a member of in a given queue.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.CancelAllMatchmakingTicketsForPlayerAsync({);
+    /// var response = await matchApi.CancelAllMatchmakingTicketsForPlayerAsync({);
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -16,11 +16,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/cancelallmatchmakingticketsforplayer">Microsoft Documentation</see>
     /// </summary>
-    public Task<CancelAllMatchmakingTicketsForPlayerResult> CancelAllMatchmakingTicketsForPlayerAsync(CancelAllMatchmakingTicketsForPlayerRequest request);
+    public Task<CancelAllMatchmakingTicketsForPlayerResult> CancelAllMatchmakingTicketsForPlayerAsync(CancelAllMatchmakingTicketsForPlayerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Cancel all active backfill tickets the player is a member of in a given queue.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.CancelAllServerBackfillTicketsForPlayerAsync({);
+    /// var response = await matchApi.CancelAllServerBackfillTicketsForPlayerAsync({);
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -31,44 +31,44 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/cancelallserverbackfillticketsforplayer">Microsoft Documentation</see>
     /// </summary>
-    public Task<CancelAllServerBackfillTicketsForPlayerResult> CancelAllServerBackfillTicketsForPlayerAsync(CancelAllServerBackfillTicketsForPlayerRequest request);
+    public Task<CancelAllServerBackfillTicketsForPlayerResult> CancelAllServerBackfillTicketsForPlayerAsync(CancelAllServerBackfillTicketsForPlayerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Cancel a matchmaking ticket.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.CancelMatchmakingTicketAsync({);
+    /// var response = await matchApi.CancelMatchmakingTicketAsync({);
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/cancelmatchmakingticket">Microsoft Documentation</see>
     /// </summary>
-    public Task<CancelMatchmakingTicketResult> CancelMatchmakingTicketAsync(CancelMatchmakingTicketRequest request);
+    public Task<CancelMatchmakingTicketResult> CancelMatchmakingTicketAsync(CancelMatchmakingTicketRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Cancel a batch model creation.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.CancelModelAsync({);
+    /// var response = await trueskillApi.CancelModelAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/cancelmodel">Microsoft Documentation</see>
     /// </summary>
-    public Task<CancelModelResponse> CancelModelAsync(CancelModelRequest request);
+    public Task<CancelModelResponse> CancelModelAsync(CancelModelRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Cancel a server backfill ticket.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.CancelServerBackfillTicketAsync({);
+    /// var response = await matchApi.CancelServerBackfillTicketAsync({);
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/cancelserverbackfillticket">Microsoft Documentation</see>
     /// </summary>
-    public Task<CancelServerBackfillTicketResult> CancelServerBackfillTicketAsync(CancelServerBackfillTicketRequest request);
+    public Task<CancelServerBackfillTicketResult> CancelServerBackfillTicketAsync(CancelServerBackfillTicketRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Create a base model with default settings.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.CreateBaseModelAsync({);
+    /// var response = await trueskillApi.CreateBaseModelAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelName": "Test Batch Model",
     ///   "Conditions": [
@@ -85,11 +85,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/createbasemodel">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateBaseModelResponse> CreateBaseModelAsync(CreateBaseModelRequest request);
+    public Task<CreateBaseModelResponse> CreateBaseModelAsync(CreateBaseModelRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates a batch model that is learned from a title's match results in a scenario.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.CreateBatchModelAsync({);
+    /// var response = await trueskillApi.CreateBatchModelAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelName": "Test Batch Model",
     ///   "Conditions": [
@@ -115,11 +115,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/createbatchmodel">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateBatchModelResponse> CreateBatchModelAsync(CreateBatchModelRequest request);
+    public Task<CreateBatchModelResponse> CreateBatchModelAsync(CreateBatchModelRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates a multiplayer server build alias.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.CreateBuildAliasAsync({);
+    /// var response = await multiplayerserverApi.CreateBuildAliasAsync({);
     ///   "AliasName": "AliasName",
     ///   "BuildSelectionCriteria": [
     ///     {
@@ -132,11 +132,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/createbuildalias">Microsoft Documentation</see>
     /// </summary>
-    public Task<BuildAliasDetailsResponse> CreateBuildAliasAsync(CreateBuildAliasRequest request);
+    public Task<BuildAliasDetailsResponse> CreateBuildAliasAsync(CreateBuildAliasRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates a multiplayer server build with a custom container.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.CreateBuildWithCustomContainerAsync({);
+    /// var response = await multiplayerserverApi.CreateBuildWithCustomContainerAsync({);
     ///   "ContainerRunCommand": "/data/Assets -startserver",
     ///   "GameAssetReferences": [
     ///     {
@@ -245,11 +245,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/createbuildwithcustomcontainer">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateBuildWithCustomContainerResponse> CreateBuildWithCustomContainerAsync(CreateBuildWithCustomContainerRequest request);
+    public Task<CreateBuildWithCustomContainerResponse> CreateBuildWithCustomContainerAsync(CreateBuildWithCustomContainerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates a multiplayer server build with a managed container.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.CreateBuildWithManagedContainerAsync({);
+    /// var response = await multiplayerserverApi.CreateBuildWithManagedContainerAsync({);
     ///   "StartMultiplayerServerCommand": "gameserver.exe -startserver",
     ///   "GameAssetReferences": [
     ///     {
@@ -348,11 +348,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/createbuildwithmanagedcontainer">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateBuildWithManagedContainerResponse> CreateBuildWithManagedContainerAsync(CreateBuildWithManagedContainerRequest request);
+    public Task<CreateBuildWithManagedContainerResponse> CreateBuildWithManagedContainerAsync(CreateBuildWithManagedContainerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates a multiplayer server build with the server running as a process.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.CreateBuildWithProcessBasedServerAsync({);
+    /// var response = await multiplayerserverApi.CreateBuildWithProcessBasedServerAsync({);
     ///   "OsPlatform": "Windows",
     ///   "GameAssetReferences": [
     ///     {
@@ -409,11 +409,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/createbuildwithprocessbasedserver">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateBuildWithProcessBasedServerResponse> CreateBuildWithProcessBasedServerAsync(CreateBuildWithProcessBasedServerRequest request);
+    public Task<CreateBuildWithProcessBasedServerResponse> CreateBuildWithProcessBasedServerAsync(CreateBuildWithProcessBasedServerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Create a lobby.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.CreateLobbyAsync({);
+    /// var response = await lobbyApi.CreateLobbyAsync({);
     ///   "MaxPlayers": 50,
     ///   "Owner": {
     ///     "Id": "1234",
@@ -443,11 +443,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/createlobby">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateLobbyResult> CreateLobbyAsync(CreateLobbyRequest request);
+    public Task<CreateLobbyResult> CreateLobbyAsync(CreateLobbyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Create a matchmaking ticket as a client.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.CreateMatchmakingTicketAsync({);
+    /// var response = await matchApi.CreateMatchmakingTicketAsync({);
     ///   "Creator": {},
     ///   "MembersToMatchWith": [],
     ///   "GiveUpAfterSeconds": 100,
@@ -456,11 +456,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/creatematchmakingticket">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateMatchmakingTicketResult> CreateMatchmakingTicketAsync(CreateMatchmakingTicketRequest request);
+    public Task<CreateMatchmakingTicketResult> CreateMatchmakingTicketAsync(CreateMatchmakingTicketRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates a remote user to log on to a VM for a multiplayer server build.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.CreateRemoteUserAsync({);
+    /// var response = await multiplayerserverApi.CreateRemoteUserAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs",
     ///   "VmId": "VmID1",
@@ -470,12 +470,12 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/createremoteuser">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateRemoteUserResponse> CreateRemoteUserAsync(CreateRemoteUserRequest request);
+    public Task<CreateRemoteUserResponse> CreateRemoteUserAsync(CreateRemoteUserRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Create a scenario to specify which conditions, conditions values and events will be allowed when submitting match
     /// results.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.CreateScenarioAsync({);
+    /// var response = await trueskillApi.CreateScenarioAsync({);
     ///   "Name": "Test Scenario",
     ///   "Conditions": [
     ///     {
@@ -501,13 +501,13 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/createscenario">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateScenarioResponse> CreateScenarioAsync(CreateScenarioRequest request);
+    public Task<CreateScenarioResponse> CreateScenarioAsync(CreateScenarioRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Create a backfill matchmaking ticket as a server. A backfill ticket represents an ongoing game. The matchmaking service
     /// automatically starts matching the backfill ticket against other matchmaking tickets. Backfill tickets cannot match with
     /// other backfill tickets.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.CreateServerBackfillTicketAsync({);
+    /// var response = await matchApi.CreateServerBackfillTicketAsync({);
     ///   "Members": [],
     ///   "GiveUpAfterSeconds": 100,
     ///   "ServerDetails": {
@@ -528,12 +528,12 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/createserverbackfillticket">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateServerBackfillTicketResult> CreateServerBackfillTicketAsync(CreateServerBackfillTicketRequest request);
+    public Task<CreateServerBackfillTicketResult> CreateServerBackfillTicketAsync(CreateServerBackfillTicketRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Create a matchmaking ticket as a server. The matchmaking service automatically starts matching the ticket against other
     /// matchmaking tickets.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.CreateServerMatchmakingTicketAsync({);
+    /// var response = await matchApi.CreateServerMatchmakingTicketAsync({);
     ///   "Members": [
     ///     null
     ///   ],
@@ -543,11 +543,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/createservermatchmakingticket">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateMatchmakingTicketResult> CreateServerMatchmakingTicketAsync(CreateServerMatchmakingTicketRequest request);
+    public Task<CreateMatchmakingTicketResult> CreateServerMatchmakingTicketAsync(CreateServerMatchmakingTicketRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates a request to change a title's multiplayer server quotas.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.CreateTitleMultiplayerServersQuotaChangeAsync({);
+    /// var response = await multiplayerserverApi.CreateTitleMultiplayerServersQuotaChangeAsync({);
     ///   "ContactEmail": "john@mygamestudio.com",
     ///   "StartDate": "2020-01-23T00:00:00Z",
     ///   "ChangeDescription": "Season 3 Launch",
@@ -568,104 +568,104 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/createtitlemultiplayerserversquotachange">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateTitleMultiplayerServersQuotaChangeResponse> CreateTitleMultiplayerServersQuotaChangeAsync(CreateTitleMultiplayerServersQuotaChangeRequest request);
+    public Task<CreateTitleMultiplayerServersQuotaChangeResponse> CreateTitleMultiplayerServersQuotaChangeAsync(CreateTitleMultiplayerServersQuotaChangeRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Switch a model's state from Active to Deactivated.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.DeactivateModelAsync({);
+    /// var response = await trueskillApi.DeactivateModelAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/deactivatemodel">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeactivateModelResponse> DeactivateModelAsync(DeactivateModelRequest request);
+    public Task<DeactivateModelResponse> DeactivateModelAsync(DeactivateModelRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a multiplayer server game asset for a title.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.DeleteAssetAsync({);
+    /// var response = await multiplayerserverApi.DeleteAssetAsync({);
     ///   "FileName": "gameserver.zip"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/deleteasset">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteAssetAsync(DeleteAssetRequest request);
+    public Task<EmptyResponse> DeleteAssetAsync(DeleteAssetRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a multiplayer server build.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.DeleteBuildAsync({);
+    /// var response = await multiplayerserverApi.DeleteBuildAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/deletebuild">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteBuildAsync(DeleteBuildRequest request);
+    public Task<EmptyResponse> DeleteBuildAsync(DeleteBuildRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a multiplayer server build alias.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.DeleteBuildAliasAsync({);
+    /// var response = await multiplayerserverApi.DeleteBuildAliasAsync({);
     ///   "AliasId": "21781fa8-096d-4d9c-b699-75433d579285"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/deletebuildalias">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteBuildAliasAsync(DeleteBuildAliasRequest request);
+    public Task<EmptyResponse> DeleteBuildAliasAsync(DeleteBuildAliasRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Removes a multiplayer server build's region.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.DeleteBuildRegionAsync({);
+    /// var response = await multiplayerserverApi.DeleteBuildRegionAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "JapanEast"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/deletebuildregion">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteBuildRegionAsync(DeleteBuildRegionRequest request);
+    public Task<EmptyResponse> DeleteBuildRegionAsync(DeleteBuildRegionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a multiplayer server game certificate.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.DeleteCertificateAsync({);
+    /// var response = await multiplayerserverApi.DeleteCertificateAsync({);
     ///   "Name": "GameCertificate1"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/deletecertificate">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteCertificateAsync(DeleteCertificateRequest request);
+    public Task<EmptyResponse> DeleteCertificateAsync(DeleteCertificateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a container image repository.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.DeleteContainerImageRepositoryAsync({);
+    /// var response = await multiplayerserverApi.DeleteContainerImageRepositoryAsync({);
     ///   "ImageName": "imageName1"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/deletecontainerimagerepository">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteContainerImageRepositoryAsync(DeleteContainerImageRequest request);
+    public Task<EmptyResponse> DeleteContainerImageRepositoryAsync(DeleteContainerImageRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Delete a lobby.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.DeleteLobbyAsync({);
+    /// var response = await lobbyApi.DeleteLobbyAsync({);
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/deletelobby">Microsoft Documentation</see>
     /// </summary>
-    public Task<LobbyEmptyResult> DeleteLobbyAsync(DeleteLobbyRequest request);
+    public Task<LobbyEmptyResult> DeleteLobbyAsync(DeleteLobbyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Delete a model.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.DeleteModelAsync({);
+    /// var response = await trueskillApi.DeleteModelAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/deletemodel">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteModelResponse> DeleteModelAsync(DeleteModelRequest request);
+    public Task<DeleteModelResponse> DeleteModelAsync(DeleteModelRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a remote user to log on to a VM for a multiplayer server build.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.DeleteRemoteUserAsync({);
+    /// var response = await multiplayerserverApi.DeleteRemoteUserAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs",
     ///   "VmId": "VmID1",
@@ -674,48 +674,48 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/deleteremoteuser">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteRemoteUserAsync(DeleteRemoteUserRequest request);
+    public Task<EmptyResponse> DeleteRemoteUserAsync(DeleteRemoteUserRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Delete a scenario.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.DeleteScenarioAsync({);
+    /// var response = await trueskillApi.DeleteScenarioAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ForceDelete": true
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/deletescenario">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteScenarioResponse> DeleteScenarioAsync(DeleteScenarioRequest request);
+    public Task<DeleteScenarioResponse> DeleteScenarioAsync(DeleteScenarioRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a multiplayer server game secret.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.DeleteSecretAsync({);
+    /// var response = await multiplayerserverApi.DeleteSecretAsync({);
     ///   "Name": "GameSecret1"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/deletesecret">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteSecretAsync(DeleteSecretRequest request);
+    public Task<EmptyResponse> DeleteSecretAsync(DeleteSecretRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Enables the multiplayer server feature for a title.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.EnableMultiplayerServersForTitleAsync({});
+    /// var response = await multiplayerserverApi.EnableMultiplayerServersForTitleAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/enablemultiplayerserversfortitle">Microsoft Documentation</see>
     /// </summary>
-    public Task<EnableMultiplayerServersForTitleResponse> EnableMultiplayerServersForTitleAsync(EnableMultiplayerServersForTitleRequest request);
+    public Task<EnableMultiplayerServersForTitleResponse> EnableMultiplayerServersForTitleAsync(EnableMultiplayerServersForTitleRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Enables the parties feature for a title.
     /// <example><br/>Example:<code>
-    /// var response = partyApi.EnablePartiesForTitleAsync({});
+    /// var response = await partyApi.EnablePartiesForTitleAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/party/multiplayerserver/enablepartiesfortitle">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> EnablePartiesForTitleAsync(EnablePartiesForTitleRequest request);
+    public Task<EmptyResponse> EnablePartiesForTitleAsync(EnablePartiesForTitleRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Find lobbies which match certain criteria, and which friends are in.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.FindFriendLobbiesAsync({);
+    /// var response = await lobbyApi.FindFriendLobbiesAsync({);
     ///   "Filter": "string_key1 eq 'Wizard' and number_key5 gt 5",
     ///   "OrderBy": "number_key5 desc",
     ///   "ExternalPlatformFriends": "Xbox",
@@ -728,11 +728,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/findfriendlobbies">Microsoft Documentation</see>
     /// </summary>
-    public Task<FindFriendLobbiesResult> FindFriendLobbiesAsync(FindFriendLobbiesRequest request);
+    public Task<FindFriendLobbiesResult> FindFriendLobbiesAsync(FindFriendLobbiesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Find all the lobbies that match certain criteria.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.FindLobbiesAsync({);
+    /// var response = await lobbyApi.FindLobbiesAsync({);
     ///   "Filter": "string_key1 eq 'Wizard' and number_key5 gt 5",
     ///   "OrderBy": "number_key5 desc",
     ///   "Pagination": {
@@ -743,95 +743,95 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/findlobbies">Microsoft Documentation</see>
     /// </summary>
-    public Task<FindLobbiesResult> FindLobbiesAsync(FindLobbiesRequest request);
+    public Task<FindLobbiesResult> FindLobbiesAsync(FindLobbiesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets a URL that can be used to download the specified asset. A sample pre-authenticated url -
     /// https://sampleStorageAccount.blob.core.windows.net/gameassets/gameserver.zip?sv=2015-04-05&ss=b&srt=sco&sp=rw&st=startDa
     /// te&se=endDate&spr=https&sig=sampleSig&api-version=2017-07-29
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetAssetDownloadUrlAsync({);
+    /// var response = await multiplayerserverApi.GetAssetDownloadUrlAsync({);
     ///   "FileName": "gameserver.zip"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getassetdownloadurl">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetAssetDownloadUrlResponse> GetAssetDownloadUrlAsync(GetAssetDownloadUrlRequest request);
+    public Task<GetAssetDownloadUrlResponse> GetAssetDownloadUrlAsync(GetAssetDownloadUrlRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the URL to upload assets to. A sample pre-authenticated url -
     /// https://sampleStorageAccount.blob.core.windows.net/gameassets/gameserver.zip?sv=2015-04-05&ss=b&srt=sco&sp=rw&st=startDa
     /// te&se=endDate&spr=https&sig=sampleSig&api-version=2017-07-29
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetAssetUploadUrlAsync({);
+    /// var response = await multiplayerserverApi.GetAssetUploadUrlAsync({);
     ///   "FileName": "gameserver.zip"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getassetuploadurl">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetAssetUploadUrlResponse> GetAssetUploadUrlAsync(GetAssetUploadUrlRequest request);
+    public Task<GetAssetUploadUrlResponse> GetAssetUploadUrlAsync(GetAssetUploadUrlRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets a multiplayer server build.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetBuildAsync({);
+    /// var response = await multiplayerserverApi.GetBuildAsync({);
     ///   "BuildId": "53781fa8-006d-4e9c-b733-57433d579285"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getbuild">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetBuildResponse> GetBuildAsync(GetBuildRequest request);
+    public Task<GetBuildResponse> GetBuildAsync(GetBuildRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets a multiplayer server build alias.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetBuildAliasAsync({);
+    /// var response = await multiplayerserverApi.GetBuildAliasAsync({);
     ///   "AliasId": "21781fa8-096d-4d9c-b699-75433d579285"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getbuildalias">Microsoft Documentation</see>
     /// </summary>
-    public Task<BuildAliasDetailsResponse> GetBuildAliasAsync(GetBuildAliasRequest request);
+    public Task<BuildAliasDetailsResponse> GetBuildAliasAsync(GetBuildAliasRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets supported locales for the cognitive services based on the specified service type.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetCognitiveServicesLocalesAsync({);
+    /// var response = await multiplayerserverApi.GetCognitiveServicesLocalesAsync({);
     ///   "CognitiveServicesType": "SpeechToText",
     ///   "Region": "WestUs"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getcognitiveserviceslocales">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetCognitiveServicesLocalesResponse> GetCognitiveServicesLocalesAsync(GetCognitiveServicesLocalesRequest request);
+    public Task<GetCognitiveServicesLocalesResponse> GetCognitiveServicesLocalesAsync(GetCognitiveServicesLocalesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets a token for the cognitive services based on the specified service type.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetCognitiveServicesTokenAsync({);
+    /// var response = await multiplayerserverApi.GetCognitiveServicesTokenAsync({);
     ///   "CognitiveServicesType": "SpeechToText",
     ///   "Region": "AustraliaEast"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getcognitiveservicestoken">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetCognitiveServicesTokenResponse> GetCognitiveServicesTokenAsync(GetCognitiveServicesTokenRequest request);
+    public Task<GetCognitiveServicesTokenResponse> GetCognitiveServicesTokenAsync(GetCognitiveServicesTokenRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the credentials to the container registry.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetContainerRegistryCredentialsAsync({});
+    /// var response = await multiplayerserverApi.GetContainerRegistryCredentialsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getcontainerregistrycredentials">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetContainerRegistryCredentialsResponse> GetContainerRegistryCredentialsAsync(GetContainerRegistryCredentialsRequest request);
+    public Task<GetContainerRegistryCredentialsResponse> GetContainerRegistryCredentialsAsync(GetContainerRegistryCredentialsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get a lobby.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.GetLobbyAsync({);
+    /// var response = await lobbyApi.GetLobbyAsync({);
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/getlobby">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetLobbyResult> GetLobbyAsync(GetLobbyRequest request);
+    public Task<GetLobbyResult> GetLobbyAsync(GetLobbyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get a match.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.GetMatchAsync({);
+    /// var response = await matchApi.GetMatchAsync({);
     ///   "MatchId": "4e0c5fd7-80e9-4744-b0ce-061a7f067ff5",
     ///   "QueueName": "custom123",
     ///   "EscapeObject": false,
@@ -840,21 +840,21 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/getmatch">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetMatchResult> GetMatchAsync(GetMatchRequest request);
+    public Task<GetMatchResult> GetMatchAsync(GetMatchRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// SDK support is limited to C# and Java for this API. Get a matchmaking queue configuration.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.GetMatchmakingQueueAsync({);
+    /// var response = await matchApi.GetMatchmakingQueueAsync({);
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking-admin/getmatchmakingqueue">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetMatchmakingQueueResult> GetMatchmakingQueueAsync(GetMatchmakingQueueRequest request);
+    public Task<GetMatchmakingQueueResult> GetMatchmakingQueueAsync(GetMatchmakingQueueRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get a matchmaking ticket by ticket Id.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.GetMatchmakingTicketAsync({);
+    /// var response = await matchApi.GetMatchmakingTicketAsync({);
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123",
     ///   "EscapeObject": false
@@ -862,32 +862,32 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/getmatchmakingticket">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetMatchmakingTicketResult> GetMatchmakingTicketAsync(GetMatchmakingTicketRequest request);
+    public Task<GetMatchmakingTicketResult> GetMatchmakingTicketAsync(GetMatchmakingTicketRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the details of a Model.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.GetModelDetailsAsync({);
+    /// var response = await trueskillApi.GetModelDetailsAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/getmodeldetails">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetModelDetailsResponse> GetModelDetailsAsync(GetModelDetailsRequest request);
+    public Task<GetModelDetailsResponse> GetModelDetailsAsync(GetModelDetailsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get all of the models assigned to a specific scenario.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.GetModelsByScenarioAsync({);
+    /// var response = await trueskillApi.GetModelsByScenarioAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/getmodelsbyscenario">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetModelsByScenarioResponse> GetModelsByScenarioAsync(GetModelsByScenarioRequest request);
+    public Task<GetModelsByScenarioResponse> GetModelsByScenarioAsync(GetModelsByScenarioRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets multiplayer server session details and associated user connection tokens for a build.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetMultiplayerServerAndTokenAsync({);
+    /// var response = await multiplayerserverApi.GetMultiplayerServerAndTokenAsync({);
     ///   "TokenPlayerIds": [
     ///     "User1",
     ///     "User2"
@@ -897,42 +897,42 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getmultiplayerserverandtoken">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetMultiplayerServerAndTokenResponse> GetMultiplayerServerAndTokenAsync(GetMultiplayerServerAndTokenRequest request);
+    public Task<GetMultiplayerServerAndTokenResponse> GetMultiplayerServerAndTokenAsync(GetMultiplayerServerAndTokenRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets multiplayer server session details for a build.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetMultiplayerServerDetailsAsync({);
+    /// var response = await multiplayerserverApi.GetMultiplayerServerDetailsAsync({);
     ///   "SessionId": "02bdef0e-e01e-4b29-8efe-ff9f47a06d8c"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getmultiplayerserverdetails">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetMultiplayerServerDetailsResponse> GetMultiplayerServerDetailsAsync(GetMultiplayerServerDetailsRequest request);
+    public Task<GetMultiplayerServerDetailsResponse> GetMultiplayerServerDetailsAsync(GetMultiplayerServerDetailsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets multiplayer server logs after a server has terminated.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetMultiplayerServerLogsAsync({);
+    /// var response = await multiplayerserverApi.GetMultiplayerServerLogsAsync({);
     ///   "Region": "AustraliaEast",
     ///   "ServerId": "SomeServerId"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getmultiplayerserverlogs">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetMultiplayerServerLogsResponse> GetMultiplayerServerLogsAsync(GetMultiplayerServerLogsRequest request);
+    public Task<GetMultiplayerServerLogsResponse> GetMultiplayerServerLogsAsync(GetMultiplayerServerLogsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets multiplayer server logs after a server has terminated.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetMultiplayerSessionLogsBySessionIdAsync({);
+    /// var response = await multiplayerserverApi.GetMultiplayerSessionLogsBySessionIdAsync({);
     ///   "SessionId": "92e29db9-4004-4349-9a1f-b70ac01bdc08"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getmultiplayersessionlogsbysessionid">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetMultiplayerServerLogsResponse> GetMultiplayerSessionLogsBySessionIdAsync(GetMultiplayerSessionLogsBySessionIdRequest request);
+    public Task<GetMultiplayerServerLogsResponse> GetMultiplayerSessionLogsBySessionIdAsync(GetMultiplayerSessionLogsBySessionIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets skill values of a set of players from the primary model of a given scenario.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.GetPlayerSkillAsync({);
+    /// var response = await trueskillApi.GetPlayerSkillAsync({);
     ///   "Conditions": {
     ///     "Platform": "Xbox",
     ///     "Mode": "Deathmatch"
@@ -960,11 +960,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill/getplayerskill">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerSkillResponse> GetPlayerSkillAsync(GetPlayerSkillRequest request);
+    public Task<GetPlayerSkillResponse> GetPlayerSkillAsync(GetPlayerSkillRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets skill values of a set of players for multiple sets of conditions from the primary model of a given scenario.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.GetPlayerSkillForConditionsAsync({);
+    /// var response = await trueskillApi.GetPlayerSkillForConditionsAsync({);
     ///   "Conditions": [
     ///     {
     ///       "Conditions": {
@@ -1002,11 +1002,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill/getplayerskillforconditions">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerSkillForConditionsResponse> GetPlayerSkillForConditionsAsync(GetPlayerSkillForConditionsRequest request);
+    public Task<GetPlayerSkillForConditionsResponse> GetPlayerSkillForConditionsAsync(GetPlayerSkillForConditionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets skill values of a set of players for multiple sets of conditions from a specific model.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.GetPlayerSkillForConditionsFromModelAsync({);
+    /// var response = await trueskillApi.GetPlayerSkillForConditionsFromModelAsync({);
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf",
     ///   "Conditions": [
     ///     {
@@ -1045,11 +1045,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill/getplayerskillforconditionsfrommodel">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerSkillForConditionsFromModelResponse> GetPlayerSkillForConditionsFromModelAsync(GetPlayerSkillForConditionsFromModelRequest request);
+    public Task<GetPlayerSkillForConditionsFromModelResponse> GetPlayerSkillForConditionsFromModelAsync(GetPlayerSkillForConditionsFromModelRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets skill values of a set of players from a specific model.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.GetPlayerSkillFromModelAsync({);
+    /// var response = await trueskillApi.GetPlayerSkillFromModelAsync({);
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf",
     ///   "Conditions": {
     ///     "Platform": "Xbox",
@@ -1078,21 +1078,21 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill/getplayerskillfrommodel">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerSkillFromModelResponse> GetPlayerSkillFromModelAsync(GetPlayerSkillFromModelRequest request);
+    public Task<GetPlayerSkillFromModelResponse> GetPlayerSkillFromModelAsync(GetPlayerSkillFromModelRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get the statistics for a queue.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.GetQueueStatisticsAsync({);
+    /// var response = await matchApi.GetQueueStatisticsAsync({);
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/getqueuestatistics">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetQueueStatisticsResult> GetQueueStatisticsAsync(GetQueueStatisticsRequest request);
+    public Task<GetQueueStatisticsResult> GetQueueStatisticsAsync(GetQueueStatisticsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets a remote login endpoint to a VM that is hosting a multiplayer server build.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetRemoteLoginEndpointAsync({);
+    /// var response = await multiplayerserverApi.GetRemoteLoginEndpointAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs",
     ///   "VmId": "VmID1"
@@ -1100,26 +1100,26 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/getremoteloginendpoint">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetRemoteLoginEndpointResponse> GetRemoteLoginEndpointAsync(GetRemoteLoginEndpointRequest request);
+    public Task<GetRemoteLoginEndpointResponse> GetRemoteLoginEndpointAsync(GetRemoteLoginEndpointRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get a scenario configuration.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.GetScenarioConfigurationAsync({);
+    /// var response = await trueskillApi.GetScenarioConfigurationAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/getscenarioconfiguration">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetScenarioConfigurationResponse> GetScenarioConfigurationAsync(GetScenarioConfigurationRequest request);
+    public Task<GetScenarioConfigurationResponse> GetScenarioConfigurationAsync(GetScenarioConfigurationRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets all scenario configurations that belong to the title.
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/getscenarioconfigurations">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetScenarioConfigurationsResponse> GetScenarioConfigurationsAsync(GetScenarioConfigurationsRequest request);
+    public Task<GetScenarioConfigurationsResponse> GetScenarioConfigurationsAsync(GetScenarioConfigurationsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get a matchmaking backfill ticket by ticket Id.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.GetServerBackfillTicketAsync({);
+    /// var response = await matchApi.GetServerBackfillTicketAsync({);
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123",
     ///   "EscapeObject": false
@@ -1127,37 +1127,37 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/getserverbackfillticket">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetServerBackfillTicketResult> GetServerBackfillTicketAsync(GetServerBackfillTicketRequest request);
+    public Task<GetServerBackfillTicketResult> GetServerBackfillTicketAsync(GetServerBackfillTicketRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the status of whether a title is enabled for the multiplayer server feature.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetTitleEnabledForMultiplayerServersStatusAsync({});
+    /// var response = await multiplayerserverApi.GetTitleEnabledForMultiplayerServersStatusAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/gettitleenabledformultiplayerserversstatus">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTitleEnabledForMultiplayerServersStatusResponse> GetTitleEnabledForMultiplayerServersStatusAsync(GetTitleEnabledForMultiplayerServersStatusRequest request);
+    public Task<GetTitleEnabledForMultiplayerServersStatusResponse> GetTitleEnabledForMultiplayerServersStatusAsync(GetTitleEnabledForMultiplayerServersStatusRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets a title's server quota change request.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetTitleMultiplayerServersQuotaChangeAsync({);
+    /// var response = await multiplayerserverApi.GetTitleMultiplayerServersQuotaChangeAsync({);
     ///   "RequestId": "1234"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/gettitlemultiplayerserversquotachange">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTitleMultiplayerServersQuotaChangeResponse> GetTitleMultiplayerServersQuotaChangeAsync(GetTitleMultiplayerServersQuotaChangeRequest request);
+    public Task<GetTitleMultiplayerServersQuotaChangeResponse> GetTitleMultiplayerServersQuotaChangeAsync(GetTitleMultiplayerServersQuotaChangeRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the quotas for a title in relation to multiplayer servers.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.GetTitleMultiplayerServersQuotasAsync({});
+    /// var response = await multiplayerserverApi.GetTitleMultiplayerServersQuotasAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/gettitlemultiplayerserversquotas">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTitleMultiplayerServersQuotasResponse> GetTitleMultiplayerServersQuotasAsync(GetTitleMultiplayerServersQuotasRequest request);
+    public Task<GetTitleMultiplayerServersQuotasResponse> GetTitleMultiplayerServersQuotasAsync(GetTitleMultiplayerServersQuotasRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Send a notification to invite a player to a lobby.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.InviteToLobbyAsync({);
+    /// var response = await lobbyApi.InviteToLobbyAsync({);
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC",
     ///   "MemberEntity": {
     ///     "Id": "1234",
@@ -1173,11 +1173,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/invitetolobby">Microsoft Documentation</see>
     /// </summary>
-    public Task<LobbyEmptyResult> InviteToLobbyAsync(InviteToLobbyRequest request);
+    public Task<LobbyEmptyResult> InviteToLobbyAsync(InviteToLobbyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Join an Arranged lobby.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.JoinArrangedLobbyAsync({);
+    /// var response = await lobbyApi.JoinArrangedLobbyAsync({);
     ///   "MaxPlayers": 50,
     ///   "OwnerMigrationPolicy": "Automatic",
     ///   "UseConnections": true,
@@ -1196,11 +1196,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/joinarrangedlobby">Microsoft Documentation</see>
     /// </summary>
-    public Task<JoinLobbyResult> JoinArrangedLobbyAsync(JoinArrangedLobbyRequest request);
+    public Task<JoinLobbyResult> JoinArrangedLobbyAsync(JoinArrangedLobbyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Join a lobby.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.JoinLobbyAsync({);
+    /// var response = await lobbyApi.JoinLobbyAsync({);
     ///   "MemberEntity": {
     ///     "Id": "1234",
     ///     "Type": "title_player_account",
@@ -1214,11 +1214,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/joinlobby">Microsoft Documentation</see>
     /// </summary>
-    public Task<JoinLobbyResult> JoinLobbyAsync(JoinLobbyRequest request);
+    public Task<JoinLobbyResult> JoinLobbyAsync(JoinLobbyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Preview: Join a lobby as a server entity. This is restricted to client lobbies which are using connections.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.JoinLobbyAsServerAsync({);
+    /// var response = await lobbyApi.JoinLobbyAsServerAsync({);
     ///   "ServerEntity": {
     ///     "Id": "1234",
     ///     "Type": "game_server",
@@ -1232,11 +1232,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/joinlobbyasserver">Microsoft Documentation</see>
     /// </summary>
-    public Task<JoinLobbyAsServerResult> JoinLobbyAsServerAsync(JoinLobbyAsServerRequest request);
+    public Task<JoinLobbyAsServerResult> JoinLobbyAsServerAsync(JoinLobbyAsServerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Join a matchmaking ticket.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.JoinMatchmakingTicketAsync({);
+    /// var response = await matchApi.JoinMatchmakingTicketAsync({);
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123",
     ///   "Member": {}
@@ -1244,11 +1244,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/joinmatchmakingticket">Microsoft Documentation</see>
     /// </summary>
-    public Task<JoinMatchmakingTicketResult> JoinMatchmakingTicketAsync(JoinMatchmakingTicketRequest request);
+    public Task<JoinMatchmakingTicketResult> JoinMatchmakingTicketAsync(JoinMatchmakingTicketRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Leave a lobby.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.LeaveLobbyAsync({);
+    /// var response = await lobbyApi.LeaveLobbyAsync({);
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC",
     ///   "MemberEntity": {
     ///     "Id": "1234",
@@ -1259,11 +1259,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/leavelobby">Microsoft Documentation</see>
     /// </summary>
-    public Task<LobbyEmptyResult> LeaveLobbyAsync(LeaveLobbyRequest request);
+    public Task<LobbyEmptyResult> LeaveLobbyAsync(LeaveLobbyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Preview: Request for server to leave a lobby. This is restricted to client owned lobbies which are using connections.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.LeaveLobbyAsServerAsync({);
+    /// var response = await lobbyApi.LeaveLobbyAsServerAsync({);
     ///   "ServerEntity": {
     ///     "Id": "1234",
     ///     "Type": "game_server",
@@ -1274,104 +1274,104 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/leavelobbyasserver">Microsoft Documentation</see>
     /// </summary>
-    public Task<LobbyEmptyResult> LeaveLobbyAsServerAsync(LeaveLobbyAsServerRequest request);
+    public Task<LobbyEmptyResult> LeaveLobbyAsServerAsync(LeaveLobbyAsServerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists archived multiplayer server sessions for a build.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListArchivedMultiplayerServersAsync({);
+    /// var response = await multiplayerserverApi.ListArchivedMultiplayerServersAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listarchivedmultiplayerservers">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListMultiplayerServersResponse> ListArchivedMultiplayerServersAsync(ListMultiplayerServersRequest request);
+    public Task<ListMultiplayerServersResponse> ListArchivedMultiplayerServersAsync(ListMultiplayerServersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists multiplayer server game assets for a title.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListAssetSummariesAsync({);
+    /// var response = await multiplayerserverApi.ListAssetSummariesAsync({);
     ///   "PageSize": 10
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listassetsummaries">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListAssetSummariesResponse> ListAssetSummariesAsync(ListAssetSummariesRequest request);
+    public Task<ListAssetSummariesResponse> ListAssetSummariesAsync(ListAssetSummariesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists details of all build aliases for a title. Accepts tokens for title and if game client access is enabled, allows
     /// game client to request list of builds with player entity token.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListBuildAliasesAsync({);
+    /// var response = await multiplayerserverApi.ListBuildAliasesAsync({);
     ///   "PageSize": 10
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listbuildaliases">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListBuildAliasesResponse> ListBuildAliasesAsync(ListBuildAliasesRequest request);
+    public Task<ListBuildAliasesResponse> ListBuildAliasesAsync(ListBuildAliasesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists summarized details of all multiplayer server builds for a title. Accepts tokens for title and if game client
     /// access is enabled, allows game client to request list of builds with player entity token.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListBuildSummariesAsync({);
+    /// var response = await multiplayerserverApi.ListBuildSummariesAsync({);
     ///   "PageSize": 10
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listbuildsummaries">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListBuildSummariesResponse> ListBuildSummariesAsync(ListBuildSummariesRequest request);
+    public Task<ListBuildSummariesResponse> ListBuildSummariesAsync(ListBuildSummariesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists summarized details of all multiplayer server builds for a title. Accepts tokens for title and if game client
     /// access is enabled, allows game client to request list of builds with player entity token.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListBuildSummariesV2Async({);
+    /// var response = await multiplayerserverApi.ListBuildSummariesV2Async({);
     ///   "PageSize": 10
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listbuildsummariesv2">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListBuildSummariesResponse> ListBuildSummariesV2Async(ListBuildSummariesRequest request);
+    public Task<ListBuildSummariesResponse> ListBuildSummariesV2Async(ListBuildSummariesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists multiplayer server game certificates for a title.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListCertificateSummariesAsync({);
+    /// var response = await multiplayerserverApi.ListCertificateSummariesAsync({);
     ///   "PageSize": 10
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listcertificatesummaries">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListCertificateSummariesResponse> ListCertificateSummariesAsync(ListCertificateSummariesRequest request);
+    public Task<ListCertificateSummariesResponse> ListCertificateSummariesAsync(ListCertificateSummariesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists custom container images for a title.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListContainerImagesAsync({);
+    /// var response = await multiplayerserverApi.ListContainerImagesAsync({);
     ///   "PageSize": 10
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listcontainerimages">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListContainerImagesResponse> ListContainerImagesAsync(ListContainerImagesRequest request);
+    public Task<ListContainerImagesResponse> ListContainerImagesAsync(ListContainerImagesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists the tags for a custom container image.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListContainerImageTagsAsync({);
+    /// var response = await multiplayerserverApi.ListContainerImageTagsAsync({);
     ///   "ImageName": "imageName1",
     ///   "PageSize": 10
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listcontainerimagetags">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListContainerImageTagsResponse> ListContainerImageTagsAsync(ListContainerImageTagsRequest request);
+    public Task<ListContainerImageTagsResponse> ListContainerImageTagsAsync(ListContainerImageTagsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// SDK support is limited to C# and Java for this API. List all matchmaking queue configs.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.ListMatchmakingQueuesAsync({});
+    /// var response = await matchApi.ListMatchmakingQueuesAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking-admin/listmatchmakingqueues">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListMatchmakingQueuesResult> ListMatchmakingQueuesAsync(ListMatchmakingQueuesRequest request);
+    public Task<ListMatchmakingQueuesResult> ListMatchmakingQueuesAsync(ListMatchmakingQueuesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// List all matchmaking ticket Ids the user is a member of.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.ListMatchmakingTicketsForPlayerAsync({);
+    /// var response = await matchApi.ListMatchmakingTicketsForPlayerAsync({);
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -1382,62 +1382,62 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/listmatchmakingticketsforplayer">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListMatchmakingTicketsForPlayerResult> ListMatchmakingTicketsForPlayerAsync(ListMatchmakingTicketsForPlayerRequest request);
+    public Task<ListMatchmakingTicketsForPlayerResult> ListMatchmakingTicketsForPlayerAsync(ListMatchmakingTicketsForPlayerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists multiplayer server sessions for a build.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListMultiplayerServersAsync({);
+    /// var response = await multiplayerserverApi.ListMultiplayerServersAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listmultiplayerservers">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListMultiplayerServersResponse> ListMultiplayerServersAsync(ListMultiplayerServersRequest request);
+    public Task<ListMultiplayerServersResponse> ListMultiplayerServersAsync(ListMultiplayerServersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists quality of service servers for party.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListPartyQosServersAsync({);
+    /// var response = await multiplayerserverApi.ListPartyQosServersAsync({);
     ///   "Version": "1.0.0"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listpartyqosservers">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListPartyQosServersResponse> ListPartyQosServersAsync(ListPartyQosServersRequest request);
+    public Task<ListPartyQosServersResponse> ListPartyQosServersAsync(ListPartyQosServersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists quality of service servers.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListQosServersAsync({});
+    /// var response = await multiplayerserverApi.ListQosServersAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listqosservers">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListQosServersResponse> ListQosServersAsync(ListQosServersRequest request);
+    public Task<ListQosServersResponse> ListQosServersAsync(ListQosServersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists quality of service servers for the title. By default, servers are only returned for regions where a Multiplayer
     /// Servers build has been deployed.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListQosServersForTitleAsync({);
+    /// var response = await multiplayerserverApi.ListQosServersForTitleAsync({);
     ///   "IncludeAllRegions": true,
     ///   "RoutingPreference": "Microsoft"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listqosserversfortitle">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListQosServersForTitleResponse> ListQosServersForTitleAsync(ListQosServersForTitleRequest request);
+    public Task<ListQosServersForTitleResponse> ListQosServersForTitleAsync(ListQosServersForTitleRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists multiplayer server game secrets for a title.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListSecretSummariesAsync({);
+    /// var response = await multiplayerserverApi.ListSecretSummariesAsync({);
     ///   "PageSize": 10
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listsecretsummaries">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListSecretSummariesResponse> ListSecretSummariesAsync(ListSecretSummariesRequest request);
+    public Task<ListSecretSummariesResponse> ListSecretSummariesAsync(ListSecretSummariesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// List all server backfill ticket Ids the user is a member of.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.ListServerBackfillTicketsForPlayerAsync({);
+    /// var response = await matchApi.ListServerBackfillTicketsForPlayerAsync({);
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -1448,19 +1448,19 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/listserverbackfillticketsforplayer">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListServerBackfillTicketsForPlayerResult> ListServerBackfillTicketsForPlayerAsync(ListServerBackfillTicketsForPlayerRequest request);
+    public Task<ListServerBackfillTicketsForPlayerResult> ListServerBackfillTicketsForPlayerAsync(ListServerBackfillTicketsForPlayerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// List all server quota change requests for a title.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListTitleMultiplayerServersQuotaChangesAsync({});
+    /// var response = await multiplayerserverApi.ListTitleMultiplayerServersQuotaChangesAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listtitlemultiplayerserversquotachanges">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListTitleMultiplayerServersQuotaChangesResponse> ListTitleMultiplayerServersQuotaChangesAsync(ListTitleMultiplayerServersQuotaChangesRequest request);
+    public Task<ListTitleMultiplayerServersQuotaChangesResponse> ListTitleMultiplayerServersQuotaChangesAsync(ListTitleMultiplayerServersQuotaChangesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists virtual machines for a title.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ListVirtualMachineSummariesAsync({);
+    /// var response = await multiplayerserverApi.ListVirtualMachineSummariesAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs",
     ///   "PageSize": 10
@@ -1468,21 +1468,21 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/listvirtualmachinesummaries">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListVirtualMachineSummariesResponse> ListVirtualMachineSummariesAsync(ListVirtualMachineSummariesRequest request);
+    public Task<ListVirtualMachineSummariesResponse> ListVirtualMachineSummariesAsync(ListVirtualMachineSummariesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// SDK support is limited to C# and Java for this API. Remove a matchmaking queue config.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.RemoveMatchmakingQueueAsync({);
+    /// var response = await matchApi.RemoveMatchmakingQueueAsync({);
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking-admin/removematchmakingqueue">Microsoft Documentation</see>
     /// </summary>
-    public Task<RemoveMatchmakingQueueResult> RemoveMatchmakingQueueAsync(RemoveMatchmakingQueueRequest request);
+    public Task<RemoveMatchmakingQueueResult> RemoveMatchmakingQueueAsync(RemoveMatchmakingQueueRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Remove a member from a lobby.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.RemoveMemberAsync({);
+    /// var response = await lobbyApi.RemoveMemberAsync({);
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC",
     ///   "MemberEntity": {
     ///     "Id": "1234",
@@ -1494,12 +1494,12 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/removemember">Microsoft Documentation</see>
     /// </summary>
-    public Task<LobbyEmptyResult> RemoveMemberAsync(RemoveMemberFromLobbyRequest request);
+    public Task<LobbyEmptyResult> RemoveMemberAsync(RemoveMemberFromLobbyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Request a multiplayer server session. Accepts tokens for title and if game client access is enabled, allows game client
     /// to request a server with player entity token.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.RequestMultiplayerServerAsync({);
+    /// var response = await multiplayerserverApi.RequestMultiplayerServerAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "SessionId": "02bdef0e-e01e-4b29-8efe-ff9f47a06d8c",
     ///   "SessionCookie": "U2Vzc2lvbkNvb2tpZQ==",
@@ -1515,12 +1515,12 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/requestmultiplayerserver">Microsoft Documentation</see>
     /// </summary>
-    public Task<RequestMultiplayerServerResponse> RequestMultiplayerServerAsync(RequestMultiplayerServerRequest request);
+    public Task<RequestMultiplayerServerResponse> RequestMultiplayerServerAsync(RequestMultiplayerServerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Request a multiplayer server session and associated user connection tokens. Accepts tokens for title and if game client
     /// access is enabled, allows game client to request a server with player entity token.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.RequestMultiplayerServerAndTokenAsync({);
+    /// var response = await multiplayerserverApi.RequestMultiplayerServerAndTokenAsync({);
     ///   "TokenPlayerIds": [
     ///     "gamer1",
     ///     "gamer2"
@@ -1540,11 +1540,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/requestmultiplayerserverandtoken">Microsoft Documentation</see>
     /// </summary>
-    public Task<RequestMultiplayerServerAndTokenResponse> RequestMultiplayerServerAndTokenAsync(RequestMultiplayerServerAndTokenRequest request);
+    public Task<RequestMultiplayerServerAndTokenResponse> RequestMultiplayerServerAndTokenAsync(RequestMultiplayerServerAndTokenRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Request a party session.
     /// <example><br/>Example:<code>
-    /// var response = partyApi.RequestPartyAsync({);
+    /// var response = await partyApi.RequestPartyAsync({);
     ///   "PartyId": "23781fa9-e01e-4b29-4f0b-dd9f37a06a1e",
     ///   "PreferredRegions": [
     ///     "EastUs",
@@ -1556,11 +1556,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/party/multiplayerserver/requestparty">Microsoft Documentation</see>
     /// </summary>
-    public Task<RequestPartyResponse> RequestPartyAsync(RequestPartyRequest request);
+    public Task<RequestPartyResponse> RequestPartyAsync(RequestPartyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Request a party session.
     /// <example><br/>Example:<code>
-    /// var response = partyApi.RequestPartyServiceAsync({);
+    /// var response = await partyApi.RequestPartyServiceAsync({);
     ///   "TitleId": "12345",
     ///   "PartyId": "23781fa9-e01e-4b29-4f0b-dd9f37a06a1e",
     ///   "PreferredRegions": [
@@ -1584,19 +1584,19 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/party/multiplayerserver/requestpartyservice">Microsoft Documentation</see>
     /// </summary>
-    public Task<RequestPartyServiceResponse> RequestPartyServiceAsync(RequestPartyServiceRequest request);
+    public Task<RequestPartyServiceResponse> RequestPartyServiceAsync(RequestPartyServiceRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Rolls over the credentials to the container registry.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.RolloverContainerRegistryCredentialsAsync({});
+    /// var response = await multiplayerserverApi.RolloverContainerRegistryCredentialsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/rollovercontainerregistrycredentials">Microsoft Documentation</see>
     /// </summary>
-    public Task<RolloverContainerRegistryCredentialsResponse> RolloverContainerRegistryCredentialsAsync(RolloverContainerRegistryCredentialsRequest request);
+    public Task<RolloverContainerRegistryCredentialsResponse> RolloverContainerRegistryCredentialsAsync(RolloverContainerRegistryCredentialsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// SDK support is limited to C# and Java for this API. Create or update a matchmaking queue configuration.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.SetMatchmakingQueueAsync({);
+    /// var response = await matchApi.SetMatchmakingQueueAsync({);
     ///   "MatchmakingQueue": {
     ///     "Name": "ExampleQueueName",
     ///     "MinMatchSize": 7,
@@ -1757,22 +1757,22 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking-admin/setmatchmakingqueue">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetMatchmakingQueueResult> SetMatchmakingQueueAsync(SetMatchmakingQueueRequest request);
+    public Task<SetMatchmakingQueueResult> SetMatchmakingQueueAsync(SetMatchmakingQueueRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Shuts down a multiplayer server session.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.ShutdownMultiplayerServerAsync({);
+    /// var response = await multiplayerserverApi.ShutdownMultiplayerServerAsync({);
     ///   "Region": "AustraliaEast",
     ///   "SessionId": "02bdef0e-e01e-4b29-8efe-ff9f47a06d8c"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/shutdownmultiplayerserver">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> ShutdownMultiplayerServerAsync(ShutdownMultiplayerServerRequest request);
+    public Task<EmptyResponse> ShutdownMultiplayerServerAsync(ShutdownMultiplayerServerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Subscribe to lobby resource notifications.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.SubscribeToLobbyResourceAsync({);
+    /// var response = await lobbyApi.SubscribeToLobbyResourceAsync({);
     ///   "Type": "LobbyChange",
     ///   "ResourceId": "5c905725-0184-4112-a563-2f4187710d06",
     ///   "SubscriptionVersion": 1,
@@ -1786,11 +1786,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/subscribetolobbyresource">Microsoft Documentation</see>
     /// </summary>
-    public Task<SubscribeToLobbyResourceResult> SubscribeToLobbyResourceAsync(SubscribeToLobbyResourceRequest request);
+    public Task<SubscribeToLobbyResourceResult> SubscribeToLobbyResourceAsync(SubscribeToLobbyResourceRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Subscribe to match resource notifications.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.SubscribeToMatchmakingResourceAsync({);
+    /// var response = await matchApi.SubscribeToMatchmakingResourceAsync({);
     ///   "Type": "MatchTicketStatusChange",
     ///   "ResourceId": "5a58afee-a9d7-4a47-875b-48bae4dc0590",
     ///   "SubscriptionVersion": 1,
@@ -1800,11 +1800,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/subscribetomatchmakingresource">Microsoft Documentation</see>
     /// </summary>
-    public Task<SubscribeToMatchResourceResult> SubscribeToMatchmakingResourceAsync(SubscribeToMatchResourceRequest request);
+    public Task<SubscribeToMatchResourceResult> SubscribeToMatchmakingResourceAsync(SubscribeToMatchResourceRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unsubscribe from lobby notifications.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.UnsubscribeFromLobbyResourceAsync({);
+    /// var response = await lobbyApi.UnsubscribeFromLobbyResourceAsync({);
     ///   "Type": "LobbyChange",
     ///   "ResourceId": "5c905725-0184-4112-a563-2f4187710d06",
     ///   "SubscriptionVersion": 1,
@@ -1818,11 +1818,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/unsubscribefromlobbyresource">Microsoft Documentation</see>
     /// </summary>
-    public Task<LobbyEmptyResult> UnsubscribeFromLobbyResourceAsync(UnsubscribeFromLobbyResourceRequest request);
+    public Task<LobbyEmptyResult> UnsubscribeFromLobbyResourceAsync(UnsubscribeFromLobbyResourceRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unsubscribe from match resource notifications.
     /// <example><br/>Example:<code>
-    /// var response = matchApi.UnsubscribeFromMatchmakingResourceAsync({);
+    /// var response = await matchApi.UnsubscribeFromMatchmakingResourceAsync({);
     ///   "Type": "MatchTicketStatusChange",
     ///   "ResourceId": "5a58afee-a9d7-4a47-875b-48bae4dc0590",
     ///   "SubscriptionVersion": 1,
@@ -1832,22 +1832,22 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/unsubscribefrommatchmakingresource">Microsoft Documentation</see>
     /// </summary>
-    public Task<UnsubscribeFromMatchResourceResult> UnsubscribeFromMatchmakingResourceAsync(UnsubscribeFromMatchResourceRequest request);
+    public Task<UnsubscribeFromMatchResourceResult> UnsubscribeFromMatchmakingResourceAsync(UnsubscribeFromMatchResourceRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Untags a container image.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.UntagContainerImageAsync({);
+    /// var response = await multiplayerserverApi.UntagContainerImageAsync({);
     ///   "ImageName": "imageName1",
     ///   "Tag": "tag1"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/untagcontainerimage">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UntagContainerImageAsync(UntagContainerImageRequest request);
+    public Task<EmptyResponse> UntagContainerImageAsync(UntagContainerImageRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates a multiplayer server build alias.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.UpdateBuildAliasAsync({);
+    /// var response = await multiplayerserverApi.UpdateBuildAliasAsync({);
     ///   "AliasName": "AliasName",
     ///   "BuildSelectionCriteria": [
     ///     {
@@ -1861,22 +1861,22 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/updatebuildalias">Microsoft Documentation</see>
     /// </summary>
-    public Task<BuildAliasDetailsResponse> UpdateBuildAliasAsync(UpdateBuildAliasRequest request);
+    public Task<BuildAliasDetailsResponse> UpdateBuildAliasAsync(UpdateBuildAliasRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates a multiplayer server build's name.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.UpdateBuildNameAsync({);
+    /// var response = await multiplayerserverApi.UpdateBuildNameAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "BuildName": "GameBuildName"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/updatebuildname">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UpdateBuildNameAsync(UpdateBuildNameRequest request);
+    public Task<EmptyResponse> UpdateBuildNameAsync(UpdateBuildNameRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates a multiplayer server build's region. If the region is not yet created, it will be created
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.UpdateBuildRegionAsync({);
+    /// var response = await multiplayerserverApi.UpdateBuildRegionAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "BuildRegion": {
     ///     "Region": "NorthEurope",
@@ -1887,11 +1887,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/updatebuildregion">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UpdateBuildRegionAsync(UpdateBuildRegionRequest request);
+    public Task<EmptyResponse> UpdateBuildRegionAsync(UpdateBuildRegionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates a multiplayer server build's regions.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.UpdateBuildRegionsAsync({);
+    /// var response = await multiplayerserverApi.UpdateBuildRegionsAsync({);
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "BuildRegions": [
     ///     {
@@ -1914,11 +1914,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/updatebuildregions">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UpdateBuildRegionsAsync(UpdateBuildRegionsRequest request);
+    public Task<EmptyResponse> UpdateBuildRegionsAsync(UpdateBuildRegionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Update a lobby.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.UpdateLobbyAsync({);
+    /// var response = await lobbyApi.UpdateLobbyAsync({);
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC",
     ///   "MaxPlayers": 50,
     ///   "AccessPolicy": "Friends",
@@ -1948,13 +1948,13 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/updatelobby">Microsoft Documentation</see>
     /// </summary>
-    public Task<LobbyEmptyResult> UpdateLobbyAsync(UpdateLobbyRequest request);
+    public Task<LobbyEmptyResult> UpdateLobbyAsync(UpdateLobbyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Preview: Update fields related to a joined server in the lobby the server is in. Servers can keep a lobby from expiring
     /// by being the one to "update" the lobby in some way. Servers have no impact on last member leave/last member disconnect
     /// behavior.
     /// <example><br/>Example:<code>
-    /// var response = lobbyApi.UpdateLobbyAsServerAsync({);
+    /// var response = await lobbyApi.UpdateLobbyAsServerAsync({);
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC",
     ///   "ServerEntity": {
     ///     "Id": "1234",
@@ -1971,11 +1971,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/lobby/lobby/updatelobbyasserver">Microsoft Documentation</see>
     /// </summary>
-    public Task<LobbyEmptyResult> UpdateLobbyAsServerAsync(UpdateLobbyAsServerRequest request);
+    public Task<LobbyEmptyResult> UpdateLobbyAsServerAsync(UpdateLobbyAsServerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Update a model.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.UpdateModelAsync({);
+    /// var response = await trueskillApi.UpdateModelAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf",
     ///   "ModelName": "New Model Name",
@@ -1984,22 +1984,22 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/updatemodel">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateModelResponse> UpdateModelAsync(UpdateModelRequest request);
+    public Task<UpdateModelResponse> UpdateModelAsync(UpdateModelRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Mark a model as primary for a scenario.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.UpdatePrimaryModelAsync({);
+    /// var response = await trueskillApi.UpdatePrimaryModelAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/updateprimarymodel">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdatePrimaryModelResponse> UpdatePrimaryModelAsync(UpdatePrimaryModelRequest request);
+    public Task<UpdatePrimaryModelResponse> UpdatePrimaryModelAsync(UpdatePrimaryModelRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Update a scenario configuration.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.UpdateScenarioConfigurationAsync({);
+    /// var response = await trueskillApi.UpdateScenarioConfigurationAsync({);
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ConditionsToUpdateOrAdd": [
     ///     {
@@ -2014,11 +2014,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill-admin/updatescenarioconfiguration">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateScenarioConfigurationResponse> UpdateScenarioConfigurationAsync(UpdateScenarioConfigurationRequest request);
+    public Task<UpdateScenarioConfigurationResponse> UpdateScenarioConfigurationAsync(UpdateScenarioConfigurationRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Uploads a multiplayer server game certificate.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.UploadCertificateAsync({);
+    /// var response = await multiplayerserverApi.UploadCertificateAsync({);
     ///   "GameCertificate": {
     ///     "Name": "GameCertificate1",
     ///     "Base64EncodedValue": "UGxheUZhYlJvY2tzISEhTGV0J3NtYWtlYWxvdG9mZ2FtZXMh",
@@ -2029,11 +2029,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/uploadcertificate">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UploadCertificateAsync(UploadCertificateRequest request);
+    public Task<EmptyResponse> UploadCertificateAsync(UploadCertificateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Uploads a match result.
     /// <example><br/>Example:<code>
-    /// var response = trueskillApi.UploadMatchResultAsync({);
+    /// var response = await trueskillApi.UploadMatchResultAsync({);
     ///   "MatchResult": {
     ///     "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///     "Teams": [
@@ -2138,11 +2138,11 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/trueskill/trueskill/uploadmatchresult">Microsoft Documentation</see>
     /// </summary>
-    public Task<UploadMatchResultResponse> UploadMatchResultAsync(UploadMatchResultRequest request);
+    public Task<UploadMatchResultResponse> UploadMatchResultAsync(UploadMatchResultRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Uploads a multiplayer server game secret.
     /// <example><br/>Example:<code>
-    /// var response = multiplayerserverApi.UploadSecretAsync({);
+    /// var response = await multiplayerserverApi.UploadSecretAsync({);
     ///   "GameSecret": {
     ///     "Name": "GameSecret1",
     ///     "Value": "Value123",
@@ -2153,5 +2153,5 @@ public interface IPlayFabMultiplayerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/multiplayerserver/multiplayerserver/uploadsecret">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UploadSecretAsync(UploadSecretRequest request);
+    public Task<EmptyResponse> UploadSecretAsync(UploadSecretRequest request, Dictionary<string, string>? extraHeaders);
 }

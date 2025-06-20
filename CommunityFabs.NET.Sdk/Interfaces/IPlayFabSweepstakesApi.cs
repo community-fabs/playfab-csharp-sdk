@@ -5,7 +5,7 @@ public interface IPlayFabSweepstakesApi {
     /// <summary>
     /// Creates a sweepstake for the associated title. Returns information about the sweepstake that was created.
     /// <example><br/>Example:<code>
-    /// var response = sweepstakesApi.CreateSweepstakeAsync({);
+    /// var response = await sweepstakesApi.CreateSweepstakeAsync({);
     ///   "Name": "Example Sweepstake",
     ///   "RewardId": "12345",
     ///   "StartDate": "2020-06-25T00:00:00Z",
@@ -16,15 +16,15 @@ public interface IPlayFabSweepstakesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/sweepstakes/null/createsweepstake">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateSweepstakeResponse> CreateSweepstakeAsync(CreateSweepstakeRequest request);
+    public Task<CreateSweepstakeResponse> CreateSweepstakeAsync(CreateSweepstakeRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves a sweeepstake for the associated title. If name is empty, will return all sweepstakes in the title.
     /// <example><br/>Example:<code>
-    /// var response = sweepstakesApi.GetSweepstakeAsync({);
+    /// var response = await sweepstakesApi.GetSweepstakeAsync({);
     ///   "Name": "TestSweepstake"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/sweepstakes/null/getsweepstake">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetSweepstakeResponse> GetSweepstakeAsync(GetSweepstakeRequest request);
+    public Task<GetSweepstakeResponse> GetSweepstakeAsync(GetSweepstakeRequest request, Dictionary<string, string>? extraHeaders);
 }

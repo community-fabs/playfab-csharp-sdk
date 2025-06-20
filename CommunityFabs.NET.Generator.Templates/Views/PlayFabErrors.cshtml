@@ -1,0 +1,92 @@
+﻿@using CommunityFabs.NET.Generator.Templates.Models;
+@model LegacyApiDocument;
+using System.Text;
+
+namespace CommunityFabs.NET.Sdk;
+
+/// <summary>
+/// Error codes returned by PlayFabAPIs
+/// </summary>
+public enum PlayFabErrorCode
+{
+    Success = 0,
+    Unknown = 1,
+    ConnectionError = 2,
+    JsonParseError = 3,
+@{for (int i = 0; i < Model.Errors.Count; i++)
+{
+    var error = Model.Errors.ElementAt(i).Value;
+    if (error.Id == 0) continue; // Skip Success
+    @(Html.Raw($"    {error.Name} = {error.Id}{(i != Model.Errors.Count - 1 ? ",\r\n" : "\r\n")}"))
+}}
+}
+
+public class PlayFabError
+{
+    public int HttpCode;
+    public string HttpStatus;
+    public PlayFabErrorCode Error;
+    public string ErrorMessage;
+    public Dictionary<string, string[]> ErrorDetails;
+    public string RequestId;
+    public uint? RetryAfterSeconds = null;
+
+    private static readonly StringBuilder Sb = new StringBuilder();
+    /// <summary>
+    /// This converts the PlayFabError into a human readable string describing the error.
+    /// If error is not found, it will return the http code, status, and error
+    /// </summary>
+    /// <returns>A description of the error that we just incur.</returns>
+    public string GenerateErrorReport()
+    {
+        Sb.Length = 0;
+        if (ErrorMessage != null)
+        {
+            Sb.Append(ErrorMessage);
+        }
+        else
+        {
+            Sb.Append("Http Code: " + HttpCode.ToString() + "\nHttp Status: " + HttpStatus + "\nError: " + Error.ToString() + "\n");
+        }
+
+        if (RequestId != null)
+        {
+            Sb.Append("\nRequestId: " + RequestId + "\n");
+        }
+
+        if (ErrorDetails == null)
+            return Sb.ToString();
+
+        foreach (var pair in ErrorDetails)
+        {
+            foreach (var eachMsg in pair.Value)
+                Sb.Append(pair.Key).Append(": ").Append(eachMsg);
+        }
+        return Sb.ToString();
+    }
+};
+
+public class PlayFabBaseResult
+{
+    public object CustomData;
+    public PlayFabError Error;
+}
+
+public class PlayFabResult<TResult> : PlayFabBaseResult where TResult : PlayFabResultCommon
+{
+    public TResult Result;
+}
+
+public delegate void ErrorCallback(PlayFabError error);
+
+public class PlayFabErrorException(PlayFabError error) : Exception(error.GenerateErrorReport()) { }
+public class PlayFabException(PlayFabExceptionCode Code, string Message) : Exception(Message) { }
+
+public enum PlayFabExceptionCode
+{
+    AuthContextRequired,
+    DeveloperKeyNotSet,
+    EntityTokenNotSet,
+    NotLoggedIn,
+    TitleNotSet
+}

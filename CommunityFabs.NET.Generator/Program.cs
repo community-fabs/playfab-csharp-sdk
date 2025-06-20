@@ -30,4 +30,15 @@ foreach (var apiDoc in apiData)
 
     var interfaceFilePath = Path.Combine(outPath, "Interfaces", $"{interfaceFileName}.cs");
     await File.WriteAllTextAsync(interfaceFilePath, renderedInterface);
+
+    var instanceFileName = $"PlayFab{apiDoc.Name}InstanceApi";
+    var renderedInstance = await RazorTemplateEngine.RenderAsync("/Views/InstanceApi.cshtml", apiDoc);
+
+    var instanceFilePath = Path.Combine(outPath, $"{instanceFileName}.cs");
+    await File.WriteAllTextAsync(instanceFilePath, renderedInstance);
 }
+
+var renderedErrors = await RazorTemplateEngine.RenderAsync("/Views/PlayFabErrors.cshtml", apiData.First());
+
+var errorsFilePath = Path.Combine(outPath, "PlayFabErrors.cs");
+await File.WriteAllTextAsync(errorsFilePath, renderedErrors);

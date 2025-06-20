@@ -5,7 +5,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Creates a new leaderboard definition.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.CreateLeaderboardDefinitionAsync({);
+    /// var response = await leaderboardApi.CreateLeaderboardDefinitionAsync({);
     ///   "Name": "HighestScoresByLevel",
     ///   "EntityType": "title_player_account",
     ///   "VersionConfiguration": {
@@ -23,11 +23,11 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/createleaderboarddefinition">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> CreateLeaderboardDefinitionAsync(CreateLeaderboardDefinitionRequest request);
+    public Task<EmptyResponse> CreateLeaderboardDefinitionAsync(CreateLeaderboardDefinitionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Create a new entity statistic definition.
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.CreateStatisticDefinitionAsync({);
+    /// var response = await statisticApi.CreateStatisticDefinitionAsync({);
     ///   "Name": "HighestScoresByLevel",
     ///   "AggregationMethod": "Last",
     ///   "Columns": [
@@ -39,21 +39,21 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/createstatisticdefinition">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> CreateStatisticDefinitionAsync(CreateStatisticDefinitionRequest request);
+    public Task<EmptyResponse> CreateStatisticDefinitionAsync(CreateStatisticDefinitionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a leaderboard definition.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.DeleteLeaderboardDefinitionAsync({);
+    /// var response = await leaderboardApi.DeleteLeaderboardDefinitionAsync({);
     ///   "Name": "HighestScoresByLevel"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/deleteleaderboarddefinition">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteLeaderboardDefinitionAsync(DeleteLeaderboardDefinitionRequest request);
+    public Task<EmptyResponse> DeleteLeaderboardDefinitionAsync(DeleteLeaderboardDefinitionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the specified entries from the given leaderboard.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.DeleteLeaderboardEntriesAsync({);
+    /// var response = await leaderboardApi.DeleteLeaderboardEntriesAsync({);
     ///   "Name": "Points",
     ///   "EntityIds": [
     ///     "12802710371",
@@ -63,21 +63,21 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/deleteleaderboardentries">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteLeaderboardEntriesAsync(DeleteLeaderboardEntriesRequest request);
+    public Task<EmptyResponse> DeleteLeaderboardEntriesAsync(DeleteLeaderboardEntriesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Delete an entity statistic definition. Will delete all statistics on entity profiles and leaderboards.
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.DeleteStatisticDefinitionAsync({);
+    /// var response = await statisticApi.DeleteStatisticDefinitionAsync({);
     ///   "Name": "HighestScoresByLevel"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/deletestatisticdefinition">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteStatisticDefinitionAsync(DeleteStatisticDefinitionRequest request);
+    public Task<EmptyResponse> DeleteStatisticDefinitionAsync(DeleteStatisticDefinitionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Delete statistics on an entity profile. This will remove all rankings from associated leaderboards.
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.DeleteStatisticsAsync({);
+    /// var response = await statisticApi.DeleteStatisticsAsync({);
     ///   "Statistics": [
     ///     {
     ///       "Name": "TotalCarTime"
@@ -91,22 +91,22 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/deletestatistics">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteStatisticsResponse> DeleteStatisticsAsync(DeleteStatisticsRequest request);
+    public Task<DeleteStatisticsResponse> DeleteStatisticsAsync(DeleteStatisticsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get the friend leaderboard for the specified entity. A maximum of 25 friend entries are listed in the leaderboard.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.GetFriendLeaderboardForEntityAsync({);
+    /// var response = await leaderboardApi.GetFriendLeaderboardForEntityAsync({);
     ///   "LeaderboardName": "Points",
     ///   "ExternalFriendSources": "None"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/getfriendleaderboardforentity">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetEntityLeaderboardResponse> GetFriendLeaderboardForEntityAsync(GetFriendLeaderboardForEntityRequest request);
+    public Task<GetEntityLeaderboardResponse> GetFriendLeaderboardForEntityAsync(GetFriendLeaderboardForEntityRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get the leaderboard for a specific entity type and statistic.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.GetLeaderboardAsync({);
+    /// var response = await leaderboardApi.GetLeaderboardAsync({);
     ///   "LeaderboardName": "Points",
     ///   "Version": 2,
     ///   "StartingPosition": 100,
@@ -115,11 +115,11 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/getleaderboard">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetEntityLeaderboardResponse> GetLeaderboardAsync(GetEntityLeaderboardRequest request);
+    public Task<GetEntityLeaderboardResponse> GetLeaderboardAsync(GetEntityLeaderboardRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get the leaderboard around a specific entity.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.GetLeaderboardAroundEntityAsync({);
+    /// var response = await leaderboardApi.GetLeaderboardAroundEntityAsync({);
     ///   "LeaderboardName": "Points",
     ///   "Version": 2,
     ///   "MaxSurroundingEntries": 0,
@@ -132,21 +132,21 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/getleaderboardaroundentity">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetEntityLeaderboardResponse> GetLeaderboardAroundEntityAsync(GetLeaderboardAroundEntityRequest request);
+    public Task<GetEntityLeaderboardResponse> GetLeaderboardAroundEntityAsync(GetLeaderboardAroundEntityRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the specified leaderboard definition.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.GetLeaderboardDefinitionAsync({);
+    /// var response = await leaderboardApi.GetLeaderboardDefinitionAsync({);
     ///   "Name": "HighestScoresByLevel"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/getleaderboarddefinition">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetLeaderboardDefinitionResponse> GetLeaderboardDefinitionAsync(GetLeaderboardDefinitionRequest request);
+    public Task<GetLeaderboardDefinitionResponse> GetLeaderboardDefinitionAsync(GetLeaderboardDefinitionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get the leaderboard limited to a set of entities.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.GetLeaderboardForEntitiesAsync({);
+    /// var response = await leaderboardApi.GetLeaderboardForEntitiesAsync({);
     ///   "LeaderboardName": "Points",
     ///   "Version": 2,
     ///   "EntityIds": [
@@ -157,29 +157,29 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/getleaderboardforentities">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetEntityLeaderboardResponse> GetLeaderboardForEntitiesAsync(GetLeaderboardForEntitiesRequest request);
+    public Task<GetEntityLeaderboardResponse> GetLeaderboardForEntitiesAsync(GetLeaderboardForEntitiesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get current statistic definition information
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.GetStatisticDefinitionAsync({);
+    /// var response = await statisticApi.GetStatisticDefinitionAsync({);
     ///   "Name": "Points"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/getstatisticdefinition">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetStatisticDefinitionResponse> GetStatisticDefinitionAsync(GetStatisticDefinitionRequest request);
+    public Task<GetStatisticDefinitionResponse> GetStatisticDefinitionAsync(GetStatisticDefinitionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get all current statistic definitions information
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.GetStatisticDefinitionsAsync({});
+    /// var response = await statisticApi.GetStatisticDefinitionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/getstatisticdefinitions">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetStatisticDefinitionsResponse> GetStatisticDefinitionsAsync(GetStatisticDefinitionsRequest request);
+    public Task<GetStatisticDefinitionsResponse> GetStatisticDefinitionsAsync(GetStatisticDefinitionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets statistics for the specified entity.
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.GetStatisticsAsync({);
+    /// var response = await statisticApi.GetStatisticsAsync({);
     ///   "StatisticNames": [
     ///     "SpeedRuns",
     ///     "Boosts"
@@ -193,11 +193,11 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/getstatistics">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetStatisticsResponse> GetStatisticsAsync(GetStatisticsRequest request);
+    public Task<GetStatisticsResponse> GetStatisticsAsync(GetStatisticsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets statistics for the specified collection of entities.
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.GetStatisticsForEntitiesAsync({);
+    /// var response = await statisticApi.GetStatisticsForEntitiesAsync({);
     ///   "Entities": [
     ///     {
     ///       "Id": "A197412JDA",
@@ -218,58 +218,58 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/getstatisticsforentities">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetStatisticsForEntitiesResponse> GetStatisticsForEntitiesAsync(GetStatisticsForEntitiesRequest request);
+    public Task<GetStatisticsForEntitiesResponse> GetStatisticsForEntitiesAsync(GetStatisticsForEntitiesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Increment a leaderboard version.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.IncrementLeaderboardVersionAsync({);
+    /// var response = await leaderboardApi.IncrementLeaderboardVersionAsync({);
     ///   "Name": "HighestScoresByLevel"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/incrementleaderboardversion">Microsoft Documentation</see>
     /// </summary>
-    public Task<IncrementLeaderboardVersionResponse> IncrementLeaderboardVersionAsync(IncrementLeaderboardVersionRequest request);
+    public Task<IncrementLeaderboardVersionResponse> IncrementLeaderboardVersionAsync(IncrementLeaderboardVersionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Increment an entity statistic definition version.
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.IncrementStatisticVersionAsync({);
+    /// var response = await statisticApi.IncrementStatisticVersionAsync({);
     ///   "Name": "HighestScoresByLevel"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/incrementstatisticversion">Microsoft Documentation</see>
     /// </summary>
-    public Task<IncrementStatisticVersionResponse> IncrementStatisticVersionAsync(IncrementStatisticVersionRequest request);
+    public Task<IncrementStatisticVersionResponse> IncrementStatisticVersionAsync(IncrementStatisticVersionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists the leaderboard definitions defined for the Title.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.ListLeaderboardDefinitionsAsync({});
+    /// var response = await leaderboardApi.ListLeaderboardDefinitionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/listleaderboarddefinitions">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListLeaderboardDefinitionsResponse> ListLeaderboardDefinitionsAsync(ListLeaderboardDefinitionsRequest request);
+    public Task<ListLeaderboardDefinitionsResponse> ListLeaderboardDefinitionsAsync(ListLeaderboardDefinitionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get all current statistic definitions information
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.ListStatisticDefinitionsAsync({});
+    /// var response = await statisticApi.ListStatisticDefinitionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/liststatisticdefinitions">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListStatisticDefinitionsResponse> ListStatisticDefinitionsAsync(ListStatisticDefinitionsRequest request);
+    public Task<ListStatisticDefinitionsResponse> ListStatisticDefinitionsAsync(ListStatisticDefinitionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unlinks a leaderboard definition from it's linked statistic definition.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.UnlinkLeaderboardFromStatisticAsync({);
+    /// var response = await leaderboardApi.UnlinkLeaderboardFromStatisticAsync({);
     ///   "Name": "HighestScoresByLevel",
     ///   "StatisticName": "HighestScoresByLevel"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/unlinkleaderboardfromstatistic">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UnlinkLeaderboardFromStatisticAsync(UnlinkLeaderboardFromStatisticRequest request);
+    public Task<EmptyResponse> UnlinkLeaderboardFromStatisticAsync(UnlinkLeaderboardFromStatisticRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates a leaderboard definition.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.UpdateLeaderboardDefinitionAsync({);
+    /// var response = await leaderboardApi.UpdateLeaderboardDefinitionAsync({);
     ///   "Name": "HighestScoresByLevel",
     ///   "VersionConfiguration": {
     ///     "ResetInterval": "Manual",
@@ -280,11 +280,11 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/updateleaderboarddefinition">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UpdateLeaderboardDefinitionAsync(UpdateLeaderboardDefinitionRequest request);
+    public Task<EmptyResponse> UpdateLeaderboardDefinitionAsync(UpdateLeaderboardDefinitionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Adds or updates entries on the specified leaderboard.
     /// <example><br/>Example:<code>
-    /// var response = leaderboardApi.UpdateLeaderboardEntriesAsync({);
+    /// var response = await leaderboardApi.UpdateLeaderboardEntriesAsync({);
     ///   "LeaderboardName": "Points",
     ///   "Entries": [
     ///     {
@@ -306,11 +306,11 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/updateleaderboardentries">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UpdateLeaderboardEntriesAsync(UpdateLeaderboardEntriesRequest request);
+    public Task<EmptyResponse> UpdateLeaderboardEntriesAsync(UpdateLeaderboardEntriesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Update an existing entity statistic definition.
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.UpdateStatisticDefinitionAsync({);
+    /// var response = await statisticApi.UpdateStatisticDefinitionAsync({);
     ///   "Name": "HighestScoresByLevel",
     ///   "VersionConfiguration": {
     ///     "ResetInterval": "Manual",
@@ -320,12 +320,12 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/updatestatisticdefinition">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UpdateStatisticDefinitionAsync(UpdateStatisticDefinitionRequest request);
+    public Task<EmptyResponse> UpdateStatisticDefinitionAsync(UpdateStatisticDefinitionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Update statistics on an entity profile. Depending on the statistic definition, this may result in entity being ranked
     /// on various leaderboards.
     /// <example><br/>Example:<code>
-    /// var response = statisticApi.UpdateStatisticsAsync({);
+    /// var response = await statisticApi.UpdateStatisticsAsync({);
     ///   "Statistics": [
     ///     {
     ///       "Name": "RoundsWon",
@@ -363,5 +363,5 @@ public interface IPlayFabProgressionApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/updatestatistics">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateStatisticsResponse> UpdateStatisticsAsync(UpdateStatisticsRequest request);
+    public Task<UpdateStatisticsResponse> UpdateStatisticsAsync(UpdateStatisticsRequest request, Dictionary<string, string>? extraHeaders);
 }

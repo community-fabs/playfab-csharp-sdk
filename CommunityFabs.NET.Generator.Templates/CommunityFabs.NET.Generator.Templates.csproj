@@ -8,7 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Static\PlayFabApiSettings.cs" />
+    <Compile Remove="Static\PlayFabBaseInstanceApi.cs" />
+    <Compile Remove="Static\PlayFabSettings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Static\PlayFabApiSettings.cs" />
+    <None Include="Static\PlayFabBaseInstanceApi.cs" />
+    <None Include="Static\PlayFabSettings.cs" />
   </ItemGroup>
 
 
