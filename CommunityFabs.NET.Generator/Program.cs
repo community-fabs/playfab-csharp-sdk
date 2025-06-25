@@ -1,5 +1,4 @@
 ﻿using CommunityFabs.NET.Generator;
-using Razor.Templating.Core;
 
 var outPath = Path.Combine(Utils.GetProjectRoot(), "..", "CommunityFabs.NET.Sdk");
 var staticPath = Path.Combine(Utils.GetProjectRoot(), "..", "CommunityFabs.NET.Generator.Templates", "Static");
@@ -19,26 +18,15 @@ foreach (var apiDoc in apiData)
 {
     Console.WriteLine("Processing PlayFab{0}Api with {1} methods and {2} data types", apiDoc.Name, apiDoc.Calls!.Count, apiDoc.Datatypes!.Count);
 
-    var modelsFileName = $"PlayFab{apiDoc.Name}ApiModels";
-    var renderedModel = await RazorTemplateEngine.RenderAsync("/Views/Models/ApiModel.cshtml", apiDoc);
+    var modelFilePath = Path.Combine(outPath, "Models", $"PlayFab{apiDoc.Name}ApiModels.cs");
+    await Utils.RenderToFile(modelFilePath, "/Views/Models/ApiModel.cshtml", apiDoc);
 
-    var modelFilePath = Path.Combine(outPath, "Models", $"{modelsFileName}.cs");
-    await File.WriteAllTextAsync(modelFilePath, renderedModel);
+    var interfaceFilePath = Path.Combine(outPath, "Interfaces", $"IPlayFab{apiDoc.Name}Api.cs");
+    await Utils.RenderToFile(interfaceFilePath, "/Views/Interface.cshtml", apiDoc);
 
-    var interfaceFileName = $"IPlayFab{apiDoc.Name}Api";
-    var renderedInterface = await RazorTemplateEngine.RenderAsync("/Views/Interface.cshtml", apiDoc);
-
-    var interfaceFilePath = Path.Combine(outPath, "Interfaces", $"{interfaceFileName}.cs");
-    await File.WriteAllTextAsync(interfaceFilePath, renderedInterface);
-
-    var instanceFileName = $"PlayFab{apiDoc.Name}InstanceApi";
-    var renderedInstance = await RazorTemplateEngine.RenderAsync("/Views/InstanceApi.cshtml", apiDoc);
-
-    var instanceFilePath = Path.Combine(outPath, $"{instanceFileName}.cs");
-    await File.WriteAllTextAsync(instanceFilePath, renderedInstance);
+    var instanceFilePath = Path.Combine(outPath, $"PlayFab{apiDoc.Name}InstanceApi.cs");
+    await Utils.RenderToFile(instanceFilePath, "/Views/InstanceApi.cshtml", apiDoc);
 }
 
-var renderedErrors = await RazorTemplateEngine.RenderAsync("/Views/PlayFabErrors.cshtml", apiData.First());
-
 var errorsFilePath = Path.Combine(outPath, "PlayFabErrors.cs");
-await File.WriteAllTextAsync(errorsFilePath, renderedErrors);
+await Utils.RenderToFile(errorsFilePath, "/Views/PlayFabErrors.cshtml", apiData.First());

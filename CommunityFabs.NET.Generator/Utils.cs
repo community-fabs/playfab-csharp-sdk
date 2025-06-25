@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using Razor.Templating.Core;
+using System.Reflection;
 
 namespace CommunityFabs.NET.Generator;
 
@@ -45,5 +46,19 @@ public static class Utils
             Directory.CreateDirectory(Path.GetDirectoryName(destinationPath)!);
             File.Copy(file, destinationPath, true);
         }
+    }
+
+    public static async Task RenderToFile<T>(string filePath, string templatePath, T model) where T : class
+    {
+        if (string.IsNullOrEmpty(filePath))
+        {
+            throw new ArgumentException("File path cannot be null or empty.", nameof(filePath));
+        }
+        if (string.IsNullOrEmpty(templatePath))
+        {
+            throw new ArgumentException("Template path cannot be null or empty.", nameof(templatePath));
+        }
+        var renderedContent = await RazorTemplateEngine.RenderAsync(templatePath, model);
+        await File.WriteAllTextAsync(filePath, renderedContent);
     }
 }
