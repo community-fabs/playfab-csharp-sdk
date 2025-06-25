@@ -8,8 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Static\Http\PlayFabHttp.cs" />
+    <Compile Remove="Static\Http\PlayFabHttpTransport.cs" />
     <Compile Remove="Static\PlayFabApiSettings.cs" />
-    <Compile Remove="Static\PlayFabBaseInstanceApi.cs" />
     <Compile Remove="Static\PlayFabSettings.cs" />
   </ItemGroup>
 
@@ -18,8 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Static\Http\PlayFabHttp.cs" />
+    <None Include="Static\Http\PlayFabHttpTransport.cs" />
     <None Include="Static\PlayFabApiSettings.cs" />
-    <None Include="Static\PlayFabBaseInstanceApi.cs" />
     <None Include="Static\PlayFabSettings.cs" />
   </ItemGroup>
 

@@ -1,5 +1,15 @@
 ﻿@using CommunityFabs.NET.Generator.Templates.Models;
 @model LegacyApiCall;
-    public async Task<@(Model.Result)> @(Model.Name)Async(@Model.Request request, Dictionary<string, string>? extraHeaders = null) {
-        return await PostData<@(Model.Result)>("@Model.Url", request, extraHeaders);
+    public async Task<PlayFabResult<@(Model.Result)>> @(Model.Name)Async(@Model.Request request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        var httpResult = await PlayFabHttp.Post("@Model.Url", request, "", "", extraHeaders, requestSettings);
+        if (httpResult is PlayFabError)
+        {
+            return new PlayFabResult<@Model.Result> { Error = (PlayFabError)httpResult };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<@Model.Result>>((string)httpResult);
+        return new PlayFabResult<@Model.Result> { Result = resultData.data };
     }

@@ -2,13 +2,50 @@
 @model LegacyApiDocument;
 using CommunityFabs.NET.Sdk.Models.@Model.Name;
 using CommunityFabs.NET.Sdk.Models;
-namespace CommunityFabs.NET.Sdk.Interfaces;
+using CommunityFabs.NET.Sdk.Http;
+using CommunityFabs.NET.Sdk.Interfaces;
+using System.Text.Json;
 
-public class @($"PlayFab{Model.Name}InstanceApi : PlayFabBaseInstanceApi, IPlayFab{Model.Name}Api") {
-    public PlayFab@(Model.Name)InstanceApi() : base() { }
-    public PlayFab@(Model.Name)InstanceApi(PlayFabApiSettings apiSettings) : base(apiSettings) { }
-    public PlayFab@(Model.Name)InstanceApi(PlayFabAuthenticationContext context) : base(context) { }
-    public PlayFab@(Model.Name)InstanceApi(PlayFabApiSettings settings, PlayFabAuthenticationContext context) : base(settings, context) { }
+namespace CommunityFabs.NET.Sdk;
+
+public class @($"PlayFab{Model.Name}InstanceApi : IPlayFab{Model.Name}Api") {
+    public readonly PlayFabApiSettings? apiSettings = null;
+    public readonly PlayFabAuthenticationContext? authenticationContext = null;
+
+    public PlayFab@(Model.Name)InstanceApi() { }
+
+    public PlayFab@(Model.Name)InstanceApi(PlayFabApiSettings settings)
+    {
+        apiSettings = settings;
+    }
+
+    public PlayFab@(Model.Name)InstanceApi(PlayFabAuthenticationContext context)
+    {
+        authenticationContext = context;
+    }
+
+    public PlayFab@(Model.Name)InstanceApi(PlayFabApiSettings settings, PlayFabAuthenticationContext context)
+    {
+        apiSettings = settings;
+        authenticationContext = context;
+    }
+
+    /// <summary>
+    /// Verify client login.
+    /// </summary>
+    public bool IsLoggedIn()
+    {
+        return authenticationContext?.IsClientLoggedIn() ?? false;
+    }
+
+    /// <summary>
+    /// Clear the Client SessionToken which allows this Client to call API calls requiring login.
+    /// A new/fresh login will be required after calling this.
+    /// </summary>
+    public void ForgetCredentials()
+    {
+        authenticationContext?.ForgetAllCredentials();
+    }
 
 @foreach (var apiCall in Model.Calls!)
 {
