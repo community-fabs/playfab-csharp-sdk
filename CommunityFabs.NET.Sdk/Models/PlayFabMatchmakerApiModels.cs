@@ -109,7 +109,7 @@ public class ItemInstance {
     /// <summary>
     /// Cost of the catalog item in the given currency. Not available when granting items.
     /// </summary>
-    public UInt32 UnitPrice { get; set; }
+    public uint UnitPrice { get; set; }
     /// <summary>
     /// The number of uses that were added or removed to this item in this call.
     /// </summary>
@@ -278,7 +278,7 @@ public class StartGameResponse : PlayFabResultCommon {
     /// <summary>
     /// Port number for communication with the Game Server Instance.
     /// </summary>
-    public UInt32 ServerPort { get; set; }
+    public uint ServerPort { get; set; }
     /// <summary>
     /// Public DNS name (if any) of the server
     /// </summary>

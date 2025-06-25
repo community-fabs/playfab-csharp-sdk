@@ -381,7 +381,7 @@ public class ExecuteCloudScriptResult : PlayFabResultCommon {
     /// event size is larger than 350KB after the FunctionResult was removed.
     /// </summary>
     public bool? LogsTooLarge { get; set; }
-    public UInt32 MemoryConsumedBytes { get; set; }
+    public uint MemoryConsumedBytes { get; set; }
     /// <summary>
     /// Processor time consumed while executing the function. This does not include time spent waiting on API calls or HTTP
     /// requests.
@@ -795,7 +795,7 @@ public class PlayerProfileModel {
     /// Sum of the player's purchases made with real-money currencies, converted to US dollars equivalent and represented as a
     /// whole number of cents (1/100 USD). For example, 999 indicates nine dollars and ninety-nine cents.
     /// </summary>
-    public UInt32? TotalValueToDateInUSD { get; set; }
+    public uint? TotalValueToDateInUSD { get; set; }
     /// <summary>
     /// List of the player's lifetime purchase totals, summed by real-money currency
     /// </summary>
@@ -1099,7 +1099,7 @@ public class ValueToDateModel {
     /// Total value of the purchases in a whole number of 1/100 monetary units. For example, 999 indicates nine dollars and
     /// ninety-nine cents when Currency is 'USD')
     /// </summary>
-    public UInt32 TotalValue { get; set; }
+    public uint TotalValue { get; set; }
     /// <summary>
     /// Total value of the purchases in a string representation of decimal monetary units. For example, '9.99' indicates nine
     /// dollars and ninety-nine cents when Currency is 'USD'.

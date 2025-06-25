@@ -1,15 +1,94 @@
 ﻿@using CommunityFabs.NET.Generator.Templates.Models;
 @model LegacyApiCall;
+@{
+    string GetRequestActions(string spacing)
+    {
+        if ((Model.Result == "LoginResult" || Model.Result == "RegisterPlayFabUserRequest"))
+        {
+            return spacing + "if (request != null) request.TitleId = request?.TitleId ?? requestSettings.TitleId;\n"
+                + spacing + "if (request.TitleId == null) throw new PlayFabException(PlayFabExceptionCode.TitleNotSet, \"TitleId must be set in your local or global settings to call this method\");\n";
+        }
+        else if (Model.Result == "AuthenticateIdentityResult")
+        {
+            return spacing + "if (request != null) request.TitleId = request?.TitleId ?? requestSettings.TitleId;\n"
+                + spacing + "if (request.TitleId == null) throw new PlayFabException(PlayFabExceptionCode.TitleNotSet, \"TitleId must be set in your local or global settings to call this method\");\n"
+                + spacing + "if (request != null) request.PlayerAccountPoolId = request?.PlayerAccountPoolId ?? requestSettings.PlayerAccountPoolId;\n"
+                + spacing + "if (request.PlayerAccountPoolId == null) throw new PlayFabException(PlayFabExceptionCode.PlayerAccountPoolNotSet, \"PlayerAccountPoolId must be set in your local or global settings to call this method\");\n";
+        }
+        else if (Model.Auth == "EntityToken" && Model.Name == "ValidateEntityToken")
+        {
+            return "\n" + spacing + "var entityToken = requestContext?.EntityToken ?? PlayFabSettings.staticPlayer.EntityToken;\n"
+                    + spacing + "if ((entityToken) == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, \"Must call Client Login or GetEntityToken before calling this method\");\n";
+        }
+        else if (Model.Auth == "EntityToken")
+        {
+            return spacing + "if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, \"Must call Client Login or GetEntityToken before calling this method\");\n";
+        }
+        else if (Model.Auth == "SessionTicket")
+        {
+            return spacing + "if (requestContext.ClientSessionTicket == null) throw new PlayFabException(PlayFabExceptionCode.NotLoggedIn, \"Must be logged in to call this method\");\n";
+        }
+        else if (Model.Auth == "SecretKey")
+        {
+            return spacing + "if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, \"DeveloperSecretKey must be set in your local or global settings to call this method\");\n";
+        }
+        else if (Model.Url == "/Authentication/GetEntityToken")
+        {
+            return spacing + "string authKey = null, authValue = null;\n"
+                + spacing + "if (requestContext.ClientSessionTicket != null) { authKey = \"X-Authorization\"; authValue = requestContext.ClientSessionTicket; }\n"
+                + spacing + "if (requestSettings.DeveloperSecretKey != null) { authKey = \"X-SecretKey\"; authValue = requestSettings.DeveloperSecretKey; }\n"
+                + spacing + "if (requestContext.EntityToken != null) { authKey = \"X-EntityToken\"; authValue = requestContext.EntityToken; }\n";
+        }
+        return "";
+    }
+    string GetResultActions(string spacing)
+    {
+        if (Model.Result == "LoginResult" || Model.Result == "RegisterPlayFabUserResult")
+            return spacing + "result.AuthenticationContext = new PlayFabAuthenticationContext(result.SessionTicket, result.EntityToken.EntityToken, result.PlayFabId, result.EntityToken.Entity.Id, result.EntityToken.Entity.Type);\n"
+                + spacing + "authenticationContext.CopyFrom(result.AuthenticationContext);\n";
+        else if (Model.Result == "AuthenticateIdentityResult")
+            return spacing + "result.AuthenticationContext = new PlayFabAuthenticationContext(null, result.TitlePlayerAccount.EntityToken, null, result.TitlePlayerAccount.Entity.Id, result.TitlePlayerAccount.Entity.Type);\n"
+                + spacing + "authenticationContext.CopyFrom(result.AuthenticationContext);\n";
+        else if (Model.Result == "GetEntityTokenResponse")
+            return spacing + "var updateContext = authenticationContext;\n"
+                + spacing + "updateContext.EntityToken = result.EntityToken;\n"
+                + spacing + "updateContext.EntityId = result.Entity.Id;\n"
+                + spacing + "updateContext.EntityType = result.Entity.Type;\n";
+        else if (Model.Result == "AuthenticateCustomIdResult")
+            return spacing + "var updateContext = authenticationContext;\n"
+                + spacing + "updateContext.EntityToken = result.EntityToken.EntityToken;\n"
+                + spacing + "updateContext.EntityId = result.EntityToken.Entity.Id;\n"
+                + spacing + "updateContext.EntityType = result.EntityToken.Entity.Type;\n";
+        return "";
+    }
+    string GetAuthParams()
+    {
+        if (Model.Url == "/Authentication/GetEntityToken")
+            return "authKey, authValue";
+        if (Model.Auth == "EntityToken" && Model.Name == "ValidateEntityToken")
+            return "\"X-EntityToken\", entityToken";
+        if (Model.Auth == "EntityToken")
+            return "\"X-EntityToken\", requestContext.EntityToken";
+        if (Model.Auth == "SecretKey")
+            return "\"X-SecretKey\", requestSettings.DeveloperSecretKey";
+        else if (Model.Auth == "SessionTicket")
+            return "\"X-Authorization\", requestContext.ClientSessionTicket";
+        return "null, null";
+    }
+}
     public async Task<PlayFabResult<@(Model.Result)>> @(Model.Name)Async(@Model.Request request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("@Model.Url", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+@Html.Raw(GetRequestActions("        "))
+        var httpResult = await PlayFabHttp.Post("@Model.Url", request, @Html.Raw(GetAuthParams()), extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<@Model.Result> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<@Model.Result> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<@Model.Result>>((string)httpResult);
-        return new PlayFabResult<@Model.Result> { Result = resultData.data };
+        var result = resultData!.data;
+@Html.Raw(GetResultActions("        "))
+        return new PlayFabResult<@Model.Result> { Result = result };
     }

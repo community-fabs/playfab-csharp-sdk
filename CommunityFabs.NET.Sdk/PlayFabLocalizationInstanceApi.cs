@@ -49,13 +49,17 @@ public class PlayFabLocalizationInstanceApi : IPlayFabLocalizationApi {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/Locale/GetLanguageList", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/Locale/GetLanguageList", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<GetLanguageListResponse> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<GetLanguageListResponse> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetLanguageListResponse>>((string)httpResult);
-        return new PlayFabResult<GetLanguageListResponse> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<GetLanguageListResponse> { Result = result };
     }
 }

@@ -339,15 +339,15 @@ public class CartItem {
     /// <summary>
     /// Cost of the catalog item for each applicable real world currency.
     /// </summary>
-    public Dictionary<string, UInt32>? RealCurrencyPrices { get; set; }
+    public Dictionary<string, uint>? RealCurrencyPrices { get; set; }
     /// <summary>
     /// Amount of each applicable virtual currency which will be received as a result of purchasing this catalog item.
     /// </summary>
-    public Dictionary<string, UInt32>? VCAmount { get; set; }
+    public Dictionary<string, uint>? VCAmount { get; set; }
     /// <summary>
     /// Cost of the catalog item for each applicable virtual currency.
     /// </summary>
-    public Dictionary<string, UInt32>? VirtualCurrencyPrices { get; set; }
+    public Dictionary<string, uint>? VirtualCurrencyPrices { get; set; }
 }
 
 /// <summary>
@@ -425,7 +425,7 @@ public class CatalogItem {
     /// <summary>
     /// override prices for this item for specific currencies
     /// </summary>
-    public Dictionary<string, UInt32>? RealCurrencyPrices { get; set; }
+    public Dictionary<string, uint>? RealCurrencyPrices { get; set; }
     /// <summary>
     /// list of item tags
     /// </summary>
@@ -433,7 +433,7 @@ public class CatalogItem {
     /// <summary>
     /// price of this item in virtual currencies and "RM" (the base Real Money purchase price, in USD pennies)
     /// </summary>
-    public Dictionary<string, UInt32>? VirtualCurrencyPrices { get; set; }
+    public Dictionary<string, uint>? VirtualCurrencyPrices { get; set; }
 }
 
 public class CatalogItemBundleInfo {
@@ -449,20 +449,20 @@ public class CatalogItemBundleInfo {
     /// <summary>
     /// virtual currency types and balances which will be added to the player inventory when the bundle is added
     /// </summary>
-    public Dictionary<string, UInt32>? BundledVirtualCurrencies { get; set; }
+    public Dictionary<string, uint>? BundledVirtualCurrencies { get; set; }
 }
 
 public class CatalogItemConsumableInfo {
     /// <summary>
     /// number of times this object can be used, after which it will be removed from the player inventory
     /// </summary>
-    public UInt32? UsageCount { get; set; }
+    public uint? UsageCount { get; set; }
     /// <summary>
     /// duration in seconds for how long the item will remain in the player inventory - once elapsed, the item will be removed
     /// (recommended minimum value is 5 seconds, as lower values can cause the item to expire before operations depending on
     /// this item's details have completed)
     /// </summary>
-    public UInt32? UsagePeriod { get; set; }
+    public uint? UsagePeriod { get; set; }
     /// <summary>
     /// all inventory item instances in the player inventory sharing a non-null UsagePeriodGroup have their UsagePeriod values
     /// added together, and share the result - when that period has elapsed, all the items in the group will be removed
@@ -495,7 +495,7 @@ public class CatalogItemContainerInfo {
     /// <summary>
     /// virtual currency types and balances which will be added to the player inventory when the container is unlocked
     /// </summary>
-    public Dictionary<string, UInt32>? VirtualCurrencyContents { get; set; }
+    public Dictionary<string, uint>? VirtualCurrencyContents { get; set; }
 }
 
 public class CharacterInventory {
@@ -1424,7 +1424,7 @@ public class ExecuteCloudScriptResult : PlayFabResultCommon {
     /// event size is larger than 350KB after the FunctionResult was removed.
     /// </summary>
     public bool? LogsTooLarge { get; set; }
-    public UInt32 MemoryConsumedBytes { get; set; }
+    public uint MemoryConsumedBytes { get; set; }
     /// <summary>
     /// Processor time consumed while executing the function. This does not include time spent waiting on API calls or HTTP
     /// requests.
@@ -1572,7 +1572,7 @@ public class GameInfo {
     /// <summary>
     /// duration in seconds this server has been running
     /// </summary>
-    public UInt32 RunTime { get; set; }
+    public uint RunTime { get; set; }
     /// <summary>
     /// IPV4 address of the server
     /// </summary>
@@ -1741,7 +1741,7 @@ public class GetCharacterDataRequest : PlayFabRequestCommon {
     /// The version that currently exists according to the caller. The call will return the data for all of the keys if the
     /// version in the system is greater than this.
     /// </summary>
-    public UInt32? IfChangedFromDataVersion { get; set; }
+    public uint? IfChangedFromDataVersion { get; set; }
     /// <summary>
     /// Specific keys to search for in the custom user data.
     /// </summary>
@@ -1765,7 +1765,7 @@ public class GetCharacterDataResult : PlayFabResultCommon {
     /// Indicates the current version of the data that has been set. This is incremented with every set call for that type of
     /// data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
     /// </summary>
-    public UInt32 DataVersion { get; set; }
+    public uint DataVersion { get; set; }
 }
 
 /// <summary>
@@ -2479,7 +2479,7 @@ public class GetPlayerCombinedInfoResultPayload {
     /// <summary>
     /// The version of the UserData that was returned.
     /// </summary>
-    public UInt32 UserDataVersion { get; set; }
+    public uint UserDataVersion { get; set; }
     /// <summary>
     /// Array of inventory items in the user's current inventory.
     /// </summary>
@@ -2491,7 +2491,7 @@ public class GetPlayerCombinedInfoResultPayload {
     /// <summary>
     /// The version of the Read-Only UserData that was returned.
     /// </summary>
-    public UInt32 UserReadOnlyDataVersion { get; set; }
+    public uint UserReadOnlyDataVersion { get; set; }
     /// <summary>
     /// Dictionary of virtual currency balance(s) belonging to the user.
     /// </summary>
@@ -2883,7 +2883,7 @@ public class GetPlayFabIDsFromSteamIDsRequest : PlayFabRequestCommon {
     /// <summary>
     /// Deprecated: Please use SteamStringIDs
     /// </summary>
-    public List<uint64>? SteamIDs { get; set; }
+    public List<ulong>? SteamIDs { get; set; }
     /// <summary>
     /// Array of unique Steam identifiers (Steam profile IDs) for which the title needs to get PlayFab identifiers. The array
     /// cannot exceed 2,000 in length.
@@ -3281,7 +3281,7 @@ public class GetUserCombinedInfoResult : PlayFabResultCommon {
     /// <summary>
     /// The version of the UserData that was returned.
     /// </summary>
-    public UInt32 DataVersion { get; set; }
+    public uint DataVersion { get; set; }
     /// <summary>
     /// Array of inventory items in the user's current inventory.
     /// </summary>
@@ -3297,7 +3297,7 @@ public class GetUserCombinedInfoResult : PlayFabResultCommon {
     /// <summary>
     /// The version of the Read-Only UserData that was returned.
     /// </summary>
-    public UInt32 ReadOnlyDataVersion { get; set; }
+    public uint ReadOnlyDataVersion { get; set; }
     /// <summary>
     /// Array of virtual currency balance(s) belonging to the user.
     /// </summary>
@@ -3319,7 +3319,7 @@ public class GetUserDataRequest : PlayFabRequestCommon {
     /// The version that currently exists according to the caller. The call will return the data for all of the keys if the
     /// version in the system is greater than this.
     /// </summary>
-    public UInt32? IfChangedFromDataVersion { get; set; }
+    public uint? IfChangedFromDataVersion { get; set; }
     /// <summary>
     /// List of unique keys to load from.
     /// </summary>
@@ -3340,7 +3340,7 @@ public class GetUserDataResult : PlayFabResultCommon {
     /// Indicates the current version of the data that has been set. This is incremented with every set call for that type of
     /// data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
     /// </summary>
-    public UInt32 DataVersion { get; set; }
+    public uint DataVersion { get; set; }
 }
 
 public class GetUserInventoryRequest : PlayFabRequestCommon {
@@ -3516,7 +3516,7 @@ public class ItemInstance {
     /// <summary>
     /// Cost of the catalog item in the given currency. Not available when granting items.
     /// </summary>
-    public UInt32 UnitPrice { get; set; }
+    public uint UnitPrice { get; set; }
     /// <summary>
     /// The number of uses that were added or removed to this item in this call.
     /// </summary>
@@ -3535,7 +3535,7 @@ public class ItemPurchaseRequest {
     /// <summary>
     /// How many of this item to purchase. Min 1, maximum 25.
     /// </summary>
-    public UInt32 Quantity { get; set; }
+    public uint Quantity { get; set; }
     /// <summary>
     /// Items to be upgraded as a result of this purchase (upgraded items are hidden, as they are "replaced" by the new items).
     /// </summary>
@@ -4105,7 +4105,7 @@ public enum LoginIdentityProvider {
     BattleNet,
 }
 
-public class LoginResult : PlayFabResultCommon {
+public class LoginResult : PlayFabLoginResultCommon {
     /// <summary>
     /// If LoginTitlePlayerAccountEntity flag is set on the login request the title_player_account will also be logged in and
     /// returned.
@@ -5328,7 +5328,7 @@ public class PayForPurchaseResult : PlayFabResultCommon {
     /// <summary>
     /// Local credit applied to the transaction (provider specific).
     /// </summary>
-    public UInt32 CreditApplied { get; set; }
+    public uint CreditApplied { get; set; }
     /// <summary>
     /// Purchase order identifier.
     /// </summary>
@@ -5352,7 +5352,7 @@ public class PayForPurchaseResult : PlayFabResultCommon {
     /// <summary>
     /// Cost of the transaction.
     /// </summary>
-    public UInt32 PurchasePrice { get; set; }
+    public uint PurchasePrice { get; set; }
     /// <summary>
     /// Status of the transaction.
     /// </summary>
@@ -5375,7 +5375,7 @@ public class PaymentOption {
     /// <summary>
     /// Amount of the specified currency needed for the purchase.
     /// </summary>
-    public UInt32 Price { get; set; }
+    public uint Price { get; set; }
     /// <summary>
     /// Name of the purchase provider for this option.
     /// </summary>
@@ -5383,7 +5383,7 @@ public class PaymentOption {
     /// <summary>
     /// Amount of existing credit the user has with the provider.
     /// </summary>
-    public UInt32 StoreCredit { get; set; }
+    public uint StoreCredit { get; set; }
 }
 
 public class PlayerLeaderboardEntry {
@@ -5488,7 +5488,7 @@ public class PlayerProfileModel {
     /// Sum of the player's purchases made with real-money currencies, converted to US dollars equivalent and represented as a
     /// whole number of cents (1/100 USD). For example, 999 indicates nine dollars and ninety-nine cents.
     /// </summary>
-    public UInt32? TotalValueToDateInUSD { get; set; }
+    public uint? TotalValueToDateInUSD { get; set; }
     /// <summary>
     /// List of the player's lifetime purchase totals, summed by real-money currency
     /// </summary>
@@ -5590,7 +5590,7 @@ public class PlayerStatisticVersion {
     /// <summary>
     /// version of the statistic
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
 }
 
 public class PlayStation5Payload {
@@ -5689,7 +5689,7 @@ public class PurchaseReceiptFulfillment {
     /// <summary>
     /// Amount of the stated currency paid for the items, in centesimal units
     /// </summary>
-    public UInt32? RecordedTransactionTotal { get; set; }
+    public uint? RecordedTransactionTotal { get; set; }
 }
 
 public enum PushNotificationPlatform {
@@ -5866,7 +5866,7 @@ public class RegisterPlayFabUserRequest : PlayFabRequestCommon {
 /// additional accounts (Steam, Facebook, Game Center, etc.), allowing for added social network lists and achievements
 /// systems.
 /// </summary>
-public class RegisterPlayFabUserResult : PlayFabResultCommon {
+public class RegisterPlayFabUserResult : PlayFabLoginResultCommon {
     /// <summary>
     /// If LoginTitlePlayerAccountEntity flag is set on the login request the title_player_account will also be logged in and
     /// returned.
@@ -6397,7 +6397,7 @@ public class StatisticNameVersion {
     /// <summary>
     /// the version of the statistic to be returned
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
 }
 
 public class StatisticUpdate {
@@ -6413,7 +6413,7 @@ public class StatisticUpdate {
     /// for updates to an existing statistic value for a player, the version of the statistic when it was loaded. Null when
     /// setting the statistic value for the first time.
     /// </summary>
-    public UInt32? Version { get; set; }
+    public uint? Version { get; set; }
 }
 
 public class StatisticValue {
@@ -6428,7 +6428,7 @@ public class StatisticValue {
     /// <summary>
     /// for updates to an existing statistic value for a player, the version of the statistic when it was loaded
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
 }
 
 public class SteamNamePlayFabIdPair {
@@ -6450,7 +6450,7 @@ public class SteamPlayFabIdPair {
     /// <summary>
     /// Deprecated: Please use SteamStringId
     /// </summary>
-    public uint64? SteamId { get; set; }
+    public ulong? SteamId { get; set; }
     /// <summary>
     /// Unique Steam identifier for a user.
     /// </summary>
@@ -6468,7 +6468,7 @@ public class StoreItem {
     /// <summary>
     /// Intended display position for this item. Note that 0 is the first position
     /// </summary>
-    public UInt32? DisplayPosition { get; set; }
+    public uint? DisplayPosition { get; set; }
     /// <summary>
     /// Unique identifier of the item as it exists in the catalog - note that this must exactly match the ItemId from the
     /// catalog
@@ -6477,11 +6477,11 @@ public class StoreItem {
     /// <summary>
     /// Override prices for this item for specific currencies
     /// </summary>
-    public Dictionary<string, UInt32>? RealCurrencyPrices { get; set; }
+    public Dictionary<string, uint>? RealCurrencyPrices { get; set; }
     /// <summary>
     /// Override prices for this item in virtual currencies and "RM" (the base Real Money purchase price, in USD pennies)
     /// </summary>
-    public Dictionary<string, UInt32>? VirtualCurrencyPrices { get; set; }
+    public Dictionary<string, uint>? VirtualCurrencyPrices { get; set; }
 }
 
 /// <summary>
@@ -6980,7 +6980,7 @@ public class UnlockContainerItemResult : PlayFabResultCommon {
     /// <summary>
     /// Virtual currency granted to the player as a result of unlocking the container.
     /// </summary>
-    public Dictionary<string, UInt32>? VirtualCurrency { get; set; }
+    public Dictionary<string, uint>? VirtualCurrency { get; set; }
 }
 
 public class UpdateAvatarUrlRequest : PlayFabRequestCommon {
@@ -7026,7 +7026,7 @@ public class UpdateCharacterDataResult : PlayFabResultCommon {
     /// Indicates the current version of the data that has been set. This is incremented with every set call for that type of
     /// data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
     /// </summary>
-    public UInt32 DataVersion { get; set; }
+    public uint DataVersion { get; set; }
 }
 
 /// <summary>
@@ -7184,7 +7184,7 @@ public class UpdateUserDataResult : PlayFabResultCommon {
     /// Indicates the current version of the data that has been set. This is incremented with every set call for that type of
     /// data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
     /// </summary>
-    public UInt32 DataVersion { get; set; }
+    public uint DataVersion { get; set; }
 }
 
 /// <summary>
@@ -7714,7 +7714,7 @@ public class ValidateGooglePlayPurchaseRequest : PlayFabRequestCommon {
     /// <summary>
     /// Amount of the stated currency paid, in centesimal units.
     /// </summary>
-    public UInt32? PurchasePrice { get; set; }
+    public uint? PurchasePrice { get; set; }
     /// <summary>
     /// Original JSON string returned by the Google Play IAB API.
     /// </summary>
@@ -7795,7 +7795,7 @@ public class ValidateWindowsReceiptRequest : PlayFabRequestCommon {
     /// <summary>
     /// Amount of the stated currency paid, in centesimal units.
     /// </summary>
-    public UInt32 PurchasePrice { get; set; }
+    public uint PurchasePrice { get; set; }
     /// <summary>
     /// XML Receipt returned by the Windows App Store in-app purchase API
     /// </summary>
@@ -7823,7 +7823,7 @@ public class ValueToDateModel {
     /// Total value of the purchases in a whole number of 1/100 monetary units. For example, 999 indicates nine dollars and
     /// ninety-nine cents when Currency is 'USD')
     /// </summary>
-    public UInt32 TotalValue { get; set; }
+    public uint TotalValue { get; set; }
     /// <summary>
     /// Total value of the purchases in a string representation of decimal monetary units. For example, '9.99' indicates nine
     /// dollars and ninety-nine cents when Currency is 'USD'.

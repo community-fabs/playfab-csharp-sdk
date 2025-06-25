@@ -490,7 +490,7 @@ public class BanPlayerSegmentAction {
     /// <summary>
     /// Ban hours duration.
     /// </summary>
-    public UInt32? BanHours { get; set; }
+    public uint? BanHours { get; set; }
     /// <summary>
     /// Reason for ban.
     /// </summary>
@@ -504,7 +504,7 @@ public class BanRequest {
     /// <summary>
     /// The duration in hours for the ban. Leave this blank for a permanent ban.
     /// </summary>
-    public UInt32? DurationInHours { get; set; }
+    public uint? DurationInHours { get; set; }
     /// <summary>
     /// Whether the Microsoft family members should be included in the ban. May affect multiple players. This property is
     /// deprecated and does not work anymore.
@@ -632,7 +632,7 @@ public class CatalogItem {
     /// <summary>
     /// override prices for this item for specific currencies
     /// </summary>
-    public Dictionary<string, UInt32>? RealCurrencyPrices { get; set; }
+    public Dictionary<string, uint>? RealCurrencyPrices { get; set; }
     /// <summary>
     /// list of item tags
     /// </summary>
@@ -640,7 +640,7 @@ public class CatalogItem {
     /// <summary>
     /// price of this item in virtual currencies and "RM" (the base Real Money purchase price, in USD pennies)
     /// </summary>
-    public Dictionary<string, UInt32>? VirtualCurrencyPrices { get; set; }
+    public Dictionary<string, uint>? VirtualCurrencyPrices { get; set; }
 }
 
 public class CatalogItemBundleInfo {
@@ -656,20 +656,20 @@ public class CatalogItemBundleInfo {
     /// <summary>
     /// virtual currency types and balances which will be added to the player inventory when the bundle is added
     /// </summary>
-    public Dictionary<string, UInt32>? BundledVirtualCurrencies { get; set; }
+    public Dictionary<string, uint>? BundledVirtualCurrencies { get; set; }
 }
 
 public class CatalogItemConsumableInfo {
     /// <summary>
     /// number of times this object can be used, after which it will be removed from the player inventory
     /// </summary>
-    public UInt32? UsageCount { get; set; }
+    public uint? UsageCount { get; set; }
     /// <summary>
     /// duration in seconds for how long the item will remain in the player inventory - once elapsed, the item will be removed
     /// (recommended minimum value is 5 seconds, as lower values can cause the item to expire before operations depending on
     /// this item's details have completed)
     /// </summary>
-    public UInt32? UsagePeriod { get; set; }
+    public uint? UsagePeriod { get; set; }
     /// <summary>
     /// all inventory item instances in the player inventory sharing a non-null UsagePeriodGroup have their UsagePeriod values
     /// added together, and share the result - when that period has elapsed, all the items in the group will be removed
@@ -702,7 +702,7 @@ public class CatalogItemContainerInfo {
     /// <summary>
     /// virtual currency types and balances which will be added to the player inventory when the container is unlocked
     /// </summary>
-    public Dictionary<string, UInt32>? VirtualCurrencyContents { get; set; }
+    public Dictionary<string, uint>? VirtualCurrencyContents { get; set; }
 }
 
 /// <summary>
@@ -2139,7 +2139,7 @@ public class ExecuteCloudScriptResult {
     /// event size is larger than 350KB after the FunctionResult was removed.
     /// </summary>
     public bool? LogsTooLarge { get; set; }
-    public UInt32 MemoryConsumedBytes { get; set; }
+    public uint MemoryConsumedBytes { get; set; }
     /// <summary>
     /// Processor time consumed while executing the function. This does not include time spent waiting on API calls or HTTP
     /// requests.
@@ -2313,11 +2313,11 @@ public class GameModeInfo {
     /// <summary>
     /// maximum user count a specific Game Server Instance can support
     /// </summary>
-    public UInt32 MaxPlayerCount { get; set; }
+    public uint MaxPlayerCount { get; set; }
     /// <summary>
     /// minimum user count required for this Game Server Instance to continue (usually 1)
     /// </summary>
-    public UInt32 MinPlayerCount { get; set; }
+    public uint MinPlayerCount { get; set; }
     /// <summary>
     /// whether to start as an open session, meaning that players can matchmake into it (defaults to true)
     /// </summary>
@@ -3398,7 +3398,7 @@ public class GetContentListResult : PlayFabResultCommon {
     /// <summary>
     /// The total size of listed contents in bytes.
     /// </summary>
-    public UInt32 TotalSize { get; set; }
+    public uint TotalSize { get; set; }
 }
 
 public class GetContentUploadUrlRequest : PlayFabRequestCommon {
@@ -3514,7 +3514,7 @@ public class GetMatchmakerGameInfoResult : PlayFabResultCommon {
     /// <summary>
     /// communication port for this Game Server Instance
     /// </summary>
-    public UInt32 ServerPort { get; set; }
+    public uint ServerPort { get; set; }
     /// <summary>
     /// Public DNS name (if any) of the server
     /// </summary>
@@ -3717,12 +3717,12 @@ public class GetPlayersInSegmentRequest : PlayFabRequestCommon {
     /// Maximum is 10,000. The value 0 will prevent loading any profiles and return only the count of profiles matching this
     /// segment.
     /// </summary>
-    public UInt32? MaxBatchSize { get; set; }
+    public uint? MaxBatchSize { get; set; }
     /// <summary>
     /// Number of seconds to keep the continuation token active. After token expiration it is not possible to continue paging
     /// results. Default is 300 (5 minutes). Maximum is 5,400 (90 minutes).
     /// </summary>
-    public UInt32? SecondsToLive { get; set; }
+    public uint? SecondsToLive { get; set; }
     /// <summary>
     /// Unique identifier for this segment.
     /// </summary>
@@ -4141,7 +4141,7 @@ public class GetUserDataRequest : PlayFabRequestCommon {
     /// The version that currently exists according to the caller. The call will return the data for all of the keys if the
     /// version in the system is greater than this.
     /// </summary>
-    public UInt32? IfChangedFromDataVersion { get; set; }
+    public uint? IfChangedFromDataVersion { get; set; }
     /// <summary>
     /// Specific keys to search for in the custom user data.
     /// </summary>
@@ -4161,7 +4161,7 @@ public class GetUserDataResult : PlayFabResultCommon {
     /// Indicates the current version of the data that has been set. This is incremented with every set call for that type of
     /// data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
     /// </summary>
-    public UInt32 DataVersion { get; set; }
+    public uint DataVersion { get; set; }
     /// <summary>
     /// PlayFab unique identifier of the user whose custom data is being returned.
     /// </summary>
@@ -4281,7 +4281,7 @@ public class GrantedItemInstance {
     /// <summary>
     /// Cost of the catalog item in the given currency. Not available when granting items.
     /// </summary>
-    public UInt32 UnitPrice { get; set; }
+    public uint UnitPrice { get; set; }
     /// <summary>
     /// The number of uses that were added or removed to this item in this call.
     /// </summary>
@@ -4315,7 +4315,7 @@ public class GrantItemSegmentAction {
     /// <summary>
     /// Item quantity.
     /// </summary>
-    public UInt32 Quantity { get; set; }
+    public uint Quantity { get; set; }
 }
 
 /// <summary>
@@ -4550,7 +4550,7 @@ public class ItemInstance {
     /// <summary>
     /// Cost of the catalog item in the given currency. Not available when granting items.
     /// </summary>
-    public UInt32 UnitPrice { get; set; }
+    public uint UnitPrice { get; set; }
     /// <summary>
     /// The number of uses that were added or removed to this item in this call.
     /// </summary>
@@ -5183,11 +5183,11 @@ public class PlayerProfile {
     /// <summary>
     /// A sum of player's total purchases in USD across all currencies.
     /// </summary>
-    public UInt32? TotalValueToDateInUSD { get; set; }
+    public uint? TotalValueToDateInUSD { get; set; }
     /// <summary>
     /// Dictionary of player's total purchases by currency.
     /// </summary>
-    public Dictionary<string, UInt32>? ValuesToDate { get; set; }
+    public Dictionary<string, uint>? ValuesToDate { get; set; }
     /// <summary>
     /// Dictionary of player's virtual currency balances
     /// </summary>
@@ -5273,7 +5273,7 @@ public class PlayerProfileModel {
     /// Sum of the player's purchases made with real-money currencies, converted to US dollars equivalent and represented as a
     /// whole number of cents (1/100 USD). For example, 999 indicates nine dollars and ninety-nine cents.
     /// </summary>
-    public UInt32? TotalValueToDateInUSD { get; set; }
+    public uint? TotalValueToDateInUSD { get; set; }
     /// <summary>
     /// List of the player's lifetime purchase totals, summed by real-money currency
     /// </summary>
@@ -5378,7 +5378,7 @@ public class PlayerStatisticDefinition {
     /// <summary>
     /// current active version of the statistic, incremented each time the statistic resets
     /// </summary>
-    public UInt32 CurrentVersion { get; set; }
+    public uint CurrentVersion { get; set; }
     /// <summary>
     /// unique name of the statistic
     /// </summary>
@@ -5425,7 +5425,7 @@ public class PlayerStatisticVersion {
     /// <summary>
     /// version of the statistic
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
 }
 
 public class PushNotificationContent {
@@ -6879,7 +6879,7 @@ public class StoreItem {
     /// <summary>
     /// Intended display position for this item. Note that 0 is the first position
     /// </summary>
-    public UInt32? DisplayPosition { get; set; }
+    public uint? DisplayPosition { get; set; }
     /// <summary>
     /// Unique identifier of the item as it exists in the catalog - note that this must exactly match the ItemId from the
     /// catalog
@@ -6888,11 +6888,11 @@ public class StoreItem {
     /// <summary>
     /// Override prices for this item for specific currencies
     /// </summary>
-    public Dictionary<string, UInt32>? RealCurrencyPrices { get; set; }
+    public Dictionary<string, uint>? RealCurrencyPrices { get; set; }
     /// <summary>
     /// Override prices for this item in virtual currencies and "RM" (the base Real Money purchase price, in USD pennies)
     /// </summary>
-    public Dictionary<string, UInt32>? VirtualCurrencyPrices { get; set; }
+    public Dictionary<string, uint>? VirtualCurrencyPrices { get; set; }
 }
 
 /// <summary>
@@ -7584,7 +7584,7 @@ public class UpdateUserDataResult : PlayFabResultCommon {
     /// Indicates the current version of the data that has been set. This is incremented with every set call for that type of
     /// data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
     /// </summary>
-    public UInt32 DataVersion { get; set; }
+    public uint DataVersion { get; set; }
 }
 
 /// <summary>
@@ -8073,7 +8073,7 @@ public class ValueToDateModel {
     /// Total value of the purchases in a whole number of 1/100 monetary units. For example, 999 indicates nine dollars and
     /// ninety-nine cents when Currency is 'USD')
     /// </summary>
-    public UInt32 TotalValue { get; set; }
+    public uint TotalValue { get; set; }
     /// <summary>
     /// Total value of the purchases in a string representation of decimal monetary units. For example, '9.99' indicates nine
     /// dollars and ninety-nine cents when Currency is 'USD'.

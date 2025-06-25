@@ -49,195 +49,255 @@ public class PlayFabCloudScriptInstanceApi : IPlayFabCloudScriptApi {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/ExecuteEntityCloudScript", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/ExecuteEntityCloudScript", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<ExecuteCloudScriptResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<ExecuteCloudScriptResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<ExecuteCloudScriptResult>>((string)httpResult);
-        return new PlayFabResult<ExecuteCloudScriptResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<ExecuteCloudScriptResult> { Result = result };
     }
     public async Task<PlayFabResult<ExecuteFunctionResult>> ExecuteFunctionAsync(ExecuteFunctionRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/ExecuteFunction", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/ExecuteFunction", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<ExecuteFunctionResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<ExecuteFunctionResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<ExecuteFunctionResult>>((string)httpResult);
-        return new PlayFabResult<ExecuteFunctionResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<ExecuteFunctionResult> { Result = result };
     }
     public async Task<PlayFabResult<GetFunctionResult>> GetFunctionAsync(GetFunctionRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/GetFunction", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/GetFunction", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<GetFunctionResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<GetFunctionResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetFunctionResult>>((string)httpResult);
-        return new PlayFabResult<GetFunctionResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<GetFunctionResult> { Result = result };
     }
     public async Task<PlayFabResult<ListEventHubFunctionsResult>> ListEventHubFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/ListEventHubFunctions", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/ListEventHubFunctions", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<ListEventHubFunctionsResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<ListEventHubFunctionsResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<ListEventHubFunctionsResult>>((string)httpResult);
-        return new PlayFabResult<ListEventHubFunctionsResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<ListEventHubFunctionsResult> { Result = result };
     }
     public async Task<PlayFabResult<ListFunctionsResult>> ListFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/ListFunctions", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/ListFunctions", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<ListFunctionsResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<ListFunctionsResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<ListFunctionsResult>>((string)httpResult);
-        return new PlayFabResult<ListFunctionsResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<ListFunctionsResult> { Result = result };
     }
     public async Task<PlayFabResult<ListHttpFunctionsResult>> ListHttpFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/ListHttpFunctions", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/ListHttpFunctions", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<ListHttpFunctionsResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<ListHttpFunctionsResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<ListHttpFunctionsResult>>((string)httpResult);
-        return new PlayFabResult<ListHttpFunctionsResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<ListHttpFunctionsResult> { Result = result };
     }
     public async Task<PlayFabResult<ListQueuedFunctionsResult>> ListQueuedFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/ListQueuedFunctions", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/ListQueuedFunctions", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<ListQueuedFunctionsResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<ListQueuedFunctionsResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<ListQueuedFunctionsResult>>((string)httpResult);
-        return new PlayFabResult<ListQueuedFunctionsResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<ListQueuedFunctionsResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResult>> PostFunctionResultForEntityTriggeredActionAsync(PostFunctionResultForEntityTriggeredActionRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/PostFunctionResultForEntityTriggeredAction", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/PostFunctionResultForEntityTriggeredAction", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<EmptyResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<EmptyResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResult>>((string)httpResult);
-        return new PlayFabResult<EmptyResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResult>> PostFunctionResultForFunctionExecutionAsync(PostFunctionResultForFunctionExecutionRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/PostFunctionResultForFunctionExecution", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/PostFunctionResultForFunctionExecution", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<EmptyResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<EmptyResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResult>>((string)httpResult);
-        return new PlayFabResult<EmptyResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResult>> PostFunctionResultForPlayerTriggeredActionAsync(PostFunctionResultForPlayerTriggeredActionRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/PostFunctionResultForPlayerTriggeredAction", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/PostFunctionResultForPlayerTriggeredAction", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<EmptyResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<EmptyResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResult>>((string)httpResult);
-        return new PlayFabResult<EmptyResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResult>> PostFunctionResultForScheduledTaskAsync(PostFunctionResultForScheduledTaskRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/PostFunctionResultForScheduledTask", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/PostFunctionResultForScheduledTask", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<EmptyResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<EmptyResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResult>>((string)httpResult);
-        return new PlayFabResult<EmptyResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResult>> RegisterEventHubFunctionAsync(RegisterEventHubFunctionRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/RegisterEventHubFunction", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/RegisterEventHubFunction", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<EmptyResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<EmptyResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResult>>((string)httpResult);
-        return new PlayFabResult<EmptyResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResult>> RegisterHttpFunctionAsync(RegisterHttpFunctionRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/RegisterHttpFunction", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/RegisterHttpFunction", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<EmptyResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<EmptyResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResult>>((string)httpResult);
-        return new PlayFabResult<EmptyResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResult>> RegisterQueuedFunctionAsync(RegisterQueuedFunctionRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/RegisterQueuedFunction", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/RegisterQueuedFunction", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<EmptyResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<EmptyResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResult>>((string)httpResult);
-        return new PlayFabResult<EmptyResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResult>> UnregisterFunctionAsync(UnregisterFunctionRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/CloudScript/UnregisterFunction", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/CloudScript/UnregisterFunction", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<EmptyResult> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<EmptyResult> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResult>>((string)httpResult);
-        return new PlayFabResult<EmptyResult> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResult> { Result = result };
     }
 }

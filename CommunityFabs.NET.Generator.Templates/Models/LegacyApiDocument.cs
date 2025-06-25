@@ -100,6 +100,10 @@ public class LegacyDatatype
         {
             baseClass = "PlayFabRequestCommon";
         }
+        else if (ClassName == "LoginResult" || ClassName == "AuthenticateIdentityResult" || ClassName == "RegisterPlayFabUserResult")
+        {
+            baseClass = "PlayFabLoginResultCommon";
+        }
         else if (IsResult ?? false)
         {
             baseClass = "PlayFabResultCommon";
@@ -157,8 +161,12 @@ public class LegacyProperty
         var actualType = ActualType switch
         {
             "String" => "string",
+            "int16" => "short",
+            "uint16" => "ushort",
             "int32" => "int",
-            "uint32" => "UInt32",
+            "uint32" => "uint",
+            "int64" => "long",
+            "uint64" => "ulong",
             "Boolean" => "bool",
             _ => ActualType
         } ?? "object";

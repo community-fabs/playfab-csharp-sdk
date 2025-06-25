@@ -49,26 +49,34 @@ public class PlayFabSweepstakesInstanceApi : IPlayFabSweepstakesApi {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/Sweepstakes/CreateSweepstake", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/Sweepstakes/CreateSweepstake", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<CreateSweepstakeResponse> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<CreateSweepstakeResponse> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<CreateSweepstakeResponse>>((string)httpResult);
-        return new PlayFabResult<CreateSweepstakeResponse> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<CreateSweepstakeResponse> { Result = result };
     }
     public async Task<PlayFabResult<GetSweepstakeResponse>> GetSweepstakeAsync(GetSweepstakeRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/Sweepstakes/GetSweepstake", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/Sweepstakes/GetSweepstake", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<GetSweepstakeResponse> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<GetSweepstakeResponse> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetSweepstakeResponse>>((string)httpResult);
-        return new PlayFabResult<GetSweepstakeResponse> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<GetSweepstakeResponse> { Result = result };
     }
 }

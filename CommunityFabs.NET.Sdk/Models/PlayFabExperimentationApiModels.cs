@@ -52,7 +52,7 @@ public class CreateExperimentRequest : PlayFabRequestCommon {
     /// <summary>
     /// The duration of the experiment, in days.
     /// </summary>
-    public UInt32? Duration { get; set; }
+    public uint? Duration { get; set; }
     /// <summary>
     /// When experiment should end.
     /// </summary>
@@ -64,7 +64,7 @@ public class CreateExperimentRequest : PlayFabRequestCommon {
     /// <summary>
     /// Percentage of exclusion group traffic that will see this experiment.
     /// </summary>
-    public UInt32? ExclusionGroupTrafficAllocation { get; set; }
+    public uint? ExclusionGroupTrafficAllocation { get; set; }
     /// <summary>
     /// Type of experiment.
     /// </summary>
@@ -157,7 +157,7 @@ public class ExclusionGroupTrafficAllocation {
     /// <summary>
     /// Percentage of exclusion group traffic that will see this experiment.
     /// </summary>
-    public UInt32 TrafficAllocation { get; set; }
+    public uint TrafficAllocation { get; set; }
 }
 
 public class Experiment {
@@ -168,7 +168,7 @@ public class Experiment {
     /// <summary>
     /// The duration of the experiment, in days.
     /// </summary>
-    public UInt32? Duration { get; set; }
+    public uint? Duration { get; set; }
     /// <summary>
     /// When experiment should end/was ended.
     /// </summary>
@@ -180,7 +180,7 @@ public class Experiment {
     /// <summary>
     /// Percentage of exclusion group traffic that will see this experiment.
     /// </summary>
-    public UInt32? ExclusionGroupTrafficAllocation { get; set; }
+    public uint? ExclusionGroupTrafficAllocation { get; set; }
     /// <summary>
     /// Type of experiment.
     /// </summary>
@@ -445,7 +445,7 @@ public class ScorecardDataRow {
     /// <summary>
     /// Represents the player count in the variant.
     /// </summary>
-    public UInt32 PlayerCount { get; set; }
+    public uint PlayerCount { get; set; }
     /// <summary>
     /// Name of the variant of analysis.
     /// </summary>
@@ -529,7 +529,7 @@ public class UpdateExperimentRequest : PlayFabRequestCommon {
     /// <summary>
     /// The duration of the experiment, in days.
     /// </summary>
-    public UInt32? Duration { get; set; }
+    public uint? Duration { get; set; }
     /// <summary>
     /// When experiment should end.
     /// </summary>
@@ -541,7 +541,7 @@ public class UpdateExperimentRequest : PlayFabRequestCommon {
     /// <summary>
     /// Percentage of exclusion group traffic that will see this experiment.
     /// </summary>
-    public UInt32? ExclusionGroupTrafficAllocation { get; set; }
+    public uint? ExclusionGroupTrafficAllocation { get; set; }
     /// <summary>
     /// Type of experiment.
     /// </summary>
@@ -612,7 +612,7 @@ public class Variant {
     /// <summary>
     /// Percentage of target audience traffic that will see this variant.
     /// </summary>
-    public UInt32 TrafficPercentage { get; set; }
+    public uint TrafficPercentage { get; set; }
     /// <summary>
     /// Variables returned by this variant.
     /// </summary>

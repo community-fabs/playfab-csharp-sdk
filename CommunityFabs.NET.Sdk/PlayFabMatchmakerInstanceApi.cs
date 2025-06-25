@@ -49,91 +49,119 @@ public class PlayFabMatchmakerInstanceApi : IPlayFabMatchmakerApi {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/Matchmaker/AuthUser", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Matchmaker/AuthUser", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<AuthUserResponse> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<AuthUserResponse> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<AuthUserResponse>>((string)httpResult);
-        return new PlayFabResult<AuthUserResponse> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<AuthUserResponse> { Result = result };
     }
     public async Task<PlayFabResult<DeregisterGameResponse>> DeregisterGameAsync(DeregisterGameRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/Matchmaker/DeregisterGame", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Matchmaker/DeregisterGame", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<DeregisterGameResponse> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<DeregisterGameResponse> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<DeregisterGameResponse>>((string)httpResult);
-        return new PlayFabResult<DeregisterGameResponse> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<DeregisterGameResponse> { Result = result };
     }
     public async Task<PlayFabResult<PlayerJoinedResponse>> PlayerJoinedAsync(PlayerJoinedRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/Matchmaker/PlayerJoined", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Matchmaker/PlayerJoined", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<PlayerJoinedResponse> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<PlayerJoinedResponse> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<PlayerJoinedResponse>>((string)httpResult);
-        return new PlayFabResult<PlayerJoinedResponse> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<PlayerJoinedResponse> { Result = result };
     }
     public async Task<PlayFabResult<PlayerLeftResponse>> PlayerLeftAsync(PlayerLeftRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/Matchmaker/PlayerLeft", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Matchmaker/PlayerLeft", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<PlayerLeftResponse> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<PlayerLeftResponse> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<PlayerLeftResponse>>((string)httpResult);
-        return new PlayFabResult<PlayerLeftResponse> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<PlayerLeftResponse> { Result = result };
     }
     public async Task<PlayFabResult<RegisterGameResponse>> RegisterGameAsync(RegisterGameRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/Matchmaker/RegisterGame", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Matchmaker/RegisterGame", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<RegisterGameResponse> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<RegisterGameResponse> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<RegisterGameResponse>>((string)httpResult);
-        return new PlayFabResult<RegisterGameResponse> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<RegisterGameResponse> { Result = result };
     }
     public async Task<PlayFabResult<StartGameResponse>> StartGameAsync(StartGameRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/Matchmaker/StartGame", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Matchmaker/StartGame", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<StartGameResponse> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<StartGameResponse> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<StartGameResponse>>((string)httpResult);
-        return new PlayFabResult<StartGameResponse> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<StartGameResponse> { Result = result };
     }
     public async Task<PlayFabResult<UserInfoResponse>> UserInfoAsync(UserInfoRequest request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        var httpResult = await PlayFabHttp.Post("/Matchmaker/UserInfo", request, "", "", extraHeaders, requestSettings);
-        if (httpResult is PlayFabError)
+        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Matchmaker/UserInfo", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        if (httpResult is PlayFabError error)
         {
-            return new PlayFabResult<UserInfoResponse> { Error = (PlayFabError)httpResult };
+            return new PlayFabResult<UserInfoResponse> { Error = error };
         }
 
         var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<UserInfoResponse>>((string)httpResult);
-        return new PlayFabResult<UserInfoResponse> { Result = resultData.data };
+        var result = resultData!.data;
+
+        return new PlayFabResult<UserInfoResponse> { Result = result };
     }
 }

@@ -224,15 +224,15 @@ public class GetEntityLeaderboardRequest : PlayFabRequestCommon {
     /// <summary>
     /// Maximum number of results to return from the leaderboard. Minimum 1, maximum 100.
     /// </summary>
-    public UInt32 PageSize { get; set; }
+    public uint PageSize { get; set; }
     /// <summary>
     /// Index position to start from. 1 is beginning of leaderboard.
     /// </summary>
-    public UInt32? StartingPosition { get; set; }
+    public uint? StartingPosition { get; set; }
     /// <summary>
     /// Optional version of the leaderboard, defaults to current version.
     /// </summary>
-    public UInt32? Version { get; set; }
+    public uint? Version { get; set; }
 }
 
 /// <summary>
@@ -246,7 +246,7 @@ public class GetEntityLeaderboardResponse : PlayFabResultCommon {
     /// <summary>
     /// The number of entries on the leaderboard.
     /// </summary>
-    public UInt32 EntryCount { get; set; }
+    public uint EntryCount { get; set; }
     /// <summary>
     /// The time the next scheduled reset will occur. Null if the leaderboard does not reset on a schedule.
     /// </summary>
@@ -258,7 +258,7 @@ public class GetEntityLeaderboardResponse : PlayFabResultCommon {
     /// <summary>
     /// Version of the leaderboard being returned.
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
 }
 
 public class GetFriendLeaderboardForEntityRequest : PlayFabRequestCommon {
@@ -282,7 +282,7 @@ public class GetFriendLeaderboardForEntityRequest : PlayFabRequestCommon {
     /// <summary>
     /// Optional version of the leaderboard, defaults to current version.
     /// </summary>
-    public UInt32? Version { get; set; }
+    public uint? Version { get; set; }
     /// <summary>
     /// Xbox token if Xbox friends should be included. Requires Xbox be configured on PlayFab.
     /// </summary>
@@ -312,11 +312,11 @@ public class GetLeaderboardAroundEntityRequest : PlayFabRequestCommon {
     /// bottom of the leaderboard. Also, the number of entries returned can be lower than the value specified for entries at
     /// the bottom of the leaderboard.
     /// </summary>
-    public UInt32 MaxSurroundingEntries { get; set; }
+    public uint MaxSurroundingEntries { get; set; }
     /// <summary>
     /// Optional version of the leaderboard, defaults to current.
     /// </summary>
-    public UInt32? Version { get; set; }
+    public uint? Version { get; set; }
 }
 
 public class GetLeaderboardDefinitionRequest : PlayFabRequestCommon {
@@ -359,7 +359,7 @@ public class GetLeaderboardDefinitionResponse : PlayFabResultCommon {
     /// <summary>
     /// Latest Leaderboard version.
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
     /// <summary>
     /// The version reset configuration for the leaderboard definition.
     /// </summary>
@@ -385,7 +385,7 @@ public class GetLeaderboardForEntitiesRequest : PlayFabRequestCommon {
     /// <summary>
     /// Optional version of the leaderboard, defaults to current.
     /// </summary>
-    public UInt32? Version { get; set; }
+    public uint? Version { get; set; }
 }
 
 public class GetStatisticDefinitionRequest : PlayFabRequestCommon {
@@ -437,7 +437,7 @@ public class GetStatisticDefinitionResponse : PlayFabResultCommon {
     /// <summary>
     /// Statistic version.
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
     /// <summary>
     /// The version reset configuration for the leaderboard definition.
     /// </summary>
@@ -531,7 +531,7 @@ public class IncrementLeaderboardVersionResponse : PlayFabResultCommon {
     /// <summary>
     /// New Leaderboard version.
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
 }
 
 public class IncrementStatisticVersionRequest : PlayFabRequestCommon {
@@ -549,7 +549,7 @@ public class IncrementStatisticVersionResponse : PlayFabResultCommon {
     /// <summary>
     /// New statistic version.
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
 }
 
 public class LeaderboardColumn {
@@ -597,7 +597,7 @@ public class LeaderboardDefinition {
     /// <summary>
     /// Latest Leaderboard version.
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
     /// <summary>
     /// The version reset configuration for the leaderboard definition.
     /// </summary>
@@ -740,7 +740,7 @@ public class StatisticDefinition {
     /// <summary>
     /// Statistic version.
     /// </summary>
-    public UInt32 Version { get; set; }
+    public uint Version { get; set; }
     /// <summary>
     /// The version reset configuration for the leaderboard definition.
     /// </summary>
@@ -774,7 +774,7 @@ public class StatisticUpdate {
     /// <summary>
     /// Optional field to indicate the version of the statistic to set. When empty defaults to the statistic's current version.
     /// </summary>
-    public UInt32? Version { get; set; }
+    public uint? Version { get; set; }
 }
 
 public class UnlinkLeaderboardFromStatisticRequest : PlayFabRequestCommon {

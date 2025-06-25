@@ -13,7 +13,7 @@ public class InsightsGetDetailsResponse : PlayFabResultCommon {
     /// <summary>
     /// Amount of data (in MB) currently used by Insights.
     /// </summary>
-    public UInt32 DataUsageMb { get; set; }
+    public uint DataUsageMb { get; set; }
     /// <summary>
     /// Details of any error that occurred while retrieving Insights details.
     /// </summary>

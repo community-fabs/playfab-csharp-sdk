@@ -48,7 +48,7 @@ public class PlayFabJsonSuccess<TResult> where TResult : PlayFabResultCommon
 
 public static class PlayFabHttp
 {
-    public static async Task<object> Post(string urlPath, PlayFabRequestCommon request, string authType, string authKey, Dictionary<string, string> extraHeaders, PlayFabApiSettings? instanceSettings = null)
+    public static async Task<object> Post(string urlPath, PlayFabRequestCommon request, string authType, string authKey, Dictionary<string, string>? extraHeaders = null, PlayFabApiSettings? instanceSettings = null)
     {
         // if the URL starts with "/", convert it to full url (https://<titleId>.playfabapi.com/<urlPath>)
         if (urlPath.StartsWith('/'))
@@ -60,7 +60,7 @@ public static class PlayFabHttp
         return await InternalPost(urlPath, request, authType, authKey, extraHeaders, instanceSettings);
     }
 
-    private static async Task<object> InternalPost(string fullPath, PlayFabRequestCommon request, string authType, string authKey, Dictionary<string, string> extraHeaders, PlayFabApiSettings? instanceSettings = null)
+    private static async Task<object> InternalPost(string fullPath, PlayFabRequestCommon request, string authType, string authKey, Dictionary<string, string>? extraHeaders = null, PlayFabApiSettings? instanceSettings = null)
     {
         var settings = instanceSettings ?? PlayFabSettings.staticSettings;
         var titleId = settings.TitleId;

@@ -350,7 +350,7 @@ public class BuildSelectionCriterion {
     /// <summary>
     /// Dictionary of build ids and their respective weights for distribution of allocation requests.
     /// </summary>
-    public Dictionary<string, UInt32>? BuildWeightDistribution { get; set; }
+    public Dictionary<string, uint>? BuildWeightDistribution { get; set; }
 }
 
 public class BuildSummary {
@@ -1317,7 +1317,7 @@ public class CreateLobbyRequest : PlayFabRequestCommon {
     /// <summary>
     /// The maximum number of players allowed in the lobby. The value must be between 2 and 128.
     /// </summary>
-    public UInt32 MaxPlayers { get; set; }
+    public uint MaxPlayers { get; set; }
     /// <summary>
     /// The member initially added to the lobby. Client must specify exactly one member, which is the creator's entity and
     /// member data. Member PubSubConnectionHandle must be null or empty. Game servers must not specify any members.
@@ -1602,7 +1602,7 @@ public class CustomDifferenceRuleExpansion {
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 public class CustomRegionSelectionRuleExpansion {
@@ -1613,7 +1613,7 @@ public class CustomRegionSelectionRuleExpansion {
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 public class CustomSetIntersectionRuleExpansion {
@@ -1624,7 +1624,7 @@ public class CustomSetIntersectionRuleExpansion {
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 public class CustomTeamDifferenceRuleExpansion {
@@ -1635,7 +1635,7 @@ public class CustomTeamDifferenceRuleExpansion {
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 public class CustomTeamSizeBalanceRuleExpansion {
@@ -1646,7 +1646,7 @@ public class CustomTeamSizeBalanceRuleExpansion {
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 /// <summary>
@@ -1897,7 +1897,7 @@ public class DifferenceRule {
     /// How many seconds before this rule is no longer enforced (but tickets that comply with this rule will still be
     /// prioritized over those that don't). Leave blank if this rule is always enforced.
     /// </summary>
-    public UInt32? SecondsUntilOptional { get; set; }
+    public uint? SecondsUntilOptional { get; set; }
     /// <summary>
     /// The relative weight of this rule compared to others.
     /// </summary>
@@ -2113,7 +2113,7 @@ public class FriendLobbySummary {
     /// <summary>
     /// The current number of players in the lobby.
     /// </summary>
-    public UInt32 CurrentPlayers { get; set; }
+    public uint CurrentPlayers { get; set; }
     /// <summary>
     /// Friends in Lobby.
     /// </summary>
@@ -2125,7 +2125,7 @@ public class FriendLobbySummary {
     /// <summary>
     /// The maximum number of players allowed in the lobby.
     /// </summary>
-    public UInt32 MaxPlayers { get; set; }
+    public uint MaxPlayers { get; set; }
     /// <summary>
     /// A setting indicating whether members are allowed to join this lobby. When Locked new members are prevented from joining.
     /// </summary>
@@ -2519,7 +2519,7 @@ public class GetMatchmakingTicketResult : PlayFabResultCommon {
     /// <summary>
     /// Change number used for differentiating older matchmaking status updates from newer ones.
     /// </summary>
-    public UInt32? ChangeNumber { get; set; }
+    public uint? ChangeNumber { get; set; }
     /// <summary>
     /// The server date and time at which ticket was created.
     /// </summary>
@@ -3022,7 +3022,7 @@ public class GetQueueStatisticsResult : PlayFabResultCommon {
     /// <summary>
     /// The current number of players in the matchmaking queue, who are waiting to be matched.
     /// </summary>
-    public UInt32? NumberOfPlayersMatching { get; set; }
+    public uint? NumberOfPlayersMatching { get; set; }
     /// <summary>
     /// Statistics representing the time (in seconds) it takes for tickets to find a match.
     /// </summary>
@@ -3284,7 +3284,7 @@ public class JoinArrangedLobbyRequest : PlayFabRequestCommon {
     /// <summary>
     /// The maximum number of players allowed in the lobby. The value must be between 2 and 128.
     /// </summary>
-    public UInt32 MaxPlayers { get; set; }
+    public uint MaxPlayers { get; set; }
     /// <summary>
     /// The private key-value pairs used by the member to communicate information to other members and the owner. Visible to
     /// all entities in the lobby. At most 30 key-value pairs may be stored here, keys are limited to 30 characters and values
@@ -3464,33 +3464,33 @@ public class LinearDifferenceRuleExpansion {
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 public class LinearRegionSelectionRuleExpansion {
     /// <summary>
     /// This value gets added to MaxLatency at every expansion interval.
     /// </summary>
-    public UInt32 Delta { get; set; }
+    public uint Delta { get; set; }
     /// <summary>
     /// Once the max Latency reaches this value, expansion stops.
     /// </summary>
-    public UInt32 Limit { get; set; }
+    public uint Limit { get; set; }
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 public class LinearSetIntersectionRuleExpansion {
     /// <summary>
     /// This value gets added to MinIntersectionSize at every expansion interval.
     /// </summary>
-    public UInt32 Delta { get; set; }
+    public uint Delta { get; set; }
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 public class LinearTeamDifferenceRuleExpansion {
@@ -3505,22 +3505,22 @@ public class LinearTeamDifferenceRuleExpansion {
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 public class LinearTeamSizeBalanceRuleExpansion {
     /// <summary>
     /// This value gets added to Difference at every expansion interval.
     /// </summary>
-    public UInt32 Delta { get; set; }
+    public uint Delta { get; set; }
     /// <summary>
     /// Once the total difference reaches this value, expansion stops. Optional.
     /// </summary>
-    public UInt32? Limit { get; set; }
+    public uint? Limit { get; set; }
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 public class LinuxInstrumentationConfiguration {
@@ -4030,7 +4030,7 @@ public class Lobby {
     /// <summary>
     /// A number that increments once for each request that modifies the lobby.
     /// </summary>
-    public UInt32 ChangeNumber { get; set; }
+    public uint ChangeNumber { get; set; }
     /// <summary>
     /// A string used to join the lobby. This field is populated by the Lobby service. Invites are performed by communicating
     /// this connectionString to other players.
@@ -4047,7 +4047,7 @@ public class Lobby {
     /// <summary>
     /// The maximum number of players allowed in the lobby.
     /// </summary>
-    public UInt32 MaxPlayers { get; set; }
+    public uint MaxPlayers { get; set; }
     /// <summary>
     /// Array of all lobby members.
     /// </summary>
@@ -4115,7 +4115,7 @@ public class LobbySummary {
     /// <summary>
     /// The current number of players in the lobby.
     /// </summary>
-    public UInt32 CurrentPlayers { get; set; }
+    public uint CurrentPlayers { get; set; }
     /// <summary>
     /// Id to uniquely identify a lobby.
     /// </summary>
@@ -4123,7 +4123,7 @@ public class LobbySummary {
     /// <summary>
     /// The maximum number of players allowed in the lobby.
     /// </summary>
-    public UInt32 MaxPlayers { get; set; }
+    public uint MaxPlayers { get; set; }
     /// <summary>
     /// A setting indicating whether members are allowed to join this lobby. When Locked new members are prevented from joining.
     /// </summary>
@@ -4205,15 +4205,15 @@ public class MatchmakingQueueConfig {
     /// <summary>
     /// Maximum number of players in a match.
     /// </summary>
-    public UInt32 MaxMatchSize { get; set; }
+    public uint MaxMatchSize { get; set; }
     /// <summary>
     /// Maximum number of players in a ticket. Optional.
     /// </summary>
-    public UInt32? MaxTicketSize { get; set; }
+    public uint? MaxTicketSize { get; set; }
     /// <summary>
     /// Minimum number of players in a match.
     /// </summary>
-    public UInt32 MinMatchSize { get; set; }
+    public uint MinMatchSize { get; set; }
     /// <summary>
     /// Unique identifier for a Queue. Chosen by the developer.
     /// </summary>
@@ -4260,11 +4260,11 @@ public class MatchmakingQueueTeam {
     /// <summary>
     /// The maximum number of players required for the team.
     /// </summary>
-    public UInt32 MaxTeamSize { get; set; }
+    public uint MaxTeamSize { get; set; }
     /// <summary>
     /// The minimum number of players required for the team.
     /// </summary>
-    public UInt32 MinTeamSize { get; set; }
+    public uint MinTeamSize { get; set; }
     /// <summary>
     /// A name to identify the team. This is case insensitive.
     /// </summary>
@@ -4358,7 +4358,7 @@ public class MatchTotalRule {
     /// How many seconds before this rule is no longer enforced (but tickets that comply with this rule will still be
     /// prioritized over those that don't). Leave blank if this rule is always enforced.
     /// </summary>
-    public UInt32? SecondsUntilOptional { get; set; }
+    public uint? SecondsUntilOptional { get; set; }
     /// <summary>
     /// The relative weight of this rule compared to others.
     /// </summary>
@@ -4377,7 +4377,7 @@ public class MatchTotalRuleExpansion {
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 public class Member {
@@ -4596,7 +4596,7 @@ public class OverrideUnsignedInt {
     /// <summary>
     /// The custom expansion value.
     /// </summary>
-    public UInt32 Value { get; set; }
+    public uint Value { get; set; }
 }
 
 public enum OwnerMigrationPolicy {
@@ -4614,7 +4614,7 @@ public class PaginationRequest {
     /// <summary>
     /// The number of lobbies that should be retrieved. Cannot be specified by servers, clients may specify any value up to 50
     /// </summary>
-    public UInt32? PageSizeRequested { get; set; }
+    public uint? PageSizeRequested { get; set; }
 }
 
 public class PaginationResponse {
@@ -4625,7 +4625,7 @@ public class PaginationResponse {
     /// <summary>
     /// The number of lobbies that matched the search request.
     /// </summary>
-    public UInt32? TotalMatchedLobbyCount { get; set; }
+    public uint? TotalMatchedLobbyCount { get; set; }
 }
 
 public class PartyBuildAliasParams {
@@ -4664,23 +4664,23 @@ public class PartyNetworkConfiguration {
     /// <summary>
     /// The maximum number of devices allowed to connect to the network. Must be between 1 and 128, inclusive.
     /// </summary>
-    public UInt32 MaxDevices { get; set; }
+    public uint MaxDevices { get; set; }
     /// <summary>
     /// The maximum number of devices allowed per user. Must be greater than 0.
     /// </summary>
-    public UInt32 MaxDevicesPerUser { get; set; }
+    public uint MaxDevicesPerUser { get; set; }
     /// <summary>
     /// The maximum number of endpoints allowed per device. Must be between 0 and 32, inclusive.
     /// </summary>
-    public UInt32 MaxEndpointsPerDevice { get; set; }
+    public uint MaxEndpointsPerDevice { get; set; }
     /// <summary>
     /// The maximum number of unique users allowed in the network. Must be greater than 0.
     /// </summary>
-    public UInt32 MaxUsers { get; set; }
+    public uint MaxUsers { get; set; }
     /// <summary>
     /// The maximum number of users allowed per device. Must be between 1 and 8, inclusive.
     /// </summary>
-    public UInt32 MaxUsersPerDevice { get; set; }
+    public uint MaxUsersPerDevice { get; set; }
     /// <summary>
     /// An optionally-specified configuration for the initial invitation for this party. If not provided, default configuration
     /// values will be used: a title-unique invitation identifier will be generated, the revocability will be Anyone, and the
@@ -4862,7 +4862,7 @@ public class RegionSelectionRule {
     /// <summary>
     /// Specifies the maximum latency that is allowed between the client and the selected server. The value is in milliseconds.
     /// </summary>
-    public UInt32 MaxLatency { get; set; }
+    public uint MaxLatency { get; set; }
     /// <summary>
     /// Friendly name chosen by developer.
     /// </summary>
@@ -4875,7 +4875,7 @@ public class RegionSelectionRule {
     /// How many seconds before this rule is no longer enforced (but tickets that comply with this rule will still be
     /// prioritized over those that don't). Leave blank if this rule is always enforced.
     /// </summary>
-    public UInt32? SecondsUntilOptional { get; set; }
+    public uint? SecondsUntilOptional { get; set; }
     /// <summary>
     /// The relative weight of this rule compared to others.
     /// </summary>
@@ -5458,7 +5458,7 @@ public class SetIntersectionRule {
     /// <summary>
     /// The minimum number of values that must match between sets.
     /// </summary>
-    public UInt32 MinIntersectionSize { get; set; }
+    public uint MinIntersectionSize { get; set; }
     /// <summary>
     /// Friendly name chosen by developer.
     /// </summary>
@@ -5467,7 +5467,7 @@ public class SetIntersectionRule {
     /// How many seconds before this rule is no longer enforced (but tickets that comply with this rule will still be
     /// prioritized over those that don't). Leave blank if this rule is always enforced.
     /// </summary>
-    public UInt32? SecondsUntilOptional { get; set; }
+    public uint? SecondsUntilOptional { get; set; }
     /// <summary>
     /// The relative weight of this rule compared to others.
     /// </summary>
@@ -5596,7 +5596,7 @@ public class StringEqualityRule {
     /// How many seconds before this rule is no longer enforced (but tickets that comply with this rule will still be
     /// prioritized over those that don't). Leave blank if this rule is always enforced.
     /// </summary>
-    public UInt32? SecondsUntilOptional { get; set; }
+    public uint? SecondsUntilOptional { get; set; }
     /// <summary>
     /// The relative weight of this rule compared to others.
     /// </summary>
@@ -5611,7 +5611,7 @@ public class StringEqualityRuleExpansion {
     /// <summary>
     /// How many seconds before this rule is expanded.
     /// </summary>
-    public UInt32 SecondsBetweenExpansions { get; set; }
+    public uint SecondsBetweenExpansions { get; set; }
 }
 
 /// <summary>
@@ -5638,7 +5638,7 @@ public class SubscribeToLobbyResourceRequest : PlayFabRequestCommon {
     /// <summary>
     /// Version number for the subscription of this resource.
     /// </summary>
-    public UInt32 SubscriptionVersion { get; set; }
+    public uint SubscriptionVersion { get; set; }
     /// <summary>
     /// Subscription type. "LobbyChange" subscriptions allow a member or owner to receive notifications of lobby data, member
     /// or owner changes. "LobbyInvite" subscriptions allow a player to receive invites to lobbies. A player does not need to
@@ -5679,7 +5679,7 @@ public class SubscribeToMatchResourceRequest : PlayFabRequestCommon {
     /// <summary>
     /// Version number for the subscription of this resource. Current supported version must be 1.
     /// </summary>
-    public UInt32 SubscriptionVersion { get; set; }
+    public uint SubscriptionVersion { get; set; }
     /// <summary>
     /// Subscription type. MatchInvite subscriptions are per-player. MatchTicketStatusChange subscriptions are per-ticket.
     /// Subscribe calls are idempotent. Subscribing on the same resource for the same connection results in success.
@@ -5730,7 +5730,7 @@ public class TeamDifferenceRule {
     /// How many seconds before this rule is no longer enforced (but tickets that comply with this rule will still be
     /// prioritized over those that don't). Leave blank if this rule is always enforced.
     /// </summary>
-    public UInt32? SecondsUntilOptional { get; set; }
+    public uint? SecondsUntilOptional { get; set; }
 }
 
 public class TeamSizeBalanceRule {
@@ -5742,7 +5742,7 @@ public class TeamSizeBalanceRule {
     /// <summary>
     /// The allowed difference in team size between any two teams.
     /// </summary>
-    public UInt32 Difference { get; set; }
+    public uint Difference { get; set; }
     /// <summary>
     /// Controls how the Difference parameter expands over time. Only one expansion can be set per rule.
     /// </summary>
@@ -5755,7 +5755,7 @@ public class TeamSizeBalanceRule {
     /// How many seconds before this rule is no longer enforced (but tickets that comply with this rule will still be
     /// prioritized over those that don't). Leave blank if this rule is always enforced.
     /// </summary>
-    public UInt32? SecondsUntilOptional { get; set; }
+    public uint? SecondsUntilOptional { get; set; }
 }
 
 public class TeamTicketSizeSimilarityRule {
@@ -5767,7 +5767,7 @@ public class TeamTicketSizeSimilarityRule {
     /// How many seconds before this rule is no longer enforced (but tickets that comply with this rule will still be
     /// prioritized over those that don't). Leave blank if this rule is always enforced.
     /// </summary>
-    public UInt32? SecondsUntilOptional { get; set; }
+    public uint? SecondsUntilOptional { get; set; }
 }
 
 public enum TitleMultiplayerServerEnabledStatus {
@@ -5818,7 +5818,7 @@ public class UnsubscribeFromLobbyResourceRequest : PlayFabRequestCommon {
     /// <summary>
     /// Version number passed for the subscription of this resource.
     /// </summary>
-    public UInt32 SubscriptionVersion { get; set; }
+    public uint SubscriptionVersion { get; set; }
     /// <summary>
     /// Subscription type.
     /// </summary>
@@ -5851,7 +5851,7 @@ public class UnsubscribeFromMatchResourceRequest : PlayFabRequestCommon {
     /// <summary>
     /// Version number for the unsubscription from this resource.
     /// </summary>
-    public UInt32 SubscriptionVersion { get; set; }
+    public uint SubscriptionVersion { get; set; }
     /// <summary>
     /// Type of the subscription to be canceled.
     /// </summary>
@@ -6026,7 +6026,7 @@ public class UpdateLobbyRequest : PlayFabRequestCommon {
     /// the current lobby owner can set this. If set, the value must be greater than or equal to the number of members
     /// currently in the lobby.
     /// </summary>
-    public UInt32? MaxPlayers { get; set; }
+    public uint? MaxPlayers { get; set; }
     /// <summary>
     /// The private key-value pairs used by the member to communicate information to other members and the owner. Optional.
     /// Sets or updates new key-value pairs on the caller's member data. New keys will be added with their values and existing
