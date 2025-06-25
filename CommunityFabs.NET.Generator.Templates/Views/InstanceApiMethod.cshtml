@@ -22,15 +22,15 @@
         }
         else if (Model.Auth == "EntityToken")
         {
-            return spacing + "if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, \"Must call Client Login or GetEntityToken before calling this method\");\n";
+            return spacing + "if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, \"Must call Client Login or GetEntityToken before calling this method\");\n";
         }
         else if (Model.Auth == "SessionTicket")
         {
-            return spacing + "if (requestContext.ClientSessionTicket == null) throw new PlayFabException(PlayFabExceptionCode.NotLoggedIn, \"Must be logged in to call this method\");\n";
+            return spacing + "if (requestContext?.ClientSessionTicket == null) throw new PlayFabException(PlayFabExceptionCode.NotLoggedIn, \"Must be logged in to call this method\");\n";
         }
         else if (Model.Auth == "SecretKey")
         {
-            return spacing + "if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, \"DeveloperSecretKey must be set in your local or global settings to call this method\");\n";
+            return spacing + "if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, \"DeveloperSecretKey must be set in your local or global settings to call this method\");\n";
         }
         else if (Model.Url == "/Authentication/GetEntityToken")
         {
@@ -76,7 +76,7 @@
         return "null, null";
     }
 }
-    public async Task<PlayFabResult<@(Model.Result)>> @(Model.Name)Async(@Model.Request request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<@(Model.Result)>> @(Model.Name)Async(@Model.Request? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 

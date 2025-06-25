@@ -45,11 +45,11 @@ public class PlayFabDataInstanceApi : IPlayFabDataApi {
         authenticationContext?.ForgetAllCredentials();
     }
 
-    public async Task<PlayFabResult<AbortFileUploadsResponse>> AbortFileUploadsAsync(AbortFileUploadsRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<AbortFileUploadsResponse>> AbortFileUploadsAsync(AbortFileUploadsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/File/AbortFileUploads", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -62,11 +62,11 @@ public class PlayFabDataInstanceApi : IPlayFabDataApi {
 
         return new PlayFabResult<AbortFileUploadsResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeleteFilesResponse>> DeleteFilesAsync(DeleteFilesRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeleteFilesResponse>> DeleteFilesAsync(DeleteFilesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/File/DeleteFiles", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -79,11 +79,11 @@ public class PlayFabDataInstanceApi : IPlayFabDataApi {
 
         return new PlayFabResult<DeleteFilesResponse> { Result = result };
     }
-    public async Task<PlayFabResult<FinalizeFileUploadsResponse>> FinalizeFileUploadsAsync(FinalizeFileUploadsRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<FinalizeFileUploadsResponse>> FinalizeFileUploadsAsync(FinalizeFileUploadsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/File/FinalizeFileUploads", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -96,11 +96,11 @@ public class PlayFabDataInstanceApi : IPlayFabDataApi {
 
         return new PlayFabResult<FinalizeFileUploadsResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetFilesResponse>> GetFilesAsync(GetFilesRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetFilesResponse>> GetFilesAsync(GetFilesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/File/GetFiles", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -113,11 +113,11 @@ public class PlayFabDataInstanceApi : IPlayFabDataApi {
 
         return new PlayFabResult<GetFilesResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetObjectsResponse>> GetObjectsAsync(GetObjectsRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetObjectsResponse>> GetObjectsAsync(GetObjectsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Object/GetObjects", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -130,11 +130,11 @@ public class PlayFabDataInstanceApi : IPlayFabDataApi {
 
         return new PlayFabResult<GetObjectsResponse> { Result = result };
     }
-    public async Task<PlayFabResult<InitiateFileUploadsResponse>> InitiateFileUploadsAsync(InitiateFileUploadsRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<InitiateFileUploadsResponse>> InitiateFileUploadsAsync(InitiateFileUploadsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/File/InitiateFileUploads", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -147,11 +147,11 @@ public class PlayFabDataInstanceApi : IPlayFabDataApi {
 
         return new PlayFabResult<InitiateFileUploadsResponse> { Result = result };
     }
-    public async Task<PlayFabResult<SetObjectsResponse>> SetObjectsAsync(SetObjectsRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<SetObjectsResponse>> SetObjectsAsync(SetObjectsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Object/SetObjects", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)

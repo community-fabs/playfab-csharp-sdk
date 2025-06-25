@@ -45,11 +45,11 @@ public class PlayFabSweepstakesInstanceApi : IPlayFabSweepstakesApi {
         authenticationContext?.ForgetAllCredentials();
     }
 
-    public async Task<PlayFabResult<CreateSweepstakeResponse>> CreateSweepstakeAsync(CreateSweepstakeRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateSweepstakeResponse>> CreateSweepstakeAsync(CreateSweepstakeRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Sweepstakes/CreateSweepstake", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -62,11 +62,11 @@ public class PlayFabSweepstakesInstanceApi : IPlayFabSweepstakesApi {
 
         return new PlayFabResult<CreateSweepstakeResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetSweepstakeResponse>> GetSweepstakeAsync(GetSweepstakeRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetSweepstakeResponse>> GetSweepstakeAsync(GetSweepstakeRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Sweepstakes/GetSweepstake", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)

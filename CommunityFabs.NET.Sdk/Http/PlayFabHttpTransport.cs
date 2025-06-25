@@ -9,7 +9,7 @@ internal static class PlayFabHttpTransport
 {
     static readonly HttpClient client = new();
 
-    public static async Task<object> Post(string fullUrl, object request, Dictionary<string, string> extraHeaders)
+    public static async Task<object> Post(string fullUrl, object? request, Dictionary<string, string> extraHeaders)
     {
         string bodyString;
 

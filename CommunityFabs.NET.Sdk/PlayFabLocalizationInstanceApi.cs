@@ -45,11 +45,11 @@ public class PlayFabLocalizationInstanceApi : IPlayFabLocalizationApi {
         authenticationContext?.ForgetAllCredentials();
     }
 
-    public async Task<PlayFabResult<GetLanguageListResponse>> GetLanguageListAsync(GetLanguageListRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetLanguageListResponse>> GetLanguageListAsync(GetLanguageListRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Locale/GetLanguageList", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)

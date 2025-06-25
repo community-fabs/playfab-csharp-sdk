@@ -45,11 +45,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
         authenticationContext?.ForgetAllCredentials();
     }
 
-    public async Task<PlayFabResult<CreateOrUpdateAppleResponse>> CreateOrUpdateAppleAsync(CreateOrUpdateAppleRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateOrUpdateAppleResponse>> CreateOrUpdateAppleAsync(CreateOrUpdateAppleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/CreateOrUpdateApple", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -62,11 +62,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<CreateOrUpdateAppleResponse> { Result = result };
     }
-    public async Task<PlayFabResult<CreateOrUpdateFacebookResponse>> CreateOrUpdateFacebookAsync(CreateOrUpdateFacebookRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateOrUpdateFacebookResponse>> CreateOrUpdateFacebookAsync(CreateOrUpdateFacebookRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/CreateOrUpdateFacebook", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -79,11 +79,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<CreateOrUpdateFacebookResponse> { Result = result };
     }
-    public async Task<PlayFabResult<CreateOrUpdateFacebookInstantGamesResponse>> CreateOrUpdateFacebookInstantGamesAsync(CreateOrUpdateFacebookInstantGamesRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateOrUpdateFacebookInstantGamesResponse>> CreateOrUpdateFacebookInstantGamesAsync(CreateOrUpdateFacebookInstantGamesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/CreateOrUpdateFacebookInstantGames", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -96,11 +96,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<CreateOrUpdateFacebookInstantGamesResponse> { Result = result };
     }
-    public async Task<PlayFabResult<CreateOrUpdateGoogleResponse>> CreateOrUpdateGoogleAsync(CreateOrUpdateGoogleRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateOrUpdateGoogleResponse>> CreateOrUpdateGoogleAsync(CreateOrUpdateGoogleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/CreateOrUpdateGoogle", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -113,11 +113,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<CreateOrUpdateGoogleResponse> { Result = result };
     }
-    public async Task<PlayFabResult<CreateOrUpdateKongregateResponse>> CreateOrUpdateKongregateAsync(CreateOrUpdateKongregateRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateOrUpdateKongregateResponse>> CreateOrUpdateKongregateAsync(CreateOrUpdateKongregateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/CreateOrUpdateKongregate", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -130,11 +130,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<CreateOrUpdateKongregateResponse> { Result = result };
     }
-    public async Task<PlayFabResult<CreateOrUpdateNintendoResponse>> CreateOrUpdateNintendoAsync(CreateOrUpdateNintendoRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateOrUpdateNintendoResponse>> CreateOrUpdateNintendoAsync(CreateOrUpdateNintendoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/CreateOrUpdateNintendo", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -147,11 +147,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<CreateOrUpdateNintendoResponse> { Result = result };
     }
-    public async Task<PlayFabResult<CreateOrUpdatePSNResponse>> CreateOrUpdatePSNAsync(CreateOrUpdatePSNRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateOrUpdatePSNResponse>> CreateOrUpdatePSNAsync(CreateOrUpdatePSNRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/CreateOrUpdatePSN", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -164,11 +164,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<CreateOrUpdatePSNResponse> { Result = result };
     }
-    public async Task<PlayFabResult<CreateOrUpdateSteamResponse>> CreateOrUpdateSteamAsync(CreateOrUpdateSteamRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateOrUpdateSteamResponse>> CreateOrUpdateSteamAsync(CreateOrUpdateSteamRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/CreateOrUpdateSteam", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -181,11 +181,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<CreateOrUpdateSteamResponse> { Result = result };
     }
-    public async Task<PlayFabResult<CreateOrUpdateToxModResponse>> CreateOrUpdateToxModAsync(CreateOrUpdateToxModRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateOrUpdateToxModResponse>> CreateOrUpdateToxModAsync(CreateOrUpdateToxModRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/CreateOrUpdateToxMod", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -198,11 +198,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<CreateOrUpdateToxModResponse> { Result = result };
     }
-    public async Task<PlayFabResult<CreateOrUpdateTwitchResponse>> CreateOrUpdateTwitchAsync(CreateOrUpdateTwitchRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<CreateOrUpdateTwitchResponse>> CreateOrUpdateTwitchAsync(CreateOrUpdateTwitchRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/CreateOrUpdateTwitch", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -215,11 +215,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<CreateOrUpdateTwitchResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeleteAppleResponse>> DeleteAppleAsync(DeleteAppleRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeleteAppleResponse>> DeleteAppleAsync(DeleteAppleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/DeleteApple", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -232,11 +232,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<DeleteAppleResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeleteFacebookResponse>> DeleteFacebookAsync(DeleteFacebookRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeleteFacebookResponse>> DeleteFacebookAsync(DeleteFacebookRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/DeleteFacebook", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -249,11 +249,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<DeleteFacebookResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeleteFacebookInstantGamesResponse>> DeleteFacebookInstantGamesAsync(DeleteFacebookInstantGamesRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeleteFacebookInstantGamesResponse>> DeleteFacebookInstantGamesAsync(DeleteFacebookInstantGamesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/DeleteFacebookInstantGames", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -266,11 +266,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<DeleteFacebookInstantGamesResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeleteGoogleResponse>> DeleteGoogleAsync(DeleteGoogleRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeleteGoogleResponse>> DeleteGoogleAsync(DeleteGoogleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/DeleteGoogle", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -283,11 +283,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<DeleteGoogleResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeleteKongregateResponse>> DeleteKongregateAsync(DeleteKongregateRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeleteKongregateResponse>> DeleteKongregateAsync(DeleteKongregateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/DeleteKongregate", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -300,11 +300,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<DeleteKongregateResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeleteNintendoResponse>> DeleteNintendoAsync(DeleteNintendoRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeleteNintendoResponse>> DeleteNintendoAsync(DeleteNintendoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/DeleteNintendo", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -317,11 +317,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<DeleteNintendoResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeletePSNResponse>> DeletePSNAsync(DeletePSNRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeletePSNResponse>> DeletePSNAsync(DeletePSNRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/DeletePSN", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -334,11 +334,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<DeletePSNResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeleteSteamResponse>> DeleteSteamAsync(DeleteSteamRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeleteSteamResponse>> DeleteSteamAsync(DeleteSteamRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/DeleteSteam", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -351,11 +351,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<DeleteSteamResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeleteToxModResponse>> DeleteToxModAsync(DeleteToxModRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeleteToxModResponse>> DeleteToxModAsync(DeleteToxModRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/DeleteToxMod", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -368,11 +368,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<DeleteToxModResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeleteTwitchResponse>> DeleteTwitchAsync(DeleteTwitchRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeleteTwitchResponse>> DeleteTwitchAsync(DeleteTwitchRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/DeleteTwitch", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -385,11 +385,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<DeleteTwitchResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetAppleResponse>> GetAppleAsync(GetAppleRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetAppleResponse>> GetAppleAsync(GetAppleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/GetApple", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -402,11 +402,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<GetAppleResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetFacebookResponse>> GetFacebookAsync(GetFacebookRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetFacebookResponse>> GetFacebookAsync(GetFacebookRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/GetFacebook", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -419,11 +419,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<GetFacebookResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetFacebookInstantGamesResponse>> GetFacebookInstantGamesAsync(GetFacebookInstantGamesRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetFacebookInstantGamesResponse>> GetFacebookInstantGamesAsync(GetFacebookInstantGamesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/GetFacebookInstantGames", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -436,11 +436,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<GetFacebookInstantGamesResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetGoogleResponse>> GetGoogleAsync(GetGoogleRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetGoogleResponse>> GetGoogleAsync(GetGoogleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/GetGoogle", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -453,11 +453,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<GetGoogleResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetKongregateResponse>> GetKongregateAsync(GetKongregateRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetKongregateResponse>> GetKongregateAsync(GetKongregateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/GetKongregate", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -470,11 +470,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<GetKongregateResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetNintendoResponse>> GetNintendoAsync(GetNintendoRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetNintendoResponse>> GetNintendoAsync(GetNintendoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/GetNintendo", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -487,11 +487,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<GetNintendoResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetPSNResponse>> GetPSNAsync(GetPSNRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetPSNResponse>> GetPSNAsync(GetPSNRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/GetPSN", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -504,11 +504,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<GetPSNResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetSteamResponse>> GetSteamAsync(GetSteamRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetSteamResponse>> GetSteamAsync(GetSteamRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/GetSteam", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -521,11 +521,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<GetSteamResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetToxModResponse>> GetToxModAsync(GetToxModRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetToxModResponse>> GetToxModAsync(GetToxModRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/GetToxMod", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -538,11 +538,11 @@ public class PlayFabAddonInstanceApi : IPlayFabAddonApi {
 
         return new PlayFabResult<GetToxModResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetTwitchResponse>> GetTwitchAsync(GetTwitchRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetTwitchResponse>> GetTwitchAsync(GetTwitchRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/Addon/GetTwitch", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)

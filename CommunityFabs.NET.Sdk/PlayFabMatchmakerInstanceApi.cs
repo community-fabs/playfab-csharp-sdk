@@ -45,11 +45,11 @@ public class PlayFabMatchmakerInstanceApi : IPlayFabMatchmakerApi {
         authenticationContext?.ForgetAllCredentials();
     }
 
-    public async Task<PlayFabResult<AuthUserResponse>> AuthUserAsync(AuthUserRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<AuthUserResponse>> AuthUserAsync(AuthUserRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
         var httpResult = await PlayFabHttp.Post("/Matchmaker/AuthUser", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -62,11 +62,11 @@ public class PlayFabMatchmakerInstanceApi : IPlayFabMatchmakerApi {
 
         return new PlayFabResult<AuthUserResponse> { Result = result };
     }
-    public async Task<PlayFabResult<DeregisterGameResponse>> DeregisterGameAsync(DeregisterGameRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<DeregisterGameResponse>> DeregisterGameAsync(DeregisterGameRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
         var httpResult = await PlayFabHttp.Post("/Matchmaker/DeregisterGame", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -79,11 +79,11 @@ public class PlayFabMatchmakerInstanceApi : IPlayFabMatchmakerApi {
 
         return new PlayFabResult<DeregisterGameResponse> { Result = result };
     }
-    public async Task<PlayFabResult<PlayerJoinedResponse>> PlayerJoinedAsync(PlayerJoinedRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<PlayerJoinedResponse>> PlayerJoinedAsync(PlayerJoinedRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
         var httpResult = await PlayFabHttp.Post("/Matchmaker/PlayerJoined", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -96,11 +96,11 @@ public class PlayFabMatchmakerInstanceApi : IPlayFabMatchmakerApi {
 
         return new PlayFabResult<PlayerJoinedResponse> { Result = result };
     }
-    public async Task<PlayFabResult<PlayerLeftResponse>> PlayerLeftAsync(PlayerLeftRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<PlayerLeftResponse>> PlayerLeftAsync(PlayerLeftRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
         var httpResult = await PlayFabHttp.Post("/Matchmaker/PlayerLeft", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -113,11 +113,11 @@ public class PlayFabMatchmakerInstanceApi : IPlayFabMatchmakerApi {
 
         return new PlayFabResult<PlayerLeftResponse> { Result = result };
     }
-    public async Task<PlayFabResult<RegisterGameResponse>> RegisterGameAsync(RegisterGameRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<RegisterGameResponse>> RegisterGameAsync(RegisterGameRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
         var httpResult = await PlayFabHttp.Post("/Matchmaker/RegisterGame", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -130,11 +130,11 @@ public class PlayFabMatchmakerInstanceApi : IPlayFabMatchmakerApi {
 
         return new PlayFabResult<RegisterGameResponse> { Result = result };
     }
-    public async Task<PlayFabResult<StartGameResponse>> StartGameAsync(StartGameRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<StartGameResponse>> StartGameAsync(StartGameRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
         var httpResult = await PlayFabHttp.Post("/Matchmaker/StartGame", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -147,11 +147,11 @@ public class PlayFabMatchmakerInstanceApi : IPlayFabMatchmakerApi {
 
         return new PlayFabResult<StartGameResponse> { Result = result };
     }
-    public async Task<PlayFabResult<UserInfoResponse>> UserInfoAsync(UserInfoRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<UserInfoResponse>> UserInfoAsync(UserInfoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestSettings.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
         var httpResult = await PlayFabHttp.Post("/Matchmaker/UserInfo", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)

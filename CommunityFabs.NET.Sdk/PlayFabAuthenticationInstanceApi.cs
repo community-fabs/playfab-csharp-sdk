@@ -45,11 +45,11 @@ public class PlayFabAuthenticationInstanceApi : IPlayFabAuthenticationApi {
         authenticationContext?.ForgetAllCredentials();
     }
 
-    public async Task<PlayFabResult<AuthenticateCustomIdResult>> AuthenticateGameServerWithCustomIdAsync(AuthenticateCustomIdRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<AuthenticateCustomIdResult>> AuthenticateGameServerWithCustomIdAsync(AuthenticateCustomIdRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/GameServerIdentity/AuthenticateGameServerWithCustomId", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -66,11 +66,11 @@ public class PlayFabAuthenticationInstanceApi : IPlayFabAuthenticationApi {
 
         return new PlayFabResult<AuthenticateCustomIdResult> { Result = result };
     }
-    public async Task<PlayFabResult<EmptyResponse>> DeleteAsync(DeleteRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<EmptyResponse>> DeleteAsync(DeleteRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
-        if (requestContext.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
         var httpResult = await PlayFabHttp.Post("/GameServerIdentity/Delete", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
         if (httpResult is PlayFabError error)
@@ -83,7 +83,7 @@ public class PlayFabAuthenticationInstanceApi : IPlayFabAuthenticationApi {
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
-    public async Task<PlayFabResult<GetEntityTokenResponse>> GetEntityTokenAsync(GetEntityTokenRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<GetEntityTokenResponse>> GetEntityTokenAsync(GetEntityTokenRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
@@ -107,7 +107,7 @@ public class PlayFabAuthenticationInstanceApi : IPlayFabAuthenticationApi {
 
         return new PlayFabResult<GetEntityTokenResponse> { Result = result };
     }
-    public async Task<PlayFabResult<ValidateEntityTokenResponse>> ValidateEntityTokenAsync(ValidateEntityTokenRequest request, Dictionary<string, string>? extraHeaders = null) {
+    public async Task<PlayFabResult<ValidateEntityTokenResponse>> ValidateEntityTokenAsync(ValidateEntityTokenRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authenticationContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
