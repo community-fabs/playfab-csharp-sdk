@@ -15,7 +15,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/addcharactervirtualcurrency">Microsoft Documentation</see>
     /// </summary>
-    public Task<ModifyCharacterVirtualCurrencyResult> AddCharacterVirtualCurrencyAsync(AddCharacterVirtualCurrencyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ModifyCharacterVirtualCurrencyResult>> AddCharacterVirtualCurrencyAsync(AddCharacterVirtualCurrencyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Adds the Friend user to the friendlist of the user with PlayFabId. At least one of
     /// FriendPlayFabId,FriendUsername,FriendEmail, or FriendTitleDisplayName should be initialized.
@@ -27,7 +27,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/friend-list-management/addfriend">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> AddFriendAsync(AddFriendRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> AddFriendAsync(AddFriendRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Adds the specified generic service identifier to the player's PlayFab account. This is designed to allow for a PlayFab
     /// ID lookup of any arbitrary service identifier a title wants to add. This identifier should never be used as
@@ -42,7 +42,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/addgenericid">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> AddGenericIDAsync(AddGenericIDRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> AddGenericIDAsync(AddGenericIDRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Adds a given tag to a player profile. The tag's namespace is automatically generated based on the source of the tag.
     /// <example><br/>Example:<code>
@@ -53,7 +53,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/addplayertag">Microsoft Documentation</see>
     /// </summary>
-    public Task<AddPlayerTagResult> AddPlayerTagAsync(AddPlayerTagRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<AddPlayerTagResult>> AddPlayerTagAsync(AddPlayerTagRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Adds users to the set of those able to update both the shared data, as well as the set of users in the group. Only
     /// users in the group (and the server) can add new members. Shared Groups are designed for sharing data between a very
@@ -70,7 +70,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/shared-group-data/addsharedgroupmembers">Microsoft Documentation</see>
     /// </summary>
-    public Task<AddSharedGroupMembersResult> AddSharedGroupMembersAsync(AddSharedGroupMembersRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<AddSharedGroupMembersResult>> AddSharedGroupMembersAsync(AddSharedGroupMembersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Increments the user's balance of the specified virtual currency by the stated amount
@@ -83,7 +83,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/adduservirtualcurrency">Microsoft Documentation</see>
     /// </summary>
-    public Task<ModifyUserVirtualCurrencyResult> AddUserVirtualCurrencyAsync(AddUserVirtualCurrencyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ModifyUserVirtualCurrencyResult>> AddUserVirtualCurrencyAsync(AddUserVirtualCurrencyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Validated a client's session ticket, and if successful, returns details for that user
     /// <example><br/>Example:<code>
@@ -93,7 +93,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/authenticatesessionticket">Microsoft Documentation</see>
     /// </summary>
-    public Task<AuthenticateSessionTicketResult> AuthenticateSessionTicketAsync(AuthenticateSessionTicketRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<AuthenticateSessionTicketResult>> AuthenticateSessionTicketAsync(AuthenticateSessionTicketRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Awards the specified users the specified Steam achievements
     /// <example><br/>Example:<code>
@@ -114,7 +114,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/platform-specific-methods/awardsteamachievement">Microsoft Documentation</see>
     /// </summary>
-    public Task<AwardSteamAchievementResult> AwardSteamAchievementAsync(AwardSteamAchievementRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<AwardSteamAchievementResult>> AwardSteamAchievementAsync(AwardSteamAchievementRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Bans users by PlayFab ID with optional IP address, or MAC address for the provided game.
     /// <example><br/>Example:<code>
@@ -135,7 +135,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/banusers">Microsoft Documentation</see>
     /// </summary>
-    public Task<BanUsersResult> BanUsersAsync(BanUsersRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<BanUsersResult>> BanUsersAsync(BanUsersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Consume uses of a consumable item. When all uses are consumed, it will be removed from the player's
@@ -148,7 +148,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/consumeitem">Microsoft Documentation</see>
     /// </summary>
-    public Task<ConsumeItemResult> ConsumeItemAsync(ConsumeItemRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ConsumeItemResult>> ConsumeItemAsync(ConsumeItemRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Requests the creation of a shared group object, containing key/value pairs which may be updated by all members of the
     /// group. When created by a server, the group will initially have no members. Shared Groups are designed for sharing data
@@ -161,7 +161,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/shared-group-data/createsharedgroup">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateSharedGroupResult> CreateSharedGroupAsync(CreateSharedGroupRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateSharedGroupResult>> CreateSharedGroupAsync(CreateSharedGroupRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the specific character ID from the specified user.
     /// <example><br/>Example:<code>
@@ -173,7 +173,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/characters/deletecharacterfromuser">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteCharacterFromUserResult> DeleteCharacterFromUserAsync(DeleteCharacterFromUserRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteCharacterFromUserResult>> DeleteCharacterFromUserAsync(DeleteCharacterFromUserRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Removes a user's player account from a title and deletes all associated data
     /// <example><br/>Example:<code>
@@ -183,7 +183,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/deleteplayer">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeletePlayerResult> DeletePlayerAsync(DeletePlayerRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeletePlayerResult>> DeletePlayerAsync(DeletePlayerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes title-specific custom properties for a player
     /// <example><br/>Example:<code>
@@ -198,7 +198,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/deleteplayercustomproperties">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeletePlayerCustomPropertiesResult> DeletePlayerCustomPropertiesAsync(DeletePlayerCustomPropertiesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeletePlayerCustomPropertiesResult>> DeletePlayerCustomPropertiesAsync(DeletePlayerCustomPropertiesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes push notification template for title
     /// <example><br/>Example:<code>
@@ -208,7 +208,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/deletepushnotificationtemplate">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeletePushNotificationTemplateResult> DeletePushNotificationTemplateAsync(DeletePushNotificationTemplateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeletePushNotificationTemplateResult>> DeletePushNotificationTemplateAsync(DeletePushNotificationTemplateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a shared group, freeing up the shared group ID to be reused for a new group. Shared Groups are designed for
     /// sharing data between a very small number of players, please see our guide:
@@ -220,7 +220,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/shared-group-data/deletesharedgroup">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteSharedGroupAsync(DeleteSharedGroupRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> DeleteSharedGroupAsync(DeleteSharedGroupRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes custom data, all account linkages, and statistics.
     /// <example><br/>Example:<code>
@@ -232,7 +232,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/deleteusers">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteUsersResult> DeleteUsersAsync(DeleteUsersRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteUsersResult>> DeleteUsersAsync(DeleteUsersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Inform the matchmaker that a Game Server Instance is removed.
     /// <example><br/>Example:<code>
@@ -242,7 +242,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/matchmaking/deregistergame">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeregisterGameResponse> DeregisterGameAsync(DeregisterGameRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeregisterGameResponse>> DeregisterGameAsync(DeregisterGameRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Returns the result of an evaluation of a Random Result Table - the ItemId from the game Catalog which would
@@ -256,7 +256,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/evaluaterandomresulttable">Microsoft Documentation</see>
     /// </summary>
-    public Task<EvaluateRandomResultTableResult> EvaluateRandomResultTableAsync(EvaluateRandomResultTableRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EvaluateRandomResultTableResult>> EvaluateRandomResultTableAsync(EvaluateRandomResultTableRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Executes a CloudScript function, with the 'currentPlayerId' set to the PlayFab ID of the authenticated player. The
     /// PlayFab ID is the entity ID of the player's master_player_account entity.
@@ -274,7 +274,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/server-side-cloud-script/executecloudscript">Microsoft Documentation</see>
     /// </summary>
-    public Task<ExecuteCloudScriptResult> ExecuteCloudScriptAsync(ExecuteCloudScriptServerRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ExecuteCloudScriptResult>> ExecuteCloudScriptAsync(ExecuteCloudScriptServerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieve a list of all PlayStream actions groups.
     /// <example><br/>Example:<code>
@@ -282,7 +282,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/getallactiongroups">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetAllActionGroupsResult> GetAllActionGroupsAsync(GetAllActionGroupsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetAllActionGroupsResult>> GetAllActionGroupsAsync(GetAllActionGroupsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves an array of player segment definitions. Results from this can be used in subsequent API calls such as
     /// GetPlayersInSegment which requires a Segment ID. While segment names can change the ID for that segment will not change.
@@ -291,7 +291,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/getallsegments">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetAllSegmentsResult> GetAllSegmentsAsync(GetAllSegmentsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetAllSegmentsResult>> GetAllSegmentsAsync(GetAllSegmentsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists all of the characters that belong to a specific user. CharacterIds are not globally unique; characterId must be
     /// evaluated with the parent PlayFabId to guarantee uniqueness.
@@ -302,7 +302,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/characters/getalluserscharacters">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListUsersCharactersResult> GetAllUsersCharactersAsync(ListUsersCharactersRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ListUsersCharactersResult>> GetAllUsersCharactersAsync(ListUsersCharactersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the specified version of the title's catalog of virtual goods, including all defined properties
@@ -313,7 +313,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/title-wide-data-management/getcatalogitems">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetCatalogItemsResult> GetCatalogItemsAsync(GetCatalogItemsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetCatalogItemsResult>> GetCatalogItemsAsync(GetCatalogItemsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the title-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
@@ -329,7 +329,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/character-data/getcharacterdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetCharacterDataResult> GetCharacterDataAsync(GetCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetCharacterDataResult>> GetCharacterDataAsync(GetCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the title-specific custom data for the user's character which cannot be accessed by the client
     /// <example><br/>Example:<code>
@@ -345,7 +345,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/character-data/getcharacterinternaldata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetCharacterDataResult> GetCharacterInternalDataAsync(GetCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetCharacterDataResult>> GetCharacterInternalDataAsync(GetCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the specified character's current inventory of virtual goods
@@ -358,7 +358,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/getcharacterinventory">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetCharacterInventoryResult> GetCharacterInventoryAsync(GetCharacterInventoryRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetCharacterInventoryResult>> GetCharacterInventoryAsync(GetCharacterInventoryRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves a list of ranked characters for the given statistic, starting from the indicated point in the leaderboard
     /// <example><br/>Example:<code>
@@ -370,7 +370,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/characters/getcharacterleaderboard">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetCharacterLeaderboardResult> GetCharacterLeaderboardAsync(GetCharacterLeaderboardRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetCharacterLeaderboardResult>> GetCharacterLeaderboardAsync(GetCharacterLeaderboardRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the title-specific custom data for the user's character which can only be read by the client
     /// <example><br/>Example:<code>
@@ -386,7 +386,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/character-data/getcharacterreadonlydata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetCharacterDataResult> GetCharacterReadOnlyDataAsync(GetCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetCharacterDataResult>> GetCharacterReadOnlyDataAsync(GetCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the details of all title-specific statistics for the specific character
     /// <example><br/>Example:<code>
@@ -397,7 +397,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/characters/getcharacterstatistics">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetCharacterStatisticsResult> GetCharacterStatisticsAsync(GetCharacterStatisticsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetCharacterStatisticsResult>> GetCharacterStatisticsAsync(GetCharacterStatisticsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// This API retrieves a pre-signed URL for accessing a content file for the title. A subsequent HTTP GET to the returned
     /// URL will attempt to download the content. A HEAD query to the returned URL will attempt to retrieve the metadata of the
@@ -412,7 +412,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/content/getcontentdownloadurl">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetContentDownloadUrlResult> GetContentDownloadUrlAsync(GetContentDownloadUrlRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetContentDownloadUrlResult>> GetContentDownloadUrlAsync(GetContentDownloadUrlRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves a list of ranked friends of the given player for the given statistic, starting from the indicated point in
     /// the leaderboard
@@ -427,7 +427,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getfriendleaderboard">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetLeaderboardResult> GetFriendLeaderboardAsync(GetFriendLeaderboardRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetLeaderboardResult>> GetFriendLeaderboardAsync(GetFriendLeaderboardRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the current friends for the user with PlayFabId, constrained to users who have PlayFab accounts. Friends from
     /// linked accounts (Facebook, Steam) are also included. You may optionally exclude some linked services' friends.
@@ -439,7 +439,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/friend-list-management/getfriendslist">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetFriendsListResult> GetFriendsListAsync(GetFriendsListRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetFriendsListResult>> GetFriendsListAsync(GetFriendsListRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves a list of ranked users for the given statistic, starting from the indicated point in the leaderboard
     /// <example><br/>Example:<code>
@@ -451,7 +451,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getleaderboard">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetLeaderboardResult> GetLeaderboardAsync(GetLeaderboardRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetLeaderboardResult>> GetLeaderboardAsync(GetLeaderboardRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves a list of ranked characters for the given statistic, centered on the requested user
     /// <example><br/>Example:<code>
@@ -464,7 +464,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/characters/getleaderboardaroundcharacter">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetLeaderboardAroundCharacterResult> GetLeaderboardAroundCharacterAsync(GetLeaderboardAroundCharacterRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetLeaderboardAroundCharacterResult>> GetLeaderboardAroundCharacterAsync(GetLeaderboardAroundCharacterRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves a list of ranked users for the given statistic, centered on the currently signed-in user
     /// <example><br/>Example:<code>
@@ -476,7 +476,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getleaderboardarounduser">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetLeaderboardAroundUserResult> GetLeaderboardAroundUserAsync(GetLeaderboardAroundUserRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetLeaderboardAroundUserResult>> GetLeaderboardAroundUserAsync(GetLeaderboardAroundUserRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves a list of all of the user's characters for the given statistic.
     /// <example><br/>Example:<code>
@@ -487,7 +487,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/characters/getleaderboardforusercharacters">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetLeaderboardForUsersCharactersResult> GetLeaderboardForUserCharactersAsync(GetLeaderboardForUsersCharactersRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetLeaderboardForUsersCharactersResult>> GetLeaderboardForUserCharactersAsync(GetLeaderboardForUsersCharactersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Returns whatever info is requested in the response for the user. Note that PII (like email address, facebook id) may be
     /// returned. All parameters default to false.
@@ -515,7 +515,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getplayercombinedinfo">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerCombinedInfoResult> GetPlayerCombinedInfoAsync(GetPlayerCombinedInfoRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayerCombinedInfoResult>> GetPlayerCombinedInfoAsync(GetPlayerCombinedInfoRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves a title-specific custom property value for a player.
     /// <example><br/>Example:<code>
@@ -526,7 +526,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getplayercustomproperty">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerCustomPropertyResult> GetPlayerCustomPropertyAsync(GetPlayerCustomPropertyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayerCustomPropertyResult>> GetPlayerCustomPropertyAsync(GetPlayerCustomPropertyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the player's profile
     /// <example><br/>Example:<code>
@@ -536,7 +536,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayerprofile">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerProfileResult> GetPlayerProfileAsync(GetPlayerProfileRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayerProfileResult>> GetPlayerProfileAsync(GetPlayerProfileRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// List all segments that a player currently belongs to at this moment in time.
     /// <example><br/>Example:<code>
@@ -546,7 +546,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/getplayersegments">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerSegmentsResult> GetPlayerSegmentsAsync(GetPlayersSegmentsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayerSegmentsResult>> GetPlayerSegmentsAsync(GetPlayersSegmentsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Allows for paging through all players in a given segment. This API creates a snapshot of all player profiles that match
     /// the segment definition at the time of its creation and lives through the Total Seconds to Live, refreshing its life
@@ -562,7 +562,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/getplayersinsegment">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayersInSegmentResult> GetPlayersInSegmentAsync(GetPlayersInSegmentRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayersInSegmentResult>> GetPlayersInSegmentAsync(GetPlayersInSegmentRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the current version and values for the indicated statistics, for the local player.
     /// <example><br/>Example:<code>
@@ -576,7 +576,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getplayerstatistics">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerStatisticsResult> GetPlayerStatisticsAsync(GetPlayerStatisticsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayerStatisticsResult>> GetPlayerStatisticsAsync(GetPlayerStatisticsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the information on the available versions of the specified statistic.
     /// <example><br/>Example:<code>
@@ -586,7 +586,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getplayerstatisticversions">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerStatisticVersionsResult> GetPlayerStatisticVersionsAsync(GetPlayerStatisticVersionsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayerStatisticVersionsResult>> GetPlayerStatisticVersionsAsync(GetPlayerStatisticVersionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get all tags with a given Namespace (optional) from a player profile.
     /// <example><br/>Example:<code>
@@ -597,7 +597,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/getplayertags">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayerTagsResult> GetPlayerTagsAsync(GetPlayerTagsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayerTagsResult>> GetPlayerTagsAsync(GetPlayerTagsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Battle.net account identifiers.
     /// <example><br/>Example:<code>
@@ -610,7 +610,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfrombattlenetaccountids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromBattleNetAccountIdsResult> GetPlayFabIDsFromBattleNetAccountIdsAsync(GetPlayFabIDsFromBattleNetAccountIdsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromBattleNetAccountIdsResult>> GetPlayFabIDsFromBattleNetAccountIdsAsync(GetPlayFabIDsFromBattleNetAccountIdsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Facebook identifiers.
     /// <example><br/>Example:<code>
@@ -623,7 +623,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromfacebookids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromFacebookIDsResult> GetPlayFabIDsFromFacebookIDsAsync(GetPlayFabIDsFromFacebookIDsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromFacebookIDsResult>> GetPlayFabIDsFromFacebookIDsAsync(GetPlayFabIDsFromFacebookIDsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Facebook Instant Games identifiers.
     /// <example><br/>Example:<code>
@@ -636,7 +636,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromfacebookinstantgamesids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromFacebookInstantGamesIdsResult> GetPlayFabIDsFromFacebookInstantGamesIdsAsync(GetPlayFabIDsFromFacebookInstantGamesIdsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromFacebookInstantGamesIdsResult>> GetPlayFabIDsFromFacebookInstantGamesIdsAsync(GetPlayFabIDsFromFacebookInstantGamesIdsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of generic service identifiers. A generic identifier is the
     /// service name plus the service-specific ID for the player, as specified by the title when the generic identifier was
@@ -657,7 +657,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromgenericids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromGenericIDsResult> GetPlayFabIDsFromGenericIDsAsync(GetPlayFabIDsFromGenericIDsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromGenericIDsResult>> GetPlayFabIDsFromGenericIDsAsync(GetPlayFabIDsFromGenericIDsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Nintendo Service Account identifiers.
     /// <example><br/>Example:<code>
@@ -670,7 +670,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromnintendoserviceaccountids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromNintendoServiceAccountIdsResult> GetPlayFabIDsFromNintendoServiceAccountIdsAsync(GetPlayFabIDsFromNintendoServiceAccountIdsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromNintendoServiceAccountIdsResult>> GetPlayFabIDsFromNintendoServiceAccountIdsAsync(GetPlayFabIDsFromNintendoServiceAccountIdsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Nintendo Switch Device identifiers.
     /// <example><br/>Example:<code>
@@ -683,7 +683,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromnintendoswitchdeviceids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromNintendoSwitchDeviceIdsResult> GetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromNintendoSwitchDeviceIdsResult>> GetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of PlayStation :tm: Network identifiers.
     /// <example><br/>Example:<code>
@@ -696,7 +696,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfrompsnaccountids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromPSNAccountIDsResult> GetPlayFabIDsFromPSNAccountIDsAsync(GetPlayFabIDsFromPSNAccountIDsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromPSNAccountIDsResult>> GetPlayFabIDsFromPSNAccountIDsAsync(GetPlayFabIDsFromPSNAccountIDsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of PlayStation :tm: Network identifiers.
     /// <example><br/>Example:<code>
@@ -709,7 +709,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfrompsnonlineids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromPSNOnlineIDsResult> GetPlayFabIDsFromPSNOnlineIDsAsync(GetPlayFabIDsFromPSNOnlineIDsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromPSNOnlineIDsResult>> GetPlayFabIDsFromPSNOnlineIDsAsync(GetPlayFabIDsFromPSNOnlineIDsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are the profile
     /// IDs for the user accounts, available as SteamId in the Steamworks Community API calls.
@@ -723,7 +723,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromsteamids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromSteamIDsResult> GetPlayFabIDsFromSteamIDsAsync(GetPlayFabIDsFromSteamIDsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromSteamIDsResult>> GetPlayFabIDsFromSteamIDsAsync(GetPlayFabIDsFromSteamIDsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are persona
     /// names.
@@ -737,7 +737,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromsteamnames">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromSteamNamesResult> GetPlayFabIDsFromSteamNamesAsync(GetPlayFabIDsFromSteamNamesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromSteamNamesResult>> GetPlayFabIDsFromSteamNamesAsync(GetPlayFabIDsFromSteamNamesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Twitch identifiers. The Twitch identifiers are the IDs
     /// for the user accounts, available as "_id" from the Twitch API methods (ex:
@@ -752,7 +752,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromtwitchids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromTwitchIDsResult> GetPlayFabIDsFromTwitchIDsAsync(GetPlayFabIDsFromTwitchIDsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromTwitchIDsResult>> GetPlayFabIDsFromTwitchIDsAsync(GetPlayFabIDsFromTwitchIDsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of XboxLive identifiers.
     /// <example><br/>Example:<code>
@@ -766,7 +766,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromxboxliveids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPlayFabIDsFromXboxLiveIDsResult> GetPlayFabIDsFromXboxLiveIDsAsync(GetPlayFabIDsFromXboxLiveIDsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPlayFabIDsFromXboxLiveIDsResult>> GetPlayFabIDsFromXboxLiveIDsAsync(GetPlayFabIDsFromXboxLiveIDsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the key-value store of custom publisher settings
     /// <example><br/>Example:<code>
@@ -779,7 +779,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/title-wide-data-management/getpublisherdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPublisherDataResult> GetPublisherDataAsync(GetPublisherDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPublisherDataResult>> GetPublisherDataAsync(GetPublisherDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the configuration information for the specified random results tables for the title, including
@@ -796,7 +796,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/getrandomresulttables">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetRandomResultTablesResult> GetRandomResultTablesAsync(GetRandomResultTablesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetRandomResultTablesResult>> GetRandomResultTablesAsync(GetRandomResultTablesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the associated PlayFab account identifiers for the given set of server custom identifiers.
     /// <example><br/>Example:<code>
@@ -808,7 +808,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getservercustomidsfromplayfabids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetServerCustomIDsFromPlayFabIDsResult> GetServerCustomIDsFromPlayFabIDsAsync(GetServerCustomIDsFromPlayFabIDsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetServerCustomIDsFromPlayFabIDsResult>> GetServerCustomIDsFromPlayFabIDsAsync(GetServerCustomIDsFromPlayFabIDsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves data stored in a shared group object, as well as the list of members in the group. The server can access all
     /// public and private group data. Shared Groups are designed for sharing data between a very small number of players,
@@ -825,7 +825,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/shared-group-data/getsharedgroupdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetSharedGroupDataResult> GetSharedGroupDataAsync(GetSharedGroupDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetSharedGroupDataResult>> GetSharedGroupDataAsync(GetSharedGroupDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the set of items defined for the specified store, including all prices defined, for the specified
@@ -838,7 +838,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/title-wide-data-management/getstoreitems">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetStoreItemsResult> GetStoreItemsAsync(GetStoreItemsServerRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetStoreItemsResult>> GetStoreItemsAsync(GetStoreItemsServerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the current server time
     /// <example><br/>Example:<code>
@@ -846,7 +846,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/title-wide-data-management/gettime">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTimeResult> GetTimeAsync(GetTimeRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetTimeResult>> GetTimeAsync(GetTimeRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the key-value store of custom title settings
     /// <example><br/>Example:<code>
@@ -859,7 +859,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/title-wide-data-management/gettitledata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTitleDataResult> GetTitleDataAsync(GetTitleDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetTitleDataResult>> GetTitleDataAsync(GetTitleDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the key-value store of custom internal title settings
     /// <example><br/>Example:<code>
@@ -872,7 +872,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/title-wide-data-management/gettitleinternaldata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTitleDataResult> GetTitleInternalDataAsync(GetTitleDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetTitleDataResult>> GetTitleInternalDataAsync(GetTitleDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the title news feed, as configured in the developer portal
     /// <example><br/>Example:<code>
@@ -882,7 +882,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/title-wide-data-management/gettitlenews">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTitleNewsResult> GetTitleNewsAsync(GetTitleNewsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetTitleNewsResult>> GetTitleNewsAsync(GetTitleNewsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the relevant details for a specified user
     /// <example><br/>Example:<code>
@@ -892,7 +892,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getuseraccountinfo">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetUserAccountInfoResult> GetUserAccountInfoAsync(GetUserAccountInfoRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetUserAccountInfoResult>> GetUserAccountInfoAsync(GetUserAccountInfoRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets all bans for a user.
     /// <example><br/>Example:<code>
@@ -902,7 +902,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getuserbans">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetUserBansResult> GetUserBansAsync(GetUserBansRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetUserBansResult>> GetUserBansAsync(GetUserBansRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the title-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
@@ -917,7 +917,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getuserdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetUserDataResult> GetUserDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetUserDataResult>> GetUserDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the title-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
@@ -932,7 +932,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getuserinternaldata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetUserDataResult> GetUserInternalDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetUserDataResult>> GetUserInternalDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the specified user's current inventory of virtual goods
@@ -943,7 +943,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/getuserinventory">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetUserInventoryResult> GetUserInventoryAsync(GetUserInventoryRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetUserInventoryResult>> GetUserInventoryAsync(GetUserInventoryRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
@@ -958,7 +958,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getuserpublisherdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetUserDataResult> GetUserPublisherDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetUserDataResult>> GetUserPublisherDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
@@ -973,7 +973,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getuserpublisherinternaldata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetUserDataResult> GetUserPublisherInternalDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetUserDataResult>> GetUserPublisherInternalDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
@@ -988,7 +988,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getuserpublisherreadonlydata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetUserDataResult> GetUserPublisherReadOnlyDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetUserDataResult>> GetUserPublisherReadOnlyDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the title-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
@@ -1003,7 +1003,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getuserreadonlydata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetUserDataResult> GetUserReadOnlyDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetUserDataResult>> GetUserReadOnlyDataAsync(GetUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the details of all title-specific statistics for the user
     /// <example><br/>Example:<code>
@@ -1013,7 +1013,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/getuserstatistics">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetUserStatisticsResult> GetUserStatisticsAsync(GetUserStatisticsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetUserStatisticsResult>> GetUserStatisticsAsync(GetUserStatisticsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Grants the specified character type to the user. CharacterIds are not globally unique; characterId must be evaluated
     /// with the parent PlayFabId to guarantee uniqueness.
@@ -1026,7 +1026,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/characters/grantcharactertouser">Microsoft Documentation</see>
     /// </summary>
-    public Task<GrantCharacterToUserResult> GrantCharacterToUserAsync(GrantCharacterToUserRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GrantCharacterToUserResult>> GrantCharacterToUserAsync(GrantCharacterToUserRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Adds the specified items to the specified character's inventory
@@ -1043,7 +1043,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/grantitemstocharacter">Microsoft Documentation</see>
     /// </summary>
-    public Task<GrantItemsToCharacterResult> GrantItemsToCharacterAsync(GrantItemsToCharacterRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GrantItemsToCharacterResult>> GrantItemsToCharacterAsync(GrantItemsToCharacterRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Adds the specified items to the specified user's inventory
@@ -1059,7 +1059,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/grantitemstouser">Microsoft Documentation</see>
     /// </summary>
-    public Task<GrantItemsToUserResult> GrantItemsToUserAsync(GrantItemsToUserRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GrantItemsToUserResult>> GrantItemsToUserAsync(GrantItemsToUserRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Adds the specified items to the specified user inventories
@@ -1086,7 +1086,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/grantitemstousers">Microsoft Documentation</see>
     /// </summary>
-    public Task<GrantItemsToUsersResult> GrantItemsToUsersAsync(GrantItemsToUsersRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GrantItemsToUsersResult>> GrantItemsToUsersAsync(GrantItemsToUsersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Links the Battle.net account associated with the token to the user's PlayFab account.
     /// <example><br/>Example:<code>
@@ -1097,7 +1097,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linkbattlenetaccount">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> LinkBattleNetAccountAsync(LinkBattleNetAccountRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> LinkBattleNetAccountAsync(LinkBattleNetAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Links the Nintendo account associated with the token to the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1108,7 +1108,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linknintendoserviceaccount">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> LinkNintendoServiceAccountAsync(LinkNintendoServiceAccountRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> LinkNintendoServiceAccountAsync(LinkNintendoServiceAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Links the Nintendo account associated with the Nintendo Service Account subject or id to the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1119,7 +1119,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linknintendoserviceaccountsubject">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> LinkNintendoServiceAccountSubjectAsync(LinkNintendoServiceAccountSubjectRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> LinkNintendoServiceAccountSubjectAsync(LinkNintendoServiceAccountSubjectRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Links the NintendoSwitchDeviceId to the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1130,7 +1130,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linknintendoswitchdeviceid">Microsoft Documentation</see>
     /// </summary>
-    public Task<LinkNintendoSwitchDeviceIdResult> LinkNintendoSwitchDeviceIdAsync(LinkNintendoSwitchDeviceIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<LinkNintendoSwitchDeviceIdResult>> LinkNintendoSwitchDeviceIdAsync(LinkNintendoSwitchDeviceIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Links the PlayStation :tm: Network account associated with the provided access code to the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1142,7 +1142,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linkpsnaccount">Microsoft Documentation</see>
     /// </summary>
-    public Task<LinkPSNAccountResult> LinkPSNAccountAsync(LinkPSNAccountRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<LinkPSNAccountResult>> LinkPSNAccountAsync(LinkPSNAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Links the PlayStation :tm: Network account associated with the provided user id to the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1153,7 +1153,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linkpsnid">Microsoft Documentation</see>
     /// </summary>
-    public Task<LinkPSNIdResponse> LinkPSNIdAsync(LinkPSNIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<LinkPSNIdResponse>> LinkPSNIdAsync(LinkPSNIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Links the custom server identifier, generated by the title, to the user's PlayFab account.
     /// <example><br/>Example:<code>
@@ -1164,7 +1164,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linkservercustomid">Microsoft Documentation</see>
     /// </summary>
-    public Task<LinkServerCustomIdResult> LinkServerCustomIdAsync(LinkServerCustomIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<LinkServerCustomIdResult>> LinkServerCustomIdAsync(LinkServerCustomIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Links the Steam account associated with the provided Steam ID to the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1175,7 +1175,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linksteamid">Microsoft Documentation</see>
     /// </summary>
-    public Task<LinkSteamIdResult> LinkSteamIdAsync(LinkSteamIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<LinkSteamIdResult>> LinkSteamIdAsync(LinkSteamIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Links the Xbox Live account associated with the provided access code to the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1186,7 +1186,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linkxboxaccount">Microsoft Documentation</see>
     /// </summary>
-    public Task<LinkXboxAccountResult> LinkXboxAccountAsync(LinkXboxAccountRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<LinkXboxAccountResult>> LinkXboxAccountAsync(LinkXboxAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves title-specific custom property values for a player.
     /// <example><br/>Example:<code>
@@ -1196,7 +1196,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/listplayercustomproperties">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListPlayerCustomPropertiesResult> ListPlayerCustomPropertiesAsync(ListPlayerCustomPropertiesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ListPlayerCustomPropertiesResult>> ListPlayerCustomPropertiesAsync(ListPlayerCustomPropertiesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Logs a custom analytics event
     /// <example><br/>Example:<code>
@@ -1216,7 +1216,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/analytics/logevent">Microsoft Documentation</see>
     /// </summary>
-    public Task<LogEventResult> LogEventAsync(LogEventRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<LogEventResult>> LogEventAsync(LogEventRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Signs the user in using the Android device identifier, returning a session identifier that can subsequently be used for
     /// API calls which require an authenticated user
@@ -1230,7 +1230,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithandroiddeviceid">Microsoft Documentation</see>
     /// </summary>
-    public Task<ServerLoginResult> LoginWithAndroidDeviceIDAsync(LoginWithAndroidDeviceIDRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ServerLoginResult>> LoginWithAndroidDeviceIDAsync(LoginWithAndroidDeviceIDRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sign in the user with a Battle.net identity token
     /// <example><br/>Example:<code>
@@ -1240,7 +1240,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithbattlenet">Microsoft Documentation</see>
     /// </summary>
-    public Task<ServerLoginResult> LoginWithBattleNetAsync(LoginWithBattleNetRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ServerLoginResult>> LoginWithBattleNetAsync(LoginWithBattleNetRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Signs the user in using a custom unique identifier generated by the title, returning a session identifier that can
     /// subsequently be used for API calls which require an authenticated user
@@ -1252,7 +1252,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithcustomid">Microsoft Documentation</see>
     /// </summary>
-    public Task<ServerLoginResult> LoginWithCustomIDAsync(LoginWithCustomIDRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ServerLoginResult>> LoginWithCustomIDAsync(LoginWithCustomIDRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Signs the user in using the iOS device identifier, returning a session identifier that can subsequently be used for API
     /// calls which require an authenticated user
@@ -1266,7 +1266,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithiosdeviceid">Microsoft Documentation</see>
     /// </summary>
-    public Task<ServerLoginResult> LoginWithIOSDeviceIDAsync(LoginWithIOSDeviceIDRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ServerLoginResult>> LoginWithIOSDeviceIDAsync(LoginWithIOSDeviceIDRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Signs the user in using a PlayStation :tm: Network authentication code, returning a session identifier that can
     /// subsequently be used for API calls which require an authenticated user
@@ -1279,7 +1279,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithpsn">Microsoft Documentation</see>
     /// </summary>
-    public Task<ServerLoginResult> LoginWithPSNAsync(LoginWithPSNRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ServerLoginResult>> LoginWithPSNAsync(LoginWithPSNRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Securely login a game client from an external server backend using a custom identifier for that player. Server Custom
     /// ID and Client Custom ID are mutually exclusive and cannot be used to retrieve the same player account.
@@ -1291,7 +1291,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithservercustomid">Microsoft Documentation</see>
     /// </summary>
-    public Task<ServerLoginResult> LoginWithServerCustomIdAsync(LoginWithServerCustomIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ServerLoginResult>> LoginWithServerCustomIdAsync(LoginWithServerCustomIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Signs the user in using an Steam ID, returning a session identifier that can subsequently be used for API calls which
     /// require an authenticated user
@@ -1303,7 +1303,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithsteamid">Microsoft Documentation</see>
     /// </summary>
-    public Task<ServerLoginResult> LoginWithSteamIdAsync(LoginWithSteamIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ServerLoginResult>> LoginWithSteamIdAsync(LoginWithSteamIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Signs the user in using a Xbox Live Token from an external server backend, returning a session identifier that can
     /// subsequently be used for API calls which require an authenticated user
@@ -1315,7 +1315,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithxbox">Microsoft Documentation</see>
     /// </summary>
-    public Task<ServerLoginResult> LoginWithXboxAsync(LoginWithXboxRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ServerLoginResult>> LoginWithXboxAsync(LoginWithXboxRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Signs the user in using an Xbox ID and Sandbox ID, returning a session identifier that can subsequently be used for API
     /// calls which require an authenticated user
@@ -1328,7 +1328,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithxboxid">Microsoft Documentation</see>
     /// </summary>
-    public Task<ServerLoginResult> LoginWithXboxIdAsync(LoginWithXboxIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ServerLoginResult>> LoginWithXboxIdAsync(LoginWithXboxIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Modifies the number of remaining uses of a player's inventory item
@@ -1341,7 +1341,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/modifyitemuses">Microsoft Documentation</see>
     /// </summary>
-    public Task<ModifyItemUsesResult> ModifyItemUsesAsync(ModifyItemUsesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ModifyItemUsesResult>> ModifyItemUsesAsync(ModifyItemUsesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Moves an item from a character's inventory into another of the users's character's inventory.
@@ -1355,7 +1355,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/moveitemtocharacterfromcharacter">Microsoft Documentation</see>
     /// </summary>
-    public Task<MoveItemToCharacterFromCharacterResult> MoveItemToCharacterFromCharacterAsync(MoveItemToCharacterFromCharacterRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<MoveItemToCharacterFromCharacterResult>> MoveItemToCharacterFromCharacterAsync(MoveItemToCharacterFromCharacterRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Moves an item from a user's inventory into their character's inventory.
@@ -1368,7 +1368,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/moveitemtocharacterfromuser">Microsoft Documentation</see>
     /// </summary>
-    public Task<MoveItemToCharacterFromUserResult> MoveItemToCharacterFromUserAsync(MoveItemToCharacterFromUserRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<MoveItemToCharacterFromUserResult>> MoveItemToCharacterFromUserAsync(MoveItemToCharacterFromUserRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Moves an item from a character's inventory into the owning user's inventory.
@@ -1381,7 +1381,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/moveitemtouserfromcharacter">Microsoft Documentation</see>
     /// </summary>
-    public Task<MoveItemToUserFromCharacterResult> MoveItemToUserFromCharacterAsync(MoveItemToUserFromCharacterRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<MoveItemToUserFromCharacterResult>> MoveItemToUserFromCharacterAsync(MoveItemToUserFromCharacterRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Informs the PlayFab match-making service that the user specified has left the Game Server Instance
     /// <example><br/>Example:<code>
@@ -1392,7 +1392,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/matchmaking/notifymatchmakerplayerleft">Microsoft Documentation</see>
     /// </summary>
-    public Task<NotifyMatchmakerPlayerLeftResult> NotifyMatchmakerPlayerLeftAsync(NotifyMatchmakerPlayerLeftRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<NotifyMatchmakerPlayerLeftResult>> NotifyMatchmakerPlayerLeftAsync(NotifyMatchmakerPlayerLeftRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Adds the virtual goods associated with the coupon to the user's inventory. Coupons can be generated via the
@@ -1405,7 +1405,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/redeemcoupon">Microsoft Documentation</see>
     /// </summary>
-    public Task<RedeemCouponResult> RedeemCouponAsync(RedeemCouponRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RedeemCouponResult>> RedeemCouponAsync(RedeemCouponRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Validates a Game Server session ticket and returns details about the user
     /// <example><br/>Example:<code>
@@ -1416,7 +1416,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/matchmaking/redeemmatchmakerticket">Microsoft Documentation</see>
     /// </summary>
-    public Task<RedeemMatchmakerTicketResult> RedeemMatchmakerTicketAsync(RedeemMatchmakerTicketRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RedeemMatchmakerTicketResult>> RedeemMatchmakerTicketAsync(RedeemMatchmakerTicketRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Set the state of the indicated Game Server Instance. Also update the heartbeat for the instance.
     /// <example><br/>Example:<code>
@@ -1426,7 +1426,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/matchmaking/refreshgameserverinstanceheartbeat">Microsoft Documentation</see>
     /// </summary>
-    public Task<RefreshGameServerInstanceHeartbeatResult> RefreshGameServerInstanceHeartbeatAsync(RefreshGameServerInstanceHeartbeatRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RefreshGameServerInstanceHeartbeatResult>> RefreshGameServerInstanceHeartbeatAsync(RefreshGameServerInstanceHeartbeatRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Inform the matchmaker that a new Game Server Instance is added.
     /// <example><br/>Example:<code>
@@ -1444,7 +1444,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/matchmaking/registergame">Microsoft Documentation</see>
     /// </summary>
-    public Task<RegisterGameResponse> RegisterGameAsync(RegisterGameRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RegisterGameResponse>> RegisterGameAsync(RegisterGameRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Removes the specified friend from the the user's friend list
     /// <example><br/>Example:<code>
@@ -1455,7 +1455,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/friend-list-management/removefriend">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> RemoveFriendAsync(RemoveFriendRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> RemoveFriendAsync(RemoveFriendRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Removes the specified generic service identifier from the player's PlayFab account.
     /// <example><br/>Example:<code>
@@ -1468,7 +1468,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/removegenericid">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> RemoveGenericIDAsync(RemoveGenericIDRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> RemoveGenericIDAsync(RemoveGenericIDRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Remove a given tag from a player profile. The tag's namespace is automatically generated based on the source of the tag.
     /// <example><br/>Example:<code>
@@ -1479,7 +1479,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/removeplayertag">Microsoft Documentation</see>
     /// </summary>
-    public Task<RemovePlayerTagResult> RemovePlayerTagAsync(RemovePlayerTagRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RemovePlayerTagResult>> RemovePlayerTagAsync(RemovePlayerTagRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Removes users from the set of those able to update the shared data and the set of users in the group. Only users in the
     /// group can remove members. If as a result of the call, zero users remain with access, the group and its associated data
@@ -1496,7 +1496,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/shared-group-data/removesharedgroupmembers">Microsoft Documentation</see>
     /// </summary>
-    public Task<RemoveSharedGroupMembersResult> RemoveSharedGroupMembersAsync(RemoveSharedGroupMembersRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RemoveSharedGroupMembersResult>> RemoveSharedGroupMembersAsync(RemoveSharedGroupMembersRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Submit a report about a player (due to bad bahavior, etc.) on behalf of another player, so that customer service
     /// representatives for the title can take action concerning potentially toxic players.
@@ -1509,7 +1509,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/reportplayer">Microsoft Documentation</see>
     /// </summary>
-    public Task<ReportPlayerServerResult> ReportPlayerAsync(ReportPlayerServerRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ReportPlayerServerResult>> ReportPlayerAsync(ReportPlayerServerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Revoke all active bans for a user.
     /// <example><br/>Example:<code>
@@ -1519,7 +1519,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/revokeallbansforuser">Microsoft Documentation</see>
     /// </summary>
-    public Task<RevokeAllBansForUserResult> RevokeAllBansForUserAsync(RevokeAllBansForUserRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RevokeAllBansForUserResult>> RevokeAllBansForUserAsync(RevokeAllBansForUserRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Revoke all active bans specified with BanId.
     /// <example><br/>Example:<code>
@@ -1532,7 +1532,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/revokebans">Microsoft Documentation</see>
     /// </summary>
-    public Task<RevokeBansResult> RevokeBansAsync(RevokeBansRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RevokeBansResult>> RevokeBansAsync(RevokeBansRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Revokes access to an item in a user's inventory
@@ -1544,7 +1544,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/revokeinventoryitem">Microsoft Documentation</see>
     /// </summary>
-    public Task<RevokeInventoryResult> RevokeInventoryItemAsync(RevokeInventoryItemRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RevokeInventoryResult>> RevokeInventoryItemAsync(RevokeInventoryItemRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Revokes access for up to 25 items across multiple users and characters.
@@ -1560,7 +1560,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/revokeinventoryitems">Microsoft Documentation</see>
     /// </summary>
-    public Task<RevokeInventoryItemsResult> RevokeInventoryItemsAsync(RevokeInventoryItemsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RevokeInventoryItemsResult>> RevokeInventoryItemsAsync(RevokeInventoryItemsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Saves push notification template for title
     /// <example><br/>Example:<code>
@@ -1583,7 +1583,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/savepushnotificationtemplate">Microsoft Documentation</see>
     /// </summary>
-    public Task<SavePushNotificationTemplateResult> SavePushNotificationTemplateAsync(SavePushNotificationTemplateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SavePushNotificationTemplateResult>> SavePushNotificationTemplateAsync(SavePushNotificationTemplateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Forces an email to be sent to the registered contact email address for the user's account based on an account recovery
     /// email template
@@ -1595,7 +1595,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/sendcustomaccountrecoveryemail">Microsoft Documentation</see>
     /// </summary>
-    public Task<SendCustomAccountRecoveryEmailResult> SendCustomAccountRecoveryEmailAsync(SendCustomAccountRecoveryEmailRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SendCustomAccountRecoveryEmailResult>> SendCustomAccountRecoveryEmailAsync(SendCustomAccountRecoveryEmailRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sends an email based on an email template to a player's contact email
     /// <example><br/>Example:<code>
@@ -1606,7 +1606,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/sendemailfromtemplate">Microsoft Documentation</see>
     /// </summary>
-    public Task<SendEmailFromTemplateResult> SendEmailFromTemplateAsync(SendEmailFromTemplateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SendEmailFromTemplateResult>> SendEmailFromTemplateAsync(SendEmailFromTemplateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sends an iOS/Android Push Notification to a specific user, if that user's device has been configured for Push
     /// Notifications in PlayFab. If a user has linked both Android and iOS devices, both will be notified.
@@ -1618,7 +1618,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/sendpushnotification">Microsoft Documentation</see>
     /// </summary>
-    public Task<SendPushNotificationResult> SendPushNotificationAsync(SendPushNotificationRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SendPushNotificationResult>> SendPushNotificationAsync(SendPushNotificationRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sends an iOS/Android Push Notification template to a specific user, if that user's device has been configured for Push
     /// Notifications in PlayFab. If a user has linked both Android and iOS devices, both will be notified.
@@ -1630,7 +1630,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/sendpushnotificationfromtemplate">Microsoft Documentation</see>
     /// </summary>
-    public Task<SendPushNotificationResult> SendPushNotificationFromTemplateAsync(SendPushNotificationFromTemplateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SendPushNotificationResult>> SendPushNotificationFromTemplateAsync(SendPushNotificationFromTemplateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the tag list for a specified user in the friend list of another user
     /// <example><br/>Example:<code>
@@ -1645,7 +1645,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/friend-list-management/setfriendtags">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> SetFriendTagsAsync(SetFriendTagsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> SetFriendTagsAsync(SetFriendTagsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets the custom data of the indicated Game Server Instance
     /// <example><br/>Example:<code>
@@ -1656,7 +1656,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/matchmaking/setgameserverinstancedata">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetGameServerInstanceDataResult> SetGameServerInstanceDataAsync(SetGameServerInstanceDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetGameServerInstanceDataResult>> SetGameServerInstanceDataAsync(SetGameServerInstanceDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Set the state of the indicated Game Server Instance.
     /// <example><br/>Example:<code>
@@ -1667,7 +1667,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/matchmaking/setgameserverinstancestate">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetGameServerInstanceStateResult> SetGameServerInstanceStateAsync(SetGameServerInstanceStateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetGameServerInstanceStateResult>> SetGameServerInstanceStateAsync(SetGameServerInstanceStateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Set custom tags for the specified Game Server Instance
     /// <example><br/>Example:<code>
@@ -1681,7 +1681,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/matchmaking/setgameserverinstancetags">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetGameServerInstanceTagsResult> SetGameServerInstanceTagsAsync(SetGameServerInstanceTagsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetGameServerInstanceTagsResult>> SetGameServerInstanceTagsAsync(SetGameServerInstanceTagsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets the player's secret if it is not already set. Player secrets are used to sign API requests. To reset a player's
     /// secret use the Admin or Server API method SetPlayerSecret.
@@ -1693,7 +1693,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/setplayersecret">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetPlayerSecretResult> SetPlayerSecretAsync(SetPlayerSecretRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetPlayerSecretResult>> SetPlayerSecretAsync(SetPlayerSecretRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the key-value store of custom publisher settings
     /// <example><br/>Example:<code>
@@ -1704,7 +1704,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/title-wide-data-management/setpublisherdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetPublisherDataResult> SetPublisherDataAsync(SetPublisherDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetPublisherDataResult>> SetPublisherDataAsync(SetPublisherDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the key-value store of custom title settings
     /// <example><br/>Example:<code>
@@ -1715,7 +1715,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/title-wide-data-management/settitledata">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetTitleDataResult> SetTitleDataAsync(SetTitleDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetTitleDataResult>> SetTitleDataAsync(SetTitleDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the key-value store of custom title settings
     /// <example><br/>Example:<code>
@@ -1726,7 +1726,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/title-wide-data-management/settitleinternaldata">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetTitleDataResult> SetTitleInternalDataAsync(SetTitleDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetTitleDataResult>> SetTitleInternalDataAsync(SetTitleDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Decrements the character's balance of the specified virtual currency by the stated amount. It is possible
@@ -1741,7 +1741,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/subtractcharactervirtualcurrency">Microsoft Documentation</see>
     /// </summary>
-    public Task<ModifyCharacterVirtualCurrencyResult> SubtractCharacterVirtualCurrencyAsync(SubtractCharacterVirtualCurrencyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ModifyCharacterVirtualCurrencyResult>> SubtractCharacterVirtualCurrencyAsync(SubtractCharacterVirtualCurrencyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Decrements the user's balance of the specified virtual currency by the stated amount. It is possible to
@@ -1755,7 +1755,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/subtractuservirtualcurrency">Microsoft Documentation</see>
     /// </summary>
-    public Task<ModifyUserVirtualCurrencyResult> SubtractUserVirtualCurrencyAsync(SubtractUserVirtualCurrencyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ModifyUserVirtualCurrencyResult>> SubtractUserVirtualCurrencyAsync(SubtractUserVirtualCurrencyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unlinks the related Battle.net account from the user's PlayFab account.
     /// <example><br/>Example:<code>
@@ -1765,7 +1765,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinkbattlenetaccount">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UnlinkBattleNetAccountAsync(UnlinkBattleNetAccountRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> UnlinkBattleNetAccountAsync(UnlinkBattleNetAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unlinks the related Nintendo account from the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1775,7 +1775,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinknintendoserviceaccount">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UnlinkNintendoServiceAccountAsync(UnlinkNintendoServiceAccountRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> UnlinkNintendoServiceAccountAsync(UnlinkNintendoServiceAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unlinks the related NintendoSwitchDeviceId from the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1786,7 +1786,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinknintendoswitchdeviceid">Microsoft Documentation</see>
     /// </summary>
-    public Task<UnlinkNintendoSwitchDeviceIdResult> UnlinkNintendoSwitchDeviceIdAsync(UnlinkNintendoSwitchDeviceIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UnlinkNintendoSwitchDeviceIdResult>> UnlinkNintendoSwitchDeviceIdAsync(UnlinkNintendoSwitchDeviceIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unlinks the related PlayStation :tm: Network account from the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1796,7 +1796,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinkpsnaccount">Microsoft Documentation</see>
     /// </summary>
-    public Task<UnlinkPSNAccountResult> UnlinkPSNAccountAsync(UnlinkPSNAccountRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UnlinkPSNAccountResult>> UnlinkPSNAccountAsync(UnlinkPSNAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unlinks the custom server identifier from the user's PlayFab account.
     /// <example><br/>Example:<code>
@@ -1807,7 +1807,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinkservercustomid">Microsoft Documentation</see>
     /// </summary>
-    public Task<UnlinkServerCustomIdResult> UnlinkServerCustomIdAsync(UnlinkServerCustomIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UnlinkServerCustomIdResult>> UnlinkServerCustomIdAsync(UnlinkServerCustomIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unlinks the Steam account associated with the provided Steam ID to the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1817,7 +1817,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinksteamid">Microsoft Documentation</see>
     /// </summary>
-    public Task<UnlinkSteamIdResult> UnlinkSteamIdAsync(UnlinkSteamIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UnlinkSteamIdResult>> UnlinkSteamIdAsync(UnlinkSteamIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unlinks the related Xbox Live account from the user's PlayFab account
     /// <example><br/>Example:<code>
@@ -1827,7 +1827,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinkxboxaccount">Microsoft Documentation</see>
     /// </summary>
-    public Task<UnlinkXboxAccountResult> UnlinkXboxAccountAsync(UnlinkXboxAccountRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UnlinkXboxAccountResult>> UnlinkXboxAccountAsync(UnlinkXboxAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Opens a specific container (ContainerItemInstanceId), with a specific key (KeyItemInstanceId, when
@@ -1842,7 +1842,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/unlockcontainerinstance">Microsoft Documentation</see>
     /// </summary>
-    public Task<UnlockContainerItemResult> UnlockContainerInstanceAsync(UnlockContainerInstanceRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UnlockContainerItemResult>> UnlockContainerInstanceAsync(UnlockContainerInstanceRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Searches Player or Character inventory for any ItemInstance matching the given CatalogItemId, if necessary
@@ -1857,7 +1857,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/unlockcontaineritem">Microsoft Documentation</see>
     /// </summary>
-    public Task<UnlockContainerItemResult> UnlockContainerItemAsync(UnlockContainerItemRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UnlockContainerItemResult>> UnlockContainerItemAsync(UnlockContainerItemRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Update the avatar URL of the specified player
     /// <example><br/>Example:<code>
@@ -1868,7 +1868,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/updateavatarurl">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UpdateAvatarUrlAsync(UpdateAvatarUrlRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> UpdateAvatarUrlAsync(UpdateAvatarUrlRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates information of a list of existing bans specified with Ban Ids.
     /// <example><br/>Example:<code>
@@ -1889,7 +1889,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/updatebans">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateBansResult> UpdateBansAsync(UpdateBansRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateBansResult>> UpdateBansAsync(UpdateBansRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the title-specific custom data for the user's character which is readable and writable by the client
     /// <example><br/>Example:<code>
@@ -1907,7 +1907,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/character-data/updatecharacterdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateCharacterDataResult> UpdateCharacterDataAsync(UpdateCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateCharacterDataResult>> UpdateCharacterDataAsync(UpdateCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the title-specific custom data for the user's character which cannot be accessed by the client
     /// <example><br/>Example:<code>
@@ -1925,7 +1925,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/character-data/updatecharacterinternaldata">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateCharacterDataResult> UpdateCharacterInternalDataAsync(UpdateCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateCharacterDataResult>> UpdateCharacterInternalDataAsync(UpdateCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the title-specific custom data for the user's character which can only be read by the client
     /// <example><br/>Example:<code>
@@ -1943,7 +1943,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/character-data/updatecharacterreadonlydata">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateCharacterDataResult> UpdateCharacterReadOnlyDataAsync(UpdateCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateCharacterDataResult>> UpdateCharacterReadOnlyDataAsync(UpdateCharacterDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the values of the specified title-specific statistics for the specific character
     /// <example><br/>Example:<code>
@@ -1958,7 +1958,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/characters/updatecharacterstatistics">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateCharacterStatisticsResult> UpdateCharacterStatisticsAsync(UpdateCharacterStatisticsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateCharacterStatisticsResult>> UpdateCharacterStatisticsAsync(UpdateCharacterStatisticsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the title-specific custom property values for a player
     /// <example><br/>Example:<code>
@@ -1979,7 +1979,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/updateplayercustomproperties">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdatePlayerCustomPropertiesResult> UpdatePlayerCustomPropertiesAsync(UpdatePlayerCustomPropertiesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdatePlayerCustomPropertiesResult>> UpdatePlayerCustomPropertiesAsync(UpdatePlayerCustomPropertiesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the values of the specified title-specific statistics for the user
     /// <example><br/>Example:<code>
@@ -2005,7 +2005,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/updateplayerstatistics">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdatePlayerStatisticsResult> UpdatePlayerStatisticsAsync(UpdatePlayerStatisticsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdatePlayerStatisticsResult>> UpdatePlayerStatisticsAsync(UpdatePlayerStatisticsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Adds, updates, and removes data keys for a shared group object. If the permission is set to Public, all fields updated
     /// or added in this call will be readable by users not in the group. By default, data permissions are set to Private.
@@ -2024,7 +2024,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/shared-group-data/updatesharedgroupdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateSharedGroupDataResult> UpdateSharedGroupDataAsync(UpdateSharedGroupDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateSharedGroupDataResult>> UpdateSharedGroupDataAsync(UpdateSharedGroupDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the title-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
@@ -2041,7 +2041,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/updateuserdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateUserDataResult> UpdateUserDataAsync(UpdateUserDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateUserDataResult>> UpdateUserDataAsync(UpdateUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the title-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
@@ -2057,7 +2057,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/updateuserinternaldata">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateUserDataResult> UpdateUserInternalDataAsync(UpdateUserInternalDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateUserDataResult>> UpdateUserInternalDataAsync(UpdateUserInternalDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Updates the key-value pair data tagged to the specified item, which is read-only from the client.
@@ -2074,7 +2074,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/updateuserinventoryitemcustomdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UpdateUserInventoryItemCustomDataAsync(UpdateUserInventoryItemDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> UpdateUserInventoryItemCustomDataAsync(UpdateUserInventoryItemDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the publisher-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
@@ -2091,7 +2091,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/updateuserpublisherdata">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateUserDataResult> UpdateUserPublisherDataAsync(UpdateUserDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateUserDataResult>> UpdateUserPublisherDataAsync(UpdateUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the publisher-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
@@ -2107,7 +2107,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/updateuserpublisherinternaldata">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateUserDataResult> UpdateUserPublisherInternalDataAsync(UpdateUserInternalDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateUserDataResult>> UpdateUserPublisherInternalDataAsync(UpdateUserInternalDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the publisher-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
@@ -2124,7 +2124,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/updateuserpublisherreadonlydata">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateUserDataResult> UpdateUserPublisherReadOnlyDataAsync(UpdateUserDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateUserDataResult>> UpdateUserPublisherReadOnlyDataAsync(UpdateUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the title-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
@@ -2141,7 +2141,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/updateuserreadonlydata">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateUserDataResult> UpdateUserReadOnlyDataAsync(UpdateUserDataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateUserDataResult>> UpdateUserReadOnlyDataAsync(UpdateUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the values of the specified title-specific statistics for the user. By default, clients are not permitted to
     /// update statistics. Developers may override this setting in the Game Manager > Settings > API Features.
@@ -2156,7 +2156,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-data-management/updateuserstatistics">Microsoft Documentation</see>
     /// </summary>
-    public Task<UpdateUserStatisticsResult> UpdateUserStatisticsAsync(UpdateUserStatisticsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UpdateUserStatisticsResult>> UpdateUserStatisticsAsync(UpdateUserStatisticsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Writes a character-based event into PlayStream.
     /// <example><br/>Example:<code>
@@ -2177,7 +2177,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/analytics/writecharacterevent">Microsoft Documentation</see>
     /// </summary>
-    public Task<WriteEventResponse> WriteCharacterEventAsync(WriteServerCharacterEventRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<WriteEventResponse>> WriteCharacterEventAsync(WriteServerCharacterEventRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Writes a player-based event into PlayStream.
     /// <example><br/>Example:<code>
@@ -2197,7 +2197,7 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/analytics/writeplayerevent">Microsoft Documentation</see>
     /// </summary>
-    public Task<WriteEventResponse> WritePlayerEventAsync(WriteServerPlayerEventRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<WriteEventResponse>> WritePlayerEventAsync(WriteServerPlayerEventRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Writes a title-based event into PlayStream.
     /// <example><br/>Example:<code>
@@ -2211,5 +2211,5 @@ public interface IPlayFabServerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/analytics/writetitleevent">Microsoft Documentation</see>
     /// </summary>
-    public Task<WriteEventResponse> WriteTitleEventAsync(WriteTitleEventRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<WriteEventResponse>> WriteTitleEventAsync(WriteTitleEventRequest request, Dictionary<string, string>? extraHeaders);
 }

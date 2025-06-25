@@ -1,3 +1,5 @@
+using CommunityFabs.NET.Sdk.Http;
+
 namespace CommunityFabs.NET.Sdk.Models.Multiplayer;
 
 public enum AccessPolicy {
@@ -4948,8 +4950,8 @@ public class RequestMultiplayerServerAndTokenRequest : PlayFabRequestCommon {
     /// </summary>
     public required List<string> PreferredRegions { get; set; }
     /// <summary>
-    /// Data encoded as a string that is passed to the game server when requested. This can be used to to communicate
-    /// information such as game mode or map through the request flow.
+    /// Data encoded as a string that is passed to the game server when requested. This can be used to communicate information
+    /// such as game mode or map through the request flow. Maximum size is 8KB
     /// </summary>
     public string? SessionCookie { get; set; }
     /// <summary>
@@ -5044,8 +5046,8 @@ public class RequestMultiplayerServerRequest : PlayFabRequestCommon {
     /// </summary>
     public required List<string> PreferredRegions { get; set; }
     /// <summary>
-    /// Data encoded as a string that is passed to the game server when requested. This can be used to to communicate
-    /// information such as game mode or map through the request flow.
+    /// Data encoded as a string that is passed to the game server when requested. This can be used to communicate information
+    /// such as game mode or map through the request flow. Maximum size is 8KB
     /// </summary>
     public string? SessionCookie { get; set; }
     /// <summary>

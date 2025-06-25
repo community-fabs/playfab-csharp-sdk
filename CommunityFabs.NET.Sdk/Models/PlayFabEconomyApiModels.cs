@@ -1,3 +1,5 @@
+using CommunityFabs.NET.Sdk.Http;
+
 namespace CommunityFabs.NET.Sdk.Models.Economy;
 
 public class AddInventoryItemsOperation {
@@ -2040,6 +2042,10 @@ public class ListVersionedCatalogsResponse : PlayFabResultCommon {
     /// The list of versioned catalogs.
     /// </summary>
     public List<VersionedCatalog>? VersionedCatalogs { get; set; }
+    /// <summary>
+    /// The source from where the versioned catalogs are coming from.
+    /// </summary>
+    public string? VersionedCatalogsSource { get; set; }
 }
 
 public class ModerationState {

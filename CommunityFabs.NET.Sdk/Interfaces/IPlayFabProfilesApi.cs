@@ -9,7 +9,7 @@ public interface IPlayFabProfilesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/profile/account-management/getglobalpolicy">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetGlobalPolicyResponse> GetGlobalPolicyAsync(GetGlobalPolicyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetGlobalPolicyResponse>> GetGlobalPolicyAsync(GetGlobalPolicyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the entity's profile.
     /// <example><br/>Example:<code>
@@ -23,7 +23,7 @@ public interface IPlayFabProfilesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/profile/account-management/getprofile">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetEntityProfileResponse> GetProfileAsync(GetEntityProfileRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetEntityProfileResponse>> GetProfileAsync(GetEntityProfileRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the entity's profile.
     /// <example><br/>Example:<code>
@@ -44,7 +44,7 @@ public interface IPlayFabProfilesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/profile/account-management/getprofiles">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetEntityProfilesResponse> GetProfilesAsync(GetEntityProfilesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetEntityProfilesResponse>> GetProfilesAsync(GetEntityProfilesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the title player accounts associated with the given master player account.
     /// <example><br/>Example:<code>
@@ -57,7 +57,7 @@ public interface IPlayFabProfilesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/profile/account-management/gettitleplayersfrommasterplayeraccountids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTitlePlayersFromMasterPlayerAccountIdsResponse> GetTitlePlayersFromMasterPlayerAccountIdsAsync(GetTitlePlayersFromMasterPlayerAccountIdsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetTitlePlayersFromMasterPlayerAccountIdsResponse>> GetTitlePlayersFromMasterPlayerAccountIdsAsync(GetTitlePlayersFromMasterPlayerAccountIdsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the title player accounts associated with the given XUIDs.
     /// <example><br/>Example:<code>
@@ -70,7 +70,7 @@ public interface IPlayFabProfilesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/profile/account-management/gettitleplayersfromxboxliveids">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTitlePlayersFromProviderIDsResponse> GetTitlePlayersFromXboxLiveIDsAsync(GetTitlePlayersFromXboxLiveIDsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetTitlePlayersFromProviderIDsResponse>> GetTitlePlayersFromXboxLiveIDsAsync(GetTitlePlayersFromXboxLiveIDsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Update the avatar url of the entity
     /// <example><br/>Example:<code>
@@ -86,7 +86,7 @@ public interface IPlayFabProfilesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/profile/account-management/setavatarurl">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetAvatarUrlResponse> SetAvatarUrlAsync(SetAvatarUrlRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetAvatarUrlResponse>> SetAvatarUrlAsync(SetAvatarUrlRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Update the display name of the entity
     /// <example><br/>Example:<code>
@@ -102,7 +102,7 @@ public interface IPlayFabProfilesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/profile/account-management/setdisplayname">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetDisplayNameResponse> SetDisplayNameAsync(SetDisplayNameRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetDisplayNameResponse>> SetDisplayNameAsync(SetDisplayNameRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets the global title access policy
     /// <example><br/>Example:<code>
@@ -124,7 +124,7 @@ public interface IPlayFabProfilesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/profile/account-management/setglobalpolicy">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetGlobalPolicyResponse> SetGlobalPolicyAsync(SetGlobalPolicyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetGlobalPolicyResponse>> SetGlobalPolicyAsync(SetGlobalPolicyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the entity's language. The precedence hierarchy for communication to the player is Title Player Account
     /// language, Master Player Account language, and then title default language if the first two aren't set or supported.
@@ -141,7 +141,7 @@ public interface IPlayFabProfilesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/profile/account-management/setprofilelanguage">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetProfileLanguageResponse> SetProfileLanguageAsync(SetProfileLanguageRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetProfileLanguageResponse>> SetProfileLanguageAsync(SetProfileLanguageRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets the profiles access policy
     /// <example><br/>Example:<code>
@@ -166,5 +166,5 @@ public interface IPlayFabProfilesApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/profile/account-management/setprofilepolicy">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetEntityProfilePolicyResponse> SetProfilePolicyAsync(SetEntityProfilePolicyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetEntityProfilePolicyResponse>> SetProfilePolicyAsync(SetEntityProfilePolicyRequest request, Dictionary<string, string>? extraHeaders);
 }

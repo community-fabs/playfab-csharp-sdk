@@ -13,7 +13,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/createorupdateapple">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateOrUpdateAppleResponse> CreateOrUpdateAppleAsync(CreateOrUpdateAppleRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateOrUpdateAppleResponse>> CreateOrUpdateAppleAsync(CreateOrUpdateAppleRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates the Facebook addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
@@ -25,7 +25,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/createorupdatefacebook">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateOrUpdateFacebookResponse> CreateOrUpdateFacebookAsync(CreateOrUpdateFacebookRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateOrUpdateFacebookResponse>> CreateOrUpdateFacebookAsync(CreateOrUpdateFacebookRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates the Facebook Instant Games addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
@@ -36,7 +36,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/createorupdatefacebookinstantgames">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateOrUpdateFacebookInstantGamesResponse> CreateOrUpdateFacebookInstantGamesAsync(CreateOrUpdateFacebookInstantGamesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateOrUpdateFacebookInstantGamesResponse>> CreateOrUpdateFacebookInstantGamesAsync(CreateOrUpdateFacebookInstantGamesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates the Google addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
@@ -50,7 +50,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/createorupdategoogle">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateOrUpdateGoogleResponse> CreateOrUpdateGoogleAsync(CreateOrUpdateGoogleRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateOrUpdateGoogleResponse>> CreateOrUpdateGoogleAsync(CreateOrUpdateGoogleRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates the Kongregate addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
@@ -60,7 +60,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/createorupdatekongregate">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateOrUpdateKongregateResponse> CreateOrUpdateKongregateAsync(CreateOrUpdateKongregateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateOrUpdateKongregateResponse>> CreateOrUpdateKongregateAsync(CreateOrUpdateKongregateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates the Nintendo addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
@@ -77,7 +77,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/createorupdatenintendo">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateOrUpdateNintendoResponse> CreateOrUpdateNintendoAsync(CreateOrUpdateNintendoRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateOrUpdateNintendoResponse>> CreateOrUpdateNintendoAsync(CreateOrUpdateNintendoRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates the PSN addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
@@ -90,7 +90,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/createorupdatepsn">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateOrUpdatePSNResponse> CreateOrUpdatePSNAsync(CreateOrUpdatePSNRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateOrUpdatePSNResponse>> CreateOrUpdatePSNAsync(CreateOrUpdatePSNRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates the Steam addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
@@ -103,7 +103,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/createorupdatesteam">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateOrUpdateSteamResponse> CreateOrUpdateSteamAsync(CreateOrUpdateSteamRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateOrUpdateSteamResponse>> CreateOrUpdateSteamAsync(CreateOrUpdateSteamRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates the ToxMod addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
@@ -115,7 +115,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/createorupdatetoxmod">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateOrUpdateToxModResponse> CreateOrUpdateToxModAsync(CreateOrUpdateToxModRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateOrUpdateToxModResponse>> CreateOrUpdateToxModAsync(CreateOrUpdateToxModRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates the Twitch addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
@@ -126,7 +126,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/createorupdatetwitch">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateOrUpdateTwitchResponse> CreateOrUpdateTwitchAsync(CreateOrUpdateTwitchRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateOrUpdateTwitchResponse>> CreateOrUpdateTwitchAsync(CreateOrUpdateTwitchRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the Apple addon on a title.
     /// <example><br/>Example:<code>
@@ -134,7 +134,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/deleteapple">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteAppleResponse> DeleteAppleAsync(DeleteAppleRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteAppleResponse>> DeleteAppleAsync(DeleteAppleRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the Facebook addon on a title.
     /// <example><br/>Example:<code>
@@ -142,7 +142,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/deletefacebook">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteFacebookResponse> DeleteFacebookAsync(DeleteFacebookRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteFacebookResponse>> DeleteFacebookAsync(DeleteFacebookRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the Facebook addon on a title.
     /// <example><br/>Example:<code>
@@ -150,7 +150,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/deletefacebookinstantgames">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteFacebookInstantGamesResponse> DeleteFacebookInstantGamesAsync(DeleteFacebookInstantGamesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteFacebookInstantGamesResponse>> DeleteFacebookInstantGamesAsync(DeleteFacebookInstantGamesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the Google addon on a title.
     /// <example><br/>Example:<code>
@@ -158,7 +158,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/deletegoogle">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteGoogleResponse> DeleteGoogleAsync(DeleteGoogleRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteGoogleResponse>> DeleteGoogleAsync(DeleteGoogleRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the Kongregate addon on a title.
     /// <example><br/>Example:<code>
@@ -166,7 +166,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/deletekongregate">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteKongregateResponse> DeleteKongregateAsync(DeleteKongregateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteKongregateResponse>> DeleteKongregateAsync(DeleteKongregateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the Nintendo addon on a title.
     /// <example><br/>Example:<code>
@@ -174,7 +174,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/deletenintendo">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteNintendoResponse> DeleteNintendoAsync(DeleteNintendoRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteNintendoResponse>> DeleteNintendoAsync(DeleteNintendoRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the PSN addon on a title.
     /// <example><br/>Example:<code>
@@ -182,7 +182,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/deletepsn">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeletePSNResponse> DeletePSNAsync(DeletePSNRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeletePSNResponse>> DeletePSNAsync(DeletePSNRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the Steam addon on a title.
     /// <example><br/>Example:<code>
@@ -190,7 +190,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/deletesteam">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteSteamResponse> DeleteSteamAsync(DeleteSteamRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteSteamResponse>> DeleteSteamAsync(DeleteSteamRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the ToxMod addon on a title.
     /// <example><br/>Example:<code>
@@ -198,7 +198,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/deletetoxmod">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteToxModResponse> DeleteToxModAsync(DeleteToxModRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteToxModResponse>> DeleteToxModAsync(DeleteToxModRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the Twitch addon on a title.
     /// <example><br/>Example:<code>
@@ -206,7 +206,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/deletetwitch">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteTwitchResponse> DeleteTwitchAsync(DeleteTwitchRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteTwitchResponse>> DeleteTwitchAsync(DeleteTwitchRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information of the Apple addon on a title, omits secrets.
     /// <example><br/>Example:<code>
@@ -214,7 +214,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/getapple">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetAppleResponse> GetAppleAsync(GetAppleRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetAppleResponse>> GetAppleAsync(GetAppleRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information of the Facebook addon on a title, omits secrets.
     /// <example><br/>Example:<code>
@@ -222,7 +222,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/getfacebook">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetFacebookResponse> GetFacebookAsync(GetFacebookRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetFacebookResponse>> GetFacebookAsync(GetFacebookRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information of the Facebook Instant Games addon on a title, omits secrets.
     /// <example><br/>Example:<code>
@@ -230,7 +230,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/getfacebookinstantgames">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetFacebookInstantGamesResponse> GetFacebookInstantGamesAsync(GetFacebookInstantGamesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetFacebookInstantGamesResponse>> GetFacebookInstantGamesAsync(GetFacebookInstantGamesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information of the Google addon on a title, omits secrets.
     /// <example><br/>Example:<code>
@@ -238,7 +238,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/getgoogle">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetGoogleResponse> GetGoogleAsync(GetGoogleRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetGoogleResponse>> GetGoogleAsync(GetGoogleRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information of the Kongregate addon on a title, omits secrets.
     /// <example><br/>Example:<code>
@@ -246,7 +246,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/getkongregate">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetKongregateResponse> GetKongregateAsync(GetKongregateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetKongregateResponse>> GetKongregateAsync(GetKongregateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information of the Nintendo addon on a title, omits secrets.
     /// <example><br/>Example:<code>
@@ -254,7 +254,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/getnintendo">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetNintendoResponse> GetNintendoAsync(GetNintendoRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetNintendoResponse>> GetNintendoAsync(GetNintendoRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information of the PSN addon on a title, omits secrets.
     /// <example><br/>Example:<code>
@@ -262,7 +262,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/getpsn">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetPSNResponse> GetPSNAsync(GetPSNRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetPSNResponse>> GetPSNAsync(GetPSNRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information of the Steam addon on a title, omits secrets.
     /// <example><br/>Example:<code>
@@ -270,7 +270,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/getsteam">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetSteamResponse> GetSteamAsync(GetSteamRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetSteamResponse>> GetSteamAsync(GetSteamRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information of the ToxMod addon on a title, omits secrets.
     /// <example><br/>Example:<code>
@@ -278,7 +278,7 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/gettoxmod">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetToxModResponse> GetToxModAsync(GetToxModRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetToxModResponse>> GetToxModAsync(GetToxModRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information of the Twitch addon on a title, omits secrets.
     /// <example><br/>Example:<code>
@@ -286,5 +286,5 @@ public interface IPlayFabAddonApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/gettwitch">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTwitchResponse> GetTwitchAsync(GetTwitchRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetTwitchResponse>> GetTwitchAsync(GetTwitchRequest request, Dictionary<string, string>? extraHeaders);
 }

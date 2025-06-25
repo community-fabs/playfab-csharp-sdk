@@ -11,7 +11,7 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/createtelemetrykey">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateTelemetryKeyResponse> CreateTelemetryKeyAsync(CreateTelemetryKeyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateTelemetryKeyResponse>> CreateTelemetryKeyAsync(CreateTelemetryKeyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a Data Connection from a title.
     /// <example><br/>Example:<code>
@@ -21,12 +21,12 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/deletedataconnection">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteDataConnectionResponse> DeleteDataConnectionAsync(DeleteDataConnectionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteDataConnectionResponse>> DeleteDataConnectionAsync(DeleteDataConnectionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes the sampling ratio for an event.
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream/deleteeventsamplingratio">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteEventSamplingRatioResult> DeleteEventSamplingRatioAsync(DeleteEventSamplingRatioRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteEventSamplingRatioResult>> DeleteEventSamplingRatioAsync(DeleteEventSamplingRatioRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a telemetry key configured for the title.
     /// <example><br/>Example:<code>
@@ -36,7 +36,7 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/deletetelemetrykey">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteTelemetryKeyResponse> DeleteTelemetryKeyAsync(DeleteTelemetryKeyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteTelemetryKeyResponse>> DeleteTelemetryKeyAsync(DeleteTelemetryKeyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves a single Data Connection associated with a title.
     /// <example><br/>Example:<code>
@@ -46,7 +46,7 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/getdataconnection">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetDataConnectionResponse> GetDataConnectionAsync(GetDataConnectionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetDataConnectionResponse>> GetDataConnectionAsync(GetDataConnectionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the sampling ratio for an event.
     /// <example><br/>Example:<code>
@@ -57,12 +57,12 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream/geteventsamplingratio">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetEventSamplingRatioResult> GetEventSamplingRatioAsync(GetEventSamplingRatioRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetEventSamplingRatioResult>> GetEventSamplingRatioAsync(GetEventSamplingRatioRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the event sampling ratios for a title.
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream/geteventsamplingratios">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetEventSamplingRatiosResult> GetEventSamplingRatiosAsync(GetEventSamplingRatiosRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetEventSamplingRatiosResult>> GetEventSamplingRatiosAsync(GetEventSamplingRatiosRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets information about a telemetry key configured for the title.
     /// <example><br/>Example:<code>
@@ -72,7 +72,7 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/gettelemetrykey">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTelemetryKeyResponse> GetTelemetryKeyAsync(GetTelemetryKeyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetTelemetryKeyResponse>> GetTelemetryKeyAsync(GetTelemetryKeyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the list of Data Connections associated with a title.
     /// <example><br/>Example:<code>
@@ -80,7 +80,7 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/listdataconnections">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListDataConnectionsResponse> ListDataConnectionsAsync(ListDataConnectionsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ListDataConnectionsResponse>> ListDataConnectionsAsync(ListDataConnectionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists all telemetry keys configured for the title.
     /// <example><br/>Example:<code>
@@ -88,7 +88,7 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/listtelemetrykeys">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListTelemetryKeysResponse> ListTelemetryKeysAsync(ListTelemetryKeysRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ListTelemetryKeysResponse>> ListTelemetryKeysAsync(ListTelemetryKeysRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates or updates a Data Connection on a title.
     /// <example><br/>Example:<code>
@@ -107,7 +107,7 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/setdataconnection">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetDataConnectionResponse> SetDataConnectionAsync(SetDataConnectionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetDataConnectionResponse>> SetDataConnectionAsync(SetDataConnectionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets a Data Connection for the title to either the active or deactivated state.
     /// <example><br/>Example:<code>
@@ -118,12 +118,12 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/setdataconnectionactive">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetDataConnectionActiveResponse> SetDataConnectionActiveAsync(SetDataConnectionActiveRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetDataConnectionActiveResponse>> SetDataConnectionActiveAsync(SetDataConnectionActiveRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets the sampling ratio for an event.
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream/seteventsamplingratio">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetEventSamplingRatioResult> SetEventSamplingRatioAsync(SetEventSamplingRatioRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetEventSamplingRatioResult>> SetEventSamplingRatioAsync(SetEventSamplingRatioRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets a telemetry key to the active or deactivated state.
     /// <example><br/>Example:<code>
@@ -134,7 +134,7 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/settelemetrykeyactive">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetTelemetryKeyActiveResponse> SetTelemetryKeyActiveAsync(SetTelemetryKeyActiveRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetTelemetryKeyActiveResponse>> SetTelemetryKeyActiveAsync(SetTelemetryKeyActiveRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Write batches of entity based events to PlayStream. The namespace of the Event must be 'custom' or start with 'custom.'.
     /// <example><br/>Example:<code>
@@ -162,7 +162,7 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/writeevents">Microsoft Documentation</see>
     /// </summary>
-    public Task<WriteEventsResponse> WriteEventsAsync(WriteEventsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<WriteEventsResponse>> WriteEventsAsync(WriteEventsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Write batches of entity based events to as Telemetry events (bypass PlayStream). The namespace must be 'custom' or
     /// start with 'custom.'
@@ -191,5 +191,5 @@ public interface IPlayFabEventsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/writetelemetryevents">Microsoft Documentation</see>
     /// </summary>
-    public Task<WriteEventsResponse> WriteTelemetryEventsAsync(WriteEventsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<WriteEventsResponse>> WriteTelemetryEventsAsync(WriteEventsRequest request, Dictionary<string, string>? extraHeaders);
 }

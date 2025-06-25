@@ -11,7 +11,7 @@ public interface IPlayFabMatchmakerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/authuser">Microsoft Documentation</see>
     /// </summary>
-    public Task<AuthUserResponse> AuthUserAsync(AuthUserRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<AuthUserResponse>> AuthUserAsync(AuthUserRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Inform the matchmaker that a Game Server Instance is removed.
     /// <example><br/>Example:<code>
@@ -21,7 +21,7 @@ public interface IPlayFabMatchmakerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/deregistergame">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeregisterGameResponse> DeregisterGameAsync(DeregisterGameRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeregisterGameResponse>> DeregisterGameAsync(DeregisterGameRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Informs the PlayFab game server hosting service that the indicated user has joined the Game Server Instance specified
     /// <example><br/>Example:<code>
@@ -32,7 +32,7 @@ public interface IPlayFabMatchmakerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/playerjoined">Microsoft Documentation</see>
     /// </summary>
-    public Task<PlayerJoinedResponse> PlayerJoinedAsync(PlayerJoinedRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<PlayerJoinedResponse>> PlayerJoinedAsync(PlayerJoinedRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Informs the PlayFab game server hosting service that the indicated user has left the Game Server Instance specified
     /// <example><br/>Example:<code>
@@ -43,7 +43,7 @@ public interface IPlayFabMatchmakerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/playerleft">Microsoft Documentation</see>
     /// </summary>
-    public Task<PlayerLeftResponse> PlayerLeftAsync(PlayerLeftRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<PlayerLeftResponse>> PlayerLeftAsync(PlayerLeftRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Inform the matchmaker that a new Game Server Instance is added.
     /// <example><br/>Example:<code>
@@ -61,7 +61,7 @@ public interface IPlayFabMatchmakerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/registergame">Microsoft Documentation</see>
     /// </summary>
-    public Task<RegisterGameResponse> RegisterGameAsync(RegisterGameRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<RegisterGameResponse>> RegisterGameAsync(RegisterGameRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Instructs the PlayFab game server hosting service to instantiate a new Game Server Instance
     /// <example><br/>Example:<code>
@@ -75,7 +75,7 @@ public interface IPlayFabMatchmakerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/startgame">Microsoft Documentation</see>
     /// </summary>
-    public Task<StartGameResponse> StartGameAsync(StartGameRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<StartGameResponse>> StartGameAsync(StartGameRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the relevant details for a specified user, which the external match-making service can then use to compute
     /// effective matches
@@ -87,5 +87,5 @@ public interface IPlayFabMatchmakerApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/matchmaker/matchmaking/userinfo">Microsoft Documentation</see>
     /// </summary>
-    public Task<UserInfoResponse> UserInfoAsync(UserInfoRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<UserInfoResponse>> UserInfoAsync(UserInfoRequest request, Dictionary<string, string>? extraHeaders);
 }

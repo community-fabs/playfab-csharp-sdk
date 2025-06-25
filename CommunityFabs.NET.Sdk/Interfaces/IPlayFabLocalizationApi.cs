@@ -9,5 +9,5 @@ public interface IPlayFabLocalizationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/locale/localization/getlanguagelist">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetLanguageListResponse> GetLanguageListAsync(GetLanguageListRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetLanguageListResponse>> GetLanguageListAsync(GetLanguageListRequest request, Dictionary<string, string>? extraHeaders);
 }

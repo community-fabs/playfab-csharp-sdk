@@ -19,7 +19,7 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/file/file/abortfileuploads">Microsoft Documentation</see>
     /// </summary>
-    public Task<AbortFileUploadsResponse> AbortFileUploadsAsync(AbortFileUploadsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<AbortFileUploadsResponse>> AbortFileUploadsAsync(AbortFileUploadsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Delete files on an entity's profile.
     /// <example><br/>Example:<code>
@@ -37,7 +37,7 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/file/file/deletefiles">Microsoft Documentation</see>
     /// </summary>
-    public Task<DeleteFilesResponse> DeleteFilesAsync(DeleteFilesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<DeleteFilesResponse>> DeleteFilesAsync(DeleteFilesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Finalize file uploads to an entity's profile.
     /// <example><br/>Example:<code>
@@ -56,7 +56,7 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/file/file/finalizefileuploads">Microsoft Documentation</see>
     /// </summary>
-    public Task<FinalizeFileUploadsResponse> FinalizeFileUploadsAsync(FinalizeFileUploadsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<FinalizeFileUploadsResponse>> FinalizeFileUploadsAsync(FinalizeFileUploadsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves file metadata from an entity's profile.
     /// <example><br/>Example:<code>
@@ -70,7 +70,7 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/file/file/getfiles">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetFilesResponse> GetFilesAsync(GetFilesRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetFilesResponse>> GetFilesAsync(GetFilesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves objects from an entity's profile.
     /// <example><br/>Example:<code>
@@ -84,7 +84,7 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/object/object/getobjects">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetObjectsResponse> GetObjectsAsync(GetObjectsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetObjectsResponse>> GetObjectsAsync(GetObjectsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Initiates file uploads to an entity's profile.
     /// <example><br/>Example:<code>
@@ -102,7 +102,7 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/file/file/initiatefileuploads">Microsoft Documentation</see>
     /// </summary>
-    public Task<InitiateFileUploadsResponse> InitiateFileUploadsAsync(InitiateFileUploadsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<InitiateFileUploadsResponse>> InitiateFileUploadsAsync(InitiateFileUploadsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets objects on an entity's profile.
     /// <example><br/>Example:<code>
@@ -150,5 +150,5 @@ public interface IPlayFabDataApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/object/object/setobjects">Microsoft Documentation</see>
     /// </summary>
-    public Task<SetObjectsResponse> SetObjectsAsync(SetObjectsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<SetObjectsResponse>> SetObjectsAsync(SetObjectsRequest request, Dictionary<string, string>? extraHeaders);
 }

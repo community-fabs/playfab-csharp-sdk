@@ -1,32 +1,139 @@
 using CommunityFabs.NET.Sdk.Models.State;
 using CommunityFabs.NET.Sdk.Models;
-namespace CommunityFabs.NET.Sdk.Interfaces;
+using CommunityFabs.NET.Sdk.Http;
+using CommunityFabs.NET.Sdk.Interfaces;
+using System.Text.Json;
 
-public class PlayFabStateInstanceApi : PlayFabBaseInstanceApi, IPlayFabStateApi {
-    public PlayFabStateInstanceApi() : base() { }
-    public PlayFabStateInstanceApi(PlayFabApiSettings apiSettings) : base(apiSettings) { }
-    public PlayFabStateInstanceApi(PlayFabAuthenticationContext context) : base(context) { }
-    public PlayFabStateInstanceApi(PlayFabApiSettings settings, PlayFabAuthenticationContext context) : base(settings, context) { }
+namespace CommunityFabs.NET.Sdk;
 
-    public async Task<CreateLinkResponse> CreateLinkForStateAsync(CreateLinkRequest request, Dictionary<string, string>? extraHeaders = null) {
-        return await PostData<CreateLinkResponse>("/StateShare/CreateLinkForState", request, extraHeaders);
+public class PlayFabStateInstanceApi : IPlayFabStateApi {
+    public readonly PlayFabApiSettings? apiSettings = null;
+    public readonly PlayFabAuthenticationContext? authenticationContext = null;
+
+    public PlayFabStateInstanceApi() { }
+
+    public PlayFabStateInstanceApi(PlayFabApiSettings settings)
+    {
+        apiSettings = settings;
     }
-    public async Task<CreateStateResponse> CreateStateAsync(CreateStateRequest request, Dictionary<string, string>? extraHeaders = null) {
-        return await PostData<CreateStateResponse>("/StateShare/CreateState", request, extraHeaders);
+
+    public PlayFabStateInstanceApi(PlayFabAuthenticationContext context)
+    {
+        authenticationContext = context;
     }
-    public async Task<EmptyResponse> DeleteLinkForStateAsync(DeleteLinkRequest request, Dictionary<string, string>? extraHeaders = null) {
-        return await PostData<EmptyResponse>("/StateShare/DeleteLinkForState", request, extraHeaders);
+
+    public PlayFabStateInstanceApi(PlayFabApiSettings settings, PlayFabAuthenticationContext context)
+    {
+        apiSettings = settings;
+        authenticationContext = context;
     }
-    public async Task<EmptyResponse> DeleteStateAsync(DeleteStateRequest request, Dictionary<string, string>? extraHeaders = null) {
-        return await PostData<EmptyResponse>("/StateShare/DeleteState", request, extraHeaders);
+
+    /// <summary>
+    /// Verify client login.
+    /// </summary>
+    public bool IsLoggedIn()
+    {
+        return authenticationContext?.IsClientLoggedIn() ?? false;
     }
-    public async Task<GetLinkMetadataResponse> GetLinkMetadataAsync(GetLinkMetadataRequest request, Dictionary<string, string>? extraHeaders = null) {
-        return await PostData<GetLinkMetadataResponse>("/StateShare/GetLinkMetadata", request, extraHeaders);
+
+    /// <summary>
+    /// Clear the Client SessionToken which allows this Client to call API calls requiring login.
+    /// A new/fresh login will be required after calling this.
+    /// </summary>
+    public void ForgetCredentials()
+    {
+        authenticationContext?.ForgetAllCredentials();
     }
-    public async Task<GetStateResponse> GetStateAsync(GetStateRequest request, Dictionary<string, string>? extraHeaders = null) {
-        return await PostData<GetStateResponse>("/StateShare/GetState", request, extraHeaders);
+
+    public async Task<PlayFabResult<CreateLinkResponse>> CreateLinkForStateAsync(CreateLinkRequest request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        var httpResult = await PlayFabHttp.Post("/StateShare/CreateLinkForState", request, "", "", extraHeaders, requestSettings);
+        if (httpResult is PlayFabError)
+        {
+            return new PlayFabResult<CreateLinkResponse> { Error = (PlayFabError)httpResult };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<CreateLinkResponse>>((string)httpResult);
+        return new PlayFabResult<CreateLinkResponse> { Result = resultData.data };
     }
-    public async Task<ListStateIdsResponse> ListStateIdsAsync(ListStateIdsRequest request, Dictionary<string, string>? extraHeaders = null) {
-        return await PostData<ListStateIdsResponse>("/StateShare/ListStateIds", request, extraHeaders);
+    public async Task<PlayFabResult<CreateStateResponse>> CreateStateAsync(CreateStateRequest request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        var httpResult = await PlayFabHttp.Post("/StateShare/CreateState", request, "", "", extraHeaders, requestSettings);
+        if (httpResult is PlayFabError)
+        {
+            return new PlayFabResult<CreateStateResponse> { Error = (PlayFabError)httpResult };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<CreateStateResponse>>((string)httpResult);
+        return new PlayFabResult<CreateStateResponse> { Result = resultData.data };
+    }
+    public async Task<PlayFabResult<EmptyResponse>> DeleteLinkForStateAsync(DeleteLinkRequest request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        var httpResult = await PlayFabHttp.Post("/StateShare/DeleteLinkForState", request, "", "", extraHeaders, requestSettings);
+        if (httpResult is PlayFabError)
+        {
+            return new PlayFabResult<EmptyResponse> { Error = (PlayFabError)httpResult };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResponse>>((string)httpResult);
+        return new PlayFabResult<EmptyResponse> { Result = resultData.data };
+    }
+    public async Task<PlayFabResult<EmptyResponse>> DeleteStateAsync(DeleteStateRequest request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        var httpResult = await PlayFabHttp.Post("/StateShare/DeleteState", request, "", "", extraHeaders, requestSettings);
+        if (httpResult is PlayFabError)
+        {
+            return new PlayFabResult<EmptyResponse> { Error = (PlayFabError)httpResult };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResponse>>((string)httpResult);
+        return new PlayFabResult<EmptyResponse> { Result = resultData.data };
+    }
+    public async Task<PlayFabResult<GetLinkMetadataResponse>> GetLinkMetadataAsync(GetLinkMetadataRequest request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        var httpResult = await PlayFabHttp.Post("/StateShare/GetLinkMetadata", request, "", "", extraHeaders, requestSettings);
+        if (httpResult is PlayFabError)
+        {
+            return new PlayFabResult<GetLinkMetadataResponse> { Error = (PlayFabError)httpResult };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetLinkMetadataResponse>>((string)httpResult);
+        return new PlayFabResult<GetLinkMetadataResponse> { Result = resultData.data };
+    }
+    public async Task<PlayFabResult<GetStateResponse>> GetStateAsync(GetStateRequest request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        var httpResult = await PlayFabHttp.Post("/StateShare/GetState", request, "", "", extraHeaders, requestSettings);
+        if (httpResult is PlayFabError)
+        {
+            return new PlayFabResult<GetStateResponse> { Error = (PlayFabError)httpResult };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetStateResponse>>((string)httpResult);
+        return new PlayFabResult<GetStateResponse> { Result = resultData.data };
+    }
+    public async Task<PlayFabResult<ListStateIdsResponse>> ListStateIdsAsync(ListStateIdsRequest request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        var httpResult = await PlayFabHttp.Post("/StateShare/ListStateIds", request, "", "", extraHeaders, requestSettings);
+        if (httpResult is PlayFabError)
+        {
+            return new PlayFabResult<ListStateIdsResponse> { Error = (PlayFabError)httpResult };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<ListStateIdsResponse>>((string)httpResult);
+        return new PlayFabResult<ListStateIdsResponse> { Result = resultData.data };
     }
 }

@@ -1,3 +1,5 @@
+using CommunityFabs.NET.Sdk.Http;
+
 namespace CommunityFabs.NET.Sdk.Models.Client;
 
 public class AcceptTradeRequest : PlayFabRequestCommon {

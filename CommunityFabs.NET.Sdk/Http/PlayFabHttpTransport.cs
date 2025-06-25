@@ -1,56 +1,26 @@
-﻿using CommunityFabs.NET.Sdk.Models;
-using CommunityFabs.NET.Sdk.Utils;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
-namespace CommunityFabs.NET.Sdk;
+namespace CommunityFabs.NET.Sdk.Http;
 
-public class PlayFabBaseInstanceApi
+// TODO: throw exceptions for errors instead of returning multiple types
+internal static class PlayFabHttpTransport
 {
-    public readonly PlayFabApiSettings? apiSettings = null;
-    public readonly PlayFabAuthenticationContext? authenticationContext = null;
-    private static readonly HttpClient _client = HttpHelper.HttpClient;
+    static readonly HttpClient client = new();
 
-    public PlayFabBaseInstanceApi() { }
-
-    public PlayFabBaseInstanceApi(PlayFabApiSettings settings)
+    public static async Task<object> Post(string fullUrl, object request, Dictionary<string, string> extraHeaders)
     {
-        apiSettings = settings;
-    }
+        string bodyString;
 
-    public PlayFabBaseInstanceApi(PlayFabAuthenticationContext context)
-    {
-        authenticationContext = context;
-    }
-
-    public PlayFabBaseInstanceApi(PlayFabApiSettings settings, PlayFabAuthenticationContext context)
-    {
-        apiSettings = settings;
-        authenticationContext = context;
-    }
-
-    /// <summary>
-    /// Verify client login.
-    /// </summary>
-    public bool IsClientLoggedIn()
-    {
-        return authenticationContext?.IsClientLoggedIn() ?? false;
-    }
-
-    /// <summary>
-    /// Clear the Client SessionToken which allows this Client to call API calls requiring login.
-    /// A new/fresh login will be required after calling this.
-    /// </summary>
-    public void ForgetAllCredentials()
-    {
-        authenticationContext?.ForgetAllCredentials();
-    }
-
-    public async Task<T> PostData<T>(string fullUrl, object request, Dictionary<string, string>? extraHeaders) where T : PlayFabResultCommon
-    {
-        string bodyString = request == null ? "{}" :
-            JsonSerializer.Serialize(request);
+        if (request == null)
+        {
+            bodyString = "{}";
+        }
+        else
+        {
+            bodyString = JsonSerializer.Serialize(request);
+        }
 
         HttpResponseMessage httpResponse;
         string httpResponseString;
@@ -67,7 +37,7 @@ public class PlayFabBaseInstanceApi
                     // Special case for Authorization header
                     if (headerPair.Key.Equals("Authorization", StringComparison.OrdinalIgnoreCase))
                     {
-                        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", headerPair.Value);
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", headerPair.Value);
                     }
                     else
                     {
@@ -78,25 +48,25 @@ public class PlayFabBaseInstanceApi
 
             try
             {
-                httpResponse = await _client.PostAsync(fullUrl, postBody);
+                httpResponse = await client.PostAsync(fullUrl, postBody);
                 httpResponseString = await httpResponse.Content.ReadAsStringAsync();
                 hasReqId = httpResponse.Headers.TryGetValues("X-RequestId", out requestId);
             }
             catch (HttpRequestException e)
             {
-                throw new PlayFabErrorException(new PlayFabError
+                return new PlayFabError
                 {
                     Error = PlayFabErrorCode.ConnectionError,
-                    ErrorMessage = e.InnerException?.Message ?? e.Message
-                });
+                    ErrorMessage = e.InnerException.Message
+                };
             }
             catch (Exception e)
             {
-                throw new PlayFabErrorException(new PlayFabError
+                return new PlayFabError
                 {
                     Error = PlayFabErrorCode.ConnectionError,
                     ErrorMessage = e.Message
-                });
+                };
             }
         }
 
@@ -109,7 +79,7 @@ public class PlayFabBaseInstanceApi
                 error.HttpCode = (int)httpResponse.StatusCode;
                 error.HttpStatus = httpResponse.StatusCode.ToString();
                 error.RequestId = GetRequestId(hasReqId, requestId);
-                throw new PlayFabErrorException(error);
+                return error;
             }
 
             PlayFabJsonError errorResult;
@@ -123,8 +93,8 @@ public class PlayFabBaseInstanceApi
                 error.HttpStatus = httpResponse.StatusCode.ToString();
                 error.Error = PlayFabErrorCode.JsonParseError;
                 error.ErrorMessage = e.Message;
-                error.RequestId = GetRequestId(hasReqId, requestId);
-                throw new PlayFabErrorException(error);
+                error.RequestId = GetRequestId(hasReqId, requestId); ;
+                return error;
             }
 
             error.HttpCode = errorResult.code;
@@ -142,26 +112,25 @@ public class PlayFabBaseInstanceApi
                 }
             }
 
-            error.RequestId = GetRequestId(hasReqId, requestId);
+            error.RequestId = GetRequestId(hasReqId, requestId); ;
 
-            throw new PlayFabErrorException(error);
+            return error;
         }
 
         if (string.IsNullOrEmpty(httpResponseString))
         {
-            throw new PlayFabErrorException(new PlayFabError
+            return new PlayFabError
             {
                 Error = PlayFabErrorCode.Unknown,
                 ErrorMessage = "Internal server error",
                 RequestId = GetRequestId(hasReqId, requestId)
-            });
+            };
         }
 
-        var successResponse = JsonSerializer.Deserialize<PlayFabJsonSuccess<T>>(httpResponseString);
-        return successResponse.data;
+        return httpResponseString;
     }
 
-    private string GetRequestId(bool hasReqId, IEnumerable<string> reqIdContainer)
+    private static string GetRequestId(bool hasReqId, IEnumerable<string> reqIdContainer)
     {
         const string defaultReqId = "NoRequestIdFound";
 

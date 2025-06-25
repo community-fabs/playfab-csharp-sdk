@@ -10,7 +10,7 @@ public interface IPlayFabInsightsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/insights/analytics/getdetails">Microsoft Documentation</see>
     /// </summary>
-    public Task<InsightsGetDetailsResponse> GetDetailsAsync(InsightsEmptyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<InsightsGetDetailsResponse>> GetDetailsAsync(InsightsEmptyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the range of allowed values for performance and data storage retention values as well as the submeter details
     /// for each performance level.
@@ -19,7 +19,7 @@ public interface IPlayFabInsightsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/insights/analytics/getlimits">Microsoft Documentation</see>
     /// </summary>
-    public Task<InsightsGetLimitsResponse> GetLimitsAsync(InsightsEmptyRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<InsightsGetLimitsResponse>> GetLimitsAsync(InsightsEmptyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the status of a SetPerformance or SetStorageRetention operation.
     /// <example><br/>Example:<code>
@@ -29,7 +29,7 @@ public interface IPlayFabInsightsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/insights/analytics/getoperationstatus">Microsoft Documentation</see>
     /// </summary>
-    public Task<InsightsGetOperationStatusResponse> GetOperationStatusAsync(InsightsGetOperationStatusRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<InsightsGetOperationStatusResponse>> GetOperationStatusAsync(InsightsGetOperationStatusRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets a list of pending SetPerformance and/or SetStorageRetention operations for the title.
     /// <example><br/>Example:<code>
@@ -39,7 +39,7 @@ public interface IPlayFabInsightsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/insights/analytics/getpendingoperations">Microsoft Documentation</see>
     /// </summary>
-    public Task<InsightsGetPendingOperationsResponse> GetPendingOperationsAsync(InsightsGetPendingOperationsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<InsightsGetPendingOperationsResponse>> GetPendingOperationsAsync(InsightsGetPendingOperationsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets the Insights performance level value for the title.
     /// <example><br/>Example:<code>
@@ -49,7 +49,7 @@ public interface IPlayFabInsightsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/insights/analytics/setperformance">Microsoft Documentation</see>
     /// </summary>
-    public Task<InsightsOperationResponse> SetPerformanceAsync(InsightsSetPerformanceRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<InsightsOperationResponse>> SetPerformanceAsync(InsightsSetPerformanceRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Sets the Insights data storage retention days value for the title.
     /// <example><br/>Example:<code>
@@ -59,5 +59,5 @@ public interface IPlayFabInsightsApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/insights/analytics/setstorageretention">Microsoft Documentation</see>
     /// </summary>
-    public Task<InsightsOperationResponse> SetStorageRetentionAsync(InsightsSetStorageRetentionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<InsightsOperationResponse>> SetStorageRetentionAsync(InsightsSetStorageRetentionRequest request, Dictionary<string, string>? extraHeaders);
 }

@@ -6,7 +6,7 @@ public interface IPlayFabStateApi {
     /// Creates a link to previously stored state.
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/stateshare/player-data-management/createlinkforstate">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateLinkResponse> CreateLinkForStateAsync(CreateLinkRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateLinkResponse>> CreateLinkForStateAsync(CreateLinkRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Create state.
     /// <example><br/>Example:<code>
@@ -23,7 +23,7 @@ public interface IPlayFabStateApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/stateshare/player-data-management/createstate">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateStateResponse> CreateStateAsync(CreateStateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateStateResponse>> CreateStateAsync(CreateStateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes a link.
     /// <example><br/>Example:<code>
@@ -33,7 +33,7 @@ public interface IPlayFabStateApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/stateshare/player-data-management/deletelinkforstate">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteLinkForStateAsync(DeleteLinkRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> DeleteLinkForStateAsync(DeleteLinkRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Delete state.
     /// <example><br/>Example:<code>
@@ -43,7 +43,7 @@ public interface IPlayFabStateApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/stateshare/player-data-management/deletestate">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteStateAsync(DeleteStateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> DeleteStateAsync(DeleteStateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get public and private metadata for a link.
     /// <example><br/>Example:<code>
@@ -53,7 +53,7 @@ public interface IPlayFabStateApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/stateshare/player-data-management/getlinkmetadata">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetLinkMetadataResponse> GetLinkMetadataAsync(GetLinkMetadataRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetLinkMetadataResponse>> GetLinkMetadataAsync(GetLinkMetadataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get state.
     /// <example><br/>Example:<code>
@@ -64,7 +64,7 @@ public interface IPlayFabStateApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/stateshare/player-data-management/getstate">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetStateResponse> GetStateAsync(GetStateRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetStateResponse>> GetStateAsync(GetStateRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// List state ids.
     /// <example><br/>Example:<code>
@@ -72,5 +72,5 @@ public interface IPlayFabStateApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/stateshare/player-data-management/liststateids">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListStateIdsResponse> ListStateIdsAsync(ListStateIdsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ListStateIdsResponse>> ListStateIdsAsync(ListStateIdsRequest request, Dictionary<string, string>? extraHeaders);
 }

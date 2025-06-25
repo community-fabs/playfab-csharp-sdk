@@ -11,7 +11,7 @@ public interface IPlayFabAuthenticationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/gameserveridentity/authentication/authenticategameserverwithcustomid">Microsoft Documentation</see>
     /// </summary>
-    public Task<AuthenticateCustomIdResult> AuthenticateGameServerWithCustomIdAsync(AuthenticateCustomIdRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<AuthenticateCustomIdResult>> AuthenticateGameServerWithCustomIdAsync(AuthenticateCustomIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Delete a game_server entity.
     /// <example><br/>Example:<code>
@@ -25,7 +25,7 @@ public interface IPlayFabAuthenticationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/gameserveridentity/authentication/delete">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteAsync(DeleteRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> DeleteAsync(DeleteRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Method to exchange a legacy AuthenticationTicket or title SecretKey for an Entity Token or to refresh a still valid
     /// Entity Token.
@@ -34,7 +34,7 @@ public interface IPlayFabAuthenticationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/authentication/authentication/getentitytoken">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetEntityTokenResponse> GetEntityTokenAsync(GetEntityTokenRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetEntityTokenResponse>> GetEntityTokenAsync(GetEntityTokenRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Method for a server to validate a client provided EntityToken. Only callable by the title entity.
     /// <example><br/>Example:<code>
@@ -44,5 +44,5 @@ public interface IPlayFabAuthenticationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/authentication/authentication/validateentitytoken">Microsoft Documentation</see>
     /// </summary>
-    public Task<ValidateEntityTokenResponse> ValidateEntityTokenAsync(ValidateEntityTokenRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ValidateEntityTokenResponse>> ValidateEntityTokenAsync(ValidateEntityTokenRequest request, Dictionary<string, string>? extraHeaders);
 }

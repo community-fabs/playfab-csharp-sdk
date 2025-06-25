@@ -1,3 +1,4 @@
+using CommunityFabs.NET.Sdk.Http;
 using System.Text;
 
 namespace CommunityFabs.NET.Sdk;

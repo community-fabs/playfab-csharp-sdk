@@ -23,7 +23,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/executeentitycloudscript">Microsoft Documentation</see>
     /// </summary>
-    public Task<ExecuteCloudScriptResult> ExecuteEntityCloudScriptAsync(ExecuteEntityCloudScriptRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ExecuteCloudScriptResult>> ExecuteEntityCloudScriptAsync(ExecuteEntityCloudScriptRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Cloud Script is one of PlayFab's most versatile features. It allows client code to request execution of any kind of
     /// custom server-side functionality you can implement, and it can be used in conjunction with virtually anything.
@@ -44,7 +44,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/executefunction">Microsoft Documentation</see>
     /// </summary>
-    public Task<ExecuteFunctionResult> ExecuteFunctionAsync(ExecuteFunctionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ExecuteFunctionResult>> ExecuteFunctionAsync(ExecuteFunctionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets registered Azure Functions for a given title id and function name.
     /// <example><br/>Example:<code>
@@ -54,7 +54,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/getfunction">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetFunctionResult> GetFunctionAsync(GetFunctionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetFunctionResult>> GetFunctionAsync(GetFunctionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists all currently registered Event Hub triggered Azure Functions for a given title.
     /// <example><br/>Example:<code>
@@ -62,7 +62,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/listeventhubfunctions">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListEventHubFunctionsResult> ListEventHubFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ListEventHubFunctionsResult>> ListEventHubFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists all currently registered Azure Functions for a given title.
     /// <example><br/>Example:<code>
@@ -70,7 +70,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/listfunctions">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListFunctionsResult> ListFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ListFunctionsResult>> ListFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists all currently registered HTTP triggered Azure Functions for a given title.
     /// <example><br/>Example:<code>
@@ -78,7 +78,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/listhttpfunctions">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListHttpFunctionsResult> ListHttpFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ListHttpFunctionsResult>> ListHttpFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Lists all currently registered Queue triggered Azure Functions for a given title.
     /// <example><br/>Example:<code>
@@ -86,7 +86,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/listqueuedfunctions">Microsoft Documentation</see>
     /// </summary>
-    public Task<ListQueuedFunctionsResult> ListQueuedFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<ListQueuedFunctionsResult>> ListQueuedFunctionsAsync(ListFunctionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Generate an entity PlayStream event for the provided function result.
     /// <example><br/>Example:<code>
@@ -108,7 +108,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/postfunctionresultforentitytriggeredaction">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> PostFunctionResultForEntityTriggeredActionAsync(PostFunctionResultForEntityTriggeredActionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> PostFunctionResultForEntityTriggeredActionAsync(PostFunctionResultForEntityTriggeredActionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Generate an entity PlayStream event for the provided function result.
     /// <example><br/>Example:<code>
@@ -130,7 +130,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/postfunctionresultforfunctionexecution">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> PostFunctionResultForFunctionExecutionAsync(PostFunctionResultForFunctionExecutionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> PostFunctionResultForFunctionExecutionAsync(PostFunctionResultForFunctionExecutionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Generate a player PlayStream event for the provided function result.
     /// <example><br/>Example:<code>
@@ -163,7 +163,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/postfunctionresultforplayertriggeredaction">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> PostFunctionResultForPlayerTriggeredActionAsync(PostFunctionResultForPlayerTriggeredActionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> PostFunctionResultForPlayerTriggeredActionAsync(PostFunctionResultForPlayerTriggeredActionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Generate a PlayStream event for the provided function result.
     /// <example><br/>Example:<code>
@@ -184,7 +184,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/postfunctionresultforscheduledtask">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> PostFunctionResultForScheduledTaskAsync(PostFunctionResultForScheduledTaskRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> PostFunctionResultForScheduledTaskAsync(PostFunctionResultForScheduledTaskRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Registers an event hub triggered Azure Function with a title.
     /// <example><br/>Example:<code>
@@ -196,7 +196,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/registereventhubfunction">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> RegisterEventHubFunctionAsync(RegisterEventHubFunctionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> RegisterEventHubFunctionAsync(RegisterEventHubFunctionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Registers an HTTP triggered Azure function with a title.
     /// <example><br/>Example:<code>
@@ -207,7 +207,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/registerhttpfunction">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> RegisterHttpFunctionAsync(RegisterHttpFunctionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> RegisterHttpFunctionAsync(RegisterHttpFunctionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Registers a queue triggered Azure Function with a title.
     /// <example><br/>Example:<code>
@@ -219,7 +219,7 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/registerqueuedfunction">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> RegisterQueuedFunctionAsync(RegisterQueuedFunctionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> RegisterQueuedFunctionAsync(RegisterQueuedFunctionRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unregisters an Azure Function with a title.
     /// <example><br/>Example:<code>
@@ -229,5 +229,5 @@ public interface IPlayFabCloudScriptApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/unregisterfunction">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResult> UnregisterFunctionAsync(UnregisterFunctionRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResult>> UnregisterFunctionAsync(UnregisterFunctionRequest request, Dictionary<string, string>? extraHeaders);
 }

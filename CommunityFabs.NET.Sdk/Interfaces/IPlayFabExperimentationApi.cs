@@ -12,7 +12,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/createexclusiongroup">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateExclusionGroupResult> CreateExclusionGroupAsync(CreateExclusionGroupRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateExclusionGroupResult>> CreateExclusionGroupAsync(CreateExclusionGroupRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Creates a new experiment for a title.
     /// <example><br/>Example:<code>
@@ -52,7 +52,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/createexperiment">Microsoft Documentation</see>
     /// </summary>
-    public Task<CreateExperimentResult> CreateExperimentAsync(CreateExperimentRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<CreateExperimentResult>> CreateExperimentAsync(CreateExperimentRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes an existing exclusion group for a title.
     /// <example><br/>Example:<code>
@@ -62,7 +62,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/deleteexclusiongroup">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteExclusionGroupAsync(DeleteExclusionGroupRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> DeleteExclusionGroupAsync(DeleteExclusionGroupRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Deletes an existing experiment for a title.
     /// <example><br/>Example:<code>
@@ -72,7 +72,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/deleteexperiment">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> DeleteExperimentAsync(DeleteExperimentRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> DeleteExperimentAsync(DeleteExperimentRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the details of all exclusion groups for a title.
     /// <example><br/>Example:<code>
@@ -80,7 +80,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/getexclusiongroups">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetExclusionGroupsResult> GetExclusionGroupsAsync(GetExclusionGroupsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetExclusionGroupsResult>> GetExclusionGroupsAsync(GetExclusionGroupsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the details of all exclusion groups for a title.
     /// <example><br/>Example:<code>
@@ -88,7 +88,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/getexclusiongrouptraffic">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetExclusionGroupTrafficResult> GetExclusionGroupTrafficAsync(GetExclusionGroupTrafficRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetExclusionGroupTrafficResult>> GetExclusionGroupTrafficAsync(GetExclusionGroupTrafficRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the details of all experiments for a title.
     /// <example><br/>Example:<code>
@@ -96,7 +96,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/getexperiments">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetExperimentsResult> GetExperimentsAsync(GetExperimentsRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetExperimentsResult>> GetExperimentsAsync(GetExperimentsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the latest scorecard of the experiment for the title.
     /// <example><br/>Example:<code>
@@ -106,7 +106,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/getlatestscorecard">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetLatestScorecardResult> GetLatestScorecardAsync(GetLatestScorecardRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetLatestScorecardResult>> GetLatestScorecardAsync(GetLatestScorecardRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the treatment assignments for a player for every running experiment in the title.
     /// <example><br/>Example:<code>
@@ -114,7 +114,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/gettreatmentassignment">Microsoft Documentation</see>
     /// </summary>
-    public Task<GetTreatmentAssignmentResult> GetTreatmentAssignmentAsync(GetTreatmentAssignmentRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<GetTreatmentAssignmentResult>> GetTreatmentAssignmentAsync(GetTreatmentAssignmentRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Starts an existing experiment for a title.
     /// <example><br/>Example:<code>
@@ -124,7 +124,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/startexperiment">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> StartExperimentAsync(StartExperimentRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> StartExperimentAsync(StartExperimentRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Stops an existing experiment for a title.
     /// <example><br/>Example:<code>
@@ -134,7 +134,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/stopexperiment">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> StopExperimentAsync(StopExperimentRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> StopExperimentAsync(StopExperimentRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates an existing exclusion group for a title.
     /// <example><br/>Example:<code>
@@ -146,7 +146,7 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/updateexclusiongroup">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UpdateExclusionGroupAsync(UpdateExclusionGroupRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> UpdateExclusionGroupAsync(UpdateExclusionGroupRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates an existing experiment for a title.
     /// <example><br/>Example:<code>
@@ -188,5 +188,5 @@ public interface IPlayFabExperimentationApi {
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/updateexperiment">Microsoft Documentation</see>
     /// </summary>
-    public Task<EmptyResponse> UpdateExperimentAsync(UpdateExperimentRequest request, Dictionary<string, string>? extraHeaders);
+    public Task<PlayFabResult<EmptyResponse>> UpdateExperimentAsync(UpdateExperimentRequest request, Dictionary<string, string>? extraHeaders);
 }
