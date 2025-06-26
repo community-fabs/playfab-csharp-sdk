@@ -48,6 +48,22 @@ public class PlayFabFunctionContext<TFunctionArgument>
         return From(content);
     }
 
+    public static async Task<PlayFabFunctionContext<TFunctionArgument>> From(HttpRequestMessage request)
+    {
+        using var content = request.Content;
+        if (content == null)
+        {
+            throw new ArgumentException("Request content empty", nameof(request));
+        }
+        var body = await content.ReadAsStringAsync();
+        if (string.IsNullOrEmpty(body))
+        {
+            throw new ArgumentException("Request content empty", nameof(request));
+        }
+
+        return From(body);
+    }
+
     public static PlayFabFunctionContext<TFunctionArgument> From(string requestData)
     {
         var functionContextInternal = JsonSerializer.Deserialize<FunctionContextInternal>(requestData);
