@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityFabs.NET.Generator", "CommunityFabs.NET.Generator\CommunityFabs.NET.Generator.csproj", "{6024BF6E-20AA-DA13-3E9D-C9974E180A91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityFabs.NET.Generator.Templates", "CommunityFabs.NET.Generator.Templates\CommunityFabs.NET.Generator.Templates.csproj", "{D485B757-AEB1-EDAC-A16E-7D9467097B97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6024BF6E-20AA-DA13-3E9D-C9974E180A91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6024BF6E-20AA-DA13-3E9D-C9974E180A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6024BF6E-20AA-DA13-3E9D-C9974E180A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6024BF6E-20AA-DA13-3E9D-C9974E180A91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D485B757-AEB1-EDAC-A16E-7D9467097B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D485B757-AEB1-EDAC-A16E-7D9467097B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D485B757-AEB1-EDAC-A16E-7D9467097B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D485B757-AEB1-EDAC-A16E-7D9467097B97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F22A5274-958A-4E57-9CB6-D27899E93B50}
+	EndGlobalSection
+EndGlobal
