@@ -1,7 +1,8 @@
-using CommunityFabs.NET.Sdk.Models.Progression;
-using CommunityFabs.NET.Sdk.Models;
-using CommunityFabs.NET.Sdk.Http;
-using CommunityFabs.NET.Sdk.Interfaces;
+using CommunityFabs.NET.Sdk.Common;
+using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Sdk.Common.Models;
+using CommunityFabs.NET.Sdk.Common.Models.Progression;
 using System.Text.Json;
 
 namespace CommunityFabs.NET.Sdk;

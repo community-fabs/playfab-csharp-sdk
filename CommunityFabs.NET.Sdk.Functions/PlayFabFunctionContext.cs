@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Functions.Worker.Http;
-using CommunityFabs.NET.Sdk.Models;
-using CommunityFabs.NET.Sdk.Models.Profiles;
+using CommunityFabs.NET.Sdk.Common;
+using CommunityFabs.NET.Sdk.Common.Models;
+using CommunityFabs.NET.Sdk.Common.Models.Profiles;
 using System.Text.Json;
 
 namespace CommunityFabs.NET.Sdk.Functions;

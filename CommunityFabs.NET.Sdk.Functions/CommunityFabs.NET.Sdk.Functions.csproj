@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CommunityFabs.NET.Sdk\CommunityFabs.NET.Sdk.csproj" />
+    <ProjectReference Include="..\CommunityFabs.NET.Sdk.Common\CommunityFabs.NET.Sdk.Common.csproj" />
   </ItemGroup>
 
 </Project>
