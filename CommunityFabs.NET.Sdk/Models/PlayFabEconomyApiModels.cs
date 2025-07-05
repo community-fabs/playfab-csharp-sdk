@@ -1303,6 +1303,15 @@ public class GetDraftItemsRequest : PlayFabRequestCommon {
     /// </summary>
     public List<CatalogAlternateId>? AlternateIds { get; set; }
     /// <summary>
+    /// An opaque token used to retrieve the next page of items created by the caller, if any are available. Should be null on
+    /// initial request.
+    /// </summary>
+    public string? ContinuationToken { get; set; }
+    /// <summary>
+    /// Number of items to retrieve. This value is optional. Default value is 10.
+    /// </summary>
+    public int? Count { get; set; }
+    /// <summary>
     /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
