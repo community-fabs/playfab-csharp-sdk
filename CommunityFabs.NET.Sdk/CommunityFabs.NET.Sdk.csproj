@@ -6,8 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CommunityFabs.NET.Sdk.Common\CommunityFabs.NET.Sdk.Common.csproj" />
-  </ItemGroup>
+	<!-- Use ProjectReference in Debug -->
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\CommunityFabs.NET.Sdk.Common\CommunityFabs.NET.Sdk.Common.csproj" />
+	</ItemGroup>
+
+	<!-- Use PackageReference in Release -->
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="CommunityFabs.NET.Sdk.Common" Version="$(SdkVersion)" />
+	</ItemGroup>
 
 </Project>

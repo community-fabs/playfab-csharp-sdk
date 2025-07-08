@@ -10,8 +10,14 @@
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Core" Version="2.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CommunityFabs.NET.Sdk.Common\CommunityFabs.NET.Sdk.Common.csproj" />
-  </ItemGroup>
+	<!-- Use ProjectReference in Debug -->
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\CommunityFabs.NET.Sdk.Common\CommunityFabs.NET.Sdk.Common.csproj" />
+	</ItemGroup>
+
+	<!-- Use PackageReference in Release -->
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="CommunityFabs.NET.Sdk.Common" Version="$(SdkVersion)" />
+	</ItemGroup>
 
 </Project>

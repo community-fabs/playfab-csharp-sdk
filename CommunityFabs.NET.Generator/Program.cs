@@ -1,11 +1,13 @@
 ﻿using CommunityFabs.NET.Generator;
 using CommunityFabs.NET.Generator.Templates.Models;
 
-var outPath = Path.Combine(Utils.GetProjectRoot(), "..", "CommunityFabs.NET.Sdk");
-var commonOutPath = Path.Combine(Utils.GetProjectRoot(), "..", "CommunityFabs.NET.Sdk.Common");
-var commonStaticPath = Path.Combine(Utils.GetProjectRoot(), "..", "CommunityFabs.NET.Generator.Templates", "Static", "Common");
+var rootOutPath = Path.Combine(Utils.GetProjectRoot(), "..");
+var commonOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk.Common");
+var sdkOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk");
 
-Utils.RecursiveDelete(outPath, "*.cs");
+var commonStaticPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Generator.Templates", "Static", "Common");
+
+Utils.RecursiveDelete(sdkOutPath, "*.cs");
 Utils.RecursiveDelete(commonOutPath, "*.cs");
 
 Utils.RecursiveCopy(commonStaticPath, commonOutPath);
@@ -31,15 +33,20 @@ foreach (var apiDoc in apiData)
     var interfaceFilePath = Path.Combine(commonOutPath, "Interfaces", $"IPlayFab{apiDoc.Name}Api.cs");
     await Utils.RenderToFile(interfaceFilePath, "/Views/Interface.cshtml", apiDoc);
 
-    var instanceFilePath = Path.Combine(outPath, $"PlayFab{apiDoc.Name}InstanceApi.cs");
+    var instanceFilePath = Path.Combine(sdkOutPath, $"PlayFab{apiDoc.Name}InstanceApi.cs");
     await Utils.RenderToFile(instanceFilePath, "/Views/InstanceApi.cshtml", apiDoc);
 }
 
 var errorsFilePath = Path.Combine(commonOutPath, "PlayFabErrors.cs");
 await Utils.RenderToFile(errorsFilePath, "/Views/PlayFabErrors.cshtml", apiData.First());
 
-var constantsFilePath = Path.Combine(commonOutPath, "Constants.cs");
-await Utils.RenderToFile(constantsFilePath, "/Views/Constants.cshtml", new SdkConstants () {
+var sdkConstants = new SdkConstants()
+{
     BuildIdentifier = "custom_community-playfab-csharp-sdk",
     SdkVersion = sdkNotes.SdkVersion!["csharp"],
-});
+};
+var constantsFilePath = Path.Combine(commonOutPath, "Constants.cs");
+await Utils.RenderToFile(constantsFilePath, "/Views/Constants.cshtml", sdkConstants);
+
+var buildPropsFilePath = Path.Combine(rootOutPath, "Directory.Build.props");
+await Utils.RenderToFile(buildPropsFilePath, "/Views/Directory.Build.props.cshtml", sdkConstants);
