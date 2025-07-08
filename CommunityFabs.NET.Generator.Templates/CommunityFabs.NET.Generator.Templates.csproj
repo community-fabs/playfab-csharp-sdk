@@ -16,6 +16,10 @@
 </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Static\Shared\README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 

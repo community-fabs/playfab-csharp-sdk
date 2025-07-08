@@ -5,11 +5,14 @@ var rootOutPath = Path.Combine(Utils.GetProjectRoot(), "..");
 var commonOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk.Common");
 var sdkOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk");
 
+var sharedStaticPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Generator.Templates", "Static", "Shared");
 var commonStaticPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Generator.Templates", "Static", "Common");
 
 Utils.RecursiveDelete(sdkOutPath, "*.cs");
 Utils.RecursiveDelete(commonOutPath, "*.cs");
 
+Utils.RecursiveCopy(sharedStaticPath, commonOutPath);
+Utils.RecursiveCopy(sharedStaticPath, sdkOutPath);
 Utils.RecursiveCopy(commonStaticPath, commonOutPath);
 
 var toc = await ApiDetails.GetTableOfContents();
