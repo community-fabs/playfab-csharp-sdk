@@ -1,0 +1,42 @@
+name: Build SDKs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🛠 Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - name: 🧾 Create local nuget.config
+        run: |
+          echo '<?xml version="1.0" encoding="utf-8"?>
+          <configuration>
+            <packageSources>
+              <clear />
+              <add key="local" value="nupkgs" />
+              <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+            </packageSources>
+          </configuration>' > nuget.config
+
+      - name: 📦 Pack CommunityFabs.NET.Sdk.Common
+        run: |
+          dotnet pack ./CommunityFabs.NET.Sdk.Common/CommunityFabs.NET.Sdk.Common.csproj -c Release -o ./nupkgs
+
+      - name: 📦 Pack CommunityFabs.NET.Sdk
+        run: |
+          dotnet restore ./CommunityFabs.NET.Sdk/CommunityFabs.NET.Sdk.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Sdk/CommunityFabs.NET.Sdk.csproj -c Release -o ./nupkgs
+
+      - name: 📦 Pack CommunityFabs.NET.Sdk.Functions
+        run: |
+          dotnet restore ./CommunityFabs.NET.Sdk.Functions/CommunityFabs.NET.Sdk.Functions.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Sdk.Functions/CommunityFabs.NET.Sdk.Functions.csproj -c Release -o ./nupkgs
