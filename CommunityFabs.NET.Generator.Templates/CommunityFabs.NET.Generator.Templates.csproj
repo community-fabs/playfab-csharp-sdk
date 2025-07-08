@@ -10,9 +10,10 @@
   <ItemGroup>
     <Compile Remove="Static\Common\Http\PlayFabHttp.cs" />
     <Compile Remove="Static\Common\Http\PlayFabHttpTransport.cs" />
-    <Compile Remove="Static\PlayFabApiSettings.cs" />
-    <Compile Remove="Static\PlayFabSettings.cs" />
-  </ItemGroup>
+    <Compile Remove="Static\Common\Models\PlayFabAuthenticationContext.cs" />
+    <Compile Remove="Static\Common\PlayFabApiSettings.cs" />
+    <Compile Remove="Static\Common\PlayFabSettings.cs" />
+</ItemGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
@@ -21,6 +22,7 @@
   <ItemGroup>
     <None Include="Static\Common\Http\PlayFabHttp.cs" />
     <None Include="Static\Common\Http\PlayFabHttpTransport.cs" />
+    <None Include="Static\Common\Models\PlayFabAuthenticationContext.cs" />
     <None Include="Static\Common\PlayFabApiSettings.cs" />
     <None Include="Static\Common\PlayFabSettings.cs" />
   </ItemGroup>

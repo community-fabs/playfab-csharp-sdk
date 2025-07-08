@@ -26,5 +26,7 @@ static class ApiDetails
 
     public static Task<ApiTableOfContents> GetTableOfContents() => FetchResource<ApiTableOfContents>("TOC.json");
 
+    public static Task<SdkManualNotes> GetSdkManualNotes(string path) => FetchResource<SdkManualNotes>(path);
+
     public static Task<LegacyApiDocument> GetLegacyDocument(string path) => FetchResource<LegacyApiDocument>(path);
 }

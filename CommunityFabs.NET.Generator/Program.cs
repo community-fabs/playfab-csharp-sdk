@@ -1,4 +1,5 @@
 ﻿using CommunityFabs.NET.Generator;
+using CommunityFabs.NET.Generator.Templates.Models;
 
 var outPath = Path.Combine(Utils.GetProjectRoot(), "..", "CommunityFabs.NET.Sdk");
 var commonOutPath = Path.Combine(Utils.GetProjectRoot(), "..", "CommunityFabs.NET.Sdk.Common");
@@ -10,6 +11,10 @@ Utils.RecursiveDelete(commonOutPath, "*.cs");
 Utils.RecursiveCopy(commonStaticPath, commonOutPath);
 
 var toc = await ApiDetails.GetTableOfContents();
+var sdkNotesRef = toc.Documents!.Where(docRef => docRef.Format?.Equals("SdkManualNotes") ?? false).Single();
+var sdkNotes = await ApiDetails.GetSdkManualNotes(sdkNotesRef.RelPath!);
+Console.WriteLine("Fetched SDK Manual Notes");
+
 var combinedSdkApiRefs = toc.Documents!
     .Where(docRef => docRef.SdkGenMakeMethods != null && docRef.SdkGenMakeMethods.Contains("makeCombinedAPI"));
 Console.WriteLine("Fetched Table of Contents with {0} documents to process", combinedSdkApiRefs.Count());
@@ -32,3 +37,9 @@ foreach (var apiDoc in apiData)
 
 var errorsFilePath = Path.Combine(commonOutPath, "PlayFabErrors.cs");
 await Utils.RenderToFile(errorsFilePath, "/Views/PlayFabErrors.cshtml", apiData.First());
+
+var constantsFilePath = Path.Combine(commonOutPath, "Constants.cs");
+await Utils.RenderToFile(constantsFilePath, "/Views/Constants.cshtml", new SdkConstants () {
+    BuildIdentifier = "custom_community-playfab-csharp-sdk",
+    SdkVersion = sdkNotes.SdkVersion!["csharp"],
+});

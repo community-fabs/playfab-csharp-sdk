@@ -1,10 +1,10 @@
-﻿namespace CommunityFabs.NET.Sdk.Common;
+namespace CommunityFabs.NET.Sdk.Common;
 
 public static class Constants
 {
-    public const string SdkVersion = "1.202.250606";
-    public const string BuildIdentifier = "adobuild_csharpsdk_117";
-    public const string SdkVersionString = "CSharpSDK-1.202.250606";
+    public const string SdkVersion = "1.204.250704";
+    public const string BuildIdentifier = "custom_community-playfab-csharp-sdk";
+    public const string SdkVersionString = "CSharpSDK-1.204.250704";
     public const string DefaultProductionEnvironmentUrl = "playfabapi.com";
 
     public struct EnvVars
