@@ -5,7 +5,7 @@ using CommunityFabs.NET.Sdk.Common.Models;
 using CommunityFabs.NET.Sdk.Common.Models.Data;
 using System.Text.Json;
 
-namespace CommunityFabs.NET.Sdk;
+namespace CommunityFabs.NET.Sdk.Instance;
 
 public class PlayFabDataInstanceApi : IPlayFabDataApi {
     public readonly PlayFabApiSettings? apiSettings = null;

@@ -5,7 +5,7 @@ using CommunityFabs.NET.Sdk.Common.Models;
 using CommunityFabs.NET.Sdk.Common.Models.Matchmaker;
 using System.Text.Json;
 
-namespace CommunityFabs.NET.Sdk;
+namespace CommunityFabs.NET.Sdk.Instance;
 
 public class PlayFabMatchmakerInstanceApi : IPlayFabMatchmakerApi {
     public readonly PlayFabApiSettings? apiSettings = null;

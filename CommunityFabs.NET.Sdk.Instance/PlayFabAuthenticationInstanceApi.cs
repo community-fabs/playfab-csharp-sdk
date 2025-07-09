@@ -5,7 +5,7 @@ using CommunityFabs.NET.Sdk.Common.Models;
 using CommunityFabs.NET.Sdk.Common.Models.Authentication;
 using System.Text.Json;
 
-namespace CommunityFabs.NET.Sdk;
+namespace CommunityFabs.NET.Sdk.Instance;
 
 public class PlayFabAuthenticationInstanceApi : IPlayFabAuthenticationApi {
     public readonly PlayFabApiSettings? apiSettings = null;

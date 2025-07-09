@@ -31,10 +31,10 @@ jobs:
         run: |
           dotnet pack ./CommunityFabs.NET.Sdk.Common/CommunityFabs.NET.Sdk.Common.csproj -c Release -o ./nupkgs
 
-      - name: 📦 Pack CommunityFabs.NET.Sdk
+      - name: 📦 Pack CommunityFabs.NET.Sdk.Instance
         run: |
-          dotnet restore ./CommunityFabs.NET.Sdk/CommunityFabs.NET.Sdk.csproj --configfile nuget.config
-          dotnet pack ./CommunityFabs.NET.Sdk/CommunityFabs.NET.Sdk.csproj -c Release -o ./nupkgs
+          dotnet restore ./CommunityFabs.NET.Sdk.Instance/CommunityFabs.NET.Sdk.Instance.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Sdk.Instance/CommunityFabs.NET.Sdk.Instance.csproj -c Release -o ./nupkgs
 
       - name: 📦 Pack CommunityFabs.NET.Sdk.Functions
         run: |

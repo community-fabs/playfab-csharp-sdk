@@ -5,7 +5,7 @@ using CommunityFabs.NET.Sdk.Common.Models;
 using CommunityFabs.NET.Sdk.Common.Models.Profiles;
 using System.Text.Json;
 
-namespace CommunityFabs.NET.Sdk;
+namespace CommunityFabs.NET.Sdk.Instance;
 
 public class PlayFabProfilesInstanceApi : IPlayFabProfilesApi {
     public readonly PlayFabApiSettings? apiSettings = null;

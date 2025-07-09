@@ -3,16 +3,16 @@ using CommunityFabs.NET.Generator.Templates.Models;
 
 var rootOutPath = Path.Combine(Utils.GetProjectRoot(), "..");
 var commonOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk.Common");
-var sdkOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk");
+var instanceOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk.Instance");
 
 var sharedStaticPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Generator.Templates", "Static", "Shared");
 var commonStaticPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Generator.Templates", "Static", "Common");
 
-Utils.RecursiveDelete(sdkOutPath, "*.cs");
+Utils.RecursiveDelete(instanceOutPath, "*.cs");
 Utils.RecursiveDelete(commonOutPath, "*.cs");
 
 Utils.RecursiveCopy(sharedStaticPath, commonOutPath);
-Utils.RecursiveCopy(sharedStaticPath, sdkOutPath);
+Utils.RecursiveCopy(sharedStaticPath, instanceOutPath);
 Utils.RecursiveCopy(commonStaticPath, commonOutPath);
 
 var toc = await ApiDetails.GetTableOfContents();
@@ -36,7 +36,7 @@ foreach (var apiDoc in apiData)
     var interfaceFilePath = Path.Combine(commonOutPath, "Interfaces", $"IPlayFab{apiDoc.Name}Api.cs");
     await Utils.RenderToFile(interfaceFilePath, "/Views/Interface.cshtml", apiDoc);
 
-    var instanceFilePath = Path.Combine(sdkOutPath, $"PlayFab{apiDoc.Name}InstanceApi.cs");
+    var instanceFilePath = Path.Combine(instanceOutPath, $"PlayFab{apiDoc.Name}InstanceApi.cs");
     await Utils.RenderToFile(instanceFilePath, "/Views/InstanceApi.cshtml", apiDoc);
 }
 
