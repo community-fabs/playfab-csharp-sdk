@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Progression;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Progression;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabProgressionApi {
     /// <summary>

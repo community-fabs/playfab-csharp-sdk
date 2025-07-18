@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.Multiplayer;
+namespace CommunityFabs.NET.Common.Models.Multiplayer;
 
 public enum AccessPolicy {
     Public,

@@ -1,7 +1,7 @@
 ﻿@using CommunityFabs.NET.Generator.Templates.Models;
 @model LegacyApiDocument;
-using CommunityFabs.NET.Sdk.Common.Models.@Model.Name;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.@Model.Name;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface @($"IPlayFab{Model.Name}Api") {
 @foreach (var apiCall in Model.Calls!)

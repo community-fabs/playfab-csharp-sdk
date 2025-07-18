@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Localization;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Localization;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabLocalizationApi {
     /// <summary>

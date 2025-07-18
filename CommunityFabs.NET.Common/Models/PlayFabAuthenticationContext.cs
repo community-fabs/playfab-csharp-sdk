@@ -1,4 +1,4 @@
-﻿namespace CommunityFabs.NET.Sdk.Common.Models;
+﻿namespace CommunityFabs.NET.Common.Models;
 
 public sealed class PlayFabAuthenticationContext
 {

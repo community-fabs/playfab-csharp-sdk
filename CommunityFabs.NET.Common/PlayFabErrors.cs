@@ -1,7 +1,7 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 using System.Text;
 
-namespace CommunityFabs.NET.Sdk.Common;
+namespace CommunityFabs.NET.Common;
 
 /// <summary>
 /// Error codes returned by PlayFabAPIs

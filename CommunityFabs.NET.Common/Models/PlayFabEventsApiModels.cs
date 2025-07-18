@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.Events;
+namespace CommunityFabs.NET.Common.Models.Events;
 
 public class CreateTelemetryKeyRequest : PlayFabRequestCommon {
     /// <summary>

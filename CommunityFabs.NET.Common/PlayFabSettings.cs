@@ -1,7 +1,7 @@
-﻿using CommunityFabs.NET.Sdk.Common.Models;
+﻿using CommunityFabs.NET.Common.Models;
 using System.Text;
 
-namespace CommunityFabs.NET.Sdk.Common;
+namespace CommunityFabs.NET.Common;
 
 public class PlayFabSettings
 {

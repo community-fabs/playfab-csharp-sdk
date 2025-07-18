@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Economy;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Economy;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabEconomyApi {
     /// <summary>

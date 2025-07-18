@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.Sweepstakes;
+namespace CommunityFabs.NET.Common.Models.Sweepstakes;
 
 /// <summary>
 /// Given a title entity token and sweepstake details, will create a new sweepstake for the title.

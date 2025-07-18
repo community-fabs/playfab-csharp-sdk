@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Profiles;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Profiles;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabProfilesApi {
     /// <summary>

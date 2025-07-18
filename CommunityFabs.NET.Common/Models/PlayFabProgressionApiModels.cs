@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.Progression;
+namespace CommunityFabs.NET.Common.Models.Progression;
 
 public class CreateLeaderboardDefinitionRequest : PlayFabRequestCommon {
     /// <summary>

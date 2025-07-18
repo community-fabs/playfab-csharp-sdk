@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.State;
+namespace CommunityFabs.NET.Common.Models.State;
 
 /// <summary>
 /// Creates a link to previously stored state. Caller may be title or title player entity.

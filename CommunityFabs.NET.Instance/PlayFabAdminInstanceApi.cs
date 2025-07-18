@@ -1,11 +1,11 @@
-using CommunityFabs.NET.Sdk.Common;
-using CommunityFabs.NET.Sdk.Common.Http;
-using CommunityFabs.NET.Sdk.Common.Interfaces;
-using CommunityFabs.NET.Sdk.Common.Models;
-using CommunityFabs.NET.Sdk.Common.Models.Admin;
+using CommunityFabs.NET.Common;
+using CommunityFabs.NET.Common.Http;
+using CommunityFabs.NET.Common.Interfaces;
+using CommunityFabs.NET.Common.Models;
+using CommunityFabs.NET.Common.Models.Admin;
 using System.Text.Json;
 
-namespace CommunityFabs.NET.Sdk.Instance;
+namespace CommunityFabs.NET.Instance;
 
 /// <summary>
 /// Create a new instance of the Sweepstakes API

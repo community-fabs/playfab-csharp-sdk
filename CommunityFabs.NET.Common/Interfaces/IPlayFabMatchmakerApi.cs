@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Matchmaker;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Matchmaker;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabMatchmakerApi {
     /// <summary>

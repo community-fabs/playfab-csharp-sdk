@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Data;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Data;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabDataApi {
     /// <summary>

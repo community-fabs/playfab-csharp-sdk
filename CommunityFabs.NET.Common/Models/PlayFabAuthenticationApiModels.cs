@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.Authentication;
+namespace CommunityFabs.NET.Common.Models.Authentication;
 
 /// <summary>
 /// Create or return a game_server entity token. Caller must be a title entity.

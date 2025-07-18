@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Admin;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Admin;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabAdminApi {
     /// <summary>

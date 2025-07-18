@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Experimentation;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Experimentation;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabExperimentationApi {
     /// <summary>

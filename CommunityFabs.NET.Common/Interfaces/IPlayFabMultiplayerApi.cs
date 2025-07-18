@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Multiplayer;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Multiplayer;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabMultiplayerApi {
     /// <summary>

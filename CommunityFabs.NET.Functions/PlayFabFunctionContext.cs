@@ -1,10 +1,10 @@
 ﻿using Microsoft.Azure.Functions.Worker.Http;
-using CommunityFabs.NET.Sdk.Common;
-using CommunityFabs.NET.Sdk.Common.Models;
-using CommunityFabs.NET.Sdk.Common.Models.Profiles;
+using CommunityFabs.NET.Common;
+using CommunityFabs.NET.Common.Models;
+using CommunityFabs.NET.Common.Models.Profiles;
 using System.Text.Json;
 
-namespace CommunityFabs.NET.Sdk.Functions;
+namespace CommunityFabs.NET.Functions;
 
 class TitleAuthenticationContext
 {

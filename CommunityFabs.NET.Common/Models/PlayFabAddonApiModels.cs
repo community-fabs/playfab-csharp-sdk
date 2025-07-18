@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.Addon;
+namespace CommunityFabs.NET.Common.Models.Addon;
 
 public class CreateOrUpdateAppleRequest : PlayFabRequestCommon {
     /// <summary>

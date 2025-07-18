@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Addon;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Addon;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabAddonApi {
     /// <summary>

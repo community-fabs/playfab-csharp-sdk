@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Events;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Events;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabEventsApi {
     /// <summary>

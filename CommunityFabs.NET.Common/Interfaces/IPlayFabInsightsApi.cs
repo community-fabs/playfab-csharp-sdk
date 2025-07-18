@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Insights;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Insights;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabInsightsApi {
     /// <summary>

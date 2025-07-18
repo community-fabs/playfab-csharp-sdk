@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.CloudScript;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.CloudScript;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabCloudScriptApi {
     /// <summary>

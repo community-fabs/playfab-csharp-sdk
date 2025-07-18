@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.Groups;
+namespace CommunityFabs.NET.Common.Models.Groups;
 
 /// <summary>
 /// Accepts an outstanding invitation to to join a group if the invited entity is not blocked by the group. Nothing is

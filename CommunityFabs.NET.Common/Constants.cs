@@ -1,4 +1,4 @@
-namespace CommunityFabs.NET.Sdk.Common;
+namespace CommunityFabs.NET.Common;
 
 public static class Constants
 {

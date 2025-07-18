@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Client;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Client;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabClientApi {
     /// <summary>

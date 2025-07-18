@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.State;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.State;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabStateApi {
     /// <summary>

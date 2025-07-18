@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.Insights;
+namespace CommunityFabs.NET.Common.Models.Insights;
 
 public class InsightsEmptyRequest : PlayFabRequestCommon {
     /// <summary>

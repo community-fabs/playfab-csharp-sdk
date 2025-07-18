@@ -1,6 +1,6 @@
-﻿using CommunityFabs.NET.Sdk.Common.Models;
+﻿using CommunityFabs.NET.Common.Models;
 
-namespace CommunityFabs.NET.Sdk.Common.Http;
+namespace CommunityFabs.NET.Common.Http;
 
 /// <summary>
 /// This is a base-class for all Api-request objects.

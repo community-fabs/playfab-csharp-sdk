@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.Json;
 
-namespace CommunityFabs.NET.Sdk.Common.Http;
+namespace CommunityFabs.NET.Common.Http;
 
 // TODO: (possibly) throw exceptions for errors instead of returning multiple types
 internal static class PlayFabHttpTransport

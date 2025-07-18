@@ -1,5 +1,5 @@
-using CommunityFabs.NET.Sdk.Common.Models.Groups;
-namespace CommunityFabs.NET.Sdk.Common.Interfaces;
+using CommunityFabs.NET.Common.Models.Groups;
+namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabGroupsApi {
     /// <summary>

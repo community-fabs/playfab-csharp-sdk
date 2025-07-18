@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.Admin;
+namespace CommunityFabs.NET.Common.Models.Admin;
 
 /// <summary>
 /// If the task instance has already completed, there will be no-op.

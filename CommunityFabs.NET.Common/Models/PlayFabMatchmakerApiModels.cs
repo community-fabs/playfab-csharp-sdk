@@ -1,6 +1,6 @@
-using CommunityFabs.NET.Sdk.Common.Http;
+using CommunityFabs.NET.Common.Http;
 
-namespace CommunityFabs.NET.Sdk.Common.Models.Matchmaker;
+namespace CommunityFabs.NET.Common.Models.Matchmaker;
 
 /// <summary>
 /// This API allows the external match-making service to confirm that the user has a valid Session Ticket for the title, in
