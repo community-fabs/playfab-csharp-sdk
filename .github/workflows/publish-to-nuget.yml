@@ -1,0 +1,48 @@
+name: Publish to Nuget
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: 🛠 Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - name: 🧾 Create local nuget.config
+        run: |
+          echo '<?xml version="1.0" encoding="utf-8"?>
+          <configuration>
+            <packageSources>
+              <clear />
+              <add key="local" value="nupkgs" />
+              <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+            </packageSources>
+          </configuration>' > nuget.config
+
+      - name: 📦 Pack CommunityFabs.NET.Sdk.Common
+        run: |
+          dotnet pack ./CommunityFabs.NET.Sdk.Common/CommunityFabs.NET.Sdk.Common.csproj -c Release -o ./nupkgs
+
+      - name: 📦 Pack CommunityFabs.NET.Sdk.Instance
+        run: |
+          dotnet restore ./CommunityFabs.NET.Sdk.Instance/CommunityFabs.NET.Sdk.Instance.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Sdk.Instance/CommunityFabs.NET.Sdk.Instance.csproj -c Release -o ./nupkgs
+
+      - name: 📦 Pack CommunityFabs.NET.Sdk.Functions
+        run: |
+          dotnet restore ./CommunityFabs.NET.Sdk.Functions/CommunityFabs.NET.Sdk.Functions.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Sdk.Functions/CommunityFabs.NET.Sdk.Functions.csproj -c Release -o ./nupkgs
+
+      - name: 🎉 Publish all packages
+        run: |
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Sdk.Common.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Sdk.Instance.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Sdk.Functions.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
