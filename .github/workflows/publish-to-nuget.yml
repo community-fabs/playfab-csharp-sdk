@@ -2,6 +2,15 @@ name: Publish to Nuget
 
 on:
   workflow_dispatch:
+    inputs:
+      publish_functions_pkg:
+        type: boolean
+        default: false
+        description: "Publish Functions package"
+      package_source:
+        type: string
+        default: "https://api.nuget.org/v3/index.json"
+        description: "NuGet package source"
 
 jobs:
   publish:
@@ -27,22 +36,27 @@ jobs:
             </packageSources>
           </configuration>' > nuget.config
 
-      - name: 📦 Pack CommunityFabs.NET.Sdk.Common
+      - name: 📦 Pack CommunityFabs.NET.Common
         run: |
-          dotnet pack ./CommunityFabs.NET.Sdk.Common/CommunityFabs.NET.Sdk.Common.csproj -c Release -o ./nupkgs
+          dotnet pack ./CommunityFabs.NET.Common/CommunityFabs.NET.Common.csproj -c Release -o ./nupkgs
 
-      - name: 📦 Pack CommunityFabs.NET.Sdk.Instance
+      - name: 📦 Pack CommunityFabs.NET.Instance
         run: |
-          dotnet restore ./CommunityFabs.NET.Sdk.Instance/CommunityFabs.NET.Sdk.Instance.csproj --configfile nuget.config
-          dotnet pack ./CommunityFabs.NET.Sdk.Instance/CommunityFabs.NET.Sdk.Instance.csproj -c Release -o ./nupkgs
+          dotnet restore ./CommunityFabs.NET.Instance/CommunityFabs.NET.Instance.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Instance/CommunityFabs.NET.Instance.csproj -c Release -o ./nupkgs
 
-      - name: 📦 Pack CommunityFabs.NET.Sdk.Functions
+      - name: 📦 Pack CommunityFabs.NET.Functions
+        if: ${{ github.event.inputs.publish_functions_pkg == 'true' }}
         run: |
-          dotnet restore ./CommunityFabs.NET.Sdk.Functions/CommunityFabs.NET.Sdk.Functions.csproj --configfile nuget.config
-          dotnet pack ./CommunityFabs.NET.Sdk.Functions/CommunityFabs.NET.Sdk.Functions.csproj -c Release -o ./nupkgs
+          dotnet restore ./CommunityFabs.NET.Functions/CommunityFabs.NET.Functions.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Functions/CommunityFabs.NET.Functions.csproj -c Release -o ./nupkgs
 
-      - name: 🎉 Publish all packages
+      - name: 🎉 Publish Common & Instance
         run: |
-          dotnet nuget push ./nupkgs/CommunityFabs.NET.Sdk.Common.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
-          dotnet nuget push ./nupkgs/CommunityFabs.NET.Sdk.Instance.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
-          dotnet nuget push ./nupkgs/CommunityFabs.NET.Sdk.Functions.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Common.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source ${{ github.event.inputs.package_source }}
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Instance.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source ${{ github.event.inputs.package_source }}
+
+      - name: 🎉 Publish Functions
+        if: ${{ github.event.inputs.publish_functions_pkg == 'true' }}
+        run: |
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Functions.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source ${{ github.event.inputs.package_source }}

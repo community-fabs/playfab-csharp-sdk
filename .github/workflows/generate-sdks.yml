@@ -6,6 +6,10 @@ on:
       commit_reason:
         description: "Commit Reason"
         required: false
+      dry_run:
+        type: boolean
+        default: false
+        description: "Dry run (Do not commit)"
 
 env:
   COMMIT_REASON: ${{ github.event.inputs.commit_reason && format('({0})', github.event.inputs.commit_reason) || '' }}
@@ -25,14 +29,16 @@ jobs:
         with:
           dotnet-version: 8.x
 
-      - name: Generate SDK
+      - name: 🚀 Run SDK Generator
         run: dotnet run --project ./CommunityFabs.NET.Generator/CommunityFabs.NET.Generator.csproj --out=.
 
-      - name: Check for changes
+      - name: 🕵️ Check for changes
         id: check_changes
         run: |
           if [[ -n $(git status --porcelain) ]]; then
-              echo "changes=true" >> "$GITHUB_OUTPUT"; 
+            echo "changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changes=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: 🧾 Create local nuget.config
@@ -46,30 +52,35 @@ jobs:
               <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
             </packageSources>
           </configuration>' > nuget.config
-          
 
-      - name: ✅ Validate CommunityFabs.NET.Sdk.Common
+      - name: ✅ Validate CommunityFabs.NET.Common
         if: steps.check_changes.outputs.changes == 'true'
         run: |
-          dotnet pack ./CommunityFabs.NET.Sdk.Common/CommunityFabs.NET.Sdk.Common.csproj -c Release -o ./nupkgs
+          dotnet pack ./CommunityFabs.NET.Common/CommunityFabs.NET.Common.csproj -c Release -o ./nupkgs
 
-      - name: ✅ Validate CommunityFabs.NET.Sdk.Instance
+      - name: ✅ Validate CommunityFabs.NET.Instance
         if: steps.check_changes.outputs.changes == 'true'
         run: |
-          dotnet restore ./CommunityFabs.NET.Sdk.Instance/CommunityFabs.NET.Sdk.Instance.csproj --configfile nuget.config
-          dotnet pack ./CommunityFabs.NET.Sdk.Instance/CommunityFabs.NET.Sdk.Instance.csproj -c Release -o ./nupkgs
+          dotnet restore ./CommunityFabs.NET.Instance/CommunityFabs.NET.Instance.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Instance/CommunityFabs.NET.Instance.csproj -c Release -o ./nupkgs
 
-      - name: ✅ Validate CommunityFabs.NET.Sdk.Functions
+      - name: ✅ Validate CommunityFabs.NET.Functions
         if: steps.check_changes.outputs.changes == 'true'
         run: |
-          dotnet restore ./CommunityFabs.NET.Sdk.Functions/CommunityFabs.NET.Sdk.Functions.csproj --configfile nuget.config
-          dotnet pack ./CommunityFabs.NET.Sdk.Functions/CommunityFabs.NET.Sdk.Functions.csproj -c Release -o ./nupkgs
+          dotnet restore ./CommunityFabs.NET.Functions/CommunityFabs.NET.Functions.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Functions/CommunityFabs.NET.Functions.csproj -c Release -o ./nupkgs
 
-      - name: Commit and push SDK changes
-        if: steps.check_changes.outputs.changes == 'true'
+      - name: 📝 Show changed files (dry run)
+        if: steps.check_changes.outputs.changes == 'true' && github.event.inputs.dry_run == 'true'
+        run: |
+          echo "Dry run enabled. The following files were changed:"
+          git status --short
+
+      - name: 📤 Commit and push SDK changes
+        if: steps.check_changes.outputs.changes == 'true' && github.event.inputs.dry_run != 'true'
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "action@github.com"
           git add .
-          git commit -m "chore: generate SDK ${COMMIT_REASON}"
+          git commit -m "chore: generate SDKs ${COMMIT_REASON}"
           git push origin HEAD
