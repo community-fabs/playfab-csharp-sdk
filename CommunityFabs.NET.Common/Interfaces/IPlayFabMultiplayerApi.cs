@@ -746,8 +746,8 @@ public interface IPlayFabMultiplayerApi {
     public Task<PlayFabResult<FindLobbiesResult>> FindLobbiesAsync(FindLobbiesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets a URL that can be used to download the specified asset. A sample pre-authenticated url -
-    /// https://sampleStorageAccount.blob.core.windows.net/gameassets/gameserver.zip?sv=2015-04-05&ss=b&srt=sco&sp=rw&st=startDa
-    /// te&se=endDate&spr=https&sig=sampleSig&api-version=2017-07-29
+    /// https://sampleStorageAccount.blob.core.windows.net/gameassets/gameserver.zip?sv=2015-04-05&amp;ss=b&amp;srt=sco&amp;sp=rw&amp;st=startDa
+    /// te&amp;se=endDate&amp;spr=https&amp;sig=sampleSig&amp;api-version=2017-07-29
     /// <example><br/>Example:<code>
     /// var response = await multiplayerserverApi.GetAssetDownloadUrlAsync({);
     ///   "FileName": "gameserver.zip"
@@ -758,8 +758,8 @@ public interface IPlayFabMultiplayerApi {
     public Task<PlayFabResult<GetAssetDownloadUrlResponse>> GetAssetDownloadUrlAsync(GetAssetDownloadUrlRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Gets the URL to upload assets to. A sample pre-authenticated url -
-    /// https://sampleStorageAccount.blob.core.windows.net/gameassets/gameserver.zip?sv=2015-04-05&ss=b&srt=sco&sp=rw&st=startDa
-    /// te&se=endDate&spr=https&sig=sampleSig&api-version=2017-07-29
+    /// https://sampleStorageAccount.blob.core.windows.net/gameassets/gameserver.zip?sv=2015-04-05&amp;ss=b&amp;srt=sco&amp;sp=rw&amp;st=startDa
+    /// te&amp;se=endDate&amp;spr=https&amp;sig=sampleSig&amp;api-version=2017-07-29
     /// <example><br/>Example:<code>
     /// var response = await multiplayerserverApi.GetAssetUploadUrlAsync({);
     ///   "FileName": "gameserver.zip"

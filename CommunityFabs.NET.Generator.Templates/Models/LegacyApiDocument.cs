@@ -316,7 +316,11 @@ public class LegacyApiCall
         summary.AppendLine($"{prefix}<summary>");
         foreach (var line in summaryLines)
         {
-            summary.AppendLine($"{prefix}{line}");
+            var summaryLine = line
+                .Replace("&", "&amp;")
+                .Replace("<", "&lt;")
+                .Replace(">", "&gt;");
+            summary.AppendLine($"{prefix}{summaryLine}");
         }
 
         if (!string.IsNullOrEmpty(RequestExample))
@@ -333,14 +337,18 @@ public class LegacyApiCall
                 summary.AppendLine($"{prefix}var response = await {apiName}Api.{Name}Async({requestLines[0]});");
                 for (int i = 1; i < requestLines.Length; i++)
                 {
+                    var requestLine = requestLines[i].TrimEnd()
+                        .Replace("&", "&amp;")
+                        .Replace("<", "&lt;")
+                        .Replace(">", "&gt;");
                     if (i == requestLines.Length - 1)
                     {
                         // add closing parentheses to the last line
-                        summary.AppendLine($"{prefix}{requestLines[i].Replace("<", "&lt;").Replace(">", "&gt;")});");
+                        summary.AppendLine($"{prefix}{requestLine});");
                         break;
                     }
 
-                    summary.AppendLine($"{prefix}{requestLines[i].Replace("<", "&lt;").Replace(">", "&gt;")}");
+                    summary.AppendLine($"{prefix}{requestLine}");
                 }
             }
             summary.AppendLine($"{prefix}</code></example>");

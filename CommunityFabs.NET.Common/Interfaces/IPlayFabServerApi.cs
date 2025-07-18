@@ -1396,7 +1396,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Adds the virtual goods associated with the coupon to the user's inventory. Coupons can be generated via the
-    /// Economy->Catalogs tab in the PlayFab Game Manager.
+    /// Economy-&gt;Catalogs tab in the PlayFab Game Manager.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.RedeemCouponAsync({);
     ///   "CouponCode": "123-1234-123",
@@ -1832,7 +1832,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Opens a specific container (ContainerItemInstanceId), with a specific key (KeyItemInstanceId, when
     /// required), and returns the contents of the opened container. If the container (and key when relevant) are consumable
-    /// (RemainingUses > 0), their RemainingUses will be decremented, consistent with the operation of ConsumeItem.
+    /// (RemainingUses &gt; 0), their RemainingUses will be decremented, consistent with the operation of ConsumeItem.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.UnlockContainerInstanceAsync({);
     ///   "PlayFabId": "20394883",
@@ -1847,7 +1847,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Searches Player or Character inventory for any ItemInstance matching the given CatalogItemId, if necessary
     /// unlocks it using any appropriate key, and returns the contents of the opened container. If the container (and key when
-    /// relevant) are consumable (RemainingUses > 0), their RemainingUses will be decremented, consistent with the operation of
+    /// relevant) are consumable (RemainingUses &gt; 0), their RemainingUses will be decremented, consistent with the operation of
     /// ConsumeItem.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.UnlockContainerItemAsync({);
@@ -2144,7 +2144,7 @@ public interface IPlayFabServerApi {
     public Task<PlayFabResult<UpdateUserDataResult>> UpdateUserReadOnlyDataAsync(UpdateUserDataRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Updates the values of the specified title-specific statistics for the user. By default, clients are not permitted to
-    /// update statistics. Developers may override this setting in the Game Manager > Settings > API Features.
+    /// update statistics. Developers may override this setting in the Game Manager &gt; Settings &gt; API Features.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.UpdateUserStatisticsAsync({);
     ///   "PlayFabId": "10931252888739651331",
