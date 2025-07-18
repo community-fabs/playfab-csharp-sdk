@@ -15,6 +15,7 @@ Unofficial C# SDK for PlayFab
 ## Acknowledgements
 
 - The PlayFab team
+- The [CommunityFabs](https://github.com/community-fabs) team
 
 ## Copyright and Licensing Information:
 
