@@ -7,34 +7,20 @@ using System.Text.Json;
 
 namespace CommunityFabs.NET.Sdk.Instance;
 
-public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
-    public readonly PlayFabApiSettings? apiSettings = null;
-    public readonly PlayFabAuthenticationContext? authenticationContext = null;
-
-    public PlayFabExperimentationInstanceApi() { }
-
-    public PlayFabExperimentationInstanceApi(PlayFabApiSettings settings)
-    {
-        apiSettings = settings;
-    }
-
-    public PlayFabExperimentationInstanceApi(PlayFabAuthenticationContext context)
-    {
-        authenticationContext = context;
-    }
-
-    public PlayFabExperimentationInstanceApi(PlayFabApiSettings settings, PlayFabAuthenticationContext context)
-    {
-        apiSettings = settings;
-        authenticationContext = context;
-    }
+/// <summary>
+/// Create a new instance of the Sweepstakes API
+/// </summary>
+/// <param name="apiSettings">Current PlayFab API settings</param>
+/// <param name="authContext">Current authentication context</param>
+/// <param name="httpClient">A custom HttpClient (e.g. for use with Polly policies)</param>
+public class PlayFabExperimentationInstanceApi(PlayFabApiSettings? apiSettings = null, PlayFabAuthenticationContext? authContext = null, HttpClient? httpClient = null) : IPlayFabExperimentationApi {
 
     /// <summary>
     /// Verify client login.
     /// </summary>
     public bool IsLoggedIn()
     {
-        return authenticationContext?.IsClientLoggedIn() ?? false;
+        return authContext?.IsClientLoggedIn() ?? false;
     }
 
     /// <summary>
@@ -43,16 +29,16 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
     /// </summary>
     public void ForgetCredentials()
     {
-        authenticationContext?.ForgetAllCredentials();
+        authContext?.ForgetAllCredentials();
     }
 
     public async Task<PlayFabResult<CreateExclusionGroupResult>> CreateExclusionGroupAsync(CreateExclusionGroupRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/CreateExclusionGroup", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/CreateExclusionGroup", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CreateExclusionGroupResult> { Error = error };
@@ -64,12 +50,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<CreateExclusionGroupResult> { Result = result };
     }
     public async Task<PlayFabResult<CreateExperimentResult>> CreateExperimentAsync(CreateExperimentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/CreateExperiment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/CreateExperiment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CreateExperimentResult> { Error = error };
@@ -81,12 +67,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<CreateExperimentResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> DeleteExclusionGroupAsync(DeleteExclusionGroupRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/DeleteExclusionGroup", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/DeleteExclusionGroup", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -98,12 +84,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> DeleteExperimentAsync(DeleteExperimentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/DeleteExperiment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/DeleteExperiment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -115,12 +101,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<GetExclusionGroupsResult>> GetExclusionGroupsAsync(GetExclusionGroupsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/GetExclusionGroups", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/GetExclusionGroups", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetExclusionGroupsResult> { Error = error };
@@ -132,12 +118,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<GetExclusionGroupsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetExclusionGroupTrafficResult>> GetExclusionGroupTrafficAsync(GetExclusionGroupTrafficRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/GetExclusionGroupTraffic", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/GetExclusionGroupTraffic", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetExclusionGroupTrafficResult> { Error = error };
@@ -149,12 +135,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<GetExclusionGroupTrafficResult> { Result = result };
     }
     public async Task<PlayFabResult<GetExperimentsResult>> GetExperimentsAsync(GetExperimentsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/GetExperiments", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/GetExperiments", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetExperimentsResult> { Error = error };
@@ -166,12 +152,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<GetExperimentsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetLatestScorecardResult>> GetLatestScorecardAsync(GetLatestScorecardRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/GetLatestScorecard", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/GetLatestScorecard", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetLatestScorecardResult> { Error = error };
@@ -183,12 +169,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<GetLatestScorecardResult> { Result = result };
     }
     public async Task<PlayFabResult<GetTreatmentAssignmentResult>> GetTreatmentAssignmentAsync(GetTreatmentAssignmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/GetTreatmentAssignment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/GetTreatmentAssignment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetTreatmentAssignmentResult> { Error = error };
@@ -200,12 +186,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<GetTreatmentAssignmentResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> StartExperimentAsync(StartExperimentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/StartExperiment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/StartExperiment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -217,12 +203,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> StopExperimentAsync(StopExperimentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/StopExperiment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/StopExperiment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -234,12 +220,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> UpdateExclusionGroupAsync(UpdateExclusionGroupRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/UpdateExclusionGroup", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/UpdateExclusionGroup", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -251,12 +237,12 @@ public class PlayFabExperimentationInstanceApi : IPlayFabExperimentationApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> UpdateExperimentAsync(UpdateExperimentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Experimentation/UpdateExperiment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Experimentation/UpdateExperiment", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };

@@ -4,12 +4,15 @@ using System.Text.Json;
 
 namespace CommunityFabs.NET.Sdk.Common.Http;
 
-// TODO: throw exceptions for errors instead of returning multiple types
+// TODO: (possibly) throw exceptions for errors instead of returning multiple types
 internal static class PlayFabHttpTransport
 {
-    static readonly HttpClient client = new();
+    static readonly HttpClient basicClient = new();
 
-    public static async Task<object> Post(string fullUrl, object? request, Dictionary<string, string> extraHeaders)
+    public static async Task<object> Post(string fullUrl, object? request, Dictionary<string, string> extraHeaders) =>
+        Post(basicClient, fullUrl, request, extraHeaders);
+
+    public static async Task<object> Post(HttpClient client, string fullUrl, object? request, Dictionary<string, string> extraHeaders)
     {
         string bodyString;
 
@@ -37,7 +40,7 @@ internal static class PlayFabHttpTransport
                     // Special case for Authorization header
                     if (headerPair.Key.Equals("Authorization", StringComparison.OrdinalIgnoreCase))
                     {
-                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", headerPair.Value);
+                        postBody.Headers.Add("Authorization", $"Bearer {headerPair.Value}");
                     }
                     else
                     {

@@ -7,34 +7,20 @@ using System.Text.Json;
 
 namespace CommunityFabs.NET.Sdk.Instance;
 
-public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
-    public readonly PlayFabApiSettings? apiSettings = null;
-    public readonly PlayFabAuthenticationContext? authenticationContext = null;
-
-    public PlayFabEventsInstanceApi() { }
-
-    public PlayFabEventsInstanceApi(PlayFabApiSettings settings)
-    {
-        apiSettings = settings;
-    }
-
-    public PlayFabEventsInstanceApi(PlayFabAuthenticationContext context)
-    {
-        authenticationContext = context;
-    }
-
-    public PlayFabEventsInstanceApi(PlayFabApiSettings settings, PlayFabAuthenticationContext context)
-    {
-        apiSettings = settings;
-        authenticationContext = context;
-    }
+/// <summary>
+/// Create a new instance of the Sweepstakes API
+/// </summary>
+/// <param name="apiSettings">Current PlayFab API settings</param>
+/// <param name="authContext">Current authentication context</param>
+/// <param name="httpClient">A custom HttpClient (e.g. for use with Polly policies)</param>
+public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, PlayFabAuthenticationContext? authContext = null, HttpClient? httpClient = null) : IPlayFabEventsApi {
 
     /// <summary>
     /// Verify client login.
     /// </summary>
     public bool IsLoggedIn()
     {
-        return authenticationContext?.IsClientLoggedIn() ?? false;
+        return authContext?.IsClientLoggedIn() ?? false;
     }
 
     /// <summary>
@@ -43,16 +29,16 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
     /// </summary>
     public void ForgetCredentials()
     {
-        authenticationContext?.ForgetAllCredentials();
+        authContext?.ForgetAllCredentials();
     }
 
     public async Task<PlayFabResult<CreateTelemetryKeyResponse>> CreateTelemetryKeyAsync(CreateTelemetryKeyRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/CreateTelemetryKey", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/CreateTelemetryKey", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CreateTelemetryKeyResponse> { Error = error };
@@ -64,12 +50,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<CreateTelemetryKeyResponse> { Result = result };
     }
     public async Task<PlayFabResult<DeleteDataConnectionResponse>> DeleteDataConnectionAsync(DeleteDataConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/DeleteDataConnection", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/DeleteDataConnection", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteDataConnectionResponse> { Error = error };
@@ -81,12 +67,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<DeleteDataConnectionResponse> { Result = result };
     }
     public async Task<PlayFabResult<DeleteEventSamplingRatioResult>> DeleteEventSamplingRatioAsync(DeleteEventSamplingRatioRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/DeleteEventSamplingRatio", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/DeleteEventSamplingRatio", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteEventSamplingRatioResult> { Error = error };
@@ -98,12 +84,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<DeleteEventSamplingRatioResult> { Result = result };
     }
     public async Task<PlayFabResult<DeleteTelemetryKeyResponse>> DeleteTelemetryKeyAsync(DeleteTelemetryKeyRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/DeleteTelemetryKey", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/DeleteTelemetryKey", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteTelemetryKeyResponse> { Error = error };
@@ -115,12 +101,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<DeleteTelemetryKeyResponse> { Result = result };
     }
     public async Task<PlayFabResult<GetDataConnectionResponse>> GetDataConnectionAsync(GetDataConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/GetDataConnection", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/GetDataConnection", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetDataConnectionResponse> { Error = error };
@@ -132,12 +118,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<GetDataConnectionResponse> { Result = result };
     }
     public async Task<PlayFabResult<GetEventSamplingRatioResult>> GetEventSamplingRatioAsync(GetEventSamplingRatioRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/GetEventSamplingRatio", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/GetEventSamplingRatio", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetEventSamplingRatioResult> { Error = error };
@@ -149,12 +135,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<GetEventSamplingRatioResult> { Result = result };
     }
     public async Task<PlayFabResult<GetEventSamplingRatiosResult>> GetEventSamplingRatiosAsync(GetEventSamplingRatiosRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/GetEventSamplingRatios", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/GetEventSamplingRatios", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetEventSamplingRatiosResult> { Error = error };
@@ -166,12 +152,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<GetEventSamplingRatiosResult> { Result = result };
     }
     public async Task<PlayFabResult<GetTelemetryKeyResponse>> GetTelemetryKeyAsync(GetTelemetryKeyRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/GetTelemetryKey", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/GetTelemetryKey", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetTelemetryKeyResponse> { Error = error };
@@ -183,12 +169,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<GetTelemetryKeyResponse> { Result = result };
     }
     public async Task<PlayFabResult<ListDataConnectionsResponse>> ListDataConnectionsAsync(ListDataConnectionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/ListDataConnections", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/ListDataConnections", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ListDataConnectionsResponse> { Error = error };
@@ -200,12 +186,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<ListDataConnectionsResponse> { Result = result };
     }
     public async Task<PlayFabResult<ListTelemetryKeysResponse>> ListTelemetryKeysAsync(ListTelemetryKeysRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/ListTelemetryKeys", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/ListTelemetryKeys", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ListTelemetryKeysResponse> { Error = error };
@@ -217,12 +203,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<ListTelemetryKeysResponse> { Result = result };
     }
     public async Task<PlayFabResult<SetDataConnectionResponse>> SetDataConnectionAsync(SetDataConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/SetDataConnection", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/SetDataConnection", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetDataConnectionResponse> { Error = error };
@@ -234,12 +220,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<SetDataConnectionResponse> { Result = result };
     }
     public async Task<PlayFabResult<SetDataConnectionActiveResponse>> SetDataConnectionActiveAsync(SetDataConnectionActiveRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/SetDataConnectionActive", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/SetDataConnectionActive", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetDataConnectionActiveResponse> { Error = error };
@@ -251,12 +237,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<SetDataConnectionActiveResponse> { Result = result };
     }
     public async Task<PlayFabResult<SetEventSamplingRatioResult>> SetEventSamplingRatioAsync(SetEventSamplingRatioRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/SetEventSamplingRatio", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/SetEventSamplingRatio", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetEventSamplingRatioResult> { Error = error };
@@ -268,12 +254,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<SetEventSamplingRatioResult> { Result = result };
     }
     public async Task<PlayFabResult<SetTelemetryKeyActiveResponse>> SetTelemetryKeyActiveAsync(SetTelemetryKeyActiveRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/SetTelemetryKeyActive", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/SetTelemetryKeyActive", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetTelemetryKeyActiveResponse> { Error = error };
@@ -285,12 +271,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<SetTelemetryKeyActiveResponse> { Result = result };
     }
     public async Task<PlayFabResult<WriteEventsResponse>> WriteEventsAsync(WriteEventsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/WriteEvents", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/WriteEvents", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<WriteEventsResponse> { Error = error };
@@ -302,12 +288,12 @@ public class PlayFabEventsInstanceApi : IPlayFabEventsApi {
         return new PlayFabResult<WriteEventsResponse> { Result = result };
     }
     public async Task<PlayFabResult<WriteEventsResponse>> WriteTelemetryEventsAsync(WriteEventsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
 
-        var httpResult = await PlayFabHttp.Post("/Event/WriteTelemetryEvents", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Event/WriteTelemetryEvents", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<WriteEventsResponse> { Error = error };

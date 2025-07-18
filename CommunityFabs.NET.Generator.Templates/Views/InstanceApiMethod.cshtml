@@ -45,17 +45,17 @@
     {
         if (Model.Result == "LoginResult" || Model.Result == "RegisterPlayFabUserResult")
             return spacing + "result.AuthenticationContext = new PlayFabAuthenticationContext(result.SessionTicket, result.EntityToken.EntityToken, result.PlayFabId, result.EntityToken.Entity.Id, result.EntityToken.Entity.Type);\n"
-                + spacing + "authenticationContext.CopyFrom(result.AuthenticationContext);\n";
+                + spacing + "authContext.CopyFrom(result.AuthenticationContext);\n";
         else if (Model.Result == "AuthenticateIdentityResult")
             return spacing + "result.AuthenticationContext = new PlayFabAuthenticationContext(null, result.TitlePlayerAccount.EntityToken, null, result.TitlePlayerAccount.Entity.Id, result.TitlePlayerAccount.Entity.Type);\n"
-                + spacing + "authenticationContext.CopyFrom(result.AuthenticationContext);\n";
+                + spacing + "authContext.CopyFrom(result.AuthenticationContext);\n";
         else if (Model.Result == "GetEntityTokenResponse")
-            return spacing + "var updateContext = authenticationContext;\n"
+            return spacing + "var updateContext = authContext;\n"
                 + spacing + "updateContext.EntityToken = result.EntityToken;\n"
                 + spacing + "updateContext.EntityId = result.Entity.Id;\n"
                 + spacing + "updateContext.EntityType = result.Entity.Type;\n";
         else if (Model.Result == "AuthenticateCustomIdResult")
-            return spacing + "var updateContext = authenticationContext;\n"
+            return spacing + "var updateContext = authContext;\n"
                 + spacing + "updateContext.EntityToken = result.EntityToken.EntityToken;\n"
                 + spacing + "updateContext.EntityId = result.EntityToken.Entity.Id;\n"
                 + spacing + "updateContext.EntityType = result.EntityToken.Entity.Type;\n";
@@ -77,11 +77,11 @@
     }
 }
     public async Task<PlayFabResult<@(Model.Result)>> @(Model.Name)Async(@Model.Request? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
 @Html.Raw(GetRequestActions("        "))
-        var httpResult = await PlayFabHttp.Post("@Model.Url", request, @Html.Raw(GetAuthParams()), extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("@Model.Url", request, @Html.Raw(GetAuthParams()), extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<@Model.Result> { Error = error };

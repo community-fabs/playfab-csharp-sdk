@@ -46,24 +46,26 @@ public class PlayFabJsonSuccess<TResult> where TResult : PlayFabResultCommon
 
 public static class PlayFabHttp
 {
-    public static async Task<object> Post(string urlPath, PlayFabRequestCommon? request, string authType, string authKey, Dictionary<string, string>? extraHeaders = null, PlayFabApiSettings? instanceSettings = null)
+    public static async Task<object> Post(string urlPath, PlayFabRequestCommon? request, string authType, string authKey, Dictionary<string, string>? extraHeaders = null, PlayFabApiSettings? instanceSettings = null, HttpClient? customClient = null)
     {
         // if the URL starts with "/", convert it to full url (https://<titleId>.playfabapi.com/<urlPath>)
         if (urlPath.StartsWith('/'))
         {
             var settings = instanceSettings ?? PlayFabSettings.staticSettings;
             var fullPath = settings.GetFullUrl(urlPath);
-            return await InternalPost(fullPath, request, authType, authKey, extraHeaders, instanceSettings);
+            return await InternalPost(fullPath, request, authType, authKey, extraHeaders, instanceSettings, customClient);
         }
-        return await InternalPost(urlPath, request, authType, authKey, extraHeaders, instanceSettings);
+        return await InternalPost(urlPath, request, authType, authKey, extraHeaders, instanceSettings, customClient);
     }
 
-    private static async Task<object> InternalPost(string fullPath, PlayFabRequestCommon? request, string authType, string authKey, Dictionary<string, string>? extraHeaders = null, PlayFabApiSettings? instanceSettings = null)
+    private static async Task<object> InternalPost(string fullPath, PlayFabRequestCommon? request, string authType, string authKey, Dictionary<string, string>? extraHeaders = null, PlayFabApiSettings? instanceSettings = null, HttpClient? customClient = null)
     {
         var settings = instanceSettings ?? PlayFabSettings.staticSettings;
         var titleId = settings.TitleId;
-        if (titleId == null)
+        if (string.IsNullOrEmpty(titleId))
+        {
             throw new PlayFabException(PlayFabExceptionCode.TitleNotSet, "You must set your titleId before making an api call");
+        }
 
         var headers = new Dictionary<string, string>();
         if (authType != null && authKey != null)
@@ -78,6 +80,8 @@ public static class PlayFabHttp
             }
         }
 
-        return await PlayFabHttpTransport.Post(fullPath, request, headers);
+        return customClient != null ?
+            await PlayFabHttpTransport.Post(customClient, fullPath, request, headers) :
+            await PlayFabHttpTransport.Post(fullPath, request, headers);
     }
 }

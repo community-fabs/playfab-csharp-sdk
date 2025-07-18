@@ -7,34 +7,20 @@ using System.Text.Json;
 
 namespace CommunityFabs.NET.Sdk.Instance;
 
-public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
-    public readonly PlayFabApiSettings? apiSettings = null;
-    public readonly PlayFabAuthenticationContext? authenticationContext = null;
-
-    public PlayFabAdminInstanceApi() { }
-
-    public PlayFabAdminInstanceApi(PlayFabApiSettings settings)
-    {
-        apiSettings = settings;
-    }
-
-    public PlayFabAdminInstanceApi(PlayFabAuthenticationContext context)
-    {
-        authenticationContext = context;
-    }
-
-    public PlayFabAdminInstanceApi(PlayFabApiSettings settings, PlayFabAuthenticationContext context)
-    {
-        apiSettings = settings;
-        authenticationContext = context;
-    }
+/// <summary>
+/// Create a new instance of the Sweepstakes API
+/// </summary>
+/// <param name="apiSettings">Current PlayFab API settings</param>
+/// <param name="authContext">Current authentication context</param>
+/// <param name="httpClient">A custom HttpClient (e.g. for use with Polly policies)</param>
+public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, PlayFabAuthenticationContext? authContext = null, HttpClient? httpClient = null) : IPlayFabAdminApi {
 
     /// <summary>
     /// Verify client login.
     /// </summary>
     public bool IsLoggedIn()
     {
-        return authenticationContext?.IsClientLoggedIn() ?? false;
+        return authContext?.IsClientLoggedIn() ?? false;
     }
 
     /// <summary>
@@ -43,16 +29,16 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
     /// </summary>
     public void ForgetCredentials()
     {
-        authenticationContext?.ForgetAllCredentials();
+        authContext?.ForgetAllCredentials();
     }
 
     public async Task<PlayFabResult<EmptyResponse>> AbortTaskInstanceAsync(AbortTaskInstanceRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/AbortTaskInstance", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/AbortTaskInstance", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -64,12 +50,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<AddLocalizedNewsResult>> AddLocalizedNewsAsync(AddLocalizedNewsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/AddLocalizedNews", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/AddLocalizedNews", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<AddLocalizedNewsResult> { Error = error };
@@ -81,12 +67,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<AddLocalizedNewsResult> { Result = result };
     }
     public async Task<PlayFabResult<AddNewsResult>> AddNewsAsync(AddNewsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/AddNews", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/AddNews", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<AddNewsResult> { Error = error };
@@ -98,12 +84,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<AddNewsResult> { Result = result };
     }
     public async Task<PlayFabResult<AddPlayerTagResult>> AddPlayerTagAsync(AddPlayerTagRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/AddPlayerTag", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/AddPlayerTag", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<AddPlayerTagResult> { Error = error };
@@ -115,12 +101,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<AddPlayerTagResult> { Result = result };
     }
     public async Task<PlayFabResult<AddServerBuildResult>> AddServerBuildAsync(AddServerBuildRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/AddServerBuild", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/AddServerBuild", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<AddServerBuildResult> { Error = error };
@@ -132,12 +118,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<AddServerBuildResult> { Result = result };
     }
     public async Task<PlayFabResult<ModifyUserVirtualCurrencyResult>> AddUserVirtualCurrencyAsync(AddUserVirtualCurrencyRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/AddUserVirtualCurrency", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/AddUserVirtualCurrency", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ModifyUserVirtualCurrencyResult> { Error = error };
@@ -149,12 +135,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ModifyUserVirtualCurrencyResult> { Result = result };
     }
     public async Task<PlayFabResult<BlankResult>> AddVirtualCurrencyTypesAsync(AddVirtualCurrencyTypesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/AddVirtualCurrencyTypes", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/AddVirtualCurrencyTypes", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<BlankResult> { Error = error };
@@ -166,12 +152,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<BlankResult> { Result = result };
     }
     public async Task<PlayFabResult<BanUsersResult>> BanUsersAsync(BanUsersRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/BanUsers", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/BanUsers", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<BanUsersResult> { Error = error };
@@ -183,12 +169,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<BanUsersResult> { Result = result };
     }
     public async Task<PlayFabResult<CheckLimitedEditionItemAvailabilityResult>> CheckLimitedEditionItemAvailabilityAsync(CheckLimitedEditionItemAvailabilityRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/CheckLimitedEditionItemAvailability", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/CheckLimitedEditionItemAvailability", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CheckLimitedEditionItemAvailabilityResult> { Error = error };
@@ -200,12 +186,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<CheckLimitedEditionItemAvailabilityResult> { Result = result };
     }
     public async Task<PlayFabResult<CreateTaskResult>> CreateActionsOnPlayersInSegmentTaskAsync(CreateActionsOnPlayerSegmentTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/CreateActionsOnPlayersInSegmentTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/CreateActionsOnPlayersInSegmentTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CreateTaskResult> { Error = error };
@@ -217,12 +203,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<CreateTaskResult> { Result = result };
     }
     public async Task<PlayFabResult<CreateTaskResult>> CreateCloudScriptAzureFunctionsTaskAsync(CreateCloudScriptAzureFunctionsTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/CreateCloudScriptAzureFunctionsTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/CreateCloudScriptAzureFunctionsTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CreateTaskResult> { Error = error };
@@ -234,12 +220,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<CreateTaskResult> { Result = result };
     }
     public async Task<PlayFabResult<CreateTaskResult>> CreateCloudScriptTaskAsync(CreateCloudScriptTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/CreateCloudScriptTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/CreateCloudScriptTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CreateTaskResult> { Error = error };
@@ -251,12 +237,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<CreateTaskResult> { Result = result };
     }
     public async Task<PlayFabResult<CreateTaskResult>> CreateInsightsScheduledScalingTaskAsync(CreateInsightsScheduledScalingTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/CreateInsightsScheduledScalingTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/CreateInsightsScheduledScalingTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CreateTaskResult> { Error = error };
@@ -268,12 +254,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<CreateTaskResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> CreateOpenIdConnectionAsync(CreateOpenIdConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/CreateOpenIdConnection", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/CreateOpenIdConnection", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -285,12 +271,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<CreatePlayerSharedSecretResult>> CreatePlayerSharedSecretAsync(CreatePlayerSharedSecretRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/CreatePlayerSharedSecret", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/CreatePlayerSharedSecret", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CreatePlayerSharedSecretResult> { Error = error };
@@ -302,12 +288,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<CreatePlayerSharedSecretResult> { Result = result };
     }
     public async Task<PlayFabResult<CreatePlayerStatisticDefinitionResult>> CreatePlayerStatisticDefinitionAsync(CreatePlayerStatisticDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/CreatePlayerStatisticDefinition", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/CreatePlayerStatisticDefinition", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CreatePlayerStatisticDefinitionResult> { Error = error };
@@ -319,12 +305,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<CreatePlayerStatisticDefinitionResult> { Result = result };
     }
     public async Task<PlayFabResult<CreateSegmentResponse>> CreateSegmentAsync(CreateSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/CreateSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/CreateSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<CreateSegmentResponse> { Error = error };
@@ -336,12 +322,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<CreateSegmentResponse> { Result = result };
     }
     public async Task<PlayFabResult<BlankResult>> DeleteContentAsync(DeleteContentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteContent", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteContent", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<BlankResult> { Error = error };
@@ -353,12 +339,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<BlankResult> { Result = result };
     }
     public async Task<PlayFabResult<DeleteEventSinkResult>> DeleteEventSinkAsync(DeleteEventSinkRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteEventSink", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteEventSink", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteEventSinkResult> { Error = error };
@@ -370,12 +356,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeleteEventSinkResult> { Result = result };
     }
     public async Task<PlayFabResult<DeleteMasterPlayerAccountResult>> DeleteMasterPlayerAccountAsync(DeleteMasterPlayerAccountRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteMasterPlayerAccount", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteMasterPlayerAccount", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteMasterPlayerAccountResult> { Error = error };
@@ -387,12 +373,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeleteMasterPlayerAccountResult> { Result = result };
     }
     public async Task<PlayFabResult<DeleteMasterPlayerEventDataResult>> DeleteMasterPlayerEventDataAsync(DeleteMasterPlayerEventDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteMasterPlayerEventData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteMasterPlayerEventData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteMasterPlayerEventDataResult> { Error = error };
@@ -404,12 +390,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeleteMasterPlayerEventDataResult> { Result = result };
     }
     public async Task<PlayFabResult<DeleteMembershipSubscriptionResult>> DeleteMembershipSubscriptionAsync(DeleteMembershipSubscriptionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteMembershipSubscription", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteMembershipSubscription", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteMembershipSubscriptionResult> { Error = error };
@@ -421,12 +407,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeleteMembershipSubscriptionResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> DeleteOpenIdConnectionAsync(DeleteOpenIdConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteOpenIdConnection", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteOpenIdConnection", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -438,12 +424,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<DeletePlayerResult>> DeletePlayerAsync(DeletePlayerRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeletePlayer", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeletePlayer", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeletePlayerResult> { Error = error };
@@ -455,12 +441,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeletePlayerResult> { Result = result };
     }
     public async Task<PlayFabResult<DeletePlayerCustomPropertiesResult>> DeletePlayerCustomPropertiesAsync(DeletePlayerCustomPropertiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeletePlayerCustomProperties", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeletePlayerCustomProperties", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeletePlayerCustomPropertiesResult> { Error = error };
@@ -472,12 +458,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeletePlayerCustomPropertiesResult> { Result = result };
     }
     public async Task<PlayFabResult<DeletePlayerSharedSecretResult>> DeletePlayerSharedSecretAsync(DeletePlayerSharedSecretRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeletePlayerSharedSecret", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeletePlayerSharedSecret", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeletePlayerSharedSecretResult> { Error = error };
@@ -489,12 +475,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeletePlayerSharedSecretResult> { Result = result };
     }
     public async Task<PlayFabResult<DeleteSegmentsResponse>> DeleteSegmentAsync(DeleteSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteSegmentsResponse> { Error = error };
@@ -506,12 +492,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeleteSegmentsResponse> { Result = result };
     }
     public async Task<PlayFabResult<DeleteStoreResult>> DeleteStoreAsync(DeleteStoreRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteStore", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteStore", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteStoreResult> { Error = error };
@@ -523,12 +509,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeleteStoreResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> DeleteTaskAsync(DeleteTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -540,12 +526,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<DeleteTitleResult>> DeleteTitleAsync(DeleteTitleRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteTitle", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteTitle", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteTitleResult> { Error = error };
@@ -557,12 +543,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeleteTitleResult> { Result = result };
     }
     public async Task<PlayFabResult<DeleteTitleDataOverrideResult>> DeleteTitleDataOverrideAsync(DeleteTitleDataOverrideRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteTitleDataOverride", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteTitleDataOverride", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteTitleDataOverrideResult> { Error = error };
@@ -574,12 +560,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeleteTitleDataOverrideResult> { Result = result };
     }
     public async Task<PlayFabResult<DeleteUsersResult>> DeleteUsersAsync(DeleteUsersRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/DeleteUsers", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/DeleteUsers", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<DeleteUsersResult> { Error = error };
@@ -591,12 +577,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<DeleteUsersResult> { Result = result };
     }
     public async Task<PlayFabResult<ExportMasterPlayerDataResult>> ExportMasterPlayerDataAsync(ExportMasterPlayerDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ExportMasterPlayerData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ExportMasterPlayerData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ExportMasterPlayerDataResult> { Error = error };
@@ -608,12 +594,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ExportMasterPlayerDataResult> { Result = result };
     }
     public async Task<PlayFabResult<ExportPlayersInSegmentResult>> ExportPlayersInSegmentAsync(ExportPlayersInSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ExportPlayersInSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ExportPlayersInSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ExportPlayersInSegmentResult> { Error = error };
@@ -625,12 +611,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ExportPlayersInSegmentResult> { Result = result };
     }
     public async Task<PlayFabResult<GetActionsOnPlayersInSegmentTaskInstanceResult>> GetActionsOnPlayersInSegmentTaskInstanceAsync(GetTaskInstanceRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetActionsOnPlayersInSegmentTaskInstance", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetActionsOnPlayersInSegmentTaskInstance", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetActionsOnPlayersInSegmentTaskInstanceResult> { Error = error };
@@ -642,12 +628,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetActionsOnPlayersInSegmentTaskInstanceResult> { Result = result };
     }
     public async Task<PlayFabResult<GetAllActionGroupsResult>> GetAllActionGroupsAsync(GetAllActionGroupsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetAllActionGroups", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetAllActionGroups", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetAllActionGroupsResult> { Error = error };
@@ -659,12 +645,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetAllActionGroupsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetAllSegmentsResult>> GetAllSegmentsAsync(GetAllSegmentsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetAllSegments", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetAllSegments", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetAllSegmentsResult> { Error = error };
@@ -676,12 +662,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetAllSegmentsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetCatalogItemsResult>> GetCatalogItemsAsync(GetCatalogItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetCatalogItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetCatalogItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetCatalogItemsResult> { Error = error };
@@ -693,12 +679,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetCatalogItemsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetCloudScriptAzureFunctionsTaskInstanceResult>> GetCloudScriptAzureFunctionsTaskInstanceAsync(GetTaskInstanceRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetCloudScriptAzureFunctionsTaskInstance", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetCloudScriptAzureFunctionsTaskInstance", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetCloudScriptAzureFunctionsTaskInstanceResult> { Error = error };
@@ -710,12 +696,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetCloudScriptAzureFunctionsTaskInstanceResult> { Result = result };
     }
     public async Task<PlayFabResult<GetCloudScriptRevisionResult>> GetCloudScriptRevisionAsync(GetCloudScriptRevisionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetCloudScriptRevision", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetCloudScriptRevision", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetCloudScriptRevisionResult> { Error = error };
@@ -727,12 +713,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetCloudScriptRevisionResult> { Result = result };
     }
     public async Task<PlayFabResult<GetCloudScriptTaskInstanceResult>> GetCloudScriptTaskInstanceAsync(GetTaskInstanceRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetCloudScriptTaskInstance", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetCloudScriptTaskInstance", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetCloudScriptTaskInstanceResult> { Error = error };
@@ -744,12 +730,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetCloudScriptTaskInstanceResult> { Result = result };
     }
     public async Task<PlayFabResult<GetCloudScriptVersionsResult>> GetCloudScriptVersionsAsync(GetCloudScriptVersionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetCloudScriptVersions", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetCloudScriptVersions", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetCloudScriptVersionsResult> { Error = error };
@@ -761,12 +747,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetCloudScriptVersionsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetContentListResult>> GetContentListAsync(GetContentListRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetContentList", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetContentList", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetContentListResult> { Error = error };
@@ -778,12 +764,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetContentListResult> { Result = result };
     }
     public async Task<PlayFabResult<GetContentUploadUrlResult>> GetContentUploadUrlAsync(GetContentUploadUrlRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetContentUploadUrl", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetContentUploadUrl", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetContentUploadUrlResult> { Error = error };
@@ -795,12 +781,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetContentUploadUrlResult> { Result = result };
     }
     public async Task<PlayFabResult<GetDataReportResult>> GetDataReportAsync(GetDataReportRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetDataReport", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetDataReport", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetDataReportResult> { Error = error };
@@ -812,12 +798,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetDataReportResult> { Result = result };
     }
     public async Task<PlayFabResult<GetEventSinksResult>> GetEventSinksAsync(GetEventSinksRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetEventSinks", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetEventSinks", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetEventSinksResult> { Error = error };
@@ -829,12 +815,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetEventSinksResult> { Result = result };
     }
     public async Task<PlayFabResult<GetMatchmakerGameInfoResult>> GetMatchmakerGameInfoAsync(GetMatchmakerGameInfoRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetMatchmakerGameInfo", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetMatchmakerGameInfo", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetMatchmakerGameInfoResult> { Error = error };
@@ -846,12 +832,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetMatchmakerGameInfoResult> { Result = result };
     }
     public async Task<PlayFabResult<GetMatchmakerGameModesResult>> GetMatchmakerGameModesAsync(GetMatchmakerGameModesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetMatchmakerGameModes", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetMatchmakerGameModes", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetMatchmakerGameModesResult> { Error = error };
@@ -863,12 +849,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetMatchmakerGameModesResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayedTitleListResult>> GetPlayedTitleListAsync(GetPlayedTitleListRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayedTitleList", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayedTitleList", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayedTitleListResult> { Error = error };
@@ -880,12 +866,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayedTitleListResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayerCustomPropertyResult>> GetPlayerCustomPropertyAsync(GetPlayerCustomPropertyRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerCustomProperty", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerCustomProperty", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayerCustomPropertyResult> { Error = error };
@@ -897,12 +883,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayerCustomPropertyResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayerIdFromAuthTokenResult>> GetPlayerIdFromAuthTokenAsync(GetPlayerIdFromAuthTokenRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerIdFromAuthToken", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerIdFromAuthToken", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayerIdFromAuthTokenResult> { Error = error };
@@ -914,12 +900,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayerIdFromAuthTokenResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayerProfileResult>> GetPlayerProfileAsync(GetPlayerProfileRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerProfile", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerProfile", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayerProfileResult> { Error = error };
@@ -931,12 +917,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayerProfileResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayerSegmentsResult>> GetPlayerSegmentsAsync(GetPlayersSegmentsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerSegments", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerSegments", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayerSegmentsResult> { Error = error };
@@ -948,12 +934,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayerSegmentsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayerSharedSecretsResult>> GetPlayerSharedSecretsAsync(GetPlayerSharedSecretsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerSharedSecrets", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerSharedSecrets", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayerSharedSecretsResult> { Error = error };
@@ -965,12 +951,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayerSharedSecretsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayersInSegmentResult>> GetPlayersInSegmentAsync(GetPlayersInSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayersInSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayersInSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayersInSegmentResult> { Error = error };
@@ -982,12 +968,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayersInSegmentResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayerStatisticDefinitionsResult>> GetPlayerStatisticDefinitionsAsync(GetPlayerStatisticDefinitionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerStatisticDefinitions", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerStatisticDefinitions", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayerStatisticDefinitionsResult> { Error = error };
@@ -999,12 +985,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayerStatisticDefinitionsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayerStatisticVersionsResult>> GetPlayerStatisticVersionsAsync(GetPlayerStatisticVersionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerStatisticVersions", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerStatisticVersions", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayerStatisticVersionsResult> { Error = error };
@@ -1016,12 +1002,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayerStatisticVersionsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayerTagsResult>> GetPlayerTagsAsync(GetPlayerTagsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerTags", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayerTags", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayerTagsResult> { Error = error };
@@ -1033,12 +1019,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayerTagsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPolicyResponse>> GetPolicyAsync(GetPolicyRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPolicy", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPolicy", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPolicyResponse> { Error = error };
@@ -1050,12 +1036,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPolicyResponse> { Result = result };
     }
     public async Task<PlayFabResult<GetPublisherDataResult>> GetPublisherDataAsync(GetPublisherDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPublisherData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetPublisherData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPublisherDataResult> { Error = error };
@@ -1067,12 +1053,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPublisherDataResult> { Result = result };
     }
     public async Task<PlayFabResult<GetRandomResultTablesResult>> GetRandomResultTablesAsync(GetRandomResultTablesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetRandomResultTables", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetRandomResultTables", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetRandomResultTablesResult> { Error = error };
@@ -1084,12 +1070,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetRandomResultTablesResult> { Result = result };
     }
     public async Task<PlayFabResult<GetPlayersInSegmentExportResponse>> GetSegmentExportAsync(GetPlayersInSegmentExportRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetSegmentExport", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetSegmentExport", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetPlayersInSegmentExportResponse> { Error = error };
@@ -1101,12 +1087,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetPlayersInSegmentExportResponse> { Result = result };
     }
     public async Task<PlayFabResult<GetSegmentsResponse>> GetSegmentsAsync(GetSegmentsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetSegments", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetSegments", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetSegmentsResponse> { Error = error };
@@ -1118,12 +1104,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetSegmentsResponse> { Result = result };
     }
     public async Task<PlayFabResult<GetServerBuildInfoResult>> GetServerBuildInfoAsync(GetServerBuildInfoRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetServerBuildInfo", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetServerBuildInfo", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetServerBuildInfoResult> { Error = error };
@@ -1135,12 +1121,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetServerBuildInfoResult> { Result = result };
     }
     public async Task<PlayFabResult<GetStoreItemsResult>> GetStoreItemsAsync(GetStoreItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetStoreItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetStoreItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetStoreItemsResult> { Error = error };
@@ -1152,12 +1138,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetStoreItemsResult> { Result = result };
     }
     public async Task<PlayFabResult<GetTaskInstancesResult>> GetTaskInstancesAsync(GetTaskInstancesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetTaskInstances", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetTaskInstances", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetTaskInstancesResult> { Error = error };
@@ -1169,12 +1155,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetTaskInstancesResult> { Result = result };
     }
     public async Task<PlayFabResult<GetTasksResult>> GetTasksAsync(GetTasksRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetTasks", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetTasks", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetTasksResult> { Error = error };
@@ -1186,12 +1172,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetTasksResult> { Result = result };
     }
     public async Task<PlayFabResult<GetTitleDataResult>> GetTitleDataAsync(GetTitleDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetTitleData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetTitleData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetTitleDataResult> { Error = error };
@@ -1203,12 +1189,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetTitleDataResult> { Result = result };
     }
     public async Task<PlayFabResult<GetTitleDataResult>> GetTitleInternalDataAsync(GetTitleDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetTitleInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetTitleInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetTitleDataResult> { Error = error };
@@ -1220,12 +1206,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetTitleDataResult> { Result = result };
     }
     public async Task<PlayFabResult<LookupUserAccountInfoResult>> GetUserAccountInfoAsync(LookupUserAccountInfoRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetUserAccountInfo", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetUserAccountInfo", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<LookupUserAccountInfoResult> { Error = error };
@@ -1237,12 +1223,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<LookupUserAccountInfoResult> { Result = result };
     }
     public async Task<PlayFabResult<GetUserBansResult>> GetUserBansAsync(GetUserBansRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetUserBans", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetUserBans", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetUserBansResult> { Error = error };
@@ -1254,12 +1240,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetUserBansResult> { Result = result };
     }
     public async Task<PlayFabResult<GetUserDataResult>> GetUserDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetUserData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetUserData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetUserDataResult> { Error = error };
@@ -1271,12 +1257,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<GetUserDataResult>> GetUserInternalDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetUserInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetUserInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetUserDataResult> { Error = error };
@@ -1288,12 +1274,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<GetUserInventoryResult>> GetUserInventoryAsync(GetUserInventoryRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetUserInventory", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetUserInventory", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetUserInventoryResult> { Error = error };
@@ -1305,12 +1291,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetUserInventoryResult> { Result = result };
     }
     public async Task<PlayFabResult<GetUserDataResult>> GetUserPublisherDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetUserPublisherData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetUserPublisherData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetUserDataResult> { Error = error };
@@ -1322,12 +1308,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<GetUserDataResult>> GetUserPublisherInternalDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetUserPublisherInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetUserPublisherInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetUserDataResult> { Error = error };
@@ -1339,12 +1325,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<GetUserDataResult>> GetUserPublisherReadOnlyDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetUserPublisherReadOnlyData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetUserPublisherReadOnlyData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetUserDataResult> { Error = error };
@@ -1356,12 +1342,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<GetUserDataResult>> GetUserReadOnlyDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GetUserReadOnlyData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GetUserReadOnlyData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GetUserDataResult> { Error = error };
@@ -1373,12 +1359,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<GrantItemsToUsersResult>> GrantItemsToUsersAsync(GrantItemsToUsersRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/GrantItemsToUsers", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/GrantItemsToUsers", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<GrantItemsToUsersResult> { Error = error };
@@ -1390,12 +1376,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<GrantItemsToUsersResult> { Result = result };
     }
     public async Task<PlayFabResult<IncrementLimitedEditionItemAvailabilityResult>> IncrementLimitedEditionItemAvailabilityAsync(IncrementLimitedEditionItemAvailabilityRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/IncrementLimitedEditionItemAvailability", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/IncrementLimitedEditionItemAvailability", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<IncrementLimitedEditionItemAvailabilityResult> { Error = error };
@@ -1407,12 +1393,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<IncrementLimitedEditionItemAvailabilityResult> { Result = result };
     }
     public async Task<PlayFabResult<IncrementPlayerStatisticVersionResult>> IncrementPlayerStatisticVersionAsync(IncrementPlayerStatisticVersionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/IncrementPlayerStatisticVersion", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/IncrementPlayerStatisticVersion", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<IncrementPlayerStatisticVersionResult> { Error = error };
@@ -1424,12 +1410,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<IncrementPlayerStatisticVersionResult> { Result = result };
     }
     public async Task<PlayFabResult<ListOpenIdConnectionResponse>> ListOpenIdConnectionAsync(ListOpenIdConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ListOpenIdConnection", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ListOpenIdConnection", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ListOpenIdConnectionResponse> { Error = error };
@@ -1441,12 +1427,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ListOpenIdConnectionResponse> { Result = result };
     }
     public async Task<PlayFabResult<ListPlayerCustomPropertiesResult>> ListPlayerCustomPropertiesAsync(ListPlayerCustomPropertiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ListPlayerCustomProperties", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ListPlayerCustomProperties", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ListPlayerCustomPropertiesResult> { Error = error };
@@ -1458,12 +1444,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ListPlayerCustomPropertiesResult> { Result = result };
     }
     public async Task<PlayFabResult<ListBuildsResult>> ListServerBuildsAsync(ListBuildsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ListServerBuilds", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ListServerBuilds", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ListBuildsResult> { Error = error };
@@ -1475,12 +1461,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ListBuildsResult> { Result = result };
     }
     public async Task<PlayFabResult<ListVirtualCurrencyTypesResult>> ListVirtualCurrencyTypesAsync(ListVirtualCurrencyTypesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ListVirtualCurrencyTypes", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ListVirtualCurrencyTypes", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ListVirtualCurrencyTypesResult> { Error = error };
@@ -1492,12 +1478,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ListVirtualCurrencyTypesResult> { Result = result };
     }
     public async Task<PlayFabResult<ModifyMatchmakerGameModesResult>> ModifyMatchmakerGameModesAsync(ModifyMatchmakerGameModesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ModifyMatchmakerGameModes", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ModifyMatchmakerGameModes", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ModifyMatchmakerGameModesResult> { Error = error };
@@ -1509,12 +1495,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ModifyMatchmakerGameModesResult> { Result = result };
     }
     public async Task<PlayFabResult<ModifyServerBuildResult>> ModifyServerBuildAsync(ModifyServerBuildRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ModifyServerBuild", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ModifyServerBuild", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ModifyServerBuildResult> { Error = error };
@@ -1526,12 +1512,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ModifyServerBuildResult> { Result = result };
     }
     public async Task<PlayFabResult<RefundPurchaseResponse>> RefundPurchaseAsync(RefundPurchaseRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/RefundPurchase", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/RefundPurchase", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<RefundPurchaseResponse> { Error = error };
@@ -1543,12 +1529,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<RefundPurchaseResponse> { Result = result };
     }
     public async Task<PlayFabResult<RemovePlayerTagResult>> RemovePlayerTagAsync(RemovePlayerTagRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/RemovePlayerTag", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/RemovePlayerTag", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<RemovePlayerTagResult> { Error = error };
@@ -1560,12 +1546,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<RemovePlayerTagResult> { Result = result };
     }
     public async Task<PlayFabResult<RemoveServerBuildResult>> RemoveServerBuildAsync(RemoveServerBuildRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/RemoveServerBuild", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/RemoveServerBuild", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<RemoveServerBuildResult> { Error = error };
@@ -1577,12 +1563,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<RemoveServerBuildResult> { Result = result };
     }
     public async Task<PlayFabResult<BlankResult>> RemoveVirtualCurrencyTypesAsync(RemoveVirtualCurrencyTypesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/RemoveVirtualCurrencyTypes", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/RemoveVirtualCurrencyTypes", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<BlankResult> { Error = error };
@@ -1594,12 +1580,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<BlankResult> { Result = result };
     }
     public async Task<PlayFabResult<ResetCharacterStatisticsResult>> ResetCharacterStatisticsAsync(ResetCharacterStatisticsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ResetCharacterStatistics", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ResetCharacterStatistics", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ResetCharacterStatisticsResult> { Error = error };
@@ -1611,12 +1597,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ResetCharacterStatisticsResult> { Result = result };
     }
     public async Task<PlayFabResult<ResetPasswordResult>> ResetPasswordAsync(ResetPasswordRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ResetPassword", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ResetPassword", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ResetPasswordResult> { Error = error };
@@ -1628,12 +1614,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ResetPasswordResult> { Result = result };
     }
     public async Task<PlayFabResult<BlankResult>> ResetUsersAsync(ResetUsersRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ResetUsers", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ResetUsers", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<BlankResult> { Error = error };
@@ -1645,12 +1631,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<BlankResult> { Result = result };
     }
     public async Task<PlayFabResult<ResetUserStatisticsResult>> ResetUserStatisticsAsync(ResetUserStatisticsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ResetUserStatistics", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ResetUserStatistics", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ResetUserStatisticsResult> { Error = error };
@@ -1662,12 +1648,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ResetUserStatisticsResult> { Result = result };
     }
     public async Task<PlayFabResult<ResolvePurchaseDisputeResponse>> ResolvePurchaseDisputeAsync(ResolvePurchaseDisputeRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/ResolvePurchaseDispute", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/ResolvePurchaseDispute", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ResolvePurchaseDisputeResponse> { Error = error };
@@ -1679,12 +1665,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ResolvePurchaseDisputeResponse> { Result = result };
     }
     public async Task<PlayFabResult<RevokeAllBansForUserResult>> RevokeAllBansForUserAsync(RevokeAllBansForUserRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/RevokeAllBansForUser", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/RevokeAllBansForUser", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<RevokeAllBansForUserResult> { Error = error };
@@ -1696,12 +1682,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<RevokeAllBansForUserResult> { Result = result };
     }
     public async Task<PlayFabResult<RevokeBansResult>> RevokeBansAsync(RevokeBansRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/RevokeBans", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/RevokeBans", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<RevokeBansResult> { Error = error };
@@ -1713,12 +1699,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<RevokeBansResult> { Result = result };
     }
     public async Task<PlayFabResult<RevokeInventoryResult>> RevokeInventoryItemAsync(RevokeInventoryItemRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/RevokeInventoryItem", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/RevokeInventoryItem", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<RevokeInventoryResult> { Error = error };
@@ -1730,12 +1716,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<RevokeInventoryResult> { Result = result };
     }
     public async Task<PlayFabResult<RevokeInventoryItemsResult>> RevokeInventoryItemsAsync(RevokeInventoryItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/RevokeInventoryItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/RevokeInventoryItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<RevokeInventoryItemsResult> { Error = error };
@@ -1747,12 +1733,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<RevokeInventoryItemsResult> { Result = result };
     }
     public async Task<PlayFabResult<RunTaskResult>> RunTaskAsync(RunTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/RunTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/RunTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<RunTaskResult> { Error = error };
@@ -1764,12 +1750,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<RunTaskResult> { Result = result };
     }
     public async Task<PlayFabResult<SendAccountRecoveryEmailResult>> SendAccountRecoveryEmailAsync(SendAccountRecoveryEmailRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SendAccountRecoveryEmail", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SendAccountRecoveryEmail", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SendAccountRecoveryEmailResult> { Error = error };
@@ -1781,12 +1767,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<SendAccountRecoveryEmailResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateCatalogItemsResult>> SetCatalogItemsAsync(UpdateCatalogItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetCatalogItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetCatalogItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateCatalogItemsResult> { Error = error };
@@ -1798,12 +1784,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateCatalogItemsResult> { Result = result };
     }
     public async Task<PlayFabResult<SetEventSinkResult>> SetEventSinkAsync(SetEventSinkRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetEventSink", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetEventSink", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetEventSinkResult> { Error = error };
@@ -1815,12 +1801,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<SetEventSinkResult> { Result = result };
     }
     public async Task<PlayFabResult<SetMembershipOverrideResult>> SetMembershipOverrideAsync(SetMembershipOverrideRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetMembershipOverride", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetMembershipOverride", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetMembershipOverrideResult> { Error = error };
@@ -1832,12 +1818,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<SetMembershipOverrideResult> { Result = result };
     }
     public async Task<PlayFabResult<SetPlayerSecretResult>> SetPlayerSecretAsync(SetPlayerSecretRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetPlayerSecret", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetPlayerSecret", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetPlayerSecretResult> { Error = error };
@@ -1849,12 +1835,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<SetPlayerSecretResult> { Result = result };
     }
     public async Task<PlayFabResult<SetPublishedRevisionResult>> SetPublishedRevisionAsync(SetPublishedRevisionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetPublishedRevision", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetPublishedRevision", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetPublishedRevisionResult> { Error = error };
@@ -1866,12 +1852,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<SetPublishedRevisionResult> { Result = result };
     }
     public async Task<PlayFabResult<SetPublisherDataResult>> SetPublisherDataAsync(SetPublisherDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetPublisherData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetPublisherData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetPublisherDataResult> { Error = error };
@@ -1883,12 +1869,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<SetPublisherDataResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateStoreItemsResult>> SetStoreItemsAsync(UpdateStoreItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetStoreItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetStoreItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateStoreItemsResult> { Error = error };
@@ -1900,12 +1886,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateStoreItemsResult> { Result = result };
     }
     public async Task<PlayFabResult<SetTitleDataResult>> SetTitleDataAsync(SetTitleDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetTitleData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetTitleData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetTitleDataResult> { Error = error };
@@ -1917,12 +1903,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<SetTitleDataResult> { Result = result };
     }
     public async Task<PlayFabResult<SetTitleDataAndOverridesResult>> SetTitleDataAndOverridesAsync(SetTitleDataAndOverridesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetTitleDataAndOverrides", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetTitleDataAndOverrides", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetTitleDataAndOverridesResult> { Error = error };
@@ -1934,12 +1920,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<SetTitleDataAndOverridesResult> { Result = result };
     }
     public async Task<PlayFabResult<SetTitleDataResult>> SetTitleInternalDataAsync(SetTitleDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetTitleInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetTitleInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetTitleDataResult> { Error = error };
@@ -1951,12 +1937,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<SetTitleDataResult> { Result = result };
     }
     public async Task<PlayFabResult<SetupPushNotificationResult>> SetupPushNotificationAsync(SetupPushNotificationRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SetupPushNotification", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SetupPushNotification", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<SetupPushNotificationResult> { Error = error };
@@ -1968,12 +1954,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<SetupPushNotificationResult> { Result = result };
     }
     public async Task<PlayFabResult<ModifyUserVirtualCurrencyResult>> SubtractUserVirtualCurrencyAsync(SubtractUserVirtualCurrencyRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/SubtractUserVirtualCurrency", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/SubtractUserVirtualCurrency", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ModifyUserVirtualCurrencyResult> { Error = error };
@@ -1985,12 +1971,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<ModifyUserVirtualCurrencyResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateBansResult>> UpdateBansAsync(UpdateBansRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateBans", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateBans", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateBansResult> { Error = error };
@@ -2002,12 +1988,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateBansResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateCatalogItemsResult>> UpdateCatalogItemsAsync(UpdateCatalogItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateCatalogItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateCatalogItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateCatalogItemsResult> { Error = error };
@@ -2019,12 +2005,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateCatalogItemsResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateCloudScriptResult>> UpdateCloudScriptAsync(UpdateCloudScriptRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateCloudScript", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateCloudScript", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateCloudScriptResult> { Error = error };
@@ -2036,12 +2022,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateCloudScriptResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> UpdateOpenIdConnectionAsync(UpdateOpenIdConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateOpenIdConnection", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateOpenIdConnection", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -2053,12 +2039,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<UpdatePlayerCustomPropertiesResult>> UpdatePlayerCustomPropertiesAsync(UpdatePlayerCustomPropertiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdatePlayerCustomProperties", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdatePlayerCustomProperties", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdatePlayerCustomPropertiesResult> { Error = error };
@@ -2070,12 +2056,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdatePlayerCustomPropertiesResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdatePlayerSharedSecretResult>> UpdatePlayerSharedSecretAsync(UpdatePlayerSharedSecretRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdatePlayerSharedSecret", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdatePlayerSharedSecret", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdatePlayerSharedSecretResult> { Error = error };
@@ -2087,12 +2073,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdatePlayerSharedSecretResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdatePlayerStatisticDefinitionResult>> UpdatePlayerStatisticDefinitionAsync(UpdatePlayerStatisticDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdatePlayerStatisticDefinition", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdatePlayerStatisticDefinition", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdatePlayerStatisticDefinitionResult> { Error = error };
@@ -2104,12 +2090,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdatePlayerStatisticDefinitionResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdatePolicyResponse>> UpdatePolicyAsync(UpdatePolicyRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdatePolicy", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdatePolicy", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdatePolicyResponse> { Error = error };
@@ -2121,12 +2107,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdatePolicyResponse> { Result = result };
     }
     public async Task<PlayFabResult<UpdateRandomResultTablesResult>> UpdateRandomResultTablesAsync(UpdateRandomResultTablesRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateRandomResultTables", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateRandomResultTables", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateRandomResultTablesResult> { Error = error };
@@ -2138,12 +2124,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateRandomResultTablesResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateSegmentResponse>> UpdateSegmentAsync(UpdateSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateSegmentResponse> { Error = error };
@@ -2155,12 +2141,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateSegmentResponse> { Result = result };
     }
     public async Task<PlayFabResult<UpdateStoreItemsResult>> UpdateStoreItemsAsync(UpdateStoreItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateStoreItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateStoreItems", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateStoreItemsResult> { Error = error };
@@ -2172,12 +2158,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateStoreItemsResult> { Result = result };
     }
     public async Task<PlayFabResult<EmptyResponse>> UpdateTaskAsync(UpdateTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateTask", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<EmptyResponse> { Error = error };
@@ -2189,12 +2175,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserDataAsync(UpdateUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateUserDataResult> { Error = error };
@@ -2206,12 +2192,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserInternalDataAsync(UpdateUserInternalDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateUserDataResult> { Error = error };
@@ -2223,12 +2209,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserPublisherDataAsync(UpdateUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserPublisherData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserPublisherData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateUserDataResult> { Error = error };
@@ -2240,12 +2226,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserPublisherInternalDataAsync(UpdateUserInternalDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserPublisherInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserPublisherInternalData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateUserDataResult> { Error = error };
@@ -2257,12 +2243,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserPublisherReadOnlyDataAsync(UpdateUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserPublisherReadOnlyData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserPublisherReadOnlyData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateUserDataResult> { Error = error };
@@ -2274,12 +2260,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserReadOnlyDataAsync(UpdateUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserReadOnlyData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserReadOnlyData", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateUserDataResult> { Error = error };
@@ -2291,12 +2277,12 @@ public class PlayFabAdminInstanceApi : IPlayFabAdminApi {
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
     public async Task<PlayFabResult<UpdateUserTitleDisplayNameResult>> UpdateUserTitleDisplayNameAsync(UpdateUserTitleDisplayNameRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authenticationContext;
+        var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
 
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
-        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserTitleDisplayName", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings);
+        var httpResult = await PlayFabHttp.Post("/Admin/UpdateUserTitleDisplayName", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<UpdateUserTitleDisplayNameResult> { Error = error };
