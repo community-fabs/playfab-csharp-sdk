@@ -336,11 +336,11 @@ public class LegacyApiCall
                     if (i == requestLines.Length - 1)
                     {
                         // add closing parentheses to the last line
-                        summary.AppendLine($"{prefix}{requestLines[i]});");
+                        summary.AppendLine($"{prefix}{requestLines[i].Replace("<", "&lt;").Replace(">", "&gt;")});");
                         break;
                     }
 
-                    summary.AppendLine($"{prefix}{requestLines[i]}");
+                    summary.AppendLine($"{prefix}{requestLines[i].Replace("<", "&lt;").Replace(">", "&gt;")}");
                 }
             }
             summary.AppendLine($"{prefix}</code></example>");
