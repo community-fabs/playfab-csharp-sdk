@@ -1,7 +1,21 @@
 ﻿using CommunityFabs.NET.Generator;
 using CommunityFabs.NET.Generator.Templates.Models;
 
-var rootOutPath = Path.Combine(Utils.GetProjectRoot(), "..");
+string? rootOutPath = null;
+foreach (var arg in args)
+{
+    if (arg.StartsWith("--out="))
+    {
+        rootOutPath = arg.Substring("--out=".Length);
+        break;
+    }
+}
+
+if (string.IsNullOrEmpty(rootOutPath))
+{
+    rootOutPath = Path.Combine(Utils.GetProjectRoot(), "..");
+}
+
 var commonOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk.Common");
 var instanceOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk.Instance");
 

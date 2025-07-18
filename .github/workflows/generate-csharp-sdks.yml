@@ -1,0 +1,75 @@
+name: Generate SDKs
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_reason:
+        description: "Commit Reason"
+        required: false
+
+env:
+  COMMIT_REASON: ${{ github.event.inputs.commit_reason && format('({0})', github.event.inputs.commit_reason) || '' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🛠 Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - name: Generate SDK
+        run: dotnet run --project ./CommunityFabs.NET.Generator/CommunityFabs.NET.Generator.csproj --out=.
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+              echo "changes=true" >> "$GITHUB_OUTPUT"; 
+          fi
+
+      - name: 🧾 Create local nuget.config
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          echo '<?xml version="1.0" encoding="utf-8"?>
+          <configuration>
+            <packageSources>
+              <clear />
+              <add key="local" value="nupkgs" />
+              <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+            </packageSources>
+          </configuration>' > nuget.config
+          
+
+      - name: ✅ Validate CommunityFabs.NET.Sdk.Common
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          dotnet pack ./CommunityFabs.NET.Sdk.Common/CommunityFabs.NET.Sdk.Common.csproj -c Release -o ./nupkgs
+
+      - name: ✅ Validate CommunityFabs.NET.Sdk.Instance
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          dotnet restore ./CommunityFabs.NET.Sdk.Instance/CommunityFabs.NET.Sdk.Instance.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Sdk.Instance/CommunityFabs.NET.Sdk.Instance.csproj -c Release -o ./nupkgs
+
+      - name: ✅ Validate CommunityFabs.NET.Sdk.Functions
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          dotnet restore ./CommunityFabs.NET.Sdk.Functions/CommunityFabs.NET.Sdk.Functions.csproj --configfile nuget.config
+          dotnet pack ./CommunityFabs.NET.Sdk.Functions/CommunityFabs.NET.Sdk.Functions.csproj -c Release -o ./nupkgs
+
+      - name: Commit and push SDK changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "action@github.com"
+          git add .
+          git commit -m "chore: generate SDK ${COMMIT_REASON}"
+          git push origin HEAD
