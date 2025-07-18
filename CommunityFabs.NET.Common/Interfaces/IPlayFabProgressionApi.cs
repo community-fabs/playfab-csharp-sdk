@@ -18,7 +18,16 @@ public interface IPlayFabProgressionApi {
     ///       "SortDirection": "Descending"
     ///     }
     ///   ],
-    ///   "SizeLimit": 1000
+    ///   "SizeLimit": 1000,
+    ///   "EventEmissionConfig": {
+    ///     "VersionEndConfig": {
+    ///       "EventType": "None"
+    ///     },
+    ///     "EntityRankOnVersionEndConfig": {
+    ///       "EventType": "None",
+    ///       "RankLimit": 1
+    ///     }
+    ///   }
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/createleaderboarddefinition">Microsoft Documentation</see>
@@ -275,7 +284,16 @@ public interface IPlayFabProgressionApi {
     ///     "ResetInterval": "Manual",
     ///     "MaxQueryableVersions": 1
     ///   },
-    ///   "SizeLimit": 1000
+    ///   "SizeLimit": 1000,
+    ///   "EventEmissionConfig": {
+    ///     "VersionEndConfig": {
+    ///       "EventType": "None"
+    ///     },
+    ///     "EntityRankOnVersionEndConfig": {
+    ///       "EventType": "None",
+    ///       "RankLimit": 1
+    ///     }
+    ///   }
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/updateleaderboarddefinition">Microsoft Documentation</see>

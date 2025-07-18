@@ -1227,6 +1227,10 @@ public class ExportVersionedCatalogRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
+    /// Whether or not the export should read from BlobCatalog.
+    /// </summary>
+    public bool ReadFromBlobCatalog { get; set; }
+    /// <summary>
     /// Version of the catalog.
     /// </summary>
     public string? Version { get; set; }
@@ -3055,6 +3059,10 @@ public class Transaction {
     /// The country of the caller of the operation.
     /// </summary>
     public CountryCode? CountryCode { get; set; }
+    /// <summary>
+    /// The custom tags associated with this transactions.
+    /// </summary>
+    public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
     /// The type of item that the the operation occurred on.
     /// </summary>

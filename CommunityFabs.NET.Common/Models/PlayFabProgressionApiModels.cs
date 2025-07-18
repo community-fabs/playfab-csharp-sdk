@@ -28,7 +28,7 @@ public class CreateLeaderboardDefinitionRequest : PlayFabRequestCommon {
     /// <summary>
     /// The version reset configuration for the leaderboard definition.
     /// </summary>
-    public required VersionConfiguration VersionConfiguration { get; set; }
+    public VersionConfiguration? VersionConfiguration { get; set; }
 }
 
 public class CreateStatisticDefinitionRequest : PlayFabRequestCommon {

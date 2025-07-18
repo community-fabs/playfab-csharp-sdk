@@ -3280,8 +3280,8 @@ public class GetPlayFabIDsFromBattleNetAccountIdsResult : PlayFabResultCommon {
 
 public class GetPlayFabIDsFromFacebookIDsRequest : PlayFabRequestCommon {
     /// <summary>
-    /// Array of unique Facebook identifiers for which the title needs to get PlayFab identifiers. The array cannot exceed
-    /// 2,000 in length.
+    /// Array of unique Facebook identifiers for which the title needs to get PlayFab identifiers. The array cannot exceed 25
+    /// in length.
     /// </summary>
     public required List<string> FacebookIDs { get; set; }
 }
@@ -3335,7 +3335,7 @@ public class GetPlayFabIDsFromGenericIDsResult : PlayFabResultCommon {
 public class GetPlayFabIDsFromNintendoServiceAccountIdsRequest : PlayFabRequestCommon {
     /// <summary>
     /// Array of unique Nintendo Switch Account identifiers for which the title needs to get PlayFab identifiers. The array
-    /// cannot exceed 2,000 in length.
+    /// cannot exceed 25 in length.
     /// </summary>
     public required List<string> NintendoAccountIds { get; set; }
 }
@@ -3353,7 +3353,7 @@ public class GetPlayFabIDsFromNintendoServiceAccountIdsResult : PlayFabResultCom
 public class GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest : PlayFabRequestCommon {
     /// <summary>
     /// Array of unique Nintendo Switch Device identifiers for which the title needs to get PlayFab identifiers. The array
-    /// cannot exceed 2,000 in length.
+    /// cannot exceed 25 in length.
     /// </summary>
     public required List<string> NintendoSwitchDeviceIds { get; set; }
 }
@@ -3375,7 +3375,7 @@ public class GetPlayFabIDsFromPSNAccountIDsRequest : PlayFabRequestCommon {
     public int? IssuerId { get; set; }
     /// <summary>
     /// Array of unique PlayStation :tm: Network identifiers for which the title needs to get PlayFab identifiers. The array
-    /// cannot exceed 2,000 in length.
+    /// cannot exceed 25 in length.
     /// </summary>
     public required List<string> PSNAccountIDs { get; set; }
 }
@@ -3397,7 +3397,7 @@ public class GetPlayFabIDsFromPSNOnlineIDsRequest : PlayFabRequestCommon {
     public int? IssuerId { get; set; }
     /// <summary>
     /// Array of unique PlayStation :tm: Network identifiers for which the title needs to get PlayFab identifiers. The array
-    /// cannot exceed 2,000 in length.
+    /// cannot exceed 25 in length.
     /// </summary>
     public required List<string> PSNOnlineIDs { get; set; }
 }
@@ -3419,7 +3419,7 @@ public class GetPlayFabIDsFromSteamIDsRequest : PlayFabRequestCommon {
     public List<ulong>? SteamIDs { get; set; }
     /// <summary>
     /// Array of unique Steam identifiers (Steam profile IDs) for which the title needs to get PlayFab identifiers. The array
-    /// cannot exceed 2,000 in length.
+    /// cannot exceed 25 in length.
     /// </summary>
     public List<string>? SteamStringIDs { get; set; }
 }
@@ -3436,8 +3436,8 @@ public class GetPlayFabIDsFromSteamIDsResult : PlayFabResultCommon {
 
 public class GetPlayFabIDsFromSteamNamesRequest : PlayFabRequestCommon {
     /// <summary>
-    /// Array of unique Steam identifiers for which the title needs to get PlayFab identifiers. The array cannot exceed 2,000
-    /// in length.
+    /// Array of unique Steam identifiers for which the title needs to get PlayFab identifiers. The array cannot exceed 25 in
+    /// length.
     /// </summary>
     public required List<string> SteamNames { get; set; }
 }
@@ -3455,7 +3455,7 @@ public class GetPlayFabIDsFromSteamNamesResult : PlayFabResultCommon {
 public class GetPlayFabIDsFromTwitchIDsRequest : PlayFabRequestCommon {
     /// <summary>
     /// Array of unique Twitch identifiers (Twitch's _id) for which the title needs to get PlayFab identifiers. The array
-    /// cannot exceed 2,000 in length.
+    /// cannot exceed 25 in length.
     /// </summary>
     public required List<string> TwitchIds { get; set; }
 }
@@ -3477,7 +3477,7 @@ public class GetPlayFabIDsFromXboxLiveIDsRequest : PlayFabRequestCommon {
     public string? Sandbox { get; set; }
     /// <summary>
     /// Array of unique Xbox Live account identifiers for which the title needs to get PlayFab identifiers. The array cannot
-    /// exceed 2,000 in length.
+    /// exceed 25 in length.
     /// </summary>
     public required List<string> XboxLiveAccountIDs { get; set; }
 }

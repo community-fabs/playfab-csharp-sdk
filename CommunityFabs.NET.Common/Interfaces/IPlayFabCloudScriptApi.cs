@@ -97,7 +97,8 @@ public interface IPlayFabCloudScriptApi {
     ///     "FunctionResult": {
     ///       "newScore": 25,
     ///       "isWinner": false
-    ///     }
+    ///     },
+    ///     "FunctionResultSize": 43
     ///   },
     ///   "Entity": {
     ///     "Id": "ID",
@@ -119,7 +120,8 @@ public interface IPlayFabCloudScriptApi {
     ///     "FunctionResult": {
     ///       "newScore": 25,
     ///       "isWinner": false
-    ///     }
+    ///     },
+    ///     "FunctionResultSize": 43
     ///   },
     ///   "Entity": {
     ///     "Id": "ID",
@@ -157,7 +159,8 @@ public interface IPlayFabCloudScriptApi {
     ///     "FunctionResult": {
     ///       "newScore": 25,
     ///       "isWinner": false
-    ///     }
+    ///     },
+    ///     "FunctionResultSize": 43
     ///   }
     /// });
     /// </code></example>
@@ -178,7 +181,8 @@ public interface IPlayFabCloudScriptApi {
     ///     "FunctionResult": {
     ///       "newScore": 25,
     ///       "isWinner": false
-    ///     }
+    ///     },
+    ///     "FunctionResultSize": 43
     ///   }
     /// });
     /// </code></example>
