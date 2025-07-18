@@ -10,9 +10,9 @@ Unofficial C# SDK for PlayFab
 
 You may install the SDK from Nuget by running:
 
-`nuget add TODO-NOT-YET-AVAILABLE`
+`nuget add CommunityFabs.NET.Sdk.Instance`
 
-or by searching for `TODO-NOT-YET-AVAILABLE` in Visual Studio
+or by searching for `CommunityFabs.NET.Sdk.Instance` in the Nuget Package Manager in Visual Studio
 
 ## 3. Features
 
