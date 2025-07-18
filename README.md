@@ -8,15 +8,16 @@ Unofficial C# SDK for PlayFab
 
 ## 2. Nuget support
 
-You may install the SDK from Nuget by running:
-
-`nuget add CommunityFabs.NET.Sdk.Instance`
-
-or by searching for `CommunityFabs.NET.Sdk.Instance` in the Nuget Package Manager in Visual Studio
+This repo contains the code for the following public packages (available via Nuget):
+- `CommunityFabs.NET.Instance` - the "Instance APIs", similar to what's provided via the official PlayFab package
+- `CommunityFabs.NET.Common` - models, interfaces, and common utilities
+- `CommunityFabs.NET.Functions` - utilities for using PlayFab in Azure Functions
 
 ## 3. Features
 
 - The SDK generator itself was rewritten using Razor views (.cshtml) for templating
+- Models now are compatible with `System.Text.Json` serialization
+- .NET 8 Isolated Workers are supported
 - Additional documentation and usage instructions are provided
 
 ## 4. Acknowledgements

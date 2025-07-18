@@ -1,26 +1,13 @@
 ﻿using CommunityFabs.NET.Generator;
 using CommunityFabs.NET.Generator.Templates.Models;
 
-string? rootOutPath = null;
-foreach (var arg in args)
-{
-    if (arg.StartsWith("--out="))
-    {
-        rootOutPath = arg.Substring("--out=".Length);
-        break;
-    }
-}
+var arguments = CommandArguments.Parse(args);
 
-if (string.IsNullOrEmpty(rootOutPath))
-{
-    rootOutPath = Path.Combine(Utils.GetProjectRoot(), "..");
-}
+var commonOutPath = Path.Combine(arguments.OutputDirectory, "CommunityFabs.NET.Common");
+var instanceOutPath = Path.Combine(arguments.OutputDirectory, "CommunityFabs.NET.Instance");
 
-var commonOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk.Common");
-var instanceOutPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Sdk.Instance");
-
-var sharedStaticPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Generator.Templates", "Static", "Shared");
-var commonStaticPath = Path.Combine(rootOutPath, "CommunityFabs.NET.Generator.Templates", "Static", "Common");
+var sharedStaticPath = Path.Combine(arguments.OutputDirectory, "CommunityFabs.NET.Generator.Templates", "Static", "Shared");
+var commonStaticPath = Path.Combine(arguments.OutputDirectory, "CommunityFabs.NET.Generator.Templates", "Static", "Common");
 
 Utils.RecursiveDelete(instanceOutPath, "*.cs");
 Utils.RecursiveDelete(commonOutPath, "*.cs");
@@ -65,5 +52,5 @@ var sdkConstants = new SdkConstants()
 var constantsFilePath = Path.Combine(commonOutPath, "Constants.cs");
 await Utils.RenderToFile(constantsFilePath, "/Views/Constants.cshtml", sdkConstants);
 
-var buildPropsFilePath = Path.Combine(rootOutPath, "Directory.Build.props");
+var buildPropsFilePath = Path.Combine(arguments.OutputDirectory, "Directory.Build.props");
 await Utils.RenderToFile(buildPropsFilePath, "/Views/Directory.Build.props.cshtml", sdkConstants);

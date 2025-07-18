@@ -8,7 +8,8 @@ Unofficial C# SDK for PlayFab
 
 ## Features
 
-- Models now are compatible with `System.Text.Json` serialization
+- Models are now compatible with `System.Text.Json` serialization
+- .NET 8 Isolated Workers are supported
 - Additional documentation and usage instructions are provided
 
 ## Acknowledgements
