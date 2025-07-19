@@ -3,20 +3,20 @@
 public sealed class PlayFabAuthenticationContext
 {
     /// <summary> Allows access to the ClientAPI </summary>
-    public string? ClientSessionTicket;
+    public string? ClientSessionTicket { get; set; }
     /// <summary> The master player entity Id </summary>
-    public string? PlayFabId;
+    public string? PlayFabId { get; set; }
     /// <summary> Allows access to most Entity APIs </summary>
-    public string? EntityToken;
+    public string? EntityToken { get; set; }
     /// <summary>
     /// Clients: The title player entity Id (unless replaced with a related entity)
     /// Servers: The title id (unless replaced with a related entity)
     /// </summary>
-    public string? EntityId;
+    public string? EntityId { get; set; }
     /// <summary>
     /// Describes the type of entity identified by EntityId
     /// </summary>
-    public string? EntityType;
+    public string? EntityType { get; set; }
 
     public PlayFabAuthenticationContext()
     {

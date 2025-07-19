@@ -28,20 +28,20 @@ public class PlayFabLoginResultCommon : PlayFabResultCommon
 
 public class PlayFabJsonError
 {
-    public required int code;
-    public string? status;
-    public string? error;
-    public int? errorCode;
-    public string? errorMessage;
-    public Dictionary<string, string[]>? errorDetails;
-    public uint? retryAfterSeconds = null;
+    public required int code { get; set; }
+    public string? status { get; set; }
+    public string? error { get; set; }
+    public int? errorCode { get; set; }
+    public string? errorMessage { get; set; }
+    public Dictionary<string, string[]>? errorDetails { get; set; }
+    public uint? retryAfterSeconds { get; set; } = null;
 }
 
 public class PlayFabJsonSuccess<TResult> where TResult : PlayFabResultCommon
 {
-    public int code;
-    public string status;
-    public TResult data;
+    public int code { get; set; }
+    public string status { get; set; }
+    public TResult data { get; set; }
 }
 
 public static class PlayFabHttp
