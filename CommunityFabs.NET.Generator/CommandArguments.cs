@@ -3,13 +3,13 @@
 internal class CommandArguments
 {
     public required string OutputDirectory { get; set; }
-    public required string BuildSuffix { get; set; }
+    public required int BuildOffset { get; set; }
 
     public static CommandArguments Parse(string[] args)
     {
         var commandArgs = new CommandArguments() {
             OutputDirectory = string.Empty,
-            BuildSuffix = string.Empty
+            BuildOffset = 0
         };
 
         foreach (var arg in args)
@@ -17,9 +17,14 @@ internal class CommandArguments
             if (arg.StartsWith("--out="))
             {
                 commandArgs.OutputDirectory = arg.Substring("--out=".Length);
-            } else if (arg.StartsWith("--suffix="))
+            } else if (arg.StartsWith("--offset="))
             {
-                commandArgs.BuildSuffix = arg.Substring("--suffix=".Length);
+                var offsetArg = arg.Substring("--offset=".Length);
+                if (string.IsNullOrEmpty(offsetArg))
+                {
+                    continue;
+                }
+                commandArgs.BuildOffset = int.Parse(offsetArg);
             }
         }
         if (string.IsNullOrEmpty(commandArgs.OutputDirectory))

@@ -10,13 +10,13 @@ on:
         type: boolean
         default: false
         description: "Dry run (Do not commit)"
-      build_suffix:
-        description: "Publish version suffix"
+      build_offset:
+        description: "Number to add to the version number"
         required: false
 
 env:
   COMMIT_REASON: ${{ github.event.inputs.commit_reason && format('({0})', github.event.inputs.commit_reason) || '' }}
-  BUILD_SUFFIX: ${{ github.event.inputs.build_suffix }}
+  BUILD_OFFSET: ${{ github.event.inputs.build_offset }}
 
 jobs:
   build:
@@ -34,7 +34,7 @@ jobs:
           dotnet-version: 8.x
 
       - name: 🚀 Run SDK Generator
-        run: dotnet run --project ./CommunityFabs.NET.Generator/CommunityFabs.NET.Generator.csproj --out=. --suffix=${BUILD_SUFFIX}
+        run: dotnet run --project ./CommunityFabs.NET.Generator/CommunityFabs.NET.Generator.csproj --out=. --offset=${BUILD_OFFSET}
 
       - name: 🕵️ Check for changes
         id: check_changes
