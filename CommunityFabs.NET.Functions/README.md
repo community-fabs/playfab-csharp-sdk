@@ -12,6 +12,45 @@ Unofficial C# SDK for PlayFab, with helpers for Azure Functions
 - .NET 8 Isolated Workers are supported
 - Additional documentation and usage instructions are provided
 
+## Sample Usage
+### .NET 8 Isolated Worker
+```csharp
+using CommunityFabs.NET.Common.Models.Admin;
+using CommunityFabs.NET.Functions;
+using CommunityFabs.NET.Instance;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
+
+namespace CommunityFabs.NET.Samples.Functions;
+
+public class SampleFunction
+{
+    [Function("SampleFunction")]
+    public async Task<GetPlayerProfileResult> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequestData req)
+    {
+        // Create a PlayFabFunctionContext from the HttpRequestData
+        var context = await PlayFabFunctionContext<dynamic>.From(req);
+
+        // Create a new instance of the Admin API client
+        var adminApi = new PlayFabAdminInstanceApi(context.ApiSettings, context.AuthenticationContext);
+
+        // Example: Update the user's display name
+        await adminApi.UpdateUserTitleDisplayNameAsync(new UpdateUserTitleDisplayNameRequest
+        {
+            PlayFabId = context.CallerEntityProfile.Lineage.MasterPlayerAccountId,
+            DisplayName = "Test1234"
+        });
+
+        return new() {
+            PlayerProfile = new() {
+                DisplayName = "Test1234",
+                AvatarUrl = "https://example.com/avatar.png" // Replace with a valid image URL
+            }
+        };
+    }
+}
+```
+
 ## Acknowledgements
 
 - The PlayFab team
