@@ -334,7 +334,7 @@ public class LegacyApiCall
             }
             else
             {
-                summary.AppendLine($"{prefix}var response = await {apiName}Api.{Name}Async({requestLines[0]});");
+                summary.AppendLine($"{prefix}var response = await {apiName}Api.{Name}Async({requestLines[0]}");
                 for (int i = 1; i < requestLines.Length; i++)
                 {
                     var requestLine = requestLines[i].TrimEnd()
