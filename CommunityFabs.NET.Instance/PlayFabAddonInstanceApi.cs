@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the Addon API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdateAppleResponse>> CreateOrUpdateAppleAsync(CreateOrUpdateAppleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,6 +50,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateOrUpdateAppleResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdateFacebookResponse>> CreateOrUpdateFacebookAsync(CreateOrUpdateFacebookRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -66,6 +69,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateOrUpdateFacebookResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdateFacebookInstantGamesResponse>> CreateOrUpdateFacebookInstantGamesAsync(CreateOrUpdateFacebookInstantGamesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -83,6 +88,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateOrUpdateFacebookInstantGamesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdateGoogleResponse>> CreateOrUpdateGoogleAsync(CreateOrUpdateGoogleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -100,6 +107,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateOrUpdateGoogleResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdateKongregateResponse>> CreateOrUpdateKongregateAsync(CreateOrUpdateKongregateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -117,6 +126,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateOrUpdateKongregateResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdateNintendoResponse>> CreateOrUpdateNintendoAsync(CreateOrUpdateNintendoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -134,6 +145,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateOrUpdateNintendoResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdatePSNResponse>> CreateOrUpdatePSNAsync(CreateOrUpdatePSNRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -151,6 +164,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateOrUpdatePSNResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdateSteamResponse>> CreateOrUpdateSteamAsync(CreateOrUpdateSteamRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -168,6 +183,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateOrUpdateSteamResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdateToxModResponse>> CreateOrUpdateToxModAsync(CreateOrUpdateToxModRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -185,6 +202,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateOrUpdateToxModResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdateTwitchResponse>> CreateOrUpdateTwitchAsync(CreateOrUpdateTwitchRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -202,6 +221,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateOrUpdateTwitchResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteAppleResponse>> DeleteAppleAsync(DeleteAppleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -219,6 +240,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteAppleResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteFacebookResponse>> DeleteFacebookAsync(DeleteFacebookRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -236,6 +259,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteFacebookResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteFacebookInstantGamesResponse>> DeleteFacebookInstantGamesAsync(DeleteFacebookInstantGamesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -253,6 +278,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteFacebookInstantGamesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteGoogleResponse>> DeleteGoogleAsync(DeleteGoogleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -270,6 +297,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteGoogleResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteKongregateResponse>> DeleteKongregateAsync(DeleteKongregateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -287,6 +316,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteKongregateResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteNintendoResponse>> DeleteNintendoAsync(DeleteNintendoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -304,6 +335,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteNintendoResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeletePSNResponse>> DeletePSNAsync(DeletePSNRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -321,6 +354,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeletePSNResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteSteamResponse>> DeleteSteamAsync(DeleteSteamRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -338,6 +373,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteSteamResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteToxModResponse>> DeleteToxModAsync(DeleteToxModRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -355,6 +392,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteToxModResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteTwitchResponse>> DeleteTwitchAsync(DeleteTwitchRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -372,6 +411,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteTwitchResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetAppleResponse>> GetAppleAsync(GetAppleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -389,6 +430,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetAppleResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetFacebookResponse>> GetFacebookAsync(GetFacebookRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -406,6 +449,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetFacebookResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetFacebookInstantGamesResponse>> GetFacebookInstantGamesAsync(GetFacebookInstantGamesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -423,6 +468,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetFacebookInstantGamesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetGoogleResponse>> GetGoogleAsync(GetGoogleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -440,6 +487,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetGoogleResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetKongregateResponse>> GetKongregateAsync(GetKongregateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -457,6 +506,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetKongregateResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetNintendoResponse>> GetNintendoAsync(GetNintendoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -474,6 +525,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetNintendoResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPSNResponse>> GetPSNAsync(GetPSNRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -491,6 +544,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPSNResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetSteamResponse>> GetSteamAsync(GetSteamRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -508,6 +563,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetSteamResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetToxModResponse>> GetToxModAsync(GetToxModRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -525,6 +582,8 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetToxModResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetTwitchResponse>> GetTwitchAsync(GetTwitchRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -542,4 +601,5 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetTwitchResponse> { Result = result };
     }
+
 }

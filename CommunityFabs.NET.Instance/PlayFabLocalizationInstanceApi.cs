@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the Localization API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabLocalizationInstanceApi(PlayFabApiSettings? apiSettings = nu
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetLanguageListResponse>> GetLanguageListAsync(GetLanguageListRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,4 +50,5 @@ public class PlayFabLocalizationInstanceApi(PlayFabApiSettings? apiSettings = nu
 
         return new PlayFabResult<GetLanguageListResponse> { Result = result };
     }
+
 }

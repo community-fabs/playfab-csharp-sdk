@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the Events API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateTelemetryKeyResponse>> CreateTelemetryKeyAsync(CreateTelemetryKeyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,6 +50,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<CreateTelemetryKeyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteDataConnectionResponse>> DeleteDataConnectionAsync(DeleteDataConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -66,6 +69,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<DeleteDataConnectionResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteEventSamplingRatioResult>> DeleteEventSamplingRatioAsync(DeleteEventSamplingRatioRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -83,6 +88,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<DeleteEventSamplingRatioResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteTelemetryKeyResponse>> DeleteTelemetryKeyAsync(DeleteTelemetryKeyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -100,6 +107,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<DeleteTelemetryKeyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetDataConnectionResponse>> GetDataConnectionAsync(GetDataConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -117,6 +126,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<GetDataConnectionResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetEventSamplingRatioResult>> GetEventSamplingRatioAsync(GetEventSamplingRatioRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -134,6 +145,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<GetEventSamplingRatioResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetEventSamplingRatiosResult>> GetEventSamplingRatiosAsync(GetEventSamplingRatiosRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -151,6 +164,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<GetEventSamplingRatiosResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetTelemetryKeyResponse>> GetTelemetryKeyAsync(GetTelemetryKeyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -168,6 +183,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<GetTelemetryKeyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListDataConnectionsResponse>> ListDataConnectionsAsync(ListDataConnectionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -185,6 +202,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<ListDataConnectionsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListTelemetryKeysResponse>> ListTelemetryKeysAsync(ListTelemetryKeysRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -202,6 +221,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<ListTelemetryKeysResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetDataConnectionResponse>> SetDataConnectionAsync(SetDataConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -219,6 +240,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<SetDataConnectionResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetDataConnectionActiveResponse>> SetDataConnectionActiveAsync(SetDataConnectionActiveRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -236,6 +259,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<SetDataConnectionActiveResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetEventSamplingRatioResult>> SetEventSamplingRatioAsync(SetEventSamplingRatioRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -253,6 +278,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<SetEventSamplingRatioResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetTelemetryKeyActiveResponse>> SetTelemetryKeyActiveAsync(SetTelemetryKeyActiveRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -270,6 +297,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<SetTelemetryKeyActiveResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<WriteEventsResponse>> WriteEventsAsync(WriteEventsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -287,6 +316,8 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<WriteEventsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<WriteEventsResponse>> WriteTelemetryEventsAsync(WriteEventsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -304,4 +335,5 @@ public class PlayFabEventsInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
 
         return new PlayFabResult<WriteEventsResponse> { Result = result };
     }
+
 }

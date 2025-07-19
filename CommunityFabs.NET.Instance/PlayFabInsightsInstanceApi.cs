@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the Insights API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabInsightsInstanceApi(PlayFabApiSettings? apiSettings = null, 
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<InsightsGetDetailsResponse>> GetDetailsAsync(InsightsEmptyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,6 +50,8 @@ public class PlayFabInsightsInstanceApi(PlayFabApiSettings? apiSettings = null, 
 
         return new PlayFabResult<InsightsGetDetailsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<InsightsGetLimitsResponse>> GetLimitsAsync(InsightsEmptyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -66,6 +69,8 @@ public class PlayFabInsightsInstanceApi(PlayFabApiSettings? apiSettings = null, 
 
         return new PlayFabResult<InsightsGetLimitsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<InsightsGetOperationStatusResponse>> GetOperationStatusAsync(InsightsGetOperationStatusRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -83,6 +88,8 @@ public class PlayFabInsightsInstanceApi(PlayFabApiSettings? apiSettings = null, 
 
         return new PlayFabResult<InsightsGetOperationStatusResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<InsightsGetPendingOperationsResponse>> GetPendingOperationsAsync(InsightsGetPendingOperationsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -100,6 +107,8 @@ public class PlayFabInsightsInstanceApi(PlayFabApiSettings? apiSettings = null, 
 
         return new PlayFabResult<InsightsGetPendingOperationsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<InsightsOperationResponse>> SetPerformanceAsync(InsightsSetPerformanceRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -117,6 +126,8 @@ public class PlayFabInsightsInstanceApi(PlayFabApiSettings? apiSettings = null, 
 
         return new PlayFabResult<InsightsOperationResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<InsightsOperationResponse>> SetStorageRetentionAsync(InsightsSetStorageRetentionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -134,4 +145,5 @@ public class PlayFabInsightsInstanceApi(PlayFabApiSettings? apiSettings = null, 
 
         return new PlayFabResult<InsightsOperationResponse> { Result = result };
     }
+
 }

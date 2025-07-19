@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the Admin API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> AbortTaskInstanceAsync(AbortTaskInstanceRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,6 +50,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<AddLocalizedNewsResult>> AddLocalizedNewsAsync(AddLocalizedNewsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -66,6 +69,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<AddLocalizedNewsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<AddNewsResult>> AddNewsAsync(AddNewsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -83,6 +88,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<AddNewsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<AddPlayerTagResult>> AddPlayerTagAsync(AddPlayerTagRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -100,6 +107,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<AddPlayerTagResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<AddServerBuildResult>> AddServerBuildAsync(AddServerBuildRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -117,6 +126,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<AddServerBuildResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ModifyUserVirtualCurrencyResult>> AddUserVirtualCurrencyAsync(AddUserVirtualCurrencyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -134,6 +145,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ModifyUserVirtualCurrencyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<BlankResult>> AddVirtualCurrencyTypesAsync(AddVirtualCurrencyTypesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -151,6 +164,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<BlankResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<BanUsersResult>> BanUsersAsync(BanUsersRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -168,6 +183,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<BanUsersResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CheckLimitedEditionItemAvailabilityResult>> CheckLimitedEditionItemAvailabilityAsync(CheckLimitedEditionItemAvailabilityRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -185,6 +202,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CheckLimitedEditionItemAvailabilityResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateTaskResult>> CreateActionsOnPlayersInSegmentTaskAsync(CreateActionsOnPlayerSegmentTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -202,6 +221,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateTaskResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateTaskResult>> CreateCloudScriptAzureFunctionsTaskAsync(CreateCloudScriptAzureFunctionsTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -219,6 +240,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateTaskResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateTaskResult>> CreateCloudScriptTaskAsync(CreateCloudScriptTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -236,6 +259,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateTaskResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateTaskResult>> CreateInsightsScheduledScalingTaskAsync(CreateInsightsScheduledScalingTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -253,6 +278,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateTaskResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> CreateOpenIdConnectionAsync(CreateOpenIdConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -270,6 +297,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreatePlayerSharedSecretResult>> CreatePlayerSharedSecretAsync(CreatePlayerSharedSecretRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -287,6 +316,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreatePlayerSharedSecretResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreatePlayerStatisticDefinitionResult>> CreatePlayerStatisticDefinitionAsync(CreatePlayerStatisticDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -304,6 +335,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreatePlayerStatisticDefinitionResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateSegmentResponse>> CreateSegmentAsync(CreateSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -321,6 +354,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateSegmentResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<BlankResult>> DeleteContentAsync(DeleteContentRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -338,6 +373,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<BlankResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteEventSinkResult>> DeleteEventSinkAsync(DeleteEventSinkRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -355,6 +392,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteEventSinkResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteMasterPlayerAccountResult>> DeleteMasterPlayerAccountAsync(DeleteMasterPlayerAccountRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -372,6 +411,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteMasterPlayerAccountResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteMasterPlayerEventDataResult>> DeleteMasterPlayerEventDataAsync(DeleteMasterPlayerEventDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -389,6 +430,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteMasterPlayerEventDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteMembershipSubscriptionResult>> DeleteMembershipSubscriptionAsync(DeleteMembershipSubscriptionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -406,6 +449,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteMembershipSubscriptionResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteOpenIdConnectionAsync(DeleteOpenIdConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -423,6 +468,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeletePlayerResult>> DeletePlayerAsync(DeletePlayerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -440,6 +487,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeletePlayerResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeletePlayerCustomPropertiesResult>> DeletePlayerCustomPropertiesAsync(DeletePlayerCustomPropertiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -457,6 +506,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeletePlayerCustomPropertiesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeletePlayerSharedSecretResult>> DeletePlayerSharedSecretAsync(DeletePlayerSharedSecretRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -474,6 +525,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeletePlayerSharedSecretResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteSegmentsResponse>> DeleteSegmentAsync(DeleteSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -491,6 +544,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteSegmentsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteStoreResult>> DeleteStoreAsync(DeleteStoreRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -508,6 +563,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteStoreResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteTaskAsync(DeleteTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -525,6 +582,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteTitleResult>> DeleteTitleAsync(DeleteTitleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -542,6 +601,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteTitleResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteTitleDataOverrideResult>> DeleteTitleDataOverrideAsync(DeleteTitleDataOverrideRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -559,6 +620,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteTitleDataOverrideResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteUsersResult>> DeleteUsersAsync(DeleteUsersRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -576,6 +639,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<DeleteUsersResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ExportMasterPlayerDataResult>> ExportMasterPlayerDataAsync(ExportMasterPlayerDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -593,6 +658,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ExportMasterPlayerDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ExportPlayersInSegmentResult>> ExportPlayersInSegmentAsync(ExportPlayersInSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -610,6 +677,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ExportPlayersInSegmentResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetActionsOnPlayersInSegmentTaskInstanceResult>> GetActionsOnPlayersInSegmentTaskInstanceAsync(GetTaskInstanceRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -627,6 +696,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetActionsOnPlayersInSegmentTaskInstanceResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetAllActionGroupsResult>> GetAllActionGroupsAsync(GetAllActionGroupsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -644,6 +715,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetAllActionGroupsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetAllSegmentsResult>> GetAllSegmentsAsync(GetAllSegmentsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -661,6 +734,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetAllSegmentsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetCatalogItemsResult>> GetCatalogItemsAsync(GetCatalogItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -678,6 +753,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetCatalogItemsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetCloudScriptAzureFunctionsTaskInstanceResult>> GetCloudScriptAzureFunctionsTaskInstanceAsync(GetTaskInstanceRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -695,6 +772,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetCloudScriptAzureFunctionsTaskInstanceResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetCloudScriptRevisionResult>> GetCloudScriptRevisionAsync(GetCloudScriptRevisionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -712,6 +791,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetCloudScriptRevisionResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetCloudScriptTaskInstanceResult>> GetCloudScriptTaskInstanceAsync(GetTaskInstanceRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -729,6 +810,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetCloudScriptTaskInstanceResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetCloudScriptVersionsResult>> GetCloudScriptVersionsAsync(GetCloudScriptVersionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -746,6 +829,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetCloudScriptVersionsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetContentListResult>> GetContentListAsync(GetContentListRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -763,6 +848,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetContentListResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetContentUploadUrlResult>> GetContentUploadUrlAsync(GetContentUploadUrlRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -780,6 +867,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetContentUploadUrlResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetDataReportResult>> GetDataReportAsync(GetDataReportRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -797,6 +886,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetDataReportResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetEventSinksResult>> GetEventSinksAsync(GetEventSinksRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -814,6 +905,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetEventSinksResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetMatchmakerGameInfoResult>> GetMatchmakerGameInfoAsync(GetMatchmakerGameInfoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -831,6 +924,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetMatchmakerGameInfoResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetMatchmakerGameModesResult>> GetMatchmakerGameModesAsync(GetMatchmakerGameModesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -848,6 +943,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetMatchmakerGameModesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayedTitleListResult>> GetPlayedTitleListAsync(GetPlayedTitleListRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -865,6 +962,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayedTitleListResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerCustomPropertyResult>> GetPlayerCustomPropertyAsync(GetPlayerCustomPropertyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -882,6 +981,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayerCustomPropertyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerIdFromAuthTokenResult>> GetPlayerIdFromAuthTokenAsync(GetPlayerIdFromAuthTokenRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -899,6 +1000,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayerIdFromAuthTokenResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerProfileResult>> GetPlayerProfileAsync(GetPlayerProfileRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -916,6 +1019,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayerProfileResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerSegmentsResult>> GetPlayerSegmentsAsync(GetPlayersSegmentsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -933,6 +1038,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayerSegmentsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerSharedSecretsResult>> GetPlayerSharedSecretsAsync(GetPlayerSharedSecretsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -950,6 +1057,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayerSharedSecretsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayersInSegmentResult>> GetPlayersInSegmentAsync(GetPlayersInSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -967,6 +1076,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayersInSegmentResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerStatisticDefinitionsResult>> GetPlayerStatisticDefinitionsAsync(GetPlayerStatisticDefinitionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -984,6 +1095,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayerStatisticDefinitionsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerStatisticVersionsResult>> GetPlayerStatisticVersionsAsync(GetPlayerStatisticVersionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1001,6 +1114,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayerStatisticVersionsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerTagsResult>> GetPlayerTagsAsync(GetPlayerTagsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1018,6 +1133,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayerTagsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPolicyResponse>> GetPolicyAsync(GetPolicyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1035,6 +1152,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPolicyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPublisherDataResult>> GetPublisherDataAsync(GetPublisherDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1052,6 +1171,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPublisherDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetRandomResultTablesResult>> GetRandomResultTablesAsync(GetRandomResultTablesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1069,6 +1190,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetRandomResultTablesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayersInSegmentExportResponse>> GetSegmentExportAsync(GetPlayersInSegmentExportRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1086,6 +1209,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetPlayersInSegmentExportResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetSegmentsResponse>> GetSegmentsAsync(GetSegmentsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1103,6 +1228,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetSegmentsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetServerBuildInfoResult>> GetServerBuildInfoAsync(GetServerBuildInfoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1120,6 +1247,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetServerBuildInfoResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetStoreItemsResult>> GetStoreItemsAsync(GetStoreItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1137,6 +1266,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetStoreItemsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetTaskInstancesResult>> GetTaskInstancesAsync(GetTaskInstancesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1154,6 +1285,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetTaskInstancesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetTasksResult>> GetTasksAsync(GetTasksRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1171,6 +1304,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetTasksResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetTitleDataResult>> GetTitleDataAsync(GetTitleDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1188,6 +1323,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetTitleDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetTitleDataResult>> GetTitleInternalDataAsync(GetTitleDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1205,6 +1342,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetTitleDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<LookupUserAccountInfoResult>> GetUserAccountInfoAsync(LookupUserAccountInfoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1222,6 +1361,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<LookupUserAccountInfoResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetUserBansResult>> GetUserBansAsync(GetUserBansRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1239,6 +1380,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetUserBansResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetUserDataResult>> GetUserDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1256,6 +1399,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetUserDataResult>> GetUserInternalDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1273,6 +1418,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetUserInventoryResult>> GetUserInventoryAsync(GetUserInventoryRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1290,6 +1437,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetUserInventoryResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetUserDataResult>> GetUserPublisherDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1307,6 +1456,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetUserDataResult>> GetUserPublisherInternalDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1324,6 +1475,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetUserDataResult>> GetUserPublisherReadOnlyDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1341,6 +1494,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetUserDataResult>> GetUserReadOnlyDataAsync(GetUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1358,6 +1513,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GrantItemsToUsersResult>> GrantItemsToUsersAsync(GrantItemsToUsersRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1375,6 +1532,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GrantItemsToUsersResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<IncrementLimitedEditionItemAvailabilityResult>> IncrementLimitedEditionItemAvailabilityAsync(IncrementLimitedEditionItemAvailabilityRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1392,6 +1551,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<IncrementLimitedEditionItemAvailabilityResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<IncrementPlayerStatisticVersionResult>> IncrementPlayerStatisticVersionAsync(IncrementPlayerStatisticVersionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1409,6 +1570,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<IncrementPlayerStatisticVersionResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListOpenIdConnectionResponse>> ListOpenIdConnectionAsync(ListOpenIdConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1426,6 +1589,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ListOpenIdConnectionResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListPlayerCustomPropertiesResult>> ListPlayerCustomPropertiesAsync(ListPlayerCustomPropertiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1443,6 +1608,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ListPlayerCustomPropertiesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListBuildsResult>> ListServerBuildsAsync(ListBuildsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1460,6 +1627,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ListBuildsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListVirtualCurrencyTypesResult>> ListVirtualCurrencyTypesAsync(ListVirtualCurrencyTypesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1477,6 +1646,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ListVirtualCurrencyTypesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ModifyMatchmakerGameModesResult>> ModifyMatchmakerGameModesAsync(ModifyMatchmakerGameModesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1494,6 +1665,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ModifyMatchmakerGameModesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ModifyServerBuildResult>> ModifyServerBuildAsync(ModifyServerBuildRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1511,6 +1684,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ModifyServerBuildResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RefundPurchaseResponse>> RefundPurchaseAsync(RefundPurchaseRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1528,6 +1703,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<RefundPurchaseResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RemovePlayerTagResult>> RemovePlayerTagAsync(RemovePlayerTagRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1545,6 +1722,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<RemovePlayerTagResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RemoveServerBuildResult>> RemoveServerBuildAsync(RemoveServerBuildRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1562,6 +1741,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<RemoveServerBuildResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<BlankResult>> RemoveVirtualCurrencyTypesAsync(RemoveVirtualCurrencyTypesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1579,6 +1760,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<BlankResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ResetCharacterStatisticsResult>> ResetCharacterStatisticsAsync(ResetCharacterStatisticsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1596,6 +1779,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ResetCharacterStatisticsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ResetPasswordResult>> ResetPasswordAsync(ResetPasswordRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1613,6 +1798,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ResetPasswordResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<BlankResult>> ResetUsersAsync(ResetUsersRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1630,6 +1817,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<BlankResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ResetUserStatisticsResult>> ResetUserStatisticsAsync(ResetUserStatisticsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1647,6 +1836,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ResetUserStatisticsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ResolvePurchaseDisputeResponse>> ResolvePurchaseDisputeAsync(ResolvePurchaseDisputeRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1664,6 +1855,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ResolvePurchaseDisputeResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RevokeAllBansForUserResult>> RevokeAllBansForUserAsync(RevokeAllBansForUserRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1681,6 +1874,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<RevokeAllBansForUserResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RevokeBansResult>> RevokeBansAsync(RevokeBansRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1698,6 +1893,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<RevokeBansResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RevokeInventoryResult>> RevokeInventoryItemAsync(RevokeInventoryItemRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1715,6 +1912,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<RevokeInventoryResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RevokeInventoryItemsResult>> RevokeInventoryItemsAsync(RevokeInventoryItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1732,6 +1931,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<RevokeInventoryItemsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RunTaskResult>> RunTaskAsync(RunTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1749,6 +1950,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<RunTaskResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SendAccountRecoveryEmailResult>> SendAccountRecoveryEmailAsync(SendAccountRecoveryEmailRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1766,6 +1969,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<SendAccountRecoveryEmailResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateCatalogItemsResult>> SetCatalogItemsAsync(UpdateCatalogItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1783,6 +1988,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateCatalogItemsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetEventSinkResult>> SetEventSinkAsync(SetEventSinkRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1800,6 +2007,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<SetEventSinkResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetMembershipOverrideResult>> SetMembershipOverrideAsync(SetMembershipOverrideRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1817,6 +2026,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<SetMembershipOverrideResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetPlayerSecretResult>> SetPlayerSecretAsync(SetPlayerSecretRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1834,6 +2045,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<SetPlayerSecretResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetPublishedRevisionResult>> SetPublishedRevisionAsync(SetPublishedRevisionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1851,6 +2064,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<SetPublishedRevisionResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetPublisherDataResult>> SetPublisherDataAsync(SetPublisherDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1868,6 +2083,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<SetPublisherDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateStoreItemsResult>> SetStoreItemsAsync(UpdateStoreItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1885,6 +2102,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateStoreItemsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetTitleDataResult>> SetTitleDataAsync(SetTitleDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1902,6 +2121,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<SetTitleDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetTitleDataAndOverridesResult>> SetTitleDataAndOverridesAsync(SetTitleDataAndOverridesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1919,6 +2140,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<SetTitleDataAndOverridesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetTitleDataResult>> SetTitleInternalDataAsync(SetTitleDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1936,6 +2159,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<SetTitleDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetupPushNotificationResult>> SetupPushNotificationAsync(SetupPushNotificationRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1953,6 +2178,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<SetupPushNotificationResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ModifyUserVirtualCurrencyResult>> SubtractUserVirtualCurrencyAsync(SubtractUserVirtualCurrencyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1970,6 +2197,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ModifyUserVirtualCurrencyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateBansResult>> UpdateBansAsync(UpdateBansRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1987,6 +2216,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateBansResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateCatalogItemsResult>> UpdateCatalogItemsAsync(UpdateCatalogItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2004,6 +2235,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateCatalogItemsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateCloudScriptResult>> UpdateCloudScriptAsync(UpdateCloudScriptRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2021,6 +2254,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateCloudScriptResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UpdateOpenIdConnectionAsync(UpdateOpenIdConnectionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2038,6 +2273,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdatePlayerCustomPropertiesResult>> UpdatePlayerCustomPropertiesAsync(UpdatePlayerCustomPropertiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2055,6 +2292,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdatePlayerCustomPropertiesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdatePlayerSharedSecretResult>> UpdatePlayerSharedSecretAsync(UpdatePlayerSharedSecretRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2072,6 +2311,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdatePlayerSharedSecretResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdatePlayerStatisticDefinitionResult>> UpdatePlayerStatisticDefinitionAsync(UpdatePlayerStatisticDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2089,6 +2330,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdatePlayerStatisticDefinitionResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdatePolicyResponse>> UpdatePolicyAsync(UpdatePolicyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2106,6 +2349,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdatePolicyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateRandomResultTablesResult>> UpdateRandomResultTablesAsync(UpdateRandomResultTablesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2123,6 +2368,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateRandomResultTablesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateSegmentResponse>> UpdateSegmentAsync(UpdateSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2140,6 +2387,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateSegmentResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateStoreItemsResult>> UpdateStoreItemsAsync(UpdateStoreItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2157,6 +2406,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateStoreItemsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UpdateTaskAsync(UpdateTaskRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2174,6 +2425,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserDataAsync(UpdateUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2191,6 +2444,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserInternalDataAsync(UpdateUserInternalDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2208,6 +2463,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserPublisherDataAsync(UpdateUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2225,6 +2482,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserPublisherInternalDataAsync(UpdateUserInternalDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2242,6 +2501,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserPublisherReadOnlyDataAsync(UpdateUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2259,6 +2520,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateUserDataResult>> UpdateUserReadOnlyDataAsync(UpdateUserDataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2276,6 +2539,8 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateUserDataResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateUserTitleDisplayNameResult>> UpdateUserTitleDisplayNameAsync(UpdateUserTitleDisplayNameRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2293,4 +2558,5 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<UpdateUserTitleDisplayNameResult> { Result = result };
     }
+
 }

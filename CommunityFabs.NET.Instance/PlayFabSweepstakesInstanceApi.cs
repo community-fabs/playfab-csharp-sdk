@@ -32,6 +32,7 @@ public class PlayFabSweepstakesInstanceApi(PlayFabApiSettings? apiSettings = nul
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateSweepstakeResponse>> CreateSweepstakeAsync(CreateSweepstakeRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,6 +50,8 @@ public class PlayFabSweepstakesInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateSweepstakeResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetSweepstakeResponse>> GetSweepstakeAsync(GetSweepstakeRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -66,4 +69,5 @@ public class PlayFabSweepstakesInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetSweepstakeResponse> { Result = result };
     }
+
 }

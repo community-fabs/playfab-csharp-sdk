@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the Data API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabDataInstanceApi(PlayFabApiSettings? apiSettings = null, Play
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<AbortFileUploadsResponse>> AbortFileUploadsAsync(AbortFileUploadsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,6 +50,8 @@ public class PlayFabDataInstanceApi(PlayFabApiSettings? apiSettings = null, Play
 
         return new PlayFabResult<AbortFileUploadsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteFilesResponse>> DeleteFilesAsync(DeleteFilesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -66,6 +69,8 @@ public class PlayFabDataInstanceApi(PlayFabApiSettings? apiSettings = null, Play
 
         return new PlayFabResult<DeleteFilesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<FinalizeFileUploadsResponse>> FinalizeFileUploadsAsync(FinalizeFileUploadsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -83,6 +88,8 @@ public class PlayFabDataInstanceApi(PlayFabApiSettings? apiSettings = null, Play
 
         return new PlayFabResult<FinalizeFileUploadsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetFilesResponse>> GetFilesAsync(GetFilesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -100,6 +107,8 @@ public class PlayFabDataInstanceApi(PlayFabApiSettings? apiSettings = null, Play
 
         return new PlayFabResult<GetFilesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetObjectsResponse>> GetObjectsAsync(GetObjectsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -117,6 +126,8 @@ public class PlayFabDataInstanceApi(PlayFabApiSettings? apiSettings = null, Play
 
         return new PlayFabResult<GetObjectsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<InitiateFileUploadsResponse>> InitiateFileUploadsAsync(InitiateFileUploadsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -134,6 +145,8 @@ public class PlayFabDataInstanceApi(PlayFabApiSettings? apiSettings = null, Play
 
         return new PlayFabResult<InitiateFileUploadsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetObjectsResponse>> SetObjectsAsync(SetObjectsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -151,4 +164,5 @@ public class PlayFabDataInstanceApi(PlayFabApiSettings? apiSettings = null, Play
 
         return new PlayFabResult<SetObjectsResponse> { Result = result };
     }
+
 }

@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the Progression API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> CreateLeaderboardDefinitionAsync(CreateLeaderboardDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,6 +50,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> CreateStatisticDefinitionAsync(CreateStatisticDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -66,6 +69,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteLeaderboardDefinitionAsync(DeleteLeaderboardDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -83,6 +88,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteLeaderboardEntriesAsync(DeleteLeaderboardEntriesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -100,6 +107,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteStatisticDefinitionAsync(DeleteStatisticDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -117,6 +126,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteStatisticsResponse>> DeleteStatisticsAsync(DeleteStatisticsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -134,6 +145,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<DeleteStatisticsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetEntityLeaderboardResponse>> GetFriendLeaderboardForEntityAsync(GetFriendLeaderboardForEntityRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -151,6 +164,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetEntityLeaderboardResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetEntityLeaderboardResponse>> GetLeaderboardAsync(GetEntityLeaderboardRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -168,6 +183,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetEntityLeaderboardResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetEntityLeaderboardResponse>> GetLeaderboardAroundEntityAsync(GetLeaderboardAroundEntityRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -185,6 +202,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetEntityLeaderboardResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetLeaderboardDefinitionResponse>> GetLeaderboardDefinitionAsync(GetLeaderboardDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -202,6 +221,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetLeaderboardDefinitionResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetEntityLeaderboardResponse>> GetLeaderboardForEntitiesAsync(GetLeaderboardForEntitiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -219,6 +240,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetEntityLeaderboardResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetStatisticDefinitionResponse>> GetStatisticDefinitionAsync(GetStatisticDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -236,6 +259,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetStatisticDefinitionResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetStatisticDefinitionsResponse>> GetStatisticDefinitionsAsync(GetStatisticDefinitionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -253,6 +278,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetStatisticDefinitionsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetStatisticsResponse>> GetStatisticsAsync(GetStatisticsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -270,6 +297,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetStatisticsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetStatisticsForEntitiesResponse>> GetStatisticsForEntitiesAsync(GetStatisticsForEntitiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -287,6 +316,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetStatisticsForEntitiesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<IncrementLeaderboardVersionResponse>> IncrementLeaderboardVersionAsync(IncrementLeaderboardVersionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -304,6 +335,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<IncrementLeaderboardVersionResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<IncrementStatisticVersionResponse>> IncrementStatisticVersionAsync(IncrementStatisticVersionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -321,6 +354,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<IncrementStatisticVersionResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListLeaderboardDefinitionsResponse>> ListLeaderboardDefinitionsAsync(ListLeaderboardDefinitionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -338,6 +373,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListLeaderboardDefinitionsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListStatisticDefinitionsResponse>> ListStatisticDefinitionsAsync(ListStatisticDefinitionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -355,6 +392,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListStatisticDefinitionsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UnlinkLeaderboardFromStatisticAsync(UnlinkLeaderboardFromStatisticRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -372,6 +411,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UpdateLeaderboardDefinitionAsync(UpdateLeaderboardDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -389,6 +430,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UpdateLeaderboardEntriesAsync(UpdateLeaderboardEntriesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -406,6 +449,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UpdateStatisticDefinitionAsync(UpdateStatisticDefinitionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -423,6 +468,8 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateStatisticsResponse>> UpdateStatisticsAsync(UpdateStatisticsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -440,4 +487,5 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<UpdateStatisticsResponse> { Result = result };
     }
+
 }

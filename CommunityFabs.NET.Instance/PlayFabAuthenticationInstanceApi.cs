@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the Authentication API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabAuthenticationInstanceApi(PlayFabApiSettings? apiSettings = 
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<AuthenticateCustomIdResult>> AuthenticateGameServerWithCustomIdAsync(AuthenticateCustomIdRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -53,6 +54,8 @@ public class PlayFabAuthenticationInstanceApi(PlayFabApiSettings? apiSettings = 
 
         return new PlayFabResult<AuthenticateCustomIdResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteAsync(DeleteRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -70,6 +73,8 @@ public class PlayFabAuthenticationInstanceApi(PlayFabApiSettings? apiSettings = 
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetEntityTokenResponse>> GetEntityTokenAsync(GetEntityTokenRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -94,6 +99,8 @@ public class PlayFabAuthenticationInstanceApi(PlayFabApiSettings? apiSettings = 
 
         return new PlayFabResult<GetEntityTokenResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ValidateEntityTokenResponse>> ValidateEntityTokenAsync(ValidateEntityTokenRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -113,4 +120,5 @@ public class PlayFabAuthenticationInstanceApi(PlayFabApiSettings? apiSettings = 
 
         return new PlayFabResult<ValidateEntityTokenResponse> { Result = result };
     }
+
 }

@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the Matchmaker API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabMatchmakerInstanceApi(PlayFabApiSettings? apiSettings = null
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<AuthUserResponse>> AuthUserAsync(AuthUserRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,6 +50,8 @@ public class PlayFabMatchmakerInstanceApi(PlayFabApiSettings? apiSettings = null
 
         return new PlayFabResult<AuthUserResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeregisterGameResponse>> DeregisterGameAsync(DeregisterGameRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -66,6 +69,8 @@ public class PlayFabMatchmakerInstanceApi(PlayFabApiSettings? apiSettings = null
 
         return new PlayFabResult<DeregisterGameResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<PlayerJoinedResponse>> PlayerJoinedAsync(PlayerJoinedRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -83,6 +88,8 @@ public class PlayFabMatchmakerInstanceApi(PlayFabApiSettings? apiSettings = null
 
         return new PlayFabResult<PlayerJoinedResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<PlayerLeftResponse>> PlayerLeftAsync(PlayerLeftRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -100,6 +107,8 @@ public class PlayFabMatchmakerInstanceApi(PlayFabApiSettings? apiSettings = null
 
         return new PlayFabResult<PlayerLeftResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RegisterGameResponse>> RegisterGameAsync(RegisterGameRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -117,6 +126,8 @@ public class PlayFabMatchmakerInstanceApi(PlayFabApiSettings? apiSettings = null
 
         return new PlayFabResult<RegisterGameResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<StartGameResponse>> StartGameAsync(StartGameRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -134,6 +145,8 @@ public class PlayFabMatchmakerInstanceApi(PlayFabApiSettings? apiSettings = null
 
         return new PlayFabResult<StartGameResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UserInfoResponse>> UserInfoAsync(UserInfoRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -151,4 +164,5 @@ public class PlayFabMatchmakerInstanceApi(PlayFabApiSettings? apiSettings = null
 
         return new PlayFabResult<UserInfoResponse> { Result = result };
     }
+
 }

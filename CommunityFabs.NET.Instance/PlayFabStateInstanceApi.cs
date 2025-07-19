@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the State API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabStateInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateLinkResponse>> CreateLinkForStateAsync(CreateLinkRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,6 +50,8 @@ public class PlayFabStateInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateLinkResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateStateResponse>> CreateStateAsync(CreateStateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -66,6 +69,8 @@ public class PlayFabStateInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<CreateStateResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteLinkForStateAsync(DeleteLinkRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -83,6 +88,8 @@ public class PlayFabStateInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteStateAsync(DeleteStateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -100,6 +107,8 @@ public class PlayFabStateInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetLinkMetadataResponse>> GetLinkMetadataAsync(GetLinkMetadataRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -117,6 +126,8 @@ public class PlayFabStateInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetLinkMetadataResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetStateResponse>> GetStateAsync(GetStateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -134,6 +145,8 @@ public class PlayFabStateInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<GetStateResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListStateIdsResponse>> ListStateIdsAsync(ListStateIdsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -151,4 +164,5 @@ public class PlayFabStateInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
 
         return new PlayFabResult<ListStateIdsResponse> { Result = result };
     }
+
 }

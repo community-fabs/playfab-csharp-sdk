@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace CommunityFabs.NET.Instance;
 
 /// <summary>
-/// Create a new instance of the Sweepstakes API
+/// Create a new instance of the Multiplayer API
 /// </summary>
 /// <param name="apiSettings">Current PlayFab API settings</param>
 /// <param name="authContext">Current authentication context</param>
@@ -32,6 +32,7 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
         authContext?.ForgetAllCredentials();
     }
 
+    /// <inheritdoc />
     public async Task<PlayFabResult<CancelAllMatchmakingTicketsForPlayerResult>> CancelAllMatchmakingTicketsForPlayerAsync(CancelAllMatchmakingTicketsForPlayerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -49,6 +50,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CancelAllMatchmakingTicketsForPlayerResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CancelAllServerBackfillTicketsForPlayerResult>> CancelAllServerBackfillTicketsForPlayerAsync(CancelAllServerBackfillTicketsForPlayerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -66,6 +69,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CancelAllServerBackfillTicketsForPlayerResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CancelMatchmakingTicketResult>> CancelMatchmakingTicketAsync(CancelMatchmakingTicketRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -83,6 +88,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CancelMatchmakingTicketResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CancelModelResponse>> CancelModelAsync(CancelModelRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -100,6 +107,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CancelModelResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CancelServerBackfillTicketResult>> CancelServerBackfillTicketAsync(CancelServerBackfillTicketRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -117,6 +126,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CancelServerBackfillTicketResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateBaseModelResponse>> CreateBaseModelAsync(CreateBaseModelRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -134,6 +145,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateBaseModelResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateBatchModelResponse>> CreateBatchModelAsync(CreateBatchModelRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -151,6 +164,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateBatchModelResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<BuildAliasDetailsResponse>> CreateBuildAliasAsync(CreateBuildAliasRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -168,6 +183,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<BuildAliasDetailsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateBuildWithCustomContainerResponse>> CreateBuildWithCustomContainerAsync(CreateBuildWithCustomContainerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -185,6 +202,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateBuildWithCustomContainerResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateBuildWithManagedContainerResponse>> CreateBuildWithManagedContainerAsync(CreateBuildWithManagedContainerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -202,6 +221,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateBuildWithManagedContainerResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateBuildWithProcessBasedServerResponse>> CreateBuildWithProcessBasedServerAsync(CreateBuildWithProcessBasedServerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -219,6 +240,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateBuildWithProcessBasedServerResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateLobbyResult>> CreateLobbyAsync(CreateLobbyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -236,6 +259,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateLobbyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateMatchmakingTicketResult>> CreateMatchmakingTicketAsync(CreateMatchmakingTicketRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -253,6 +278,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateMatchmakingTicketResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateRemoteUserResponse>> CreateRemoteUserAsync(CreateRemoteUserRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -270,6 +297,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateRemoteUserResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateScenarioResponse>> CreateScenarioAsync(CreateScenarioRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -287,6 +316,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateScenarioResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateServerBackfillTicketResult>> CreateServerBackfillTicketAsync(CreateServerBackfillTicketRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -304,6 +335,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateServerBackfillTicketResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateMatchmakingTicketResult>> CreateServerMatchmakingTicketAsync(CreateServerMatchmakingTicketRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -321,6 +354,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateMatchmakingTicketResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateTitleMultiplayerServersQuotaChangeResponse>> CreateTitleMultiplayerServersQuotaChangeAsync(CreateTitleMultiplayerServersQuotaChangeRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -338,6 +373,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<CreateTitleMultiplayerServersQuotaChangeResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeactivateModelResponse>> DeactivateModelAsync(DeactivateModelRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -355,6 +392,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<DeactivateModelResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteAssetAsync(DeleteAssetRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -372,6 +411,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteBuildAsync(DeleteBuildRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -389,6 +430,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteBuildAliasAsync(DeleteBuildAliasRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -406,6 +449,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteBuildRegionAsync(DeleteBuildRegionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -423,6 +468,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteCertificateAsync(DeleteCertificateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -440,6 +487,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteContainerImageRepositoryAsync(DeleteContainerImageRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -457,6 +506,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<LobbyEmptyResult>> DeleteLobbyAsync(DeleteLobbyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -474,6 +525,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<LobbyEmptyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteModelResponse>> DeleteModelAsync(DeleteModelRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -491,6 +544,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<DeleteModelResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteRemoteUserAsync(DeleteRemoteUserRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -508,6 +563,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<DeleteScenarioResponse>> DeleteScenarioAsync(DeleteScenarioRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -525,6 +582,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<DeleteScenarioResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> DeleteSecretAsync(DeleteSecretRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -542,6 +601,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EnableMultiplayerServersForTitleResponse>> EnableMultiplayerServersForTitleAsync(EnableMultiplayerServersForTitleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -559,6 +620,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EnableMultiplayerServersForTitleResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> EnablePartiesForTitleAsync(EnablePartiesForTitleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -576,6 +639,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<FindFriendLobbiesResult>> FindFriendLobbiesAsync(FindFriendLobbiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -593,6 +658,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<FindFriendLobbiesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<FindLobbiesResult>> FindLobbiesAsync(FindLobbiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -610,6 +677,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<FindLobbiesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetAssetDownloadUrlResponse>> GetAssetDownloadUrlAsync(GetAssetDownloadUrlRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -627,6 +696,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetAssetDownloadUrlResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetAssetUploadUrlResponse>> GetAssetUploadUrlAsync(GetAssetUploadUrlRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -644,6 +715,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetAssetUploadUrlResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetBuildResponse>> GetBuildAsync(GetBuildRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -661,6 +734,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetBuildResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<BuildAliasDetailsResponse>> GetBuildAliasAsync(GetBuildAliasRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -678,6 +753,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<BuildAliasDetailsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetCognitiveServicesLocalesResponse>> GetCognitiveServicesLocalesAsync(GetCognitiveServicesLocalesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -695,6 +772,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetCognitiveServicesLocalesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetCognitiveServicesTokenResponse>> GetCognitiveServicesTokenAsync(GetCognitiveServicesTokenRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -712,6 +791,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetCognitiveServicesTokenResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetContainerRegistryCredentialsResponse>> GetContainerRegistryCredentialsAsync(GetContainerRegistryCredentialsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -729,6 +810,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetContainerRegistryCredentialsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetLobbyResult>> GetLobbyAsync(GetLobbyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -746,6 +829,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetLobbyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetMatchResult>> GetMatchAsync(GetMatchRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -763,6 +848,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetMatchResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetMatchmakingQueueResult>> GetMatchmakingQueueAsync(GetMatchmakingQueueRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -780,6 +867,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetMatchmakingQueueResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetMatchmakingTicketResult>> GetMatchmakingTicketAsync(GetMatchmakingTicketRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -797,6 +886,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetMatchmakingTicketResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetModelDetailsResponse>> GetModelDetailsAsync(GetModelDetailsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -814,6 +905,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetModelDetailsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetModelsByScenarioResponse>> GetModelsByScenarioAsync(GetModelsByScenarioRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -831,6 +924,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetModelsByScenarioResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetMultiplayerServerAndTokenResponse>> GetMultiplayerServerAndTokenAsync(GetMultiplayerServerAndTokenRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -848,6 +943,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetMultiplayerServerAndTokenResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetMultiplayerServerDetailsResponse>> GetMultiplayerServerDetailsAsync(GetMultiplayerServerDetailsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -865,6 +962,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetMultiplayerServerDetailsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetMultiplayerServerLogsResponse>> GetMultiplayerServerLogsAsync(GetMultiplayerServerLogsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -882,6 +981,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetMultiplayerServerLogsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetMultiplayerServerLogsResponse>> GetMultiplayerSessionLogsBySessionIdAsync(GetMultiplayerSessionLogsBySessionIdRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -899,6 +1000,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetMultiplayerServerLogsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerSkillResponse>> GetPlayerSkillAsync(GetPlayerSkillRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -916,6 +1019,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetPlayerSkillResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerSkillForConditionsResponse>> GetPlayerSkillForConditionsAsync(GetPlayerSkillForConditionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -933,6 +1038,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetPlayerSkillForConditionsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerSkillForConditionsFromModelResponse>> GetPlayerSkillForConditionsFromModelAsync(GetPlayerSkillForConditionsFromModelRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -950,6 +1057,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetPlayerSkillForConditionsFromModelResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerSkillFromModelResponse>> GetPlayerSkillFromModelAsync(GetPlayerSkillFromModelRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -967,6 +1076,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetPlayerSkillFromModelResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetQueueStatisticsResult>> GetQueueStatisticsAsync(GetQueueStatisticsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -984,6 +1095,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetQueueStatisticsResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetRemoteLoginEndpointResponse>> GetRemoteLoginEndpointAsync(GetRemoteLoginEndpointRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1001,6 +1114,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetRemoteLoginEndpointResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetScenarioConfigurationResponse>> GetScenarioConfigurationAsync(GetScenarioConfigurationRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1018,6 +1133,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetScenarioConfigurationResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetScenarioConfigurationsResponse>> GetScenarioConfigurationsAsync(GetScenarioConfigurationsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1035,6 +1152,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetScenarioConfigurationsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetServerBackfillTicketResult>> GetServerBackfillTicketAsync(GetServerBackfillTicketRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1052,6 +1171,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetServerBackfillTicketResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetTitleEnabledForMultiplayerServersStatusResponse>> GetTitleEnabledForMultiplayerServersStatusAsync(GetTitleEnabledForMultiplayerServersStatusRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1069,6 +1190,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetTitleEnabledForMultiplayerServersStatusResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetTitleMultiplayerServersQuotaChangeResponse>> GetTitleMultiplayerServersQuotaChangeAsync(GetTitleMultiplayerServersQuotaChangeRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1086,6 +1209,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetTitleMultiplayerServersQuotaChangeResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetTitleMultiplayerServersQuotasResponse>> GetTitleMultiplayerServersQuotasAsync(GetTitleMultiplayerServersQuotasRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1103,6 +1228,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<GetTitleMultiplayerServersQuotasResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<LobbyEmptyResult>> InviteToLobbyAsync(InviteToLobbyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1120,6 +1247,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<LobbyEmptyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<JoinLobbyResult>> JoinArrangedLobbyAsync(JoinArrangedLobbyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1137,6 +1266,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<JoinLobbyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<JoinLobbyResult>> JoinLobbyAsync(JoinLobbyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1154,6 +1285,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<JoinLobbyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<JoinLobbyAsServerResult>> JoinLobbyAsServerAsync(JoinLobbyAsServerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1171,6 +1304,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<JoinLobbyAsServerResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<JoinMatchmakingTicketResult>> JoinMatchmakingTicketAsync(JoinMatchmakingTicketRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1188,6 +1323,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<JoinMatchmakingTicketResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<LobbyEmptyResult>> LeaveLobbyAsync(LeaveLobbyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1205,6 +1342,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<LobbyEmptyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<LobbyEmptyResult>> LeaveLobbyAsServerAsync(LeaveLobbyAsServerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1222,6 +1361,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<LobbyEmptyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListMultiplayerServersResponse>> ListArchivedMultiplayerServersAsync(ListMultiplayerServersRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1239,6 +1380,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListMultiplayerServersResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListAssetSummariesResponse>> ListAssetSummariesAsync(ListAssetSummariesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1256,6 +1399,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListAssetSummariesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListBuildAliasesResponse>> ListBuildAliasesAsync(ListBuildAliasesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1273,6 +1418,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListBuildAliasesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListBuildSummariesResponse>> ListBuildSummariesAsync(ListBuildSummariesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1290,6 +1437,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListBuildSummariesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListBuildSummariesResponse>> ListBuildSummariesV2Async(ListBuildSummariesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1307,6 +1456,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListBuildSummariesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListCertificateSummariesResponse>> ListCertificateSummariesAsync(ListCertificateSummariesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1324,6 +1475,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListCertificateSummariesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListContainerImagesResponse>> ListContainerImagesAsync(ListContainerImagesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1341,6 +1494,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListContainerImagesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListContainerImageTagsResponse>> ListContainerImageTagsAsync(ListContainerImageTagsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1358,6 +1513,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListContainerImageTagsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListMatchmakingQueuesResult>> ListMatchmakingQueuesAsync(ListMatchmakingQueuesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1375,6 +1532,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListMatchmakingQueuesResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListMatchmakingTicketsForPlayerResult>> ListMatchmakingTicketsForPlayerAsync(ListMatchmakingTicketsForPlayerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1392,6 +1551,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListMatchmakingTicketsForPlayerResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListMultiplayerServersResponse>> ListMultiplayerServersAsync(ListMultiplayerServersRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1409,6 +1570,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListMultiplayerServersResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListPartyQosServersResponse>> ListPartyQosServersAsync(ListPartyQosServersRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1425,6 +1588,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListPartyQosServersResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListQosServersResponse>> ListQosServersAsync(ListQosServersRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1441,6 +1606,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListQosServersResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListQosServersForTitleResponse>> ListQosServersForTitleAsync(ListQosServersForTitleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1458,6 +1625,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListQosServersForTitleResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListSecretSummariesResponse>> ListSecretSummariesAsync(ListSecretSummariesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1475,6 +1644,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListSecretSummariesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListServerBackfillTicketsForPlayerResult>> ListServerBackfillTicketsForPlayerAsync(ListServerBackfillTicketsForPlayerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1492,6 +1663,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListServerBackfillTicketsForPlayerResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListTitleMultiplayerServersQuotaChangesResponse>> ListTitleMultiplayerServersQuotaChangesAsync(ListTitleMultiplayerServersQuotaChangesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1509,6 +1682,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListTitleMultiplayerServersQuotaChangesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListVirtualMachineSummariesResponse>> ListVirtualMachineSummariesAsync(ListVirtualMachineSummariesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1526,6 +1701,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<ListVirtualMachineSummariesResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RemoveMatchmakingQueueResult>> RemoveMatchmakingQueueAsync(RemoveMatchmakingQueueRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1543,6 +1720,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<RemoveMatchmakingQueueResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<LobbyEmptyResult>> RemoveMemberAsync(RemoveMemberFromLobbyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1560,6 +1739,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<LobbyEmptyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RequestMultiplayerServerResponse>> RequestMultiplayerServerAsync(RequestMultiplayerServerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1577,6 +1758,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<RequestMultiplayerServerResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RequestMultiplayerServerAndTokenResponse>> RequestMultiplayerServerAndTokenAsync(RequestMultiplayerServerAndTokenRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1594,6 +1777,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<RequestMultiplayerServerAndTokenResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RequestPartyResponse>> RequestPartyAsync(RequestPartyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1611,6 +1796,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<RequestPartyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RequestPartyServiceResponse>> RequestPartyServiceAsync(RequestPartyServiceRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1628,6 +1815,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<RequestPartyServiceResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RolloverContainerRegistryCredentialsResponse>> RolloverContainerRegistryCredentialsAsync(RolloverContainerRegistryCredentialsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1645,6 +1834,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<RolloverContainerRegistryCredentialsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SetMatchmakingQueueResult>> SetMatchmakingQueueAsync(SetMatchmakingQueueRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1662,6 +1853,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<SetMatchmakingQueueResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> ShutdownMultiplayerServerAsync(ShutdownMultiplayerServerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1679,6 +1872,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SubscribeToLobbyResourceResult>> SubscribeToLobbyResourceAsync(SubscribeToLobbyResourceRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1696,6 +1891,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<SubscribeToLobbyResourceResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<SubscribeToMatchResourceResult>> SubscribeToMatchmakingResourceAsync(SubscribeToMatchResourceRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1713,6 +1910,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<SubscribeToMatchResourceResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<LobbyEmptyResult>> UnsubscribeFromLobbyResourceAsync(UnsubscribeFromLobbyResourceRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1730,6 +1929,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<LobbyEmptyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UnsubscribeFromMatchResourceResult>> UnsubscribeFromMatchmakingResourceAsync(UnsubscribeFromMatchResourceRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1747,6 +1948,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<UnsubscribeFromMatchResourceResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UntagContainerImageAsync(UntagContainerImageRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1764,6 +1967,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<BuildAliasDetailsResponse>> UpdateBuildAliasAsync(UpdateBuildAliasRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1781,6 +1986,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<BuildAliasDetailsResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UpdateBuildNameAsync(UpdateBuildNameRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1798,6 +2005,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UpdateBuildRegionAsync(UpdateBuildRegionRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1815,6 +2024,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UpdateBuildRegionsAsync(UpdateBuildRegionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1832,6 +2043,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<LobbyEmptyResult>> UpdateLobbyAsync(UpdateLobbyRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1849,6 +2062,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<LobbyEmptyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<LobbyEmptyResult>> UpdateLobbyAsServerAsync(UpdateLobbyAsServerRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1866,6 +2081,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<LobbyEmptyResult> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateModelResponse>> UpdateModelAsync(UpdateModelRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1883,6 +2100,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<UpdateModelResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdatePrimaryModelResponse>> UpdatePrimaryModelAsync(UpdatePrimaryModelRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1900,6 +2119,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<UpdatePrimaryModelResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UpdateScenarioConfigurationResponse>> UpdateScenarioConfigurationAsync(UpdateScenarioConfigurationRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1917,6 +2138,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<UpdateScenarioConfigurationResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UploadCertificateAsync(UploadCertificateRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1934,6 +2157,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<UploadMatchResultResponse>> UploadMatchResultAsync(UploadMatchResultRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1951,6 +2176,8 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<UploadMatchResultResponse> { Result = result };
     }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UploadSecretAsync(UploadSecretRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1968,4 +2195,5 @@ public class PlayFabMultiplayerInstanceApi(PlayFabApiSettings? apiSettings = nul
 
         return new PlayFabResult<EmptyResponse> { Result = result };
     }
+
 }
