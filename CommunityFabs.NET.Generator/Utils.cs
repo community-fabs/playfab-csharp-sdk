@@ -59,6 +59,6 @@ public static class Utils
             throw new ArgumentException("Template path cannot be null or empty.", nameof(templatePath));
         }
         var renderedContent = await RazorTemplateEngine.RenderAsync(templatePath, model);
-        await File.WriteAllTextAsync(filePath, renderedContent);
+        await File.WriteAllTextAsync(filePath, renderedContent.Replace("\r\n", "\n"));
     }
 }

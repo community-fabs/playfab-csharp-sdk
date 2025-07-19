@@ -76,6 +76,7 @@
         return "null, null";
     }
 }
+    /// <inheritdoc />
     public async Task<PlayFabResult<@(Model.Result)>> @(Model.Name)Async(@Model.Request? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -92,3 +93,4 @@
 @Html.Raw(GetResultActions("        "))
         return new PlayFabResult<@Model.Result> { Result = result };
     }
+
