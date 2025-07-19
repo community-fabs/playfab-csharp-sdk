@@ -48,6 +48,7 @@ var sdkConstants = new SdkConstants()
 {
     BuildIdentifier = "custom_community-playfab-csharp-sdk",
     SdkVersion = sdkNotes.SdkVersion!["csharp"],
+    BuildSuffix = arguments.BuildSuffix
 };
 var constantsFilePath = Path.Combine(commonOutPath, "Constants.cs");
 await Utils.RenderToFile(constantsFilePath, "/Views/Constants.cshtml", sdkConstants);

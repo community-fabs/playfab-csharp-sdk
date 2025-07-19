@@ -10,9 +10,13 @@ on:
         type: boolean
         default: false
         description: "Dry run (Do not commit)"
+      build_suffix:
+        description: "Publish version suffix"
+        required: false
 
 env:
   COMMIT_REASON: ${{ github.event.inputs.commit_reason && format('({0})', github.event.inputs.commit_reason) || '' }}
+  BUILD_SUFFIX: ${{ github.event.inputs.build_suffix }}
 
 jobs:
   build:
@@ -30,7 +34,7 @@ jobs:
           dotnet-version: 8.x
 
       - name: 🚀 Run SDK Generator
-        run: dotnet run --project ./CommunityFabs.NET.Generator/CommunityFabs.NET.Generator.csproj --out=.
+        run: dotnet run --project ./CommunityFabs.NET.Generator/CommunityFabs.NET.Generator.csproj --out=. --suffix=${BUILD_SUFFIX}
 
       - name: 🕵️ Check for changes
         id: check_changes
