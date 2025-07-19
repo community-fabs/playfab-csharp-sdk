@@ -6,7 +6,16 @@
     <Nullable>enable</Nullable>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<Description>Unofficial C# "Instance" SDK for PlayFab APIs, with support for .NET 8 and System.Text.Json. Not supported or endorsed by PlayFab.</Description>
 	<GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
 	<!-- Use ProjectReference in Debug -->
