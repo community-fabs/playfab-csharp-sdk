@@ -2057,6 +2057,7 @@ public enum GenericErrorCodes {
     InvalidReportName,
     ResourceNotModified,
     StudioCreationLimitExceeded,
+    StudioDeletionInitiated,
     MatchmakingEntityInvalid,
     MatchmakingPlayerAttributesInvalid,
     MatchmakingQueueNotFound,
@@ -2386,6 +2387,7 @@ public enum GenericErrorCodes {
     InvalidEntityTypeForAggregation,
     MultiLevelAggregationNotAllowed,
     AggregationTypeNotAllowedForLinkedStat,
+    StoreMetricsRequestInvalidInput,
 }
 
 public class GenericPlayFabIdPair {

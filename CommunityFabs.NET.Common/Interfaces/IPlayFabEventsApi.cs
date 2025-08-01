@@ -5,7 +5,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Creates a new telemetry key for the title.
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.CreateTelemetryKeyAsync({);
+    /// var response = await eventApi.CreateTelemetryKeyAsync({
     ///   "KeyName": "MyTelemetryKey"
     /// });
     /// </code></example>
@@ -15,7 +15,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Deletes a Data Connection from a title.
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.DeleteDataConnectionAsync({);
+    /// var response = await eventApi.DeleteDataConnectionAsync({
     ///   "Name": "MyDataConnection"
     /// });
     /// </code></example>
@@ -30,7 +30,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Deletes a telemetry key configured for the title.
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.DeleteTelemetryKeyAsync({);
+    /// var response = await eventApi.DeleteTelemetryKeyAsync({
     ///   "KeyName": "MyTelemetryKey"
     /// });
     /// </code></example>
@@ -40,7 +40,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Retrieves a single Data Connection associated with a title.
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.GetDataConnectionAsync({);
+    /// var response = await eventApi.GetDataConnectionAsync({
     ///   "Name": "MyDataConnection"
     /// });
     /// </code></example>
@@ -50,7 +50,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Gets the sampling ratio for an event.
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.GetEventSamplingRatioAsync({);
+    /// var response = await eventApi.GetEventSamplingRatioAsync({
     ///   "EventNamespace": "com.playfab",
     ///   "EventName": "player_executed_cloudscript"
     /// });
@@ -66,7 +66,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Gets information about a telemetry key configured for the title.
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.GetTelemetryKeyAsync({);
+    /// var response = await eventApi.GetTelemetryKeyAsync({
     ///   "KeyName": "MyTelemetryKey"
     /// });
     /// </code></example>
@@ -92,7 +92,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Creates or updates a Data Connection on a title.
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.SetDataConnectionAsync({);
+    /// var response = await eventApi.SetDataConnectionAsync({
     ///   "Name": "MyDataConnection",
     ///   "Type": "AzureDataExplorer",
     ///   "IsActive": true,
@@ -111,7 +111,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Sets a Data Connection for the title to either the active or deactivated state.
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.SetDataConnectionActiveAsync({);
+    /// var response = await eventApi.SetDataConnectionActiveAsync({
     ///   "Name": "MyDataConnection",
     ///   "Active": false
     /// });
@@ -127,7 +127,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Sets a telemetry key to the active or deactivated state.
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.SetTelemetryKeyActiveAsync({);
+    /// var response = await eventApi.SetTelemetryKeyActiveAsync({
     ///   "KeyName": "MyTelemetryKey",
     ///   "Active": false
     /// });
@@ -138,7 +138,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Write batches of entity based events to PlayStream. The namespace of the Event must be 'custom' or start with 'custom.'.
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.WriteEventsAsync({);
+    /// var response = await eventApi.WriteEventsAsync({
     ///   "Events": [
     ///     {
     ///       "Entity": {
@@ -167,7 +167,7 @@ public interface IPlayFabEventsApi {
     /// Write batches of entity based events to as Telemetry events (bypass PlayStream). The namespace must be 'custom' or
     /// start with 'custom.'
     /// <example><br/>Example:<code>
-    /// var response = await eventApi.WriteTelemetryEventsAsync({);
+    /// var response = await eventApi.WriteTelemetryEventsAsync({
     ///   "Events": [
     ///     {
     ///       "Entity": {

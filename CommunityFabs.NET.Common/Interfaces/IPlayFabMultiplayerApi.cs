@@ -5,7 +5,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel all active tickets the player is a member of in a given queue.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CancelAllMatchmakingTicketsForPlayerAsync({);
+    /// var response = await matchApi.CancelAllMatchmakingTicketsForPlayerAsync({
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -20,7 +20,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel all active backfill tickets the player is a member of in a given queue.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CancelAllServerBackfillTicketsForPlayerAsync({);
+    /// var response = await matchApi.CancelAllServerBackfillTicketsForPlayerAsync({
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -35,7 +35,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel a matchmaking ticket.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CancelMatchmakingTicketAsync({);
+    /// var response = await matchApi.CancelMatchmakingTicketAsync({
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123"
     /// });
@@ -46,7 +46,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel a batch model creation.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.CancelModelAsync({);
+    /// var response = await trueskillApi.CancelModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
@@ -57,7 +57,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel a server backfill ticket.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CancelServerBackfillTicketAsync({);
+    /// var response = await matchApi.CancelServerBackfillTicketAsync({
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123"
     /// });
@@ -68,7 +68,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Create a base model with default settings.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.CreateBaseModelAsync({);
+    /// var response = await trueskillApi.CreateBaseModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelName": "Test Batch Model",
     ///   "Conditions": [
@@ -89,7 +89,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Creates a batch model that is learned from a title's match results in a scenario.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.CreateBatchModelAsync({);
+    /// var response = await trueskillApi.CreateBatchModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelName": "Test Batch Model",
     ///   "Conditions": [
@@ -107,8 +107,8 @@ public interface IPlayFabMultiplayerApi {
     ///     "Deaths"
     ///   ],
     ///   "InitialSettingsModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf",
-    ///   "MatchResultStartTimeUtc": "2025-07-18T13:31:38.411Z",
-    ///   "MatchResultEndTimeUtc": "2025-07-18T14:01:38.411Z",
+    ///   "MatchResultStartTimeUtc": "2025-08-01T19:10:18.711Z",
+    ///   "MatchResultEndTimeUtc": "2025-08-01T19:40:18.711Z",
     ///   "MaxIterations": 100,
     ///   "AnomalousMatchResultIgnoreThreshold": -20.0
     /// });
@@ -119,7 +119,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Creates a multiplayer server build alias.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.CreateBuildAliasAsync({);
+    /// var response = await multiplayerserverApi.CreateBuildAliasAsync({
     ///   "AliasName": "AliasName",
     ///   "BuildSelectionCriteria": [
     ///     {
@@ -136,7 +136,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Creates a multiplayer server build with a custom container.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.CreateBuildWithCustomContainerAsync({);
+    /// var response = await multiplayerserverApi.CreateBuildWithCustomContainerAsync({
     ///   "ContainerRunCommand": "/data/Assets -startserver",
     ///   "GameAssetReferences": [
     ///     {
@@ -249,7 +249,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Creates a multiplayer server build with a managed container.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.CreateBuildWithManagedContainerAsync({);
+    /// var response = await multiplayerserverApi.CreateBuildWithManagedContainerAsync({
     ///   "StartMultiplayerServerCommand": "gameserver.exe -startserver",
     ///   "GameAssetReferences": [
     ///     {
@@ -352,7 +352,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Creates a multiplayer server build with the server running as a process.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.CreateBuildWithProcessBasedServerAsync({);
+    /// var response = await multiplayerserverApi.CreateBuildWithProcessBasedServerAsync({
     ///   "OsPlatform": "Windows",
     ///   "GameAssetReferences": [
     ///     {
@@ -413,7 +413,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Create a lobby.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.CreateLobbyAsync({);
+    /// var response = await lobbyApi.CreateLobbyAsync({
     ///   "MaxPlayers": 50,
     ///   "Owner": {
     ///     "Id": "1234",
@@ -447,7 +447,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Create a matchmaking ticket as a client.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CreateMatchmakingTicketAsync({);
+    /// var response = await matchApi.CreateMatchmakingTicketAsync({
     ///   "Creator": {},
     ///   "MembersToMatchWith": [],
     ///   "GiveUpAfterSeconds": 100,
@@ -460,7 +460,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Creates a remote user to log on to a VM for a multiplayer server build.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.CreateRemoteUserAsync({);
+    /// var response = await multiplayerserverApi.CreateRemoteUserAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs",
     ///   "VmId": "VmID1",
@@ -475,7 +475,7 @@ public interface IPlayFabMultiplayerApi {
     /// Create a scenario to specify which conditions, conditions values and events will be allowed when submitting match
     /// results.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.CreateScenarioAsync({);
+    /// var response = await trueskillApi.CreateScenarioAsync({
     ///   "Name": "Test Scenario",
     ///   "Conditions": [
     ///     {
@@ -507,7 +507,7 @@ public interface IPlayFabMultiplayerApi {
     /// automatically starts matching the backfill ticket against other matchmaking tickets. Backfill tickets cannot match with
     /// other backfill tickets.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CreateServerBackfillTicketAsync({);
+    /// var response = await matchApi.CreateServerBackfillTicketAsync({
     ///   "Members": [],
     ///   "GiveUpAfterSeconds": 100,
     ///   "ServerDetails": {
@@ -533,7 +533,7 @@ public interface IPlayFabMultiplayerApi {
     /// Create a matchmaking ticket as a server. The matchmaking service automatically starts matching the ticket against other
     /// matchmaking tickets.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CreateServerMatchmakingTicketAsync({);
+    /// var response = await matchApi.CreateServerMatchmakingTicketAsync({
     ///   "Members": [
     ///     null
     ///   ],
@@ -547,7 +547,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Creates a request to change a title's multiplayer server quotas.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.CreateTitleMultiplayerServersQuotaChangeAsync({);
+    /// var response = await multiplayerserverApi.CreateTitleMultiplayerServersQuotaChangeAsync({
     ///   "ContactEmail": "john@mygamestudio.com",
     ///   "StartDate": "2020-01-23T00:00:00Z",
     ///   "ChangeDescription": "Season 3 Launch",
@@ -572,7 +572,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Switch a model's state from Active to Deactivated.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.DeactivateModelAsync({);
+    /// var response = await trueskillApi.DeactivateModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
@@ -583,7 +583,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Deletes a multiplayer server game asset for a title.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.DeleteAssetAsync({);
+    /// var response = await multiplayerserverApi.DeleteAssetAsync({
     ///   "FileName": "gameserver.zip"
     /// });
     /// </code></example>
@@ -593,7 +593,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Deletes a multiplayer server build.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.DeleteBuildAsync({);
+    /// var response = await multiplayerserverApi.DeleteBuildAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285"
     /// });
     /// </code></example>
@@ -603,7 +603,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Deletes a multiplayer server build alias.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.DeleteBuildAliasAsync({);
+    /// var response = await multiplayerserverApi.DeleteBuildAliasAsync({
     ///   "AliasId": "21781fa8-096d-4d9c-b699-75433d579285"
     /// });
     /// </code></example>
@@ -613,7 +613,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Removes a multiplayer server build's region.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.DeleteBuildRegionAsync({);
+    /// var response = await multiplayerserverApi.DeleteBuildRegionAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "JapanEast"
     /// });
@@ -624,7 +624,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Deletes a multiplayer server game certificate.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.DeleteCertificateAsync({);
+    /// var response = await multiplayerserverApi.DeleteCertificateAsync({
     ///   "Name": "GameCertificate1"
     /// });
     /// </code></example>
@@ -634,7 +634,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Deletes a container image repository.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.DeleteContainerImageRepositoryAsync({);
+    /// var response = await multiplayerserverApi.DeleteContainerImageRepositoryAsync({
     ///   "ImageName": "imageName1"
     /// });
     /// </code></example>
@@ -644,7 +644,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Delete a lobby.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.DeleteLobbyAsync({);
+    /// var response = await lobbyApi.DeleteLobbyAsync({
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC"
     /// });
     /// </code></example>
@@ -654,7 +654,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Delete a model.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.DeleteModelAsync({);
+    /// var response = await trueskillApi.DeleteModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
@@ -665,7 +665,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Deletes a remote user to log on to a VM for a multiplayer server build.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.DeleteRemoteUserAsync({);
+    /// var response = await multiplayerserverApi.DeleteRemoteUserAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs",
     ///   "VmId": "VmID1",
@@ -678,7 +678,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Delete a scenario.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.DeleteScenarioAsync({);
+    /// var response = await trueskillApi.DeleteScenarioAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ForceDelete": true
     /// });
@@ -689,7 +689,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Deletes a multiplayer server game secret.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.DeleteSecretAsync({);
+    /// var response = await multiplayerserverApi.DeleteSecretAsync({
     ///   "Name": "GameSecret1"
     /// });
     /// </code></example>
@@ -715,7 +715,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Find lobbies which match certain criteria, and which friends are in.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.FindFriendLobbiesAsync({);
+    /// var response = await lobbyApi.FindFriendLobbiesAsync({
     ///   "Filter": "string_key1 eq 'Wizard' and number_key5 gt 5",
     ///   "OrderBy": "number_key5 desc",
     ///   "ExternalPlatformFriends": "Xbox",
@@ -732,7 +732,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Find all the lobbies that match certain criteria.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.FindLobbiesAsync({);
+    /// var response = await lobbyApi.FindLobbiesAsync({
     ///   "Filter": "string_key1 eq 'Wizard' and number_key5 gt 5",
     ///   "OrderBy": "number_key5 desc",
     ///   "Pagination": {
@@ -749,7 +749,7 @@ public interface IPlayFabMultiplayerApi {
     /// https://sampleStorageAccount.blob.core.windows.net/gameassets/gameserver.zip?sv=2015-04-05&amp;ss=b&amp;srt=sco&amp;sp=rw&amp;st=startDa
     /// te&amp;se=endDate&amp;spr=https&amp;sig=sampleSig&amp;api-version=2017-07-29
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetAssetDownloadUrlAsync({);
+    /// var response = await multiplayerserverApi.GetAssetDownloadUrlAsync({
     ///   "FileName": "gameserver.zip"
     /// });
     /// </code></example>
@@ -761,7 +761,7 @@ public interface IPlayFabMultiplayerApi {
     /// https://sampleStorageAccount.blob.core.windows.net/gameassets/gameserver.zip?sv=2015-04-05&amp;ss=b&amp;srt=sco&amp;sp=rw&amp;st=startDa
     /// te&amp;se=endDate&amp;spr=https&amp;sig=sampleSig&amp;api-version=2017-07-29
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetAssetUploadUrlAsync({);
+    /// var response = await multiplayerserverApi.GetAssetUploadUrlAsync({
     ///   "FileName": "gameserver.zip"
     /// });
     /// </code></example>
@@ -771,7 +771,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets a multiplayer server build.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetBuildAsync({);
+    /// var response = await multiplayerserverApi.GetBuildAsync({
     ///   "BuildId": "53781fa8-006d-4e9c-b733-57433d579285"
     /// });
     /// </code></example>
@@ -781,7 +781,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets a multiplayer server build alias.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetBuildAliasAsync({);
+    /// var response = await multiplayerserverApi.GetBuildAliasAsync({
     ///   "AliasId": "21781fa8-096d-4d9c-b699-75433d579285"
     /// });
     /// </code></example>
@@ -791,7 +791,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets supported locales for the cognitive services based on the specified service type.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetCognitiveServicesLocalesAsync({);
+    /// var response = await multiplayerserverApi.GetCognitiveServicesLocalesAsync({
     ///   "CognitiveServicesType": "SpeechToText",
     ///   "Region": "WestUs"
     /// });
@@ -802,7 +802,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets a token for the cognitive services based on the specified service type.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetCognitiveServicesTokenAsync({);
+    /// var response = await multiplayerserverApi.GetCognitiveServicesTokenAsync({
     ///   "CognitiveServicesType": "SpeechToText",
     ///   "Region": "AustraliaEast"
     /// });
@@ -821,7 +821,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get a lobby.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.GetLobbyAsync({);
+    /// var response = await lobbyApi.GetLobbyAsync({
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC"
     /// });
     /// </code></example>
@@ -831,7 +831,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get a match.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.GetMatchAsync({);
+    /// var response = await matchApi.GetMatchAsync({
     ///   "MatchId": "4e0c5fd7-80e9-4744-b0ce-061a7f067ff5",
     ///   "QueueName": "custom123",
     ///   "EscapeObject": false,
@@ -844,7 +844,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// SDK support is limited to C# and Java for this API. Get a matchmaking queue configuration.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.GetMatchmakingQueueAsync({);
+    /// var response = await matchApi.GetMatchmakingQueueAsync({
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
@@ -854,7 +854,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get a matchmaking ticket by ticket Id.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.GetMatchmakingTicketAsync({);
+    /// var response = await matchApi.GetMatchmakingTicketAsync({
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123",
     ///   "EscapeObject": false
@@ -866,7 +866,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets the details of a Model.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.GetModelDetailsAsync({);
+    /// var response = await trueskillApi.GetModelDetailsAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
@@ -877,7 +877,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get all of the models assigned to a specific scenario.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.GetModelsByScenarioAsync({);
+    /// var response = await trueskillApi.GetModelsByScenarioAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d"
     /// });
     /// </code></example>
@@ -887,7 +887,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets multiplayer server session details and associated user connection tokens for a build.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetMultiplayerServerAndTokenAsync({);
+    /// var response = await multiplayerserverApi.GetMultiplayerServerAndTokenAsync({
     ///   "TokenPlayerIds": [
     ///     "User1",
     ///     "User2"
@@ -901,7 +901,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets multiplayer server session details for a build.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetMultiplayerServerDetailsAsync({);
+    /// var response = await multiplayerserverApi.GetMultiplayerServerDetailsAsync({
     ///   "SessionId": "02bdef0e-e01e-4b29-8efe-ff9f47a06d8c"
     /// });
     /// </code></example>
@@ -911,7 +911,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets multiplayer server logs after a server has terminated.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetMultiplayerServerLogsAsync({);
+    /// var response = await multiplayerserverApi.GetMultiplayerServerLogsAsync({
     ///   "Region": "AustraliaEast",
     ///   "ServerId": "SomeServerId"
     /// });
@@ -922,7 +922,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets multiplayer server logs after a server has terminated.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetMultiplayerSessionLogsBySessionIdAsync({);
+    /// var response = await multiplayerserverApi.GetMultiplayerSessionLogsBySessionIdAsync({
     ///   "SessionId": "92e29db9-4004-4349-9a1f-b70ac01bdc08"
     /// });
     /// </code></example>
@@ -932,7 +932,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets skill values of a set of players from the primary model of a given scenario.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.GetPlayerSkillAsync({);
+    /// var response = await trueskillApi.GetPlayerSkillAsync({
     ///   "Conditions": {
     ///     "Platform": "Xbox",
     ///     "Mode": "Deathmatch"
@@ -964,7 +964,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets skill values of a set of players for multiple sets of conditions from the primary model of a given scenario.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.GetPlayerSkillForConditionsAsync({);
+    /// var response = await trueskillApi.GetPlayerSkillForConditionsAsync({
     ///   "Conditions": [
     ///     {
     ///       "Conditions": {
@@ -1006,7 +1006,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets skill values of a set of players for multiple sets of conditions from a specific model.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.GetPlayerSkillForConditionsFromModelAsync({);
+    /// var response = await trueskillApi.GetPlayerSkillForConditionsFromModelAsync({
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf",
     ///   "Conditions": [
     ///     {
@@ -1049,7 +1049,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets skill values of a set of players from a specific model.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.GetPlayerSkillFromModelAsync({);
+    /// var response = await trueskillApi.GetPlayerSkillFromModelAsync({
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf",
     ///   "Conditions": {
     ///     "Platform": "Xbox",
@@ -1082,7 +1082,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get the statistics for a queue.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.GetQueueStatisticsAsync({);
+    /// var response = await matchApi.GetQueueStatisticsAsync({
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
@@ -1092,7 +1092,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets a remote login endpoint to a VM that is hosting a multiplayer server build.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetRemoteLoginEndpointAsync({);
+    /// var response = await multiplayerserverApi.GetRemoteLoginEndpointAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs",
     ///   "VmId": "VmID1"
@@ -1104,7 +1104,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get a scenario configuration.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.GetScenarioConfigurationAsync({);
+    /// var response = await trueskillApi.GetScenarioConfigurationAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d"
     /// });
     /// </code></example>
@@ -1119,7 +1119,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get a matchmaking backfill ticket by ticket Id.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.GetServerBackfillTicketAsync({);
+    /// var response = await matchApi.GetServerBackfillTicketAsync({
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123",
     ///   "EscapeObject": false
@@ -1139,7 +1139,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets a title's server quota change request.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.GetTitleMultiplayerServersQuotaChangeAsync({);
+    /// var response = await multiplayerserverApi.GetTitleMultiplayerServersQuotaChangeAsync({
     ///   "RequestId": "1234"
     /// });
     /// </code></example>
@@ -1157,7 +1157,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Send a notification to invite a player to a lobby.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.InviteToLobbyAsync({);
+    /// var response = await lobbyApi.InviteToLobbyAsync({
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC",
     ///   "MemberEntity": {
     ///     "Id": "1234",
@@ -1177,7 +1177,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Join an Arranged lobby.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.JoinArrangedLobbyAsync({);
+    /// var response = await lobbyApi.JoinArrangedLobbyAsync({
     ///   "MaxPlayers": 50,
     ///   "OwnerMigrationPolicy": "Automatic",
     ///   "UseConnections": true,
@@ -1200,7 +1200,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Join a lobby.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.JoinLobbyAsync({);
+    /// var response = await lobbyApi.JoinLobbyAsync({
     ///   "MemberEntity": {
     ///     "Id": "1234",
     ///     "Type": "title_player_account",
@@ -1218,7 +1218,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Preview: Join a lobby as a server entity. This is restricted to client lobbies which are using connections.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.JoinLobbyAsServerAsync({);
+    /// var response = await lobbyApi.JoinLobbyAsServerAsync({
     ///   "ServerEntity": {
     ///     "Id": "1234",
     ///     "Type": "game_server",
@@ -1236,7 +1236,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Join a matchmaking ticket.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.JoinMatchmakingTicketAsync({);
+    /// var response = await matchApi.JoinMatchmakingTicketAsync({
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123",
     ///   "Member": {}
@@ -1248,7 +1248,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Leave a lobby.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.LeaveLobbyAsync({);
+    /// var response = await lobbyApi.LeaveLobbyAsync({
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC",
     ///   "MemberEntity": {
     ///     "Id": "1234",
@@ -1263,7 +1263,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Preview: Request for server to leave a lobby. This is restricted to client owned lobbies which are using connections.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.LeaveLobbyAsServerAsync({);
+    /// var response = await lobbyApi.LeaveLobbyAsServerAsync({
     ///   "ServerEntity": {
     ///     "Id": "1234",
     ///     "Type": "game_server",
@@ -1278,7 +1278,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Lists archived multiplayer server sessions for a build.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListArchivedMultiplayerServersAsync({);
+    /// var response = await multiplayerserverApi.ListArchivedMultiplayerServersAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs"
     /// });
@@ -1289,7 +1289,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Lists multiplayer server game assets for a title.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListAssetSummariesAsync({);
+    /// var response = await multiplayerserverApi.ListAssetSummariesAsync({
     ///   "PageSize": 10
     /// });
     /// </code></example>
@@ -1300,7 +1300,7 @@ public interface IPlayFabMultiplayerApi {
     /// Lists details of all build aliases for a title. Accepts tokens for title and if game client access is enabled, allows
     /// game client to request list of builds with player entity token.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListBuildAliasesAsync({);
+    /// var response = await multiplayerserverApi.ListBuildAliasesAsync({
     ///   "PageSize": 10
     /// });
     /// </code></example>
@@ -1311,7 +1311,7 @@ public interface IPlayFabMultiplayerApi {
     /// Lists summarized details of all multiplayer server builds for a title. Accepts tokens for title and if game client
     /// access is enabled, allows game client to request list of builds with player entity token.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListBuildSummariesAsync({);
+    /// var response = await multiplayerserverApi.ListBuildSummariesAsync({
     ///   "PageSize": 10
     /// });
     /// </code></example>
@@ -1322,7 +1322,7 @@ public interface IPlayFabMultiplayerApi {
     /// Lists summarized details of all multiplayer server builds for a title. Accepts tokens for title and if game client
     /// access is enabled, allows game client to request list of builds with player entity token.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListBuildSummariesV2Async({);
+    /// var response = await multiplayerserverApi.ListBuildSummariesV2Async({
     ///   "PageSize": 10
     /// });
     /// </code></example>
@@ -1332,7 +1332,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Lists multiplayer server game certificates for a title.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListCertificateSummariesAsync({);
+    /// var response = await multiplayerserverApi.ListCertificateSummariesAsync({
     ///   "PageSize": 10
     /// });
     /// </code></example>
@@ -1342,7 +1342,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Lists custom container images for a title.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListContainerImagesAsync({);
+    /// var response = await multiplayerserverApi.ListContainerImagesAsync({
     ///   "PageSize": 10
     /// });
     /// </code></example>
@@ -1352,7 +1352,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Lists the tags for a custom container image.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListContainerImageTagsAsync({);
+    /// var response = await multiplayerserverApi.ListContainerImageTagsAsync({
     ///   "ImageName": "imageName1",
     ///   "PageSize": 10
     /// });
@@ -1371,7 +1371,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// List all matchmaking ticket Ids the user is a member of.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.ListMatchmakingTicketsForPlayerAsync({);
+    /// var response = await matchApi.ListMatchmakingTicketsForPlayerAsync({
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -1386,7 +1386,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Lists multiplayer server sessions for a build.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListMultiplayerServersAsync({);
+    /// var response = await multiplayerserverApi.ListMultiplayerServersAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs"
     /// });
@@ -1397,7 +1397,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Lists quality of service servers for party.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListPartyQosServersAsync({);
+    /// var response = await multiplayerserverApi.ListPartyQosServersAsync({
     ///   "Version": "1.0.0"
     /// });
     /// </code></example>
@@ -1416,7 +1416,7 @@ public interface IPlayFabMultiplayerApi {
     /// Lists quality of service servers for the title. By default, servers are only returned for regions where a Multiplayer
     /// Servers build has been deployed.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListQosServersForTitleAsync({);
+    /// var response = await multiplayerserverApi.ListQosServersForTitleAsync({
     ///   "IncludeAllRegions": true,
     ///   "RoutingPreference": "Microsoft"
     /// });
@@ -1427,7 +1427,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Lists multiplayer server game secrets for a title.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListSecretSummariesAsync({);
+    /// var response = await multiplayerserverApi.ListSecretSummariesAsync({
     ///   "PageSize": 10
     /// });
     /// </code></example>
@@ -1437,7 +1437,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// List all server backfill ticket Ids the user is a member of.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.ListServerBackfillTicketsForPlayerAsync({);
+    /// var response = await matchApi.ListServerBackfillTicketsForPlayerAsync({
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -1460,7 +1460,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Lists virtual machines for a title.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ListVirtualMachineSummariesAsync({);
+    /// var response = await multiplayerserverApi.ListVirtualMachineSummariesAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "Region": "SouthCentralUs",
     ///   "PageSize": 10
@@ -1472,7 +1472,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// SDK support is limited to C# and Java for this API. Remove a matchmaking queue config.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.RemoveMatchmakingQueueAsync({);
+    /// var response = await matchApi.RemoveMatchmakingQueueAsync({
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
@@ -1482,7 +1482,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Remove a member from a lobby.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.RemoveMemberAsync({);
+    /// var response = await lobbyApi.RemoveMemberAsync({
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC",
     ///   "MemberEntity": {
     ///     "Id": "1234",
@@ -1499,7 +1499,7 @@ public interface IPlayFabMultiplayerApi {
     /// Request a multiplayer server session. Accepts tokens for title and if game client access is enabled, allows game client
     /// to request a server with player entity token.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.RequestMultiplayerServerAsync({);
+    /// var response = await multiplayerserverApi.RequestMultiplayerServerAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "SessionId": "02bdef0e-e01e-4b29-8efe-ff9f47a06d8c",
     ///   "SessionCookie": "U2Vzc2lvbkNvb2tpZQ==",
@@ -1520,7 +1520,7 @@ public interface IPlayFabMultiplayerApi {
     /// Request a multiplayer server session and associated user connection tokens. Accepts tokens for title and if game client
     /// access is enabled, allows game client to request a server with player entity token.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.RequestMultiplayerServerAndTokenAsync({);
+    /// var response = await multiplayerserverApi.RequestMultiplayerServerAndTokenAsync({
     ///   "TokenPlayerIds": [
     ///     "gamer1",
     ///     "gamer2"
@@ -1544,7 +1544,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Request a party session.
     /// <example><br/>Example:<code>
-    /// var response = await partyApi.RequestPartyAsync({);
+    /// var response = await partyApi.RequestPartyAsync({
     ///   "PartyId": "23781fa9-e01e-4b29-4f0b-dd9f37a06a1e",
     ///   "PreferredRegions": [
     ///     "EastUs",
@@ -1560,7 +1560,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Request a party session.
     /// <example><br/>Example:<code>
-    /// var response = await partyApi.RequestPartyServiceAsync({);
+    /// var response = await partyApi.RequestPartyServiceAsync({
     ///   "TitleId": "12345",
     ///   "PartyId": "23781fa9-e01e-4b29-4f0b-dd9f37a06a1e",
     ///   "PreferredRegions": [
@@ -1596,7 +1596,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// SDK support is limited to C# and Java for this API. Create or update a matchmaking queue configuration.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.SetMatchmakingQueueAsync({);
+    /// var response = await matchApi.SetMatchmakingQueueAsync({
     ///   "MatchmakingQueue": {
     ///     "Name": "ExampleQueueName",
     ///     "MinMatchSize": 7,
@@ -1761,7 +1761,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Shuts down a multiplayer server session.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.ShutdownMultiplayerServerAsync({);
+    /// var response = await multiplayerserverApi.ShutdownMultiplayerServerAsync({
     ///   "Region": "AustraliaEast",
     ///   "SessionId": "02bdef0e-e01e-4b29-8efe-ff9f47a06d8c"
     /// });
@@ -1772,7 +1772,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Subscribe to lobby resource notifications.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.SubscribeToLobbyResourceAsync({);
+    /// var response = await lobbyApi.SubscribeToLobbyResourceAsync({
     ///   "Type": "LobbyChange",
     ///   "ResourceId": "5c905725-0184-4112-a563-2f4187710d06",
     ///   "SubscriptionVersion": 1,
@@ -1790,7 +1790,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Subscribe to match resource notifications.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.SubscribeToMatchmakingResourceAsync({);
+    /// var response = await matchApi.SubscribeToMatchmakingResourceAsync({
     ///   "Type": "MatchTicketStatusChange",
     ///   "ResourceId": "5a58afee-a9d7-4a47-875b-48bae4dc0590",
     ///   "SubscriptionVersion": 1,
@@ -1804,7 +1804,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Unsubscribe from lobby notifications.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.UnsubscribeFromLobbyResourceAsync({);
+    /// var response = await lobbyApi.UnsubscribeFromLobbyResourceAsync({
     ///   "Type": "LobbyChange",
     ///   "ResourceId": "5c905725-0184-4112-a563-2f4187710d06",
     ///   "SubscriptionVersion": 1,
@@ -1822,7 +1822,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Unsubscribe from match resource notifications.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.UnsubscribeFromMatchmakingResourceAsync({);
+    /// var response = await matchApi.UnsubscribeFromMatchmakingResourceAsync({
     ///   "Type": "MatchTicketStatusChange",
     ///   "ResourceId": "5a58afee-a9d7-4a47-875b-48bae4dc0590",
     ///   "SubscriptionVersion": 1,
@@ -1836,7 +1836,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Untags a container image.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.UntagContainerImageAsync({);
+    /// var response = await multiplayerserverApi.UntagContainerImageAsync({
     ///   "ImageName": "imageName1",
     ///   "Tag": "tag1"
     /// });
@@ -1847,7 +1847,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Creates a multiplayer server build alias.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.UpdateBuildAliasAsync({);
+    /// var response = await multiplayerserverApi.UpdateBuildAliasAsync({
     ///   "AliasName": "AliasName",
     ///   "BuildSelectionCriteria": [
     ///     {
@@ -1865,7 +1865,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Updates a multiplayer server build's name.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.UpdateBuildNameAsync({);
+    /// var response = await multiplayerserverApi.UpdateBuildNameAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "BuildName": "GameBuildName"
     /// });
@@ -1876,7 +1876,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Updates a multiplayer server build's region. If the region is not yet created, it will be created
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.UpdateBuildRegionAsync({);
+    /// var response = await multiplayerserverApi.UpdateBuildRegionAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "BuildRegion": {
     ///     "Region": "NorthEurope",
@@ -1891,7 +1891,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Updates a multiplayer server build's regions.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.UpdateBuildRegionsAsync({);
+    /// var response = await multiplayerserverApi.UpdateBuildRegionsAsync({
     ///   "BuildId": "21781fa8-096d-4d9c-b699-75433d579285",
     ///   "BuildRegions": [
     ///     {
@@ -1918,7 +1918,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Update a lobby.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.UpdateLobbyAsync({);
+    /// var response = await lobbyApi.UpdateLobbyAsync({
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC",
     ///   "MaxPlayers": 50,
     ///   "AccessPolicy": "Friends",
@@ -1954,7 +1954,7 @@ public interface IPlayFabMultiplayerApi {
     /// by being the one to "update" the lobby in some way. Servers have no impact on last member leave/last member disconnect
     /// behavior.
     /// <example><br/>Example:<code>
-    /// var response = await lobbyApi.UpdateLobbyAsServerAsync({);
+    /// var response = await lobbyApi.UpdateLobbyAsServerAsync({
     ///   "LobbyId": "12345678-1234-1234-1234-123456789ABC",
     ///   "ServerEntity": {
     ///     "Id": "1234",
@@ -1975,7 +1975,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Update a model.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.UpdateModelAsync({);
+    /// var response = await trueskillApi.UpdateModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf",
     ///   "ModelName": "New Model Name",
@@ -1988,7 +1988,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Mark a model as primary for a scenario.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.UpdatePrimaryModelAsync({);
+    /// var response = await trueskillApi.UpdatePrimaryModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
@@ -1999,7 +1999,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Update a scenario configuration.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.UpdateScenarioConfigurationAsync({);
+    /// var response = await trueskillApi.UpdateScenarioConfigurationAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ConditionsToUpdateOrAdd": [
     ///     {
@@ -2018,7 +2018,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Uploads a multiplayer server game certificate.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.UploadCertificateAsync({);
+    /// var response = await multiplayerserverApi.UploadCertificateAsync({
     ///   "GameCertificate": {
     ///     "Name": "GameCertificate1",
     ///     "Base64EncodedValue": "UGxheUZhYlJvY2tzISEhTGV0J3NtYWtlYWxvdG9mZ2FtZXMh",
@@ -2033,7 +2033,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Uploads a match result.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.UploadMatchResultAsync({);
+    /// var response = await trueskillApi.UploadMatchResultAsync({
     ///   "MatchResult": {
     ///     "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///     "Teams": [
@@ -2131,8 +2131,8 @@ public interface IPlayFabMultiplayerApi {
     ///         "Rank": 1
     ///       }
     ///     ],
-    ///     "StartDateTimeUtc": "2025-07-18T13:31:38.402Z",
-    ///     "EndDateTimeUtc": "2025-07-18T14:01:38.402Z"
+    ///     "StartDateTimeUtc": "2025-08-01T19:10:18.702Z",
+    ///     "EndDateTimeUtc": "2025-08-01T19:40:18.702Z"
     ///   }
     /// });
     /// </code></example>
@@ -2142,7 +2142,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Uploads a multiplayer server game secret.
     /// <example><br/>Example:<code>
-    /// var response = await multiplayerserverApi.UploadSecretAsync({);
+    /// var response = await multiplayerserverApi.UploadSecretAsync({
     ///   "GameSecret": {
     ///     "Name": "GameSecret1",
     ///     "Value": "Value123",

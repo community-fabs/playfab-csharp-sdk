@@ -5,7 +5,7 @@ public interface IPlayFabExperimentationApi {
     /// <summary>
     /// Creates a new experiment exclusion group for a title.
     /// <example><br/>Example:<code>
-    /// var response = await experimentationApi.CreateExclusionGroupAsync({);
+    /// var response = await experimentationApi.CreateExclusionGroupAsync({
     ///   "Name": "Commerce Exclusion Group",
     ///   "Description": "Exclusion group for independent, commerce-related experiments"
     /// });
@@ -16,7 +16,7 @@ public interface IPlayFabExperimentationApi {
     /// <summary>
     /// Creates a new experiment for a title.
     /// <example><br/>Example:<code>
-    /// var response = await experimentationApi.CreateExperimentAsync({);
+    /// var response = await experimentationApi.CreateExperimentAsync({
     ///   "Name": "BackgroundColor Experiment",
     ///   "Description": "Tests whether a green background color increases revenue",
     ///   "StartDate": "2019-10-25T20:37:00Z",
@@ -56,7 +56,7 @@ public interface IPlayFabExperimentationApi {
     /// <summary>
     /// Deletes an existing exclusion group for a title.
     /// <example><br/>Example:<code>
-    /// var response = await experimentationApi.DeleteExclusionGroupAsync({);
+    /// var response = await experimentationApi.DeleteExclusionGroupAsync({
     ///   "ExclusionGroupId": "00000000-0000-0000-0000-000000000000"
     /// });
     /// </code></example>
@@ -66,7 +66,7 @@ public interface IPlayFabExperimentationApi {
     /// <summary>
     /// Deletes an existing experiment for a title.
     /// <example><br/>Example:<code>
-    /// var response = await experimentationApi.DeleteExperimentAsync({);
+    /// var response = await experimentationApi.DeleteExperimentAsync({
     ///   "ExperimentId": "00000000-0000-0000-0000-000000000000"
     /// });
     /// </code></example>
@@ -100,7 +100,7 @@ public interface IPlayFabExperimentationApi {
     /// <summary>
     /// Gets the latest scorecard of the experiment for the title.
     /// <example><br/>Example:<code>
-    /// var response = await experimentationApi.GetLatestScorecardAsync({);
+    /// var response = await experimentationApi.GetLatestScorecardAsync({
     ///   "ExperimentId": "00000000-0000-0000-0000-000000000000"
     /// });
     /// </code></example>
@@ -118,7 +118,7 @@ public interface IPlayFabExperimentationApi {
     /// <summary>
     /// Starts an existing experiment for a title.
     /// <example><br/>Example:<code>
-    /// var response = await experimentationApi.StartExperimentAsync({);
+    /// var response = await experimentationApi.StartExperimentAsync({
     ///   "ExperimentId": "00000000-0000-0000-0000-000000000000"
     /// });
     /// </code></example>
@@ -128,7 +128,7 @@ public interface IPlayFabExperimentationApi {
     /// <summary>
     /// Stops an existing experiment for a title.
     /// <example><br/>Example:<code>
-    /// var response = await experimentationApi.StopExperimentAsync({);
+    /// var response = await experimentationApi.StopExperimentAsync({
     ///   "ExperimentId": "00000000-0000-0000-0000-000000000000"
     /// });
     /// </code></example>
@@ -138,7 +138,7 @@ public interface IPlayFabExperimentationApi {
     /// <summary>
     /// Updates an existing exclusion group for a title.
     /// <example><br/>Example:<code>
-    /// var response = await experimentationApi.UpdateExclusionGroupAsync({);
+    /// var response = await experimentationApi.UpdateExclusionGroupAsync({
     ///   "ExclusionGroupId": "00000000-0000-0000-0000-000000000000",
     ///   "Name": "Commerce Exclusion Group",
     ///   "Description": "Exclusion group for independent, commerce-related experiments"
@@ -150,7 +150,7 @@ public interface IPlayFabExperimentationApi {
     /// <summary>
     /// Updates an existing experiment for a title.
     /// <example><br/>Example:<code>
-    /// var response = await experimentationApi.UpdateExperimentAsync({);
+    /// var response = await experimentationApi.UpdateExperimentAsync({
     ///   "Name": "BackgroundColor Experiment",
     ///   "Id": "B9A90E90-A009-4254-80A4-46B5933E9D26",
     ///   "Description": "Tests whether a green background color increases revenue",

@@ -6,7 +6,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Increments the character's balance of the specified virtual currency by the stated amount
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.AddCharacterVirtualCurrencyAsync({);
+    /// var response = await serverApi.AddCharacterVirtualCurrencyAsync({
     ///   "PlayFabId": "20394883",
     ///   "CharacterId": "23424524523",
     ///   "VirtualCurrency": "GC",
@@ -20,7 +20,7 @@ public interface IPlayFabServerApi {
     /// Adds the Friend user to the friendlist of the user with PlayFabId. At least one of
     /// FriendPlayFabId,FriendUsername,FriendEmail, or FriendTitleDisplayName should be initialized.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.AddFriendAsync({);
+    /// var response = await serverApi.AddFriendAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "FriendPlayFabId": "20394883"
     /// });
@@ -33,7 +33,7 @@ public interface IPlayFabServerApi {
     /// ID lookup of any arbitrary service identifier a title wants to add. This identifier should never be used as
     /// authentication credentials, as the intent is that it is easily accessible by other players.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.AddGenericIDAsync({);
+    /// var response = await serverApi.AddGenericIDAsync({
     ///   "GenericId": {
     ///     "ServiceName": "BigBizSocial",
     ///     "UserId": "1234567890"
@@ -46,7 +46,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Adds a given tag to a player profile. The tag's namespace is automatically generated based on the source of the tag.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.AddPlayerTagAsync({);
+    /// var response = await serverApi.AddPlayerTagAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "TagName": "MostKilled"
     /// });
@@ -60,7 +60,7 @@ public interface IPlayFabServerApi {
     /// small number of players, please see our guide:
     /// https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.AddSharedGroupMembersAsync({);
+    /// var response = await serverApi.AddSharedGroupMembersAsync({
     ///   "SharedGroupId": "Clan Data",
     ///   "PlayFabIds": [
     ///     "D984A64B832",
@@ -75,7 +75,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Increments the user's balance of the specified virtual currency by the stated amount
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.AddUserVirtualCurrencyAsync({);
+    /// var response = await serverApi.AddUserVirtualCurrencyAsync({
     ///   "PlayFabId": "20394883",
     ///   "VirtualCurrency": "GC",
     ///   "Amount": 100
@@ -87,7 +87,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Validated a client's session ticket, and if successful, returns details for that user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.AuthenticateSessionTicketAsync({);
+    /// var response = await serverApi.AuthenticateSessionTicketAsync({
     ///   "SessionTicket": "4D2----8D11F4249A80000-7C64AB0A9F1D8D1A.CD803BF233CE76CC"
     /// });
     /// </code></example>
@@ -97,7 +97,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Awards the specified users the specified Steam achievements
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.AwardSteamAchievementAsync({);
+    /// var response = await serverApi.AwardSteamAchievementAsync({
     ///   "Achievements": [
     ///     {
     ///       "PlayFabId": "234974573892",
@@ -118,7 +118,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Bans users by PlayFab ID with optional IP address, or MAC address for the provided game.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.BanUsersAsync({);
+    /// var response = await serverApi.BanUsersAsync({
     ///   "Bans": [
     ///     {
     ///       "PlayFabId": "1679AF5CD04BD838",
@@ -141,7 +141,7 @@ public interface IPlayFabServerApi {
     /// version 2._ Consume uses of a consumable item. When all uses are consumed, it will be removed from the player's
     /// inventory.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.ConsumeItemAsync({);
+    /// var response = await serverApi.ConsumeItemAsync({
     ///   "ItemInstanceId": "94585729",
     ///   "ConsumeCount": 1
     /// });
@@ -155,7 +155,7 @@ public interface IPlayFabServerApi {
     /// between a very small number of players, please see our guide:
     /// https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.CreateSharedGroupAsync({);
+    /// var response = await serverApi.CreateSharedGroupAsync({
     ///   "SharedGroupId": "Clan Data"
     /// });
     /// </code></example>
@@ -165,7 +165,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Deletes the specific character ID from the specified user.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.DeleteCharacterFromUserAsync({);
+    /// var response = await serverApi.DeleteCharacterFromUserAsync({
     ///   "PlayFabId": "12345",
     ///   "CharacterId": "98765432",
     ///   "SaveCharacterInventory": false
@@ -177,7 +177,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Removes a user's player account from a title and deletes all associated data
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.DeletePlayerAsync({);
+    /// var response = await serverApi.DeletePlayerAsync({
     ///   "PlayFabId": "A68C908B66C23C5"
     /// });
     /// </code></example>
@@ -187,7 +187,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Deletes title-specific custom properties for a player
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.DeletePlayerCustomPropertiesAsync({);
+    /// var response = await serverApi.DeletePlayerCustomPropertiesAsync({
     ///   "PlayFabId": "2039475",
     ///   "PropertyNames": [
     ///     "level",
@@ -202,7 +202,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Deletes push notification template for title
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.DeletePushNotificationTemplateAsync({);
+    /// var response = await serverApi.DeletePushNotificationTemplateAsync({
     ///   "PushNotificationTemplateId": "6bc7dbf0-075a-46e9-8e84-35737a22c6a4"
     /// });
     /// </code></example>
@@ -214,7 +214,7 @@ public interface IPlayFabServerApi {
     /// sharing data between a very small number of players, please see our guide:
     /// https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.DeleteSharedGroupAsync({);
+    /// var response = await serverApi.DeleteSharedGroupAsync({
     ///   "SharedGroupId": "Clan Data"
     /// });
     /// </code></example>
@@ -224,7 +224,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Deletes custom data, all account linkages, and statistics.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.DeleteUsersAsync({);
+    /// var response = await serverApi.DeleteUsersAsync({
     ///   "PlayFabIds": [
     ///     "203945882"
     ///   ]
@@ -236,7 +236,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Inform the matchmaker that a Game Server Instance is removed.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.DeregisterGameAsync({);
+    /// var response = await serverApi.DeregisterGameAsync({
     ///   "LobbyId": "8285313"
     /// });
     /// </code></example>
@@ -249,7 +249,7 @@ public interface IPlayFabServerApi {
     /// have been added to the player inventory, if the Random Result Table were added via a Bundle or a call to
     /// UnlockContainer.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.EvaluateRandomResultTableAsync({);
+    /// var response = await serverApi.EvaluateRandomResultTableAsync({
     ///   "TableId": "RareElementCard",
     ///   "CatalogVersion": "1"
     /// });
@@ -261,7 +261,7 @@ public interface IPlayFabServerApi {
     /// Executes a CloudScript function, with the 'currentPlayerId' set to the PlayFab ID of the authenticated player. The
     /// PlayFab ID is the entity ID of the player's master_player_account entity.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.ExecuteCloudScriptAsync({);
+    /// var response = await serverApi.ExecuteCloudScriptAsync({
     ///   "PlayFabId": "1337D00D",
     ///   "FunctionName": "levelCompleted",
     ///   "FunctionParameter": {
@@ -296,7 +296,7 @@ public interface IPlayFabServerApi {
     /// Lists all of the characters that belong to a specific user. CharacterIds are not globally unique; characterId must be
     /// evaluated with the parent PlayFabId to guarantee uniqueness.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetAllUsersCharactersAsync({);
+    /// var response = await serverApi.GetAllUsersCharactersAsync({
     ///   "PlayFabId": "98333765432"
     /// });
     /// </code></example>
@@ -307,7 +307,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the specified version of the title's catalog of virtual goods, including all defined properties
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetCatalogItemsAsync({);
+    /// var response = await serverApi.GetCatalogItemsAsync({
     ///   "CatalogVersion": "1"
     /// });
     /// </code></example>
@@ -317,7 +317,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetCharacterDataAsync({);
+    /// var response = await serverApi.GetCharacterDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "CharacterId": "98342357",
     ///   "Keys": [
@@ -333,7 +333,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user's character which cannot be accessed by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetCharacterInternalDataAsync({);
+    /// var response = await serverApi.GetCharacterInternalDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "CharacterId": "98342357",
     ///   "Keys": [
@@ -350,7 +350,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the specified character's current inventory of virtual goods
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetCharacterInventoryAsync({);
+    /// var response = await serverApi.GetCharacterInventoryAsync({
     ///   "PlayFabId": "204883457",
     ///   "CharacterId": "9890723423",
     ///   "CatalogVersion": "5"
@@ -362,7 +362,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves a list of ranked characters for the given statistic, starting from the indicated point in the leaderboard
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetCharacterLeaderboardAsync({);
+    /// var response = await serverApi.GetCharacterLeaderboardAsync({
     ///   "StatisticName": "Kills",
     ///   "StartPosition": 0,
     ///   "MaxResultsCount": 20
@@ -374,7 +374,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user's character which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetCharacterReadOnlyDataAsync({);
+    /// var response = await serverApi.GetCharacterReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "CharacterId": "98342357",
     ///   "Keys": [
@@ -390,7 +390,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the details of all title-specific statistics for the specific character
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetCharacterStatisticsAsync({);
+    /// var response = await serverApi.GetCharacterStatisticsAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "CharacterId": "98765432"
     /// });
@@ -406,7 +406,7 @@ public interface IPlayFabServerApi {
     /// https://community.playfab.com/hc/community/posts/205469488-How-to-upload-files-to-PlayFab-s-Content-Service. Also,
     /// please be aware that the Content service is specifically PlayFab's CDN offering, for which standard CDN rates apply.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetContentDownloadUrlAsync({);
+    /// var response = await serverApi.GetContentDownloadUrlAsync({
     ///   "Key": "images/sword_icon.png"
     /// });
     /// </code></example>
@@ -417,7 +417,7 @@ public interface IPlayFabServerApi {
     /// Retrieves a list of ranked friends of the given player for the given statistic, starting from the indicated point in
     /// the leaderboard
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetFriendLeaderboardAsync({);
+    /// var response = await serverApi.GetFriendLeaderboardAsync({
     ///   "PlayFabId": "98092347523",
     ///   "StatisticName": "Kills",
     ///   "StartPosition": 1258,
@@ -432,7 +432,7 @@ public interface IPlayFabServerApi {
     /// Retrieves the current friends for the user with PlayFabId, constrained to users who have PlayFab accounts. Friends from
     /// linked accounts (Facebook, Steam) are also included. You may optionally exclude some linked services' friends.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetFriendsListAsync({);
+    /// var response = await serverApi.GetFriendsListAsync({
     ///   "PlayFabId": "93798903892789754",
     ///   "ExternalPlatformFriends": "All"
     /// });
@@ -443,7 +443,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves a list of ranked users for the given statistic, starting from the indicated point in the leaderboard
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetLeaderboardAsync({);
+    /// var response = await serverApi.GetLeaderboardAsync({
     ///   "StatisticName": "Kills",
     ///   "StartPosition": 0,
     ///   "MaxResultsCount": 20
@@ -455,7 +455,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves a list of ranked characters for the given statistic, centered on the requested user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetLeaderboardAroundCharacterAsync({);
+    /// var response = await serverApi.GetLeaderboardAroundCharacterAsync({
     ///   "StatisticName": "Kills",
     ///   "PlayFabId": "10931252888739651331",
     ///   "CharacterId": "987343220",
@@ -468,7 +468,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves a list of ranked users for the given statistic, centered on the currently signed-in user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetLeaderboardAroundUserAsync({);
+    /// var response = await serverApi.GetLeaderboardAroundUserAsync({
     ///   "StatisticName": "Kills",
     ///   "PlayFabId": "10931252888739651331",
     ///   "MaxResultsCount": 20
@@ -480,7 +480,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves a list of all of the user's characters for the given statistic.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetLeaderboardForUserCharactersAsync({);
+    /// var response = await serverApi.GetLeaderboardForUserCharactersAsync({
     ///   "StatisticName": "Kills",
     ///   "PlayFabId": "10931252888739651331"
     /// });
@@ -492,7 +492,7 @@ public interface IPlayFabServerApi {
     /// Returns whatever info is requested in the response for the user. Note that PII (like email address, facebook id) may be
     /// returned. All parameters default to false.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayerCombinedInfoAsync({);
+    /// var response = await serverApi.GetPlayerCombinedInfoAsync({
     ///   "PlayFabId": "4027527BF22653D1",
     ///   "InfoRequestParameters": {
     ///     "GetUserAccountInfo": true,
@@ -519,7 +519,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves a title-specific custom property value for a player.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayerCustomPropertyAsync({);
+    /// var response = await serverApi.GetPlayerCustomPropertyAsync({
     ///   "PlayFabId": "2039475",
     ///   "PropertyName": "level"
     /// });
@@ -530,7 +530,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the player's profile
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayerProfileAsync({);
+    /// var response = await serverApi.GetPlayerProfileAsync({
     ///   "PlayFabId": "621EF20237534A44"
     /// });
     /// </code></example>
@@ -540,7 +540,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// List all segments that a player currently belongs to at this moment in time.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayerSegmentsAsync({);
+    /// var response = await serverApi.GetPlayerSegmentsAsync({
     ///   "PlayFabId": "1337AA00"
     /// });
     /// </code></example>
@@ -554,7 +554,7 @@ public interface IPlayFabServerApi {
     /// reflected in the results. AB Test segments are currently not supported by this operation. NOTE: This API is limited to
     /// being called 30 times in one minute. You will be returned an error if you exceed this threshold.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayersInSegmentAsync({);
+    /// var response = await serverApi.GetPlayersInSegmentAsync({
     ///   "SegmentId": "1337AA00",
     ///   "SecondsToLive": 5,
     ///   "MaxBatchSize": 500
@@ -566,7 +566,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the current version and values for the indicated statistics, for the local player.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayerStatisticsAsync({);
+    /// var response = await serverApi.GetPlayerStatisticsAsync({
     ///   "PlayFabId": "621EF2023753444",
     ///   "StatisticNames": [
     ///     "Points",
@@ -580,7 +580,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the information on the available versions of the specified statistic.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayerStatisticVersionsAsync({);
+    /// var response = await serverApi.GetPlayerStatisticVersionsAsync({
     ///   "StatisticName": "headshots"
     /// });
     /// </code></example>
@@ -590,7 +590,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Get all tags with a given Namespace (optional) from a player profile.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayerTagsAsync({);
+    /// var response = await serverApi.GetPlayerTagsAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "Namespace": "title.AAA"
     /// });
@@ -601,7 +601,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Battle.net account identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromBattleNetAccountIdsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromBattleNetAccountIdsAsync({
     ///   "BattleNetAccountIds": [
     ///     "526f79204261747478",
     ///     "526f79204261747479"
@@ -614,7 +614,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Facebook identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromFacebookIDsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromFacebookIDsAsync({
     ///   "FacebookIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -627,7 +627,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Facebook Instant Games identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromFacebookInstantGamesIdsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromFacebookInstantGamesIdsAsync({
     ///   "FacebookInstantGamesIds": [
     ///     "1114685845316172",
     ///     "1114685845316173"
@@ -642,7 +642,7 @@ public interface IPlayFabServerApi {
     /// service name plus the service-specific ID for the player, as specified by the title when the generic identifier was
     /// added to the player account.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromGenericIDsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromGenericIDsAsync({
     ///   "GenericIDs": [
     ///     {
     ///       "ServiceName": "BigBizSocial",
@@ -661,7 +661,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Nintendo Service Account identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromNintendoServiceAccountIdsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromNintendoServiceAccountIdsAsync({
     ///   "NintendoAccountIds": [
     ///     "526f79204261747478",
     ///     "526f79204261747479"
@@ -674,7 +674,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Nintendo Switch Device identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromNintendoSwitchDeviceIdsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromNintendoSwitchDeviceIdsAsync({
     ///   "NintendoSwitchDeviceIds": [
     ///     "526f79204261747478",
     ///     "526f79204261747479"
@@ -687,7 +687,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of PlayStation :tm: Network identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromPSNAccountIDsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromPSNAccountIDsAsync({
     ///   "PSNAccountIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -700,7 +700,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of PlayStation :tm: Network identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromPSNOnlineIDsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromPSNOnlineIDsAsync({
     ///   "PSNOnlineIDs": [
     ///     "857555576495",
     ///     "759345551209"
@@ -714,7 +714,7 @@ public interface IPlayFabServerApi {
     /// Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are the profile
     /// IDs for the user accounts, available as SteamId in the Steamworks Community API calls.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromSteamIDsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromSteamIDsAsync({
     ///   "SteamStringIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -728,7 +728,7 @@ public interface IPlayFabServerApi {
     /// Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are persona
     /// names.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromSteamNamesAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromSteamNamesAsync({
     ///   "SteamNames": [
     ///     "steamPersonaName1",
     ///     "steamPersonaName2"
@@ -743,7 +743,7 @@ public interface IPlayFabServerApi {
     /// for the user accounts, available as "_id" from the Twitch API methods (ex:
     /// https://github.com/justintv/Twitch-API/blob/master/v3_resources/users.md#get-usersuser).
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromTwitchIDsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromTwitchIDsAsync({
     ///   "TwitchIds": [
     ///     "127168541",
     ///     "88315720"
@@ -756,7 +756,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of XboxLive identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayFabIDsFromXboxLiveIDsAsync({);
+    /// var response = await serverApi.GetPlayFabIDsFromXboxLiveIDsAsync({
     ///   "XboxLiveAccountIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -770,7 +770,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the key-value store of custom publisher settings
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPublisherDataAsync({);
+    /// var response = await serverApi.GetPublisherDataAsync({
     ///   "Keys": [
     ///     "color",
     ///     "propertyA"
@@ -785,7 +785,7 @@ public interface IPlayFabServerApi {
     /// version 2._ Retrieves the configuration information for the specified random results tables for the title, including
     /// all ItemId values and weights
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetRandomResultTablesAsync({);
+    /// var response = await serverApi.GetRandomResultTablesAsync({
     ///   "CatalogVersion": "1",
     ///   "TableIDs": [
     ///     "CommonElementCard",
@@ -800,7 +800,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the associated PlayFab account identifiers for the given set of server custom identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetServerCustomIDsFromPlayFabIDsAsync({);
+    /// var response = await serverApi.GetServerCustomIDsFromPlayFabIDsAsync({
     ///   "PlayFabIDs": [
     ///     "1232421311"
     ///   ]
@@ -814,7 +814,7 @@ public interface IPlayFabServerApi {
     /// public and private group data. Shared Groups are designed for sharing data between a very small number of players,
     /// please see our guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetSharedGroupDataAsync({);
+    /// var response = await serverApi.GetSharedGroupDataAsync({
     ///   "SharedGroupId": "Clan Data",
     ///   "Keys": [
     ///     "ClanKills",
@@ -831,7 +831,7 @@ public interface IPlayFabServerApi {
     /// version 2._ Retrieves the set of items defined for the specified store, including all prices defined, for the specified
     /// player
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetStoreItemsAsync({);
+    /// var response = await serverApi.GetStoreItemsAsync({
     ///   "StoreId": "BonusStore",
     ///   "PlayFabId": "20394883"
     /// });
@@ -850,7 +850,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the key-value store of custom title settings
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetTitleDataAsync({);
+    /// var response = await serverApi.GetTitleDataAsync({
     ///   "Keys": [
     ///     "color",
     ///     "propertyA"
@@ -863,7 +863,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the key-value store of custom internal title settings
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetTitleInternalDataAsync({);
+    /// var response = await serverApi.GetTitleInternalDataAsync({
     ///   "Keys": [
     ///     "color",
     ///     "propertyA"
@@ -876,7 +876,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the title news feed, as configured in the developer portal
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetTitleNewsAsync({);
+    /// var response = await serverApi.GetTitleNewsAsync({
     ///   "Count": 25
     /// });
     /// </code></example>
@@ -886,7 +886,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the relevant details for a specified user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetUserAccountInfoAsync({);
+    /// var response = await serverApi.GetUserAccountInfoAsync({
     ///   "PlayFabId": "10931252888739651331"
     /// });
     /// </code></example>
@@ -896,7 +896,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Gets all bans for a user.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetUserBansAsync({);
+    /// var response = await serverApi.GetUserBansAsync({
     ///   "PlayFabId": "1679AF5CD04BD838"
     /// });
     /// </code></example>
@@ -906,7 +906,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetUserDataAsync({);
+    /// var response = await serverApi.GetUserDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -921,7 +921,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetUserInternalDataAsync({);
+    /// var response = await serverApi.GetUserInternalDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -937,7 +937,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the specified user's current inventory of virtual goods
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetUserInventoryAsync({);
+    /// var response = await serverApi.GetUserInventoryAsync({
     ///   "PlayFabId": "204883457"
     /// });
     /// </code></example>
@@ -947,7 +947,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetUserPublisherDataAsync({);
+    /// var response = await serverApi.GetUserPublisherDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -962,7 +962,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetUserPublisherInternalDataAsync({);
+    /// var response = await serverApi.GetUserPublisherInternalDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -977,7 +977,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetUserPublisherReadOnlyDataAsync({);
+    /// var response = await serverApi.GetUserPublisherReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -992,7 +992,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetUserReadOnlyDataAsync({);
+    /// var response = await serverApi.GetUserReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -1007,7 +1007,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves the details of all title-specific statistics for the user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetUserStatisticsAsync({);
+    /// var response = await serverApi.GetUserStatisticsAsync({
     ///   "PlayFabId": "10931252888739651331"
     /// });
     /// </code></example>
@@ -1018,7 +1018,7 @@ public interface IPlayFabServerApi {
     /// Grants the specified character type to the user. CharacterIds are not globally unique; characterId must be evaluated
     /// with the parent PlayFabId to guarantee uniqueness.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GrantCharacterToUserAsync({);
+    /// var response = await serverApi.GrantCharacterToUserAsync({
     ///   "PlayFabId": "20394883567",
     ///   "CharacterName": "FighterDude",
     ///   "CharacterType": "Blue Warrior"
@@ -1031,7 +1031,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Adds the specified items to the specified character's inventory
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GrantItemsToCharacterAsync({);
+    /// var response = await serverApi.GrantItemsToCharacterAsync({
     ///   "CharacterId": "9876543268",
     ///   "PlayFabId": "20394883",
     ///   "Annotation": "Entered Level 2",
@@ -1048,7 +1048,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Adds the specified items to the specified user's inventory
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GrantItemsToUserAsync({);
+    /// var response = await serverApi.GrantItemsToUserAsync({
     ///   "PlayFabId": "20394883",
     ///   "Annotation": "Entered Level 2",
     ///   "ItemIds": [
@@ -1064,7 +1064,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Adds the specified items to the specified user inventories
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.GrantItemsToUsersAsync({);
+    /// var response = await serverApi.GrantItemsToUsersAsync({
     ///   "CatalogVersion": "5",
     ///   "ItemGrants": [
     ///     {
@@ -1090,7 +1090,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Links the Battle.net account associated with the token to the user's PlayFab account.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LinkBattleNetAccountAsync({);
+    /// var response = await serverApi.LinkBattleNetAccountAsync({
     ///   "PlayFabId": "1234FA342",
     ///   "IdentityToken": "eyJraWQi..."
     /// });
@@ -1101,7 +1101,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Links the Nintendo account associated with the token to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LinkNintendoServiceAccountAsync({);
+    /// var response = await serverApi.LinkNintendoServiceAccountAsync({
     ///   "PlayFabId": "1234FA342",
     ///   "IdentityToken": "eyJraWQi..."
     /// });
@@ -1112,7 +1112,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Links the Nintendo account associated with the Nintendo Service Account subject or id to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LinkNintendoServiceAccountSubjectAsync({);
+    /// var response = await serverApi.LinkNintendoServiceAccountSubjectAsync({
     ///   "PlayFabId": "1234FA342",
     ///   "Subject": "8e7Eju4j9"
     /// });
@@ -1123,7 +1123,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Links the NintendoSwitchDeviceId to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LinkNintendoSwitchDeviceIdAsync({);
+    /// var response = await serverApi.LinkNintendoSwitchDeviceIdAsync({
     ///   "PlayFabId": "1234FA342",
     ///   "NintendoSwitchDeviceId": "526f79204261747479"
     /// });
@@ -1134,7 +1134,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Links the PlayStation :tm: Network account associated with the provided access code to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LinkPSNAccountAsync({);
+    /// var response = await serverApi.LinkPSNAccountAsync({
     ///   "PlayFabId": "1234FA342",
     ///   "AuthCode": "LKJDG7DDE",
     ///   "RedirectUri": "orbis://games"
@@ -1146,7 +1146,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Links the PlayStation :tm: Network account associated with the provided user id to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LinkPSNIdAsync({);
+    /// var response = await serverApi.LinkPSNIdAsync({
     ///   "PlayFabId": "1234FA342",
     ///   "PSNUserId": "LKJDG7DDE"
     /// });
@@ -1157,7 +1157,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Links the custom server identifier, generated by the title, to the user's PlayFab account.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LinkServerCustomIdAsync({);
+    /// var response = await serverApi.LinkServerCustomIdAsync({
     ///   "PlayFabId": "123412341234",
     ///   "ServerCustomId": "67AB-5397-CC54-EA31"
     /// });
@@ -1168,7 +1168,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Links the Steam account associated with the provided Steam ID to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LinkSteamIdAsync({);
+    /// var response = await serverApi.LinkSteamIdAsync({
     ///   "SteamId": "22223333",
     ///   "PlayFabId": "5a446c83645201"
     /// });
@@ -1179,7 +1179,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Links the Xbox Live account associated with the provided access code to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LinkXboxAccountAsync({);
+    /// var response = await serverApi.LinkXboxAccountAsync({
     ///   "XboxToken": "XBL3.0 x=1981989841;akljdlkafdknad",
     ///   "PlayFabId": "5a446c83645201"
     /// });
@@ -1190,7 +1190,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Retrieves title-specific custom property values for a player.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.ListPlayerCustomPropertiesAsync({);
+    /// var response = await serverApi.ListPlayerCustomPropertiesAsync({
     ///   "PlayFabId": "2039475"
     /// });
     /// </code></example>
@@ -1200,7 +1200,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Logs a custom analytics event
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LogEventAsync({);
+    /// var response = await serverApi.LogEventAsync({
     ///   "EventName": "Headshot",
     ///   "Body": {
     ///     "victim": "B76543AEAE65",
@@ -1221,7 +1221,7 @@ public interface IPlayFabServerApi {
     /// Signs the user in using the Android device identifier, returning a session identifier that can subsequently be used for
     /// API calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LoginWithAndroidDeviceIDAsync({);
+    /// var response = await serverApi.LoginWithAndroidDeviceIDAsync({
     ///   "AndroidDeviceId": "526f79204261747479",
     ///   "OS": "5.0",
     ///   "AndroidDevice": "Nexus 6",
@@ -1234,7 +1234,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Sign in the user with a Battle.net identity token
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LoginWithBattleNetAsync({);
+    /// var response = await serverApi.LoginWithBattleNetAsync({
     ///   "IdentityToken": "eyJraWQi..."
     /// });
     /// </code></example>
@@ -1245,7 +1245,7 @@ public interface IPlayFabServerApi {
     /// Signs the user in using a custom unique identifier generated by the title, returning a session identifier that can
     /// subsequently be used for API calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LoginWithCustomIDAsync({);
+    /// var response = await serverApi.LoginWithCustomIDAsync({
     ///   "CustomId": "67AB-5397-CC54-EA31",
     ///   "CreateAccount": false
     /// });
@@ -1257,7 +1257,7 @@ public interface IPlayFabServerApi {
     /// Signs the user in using the iOS device identifier, returning a session identifier that can subsequently be used for API
     /// calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LoginWithIOSDeviceIDAsync({);
+    /// var response = await serverApi.LoginWithIOSDeviceIDAsync({
     ///   "DeviceId": "29848d9bh8900a0b003",
     ///   "OS": "7.11",
     ///   "DeviceModel": "Iphone 5s",
@@ -1271,7 +1271,7 @@ public interface IPlayFabServerApi {
     /// Signs the user in using a PlayStation :tm: Network authentication code, returning a session identifier that can
     /// subsequently be used for API calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LoginWithPSNAsync({);
+    /// var response = await serverApi.LoginWithPSNAsync({
     ///   "AuthCode": "LKJ6D896D",
     ///   "RedirectUri": "orbis://games",
     ///   "CreateAccount": false
@@ -1284,7 +1284,7 @@ public interface IPlayFabServerApi {
     /// Securely login a game client from an external server backend using a custom identifier for that player. Server Custom
     /// ID and Client Custom ID are mutually exclusive and cannot be used to retrieve the same player account.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LoginWithServerCustomIdAsync({);
+    /// var response = await serverApi.LoginWithServerCustomIdAsync({
     ///   "ServerCustomId": "asdalsdkjar09u23ijf",
     ///   "CreateAccount": true
     /// });
@@ -1296,7 +1296,7 @@ public interface IPlayFabServerApi {
     /// Signs the user in using an Steam ID, returning a session identifier that can subsequently be used for API calls which
     /// require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LoginWithSteamIdAsync({);
+    /// var response = await serverApi.LoginWithSteamIdAsync({
     ///   "SteamId": "12344553",
     ///   "CreateAccount": false
     /// });
@@ -1308,7 +1308,7 @@ public interface IPlayFabServerApi {
     /// Signs the user in using a Xbox Live Token from an external server backend, returning a session identifier that can
     /// subsequently be used for API calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LoginWithXboxAsync({);
+    /// var response = await serverApi.LoginWithXboxAsync({
     ///   "XboxToken": "XBL3.0 x=1981989841;akljdlkafdknad",
     ///   "CreateAccount": false
     /// });
@@ -1320,7 +1320,7 @@ public interface IPlayFabServerApi {
     /// Signs the user in using an Xbox ID and Sandbox ID, returning a session identifier that can subsequently be used for API
     /// calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.LoginWithXboxIdAsync({);
+    /// var response = await serverApi.LoginWithXboxIdAsync({
     ///   "XboxId": "12344553",
     ///   "Sandbox": "RETAIL",
     ///   "CreateAccount": false
@@ -1333,7 +1333,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Modifies the number of remaining uses of a player's inventory item
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.ModifyItemUsesAsync({);
+    /// var response = await serverApi.ModifyItemUsesAsync({
     ///   "PlayFabId": "20394883",
     ///   "ItemInstanceId": "94585729",
     ///   "UsesToAdd": 1
@@ -1346,7 +1346,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Moves an item from a character's inventory into another of the users's character's inventory.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.MoveItemToCharacterFromCharacterAsync({);
+    /// var response = await serverApi.MoveItemToCharacterFromCharacterAsync({
     ///   "PlayFabId": "234234897234",
     ///   "GivingCharacterId": "98092347523",
     ///   "ReceivingCharacterId": "6323489712",
@@ -1360,7 +1360,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Moves an item from a user's inventory into their character's inventory.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.MoveItemToCharacterFromUserAsync({);
+    /// var response = await serverApi.MoveItemToCharacterFromUserAsync({
     ///   "PlayFabId": "234234897234",
     ///   "CharacterId": "98092347523",
     ///   "ItemInstanceId": "701231299999"
@@ -1373,7 +1373,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Moves an item from a character's inventory into the owning user's inventory.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.MoveItemToUserFromCharacterAsync({);
+    /// var response = await serverApi.MoveItemToUserFromCharacterAsync({
     ///   "PlayFabId": "234234897234",
     ///   "CharacterId": "98092347523",
     ///   "ItemInstanceId": "701231299999"
@@ -1385,7 +1385,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Informs the PlayFab match-making service that the user specified has left the Game Server Instance
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.NotifyMatchmakerPlayerLeftAsync({);
+    /// var response = await serverApi.NotifyMatchmakerPlayerLeftAsync({
     ///   "LobbyId": "29439584",
     ///   "PlayFabId": "204883457"
     /// });
@@ -1398,7 +1398,7 @@ public interface IPlayFabServerApi {
     /// version 2._ Adds the virtual goods associated with the coupon to the user's inventory. Coupons can be generated via the
     /// Economy-&gt;Catalogs tab in the PlayFab Game Manager.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RedeemCouponAsync({);
+    /// var response = await serverApi.RedeemCouponAsync({
     ///   "CouponCode": "123-1234-123",
     ///   "CatalogVersion": "5"
     /// });
@@ -1409,7 +1409,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Validates a Game Server session ticket and returns details about the user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RedeemMatchmakerTicketAsync({);
+    /// var response = await serverApi.RedeemMatchmakerTicketAsync({
     ///   "Ticket": "2398349939a03499bc",
     ///   "LobbyId": "2353"
     /// });
@@ -1420,7 +1420,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Set the state of the indicated Game Server Instance. Also update the heartbeat for the instance.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RefreshGameServerInstanceHeartbeatAsync({);
+    /// var response = await serverApi.RefreshGameServerInstanceHeartbeatAsync({
     ///   "LobbyId": "29439584"
     /// });
     /// </code></example>
@@ -1430,7 +1430,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Inform the matchmaker that a new Game Server Instance is added.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RegisterGameAsync({);
+    /// var response = await serverApi.RegisterGameAsync({
     ///   "ServerHost": "118.129.31.244",
     ///   "ServerPort": "9984",
     ///   "Build": "11_034234.13",
@@ -1448,7 +1448,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Removes the specified friend from the the user's friend list
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RemoveFriendAsync({);
+    /// var response = await serverApi.RemoveFriendAsync({
     ///   "FriendPlayFabId": "29837799",
     ///   "PlayFabId": "1a46086aed40f142"
     /// });
@@ -1459,7 +1459,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Removes the specified generic service identifier from the player's PlayFab account.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RemoveGenericIDAsync({);
+    /// var response = await serverApi.RemoveGenericIDAsync({
     ///   "GenericId": {
     ///     "ServiceName": "BigBizSocial",
     ///     "UserId": "1234567890"
@@ -1472,7 +1472,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Remove a given tag from a player profile. The tag's namespace is automatically generated based on the source of the tag.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RemovePlayerTagAsync({);
+    /// var response = await serverApi.RemovePlayerTagAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "TagName": "MostKilled"
     /// });
@@ -1486,7 +1486,7 @@ public interface IPlayFabServerApi {
     /// will be deleted. Shared Groups are designed for sharing data between a very small number of players, please see our
     /// guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RemoveSharedGroupMembersAsync({);
+    /// var response = await serverApi.RemoveSharedGroupMembersAsync({
     ///   "SharedGroupId": "Clan Data",
     ///   "PlayFabIds": [
     ///     "D984A64B832",
@@ -1501,7 +1501,7 @@ public interface IPlayFabServerApi {
     /// Submit a report about a player (due to bad bahavior, etc.) on behalf of another player, so that customer service
     /// representatives for the title can take action concerning potentially toxic players.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.ReportPlayerAsync({);
+    /// var response = await serverApi.ReportPlayerAsync({
     ///   "ReporterId": "9ddafe27d6d445da",
     ///   "ReporteeId": "1a46086aed40f142",
     ///   "Comment": "cheating"
@@ -1513,7 +1513,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Revoke all active bans for a user.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RevokeAllBansForUserAsync({);
+    /// var response = await serverApi.RevokeAllBansForUserAsync({
     ///   "PlayFabId": "1679AF5CD04BD838"
     /// });
     /// </code></example>
@@ -1523,7 +1523,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Revoke all active bans specified with BanId.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RevokeBansAsync({);
+    /// var response = await serverApi.RevokeBansAsync({
     ///   "BanIds": [
     ///     "E0B5FF89542D413C",
     ///     "EF43FF89542G1546"
@@ -1537,7 +1537,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Revokes access to an item in a user's inventory
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RevokeInventoryItemAsync({);
+    /// var response = await serverApi.RevokeInventoryItemAsync({
     ///   "PlayFabId": "203945882",
     ///   "ItemInstanceId": "2048583045"
     /// });
@@ -1549,7 +1549,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Revokes access for up to 25 items across multiple users and characters.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.RevokeInventoryItemsAsync({);
+    /// var response = await serverApi.RevokeInventoryItemsAsync({
     ///   "Items": [
     ///     {
     ///       "PlayFabId": "203945882",
@@ -1564,7 +1564,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Saves push notification template for title
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SavePushNotificationTemplateAsync({);
+    /// var response = await serverApi.SavePushNotificationTemplateAsync({
     ///   "Id": "6bc7dbf0-075a-46e9-8e84-35737a22c6a4",
     ///   "Name": "F8763A987E",
     ///   "AndroidPayload": "{       notification:      {          body: \"Some Message\",          title: \"Subject\",          body_loc_key: \"someLocKey\"     } }",
@@ -1588,7 +1588,7 @@ public interface IPlayFabServerApi {
     /// Forces an email to be sent to the registered contact email address for the user's account based on an account recovery
     /// email template
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SendCustomAccountRecoveryEmailAsync({);
+    /// var response = await serverApi.SendCustomAccountRecoveryEmailAsync({
     ///   "EmailTemplateId": "D53AB15D8F12E330",
     ///   "Email": "Me@here.com"
     /// });
@@ -1599,7 +1599,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Sends an email based on an email template to a player's contact email
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SendEmailFromTemplateAsync({);
+    /// var response = await serverApi.SendEmailFromTemplateAsync({
     ///   "EmailTemplateId": "B53CA15D92D2E331",
     ///   "PlayFabId": "A01DC15D8E12E230"
     /// });
@@ -1611,7 +1611,7 @@ public interface IPlayFabServerApi {
     /// Sends an iOS/Android Push Notification to a specific user, if that user's device has been configured for Push
     /// Notifications in PlayFab. If a user has linked both Android and iOS devices, both will be notified.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SendPushNotificationAsync({);
+    /// var response = await serverApi.SendPushNotificationAsync({
     ///   "Recipient": "F8763A987E",
     ///   "Message": "You have been attacked! Go defend your base!"
     /// });
@@ -1623,7 +1623,7 @@ public interface IPlayFabServerApi {
     /// Sends an iOS/Android Push Notification template to a specific user, if that user's device has been configured for Push
     /// Notifications in PlayFab. If a user has linked both Android and iOS devices, both will be notified.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SendPushNotificationFromTemplateAsync({);
+    /// var response = await serverApi.SendPushNotificationFromTemplateAsync({
     ///   "Recipient": "F8763A987E",
     ///   "PushNotificationTemplateId": "6bc7dbf0-075a-46e9-8e84-35737a22c6a4"
     /// });
@@ -1634,7 +1634,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the tag list for a specified user in the friend list of another user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SetFriendTagsAsync({);
+    /// var response = await serverApi.SetFriendTagsAsync({
     ///   "PlayFabId": "ABCDEF123456",
     ///   "FriendPlayFabId": "298ABC37799",
     ///   "Tags": [
@@ -1649,7 +1649,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Sets the custom data of the indicated Game Server Instance
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SetGameServerInstanceDataAsync({);
+    /// var response = await serverApi.SetGameServerInstanceDataAsync({
     ///   "LobbyId": "29439584",
     ///   "GameServerData": "\"DataA\":\"123\",\"DataB\":\"321\""
     /// });
@@ -1660,7 +1660,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Set the state of the indicated Game Server Instance.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SetGameServerInstanceStateAsync({);
+    /// var response = await serverApi.SetGameServerInstanceStateAsync({
     ///   "LobbyId": "29439584",
     ///   "State": "Closed"
     /// });
@@ -1671,7 +1671,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Set custom tags for the specified Game Server Instance
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SetGameServerInstanceTagsAsync({);
+    /// var response = await serverApi.SetGameServerInstanceTagsAsync({
     ///   "LobbyId": "29439584",
     ///   "Tags": {
     ///     "TagA": "123",
@@ -1686,7 +1686,7 @@ public interface IPlayFabServerApi {
     /// Sets the player's secret if it is not already set. Player secrets are used to sign API requests. To reset a player's
     /// secret use the Admin or Server API method SetPlayerSecret.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SetPlayerSecretAsync({);
+    /// var response = await serverApi.SetPlayerSecretAsync({
     ///   "PlayerSecret": "ExampleSecret",
     ///   "PlayFabId": "ABCD1234"
     /// });
@@ -1697,7 +1697,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the key-value store of custom publisher settings
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SetPublisherDataAsync({);
+    /// var response = await serverApi.SetPublisherDataAsync({
     ///   "Key": "Running Speed",
     ///   "Value": "1.03"
     /// });
@@ -1708,7 +1708,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the key-value store of custom title settings
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SetTitleDataAsync({);
+    /// var response = await serverApi.SetTitleDataAsync({
     ///   "Key": "Running Speed",
     ///   "Value": "1.03"
     /// });
@@ -1719,7 +1719,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the key-value store of custom title settings
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SetTitleInternalDataAsync({);
+    /// var response = await serverApi.SetTitleInternalDataAsync({
     ///   "Key": "Running Speed",
     ///   "Value": "1.03"
     /// });
@@ -1732,7 +1732,7 @@ public interface IPlayFabServerApi {
     /// version 2._ Decrements the character's balance of the specified virtual currency by the stated amount. It is possible
     /// to make a VC balance negative with this API.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SubtractCharacterVirtualCurrencyAsync({);
+    /// var response = await serverApi.SubtractCharacterVirtualCurrencyAsync({
     ///   "PlayFabId": "20394883",
     ///   "CharacterId": "23424524523",
     ///   "VirtualCurrency": "GC",
@@ -1747,7 +1747,7 @@ public interface IPlayFabServerApi {
     /// version 2._ Decrements the user's balance of the specified virtual currency by the stated amount. It is possible to
     /// make a VC balance negative with this API.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.SubtractUserVirtualCurrencyAsync({);
+    /// var response = await serverApi.SubtractUserVirtualCurrencyAsync({
     ///   "PlayFabId": "20394883",
     ///   "VirtualCurrency": "GC",
     ///   "Amount": 100
@@ -1759,7 +1759,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Unlinks the related Battle.net account from the user's PlayFab account.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UnlinkBattleNetAccountAsync({);
+    /// var response = await serverApi.UnlinkBattleNetAccountAsync({
     ///   "PlayFabId": "1234FA342"
     /// });
     /// </code></example>
@@ -1769,7 +1769,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Unlinks the related Nintendo account from the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UnlinkNintendoServiceAccountAsync({);
+    /// var response = await serverApi.UnlinkNintendoServiceAccountAsync({
     ///   "PlayFabId": "1234FA342"
     /// });
     /// </code></example>
@@ -1779,7 +1779,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Unlinks the related NintendoSwitchDeviceId from the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UnlinkNintendoSwitchDeviceIdAsync({);
+    /// var response = await serverApi.UnlinkNintendoSwitchDeviceIdAsync({
     ///   "PlayFabId": "1234FA342",
     ///   "NintendoSwitchDeviceId": "526f79204261747479"
     /// });
@@ -1790,7 +1790,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Unlinks the related PlayStation :tm: Network account from the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UnlinkPSNAccountAsync({);
+    /// var response = await serverApi.UnlinkPSNAccountAsync({
     ///   "PlayFabId": "1234FA342"
     /// });
     /// </code></example>
@@ -1800,7 +1800,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Unlinks the custom server identifier from the user's PlayFab account.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UnlinkServerCustomIdAsync({);
+    /// var response = await serverApi.UnlinkServerCustomIdAsync({
     ///   "PlayFabId": "123412341234",
     ///   "ServerCustomId": "67AB-5397-CC54-EA31"
     /// });
@@ -1811,7 +1811,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Unlinks the Steam account associated with the provided Steam ID to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UnlinkSteamIdAsync({);
+    /// var response = await serverApi.UnlinkSteamIdAsync({
     ///   "PlayFabId": "5a446c83645201"
     /// });
     /// </code></example>
@@ -1821,7 +1821,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Unlinks the related Xbox Live account from the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UnlinkXboxAccountAsync({);
+    /// var response = await serverApi.UnlinkXboxAccountAsync({
     ///   "PlayFabId": "5a446c83645201"
     /// });
     /// </code></example>
@@ -1834,7 +1834,7 @@ public interface IPlayFabServerApi {
     /// required), and returns the contents of the opened container. If the container (and key when relevant) are consumable
     /// (RemainingUses &gt; 0), their RemainingUses will be decremented, consistent with the operation of ConsumeItem.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UnlockContainerInstanceAsync({);
+    /// var response = await serverApi.UnlockContainerInstanceAsync({
     ///   "PlayFabId": "20394883",
     ///   "ContainerItemInstanceId": "123456788",
     ///   "KeyItemInstanceId": "123456789"
@@ -1850,7 +1850,7 @@ public interface IPlayFabServerApi {
     /// relevant) are consumable (RemainingUses &gt; 0), their RemainingUses will be decremented, consistent with the operation of
     /// ConsumeItem.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UnlockContainerItemAsync({);
+    /// var response = await serverApi.UnlockContainerItemAsync({
     ///   "PlayFabId": "20394883",
     ///   "ContainerItemId": "crate block 1"
     /// });
@@ -1861,7 +1861,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Update the avatar URL of the specified player
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateAvatarUrlAsync({);
+    /// var response = await serverApi.UpdateAvatarUrlAsync({
     ///   "PlayFabId": "22ca65837b158fab",
     ///   "ImageUrl": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
     /// });
@@ -1872,7 +1872,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates information of a list of existing bans specified with Ban Ids.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateBansAsync({);
+    /// var response = await serverApi.UpdateBansAsync({
     ///   "Bans": [
     ///     {
     ///       "BanId": "E0B5FF89542D413C",
@@ -1893,7 +1893,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the title-specific custom data for the user's character which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateCharacterDataAsync({);
+    /// var response = await serverApi.UpdateCharacterDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "CharacterId": "98342357",
     ///   "Data": {
@@ -1911,7 +1911,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the title-specific custom data for the user's character which cannot be accessed by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateCharacterInternalDataAsync({);
+    /// var response = await serverApi.UpdateCharacterInternalDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "CharacterId": "98342357",
     ///   "Data": {
@@ -1929,7 +1929,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the title-specific custom data for the user's character which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateCharacterReadOnlyDataAsync({);
+    /// var response = await serverApi.UpdateCharacterReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "CharacterId": "98342357",
     ///   "Data": {
@@ -1947,7 +1947,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the values of the specified title-specific statistics for the specific character
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateCharacterStatisticsAsync({);
+    /// var response = await serverApi.UpdateCharacterStatisticsAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "CharacterId": "98765432",
     ///   "CharacterStatistics": {
@@ -1962,7 +1962,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the title-specific custom property values for a player
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdatePlayerCustomPropertiesAsync({);
+    /// var response = await serverApi.UpdatePlayerCustomPropertiesAsync({
     ///   "PlayFabId": "2039475",
     ///   "Properties": [
     ///     {
@@ -1983,7 +1983,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the values of the specified title-specific statistics for the user
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdatePlayerStatisticsAsync({);
+    /// var response = await serverApi.UpdatePlayerStatisticsAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "Statistics": [
     ///     {
@@ -2013,7 +2013,7 @@ public interface IPlayFabServerApi {
     /// designed for sharing data between a very small number of players, please see our guide:
     /// https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateSharedGroupDataAsync({);
+    /// var response = await serverApi.UpdateSharedGroupDataAsync({
     ///   "SharedGroupId": "Clan Data",
     ///   "Data": {
     ///     "ClanKills": "34",
@@ -2028,7 +2028,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the title-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateUserDataAsync({);
+    /// var response = await serverApi.UpdateUserDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2045,7 +2045,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the title-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateUserInternalDataAsync({);
+    /// var response = await serverApi.UpdateUserInternalDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2062,7 +2062,7 @@ public interface IPlayFabServerApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Updates the key-value pair data tagged to the specified item, which is read-only from the client.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateUserInventoryItemCustomDataAsync({);
+    /// var response = await serverApi.UpdateUserInventoryItemCustomDataAsync({
     ///   "PlayFabId": "204883457",
     ///   "CharacterId": "9890723423",
     ///   "ItemInstanceId": "88331144",
@@ -2078,7 +2078,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the publisher-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateUserPublisherDataAsync({);
+    /// var response = await serverApi.UpdateUserPublisherDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2095,7 +2095,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the publisher-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateUserPublisherInternalDataAsync({);
+    /// var response = await serverApi.UpdateUserPublisherInternalDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2111,7 +2111,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the publisher-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateUserPublisherReadOnlyDataAsync({);
+    /// var response = await serverApi.UpdateUserPublisherReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2128,7 +2128,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Updates the title-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateUserReadOnlyDataAsync({);
+    /// var response = await serverApi.UpdateUserReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2146,7 +2146,7 @@ public interface IPlayFabServerApi {
     /// Updates the values of the specified title-specific statistics for the user. By default, clients are not permitted to
     /// update statistics. Developers may override this setting in the Game Manager &gt; Settings &gt; API Features.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.UpdateUserStatisticsAsync({);
+    /// var response = await serverApi.UpdateUserStatisticsAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "UserStatistics": {
     ///     "Headshots": 18,
@@ -2160,7 +2160,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Writes a character-based event into PlayStream.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.WriteCharacterEventAsync({);
+    /// var response = await serverApi.WriteCharacterEventAsync({
     ///   "PlayFabId": "3947655299CB786",
     ///   "CharacterId": "E161CB4B7F6C34B",
     ///   "EventName": "character_defeated_enemy",
@@ -2181,7 +2181,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Writes a player-based event into PlayStream.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.WritePlayerEventAsync({);
+    /// var response = await serverApi.WritePlayerEventAsync({
     ///   "PlayFabId": "3947655299CB786",
     ///   "EventName": "player_defeated_enemy",
     ///   "Timestamp": "2016-03-07T00:00:00Z",
@@ -2201,7 +2201,7 @@ public interface IPlayFabServerApi {
     /// <summary>
     /// Writes a title-based event into PlayStream.
     /// <example><br/>Example:<code>
-    /// var response = await serverApi.WriteTitleEventAsync({);
+    /// var response = await serverApi.WriteTitleEventAsync({
     ///   "EventName": "client_update_submitted",
     ///   "Timestamp": "2016-03-07T00:00:00Z",
     ///   "Body": {

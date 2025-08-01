@@ -5,7 +5,7 @@ public interface IPlayFabSweepstakesApi {
     /// <summary>
     /// Creates a sweepstake for the associated title. Returns information about the sweepstake that was created.
     /// <example><br/>Example:<code>
-    /// var response = await sweepstakesApi.CreateSweepstakeAsync({);
+    /// var response = await sweepstakesApi.CreateSweepstakeAsync({
     ///   "Name": "Example Sweepstake",
     ///   "RewardId": "12345",
     ///   "StartDate": "2020-06-25T00:00:00Z",
@@ -20,7 +20,7 @@ public interface IPlayFabSweepstakesApi {
     /// <summary>
     /// Retrieves a sweeepstake for the associated title. If name is empty, will return all sweepstakes in the title.
     /// <example><br/>Example:<code>
-    /// var response = await sweepstakesApi.GetSweepstakeAsync({);
+    /// var response = await sweepstakesApi.GetSweepstakeAsync({
     ///   "Name": "TestSweepstake"
     /// });
     /// </code></example>

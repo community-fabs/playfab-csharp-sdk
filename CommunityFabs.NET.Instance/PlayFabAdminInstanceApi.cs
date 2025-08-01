@@ -1268,6 +1268,25 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
     }
 
     /// <inheritdoc />
+    public async Task<PlayFabResult<StoreMetricsResponse>> GetStoreMetricsAsync(StoreMetricsRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Admin/GetStoreMetrics", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<StoreMetricsResponse> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<StoreMetricsResponse>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<StoreMetricsResponse> { Result = result };
+    }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetTaskInstancesResult>> GetTaskInstancesAsync(GetTaskInstancesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;

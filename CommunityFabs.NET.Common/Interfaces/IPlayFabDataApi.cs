@@ -5,7 +5,7 @@ public interface IPlayFabDataApi {
     /// <summary>
     /// Abort pending file uploads to an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = await fileApi.AbortFileUploadsAsync({);
+    /// var response = await fileApi.AbortFileUploadsAsync({
     ///   "FileNames": [
     ///     "avatar",
     ///     "game_state"
@@ -23,7 +23,7 @@ public interface IPlayFabDataApi {
     /// <summary>
     /// Delete files on an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = await fileApi.DeleteFilesAsync({);
+    /// var response = await fileApi.DeleteFilesAsync({
     ///   "FileNames": [
     ///     "game_state",
     ///     "avatar"
@@ -41,7 +41,7 @@ public interface IPlayFabDataApi {
     /// <summary>
     /// Finalize file uploads to an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = await fileApi.FinalizeFileUploadsAsync({);
+    /// var response = await fileApi.FinalizeFileUploadsAsync({
     ///   "ProfileVersion": 0,
     ///   "FileNames": [
     ///     "avatar",
@@ -60,7 +60,7 @@ public interface IPlayFabDataApi {
     /// <summary>
     /// Retrieves file metadata from an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = await fileApi.GetFilesAsync({);
+    /// var response = await fileApi.GetFilesAsync({
     ///   "Entity": {
     ///     "Id": "ID",
     ///     "Type": "title_player_account",
@@ -74,7 +74,7 @@ public interface IPlayFabDataApi {
     /// <summary>
     /// Retrieves objects from an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = await objectApi.GetObjectsAsync({);
+    /// var response = await objectApi.GetObjectsAsync({
     ///   "Entity": {
     ///     "Id": "ABC90712ABC",
     ///     "Type": "title_player_account",
@@ -88,7 +88,7 @@ public interface IPlayFabDataApi {
     /// <summary>
     /// Initiates file uploads to an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = await fileApi.InitiateFileUploadsAsync({);
+    /// var response = await fileApi.InitiateFileUploadsAsync({
     ///   "FileNames": [
     ///     "avatar",
     ///     "game_state"
@@ -106,7 +106,7 @@ public interface IPlayFabDataApi {
     /// <summary>
     /// Sets objects on an entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = await objectApi.SetObjectsAsync({);
+    /// var response = await objectApi.SetObjectsAsync({
     ///   "ExpectedProfileVersion": 5,
     ///   "Objects": [
     ///     {

@@ -5,7 +5,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Accepts an outstanding invitation to to join a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.AcceptGroupApplicationAsync({);
+    /// var response = await groupApi.AcceptGroupApplicationAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -22,7 +22,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Accepts an invitation to join a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.AcceptGroupInvitationAsync({);
+    /// var response = await groupApi.AcceptGroupInvitationAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   }
@@ -34,7 +34,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Adds members to a group or role.
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.AddMembersAsync({);
+    /// var response = await groupApi.AddMembersAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -53,7 +53,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Applies to join a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.ApplyToGroupAsync({);
+    /// var response = await groupApi.ApplyToGroupAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   }
@@ -65,7 +65,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Blocks a list of entities from joining a group.
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.BlockEntityAsync({);
+    /// var response = await groupApi.BlockEntityAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -82,7 +82,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Changes the role membership of a list of entities from one role to another.
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.ChangeMemberRoleAsync({);
+    /// var response = await groupApi.ChangeMemberRoleAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -103,7 +103,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Creates a new group.
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.CreateGroupAsync({);
+    /// var response = await groupApi.CreateGroupAsync({
     ///   "GroupName": "Example Group"
     /// });
     /// </code></example>
@@ -113,7 +113,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Creates a new group role.
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.CreateRoleAsync({);
+    /// var response = await groupApi.CreateRoleAsync({
     ///   "RoleId": "example",
     ///   "RoleName": "Example Role",
     ///   "Group": {
@@ -127,7 +127,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Deletes a group and all roles, invitations, join requests, and blocks associated with it.
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.DeleteGroupAsync({);
+    /// var response = await groupApi.DeleteGroupAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   }
@@ -139,7 +139,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Deletes an existing role in a group.
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.DeleteRoleAsync({);
+    /// var response = await groupApi.DeleteRoleAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -152,7 +152,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Gets information about a group and its roles
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.GetGroupAsync({);
+    /// var response = await groupApi.GetGroupAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   }
@@ -164,7 +164,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Invites a player to join a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.InviteToGroupAsync({);
+    /// var response = await groupApi.InviteToGroupAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -182,7 +182,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Checks to see if an entity is a member of a group or role within the group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.IsMemberAsync({);
+    /// var response = await groupApi.IsMemberAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -200,7 +200,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Lists all outstanding requests to join a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.ListGroupApplicationsAsync({);
+    /// var response = await groupApi.ListGroupApplicationsAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   }
@@ -212,7 +212,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Lists all entities blocked from joining a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.ListGroupBlocksAsync({);
+    /// var response = await groupApi.ListGroupBlocksAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   }
@@ -224,7 +224,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Lists all outstanding invitations for a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.ListGroupInvitationsAsync({);
+    /// var response = await groupApi.ListGroupInvitationsAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   }
@@ -236,7 +236,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Lists all members for a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.ListGroupMembersAsync({);
+    /// var response = await groupApi.ListGroupMembersAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   }
@@ -264,7 +264,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Removes an application to join a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.RemoveGroupApplicationAsync({);
+    /// var response = await groupApi.RemoveGroupApplicationAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -281,7 +281,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Removes an invitation join a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.RemoveGroupInvitationAsync({);
+    /// var response = await groupApi.RemoveGroupInvitationAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -298,7 +298,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Removes members from a group.
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.RemoveMembersAsync({);
+    /// var response = await groupApi.RemoveMembersAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -318,7 +318,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Unblocks a list of entities from joining a group
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.UnblockEntityAsync({);
+    /// var response = await groupApi.UnblockEntityAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -335,7 +335,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Updates non-membership data about a group.
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.UpdateGroupAsync({);
+    /// var response = await groupApi.UpdateGroupAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },
@@ -349,7 +349,7 @@ public interface IPlayFabGroupsApi {
     /// <summary>
     /// Updates metadata about a role.
     /// <example><br/>Example:<code>
-    /// var response = await groupApi.UpdateRoleAsync({);
+    /// var response = await groupApi.UpdateRoleAsync({
     ///   "Group": {
     ///     "Id": "ABC1234ABC"
     ///   },

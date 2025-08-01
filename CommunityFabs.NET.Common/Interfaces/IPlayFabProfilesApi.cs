@@ -13,7 +13,7 @@ public interface IPlayFabProfilesApi {
     /// <summary>
     /// Retrieves the entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = await profileApi.GetProfileAsync({);
+    /// var response = await profileApi.GetProfileAsync({
     ///   "Entity": {
     ///     "Id": "1234567787392",
     ///     "Type": "title_player_account",
@@ -27,7 +27,7 @@ public interface IPlayFabProfilesApi {
     /// <summary>
     /// Retrieves the entity's profile.
     /// <example><br/>Example:<code>
-    /// var response = await profileApi.GetProfilesAsync({);
+    /// var response = await profileApi.GetProfilesAsync({
     ///   "Entities": [
     ///     {
     ///       "Id": "1234567787392",
@@ -48,7 +48,7 @@ public interface IPlayFabProfilesApi {
     /// <summary>
     /// Retrieves the title player accounts associated with the given master player account.
     /// <example><br/>Example:<code>
-    /// var response = await profileApi.GetTitlePlayersFromMasterPlayerAccountIdsAsync({);
+    /// var response = await profileApi.GetTitlePlayersFromMasterPlayerAccountIdsAsync({
     ///   "MasterPlayerAccountIds": [
     ///     "1233455677"
     ///   ],
@@ -61,7 +61,7 @@ public interface IPlayFabProfilesApi {
     /// <summary>
     /// Retrieves the title player accounts associated with the given XUIDs.
     /// <example><br/>Example:<code>
-    /// var response = await profileApi.GetTitlePlayersFromXboxLiveIDsAsync({);
+    /// var response = await profileApi.GetTitlePlayersFromXboxLiveIDsAsync({
     ///   "XboxLiveIds": [
     ///     "1233455677"
     ///   ],
@@ -74,7 +74,7 @@ public interface IPlayFabProfilesApi {
     /// <summary>
     /// Update the avatar url of the entity
     /// <example><br/>Example:<code>
-    /// var response = await profileApi.SetAvatarUrlAsync({);
+    /// var response = await profileApi.SetAvatarUrlAsync({
     ///   "AvatarUrl": "https://test.com/image.png",
     ///   "ProfileVersion": 123,
     ///   "Entity": {
@@ -90,7 +90,7 @@ public interface IPlayFabProfilesApi {
     /// <summary>
     /// Update the display name of the entity
     /// <example><br/>Example:<code>
-    /// var response = await profileApi.SetDisplayNameAsync({);
+    /// var response = await profileApi.SetDisplayNameAsync({
     ///   "DisplayName": "My new display name",
     ///   "ExpectedVersion": 123,
     ///   "Entity": {
@@ -106,7 +106,7 @@ public interface IPlayFabProfilesApi {
     /// <summary>
     /// Sets the global title access policy
     /// <example><br/>Example:<code>
-    /// var response = await profileApi.SetGlobalPolicyAsync({);
+    /// var response = await profileApi.SetGlobalPolicyAsync({
     ///   "Permissions": [
     ///     {
     ///       "Resource": "pfrn:data--title_player_account!90901000/Profile/SomethingCool",
@@ -129,7 +129,7 @@ public interface IPlayFabProfilesApi {
     /// Updates the entity's language. The precedence hierarchy for communication to the player is Title Player Account
     /// language, Master Player Account language, and then title default language if the first two aren't set or supported.
     /// <example><br/>Example:<code>
-    /// var response = await profileApi.SetProfileLanguageAsync({);
+    /// var response = await profileApi.SetProfileLanguageAsync({
     ///   "Language": "en",
     ///   "ExpectedVersion": 123,
     ///   "Entity": {
@@ -145,7 +145,7 @@ public interface IPlayFabProfilesApi {
     /// <summary>
     /// Sets the profiles access policy
     /// <example><br/>Example:<code>
-    /// var response = await profileApi.SetProfilePolicyAsync({);
+    /// var response = await profileApi.SetProfilePolicyAsync({
     ///   "Statements": [
     ///     {
     ///       "Resource": "pfrn:data--*!*/Profile/Files/avatar.png",

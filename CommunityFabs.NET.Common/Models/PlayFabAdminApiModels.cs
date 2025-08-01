@@ -2923,6 +2923,7 @@ public enum GenericErrorCodes {
     InvalidReportName,
     ResourceNotModified,
     StudioCreationLimitExceeded,
+    StudioDeletionInitiated,
     MatchmakingEntityInvalid,
     MatchmakingPlayerAttributesInvalid,
     MatchmakingQueueNotFound,
@@ -3252,6 +3253,7 @@ public enum GenericErrorCodes {
     InvalidEntityTypeForAggregation,
     MultiLevelAggregationNotAllowed,
     AggregationTypeNotAllowedForLinkedStat,
+    StoreMetricsRequestInvalidInput,
 }
 
 [Obsolete("Do not use")]
@@ -4375,6 +4377,9 @@ public class GrantVirtualCurrencySegmentAction {
     public string? CurrencyCode { get; set; }
 }
 
+public class IEnumerable_TimeSeries {
+}
+
 /// <summary>
 /// This operation will increment the global counter for the number of these items available. This number cannot be
 /// decremented, except by actual grants.
@@ -4803,6 +4808,19 @@ public class MembershipModel {
     /// The list of subscriptions that this player has for this membership
     /// </summary>
     public List<SubscriptionModel>? Subscriptions { get; set; }
+}
+
+public class MetricQueryInfo {
+    public string? From { get; set; }
+    public string? To { get; set; }
+}
+
+public class MetricsMessageModel {
+    public string? ControlId { get; set; }
+    public string? Error { get; set; }
+    public string? FilterSignature { get; set; }
+    public MetricQueryInfo? Query { get; set; }
+    public IEnumerable_TimeSeries? SeriesCollection { get; set; }
 }
 
 /// <summary>
@@ -6915,6 +6933,18 @@ public class StoreMarketingModel {
     /// Custom data about a store.
     /// </summary>
     public object? Metadata { get; set; }
+}
+
+/// <summary>
+/// Provide the metric name and time period to retrieve corresponding xbox store metrics data.
+/// </summary>
+public class StoreMetricsRequest : PlayFabRequestCommon {
+    public string? MetricName { get; set; }
+    public string? MetricPeriod { get; set; }
+}
+
+public class StoreMetricsResponse : PlayFabResultCommon {
+    public MetricsMessageModel? MetricData { get; set; }
 }
 
 public class SubscriptionModel {

@@ -7,7 +7,7 @@ public interface IPlayFabClientApi {
     /// allowed player list for the trade, or it is open to all players. If the call is successful, the offered and accepted
     /// items will be swapped between the two players' inventories.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.AcceptTradeAsync({);
+    /// var response = await clientApi.AcceptTradeAsync({
     ///   "OfferingPlayerId": "CD803BF233CE76CC",
     ///   "TradeId": "D819CEC225EA9948C351",
     ///   "AcceptedInventoryInstanceIds": [
@@ -23,7 +23,7 @@ public interface IPlayFabClientApi {
     /// Adds the PlayFab user, based upon a match against a supplied unique identifier, to the friend list of the local user.
     /// At least one of FriendPlayFabId,FriendUsername,FriendEmail, or FriendTitleDisplayName should be initialized.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.AddFriendAsync({);
+    /// var response = await clientApi.AddFriendAsync({
     ///   "FriendPlayFabId": "29837799"
     /// });
     /// </code></example>
@@ -35,7 +35,7 @@ public interface IPlayFabClientApi {
     /// ID lookup of any arbitrary service identifier a title wants to add. This identifier should never be used as
     /// authentication credentials, as the intent is that it is easily accessible by other players.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.AddGenericIDAsync({);
+    /// var response = await clientApi.AddGenericIDAsync({
     ///   "GenericId": {
     ///     "ServiceName": "BigBizSocial",
     ///     "UserId": "1234567890"
@@ -48,7 +48,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Adds or updates a contact email to the player's profile.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.AddOrUpdateContactEmailAsync({);
+    /// var response = await clientApi.AddOrUpdateContactEmailAsync({
     ///   "EmailAddress": "theuser@domain.com"
     /// });
     /// </code></example>
@@ -60,7 +60,7 @@ public interface IPlayFabClientApi {
     /// users in the group can add new members. Shared Groups are designed for sharing data between a very small number of
     /// players, please see our guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.AddSharedGroupMembersAsync({);
+    /// var response = await clientApi.AddSharedGroupMembersAsync({
     ///   "SharedGroupId": "Clan Data",
     ///   "PlayFabIds": [
     ///     "D984A64B832",
@@ -75,7 +75,7 @@ public interface IPlayFabClientApi {
     /// Adds playfab username/password auth to an existing account created via an anonymous auth method, e.g. automatic device
     /// ID login.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.AddUsernamePasswordAsync({);
+    /// var response = await clientApi.AddUsernamePasswordAsync({
     ///   "Username": "theuser",
     ///   "Email": "me@here.com",
     ///   "Password": "ExampleSecret"
@@ -88,7 +88,7 @@ public interface IPlayFabClientApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Increments the user's balance of the specified virtual currency by the stated amount
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.AddUserVirtualCurrencyAsync({);
+    /// var response = await clientApi.AddUserVirtualCurrencyAsync({
     ///   "VirtualCurrency": "GC",
     ///   "Amount": 100
     /// });
@@ -99,7 +99,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Registers the Android device to receive push notifications
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.AndroidDevicePushNotificationRegistrationAsync({);
+    /// var response = await clientApi.AndroidDevicePushNotificationRegistrationAsync({
     ///   "DeviceToken": "59872d98fa632brn8hg3770",
     ///   "SendPushNotificationConfirmation": true,
     ///   "ConfirmationMessage": "Welcome to PlayFab!"
@@ -111,7 +111,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Attributes an install for advertisment.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.AttributeInstallAsync({);
+    /// var response = await clientApi.AttributeInstallAsync({
     ///   "Idfa": "11098810"
     /// });
     /// </code></example>
@@ -123,7 +123,7 @@ public interface IPlayFabClientApi {
     /// trade can cancel it via this API call, to prevent griefing of the trade system (cancelling trades in order to prevent
     /// other players from accepting them, for trades that can be claimed by more than one player).
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.CancelTradeAsync({);
+    /// var response = await clientApi.CancelTradeAsync({
     ///   "TradeId": "D819CEC225EA9948C351"
     /// });
     /// </code></example>
@@ -135,7 +135,7 @@ public interface IPlayFabClientApi {
     /// version 2._ Confirms with the payment provider that the purchase was approved (if applicable) and adjusts inventory and
     /// virtual currency balances as appropriate
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ConfirmPurchaseAsync({);
+    /// var response = await clientApi.ConfirmPurchaseAsync({
     ///   "OrderId": "8853591446005860822"
     /// });
     /// </code></example>
@@ -147,7 +147,7 @@ public interface IPlayFabClientApi {
     /// version 2._ Consume uses of a consumable item. When all uses are consumed, it will be removed from the player's
     /// inventory.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ConsumeItemAsync({);
+    /// var response = await clientApi.ConsumeItemAsync({
     ///   "ItemInstanceId": "94585729",
     ///   "ConsumeCount": 1
     /// });
@@ -158,7 +158,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Grants the player's current entitlements from Microsoft Store's Collection API
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ConsumeMicrosoftStoreEntitlementsAsync({);
+    /// var response = await clientApi.ConsumeMicrosoftStoreEntitlementsAsync({
     ///   "MarketplaceSpecificData": {
     ///     "XboxToken": "XBL3.0 x=1981989841;akljdlkafdknad",
     ///     "userId": "46239871",
@@ -174,7 +174,7 @@ public interface IPlayFabClientApi {
     /// Checks for any new consumable entitlements. If any are found, they are consumed (if they're consumables) and added as
     /// PlayFab items
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ConsumePS5EntitlementsAsync({);
+    /// var response = await clientApi.ConsumePS5EntitlementsAsync({
     ///   "MarketplaceSpecificData": {
     ///     "ServiceLabel": "1"
     ///   },
@@ -187,7 +187,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Checks for any new consumable entitlements. If any are found, they are consumed and added as PlayFab items
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ConsumePSNEntitlementsAsync({);
+    /// var response = await clientApi.ConsumePSNEntitlementsAsync({
     ///   "ServiceLabel": 1
     /// });
     /// </code></example>
@@ -198,7 +198,7 @@ public interface IPlayFabClientApi {
     /// Grants the player's current entitlements from Xbox Live, consuming all availble items in Xbox and granting them to the
     /// player's PlayFab inventory. This call is idempotent and will not grant previously granted items to the player.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ConsumeXboxEntitlementsAsync({);
+    /// var response = await clientApi.ConsumeXboxEntitlementsAsync({
     ///   "XboxToken": "XBL3.0 x=1981989841;akljdlkafdknad",
     ///   "CatalogVersion": "XboxItems"
     /// });
@@ -212,7 +212,7 @@ public interface IPlayFabClientApi {
     /// data between a very small number of players, please see our guide:
     /// https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.CreateSharedGroupAsync({);
+    /// var response = await clientApi.CreateSharedGroupAsync({
     ///   "SharedGroupId": "Clan Data"
     /// });
     /// </code></example>
@@ -222,7 +222,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Deletes title-specific custom properties for a player
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.DeletePlayerCustomPropertiesAsync({);
+    /// var response = await clientApi.DeletePlayerCustomPropertiesAsync({
     ///   "PropertyNames": [
     ///     "level",
     ///     "created"
@@ -237,7 +237,7 @@ public interface IPlayFabClientApi {
     /// Executes a CloudScript function, with the 'currentPlayerId' set to the PlayFab ID of the authenticated player. The
     /// PlayFab ID is the entity ID of the player's master_player_account entity.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ExecuteCloudScriptAsync({);
+    /// var response = await clientApi.ExecuteCloudScriptAsync({
     ///   "FunctionName": "levelCompleted",
     ///   "FunctionParameter": {
     ///     "level": 3,
@@ -253,7 +253,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the user's PlayFab account details
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetAccountInfoAsync({);
+    /// var response = await clientApi.GetAccountInfoAsync({
     ///   "PlayFabId": "10931252888739651331"
     /// });
     /// </code></example>
@@ -263,7 +263,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Returns a list of ad placements and a reward for each
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetAdPlacementsAsync({);
+    /// var response = await clientApi.GetAdPlacementsAsync({
     ///   "AppId": "A12784B",
     ///   "Identifier": {
     ///     "Name": "PowerBonusInterstitial"
@@ -277,7 +277,7 @@ public interface IPlayFabClientApi {
     /// Lists all of the characters that belong to a specific user. CharacterIds are not globally unique; characterId must be
     /// evaluated with the parent PlayFabId to guarantee uniqueness.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetAllUsersCharactersAsync({);
+    /// var response = await clientApi.GetAllUsersCharactersAsync({
     ///   "PlayFabId": "98333765432"
     /// });
     /// </code></example>
@@ -288,7 +288,7 @@ public interface IPlayFabClientApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the specified version of the title's catalog of virtual goods, including all defined properties
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetCatalogItemsAsync({);
+    /// var response = await clientApi.GetCatalogItemsAsync({
     ///   "CatalogVersion": "1"
     /// });
     /// </code></example>
@@ -298,7 +298,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the character which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetCharacterDataAsync({);
+    /// var response = await clientApi.GetCharacterDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "CharacterId": "98342357",
     ///   "Keys": [
@@ -314,7 +314,7 @@ public interface IPlayFabClientApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the specified character's current inventory of virtual goods
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetCharacterInventoryAsync({);
+    /// var response = await clientApi.GetCharacterInventoryAsync({
     ///   "CharacterId": "9890723423",
     ///   "CatalogVersion": "5"
     /// });
@@ -325,7 +325,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves a list of ranked characters for the given statistic, starting from the indicated point in the leaderboard
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetCharacterLeaderboardAsync({);
+    /// var response = await clientApi.GetCharacterLeaderboardAsync({
     ///   "CharacterType": "blue_warrior",
     ///   "StatisticName": "Kills",
     ///   "StartPosition": 0,
@@ -338,7 +338,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the character which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetCharacterReadOnlyDataAsync({);
+    /// var response = await clientApi.GetCharacterReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "CharacterId": "98342357",
     ///   "Keys": [
@@ -353,7 +353,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the details of all title-specific statistics for the user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetCharacterStatisticsAsync({);
+    /// var response = await clientApi.GetCharacterStatisticsAsync({
     ///   "CharacterId": "98765432"
     /// });
     /// </code></example>
@@ -364,7 +364,7 @@ public interface IPlayFabClientApi {
     /// Retrieves the title-specific URL for Cloud Script servers. This must be queried once, prior to making any calls to
     /// RunCloudScript.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetCloudScriptUrlAsync({);
+    /// var response = await clientApi.GetCloudScriptUrlAsync({
     ///   "Version": 1,
     ///   "Testing": false
     /// });
@@ -380,7 +380,7 @@ public interface IPlayFabClientApi {
     /// https://community.playfab.com/hc/community/posts/205469488-How-to-upload-files-to-PlayFab-s-Content-Service. Also,
     /// please be aware that the Content service is specifically PlayFab's CDN offering, for which standard CDN rates apply.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetContentDownloadUrlAsync({);
+    /// var response = await clientApi.GetContentDownloadUrlAsync({
     ///   "Key": "images/sword_icon.png"
     /// });
     /// </code></example>
@@ -390,7 +390,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Get details about all current running game servers matching the given parameters.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetCurrentGamesAsync({);
+    /// var response = await clientApi.GetCurrentGamesAsync({
     ///   "Region": "USCentral",
     ///   "BuildVersion": "5.0.1",
     ///   "GameMode": "CaptureTheFlag",
@@ -420,7 +420,7 @@ public interface IPlayFabClientApi {
     /// Retrieves a list of ranked friends of the current player for the given statistic, starting from the indicated point in
     /// the leaderboard
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetFriendLeaderboardAsync({);
+    /// var response = await clientApi.GetFriendLeaderboardAsync({
     ///   "StatisticName": "Kills",
     ///   "StartPosition": 1258,
     ///   "MaxResultsCount": 20,
@@ -434,7 +434,7 @@ public interface IPlayFabClientApi {
     /// Retrieves a list of ranked friends of the current player for the given statistic, centered on the currently signed-in
     /// user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetFriendLeaderboardAroundCurrentUserAsync({);
+    /// var response = await clientApi.GetFriendLeaderboardAroundCurrentUserAsync({
     ///   "StatisticName": "Kills",
     ///   "MaxResultsCount": 20,
     ///   "ExternalPlatformFriends": "None"
@@ -447,7 +447,7 @@ public interface IPlayFabClientApi {
     /// Retrieves a list of ranked friends of the current player for the given statistic, centered on the requested PlayFab
     /// user. If PlayFabId is empty or null will return currently logged in user.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetFriendLeaderboardAroundPlayerAsync({);
+    /// var response = await clientApi.GetFriendLeaderboardAroundPlayerAsync({
     ///   "StatisticName": "Kills",
     ///   "MaxResultsCount": 20,
     ///   "ExternalPlatformFriends": "None"
@@ -460,7 +460,7 @@ public interface IPlayFabClientApi {
     /// Retrieves the current friend list for the local user, constrained to users who have PlayFab accounts. Friends from
     /// linked accounts (Facebook, Steam) are also included. You may optionally exclude some linked services' friends.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetFriendsListAsync({);
+    /// var response = await clientApi.GetFriendsListAsync({
     ///   "ExternalPlatformFriends": "Steam"
     /// });
     /// </code></example>
@@ -470,7 +470,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Get details about the regions hosting game servers matching the given parameters.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetGameServerRegionsAsync({);
+    /// var response = await clientApi.GetGameServerRegionsAsync({
     ///   "BuildVersion": "5.0.1",
     ///   "TitleId": "2074"
     /// });
@@ -481,7 +481,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves a list of ranked users for the given statistic, starting from the indicated point in the leaderboard
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetLeaderboardAsync({);
+    /// var response = await clientApi.GetLeaderboardAsync({
     ///   "StatisticName": "Kills",
     ///   "StartPosition": 0,
     ///   "MaxResultsCount": 20
@@ -493,7 +493,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves a list of ranked characters for the given statistic, centered on the requested Character ID
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetLeaderboardAroundCharacterAsync({);
+    /// var response = await clientApi.GetLeaderboardAroundCharacterAsync({
     ///   "StatisticName": "Kills",
     ///   "CharacterId": "987343220",
     ///   "MaxResultsCount": 20
@@ -505,7 +505,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves a list of ranked users for the given statistic, centered on the currently signed-in user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetLeaderboardAroundCurrentUserAsync({);
+    /// var response = await clientApi.GetLeaderboardAroundCurrentUserAsync({
     ///   "StatisticName": "Kills",
     ///   "MaxResultsCount": 20
     /// });
@@ -517,7 +517,7 @@ public interface IPlayFabClientApi {
     /// Retrieves a list of ranked users for the given statistic, centered on the requested player. If PlayFabId is empty or
     /// null will return currently logged in user.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetLeaderboardAroundPlayerAsync({);
+    /// var response = await clientApi.GetLeaderboardAroundPlayerAsync({
     ///   "StatisticName": "Kills",
     ///   "MaxResultsCount": 20
     /// });
@@ -528,7 +528,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves a list of all of the user's characters for the given statistic.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetLeaderboardForUserCharactersAsync({);
+    /// var response = await clientApi.GetLeaderboardForUserCharactersAsync({
     ///   "StatisticName": "Kills"
     /// });
     /// </code></example>
@@ -541,7 +541,7 @@ public interface IPlayFabClientApi {
     /// client completes the rest of the flow. In the Xsolla case, the token returned here will be passed to Xsolla by the
     /// client to create a cart. Poll GetPurchase using the returned OrderId once you've completed the payment.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPaymentTokenAsync({);
+    /// var response = await clientApi.GetPaymentTokenAsync({
     ///   "TokenProvider": "xsolla"
     /// });
     /// </code></example>
@@ -552,7 +552,7 @@ public interface IPlayFabClientApi {
     /// Gets a Photon custom authentication token that can be used to securely join the player into a Photon room. See
     /// https://docs.microsoft.com/gaming/playfab/features/multiplayer/photon/quickstart for more details.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPhotonAuthenticationTokenAsync({);
+    /// var response = await clientApi.GetPhotonAuthenticationTokenAsync({
     ///   "PhotonApplicationId": "acaa26f3-fcdb-4af4-8c76-3a3d4dd3066f"
     /// });
     /// </code></example>
@@ -562,7 +562,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves all of the user's different kinds of info.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayerCombinedInfoAsync({);
+    /// var response = await clientApi.GetPlayerCombinedInfoAsync({
     ///   "PlayFabId": "4027527BF22653D1",
     ///   "InfoRequestParameters": {
     ///     "GetUserAccountInfo": true,
@@ -589,7 +589,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves a title-specific custom property value for a player.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayerCustomPropertyAsync({);
+    /// var response = await clientApi.GetPlayerCustomPropertyAsync({
     ///   "PropertyName": "level"
     /// });
     /// </code></example>
@@ -599,7 +599,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the player's profile
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayerProfileAsync({);
+    /// var response = await clientApi.GetPlayerProfileAsync({
     ///   "PlayFabId": "621EF20237534A44"
     /// });
     /// </code></example>
@@ -618,7 +618,7 @@ public interface IPlayFabClientApi {
     /// Retrieves the indicated statistics (current version and values for all statistics, if none are specified), for the
     /// local player.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayerStatisticsAsync({);
+    /// var response = await clientApi.GetPlayerStatisticsAsync({
     ///   "StatisticNames": [
     ///     "Points",
     ///     "Wins"
@@ -631,7 +631,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the information on the available versions of the specified statistic.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayerStatisticVersionsAsync({);
+    /// var response = await clientApi.GetPlayerStatisticVersionsAsync({
     ///   "StatisticName": "headshots"
     /// });
     /// </code></example>
@@ -641,7 +641,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Get all tags with a given Namespace (optional) from a player profile.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayerTagsAsync({);
+    /// var response = await clientApi.GetPlayerTagsAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "Namespace": "title.AAA"
     /// });
@@ -652,7 +652,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Gets all trades the player has either opened or accepted, optionally filtered by trade status.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayerTradesAsync({);
+    /// var response = await clientApi.GetPlayerTradesAsync({
     ///   "StatusFilter": "Filled"
     /// });
     /// </code></example>
@@ -662,7 +662,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Battle.net account identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromBattleNetAccountIdsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromBattleNetAccountIdsAsync({
     ///   "BattleNetAccountIds": [
     ///     "526f79204261747478",
     ///     "526f79204261747479"
@@ -675,7 +675,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Facebook identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromFacebookIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromFacebookIDsAsync({
     ///   "FacebookIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -688,7 +688,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Facebook Instant Game identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromFacebookInstantGamesIdsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromFacebookInstantGamesIdsAsync({
     ///   "FacebookInstantGamesIds": [
     ///     "1114685845316172",
     ///     "1114685845316173"
@@ -702,7 +702,7 @@ public interface IPlayFabClientApi {
     /// Retrieves the unique PlayFab identifiers for the given set of Game Center identifiers (referenced in the Game Center
     /// Programming Guide as the Player Identifier).
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromGameCenterIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromGameCenterIDsAsync({
     ///   "GameCenterIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -717,7 +717,7 @@ public interface IPlayFabClientApi {
     /// service name plus the service-specific ID for the player, as specified by the title when the generic identifier was
     /// added to the player account.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromGenericIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromGenericIDsAsync({
     ///   "GenericIDs": [
     ///     {
     ///       "ServiceName": "BigBizSocial",
@@ -737,7 +737,7 @@ public interface IPlayFabClientApi {
     /// Retrieves the unique PlayFab identifiers for the given set of Google identifiers. The Google identifiers are the IDs
     /// for the user accounts, available as "id" in the Google+ People API calls.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromGoogleIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromGoogleIDsAsync({
     ///   "GoogleIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -752,7 +752,7 @@ public interface IPlayFabClientApi {
     /// identifiers are the IDs for the user accounts, available as "playerId" in the Google Play Games Services - Players API
     /// calls.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromGooglePlayGamesPlayerIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromGooglePlayGamesPlayerIDsAsync({
     ///   "GooglePlayGamesPlayerIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -767,7 +767,7 @@ public interface IPlayFabClientApi {
     /// the IDs for the user accounts, available as "user_id" from the Kongregate API methods(ex:
     /// http://developers.kongregate.com/docs/client/getUserId).
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromKongregateIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromKongregateIDsAsync({
     ///   "KongregateIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -780,7 +780,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Nintendo Service Account identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromNintendoServiceAccountIdsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromNintendoServiceAccountIdsAsync({
     ///   "NintendoAccountIds": [
     ///     "526f79204261747478",
     ///     "526f79204261747479"
@@ -793,7 +793,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Nintendo Switch Device identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromNintendoSwitchDeviceIdsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromNintendoSwitchDeviceIdsAsync({
     ///   "NintendoSwitchDeviceIds": [
     ///     "526f79204261747478",
     ///     "526f79204261747479"
@@ -806,7 +806,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of PlayStation :tm: Network identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromPSNAccountIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromPSNAccountIDsAsync({
     ///   "PSNAccountIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -819,7 +819,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of PlayStation :tm: Network identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromPSNOnlineIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromPSNOnlineIDsAsync({
     ///   "PSNOnlineIDs": [
     ///     "857555576495",
     ///     "759345551209"
@@ -833,7 +833,7 @@ public interface IPlayFabClientApi {
     /// Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are the profile
     /// IDs for the user accounts, available as SteamId in the Steamworks Community API calls.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromSteamIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromSteamIDsAsync({
     ///   "SteamStringIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -847,7 +847,7 @@ public interface IPlayFabClientApi {
     /// Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are persona
     /// names.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromSteamNamesAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromSteamNamesAsync({
     ///   "SteamNames": [
     ///     "steamPersonaName1",
     ///     "steamPersonaName2"
@@ -862,7 +862,7 @@ public interface IPlayFabClientApi {
     /// for the user accounts, available as "_id" from the Twitch API methods (ex:
     /// https://github.com/justintv/Twitch-API/blob/master/v3_resources/users.md#get-usersuser).
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromTwitchIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromTwitchIDsAsync({
     ///   "TwitchIds": [
     ///     "127168541",
     ///     "88315720"
@@ -875,7 +875,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of XboxLive identifiers.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPlayFabIDsFromXboxLiveIDsAsync({);
+    /// var response = await clientApi.GetPlayFabIDsFromXboxLiveIDsAsync({
     ///   "XboxLiveAccountIDs": [
     ///     "857498576495",
     ///     "759374651209"
@@ -889,7 +889,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the key-value store of custom publisher settings
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPublisherDataAsync({);
+    /// var response = await clientApi.GetPublisherDataAsync({
     ///   "Keys": [
     ///     "color",
     ///     "propertyA"
@@ -904,7 +904,7 @@ public interface IPlayFabClientApi {
     /// version 2._ Retrieves a purchase along with its current PlayFab status. Returns inventory items from the purchase that
     /// are still active.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetPurchaseAsync({);
+    /// var response = await clientApi.GetPurchaseAsync({
     ///   "OrderId": "8853591446005860822"
     /// });
     /// </code></example>
@@ -917,7 +917,7 @@ public interface IPlayFabClientApi {
     /// Shared Groups are designed for sharing data between a very small number of players, please see our guide:
     /// https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetSharedGroupDataAsync({);
+    /// var response = await clientApi.GetSharedGroupDataAsync({
     ///   "SharedGroupId": "Clan Data",
     ///   "Keys": [
     ///     "ClanKills",
@@ -933,7 +933,7 @@ public interface IPlayFabClientApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the set of items defined for the specified store, including all prices defined
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetStoreItemsAsync({);
+    /// var response = await clientApi.GetStoreItemsAsync({
     ///   "StoreId": "BonusStore"
     /// });
     /// </code></example>
@@ -951,7 +951,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the key-value store of custom title settings
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetTitleDataAsync({);
+    /// var response = await clientApi.GetTitleDataAsync({
     ///   "Keys": [
     ///     "color",
     ///     "propertyA"
@@ -964,7 +964,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the title news feed, as configured in the developer portal
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetTitleNewsAsync({);
+    /// var response = await clientApi.GetTitleNewsAsync({
     ///   "Count": 25
     /// });
     /// </code></example>
@@ -974,7 +974,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Returns the title's base 64 encoded RSA CSP blob.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetTitlePublicKeyAsync({);
+    /// var response = await clientApi.GetTitlePublicKeyAsync({
     ///   "TitleId": "ID",
     ///   "TitleSharedSecret": "ExampleSecret"
     /// });
@@ -985,7 +985,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Gets the current status of an existing trade.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetTradeStatusAsync({);
+    /// var response = await clientApi.GetTradeStatusAsync({
     ///   "OfferingPlayerId": "CD803BF233CE76CC",
     ///   "TradeId": "D819CEC225EA9948C351"
     /// });
@@ -1003,7 +1003,7 @@ public interface IPlayFabClientApi {
     /// example below, a request is made for the account details, virtual currency balances, and specified user data for the
     /// locally signed-in user.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetUserCombinedInfoAsync({);
+    /// var response = await clientApi.GetUserCombinedInfoAsync({
     ///   "GetInventory": false,
     ///   "UserDataKeys": [
     ///     "preferences",
@@ -1018,7 +1018,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetUserDataAsync({);
+    /// var response = await clientApi.GetUserDataAsync({
     ///   "Keys": [
     ///     "preferences",
     ///     "progress"
@@ -1040,7 +1040,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetUserPublisherDataAsync({);
+    /// var response = await clientApi.GetUserPublisherDataAsync({
     ///   "Keys": [
     ///     "preferences",
     ///     "progress"
@@ -1053,7 +1053,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetUserPublisherReadOnlyDataAsync({);
+    /// var response = await clientApi.GetUserPublisherReadOnlyDataAsync({
     ///   "Keys": [
     ///     "preferences",
     ///     "progress"
@@ -1066,7 +1066,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GetUserReadOnlyDataAsync({);
+    /// var response = await clientApi.GetUserReadOnlyDataAsync({
     ///   "Keys": [
     ///     "preferences",
     ///     "progress"
@@ -1088,7 +1088,7 @@ public interface IPlayFabClientApi {
     /// Grants the specified character type to the user. CharacterIds are not globally unique; characterId must be evaluated
     /// with the parent PlayFabId to guarantee uniqueness.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.GrantCharacterToUserAsync({);
+    /// var response = await clientApi.GrantCharacterToUserAsync({
     ///   "CatalogVersion": "2.2",
     ///   "ItemId": "Blue Warrior",
     ///   "CharacterName": "FighterDude"
@@ -1100,7 +1100,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the Android device identifier to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkAndroidDeviceIDAsync({);
+    /// var response = await clientApi.LinkAndroidDeviceIDAsync({
     ///   "AndroidDeviceId": "526f79204261747479",
     ///   "OS": "5.0",
     ///   "AndroidDevice": "Nexus 6"
@@ -1112,7 +1112,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the Apple account associated with the token to the user's PlayFab account.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkAppleAsync({);
+    /// var response = await clientApi.LinkAppleAsync({
     ///   "IdentityToken": "eyJraWQi..."
     /// });
     /// </code></example>
@@ -1122,7 +1122,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the Battle.net account associated with the token to the user's PlayFab account.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkBattleNetAccountAsync({);
+    /// var response = await clientApi.LinkBattleNetAccountAsync({
     ///   "IdentityToken": "eyJraWQi..."
     /// });
     /// </code></example>
@@ -1132,7 +1132,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the custom identifier, generated by the title, to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkCustomIDAsync({);
+    /// var response = await clientApi.LinkCustomIDAsync({
     ///   "CustomId": "67AB-5397-CC54-EA31"
     /// });
     /// </code></example>
@@ -1142,7 +1142,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the Facebook account associated with the provided Facebook access token to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkFacebookAccountAsync({);
+    /// var response = await clientApi.LinkFacebookAccountAsync({
     ///   "AccessToken": "FaceAccessTokenID"
     /// });
     /// </code></example>
@@ -1152,7 +1152,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the Facebook Instant Games Id to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkFacebookInstantGamesIdAsync({);
+    /// var response = await clientApi.LinkFacebookInstantGamesIdAsync({
     ///   "FacebookInstantGamesSignature": "abcdef"
     /// });
     /// </code></example>
@@ -1166,7 +1166,7 @@ public interface IPlayFabClientApi {
     /// Apple Add-ons page in the PlayFab Game Manager and enabling the 'Require secure authentication only for this app'
     /// option.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkGameCenterAccountAsync({);
+    /// var response = await clientApi.LinkGameCenterAccountAsync({
     ///   "GameCenterId": "2998h2998f0b000d0993"
     /// });
     /// </code></example>
@@ -1176,7 +1176,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the currently signed-in user account to their Google account, using their Google account credentials
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkGoogleAccountAsync({);
+    /// var response = await clientApi.LinkGoogleAccountAsync({
     ///   "ServerAuthCode": "4/TPdB1ter7eJ7cQ0lGBa6p1Cn-sSHJEXmPJ7t1-v4_ds#"
     /// });
     /// </code></example>
@@ -1187,7 +1187,7 @@ public interface IPlayFabClientApi {
     /// Links the currently signed-in user account to their Google Play Games account, using their Google Play Games account
     /// credentials
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkGooglePlayGamesServicesAccountAsync({);
+    /// var response = await clientApi.LinkGooglePlayGamesServicesAccountAsync({
     ///   "ServerAuthCode": "4/TPdB1ter7eJ7cQ0lGBa6p1Cn-sSHJEXmPJ7t1-v4_ds#"
     /// });
     /// </code></example>
@@ -1197,7 +1197,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the vendor-specific iOS device identifier to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkIOSDeviceIDAsync({);
+    /// var response = await clientApi.LinkIOSDeviceIDAsync({
     ///   "DeviceId": "29848d9bh8900a0b003",
     ///   "OS": "7.11",
     ///   "DeviceModel": "Iphone 5s"
@@ -1209,7 +1209,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the Kongregate identifier to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkKongregateAsync({);
+    /// var response = await clientApi.LinkKongregateAsync({
     ///   "KongregateId": "457332",
     ///   "AuthTicket": "{123-456-78931212}"
     /// });
@@ -1220,7 +1220,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the Nintendo account associated with the token to the user's PlayFab account.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkNintendoServiceAccountAsync({);
+    /// var response = await clientApi.LinkNintendoServiceAccountAsync({
     ///   "IdentityToken": "eyJraWQi..."
     /// });
     /// </code></example>
@@ -1230,7 +1230,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the NintendoSwitchDeviceId to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkNintendoSwitchDeviceIdAsync({);
+    /// var response = await clientApi.LinkNintendoSwitchDeviceIdAsync({
     ///   "NintendoSwitchDeviceId": "526f79204261747479"
     /// });
     /// </code></example>
@@ -1241,7 +1241,7 @@ public interface IPlayFabClientApi {
     /// Links an OpenID Connect account to a user's PlayFab account, based on an existing relationship between a title and an
     /// Open ID Connect provider and the OpenId Connect JWT from that provider.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkOpenIdConnectAsync({);
+    /// var response = await clientApi.LinkOpenIdConnectAsync({
     ///   "ConnectionId": "exampleprovider",
     ///   "IdToken": "eyJraWQi..."
     /// });
@@ -1252,7 +1252,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the PlayStation :tm: Network account associated with the provided access code to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkPSNAccountAsync({);
+    /// var response = await clientApi.LinkPSNAccountAsync({
     ///   "AuthCode": "LKJDG7DDE",
     ///   "RedirectUri": "orbis://games"
     /// });
@@ -1263,7 +1263,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the Steam account associated with the provided Steam authentication ticket to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkSteamAccountAsync({);
+    /// var response = await clientApi.LinkSteamAccountAsync({
     ///   "SteamTicket": "steamTicketID",
     ///   "TicketIsServiceSpecific": true
     /// });
@@ -1274,7 +1274,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the Twitch account associated with the token to the user's PlayFab account.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkTwitchAsync({);
+    /// var response = await clientApi.LinkTwitchAsync({
     ///   "AccessToken": "TwitchAccessToken"
     /// });
     /// </code></example>
@@ -1284,7 +1284,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Links the Xbox Live account associated with the provided access code to the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LinkXboxAccountAsync({);
+    /// var response = await clientApi.LinkXboxAccountAsync({
     ///   "XboxToken": "XBL3.0 x=1981989841;akljdlkafdknad"
     /// });
     /// </code></example>
@@ -1302,7 +1302,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Logs a custom analytics event
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LogEventAsync({);
+    /// var response = await clientApi.LogEventAsync({
     ///   "EventName": "Headshot",
     ///   "Body": {
     ///     "victim": "B76543AEAE65",
@@ -1323,7 +1323,7 @@ public interface IPlayFabClientApi {
     /// Signs the user in using the Android device identifier, returning a session identifier that can subsequently be used for
     /// API calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithAndroidDeviceIDAsync({);
+    /// var response = await clientApi.LoginWithAndroidDeviceIDAsync({
     ///   "AndroidDeviceId": "526f79204261747479",
     ///   "OS": "5.0",
     ///   "AndroidDevice": "Nexus 6",
@@ -1337,7 +1337,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Signs in the user with a Sign in with Apple identity token.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithAppleAsync({);
+    /// var response = await clientApi.LoginWithAppleAsync({
     ///   "IdentityToken": "eyJraWQi...",
     ///   "TitleId": "144"
     /// });
@@ -1348,7 +1348,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Sign in the user with a Battle.net identity token
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithBattleNetAsync({);
+    /// var response = await clientApi.LoginWithBattleNetAsync({
     ///   "IdentityToken": "eyJraWQi...",
     ///   "TitleId": "144"
     /// });
@@ -1360,7 +1360,7 @@ public interface IPlayFabClientApi {
     /// Signs the user in using a custom unique identifier generated by the title, returning a session identifier that can
     /// subsequently be used for API calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithCustomIDAsync({);
+    /// var response = await clientApi.LoginWithCustomIDAsync({
     ///   "CustomId": "67AB-5397-CC54-EA31",
     ///   "CreateAccount": false,
     ///   "TitleId": "144"
@@ -1375,7 +1375,7 @@ public interface IPlayFabClientApi {
     /// creation of new accounts via the CreateAccountFlag. Email addresses may be used to create accounts via
     /// RegisterPlayFabUser.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithEmailAddressAsync({);
+    /// var response = await clientApi.LoginWithEmailAddressAsync({
     ///   "Email": "theuser@domain.com",
     ///   "Password": "thepassword",
     ///   "TitleId": "144"
@@ -1388,7 +1388,7 @@ public interface IPlayFabClientApi {
     /// Signs the user in using a Facebook access token, returning a session identifier that can subsequently be used for API
     /// calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithFacebookAsync({);
+    /// var response = await clientApi.LoginWithFacebookAsync({
     ///   "AccessToken": "FaceAccessTokenID",
     ///   "CreateAccount": false,
     ///   "TitleId": "144"
@@ -1401,7 +1401,7 @@ public interface IPlayFabClientApi {
     /// Signs the user in using a Facebook Instant Games ID, returning a session identifier that can subsequently be used for
     /// API calls which require an authenticated user. Requires Facebook Instant Games to be configured.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithFacebookInstantGamesIdAsync({);
+    /// var response = await clientApi.LoginWithFacebookInstantGamesIdAsync({
     ///   "FacebookInstantGamesSignature": "abcdef",
     ///   "CreateAccount": false,
     ///   "TitleId": "144"
@@ -1417,7 +1417,7 @@ public interface IPlayFabClientApi {
     /// require these parameters on all Game Center calls by going to the Apple Add-ons page in the PlayFab Game Manager and
     /// enabling the 'Require secure authentication only for this app' option.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithGameCenterAsync({);
+    /// var response = await clientApi.LoginWithGameCenterAsync({
     ///   "PlayerId": "pachycephalosaurus01",
     ///   "CreateAccount": false,
     ///   "TitleId": "144"
@@ -1429,7 +1429,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Signs the user in using their Google account credentials
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithGoogleAccountAsync({);
+    /// var response = await clientApi.LoginWithGoogleAccountAsync({
     ///   "ServerAuthCode": "4/TPdB1ter7eJ7cQ0lGBa6p1Cn-sSHJEXmPJ7t1-v4_ds#",
     ///   "CreateAccount": false,
     ///   "SetEmail": true,
@@ -1442,7 +1442,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Signs the user in using their Google Play Games account credentials
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithGooglePlayGamesServicesAsync({);
+    /// var response = await clientApi.LoginWithGooglePlayGamesServicesAsync({
     ///   "ServerAuthCode": "4/TPdB1ter7eJ7cQ0lGBa6p1Cn-sSHJEXmPJ7t1-v4_ds#",
     ///   "CreateAccount": false,
     ///   "TitleId": "144"
@@ -1455,7 +1455,7 @@ public interface IPlayFabClientApi {
     /// Signs the user in using the vendor-specific iOS device identifier, returning a session identifier that can subsequently
     /// be used for API calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithIOSDeviceIDAsync({);
+    /// var response = await clientApi.LoginWithIOSDeviceIDAsync({
     ///   "DeviceId": "29848d9bh8900a0b003",
     ///   "OS": "7.11",
     ///   "DeviceModel": "Iphone 5s",
@@ -1469,7 +1469,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Signs the user in using a Kongregate player account.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithKongregateAsync({);
+    /// var response = await clientApi.LoginWithKongregateAsync({
     ///   "KongregateId": "457332",
     ///   "AuthTicket": "SomeKongregateTokenHere",
     ///   "CreateAccount": false,
@@ -1482,7 +1482,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Signs in the user with a Nintendo service account token.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithNintendoServiceAccountAsync({);
+    /// var response = await clientApi.LoginWithNintendoServiceAccountAsync({
     ///   "IdentityToken": "eyJraWQi...",
     ///   "TitleId": "144"
     /// });
@@ -1494,7 +1494,7 @@ public interface IPlayFabClientApi {
     /// Signs the user in using a Nintendo Switch Device ID, returning a session identifier that can subsequently be used for
     /// API calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithNintendoSwitchDeviceIdAsync({);
+    /// var response = await clientApi.LoginWithNintendoSwitchDeviceIdAsync({
     ///   "NintendoSwitchDeviceId": "526f79204261747479",
     ///   "CreateAccount": false,
     ///   "TitleId": "144"
@@ -1507,7 +1507,7 @@ public interface IPlayFabClientApi {
     /// Logs in a user with an Open ID Connect JWT created by an existing relationship between a title and an Open ID Connect
     /// provider.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithOpenIdConnectAsync({);
+    /// var response = await clientApi.LoginWithOpenIdConnectAsync({
     ///   "ConnectionId": "exampleprovider",
     ///   "IdToken": "eyJraWQi...",
     ///   "TitleId": "144"
@@ -1522,7 +1522,7 @@ public interface IPlayFabClientApi {
     /// of new accounts via the CreateAccountFlag. Username/Password credentials may be used to create accounts via
     /// RegisterPlayFabUser, or added to existing accounts using AddUsernamePassword.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithPlayFabAsync({);
+    /// var response = await clientApi.LoginWithPlayFabAsync({
     ///   "Username": "theuser",
     ///   "Password": "ExampleSecret",
     ///   "TitleId": "144"
@@ -1535,7 +1535,7 @@ public interface IPlayFabClientApi {
     /// Signs the user in using a PlayStation :tm: Network authentication code, returning a session identifier that can
     /// subsequently be used for API calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithPSNAsync({);
+    /// var response = await clientApi.LoginWithPSNAsync({
     ///   "AuthCode": "LKJ6D896D",
     ///   "RedirectUri": "orbis://games",
     ///   "CreateAccount": false,
@@ -1549,7 +1549,7 @@ public interface IPlayFabClientApi {
     /// Signs the user in using a Steam authentication ticket, returning a session identifier that can subsequently be used for
     /// API calls which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithSteamAsync({);
+    /// var response = await clientApi.LoginWithSteamAsync({
     ///   "SteamTicket": "steamTicketID",
     ///   "CreateAccount": false,
     ///   "TicketIsServiceSpecific": true,
@@ -1562,7 +1562,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Signs the user in using a Twitch access token.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithTwitchAsync({);
+    /// var response = await clientApi.LoginWithTwitchAsync({
     ///   "AccessToken": "SomeTwitchTokenHere",
     ///   "CreateAccount": false,
     ///   "TitleId": "144"
@@ -1575,7 +1575,7 @@ public interface IPlayFabClientApi {
     /// Signs the user in using a Xbox Live Token, returning a session identifier that can subsequently be used for API calls
     /// which require an authenticated user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.LoginWithXboxAsync({);
+    /// var response = await clientApi.LoginWithXboxAsync({
     ///   "XboxToken": "XBL3.0 x=1981989841;akljdlkafdknad",
     ///   "CreateAccount": false,
     ///   "TitleId": "144"
@@ -1592,7 +1592,7 @@ public interface IPlayFabClientApi {
     /// availabe set. In that case, the information on the game session will be returned, otherwise the Status returned will be
     /// GameNotFound.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.MatchmakeAsync({);
+    /// var response = await clientApi.MatchmakeAsync({
     ///   "BuildVersion": "5.01",
     ///   "Region": "USCentral",
     ///   "GameMode": "0",
@@ -1620,7 +1620,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Opens a new outstanding trade. Note that a given item instance may only be in one open trade at a time.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.OpenTradeAsync({);
+    /// var response = await clientApi.OpenTradeAsync({
     ///   "OfferedInventoryInstanceIds": [
     ///     "1359447",
     ///     "635691"
@@ -1637,7 +1637,7 @@ public interface IPlayFabClientApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Selects a payment option for purchase order created via StartPurchase
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.PayForPurchaseAsync({);
+    /// var response = await clientApi.PayForPurchaseAsync({
     ///   "OrderId": "8853591446005860822",
     ///   "ProviderName": "PayPal",
     ///   "Currency": "RM"
@@ -1651,7 +1651,7 @@ public interface IPlayFabClientApi {
     /// version 2._ Buys a single item with virtual currency. You must specify both the virtual currency to use to purchase, as
     /// well as what the client believes the price to be. This lets the server fail the purchase if the price has changed.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.PurchaseItemAsync({);
+    /// var response = await clientApi.PurchaseItemAsync({
     ///   "ItemId": "shield_level_5",
     ///   "VirtualCurrency": "GV",
     ///   "Price": 25
@@ -1665,7 +1665,7 @@ public interface IPlayFabClientApi {
     /// version 2._ Adds the virtual goods associated with the coupon to the user's inventory. Coupons can be generated via the
     /// Economy-&gt;Catalogs tab in the PlayFab Game Manager.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.RedeemCouponAsync({);
+    /// var response = await clientApi.RedeemCouponAsync({
     ///   "CouponCode": "123-1234-123",
     ///   "CatalogVersion": "5"
     /// });
@@ -1676,7 +1676,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Uses the supplied OAuth code to refresh the internally cached player PlayStation :tm: Network auth token
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.RefreshPSNAuthTokenAsync({);
+    /// var response = await clientApi.RefreshPSNAuthTokenAsync({
     ///   "AuthCode": "LKJDG7DDE",
     ///   "RedirectUri": "orbis://games"
     /// });
@@ -1687,7 +1687,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Registers the iOS device to receive push notifications
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.RegisterForIOSPushNotificationAsync({);
+    /// var response = await clientApi.RegisterForIOSPushNotificationAsync({
     ///   "DeviceToken": "39872f98eb882brn8hg3889",
     ///   "SendPushNotificationConfirmation": true,
     ///   "ConfirmationMessage": "Welcome to PlayFab"
@@ -1700,7 +1700,7 @@ public interface IPlayFabClientApi {
     /// Registers a new Playfab user account, returning a session identifier that can subsequently be used for API calls which
     /// require an authenticated user. You must supply a username and an email address.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.RegisterPlayFabUserAsync({);
+    /// var response = await clientApi.RegisterPlayFabUserAsync({
     ///   "Username": "theuser",
     ///   "Email": "me@here.com",
     ///   "Password": "ExampleSecret",
@@ -1721,7 +1721,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Removes a specified user from the friend list of the local user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.RemoveFriendAsync({);
+    /// var response = await clientApi.RemoveFriendAsync({
     ///   "FriendPlayFabId": "29837799"
     /// });
     /// </code></example>
@@ -1731,7 +1731,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Removes the specified generic service identifier from the player's PlayFab account.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.RemoveGenericIDAsync({);
+    /// var response = await clientApi.RemoveGenericIDAsync({
     ///   "GenericId": {
     ///     "ServiceName": "BigBizSocial",
     ///     "UserId": "1234567890"
@@ -1747,7 +1747,7 @@ public interface IPlayFabClientApi {
     /// will be deleted. Shared Groups are designed for sharing data between a very small number of players, please see our
     /// guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.RemoveSharedGroupMembersAsync({);
+    /// var response = await clientApi.RemoveSharedGroupMembersAsync({
     ///   "SharedGroupId": "Clan Data",
     ///   "PlayFabIds": [
     ///     "D984A64B832",
@@ -1761,7 +1761,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Report player's ad activity
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ReportAdActivityAsync({);
+    /// var response = await clientApi.ReportAdActivityAsync({
     ///   "PlacementId": "A124572382B",
     ///   "RewardId": "B2674981A",
     ///   "Activity": "End"
@@ -1774,7 +1774,7 @@ public interface IPlayFabClientApi {
     /// Write a PlayStream event to describe the provided player device information. This API method is not designed to be
     /// called directly by developers. Each PlayFab client SDK will eventually report this information automatically.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ReportDeviceInfoAsync({);
+    /// var response = await clientApi.ReportDeviceInfoAsync({
     ///   "Info": {
     ///     "UserAgent": "Some Browser",
     ///     "ScreenResolution": "640x480",
@@ -1789,7 +1789,7 @@ public interface IPlayFabClientApi {
     /// Submit a report for another player (due to bad bahavior, etc.), so that customer service representatives for the title
     /// can take action concerning potentially toxic players.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ReportPlayerAsync({);
+    /// var response = await clientApi.ReportPlayerAsync({
     ///   "ReporteeId": "1a46086aed40f142",
     ///   "Comment": "cheating"
     /// });
@@ -1801,7 +1801,7 @@ public interface IPlayFabClientApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Restores all in-app purchases based on the given restore receipt
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.RestoreIOSPurchasesAsync({);
+    /// var response = await clientApi.RestoreIOSPurchasesAsync({
     ///   "ReceiptData": "F00000000000000000000"
     /// });
     /// </code></example>
@@ -1811,7 +1811,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Reward player's ad activity
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.RewardAdActivityAsync({);
+    /// var response = await clientApi.RewardAdActivityAsync({
     ///   "PlacementId": "A124572382B",
     ///   "RewardId": "B2674981A"
     /// });
@@ -1825,7 +1825,7 @@ public interface IPlayFabClientApi {
     /// Script server URL. When using an official PlayFab SDK, this URL is stored internally in the SDK, but GetCloudScriptUrl
     /// must still be manually called.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.RunCloudScriptAsync({);
+    /// var response = await clientApi.RunCloudScriptAsync({
     ///   "ActionId": "onLevelComplete",
     ///   "ParamsEncoded": "{\"level\":1}"
     /// });
@@ -1838,7 +1838,7 @@ public interface IPlayFabClientApi {
     /// change the password.If an account recovery email template ID is provided, an email using the custom email template will
     /// be used.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.SendAccountRecoveryEmailAsync({);
+    /// var response = await clientApi.SendAccountRecoveryEmailAsync({
     ///   "Email": "Me@here.com",
     ///   "TitleId": "1000",
     ///   "EmailTemplateId": "D53AB15D8F12E330"
@@ -1850,7 +1850,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Updates the tag list for a specified user in the friend list of the local user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.SetFriendTagsAsync({);
+    /// var response = await clientApi.SetFriendTagsAsync({
     ///   "FriendPlayFabId": "29837799",
     ///   "Tags": [
     ///     "great sniper",
@@ -1865,7 +1865,7 @@ public interface IPlayFabClientApi {
     /// Sets the player's secret if it is not already set. Player secrets are used to sign API requests. To reset a player's
     /// secret use the Admin or Server API method SetPlayerSecret.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.SetPlayerSecretAsync({);
+    /// var response = await clientApi.SetPlayerSecretAsync({
     ///   "PlayerSecret": "A cryptographically strong string"
     /// });
     /// </code></example>
@@ -1875,7 +1875,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Start a new game server with a given configuration, add the current player and return the connection information.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.StartGameAsync({);
+    /// var response = await clientApi.StartGameAsync({
     ///   "BuildVersion": "5.01",
     ///   "Region": "EUWest",
     ///   "GameMode": "0",
@@ -1889,7 +1889,7 @@ public interface IPlayFabClientApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Creates an order for a list of items from the title catalog
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.StartPurchaseAsync({);
+    /// var response = await clientApi.StartPurchaseAsync({
     ///   "CatalogVersion": "0",
     ///   "StoreId": "BonusStore",
     ///   "Items": [
@@ -1909,7 +1909,7 @@ public interface IPlayFabClientApi {
     /// version 2._ Decrements the user's balance of the specified virtual currency by the stated amount. It is possible to
     /// make a VC balance negative with this API.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.SubtractUserVirtualCurrencyAsync({);
+    /// var response = await clientApi.SubtractUserVirtualCurrencyAsync({
     ///   "VirtualCurrency": "GC",
     ///   "Amount": 100
     /// });
@@ -1920,7 +1920,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Unlinks the related Android device identifier from the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UnlinkAndroidDeviceIDAsync({);
+    /// var response = await clientApi.UnlinkAndroidDeviceIDAsync({
     ///   "AndroidDeviceId": "526f79204261747479"
     /// });
     /// </code></example>
@@ -1946,7 +1946,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Unlinks the related custom identifier from the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UnlinkCustomIDAsync({);
+    /// var response = await clientApi.UnlinkCustomIDAsync({
     ///   "CustomId": "67AB-5397-CC54-EA31"
     /// });
     /// </code></example>
@@ -1964,7 +1964,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Unlinks the related Facebook Instant Game Ids from the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UnlinkFacebookInstantGamesIdAsync({);
+    /// var response = await clientApi.UnlinkFacebookInstantGamesIdAsync({
     ///   "FacebookInstantGamesId": "1114685845316173"
     /// });
     /// </code></example>
@@ -1999,7 +1999,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Unlinks the related iOS device identifier from the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UnlinkIOSDeviceIDAsync({);
+    /// var response = await clientApi.UnlinkIOSDeviceIDAsync({
     ///   "DeviceId": "29848d9bh8900a0b003"
     /// });
     /// </code></example>
@@ -2025,7 +2025,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Unlinks the related NintendoSwitchDeviceId from the user's PlayFab account
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UnlinkNintendoSwitchDeviceIdAsync({);
+    /// var response = await clientApi.UnlinkNintendoSwitchDeviceIdAsync({
     ///   "NintendoSwitchDeviceId": "526f79204261747479"
     /// });
     /// </code></example>
@@ -2036,7 +2036,7 @@ public interface IPlayFabClientApi {
     /// Unlinks an OpenID Connect account from a user's PlayFab account, based on the connection ID of an existing relationship
     /// between a title and an Open ID Connect provider.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UnlinkOpenIdConnectAsync({);
+    /// var response = await clientApi.UnlinkOpenIdConnectAsync({
     ///   "ConnectionId": "exampleprovider"
     /// });
     /// </code></example>
@@ -2081,7 +2081,7 @@ public interface IPlayFabClientApi {
     /// opened container. If the container (and key when relevant) are consumable (RemainingUses &gt; 0), their RemainingUses will
     /// be decremented, consistent with the operation of ConsumeItem.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UnlockContainerInstanceAsync({);
+    /// var response = await clientApi.UnlockContainerInstanceAsync({
     ///   "ContainerItemInstanceId": "123456788",
     ///   "KeyItemInstanceId": "123456789"
     /// });
@@ -2096,7 +2096,7 @@ public interface IPlayFabClientApi {
     /// are consumable (RemainingUses &gt; 0), their RemainingUses will be decremented, consistent with the operation of
     /// ConsumeItem.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UnlockContainerItemAsync({);
+    /// var response = await clientApi.UnlockContainerItemAsync({
     ///   "ContainerItemId": "crate block 1"
     /// });
     /// </code></example>
@@ -2106,7 +2106,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Update the avatar URL of the player
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UpdateAvatarUrlAsync({);
+    /// var response = await clientApi.UpdateAvatarUrlAsync({
     ///   "ImageUrl": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
     /// });
     /// </code></example>
@@ -2116,7 +2116,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Creates and updates the title-specific custom data for the user's character which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UpdateCharacterDataAsync({);
+    /// var response = await clientApi.UpdateCharacterDataAsync({
     ///   "CharacterId": "98765456",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2134,7 +2134,7 @@ public interface IPlayFabClientApi {
     /// Updates the values of the specified title-specific statistics for the specific character. By default, clients are not
     /// permitted to update statistics. Developers may override this setting in the Game Manager &gt; Settings &gt; API Features.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UpdateCharacterStatisticsAsync({);
+    /// var response = await clientApi.UpdateCharacterStatisticsAsync({
     ///   "CharacterId": "98765432",
     ///   "CharacterStatistics": {
     ///     "Headshots": 18,
@@ -2148,7 +2148,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Updates the title-specific custom property values for a player
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UpdatePlayerCustomPropertiesAsync({);
+    /// var response = await clientApi.UpdatePlayerCustomPropertiesAsync({
     ///   "Properties": [
     ///     {
     ///       "Name": "level",
@@ -2169,7 +2169,7 @@ public interface IPlayFabClientApi {
     /// Updates the values of the specified title-specific statistics for the user. By default, clients are not permitted to
     /// update statistics. Developers may override this setting in the Game Manager &gt; Settings &gt; API Features.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UpdatePlayerStatisticsAsync({);
+    /// var response = await clientApi.UpdatePlayerStatisticsAsync({
     ///   "Statistics": [
     ///     {
     ///       "StatisticName": "Points",
@@ -2198,7 +2198,7 @@ public interface IPlayFabClientApi {
     /// sharing data between a very small number of players, please see our guide:
     /// https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UpdateSharedGroupDataAsync({);
+    /// var response = await clientApi.UpdateSharedGroupDataAsync({
     ///   "SharedGroupId": "Clan Data",
     ///   "Data": {
     ///     "ClanKills": "34",
@@ -2213,7 +2213,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Creates and updates the title-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UpdateUserDataAsync({);
+    /// var response = await clientApi.UpdateUserDataAsync({
     ///   "Data": {
     ///     "Class": "Fighter",
     ///     "Gender": "Female",
@@ -2229,7 +2229,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Creates and updates the publisher-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UpdateUserPublisherDataAsync({);
+    /// var response = await clientApi.UpdateUserPublisherDataAsync({
     ///   "Data": {
     ///     "Class": "Fighter",
     ///     "Gender": "Female",
@@ -2246,7 +2246,7 @@ public interface IPlayFabClientApi {
     /// Updates the values of the specified title-specific statistics for the user. By default, clients are not permitted to
     /// update statistics. Developers may override this setting in the Game Manager &gt; Settings &gt; API Features.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UpdateUserStatisticsAsync({);
+    /// var response = await clientApi.UpdateUserStatisticsAsync({
     ///   "UserStatistics": {
     ///     "Headshots": 18,
     ///     "Kills": 47
@@ -2259,7 +2259,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Updates the title specific display name for the user
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.UpdateUserTitleDisplayNameAsync({);
+    /// var response = await clientApi.UpdateUserTitleDisplayNameAsync({
     ///   "DisplayName": "User Title Name"
     /// });
     /// </code></example>
@@ -2271,7 +2271,7 @@ public interface IPlayFabClientApi {
     /// version 2._ Validates with Amazon that the receipt for an Amazon App Store in-app purchase is valid and that it matches
     /// the purchased catalog item
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ValidateAmazonIAPReceiptAsync({);
+    /// var response = await clientApi.ValidateAmazonIAPReceiptAsync({
     ///   "ReceiptId": "q1YqVbJSyjH28DGPKChw9c0o8nd3vSstssQtzSkrzM8tCk43K6z0d_HOTcwwN8vxCrVV0lEqBmpJzs_VK8hJrExLTNLLTCzQK8_MSUnJTy8LSpcoWRnoKKUAFRmaGBtZmBqCCFMzpVoA",
     ///   "UserId": "l3HL7XppEMhrOGDgur9-ulvqomrSg6qyODKmah72lJU="
     /// });
@@ -2283,7 +2283,7 @@ public interface IPlayFabClientApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Validates a Google Play purchase and gives the corresponding item to the player.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ValidateGooglePlayPurchaseAsync({);
+    /// var response = await clientApi.ValidateGooglePlayPurchaseAsync({
     ///   "ReceiptJson": "{\"orderId\":\"12999763169054705758.1375794066587622\",\"packageName\":\"com.playfab.android.testbed\",\"productId\":\"com.playfab.android.permatest.consumable\",\"purchaseTime\":1410891177231,\"purchaseState\":0,\"purchaseToken\":\"eaflhokdkobkmomjadmoobgb.AO-J1OwoLkW2cqvBcPEgk6SfGceQpOHALMUFmJYeawa-GuDFtl3oKct-5D28t_KvNscFiJOFiWXIS74vJBYg-CGFJgyrdbxalKEMPzXZrg5nLomCME-jIVFAUrzcPah-_66KPImG5ftsMJKI9uzldqEF9OPcakUEmt-kWoXAsl_6-9HH0gBCwh4\"}",
     ///   "Signature": "ks12w0hHHpuit4xW3Fyoa5XX6TkxZ2KpEnBsLfpHHpeakYs2JgVtlLdgyLp/05Zp8oHAuKZyIAJTd2RIFXWMAUwDNUsI0JPBDMpr2oaL66Kuneg4VrGWJkJZTrvTyQoGpnTDdXfEME31iFKX6CrKHvWlAG9nwWxYatd58l83eevQ8CIrJhka/bC5ynw3j18OmFG7AcxymO37a4HkM8QjytvAYDJeOnDU9mooY7afcHIajtffdyAU9kzGWOqDByiU9IsRdkliwQoQYbuX/R5wQnMVZ+FGDDwO1mybx9B20rm7/WCBnWGy2NLsSAFI77iX8tUy/QebfBQhrVnRORi7bw==",
     ///   "CurrencyCode": "USD",
@@ -2298,7 +2298,7 @@ public interface IPlayFabClientApi {
     /// version 2._ Validates with the Apple store that the receipt for an iOS in-app purchase is valid and that it matches the
     /// purchased catalog item
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ValidateIOSReceiptAsync({);
+    /// var response = await clientApi.ValidateIOSReceiptAsync({
     ///   "ReceiptData": "MTExMTExMTExMTENCjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMg0KMzMzMzMzMzMzMzMzMzMzMzMNCjQ0NDQ0NDQ0NDQ0NDQNCjU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NQ0KNjY2NjY2NjY2NjY2Ng0KNzc3Nzc3Nzc3Nzc3NzcNCjg4DQo5OTk5OTk5OTk5OTkNCjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMA0KMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTENCjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjINCjMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMw0KNDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0DQo1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1DQo2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2Ng0KNzc3Nzc3Nzc3NzcNCjg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4DQo5DQpBcHBsZSBJbmMuIFdvcmxkd2lkZSBEZXZlbG9wZXIgUmVsYXRpb25zIENlcnRpZmljYXRpb24gQXV0aG9yaXR5IChub3QgcmVhbGx5IC0gZmFrZSBQbGF5RmFiIGV4YW1wbGUsIGJ1dCBjb25ncmF0cyBvbiB0aGlua2luZyB0byBkZWNvZGUgdGhpcyEpDQowMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwDQoxMTExMTExMTExMQ0KMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyDQozMzMzMzMzMzMzMzMzMzMzMw0KNDQ0NDQ0NDQ0NDQ0NA0KNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1DQo2NjY2NjY2NjY2NjY2DQo3Nzc3Nzc3Nzc3Nzc3Nw0KODgNCjk5OTk5OTk5OTk5OQ0KMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwDQoxMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMQ0KMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMg0KMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzDQo0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQNCjU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTUNCjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2DQo3Nzc3Nzc3Nzc3Nw0KODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgNCjkNCkFwcGxlIEluYy4gV29ybGR3aWRlIERldmVsb3BlciBSZWxhdGlvbnMgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgKG5vdCByZWFsbHkgLSBmYWtlIFBsYXlGYWIgZXhhbXBsZSwgYnV0IGNvbmdyYXRzIG9uIHRoaW5raW5nIHRvIGRlY29kZSB0aGlzISkNCjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDANCjExMTExMTExMTExDQoyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjINCjMzMzMzMzMzMzMzMzMzMzMzDQo0NDQ0NDQ0NDQ0NDQ0DQo1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTUNCjY2NjY2NjY2NjY2NjYNCjc3Nzc3Nzc3Nzc3Nzc3DQo4OA0KOTk5OTk5OTk5OTk5DQowMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDANCjExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExDQoyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyDQozMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMNCjQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NA0KNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NQ0KNjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjYNCjc3Nzc3Nzc3Nzc3DQo4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OA0KOQ0KQXBwbGUgSW5jLiBXb3JsZHdpZGUgRGV2ZWxvcGVyIFJlbGF0aW9ucyBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eSAobm90IHJlYWxseSAtIGZha2UgUGxheUZhYiBleGFtcGxlLCBidXQgY29uZ3JhdHMgb24gdGhpbmtpbmcgdG8gZGVjb2RlIHRoaXMhKQ0KMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMA0KMTExMTExMTExMTENCjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMg0KMzMzMzMzMzMzMzMzMzMzMzMNCjQ0NDQ0NDQ0NDQ0NDQNCjU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NQ0KNjY2NjY2NjY2NjY2Ng0KNzc3Nzc3Nzc3Nzc3NzcNCjg4DQo5OTk5OTk5OTk5OTkNCjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMA0KMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTENCjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjINCjMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMw0KNDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0DQo1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1DQo2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2Ng0KNzc3Nzc3Nzc3NzcNCjg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4DQo5DQpBcHBsZSBJbmMuIFdvcmxkd2lkZSBEZXZlbG9wZXIgUmVsYXRpb25zIENlcnRpZmljYXRpb24gQXV0aG9yaXR5IChub3QgcmVhbGx5IC0gZmFrZSBQbGF5RmFiIGV4YW1wbGUsIGJ1dCBjb25ncmF0cyBvbiB0aGlua2luZyB0byBkZWNvZGUgdGhpcyEpDQowMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw",
     ///   "CurrencyCode": "GBP",
     ///   "PurchasePrice": 199
@@ -2312,7 +2312,7 @@ public interface IPlayFabClientApi {
     /// version 2._ Validates with Windows that the receipt for an Windows App Store in-app purchase is valid and that it
     /// matches the purchased catalog item
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.ValidateWindowsStoreReceiptAsync({);
+    /// var response = await clientApi.ValidateWindowsStoreReceiptAsync({
     ///   "Receipt": "&lt;Receipt Version=\"1.0\" ReceiptDate=\"2012-08-30T23:10:05Z\" CertificateId=\"b809e47cd0110a4db043b3f73e83acd917fe1336\" ReceiptDeviceId=\"4e362949-acc3-fe3a-e71b-89893eb4f528\"&gt;\r\n    &lt;AppReceipt Id=\"8ffa256d-eca8-712a-7cf8-cbf5522df24b\" AppId=\"55428GreenlakeApps.CurrentAppSimulatorEventTest_z7q3q7z11crfr\" PurchaseDate=\"2012-06-04T23:07:24Z\" LicenseType=\"Full\" /&gt;\r\n    &lt;ProductReceipt Id=\"6bbf4366-6fb2-8be8-7947-92fd5f683530\" ProductId=\"Product1\" PurchaseDate=\"2012-08-30T23:08:52Z\" ExpirationDate=\"2012-09-02T23:08:49Z\" ProductType=\"Durable\" AppId=\"55428GreenlakeApps.CurrentAppSimulatorEventTest_z7q3q7z11crfr\" /&gt;\r\n    &lt;Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"&gt;\r\n        &lt;SignedInfo&gt;\r\n            &lt;CanonicalizationMethod Algorithm=\"http://www.w3.org/2001/10/xml-exc-c14n#\" /&gt;\r\n            &lt;SignatureMethod Algorithm=\"http://www.w3.org/2001/04/xmldsig-more#rsa-sha256\" /&gt;\r\n            &lt;Reference URI=\"\"&gt;\r\n                &lt;Transforms&gt;\r\n                    &lt;Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /&gt;\r\n                &lt;/Transforms&gt;\r\n                &lt;DigestMethod Algorithm=\"http://www.w3.org/2001/04/xmlenc#sha256\" /&gt;\r\n                &lt;DigestValue&gt;cdiU06eD8X/w1aGCHeaGCG9w/kWZ8I099rw4mmPpvdU=&lt;/DigestValue&gt;\r\n            &lt;/Reference&gt;\r\n        &lt;/SignedInfo&gt;\r\n        &lt;SignatureValue&gt;SjRIxS/2r2P6ZdgaR9bwUSa6ZItYYFpKLJZrnAa3zkMylbiWjh9oZGGng2p6/gtBHC2dSTZlLbqnysJjl7mQp/A3wKaIkzjyRXv3kxoVaSV0pkqiPt04cIfFTP0JZkE5QD/vYxiWjeyGp1dThEM2RV811sRWvmEs/hHhVxb32e8xCLtpALYx3a9lW51zRJJN0eNdPAvNoiCJlnogAoTToUQLHs72I1dECnSbeNPXiG7klpy5boKKMCZfnVXXkneWvVFtAA1h2sB7ll40LEHO4oYN6VzD+uKd76QOgGmsu9iGVyRvvmMtahvtL1/pxoxsTRedhKq6zrzCfT8qfh3C1w==&lt;/SignatureValue&gt;\r\n    &lt;/Signature&gt;\r\n&lt;/Receipt&gt;\r\n"
     /// });
     /// </code></example>
@@ -2322,7 +2322,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Writes a character-based event into PlayStream.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.WriteCharacterEventAsync({);
+    /// var response = await clientApi.WriteCharacterEventAsync({
     ///   "CharacterId": "E161CB4B7F6C34B",
     ///   "EventName": "character_defeated_enemy",
     ///   "Timestamp": "2016-03-07T00:00:00Z",
@@ -2342,7 +2342,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Writes a player-based event into PlayStream.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.WritePlayerEventAsync({);
+    /// var response = await clientApi.WritePlayerEventAsync({
     ///   "EventName": "player_defeated_enemy",
     ///   "Timestamp": "2014-03-07T00:00:00Z",
     ///   "Body": {
@@ -2361,7 +2361,7 @@ public interface IPlayFabClientApi {
     /// <summary>
     /// Writes a title-based event into PlayStream.
     /// <example><br/>Example:<code>
-    /// var response = await clientApi.WriteTitleEventAsync({);
+    /// var response = await clientApi.WriteTitleEventAsync({
     ///   "EventName": "client_update_submitted",
     ///   "Timestamp": "2016-03-07T00:00:00Z",
     ///   "Body": {

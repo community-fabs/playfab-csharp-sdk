@@ -5,7 +5,7 @@ public interface IPlayFabAddonApi {
     /// <summary>
     /// Creates the Apple addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
-    /// var response = await addonApi.CreateOrUpdateAppleAsync({);
+    /// var response = await addonApi.CreateOrUpdateAppleAsync({
     ///   "AppBundleId": "123456",
     ///   "AppSharedSecret": "654321",
     ///   "RequireSecureAuthentication": true
@@ -17,7 +17,7 @@ public interface IPlayFabAddonApi {
     /// <summary>
     /// Creates the Facebook addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
-    /// var response = await addonApi.CreateOrUpdateFacebookAsync({);
+    /// var response = await addonApi.CreateOrUpdateFacebookAsync({
     ///   "AppID": "123456",
     ///   "AppSecret": "654321",
     ///   "NotificationEmail": "user@example.com"
@@ -29,7 +29,7 @@ public interface IPlayFabAddonApi {
     /// <summary>
     /// Creates the Facebook Instant Games addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
-    /// var response = await addonApi.CreateOrUpdateFacebookInstantGamesAsync({);
+    /// var response = await addonApi.CreateOrUpdateFacebookInstantGamesAsync({
     ///   "AppID": "123456",
     ///   "AppSecret": "654321"
     /// });
@@ -40,7 +40,7 @@ public interface IPlayFabAddonApi {
     /// <summary>
     /// Creates the Google addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
-    /// var response = await addonApi.CreateOrUpdateGoogleAsync({);
+    /// var response = await addonApi.CreateOrUpdateGoogleAsync({
     ///   "AppPackageID": "abcdef",
     ///   "AppLicenseKey": "fedcba",
     ///   "OAuthClientID": "123456",
@@ -54,7 +54,7 @@ public interface IPlayFabAddonApi {
     /// <summary>
     /// Creates the Kongregate addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
-    /// var response = await addonApi.CreateOrUpdateKongregateAsync({);
+    /// var response = await addonApi.CreateOrUpdateKongregateAsync({
     ///   "SecretAPIKey": "123456"
     /// });
     /// </code></example>
@@ -64,7 +64,7 @@ public interface IPlayFabAddonApi {
     /// <summary>
     /// Creates the Nintendo addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
-    /// var response = await addonApi.CreateOrUpdateNintendoAsync({);
+    /// var response = await addonApi.CreateOrUpdateNintendoAsync({
     ///   "ApplicationID": "123456",
     ///   "Environments": [
     ///     {
@@ -81,7 +81,7 @@ public interface IPlayFabAddonApi {
     /// <summary>
     /// Creates the PSN addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
-    /// var response = await addonApi.CreateOrUpdatePSNAsync({);
+    /// var response = await addonApi.CreateOrUpdatePSNAsync({
     ///   "ClientID": "123456",
     ///   "ClientSecret": "abcdef",
     ///   "NextGenClientID": "654321",
@@ -94,7 +94,7 @@ public interface IPlayFabAddonApi {
     /// <summary>
     /// Creates the Steam addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
-    /// var response = await addonApi.CreateOrUpdateSteamAsync({);
+    /// var response = await addonApi.CreateOrUpdateSteamAsync({
     ///   "ApplicationId": "123456",
     ///   "SecretKey": "654321",
     ///   "UseSandbox": true,
@@ -107,7 +107,7 @@ public interface IPlayFabAddonApi {
     /// <summary>
     /// Creates the ToxMod addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
-    /// var response = await addonApi.CreateOrUpdateToxModAsync({);
+    /// var response = await addonApi.CreateOrUpdateToxModAsync({
     ///   "Enabled": false,
     ///   "AccountId": "123456",
     ///   "AccountKey": "654321"
@@ -119,7 +119,7 @@ public interface IPlayFabAddonApi {
     /// <summary>
     /// Creates the Twitch addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
-    /// var response = await addonApi.CreateOrUpdateTwitchAsync({);
+    /// var response = await addonApi.CreateOrUpdateTwitchAsync({
     ///   "ClientID": "123456",
     ///   "ClientSecret": "654321"
     /// });
