@@ -8,6 +8,12 @@ public interface IPlayFabAddonApi {
     /// var response = await addonApi.CreateOrUpdateAppleAsync({
     ///   "AppBundleId": "123456",
     ///   "AppSharedSecret": "654321",
+    ///   "AppId": "78901",
+    ///   "IssuerId": "345678",
+    ///   "KeyId": "901234",
+    ///   "PrivateKey": "567890",
+    ///   "AllowSandbox": true,
+    ///   "AllowProduction": true,
     ///   "RequireSecureAuthentication": true
     /// });
     /// </code></example>

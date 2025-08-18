@@ -132,6 +132,7 @@ public class ActionsOnPlayersInSegmentTaskSummary {
     public int? TotalPlayersProcessed { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class AdCampaignAttribution {
     /// <summary>
     /// UTC time stamp of attribution
@@ -881,6 +882,7 @@ public enum Conditionals {
     False,
 }
 
+[Obsolete("Do not use")]
 public class ContactEmailInfo {
     /// <summary>
     /// The email address
@@ -1993,6 +1995,49 @@ public class DeleteUsersRequest : PlayFabRequestCommon {
 
 [Obsolete("Do not use")]
 public class DeleteUsersResult : PlayFabResultCommon {
+}
+
+public class DimensionFilters {
+    /// <summary>
+    /// Store metric age group
+    /// </summary>
+    public string? AgeGroup { get; set; }
+    /// <summary>
+    /// Store campaign.
+    /// </summary>
+    public string? Campaign { get; set; }
+    /// <summary>
+    /// Store user country.
+    /// </summary>
+    public string? Country { get; set; }
+    /// <summary>
+    /// Purchase currency.
+    /// </summary>
+    public string? Currency { get; set; }
+    /// <summary>
+    /// User device type.
+    /// </summary>
+    public string? DeviceType { get; set; }
+    /// <summary>
+    /// Is the product in sale?
+    /// </summary>
+    public string? HasInSale { get; set; }
+    /// <summary>
+    /// Product id.
+    /// </summary>
+    public string? ProductId { get; set; }
+    /// <summary>
+    /// Source page of the user presence.
+    /// </summary>
+    public string? Source { get; set; }
+    /// <summary>
+    /// Xbox store front.
+    /// </summary>
+    public string? StoreFront { get; set; }
+    /// <summary>
+    /// Xbox title id.
+    /// </summary>
+    public string? XboxTitleId { get; set; }
 }
 
 public enum EffectType {
@@ -3704,6 +3749,7 @@ public class GetPlayersInSegmentExportResponse : PlayFabResultCommon {
 /// generate high request volumes. Only one request to this API at a time should be made per title. Concurrent requests to
 /// the API may be rejected with the APIConcurrentRequestLimitExceeded error.
 /// </summary>
+[Obsolete("Do not use")]
 public class GetPlayersInSegmentRequest : PlayFabRequestCommon {
     /// <summary>
     /// Continuation token if retrieving subsequent pages of results.
@@ -3735,6 +3781,7 @@ public class GetPlayersInSegmentRequest : PlayFabRequestCommon {
     public required string SegmentId { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class GetPlayersInSegmentResult : PlayFabResultCommon {
     /// <summary>
     /// Continuation token to use to retrieve subsequent pages of results. If token returns null there are no more results.
@@ -5079,6 +5126,7 @@ public class PlayerChurnPreviousPredictionSegmentFilter {
     public ChurnRiskLevel? RiskLevel { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class PlayerLinkedAccount {
     /// <summary>
     /// Linked account's email
@@ -5098,6 +5146,7 @@ public class PlayerLinkedAccount {
     public string? Username { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class PlayerLocation {
     /// <summary>
     /// City of the player's geographic location.
@@ -5121,6 +5170,7 @@ public class PlayerLocation {
     public double? Longitude { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class PlayerProfile {
     /// <summary>
     /// Array of ad campaigns player has been attributed to
@@ -5373,6 +5423,7 @@ public class PlayerProfileViewConstraints {
     public bool ShowValuesToDate { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class PlayerStatistic {
     /// <summary>
     /// Statistic ID
@@ -5470,6 +5521,7 @@ public enum PushNotificationPlatform {
     GoogleCloudMessaging,
 }
 
+[Obsolete("Do not use")]
 public class PushNotificationRegistration {
     /// <summary>
     /// Notification configured endpoint
@@ -6939,7 +6991,18 @@ public class StoreMarketingModel {
 /// Provide the metric name and time period to retrieve corresponding xbox store metrics data.
 /// </summary>
 public class StoreMetricsRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// Dimension filters.
+    /// </summary>
+    public DimensionFilters? DimensionFilters { get; set; }
+    /// <summary>
+    /// Store metric name. page_view_count, purchase_count, purchase_revenue, unique_user_count, wish_list_add_count are
+    /// supported metrics.
+    /// </summary>
     public string? MetricName { get; set; }
+    /// <summary>
+    /// Store metric period. 1h, 24h, 2d, 7d, 30d are supported periods.
+    /// </summary>
     public string? MetricPeriod { get; set; }
 }
 

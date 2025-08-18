@@ -816,7 +816,26 @@ public interface IPlayFabAdminApi {
     /// </summary>
     public Task<PlayFabResult<GetStoreItemsResult>> GetStoreItemsAsync(GetStoreItemsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
-    /// Retrieves Xbox Store metric data for the authenticated title, based on the specified metric name and reporting period.
+    /// Retrieves Xbox Store metric data for the authenticated title, based on the specified metric name, reporting period and
+    /// metric dimension values.
+    /// <example><br/>Example:<code>
+    /// var response = await adminApi.GetStoreMetricsAsync({
+    ///   "MetricName": "page_view_count",
+    ///   "MetricPeriod": "24h",
+    ///   "DimensionFilters": {
+    ///     "AgeGroup": "Youth",
+    ///     "Campaign": "Summer Sale",
+    ///     "Country": "USA",
+    ///     "Currency": "USD",
+    ///     "DeviceType": "PC",
+    ///     "ProductId": "ABC123",
+    ///     "Source": "Homepage",
+    ///     "StoreFront": "Xbox",
+    ///     "HasInSale": "true",
+    ///     "XboxTitleId": "XYZ456"
+    ///   }
+    /// });
+    /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/xbox-store/getstoremetrics">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<StoreMetricsResponse>> GetStoreMetricsAsync(StoreMetricsRequest request, Dictionary<string, string>? extraHeaders);

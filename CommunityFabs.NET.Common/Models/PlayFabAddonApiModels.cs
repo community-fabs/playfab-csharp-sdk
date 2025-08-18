@@ -4,9 +4,21 @@ namespace CommunityFabs.NET.Common.Models.Addon;
 
 public class CreateOrUpdateAppleRequest : PlayFabRequestCommon {
     /// <summary>
+    /// Allow validation of receipts from the Apple production environment. Required for app releases.
+    /// </summary>
+    public bool? AllowProduction { get; set; }
+    /// <summary>
+    /// Allow validation of receipts from the Apple sandbox environment. Typically used while testing.
+    /// </summary>
+    public bool? AllowSandbox { get; set; }
+    /// <summary>
     /// iOS App Bundle ID obtained after setting up your app in the App Store.
     /// </summary>
     public required string AppBundleId { get; set; }
+    /// <summary>
+    /// AppId obtained after setting up your app in the App Store.
+    /// </summary>
+    public string? AppId { get; set; }
     /// <summary>
     /// iOS App Shared Secret obtained after setting up your app in the App Store.
     /// </summary>
@@ -28,6 +40,18 @@ public class CreateOrUpdateAppleRequest : PlayFabRequestCommon {
     /// case where Apple rotates their signing keys.
     /// </summary>
     public bool? IgnoreExpirationDate { get; set; }
+    /// <summary>
+    /// IssuerId obtained after setting up your app in the App Store.
+    /// </summary>
+    public string? IssuerId { get; set; }
+    /// <summary>
+    /// KeyId obtained after setting up your app in the App Store.
+    /// </summary>
+    public string? KeyId { get; set; }
+    /// <summary>
+    /// PrivateKey obtained after setting up your app in the App Store.
+    /// </summary>
+    public string? PrivateKey { get; set; }
     /// <summary>
     /// Require secure authentication only for this app.
     /// </summary>

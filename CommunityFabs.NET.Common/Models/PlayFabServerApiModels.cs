@@ -2,6 +2,7 @@ using CommunityFabs.NET.Common.Http;
 
 namespace CommunityFabs.NET.Common.Models.Server;
 
+[Obsolete("Do not use")]
 public class AdCampaignAttribution {
     /// <summary>
     /// UTC time stamp of attribution
@@ -583,6 +584,7 @@ public class ConsumeItemResult : PlayFabResultCommon {
     public int RemainingUses { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class ContactEmailInfo {
     /// <summary>
     /// The email address
@@ -3122,6 +3124,7 @@ public class GetPlayerSegmentsResult : PlayFabResultCommon {
 /// generate high request volumes. Only one request to this API at a time should be made per title. Concurrent requests to
 /// the API may be rejected with the APIConcurrentRequestLimitExceeded error.
 /// </summary>
+[Obsolete("Do not use")]
 public class GetPlayersInSegmentRequest : PlayFabRequestCommon {
     /// <summary>
     /// Continuation token if retrieving subsequent pages of results.
@@ -3153,6 +3156,7 @@ public class GetPlayersInSegmentRequest : PlayFabRequestCommon {
     public required string SegmentId { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class GetPlayersInSegmentResult : PlayFabResultCommon {
     /// <summary>
     /// Continuation token to use to retrieve subsequent pages of results. If token returns null there are no more results.
@@ -5090,6 +5094,7 @@ public class PlayerLeaderboardEntry {
     public int StatValue { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class PlayerLinkedAccount {
     /// <summary>
     /// Linked account's email
@@ -5109,6 +5114,7 @@ public class PlayerLinkedAccount {
     public string? Username { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class PlayerLocation {
     /// <summary>
     /// City of the player's geographic location.
@@ -5132,6 +5138,7 @@ public class PlayerLocation {
     public double? Longitude { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class PlayerProfile {
     /// <summary>
     /// Array of ad campaigns player has been attributed to
@@ -5384,6 +5391,7 @@ public class PlayerProfileViewConstraints {
     public bool ShowValuesToDate { get; set; }
 }
 
+[Obsolete("Do not use")]
 public class PlayerStatistic {
     /// <summary>
     /// Statistic ID
@@ -5491,6 +5499,7 @@ public enum PushNotificationPlatform {
     GoogleCloudMessaging,
 }
 
+[Obsolete("Do not use")]
 public class PushNotificationRegistration {
     /// <summary>
     /// Notification configured endpoint

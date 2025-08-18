@@ -3137,6 +3137,14 @@ public class TransactionOperation {
 
 public class TransactionPurchaseDetails {
     /// <summary>
+    /// The friendly id of the item that was purchased.
+    /// </summary>
+    public string? ItemFriendlyId { get; set; }
+    /// <summary>
+    /// The id of the item that was purchased.
+    /// </summary>
+    public string? ItemId { get; set; }
+    /// <summary>
     /// The friendly id of the Store the item was purchased from or null.
     /// </summary>
     public string? StoreFriendlyId { get; set; }
@@ -3670,14 +3678,7 @@ public class VersionedCatalogItemPriceInstance {
     public double? UnitDurationInSeconds { get; set; }
 }
 
-public class VersionedCatalogItemPriceOverride {
-    /// <summary>
-    /// The currency amounts utilized in the override for a singular price.
-    /// </summary>
-    public List<VersionedCatalogItemOverride>? Amounts { get; set; }
-}
-
-public class VersionedCatalogItemPricesOverride {
+public class VersionedCatalogItemPriceOptionsOverride {
     /// <summary>
     /// The payout amount utilized in the override.
     /// </summary>
@@ -3686,6 +3687,13 @@ public class VersionedCatalogItemPricesOverride {
     /// The prices utilized in the override.
     /// </summary>
     public List<VersionedCatalogItemPriceOverride>? Prices { get; set; }
+}
+
+public class VersionedCatalogItemPriceOverride {
+    /// <summary>
+    /// The currency amounts utilized in the override for a singular price.
+    /// </summary>
+    public List<VersionedCatalogItemOverride>? Amounts { get; set; }
 }
 
 public class VersionedCatalogItemRealMoneyPriceDetails {
@@ -3750,7 +3758,7 @@ public class VersionedCatalogItemStoreDetails {
     /// <summary>
     /// The global prices utilized in the store. These options are mutually exclusive with price options in item references.
     /// </summary>
-    public VersionedCatalogItemPricesOverride? PricesOverride { get; set; }
+    public VersionedCatalogItemPriceOptionsOverride? PriceOptionsOverride { get; set; }
 }
 
 public enum ViewFileFormat {
