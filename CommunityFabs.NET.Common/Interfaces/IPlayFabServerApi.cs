@@ -1188,6 +1188,19 @@ public interface IPlayFabServerApi {
     /// </summary>
     public Task<PlayFabResult<LinkXboxAccountResult>> LinkXboxAccountAsync(LinkXboxAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Links the Xbox Live account associated with the provided Xbox ID and Sandbox to the user's PlayFab account
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.LinkXboxIdAsync({
+    ///   "XboxId": "12344553",
+    ///   "Sandbox": "RETAIL",
+    ///   "PlayFabId": "5A446C83645201",
+    ///   "ForceLink": false
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linkxboxid">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<LinkXboxAccountResult>> LinkXboxIdAsync(LinkXboxIdRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Retrieves title-specific custom property values for a player.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.ListPlayerCustomPropertiesAsync({

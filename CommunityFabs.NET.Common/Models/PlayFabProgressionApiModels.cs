@@ -850,6 +850,21 @@ public class StatisticUpdate {
     public uint? Version { get; set; }
 }
 
+public class UnlinkAggregationSourceFromStatisticRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
+    public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// The name of the statistic to unlink.
+    /// </summary>
+    public required string Name { get; set; }
+    /// <summary>
+    /// The name of the aggregation source statistic to unlink.
+    /// </summary>
+    public required string SourceStatisticName { get; set; }
+}
+
 public class UnlinkLeaderboardFromStatisticRequest : PlayFabRequestCommon {
     /// <summary>
     /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).

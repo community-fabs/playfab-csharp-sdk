@@ -2060,6 +2060,8 @@ public enum GenericErrorCodes {
     ResourceNotModified,
     StudioCreationLimitExceeded,
     StudioDeletionInitiated,
+    ProductDisabledForTitle,
+    PreconditionFailed,
     MatchmakingEntityInvalid,
     MatchmakingPlayerAttributesInvalid,
     MatchmakingQueueNotFound,
@@ -2192,6 +2194,7 @@ public enum GenericErrorCodes {
     AsyncExportNotFound,
     AsyncExportRateLimitExceeded,
     AnalyticsSegmentCountOverLimit,
+    GetPlayersInSegmentDeprecated,
     SnapshotNotFound,
     InventoryApiNotImplemented,
     InventoryCollectionDeletionDisallowed,
@@ -2389,7 +2392,13 @@ public enum GenericErrorCodes {
     InvalidEntityTypeForAggregation,
     MultiLevelAggregationNotAllowed,
     AggregationTypeNotAllowedForLinkedStat,
+    OperationDeniedDueToDefinitionPolicy,
+    StatisticUpdateNotAllowedWhileLinked,
+    UnsupportedEntityType,
+    EntityTypeSpecifiedRequiresAggregationSource,
+    PlayFabErrorEventNotSupportedForEntityType,
     StoreMetricsRequestInvalidInput,
+    StoreMetricsErrorRetrievingMetrics,
 }
 
 public class GenericPlayFabIdPair {
@@ -4361,7 +4370,7 @@ public class LinkSteamIdRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? ForceLink { get; set; }
     /// <summary>
-    /// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Xbox Live identifier.
+    /// PlayFab unique identifier of the user to link.
     /// </summary>
     public required string PlayFabId { get; set; }
     /// <summary>
@@ -4383,7 +4392,7 @@ public class LinkXboxAccountRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? ForceLink { get; set; }
     /// <summary>
-    /// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Xbox Live identifier.
+    /// PlayFab unique identifier of the user to link.
     /// </summary>
     public required string PlayFabId { get; set; }
     /// <summary>
@@ -4393,6 +4402,29 @@ public class LinkXboxAccountRequest : PlayFabRequestCommon {
 }
 
 public class LinkXboxAccountResult : PlayFabResultCommon {
+}
+
+public class LinkXboxIdRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
+    public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// If another user is already linked to the account, unlink the other user and re-link.
+    /// </summary>
+    public bool? ForceLink { get; set; }
+    /// <summary>
+    /// PlayFab unique identifier of the user to link.
+    /// </summary>
+    public required string PlayFabId { get; set; }
+    /// <summary>
+    /// The id of Xbox Live sandbox.
+    /// </summary>
+    public required string Sandbox { get; set; }
+    /// <summary>
+    /// Unique Xbox identifier for a user.
+    /// </summary>
+    public required string XboxId { get; set; }
 }
 
 public class ListPlayerCustomPropertiesRequest : PlayFabRequestCommon {
@@ -6633,7 +6665,7 @@ public class UnlinkXboxAccountRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Xbox Live identifier.
+    /// PlayFab unique identifier of the user to unlink.
     /// </summary>
     public required string PlayFabId { get; set; }
     /// <summary>

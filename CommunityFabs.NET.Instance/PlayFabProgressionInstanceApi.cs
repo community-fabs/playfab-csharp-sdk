@@ -394,6 +394,25 @@ public class PlayFabProgressionInstanceApi(PlayFabApiSettings? apiSettings = nul
     }
 
     /// <inheritdoc />
+    public async Task<PlayFabResult<EmptyResponse>> UnlinkAggregationSourceFromStatisticAsync(UnlinkAggregationSourceFromStatisticRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/Statistic/UnlinkAggregationSourceFromStatistic", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<EmptyResponse> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResponse>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResponse> { Result = result };
+    }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UnlinkLeaderboardFromStatisticAsync(UnlinkLeaderboardFromStatisticRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;

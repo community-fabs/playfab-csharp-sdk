@@ -1724,6 +1724,25 @@ public class PlayFabServerInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
     }
 
     /// <inheritdoc />
+    public async Task<PlayFabResult<LinkXboxAccountResult>> LinkXboxIdAsync(LinkXboxIdRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Server/LinkXboxId", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<LinkXboxAccountResult> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<LinkXboxAccountResult>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<LinkXboxAccountResult> { Result = result };
+    }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<ListPlayerCustomPropertiesResult>> ListPlayerCustomPropertiesAsync(ListPlayerCustomPropertiesRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;

@@ -270,6 +270,17 @@ public interface IPlayFabProgressionApi {
     /// </summary>
     public Task<PlayFabResult<ListStatisticDefinitionsResponse>> ListStatisticDefinitionsAsync(ListStatisticDefinitionsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Unlinks an aggregation source from a statistic definition.
+    /// <example><br/>Example:<code>
+    /// var response = await statisticApi.UnlinkAggregationSourceFromStatisticAsync({
+    ///   "Name": "TotalKills",
+    ///   "SourceStatisticName": "KillsPerPlayer"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/unlinkaggregationsourcefromstatistic">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<EmptyResponse>> UnlinkAggregationSourceFromStatisticAsync(UnlinkAggregationSourceFromStatisticRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Unlinks a leaderboard definition from it's linked statistic definition.
     /// <example><br/>Example:<code>
     /// var response = await leaderboardApi.UnlinkLeaderboardFromStatisticAsync({

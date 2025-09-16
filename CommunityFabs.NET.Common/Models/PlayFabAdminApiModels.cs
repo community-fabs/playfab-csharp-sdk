@@ -1672,6 +1672,17 @@ public class CustomPropertyStringSegmentFilter {
     public string? PropertyValue { get; set; }
 }
 
+public class CustomTimeRange {
+    /// <summary>
+    /// End time of the metric period in ISO 8601 format.
+    /// </summary>
+    public required DateTime EndTime { get; set; }
+    /// <summary>
+    /// Start time of the metric period in ISO 8601 format.
+    /// </summary>
+    public required DateTime StartTime { get; set; }
+}
+
 public class DeleteContentRequest : PlayFabRequestCommon {
     /// <summary>
     /// Key of the content item to be deleted
@@ -2015,9 +2026,9 @@ public class DimensionFilters {
     /// </summary>
     public string? Currency { get; set; }
     /// <summary>
-    /// User device type.
+    /// User device family type.
     /// </summary>
-    public string? DeviceType { get; set; }
+    public string? DeviceFamily { get; set; }
     /// <summary>
     /// Is the product in sale?
     /// </summary>
@@ -2969,6 +2980,8 @@ public enum GenericErrorCodes {
     ResourceNotModified,
     StudioCreationLimitExceeded,
     StudioDeletionInitiated,
+    ProductDisabledForTitle,
+    PreconditionFailed,
     MatchmakingEntityInvalid,
     MatchmakingPlayerAttributesInvalid,
     MatchmakingQueueNotFound,
@@ -3101,6 +3114,7 @@ public enum GenericErrorCodes {
     AsyncExportNotFound,
     AsyncExportRateLimitExceeded,
     AnalyticsSegmentCountOverLimit,
+    GetPlayersInSegmentDeprecated,
     SnapshotNotFound,
     InventoryApiNotImplemented,
     InventoryCollectionDeletionDisallowed,
@@ -3298,7 +3312,13 @@ public enum GenericErrorCodes {
     InvalidEntityTypeForAggregation,
     MultiLevelAggregationNotAllowed,
     AggregationTypeNotAllowedForLinkedStat,
+    OperationDeniedDueToDefinitionPolicy,
+    StatisticUpdateNotAllowedWhileLinked,
+    UnsupportedEntityType,
+    EntityTypeSpecifiedRequiresAggregationSource,
+    PlayFabErrorEventNotSupportedForEntityType,
     StoreMetricsRequestInvalidInput,
+    StoreMetricsErrorRetrievingMetrics,
 }
 
 [Obsolete("Do not use")]
@@ -6988,22 +7008,28 @@ public class StoreMarketingModel {
 }
 
 /// <summary>
-/// Provide the metric name and time period to retrieve corresponding xbox store metrics data.
+/// Provide a metric name and either a lookback period (1h, 24h, 2d, 7d, 30d) or a time range in ISO 8601 format to
+/// retrieve Xbox Store metrics. Only one of LookbackPeriod or TimeRange can be set.
 /// </summary>
 public class StoreMetricsRequest : PlayFabRequestCommon {
     /// <summary>
-    /// Dimension filters.
+    /// Optional filters to apply (e.g., store ID, region, device type).
     /// </summary>
     public DimensionFilters? DimensionFilters { get; set; }
     /// <summary>
-    /// Store metric name. page_view_count, purchase_count, purchase_revenue, unique_user_count, wish_list_add_count are
-    /// supported metrics.
+    /// Specifies the relative lookback period for the metric. Supported values: 1h (1 hour), 24h (24 hours), 2d (2 days), 7d
+    /// (7 days), 30d (30 days). Either LookbackPeriod or TimeRange must be set, but not both.
     /// </summary>
-    public string? MetricName { get; set; }
+    public string? LookbackPeriod { get; set; }
     /// <summary>
-    /// Store metric period. 1h, 24h, 2d, 7d, 30d are supported periods.
+    /// The name of the store metric to retrieve. Supported values include: page_view_count, purchase_count, purchase_revenue,
+    /// unique_user_count, and wish_list_add_count.
     /// </summary>
-    public string? MetricPeriod { get; set; }
+    public required string MetricName { get; set; }
+    /// <summary>
+    /// Time range for the metric. Set either TimeRange or LookbackPeriod, not both.
+    /// </summary>
+    public CustomTimeRange? TimeRange { get; set; }
 }
 
 public class StoreMetricsResponse : PlayFabResultCommon {
