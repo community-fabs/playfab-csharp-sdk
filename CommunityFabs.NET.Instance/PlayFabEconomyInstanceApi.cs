@@ -793,6 +793,25 @@ public class PlayFabEconomyInstanceApi(PlayFabApiSettings? apiSettings = null, P
     }
 
     /// <inheritdoc />
+    public async Task<PlayFabResult<RedeemAppleAppStoreWithJwsInventoryItemsResponse>> RedeemAppleAppStoreWithJwsInventoryItemsAsync(RedeemAppleAppStoreWithJwsInventoryItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/Inventory/RedeemAppleAppStoreWithJwsInventoryItems", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<RedeemAppleAppStoreWithJwsInventoryItemsResponse> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<RedeemAppleAppStoreWithJwsInventoryItemsResponse>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<RedeemAppleAppStoreWithJwsInventoryItemsResponse> { Result = result };
+    }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<RedeemGooglePlayInventoryItemsResponse>> RedeemGooglePlayInventoryItemsAsync(RedeemGooglePlayInventoryItemsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;

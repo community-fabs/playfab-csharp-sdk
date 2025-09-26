@@ -1499,6 +1499,10 @@ public class GetInventoryOperationStatusRequest : PlayFabRequestCommon {
     /// The entity to perform this action on.
     /// </summary>
     public EntityKey? Entity { get; set; }
+    /// <summary>
+    /// The token to get the status of the inventory operation.
+    /// </summary>
+    public string? OperationToken { get; set; }
 }
 
 public class GetInventoryOperationStatusResponse : PlayFabResultCommon {
@@ -2243,7 +2247,35 @@ public class PurchaseInventoryItemsResponse : PlayFabResultCommon {
     public List<string>? TransactionIds { get; set; }
 }
 
+public class PurchaseOverride {
+    /// <summary>
+    /// The exact value that should be utilized in the override.
+    /// </summary>
+    public double? FixedValue { get; set; }
+    /// <summary>
+    /// The id of the item this override should utilize.
+    /// </summary>
+    public string? ItemId { get; set; }
+    /// <summary>
+    /// The multiplier that will be applied to the base Catalog value to determine what value should be utilized in the
+    /// override.
+    /// </summary>
+    public double? Multiplier { get; set; }
+}
+
 public class PurchaseOverridesInfo {
+    /// <summary>
+    /// Details the overrides of item amounts granted in a purchase operation.
+    /// </summary>
+    public List<PurchaseOverride>? ItemsAmounts { get; set; }
+    /// <summary>
+    /// Details the payout information override used in a purchase operation.
+    /// </summary>
+    public PurchaseOverride? PayoutAmount { get; set; }
+    /// <summary>
+    /// Details the override of price amounts used in a purchase operation.
+    /// </summary>
+    public List<PurchaseOverride>? PriceAmounts { get; set; }
 }
 
 public class PurchasePriceAmount {
@@ -2351,6 +2383,55 @@ public class RedeemAppleAppStoreInventoryItemsRequest : PlayFabRequestCommon {
 }
 
 public class RedeemAppleAppStoreInventoryItemsResponse : PlayFabResultCommon {
+    /// <summary>
+    /// The list of failed redemptions from the external marketplace.
+    /// </summary>
+    public List<RedemptionFailure>? Failed { get; set; }
+    /// <summary>
+    /// The list of successful redemptions from the external marketplace.
+    /// </summary>
+    public List<RedemptionSuccess>? Succeeded { get; set; }
+    /// <summary>
+    /// The Transaction IDs associated with the inventory modifications
+    /// </summary>
+    public List<string>? TransactionIds { get; set; }
+}
+
+/// <summary>
+/// The request for a redeem Apple AppStore With JWS
+/// </summary>
+public class RedeemAppleAppStoreWithJwsInventoryItemsRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The id of the entity's collection to perform this action on. (Default="default")
+    /// </summary>
+    public string? CollectionId { get; set; }
+    /// <summary>
+    /// The country code of the real money transaction.
+    /// </summary>
+    public CountryCode? CountryCode { get; set; }
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
+    public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// The entity to perform this action on.
+    /// </summary>
+    public EntityKey? Entity { get; set; }
+    /// <summary>
+    /// The inventory items to redeem. These items are required to have an alternate id that corresponds to the marketplace to
+    /// redeem from.
+    /// </summary>
+    public List<InventoryItemReference>? Items { get; set; }
+    /// <summary>
+    /// The JWS representation of a transaction.
+    /// </summary>
+    public required List<string> JWSTransactions { get; set; }
+}
+
+/// <summary>
+/// The response for a redeem Apple AppStore With JWS
+/// </summary>
+public class RedeemAppleAppStoreWithJwsInventoryItemsResponse : PlayFabResultCommon {
     /// <summary>
     /// The list of failed redemptions from the external marketplace.
     /// </summary>

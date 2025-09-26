@@ -370,7 +370,9 @@ public interface IPlayFabEconomyApi {
     /// Get the status of an inventory operation using an OperationToken. You can check on the operation status at anytime
     /// within 1 day of the request by passing the TransactionToken to the this API.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.GetInventoryOperationStatusAsync({});
+    /// var response = await inventoryApi.GetInventoryOperationStatusAsync({
+    ///   "OperationToken": "token"
+    /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/inventory/inventory/getinventoryoperationstatus">Microsoft Documentation</see>
     /// </summary>
@@ -572,6 +574,19 @@ public interface IPlayFabEconomyApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/inventory/inventory/redeemappleappstoreinventoryitems">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<RedeemAppleAppStoreInventoryItemsResponse>> RedeemAppleAppStoreInventoryItemsAsync(RedeemAppleAppStoreInventoryItemsRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Redeem items.
+    /// <example><br/>Example:<code>
+    /// var response = await inventoryApi.RedeemAppleAppStoreWithJwsInventoryItemsAsync({
+    ///   "JWSTransactions": [
+    ///     "JWS1",
+    ///     "JWS2"
+    ///   ]
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/inventory/inventory/redeemappleappstorewithjwsinventoryitems">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<RedeemAppleAppStoreWithJwsInventoryItemsResponse>> RedeemAppleAppStoreWithJwsInventoryItemsAsync(RedeemAppleAppStoreWithJwsInventoryItemsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Redeem items.
     /// <example><br/>Example:<code>
