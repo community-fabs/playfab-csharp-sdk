@@ -5214,6 +5214,10 @@ public class RequestPartyServiceRequest : PlayFabRequestCommon {
     /// </summary>
     public string? PartyId { get; set; }
     /// <summary>
+    /// A player entity Id on behalf of whom the request is being made.
+    /// </summary>
+    public string? PlayFabId { get; set; }
+    /// <summary>
     /// The preferred regions to request a party session from. The party service will iterate through the regions in the
     /// specified order and allocate a party session from the first one that is available.
     /// </summary>

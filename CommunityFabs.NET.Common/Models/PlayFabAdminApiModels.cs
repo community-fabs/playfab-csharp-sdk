@@ -2982,6 +2982,7 @@ public enum GenericErrorCodes {
     StudioDeletionInitiated,
     ProductDisabledForTitle,
     PreconditionFailed,
+    CannotEnableAnonymousPlayerCreation,
     MatchmakingEntityInvalid,
     MatchmakingPlayerAttributesInvalid,
     MatchmakingQueueNotFound,
