@@ -7758,13 +7758,17 @@ public class ValidateIOSReceiptRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
+    /// Base64 encoded receipt data, passed back by the App Store as a result of a successful purchase.
+    /// </summary>
+    public string? JwsReceiptData { get; set; }
+    /// <summary>
     /// Amount of the stated currency paid, in centesimal units.
     /// </summary>
     public int PurchasePrice { get; set; }
     /// <summary>
     /// Base64 encoded receipt data, passed back by the App Store as a result of a successful purchase.
     /// </summary>
-    public required string ReceiptData { get; set; }
+    public string? ReceiptData { get; set; }
 }
 
 /// <summary>

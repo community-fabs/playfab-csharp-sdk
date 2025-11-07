@@ -485,9 +485,6 @@ public interface IPlayFabEconomyApi {
     public Task<PlayFabResult<GetTransactionHistoryResponse>> GetTransactionHistoryAsync(GetTransactionHistoryRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get versioned catalog item.
-    /// <example><br/>Example:<code>
-    /// var response = await versionedcatalogApi.GetVersionedCatalogItemAsync({});
-    /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/versionedcatalog/versionedcatalog/getversionedcatalogitem">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<GetVersionedCatalogItemResponse>> GetVersionedCatalogItemAsync(GetVersionedCatalogItemRequest request, Dictionary<string, string>? extraHeaders);

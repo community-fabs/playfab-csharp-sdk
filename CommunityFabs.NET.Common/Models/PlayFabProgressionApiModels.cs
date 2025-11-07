@@ -697,6 +697,14 @@ public class ListLeaderboardDefinitionsRequest : PlayFabRequestCommon {
     /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// The page size for the request.
+    /// </summary>
+    public int? PageSize { get; set; }
+    /// <summary>
+    /// The skip token for the paged request.
+    /// </summary>
+    public string? SkipToken { get; set; }
 }
 
 public class ListLeaderboardDefinitionsResponse : PlayFabResultCommon {
@@ -704,6 +712,14 @@ public class ListLeaderboardDefinitionsResponse : PlayFabResultCommon {
     /// List of leaderboard definitions for the title.
     /// </summary>
     public List<LeaderboardDefinition>? LeaderboardDefinitions { get; set; }
+    /// <summary>
+    /// The page size on the response.
+    /// </summary>
+    public int PageSize { get; set; }
+    /// <summary>
+    /// The skip token for the paged response.
+    /// </summary>
+    public string? SkipToken { get; set; }
 }
 
 public class ListStatisticDefinitionsRequest : PlayFabRequestCommon {
@@ -711,13 +727,25 @@ public class ListStatisticDefinitionsRequest : PlayFabRequestCommon {
     /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// The page size for the request.
+    /// </summary>
+    public int? PageSize { get; set; }
+    /// <summary>
+    /// The skip token for the paged request.
+    /// </summary>
+    public string? SkipToken { get; set; }
 }
 
 public class ListStatisticDefinitionsResponse : PlayFabResultCommon {
     /// <summary>
-    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// The page size on the response.
     /// </summary>
-    public Dictionary<string, string>? CustomTags { get; set; }
+    public int PageSize { get; set; }
+    /// <summary>
+    /// The skip token for the paged response.
+    /// </summary>
+    public string? SkipToken { get; set; }
     /// <summary>
     /// List of statistic definitions for the title.
     /// </summary>
@@ -951,8 +979,7 @@ public class UpdateStatisticsRequest : PlayFabRequestCommon {
     /// </summary>
     public required List<StatisticUpdate> Statistics { get; set; }
     /// <summary>
-    /// Optional transactionId of this update which can be used to ensure idempotence. Using this field is still in testing
-    /// stage.
+    /// Optional transactionId of this update which can be used to ensure idempotence.
     /// </summary>
     public string? TransactionId { get; set; }
 }
