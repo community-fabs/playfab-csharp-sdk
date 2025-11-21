@@ -2577,6 +2577,10 @@ public class RedeemNintendoEShopInventoryItemsRequest : PlayFabRequestCommon {
     /// </summary>
     public List<InventoryItemReference>? Items { get; set; }
     /// <summary>
+    /// The configuration name to determine which MarketplaceConfiguration to use
+    /// </summary>
+    public string? MarketplaceConfigurationName { get; set; }
+    /// <summary>
     /// The Nintendo provided token authorizing redemption
     /// </summary>
     public string? NintendoServiceAccountIdToken { get; set; }

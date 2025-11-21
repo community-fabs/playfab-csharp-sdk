@@ -2985,6 +2985,7 @@ public enum GenericErrorCodes {
     CannotEnableAnonymousPlayerCreation,
     ParentCustomerAccountNotFound,
     AccountLinkedToABannedPlayer,
+    AzureSubscriptionNotEligibleForLinking,
     MatchmakingEntityInvalid,
     MatchmakingPlayerAttributesInvalid,
     MatchmakingQueueNotFound,
