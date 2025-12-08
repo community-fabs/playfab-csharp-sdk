@@ -105,7 +105,7 @@ public interface IPlayFabAdminApi {
     /// </summary>
     public Task<PlayFabResult<BlankResult>> AddVirtualCurrencyTypesAsync(AddVirtualCurrencyTypesRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
-    /// Bans users by PlayFab ID with optional IP address, or MAC address for the provided game.
+    /// Bans users by PlayFab ID with optional IP address for the provided game.
     /// <example><br/>Example:<code>
     /// var response = await adminApi.BanUsersAsync({
     ///   "Bans": [

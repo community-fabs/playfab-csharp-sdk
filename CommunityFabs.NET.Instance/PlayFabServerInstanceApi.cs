@@ -1002,6 +1002,25 @@ public class PlayFabServerInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
     }
 
     /// <inheritdoc />
+    public async Task<PlayFabResult<GetPlayFabIDsFromOpenIdsResult>> GetPlayFabIDsFromOpenIdSubjectIdentifiersAsync(GetPlayFabIDsFromOpenIdsRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Server/GetPlayFabIDsFromOpenIdSubjectIdentifiers", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<GetPlayFabIDsFromOpenIdsResult> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetPlayFabIDsFromOpenIdsResult>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<GetPlayFabIDsFromOpenIdsResult> { Result = result };
+    }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayFabIDsFromPSNAccountIDsResult>> GetPlayFabIDsFromPSNAccountIDsAsync(GetPlayFabIDsFromPSNAccountIDsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1705,6 +1724,25 @@ public class PlayFabServerInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
     }
 
     /// <inheritdoc />
+    public async Task<PlayFabResult<EmptyResult>> LinkTwitchAccountAsync(LinkTwitchAccountRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Server/LinkTwitchAccount", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<EmptyResult> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResult>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResult> { Result = result };
+    }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<LinkXboxAccountResult>> LinkXboxAccountAsync(LinkXboxAccountRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1902,6 +1940,25 @@ public class PlayFabServerInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
         if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
 
         var httpResult = await PlayFabHttp.Post("/Server/LoginWithSteamId", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<ServerLoginResult> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<ServerLoginResult>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<ServerLoginResult> { Result = result };
+    }
+
+    /// <inheritdoc />
+    public async Task<PlayFabResult<ServerLoginResult>> LoginWithTwitchAsync(LoginWithTwitchRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Server/LoginWithTwitch", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
         if (httpResult is PlayFabError error)
         {
             return new PlayFabResult<ServerLoginResult> { Error = error };
@@ -2690,6 +2747,25 @@ public class PlayFabServerInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
         var result = resultData!.data;
 
         return new PlayFabResult<UnlinkSteamIdResult> { Result = result };
+    }
+
+    /// <inheritdoc />
+    public async Task<PlayFabResult<EmptyResult>> UnlinkTwitchAccountAsync(UnlinkTwitchAccountRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Server/UnlinkTwitchAccount", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<EmptyResult> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<EmptyResult>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<EmptyResult> { Result = result };
     }
 
     /// <inheritdoc />

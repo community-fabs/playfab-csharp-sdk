@@ -804,6 +804,27 @@ public interface IPlayFabClientApi {
     /// </summary>
     public Task<PlayFabResult<GetPlayFabIDsFromNintendoSwitchDeviceIdsResult>> GetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Retrieves the unique PlayFab identifiers for the given set of OpenId subject identifiers. A OpenId identifier is the
+    /// service name plus the service-specific ID for the player, as specified by the title when the OpenId identifier was
+    /// added to the player account.
+    /// <example><br/>Example:<code>
+    /// var response = await clientApi.GetPlayFabIDsFromOpenIdSubjectIdentifiersAsync({
+    ///   "OpenIdSubjectIdentifiers": [
+    ///     {
+    ///       "Issuer": "https://example.com",
+    ///       "Subject": "123456789012345678"
+    ///     },
+    ///     {
+    ///       "Issuer": "https://example-2.com",
+    ///       "Subject": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+    ///     }
+    ///   ]
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/client/account-management/getplayfabidsfromopenidsubjectidentifiers">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<GetPlayFabIDsFromOpenIdsResult>> GetPlayFabIDsFromOpenIdSubjectIdentifiersAsync(GetPlayFabIDsFromOpenIdsRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of PlayStation :tm: Network identifiers.
     /// <example><br/>Example:<code>
     /// var response = await clientApi.GetPlayFabIDsFromPSNAccountIDsAsync({

@@ -1192,6 +1192,25 @@ public class PlayFabClientInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
     }
 
     /// <inheritdoc />
+    public async Task<PlayFabResult<GetPlayFabIDsFromOpenIdsResult>> GetPlayFabIDsFromOpenIdSubjectIdentifiersAsync(GetPlayFabIDsFromOpenIdsRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestContext?.ClientSessionTicket == null) throw new PlayFabException(PlayFabExceptionCode.NotLoggedIn, "Must be logged in to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Client/GetPlayFabIDsFromOpenIdSubjectIdentifiers", request, "X-Authorization", requestContext.ClientSessionTicket, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<GetPlayFabIDsFromOpenIdsResult> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetPlayFabIDsFromOpenIdsResult>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<GetPlayFabIDsFromOpenIdsResult> { Result = result };
+    }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayFabIDsFromPSNAccountIDsResult>> GetPlayFabIDsFromPSNAccountIDsAsync(GetPlayFabIDsFromPSNAccountIDsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;

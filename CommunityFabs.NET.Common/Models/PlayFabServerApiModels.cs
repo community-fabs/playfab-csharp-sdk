@@ -246,11 +246,6 @@ public class BanInfo {
     /// </summary>
     public string? IPAddress { get; set; }
     /// <summary>
-    /// The MAC address on which the ban was applied. May affect multiple players. This property is deprecated and does not
-    /// work anymore.
-    /// </summary>
-    public string? MACAddress { get; set; }
-    /// <summary>
     /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
     /// </summary>
     public string? PlayFabId { get; set; }
@@ -282,10 +277,6 @@ public class BanRequest {
     /// </summary>
     public string? IPAddress { get; set; }
     /// <summary>
-    /// MAC address to be banned. May affect multiple players. This property is deprecated and does not work anymore.
-    /// </summary>
-    public string? MACAddress { get; set; }
-    /// <summary>
     /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
     /// </summary>
     public required string PlayFabId { get; set; }
@@ -300,8 +291,8 @@ public class BanRequest {
 }
 
 /// <summary>
-/// The existence of each user will not be verified. When banning by IP or MAC address, multiple players may be affected,
-/// so use this feature with caution. Returns information about the new bans.
+/// The existence of each user will not be verified. When banning by IP, multiple players may be affected, so use this
+/// feature with caution. Returns information about the new bans.
 /// </summary>
 public class BanUsersRequest : PlayFabRequestCommon {
     /// <summary>
@@ -2402,6 +2393,7 @@ public enum GenericErrorCodes {
     UnsupportedEntityType,
     EntityTypeSpecifiedRequiresAggregationSource,
     PlayFabErrorEventNotSupportedForEntityType,
+    MetadataLengthExceeded,
     StoreMetricsRequestInvalidInput,
     StoreMetricsErrorRetrievingMetrics,
 }
@@ -3386,6 +3378,24 @@ public class GetPlayFabIDsFromNintendoSwitchDeviceIdsResult : PlayFabResultCommo
     /// Mapping of Nintendo Switch Device identifiers to PlayFab identifiers.
     /// </summary>
     public List<NintendoSwitchPlayFabIdPair>? Data { get; set; }
+}
+
+public class GetPlayFabIDsFromOpenIdsRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// Array of unique OpenId Connect identifiers for which the title needs to get PlayFab identifiers. The array cannot
+    /// exceed 10 in length.
+    /// </summary>
+    public required List<OpenIdSubjectIdentifier> OpenIdSubjectIdentifiers { get; set; }
+}
+
+/// <summary>
+/// For OpenId identifiers which have not been linked to PlayFab accounts, null will be returned.
+/// </summary>
+public class GetPlayFabIDsFromOpenIdsResult : PlayFabResultCommon {
+    /// <summary>
+    /// Mapping of OpenId Connect identifiers to PlayFab identifiers.
+    /// </summary>
+    public List<OpenIdSubjectIdentifierPlayFabIdPair>? Data { get; set; }
 }
 
 public class GetPlayFabIDsFromPSNAccountIDsRequest : PlayFabRequestCommon {
@@ -4387,6 +4397,25 @@ public class LinkSteamIdRequest : PlayFabRequestCommon {
 public class LinkSteamIdResult : PlayFabResultCommon {
 }
 
+public class LinkTwitchAccountRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// Twitch access token for authentication.
+    /// </summary>
+    public required string AccessToken { get; set; }
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
+    public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// If another user is already linked to the account, unlink the other user and re-link.
+    /// </summary>
+    public bool? ForceLink { get; set; }
+    /// <summary>
+    /// PlayFab unique identifier of the user to link.
+    /// </summary>
+    public required string PlayFabId { get; set; }
+}
+
 public class LinkXboxAccountRequest : PlayFabRequestCommon {
     /// <summary>
     /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
@@ -4817,6 +4846,42 @@ public class LoginWithSteamIdRequest : PlayFabRequestCommon {
 }
 
 /// <summary>
+/// More details regarding Twitch and their authentication system can be found at
+/// https://github.com/justintv/Twitch-API/blob/master/authentication.md. Developers must provide the Twitch access token
+/// that is generated using one of the Twitch authentication flows. PlayFab will use the title's unique Twitch Client ID to
+/// authenticate the token and log in to the PlayFab system. If CreateAccount is set to true and there is not already a
+/// user matched to the Twitch username that generated the token, then PlayFab will create a new account for this user and
+/// link the ID. In this case, no email or username will be associated with the PlayFab account. If there is already a
+/// different PlayFab user linked with this account, then an error will be returned.
+/// </summary>
+public class LoginWithTwitchRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// Twitch access token for authentication.
+    /// </summary>
+    public required string AccessToken { get; set; }
+    /// <summary>
+    /// If true, create a new PlayFab account if one does not exist.
+    /// </summary>
+    public bool? CreateAccount { get; set; }
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
+    public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// Parameters for requesting additional player info.
+    /// </summary>
+    public GetPlayerCombinedInfoRequestParams? InfoRequestParameters { get; set; }
+    /// <summary>
+    /// Player secret for additional authentication.
+    /// </summary>
+    public string? PlayerSecret { get; set; }
+    /// <summary>
+    /// PlayFab unique identifier of the user.
+    /// </summary>
+    public required string PlayFabId { get; set; }
+}
+
+/// <summary>
 /// If this is the first time a user has signed in with the Xbox ID and CreateAccount is set to true, a new PlayFab account
 /// will be created and linked to the Xbox Live account. In this case, no email or username will be associated with the
 /// PlayFab account. Otherwise, if no PlayFab account is linked to the Xbox Live account, an error indicating this will be
@@ -5099,6 +5164,28 @@ public class NotifyMatchmakerPlayerLeftResult : PlayFabResultCommon {
     /// State of user leaving the Game Server Instance.
     /// </summary>
     public PlayerConnectionState? PlayerState { get; set; }
+}
+
+public class OpenIdSubjectIdentifier {
+    /// <summary>
+    /// The issuer URL for the OpenId Connect provider, or the override URL if an override exists.
+    /// </summary>
+    public required string Issuer { get; set; }
+    /// <summary>
+    /// The unique subject identifier within the context of the issuer.
+    /// </summary>
+    public required string Subject { get; set; }
+}
+
+public class OpenIdSubjectIdentifierPlayFabIdPair {
+    /// <summary>
+    /// Unique OpenId Connect identifier for a user.
+    /// </summary>
+    public OpenIdSubjectIdentifier? OpenIdSubjectIdentifier { get; set; }
+    /// <summary>
+    /// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the OpenId Connect identifier.
+    /// </summary>
+    public string? PlayFabId { get; set; }
 }
 
 public enum PlayerConnectionState {
@@ -6664,6 +6751,22 @@ public class UnlinkSteamIdRequest : PlayFabRequestCommon {
 public class UnlinkSteamIdResult : PlayFabResultCommon {
 }
 
+public class UnlinkTwitchAccountRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// Valid token issued by Twitch. Used to specify which twitch account to unlink from the profile. By default it uses the
+    /// one that is present on the profile.
+    /// </summary>
+    public string? AccessToken { get; set; }
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
+    public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// PlayFab unique identifier of the user to unlink.
+    /// </summary>
+    public required string PlayFabId { get; set; }
+}
+
 public class UnlinkXboxAccountRequest : PlayFabRequestCommon {
     /// <summary>
     /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
@@ -6799,10 +6902,6 @@ public class UpdateBanRequest {
     /// The updated IP address for the ban. Null for no change.
     /// </summary>
     public string? IPAddress { get; set; }
-    /// <summary>
-    /// The updated MAC address for the ban. Null for no change. This property is deprecated and does not work anymore.
-    /// </summary>
-    public string? MACAddress { get; set; }
     /// <summary>
     /// Whether to make this ban permanent. Set to true to make this ban permanent. This will not modify Active state.
     /// </summary>

@@ -458,11 +458,6 @@ public class BanInfo {
     /// </summary>
     public string? IPAddress { get; set; }
     /// <summary>
-    /// The MAC address on which the ban was applied. May affect multiple players. This property is deprecated and does not
-    /// work anymore.
-    /// </summary>
-    public string? MACAddress { get; set; }
-    /// <summary>
     /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
     /// </summary>
     public string? PlayFabId { get; set; }
@@ -516,10 +511,6 @@ public class BanRequest {
     /// </summary>
     public string? IPAddress { get; set; }
     /// <summary>
-    /// MAC address to be banned. May affect multiple players. This property is deprecated and does not work anymore.
-    /// </summary>
-    public string? MACAddress { get; set; }
-    /// <summary>
     /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
     /// </summary>
     public required string PlayFabId { get; set; }
@@ -534,8 +525,8 @@ public class BanRequest {
 }
 
 /// <summary>
-/// The existence of each user will not be verified. When banning by IP or MAC address, multiple players may be affected,
-/// so use this feature with caution. Returns information about the new bans.
+/// The existence of each user will not be verified. When banning by IP, multiple players may be affected, so use this
+/// feature with caution. Returns information about the new bans.
 /// </summary>
 public class BanUsersRequest : PlayFabRequestCommon {
     /// <summary>
@@ -3322,6 +3313,7 @@ public enum GenericErrorCodes {
     UnsupportedEntityType,
     EntityTypeSpecifiedRequiresAggregationSource,
     PlayFabErrorEventNotSupportedForEntityType,
+    MetadataLengthExceeded,
     StoreMetricsRequestInvalidInput,
     StoreMetricsErrorRetrievingMetrics,
 }
@@ -7274,10 +7266,6 @@ public class UpdateBanRequest {
     /// The updated IP address for the ban. Null for no change.
     /// </summary>
     public string? IPAddress { get; set; }
-    /// <summary>
-    /// The updated MAC address for the ban. Null for no change. This property is deprecated and does not work anymore.
-    /// </summary>
-    public string? MACAddress { get; set; }
     /// <summary>
     /// Whether to make this ban permanent. Set to true to make this ban permanent. This will not modify Active state.
     /// </summary>

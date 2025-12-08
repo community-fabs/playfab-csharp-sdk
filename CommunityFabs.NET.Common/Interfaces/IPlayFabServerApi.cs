@@ -116,7 +116,7 @@ public interface IPlayFabServerApi {
     /// </summary>
     public Task<PlayFabResult<AwardSteamAchievementResult>> AwardSteamAchievementAsync(AwardSteamAchievementRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
-    /// Bans users by PlayFab ID with optional IP address, or MAC address for the provided game.
+    /// Bans users by PlayFab ID with optional IP address for the provided game.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.BanUsersAsync({
     ///   "Bans": [
@@ -685,6 +685,27 @@ public interface IPlayFabServerApi {
     /// </summary>
     public Task<PlayFabResult<GetPlayFabIDsFromNintendoSwitchDeviceIdsResult>> GetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Retrieves the unique PlayFab identifiers for the given set of OpenId subject identifiers. A OpenId subject identifier
+    /// is the OpenId issuer plus the OpenId subject for the player, as specified by the title when the OpenId identifier was
+    /// added to the player account.
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.GetPlayFabIDsFromOpenIdSubjectIdentifiersAsync({
+    ///   "OpenIdSubjectIdentifiers": [
+    ///     {
+    ///       "Issuer": "https://example.com",
+    ///       "Subject": "123456789012345678"
+    ///     },
+    ///     {
+    ///       "Issuer": "https://example-2.com",
+    ///       "Subject": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+    ///     }
+    ///   ]
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromopenidsubjectidentifiers">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<GetPlayFabIDsFromOpenIdsResult>> GetPlayFabIDsFromOpenIdSubjectIdentifiersAsync(GetPlayFabIDsFromOpenIdsRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of PlayStation :tm: Network identifiers.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.GetPlayFabIDsFromPSNAccountIDsAsync({
@@ -1177,6 +1198,18 @@ public interface IPlayFabServerApi {
     /// </summary>
     public Task<PlayFabResult<LinkSteamIdResult>> LinkSteamIdAsync(LinkSteamIdRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Links the Twitch account associated with the token to the user's PlayFab account.
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.LinkTwitchAccountAsync({
+    ///   "PlayFabId": "1234FA342",
+    ///   "AccessToken": "twitch-access-token",
+    ///   "ForceLink": false
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/linktwitchaccount">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<EmptyResult>> LinkTwitchAccountAsync(LinkTwitchAccountRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Links the Xbox Live account associated with the provided access code to the user's PlayFab account
     /// <example><br/>Example:<code>
     /// var response = await serverApi.LinkXboxAccountAsync({
@@ -1317,6 +1350,18 @@ public interface IPlayFabServerApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithsteamid">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<ServerLoginResult>> LoginWithSteamIdAsync(LoginWithSteamIdRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Sign in the user with a Twitch access token
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.LoginWithTwitchAsync({
+    ///   "PlayFabId": "1234FA342",
+    ///   "AccessToken": "twitch-access-token",
+    ///   "CreateAccount": true
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/authentication/loginwithtwitch">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<ServerLoginResult>> LoginWithTwitchAsync(LoginWithTwitchRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Signs the user in using a Xbox Live Token from an external server backend, returning a session identifier that can
     /// subsequently be used for API calls which require an authenticated user
@@ -1831,6 +1876,16 @@ public interface IPlayFabServerApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinksteamid">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<UnlinkSteamIdResult>> UnlinkSteamIdAsync(UnlinkSteamIdRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Unlinks the related Twitch account from the user's PlayFab account.
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.UnlinkTwitchAccountAsync({
+    ///   "PlayFabId": "1234FA342"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinktwitchaccount">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<EmptyResult>> UnlinkTwitchAccountAsync(UnlinkTwitchAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unlinks the related Xbox Live account from the user's PlayFab account
     /// <example><br/>Example:<code>
