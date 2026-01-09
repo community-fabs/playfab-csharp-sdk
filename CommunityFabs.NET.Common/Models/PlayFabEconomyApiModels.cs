@@ -1995,6 +1995,10 @@ public class InventoryItem {
     /// </summary>
     public string? StackId { get; set; }
     /// <summary>
+    /// Only used for subscriptions. The date of when the item started in UTC.
+    /// </summary>
+    public DateTime? StartDate { get; set; }
+    /// <summary>
     /// The type of the item. This should correspond to the item type in the catalog.
     /// </summary>
     public string? Type { get; set; }

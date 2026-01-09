@@ -3092,6 +3092,7 @@ public enum GenericErrorCodes {
     ExperimentationExclusionGroupInvalidTrafficAllocation,
     ExperimentationExclusionGroupInvalidName,
     ExperimentationLegacyExperimentInvalidOperation,
+    ExperimentationExperimentStopFailed,
     MaxActionDepthExceeded,
     TitleNotOnUpdatedPricingPlan,
     SegmentManagementTitleNotInFlight,

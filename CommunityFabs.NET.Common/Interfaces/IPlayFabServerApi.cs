@@ -1825,6 +1825,27 @@ public interface IPlayFabServerApi {
     /// </summary>
     public Task<PlayFabResult<EmptyResponse>> UnlinkBattleNetAccountAsync(UnlinkBattleNetAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Unlinks the related Facebook account from the user's PlayFab account
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.UnlinkFacebookAccountAsync({
+    ///   "PlayFabId": "1234FA342"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinkfacebookaccount">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<UnlinkFacebookAccountResult>> UnlinkFacebookAccountAsync(UnlinkFacebookAccountRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Unlinks the related Facebook Instant Games identifier from the user's PlayFab account
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.UnlinkFacebookInstantGamesIdAsync({
+    ///   "PlayFabId": "1234FA342",
+    ///   "FacebookInstantGamesId": "123456789012345"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinkfacebookinstantgamesid">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<UnlinkFacebookInstantGamesIdResult>> UnlinkFacebookInstantGamesIdAsync(UnlinkFacebookInstantGamesIdRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Unlinks the related Nintendo account from the user's PlayFab account
     /// <example><br/>Example:<code>
     /// var response = await serverApi.UnlinkNintendoServiceAccountAsync({

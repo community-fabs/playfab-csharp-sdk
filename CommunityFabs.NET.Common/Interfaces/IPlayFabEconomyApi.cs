@@ -600,7 +600,7 @@ public interface IPlayFabEconomyApi {
     /// </summary>
     public Task<PlayFabResult<RedeemGooglePlayInventoryItemsResponse>> RedeemGooglePlayInventoryItemsAsync(RedeemGooglePlayInventoryItemsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
-    /// Redeem items.
+    /// Redeem items from the Microsoft Store. Supported entitlement types are Developer Manager Consumable and Durable.
     /// <example><br/>Example:<code>
     /// var response = await inventoryApi.RedeemMicrosoftStoreInventoryItemsAsync({
     ///   "CollectionsIdKey": "collectionsIdKey"
