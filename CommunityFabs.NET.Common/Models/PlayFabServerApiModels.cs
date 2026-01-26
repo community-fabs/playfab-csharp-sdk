@@ -2101,6 +2101,7 @@ public enum GenericErrorCodes {
     CatalogBadRequest,
     CatalogTooManyRequests,
     InvalidCatalogItemConfiguration,
+    LegacyEconomyDisabled,
     ExportInvalidStatusUpdate,
     ExportInvalidPrefix,
     ExportBlobContainerDoesNotExist,

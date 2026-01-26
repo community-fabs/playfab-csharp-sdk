@@ -603,25 +603,6 @@ public class PlayFabEconomyInstanceApi(PlayFabApiSettings? apiSettings = null, P
     }
 
     /// <inheritdoc />
-    public async Task<PlayFabResult<GetMicrosoftStoreAccessTokensResponse>> GetMicrosoftStoreAccessTokensAsync(GetMicrosoftStoreAccessTokensRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authContext;
-        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
-
-        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
-
-        var httpResult = await PlayFabHttp.Post("/Inventory/GetMicrosoftStoreAccessTokens", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
-        if (httpResult is PlayFabError error)
-        {
-            return new PlayFabResult<GetMicrosoftStoreAccessTokensResponse> { Error = error };
-        }
-
-        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetMicrosoftStoreAccessTokensResponse>>((string)httpResult);
-        var result = resultData!.data;
-
-        return new PlayFabResult<GetMicrosoftStoreAccessTokensResponse> { Result = result };
-    }
-
-    /// <inheritdoc />
     public async Task<PlayFabResult<GetTransactionHistoryResponse>> GetTransactionHistoryAsync(GetTransactionHistoryRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;

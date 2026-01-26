@@ -463,14 +463,6 @@ public interface IPlayFabEconomyApi {
     /// </summary>
     public Task<PlayFabResult<GetItemsResponse>> GetItemsAsync(GetItemsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
-    /// Gets the access tokens.
-    /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.GetMicrosoftStoreAccessTokensAsync({});
-    /// </code></example>
-    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/inventory/inventory/getmicrosoftstoreaccesstokens">Microsoft Documentation</see>
-    /// </summary>
-    public Task<PlayFabResult<GetMicrosoftStoreAccessTokensResponse>> GetMicrosoftStoreAccessTokensAsync(GetMicrosoftStoreAccessTokensRequest request, Dictionary<string, string>? extraHeaders);
-    /// <summary>
     /// Get transaction history for a player. Up to 250 Events can be returned at once. You can use continuation tokens to
     /// paginate through results that return greater than the limit. Getting transaction history has a lower RPS limit than
     /// getting a Player's inventory with Player Entities having a limit of 30 requests in 300 seconds.
@@ -602,9 +594,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Redeem items from the Microsoft Store. Supported entitlement types are Developer Manager Consumable and Durable.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.RedeemMicrosoftStoreInventoryItemsAsync({
-    ///   "CollectionsIdKey": "collectionsIdKey"
-    /// });
+    /// var response = await inventoryApi.RedeemMicrosoftStoreInventoryItemsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/inventory/inventory/redeemmicrosoftstoreinventoryitems">Microsoft Documentation</see>
     /// </summary>
