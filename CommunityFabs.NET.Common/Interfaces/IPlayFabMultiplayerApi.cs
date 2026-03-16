@@ -107,8 +107,8 @@ public interface IPlayFabMultiplayerApi {
     ///     "Deaths"
     ///   ],
     ///   "InitialSettingsModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf",
-    ///   "MatchResultStartTimeUtc": "2026-01-23T13:31:33.498Z",
-    ///   "MatchResultEndTimeUtc": "2026-01-23T14:01:33.498Z",
+    ///   "MatchResultStartTimeUtc": "2026-03-09T06:10:37.175Z",
+    ///   "MatchResultEndTimeUtc": "2026-03-09T06:40:37.175Z",
     ///   "MaxIterations": 100,
     ///   "AnomalousMatchResultIgnoreThreshold": -20.0
     /// });
@@ -2131,8 +2131,8 @@ public interface IPlayFabMultiplayerApi {
     ///         "Rank": 1
     ///       }
     ///     ],
-    ///     "StartDateTimeUtc": "2026-01-23T13:31:33.49Z",
-    ///     "EndDateTimeUtc": "2026-01-23T14:01:33.49Z"
+    ///     "StartDateTimeUtc": "2026-03-09T06:10:37.165Z",
+    ///     "EndDateTimeUtc": "2026-03-09T06:40:37.165Z"
     ///   }
     /// });
     /// </code></example>

@@ -746,7 +746,7 @@ public enum PlayFabErrorCode
     AsyncExportNotFound = 10012,
     AsyncExportRateLimitExceeded = 10013,
     AnalyticsSegmentCountOverLimit = 10014,
-    GetPlayersInSegmentDeprecated = 10015,
+    GetPlayersInSegmentRetired = 10015,
     SnapshotNotFound = 11000,
     InventoryApiNotImplemented = 12000,
     InventoryCollectionDeletionDisallowed = 12001,
@@ -951,6 +951,7 @@ public enum PlayFabErrorCode
     EntityTypeSpecifiedRequiresAggregationSource = 23012,
     PlayFabErrorEventNotSupportedForEntityType = 23013,
     MetadataLengthExceeded = 23014,
+    MaxQueryableVersionsExceeded = 23015,
     StoreMetricsRequestInvalidInput = 23501,
     StoreMetricsErrorRetrievingMetrics = 23502
 }

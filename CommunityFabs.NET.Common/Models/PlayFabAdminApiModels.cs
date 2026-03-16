@@ -3111,7 +3111,7 @@ public enum GenericErrorCodes {
     AsyncExportNotFound,
     AsyncExportRateLimitExceeded,
     AnalyticsSegmentCountOverLimit,
-    GetPlayersInSegmentDeprecated,
+    GetPlayersInSegmentRetired,
     SnapshotNotFound,
     InventoryApiNotImplemented,
     InventoryCollectionDeletionDisallowed,
@@ -3316,6 +3316,7 @@ public enum GenericErrorCodes {
     EntityTypeSpecifiedRequiresAggregationSource,
     PlayFabErrorEventNotSupportedForEntityType,
     MetadataLengthExceeded,
+    MaxQueryableVersionsExceeded,
     StoreMetricsRequestInvalidInput,
     StoreMetricsErrorRetrievingMetrics,
 }

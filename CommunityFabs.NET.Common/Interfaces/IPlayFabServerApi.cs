@@ -44,6 +44,17 @@ public interface IPlayFabServerApi {
     /// </summary>
     public Task<PlayFabResult<EmptyResult>> AddGenericIDAsync(AddGenericIDRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Adds or updates a contact email to the specified player's profile.
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.AddOrUpdateContactEmailAsync({
+    ///   "PlayFabId": "A01DC15D8E12E230",
+    ///   "EmailAddress": "user@example.com"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/addorupdatecontactemail">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<AddOrUpdateContactEmailResult>> AddOrUpdateContactEmailAsync(AddOrUpdateContactEmailRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Adds a given tag to a player profile. The tag's namespace is automatically generated based on the source of the tag.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.AddPlayerTagAsync({
