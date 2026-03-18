@@ -5,7 +5,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Creates a new telemetry key for the title.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.CreateTelemetryKeyAsync({
+    /// var response = await eventsApi.CreateTelemetryKeyAsync({
     ///   "KeyName": "MyTelemetryKey"
     /// });
     /// </code></example>
@@ -15,7 +15,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Deletes a Data Connection from a title.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.DeleteDataConnectionAsync({
+    /// var response = await eventsApi.DeleteDataConnectionAsync({
     ///   "Name": "MyDataConnection"
     /// });
     /// </code></example>
@@ -30,7 +30,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Deletes a telemetry key configured for the title.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.DeleteTelemetryKeyAsync({
+    /// var response = await eventsApi.DeleteTelemetryKeyAsync({
     ///   "KeyName": "MyTelemetryKey"
     /// });
     /// </code></example>
@@ -40,7 +40,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Retrieves a single Data Connection associated with a title.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.GetDataConnectionAsync({
+    /// var response = await eventsApi.GetDataConnectionAsync({
     ///   "Name": "MyDataConnection"
     /// });
     /// </code></example>
@@ -50,7 +50,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Gets the sampling ratio for an event.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.GetEventSamplingRatioAsync({
+    /// var response = await eventsApi.GetEventSamplingRatioAsync({
     ///   "EventNamespace": "com.playfab",
     ///   "EventName": "player_executed_cloudscript"
     /// });
@@ -66,7 +66,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Gets information about a telemetry key configured for the title.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.GetTelemetryKeyAsync({
+    /// var response = await eventsApi.GetTelemetryKeyAsync({
     ///   "KeyName": "MyTelemetryKey"
     /// });
     /// </code></example>
@@ -76,7 +76,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Retrieves the list of Data Connections associated with a title.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.ListDataConnectionsAsync({});
+    /// var response = await eventsApi.ListDataConnectionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/listdataconnections">Microsoft Documentation</see>
     /// </summary>
@@ -84,7 +84,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Lists all telemetry keys configured for the title.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.ListTelemetryKeysAsync({});
+    /// var response = await eventsApi.ListTelemetryKeysAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/event/playstream-events/listtelemetrykeys">Microsoft Documentation</see>
     /// </summary>
@@ -92,7 +92,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Creates or updates a Data Connection on a title.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.SetDataConnectionAsync({
+    /// var response = await eventsApi.SetDataConnectionAsync({
     ///   "Name": "MyDataConnection",
     ///   "Type": "AzureDataExplorer",
     ///   "IsActive": true,
@@ -111,7 +111,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Sets a Data Connection for the title to either the active or deactivated state.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.SetDataConnectionActiveAsync({
+    /// var response = await eventsApi.SetDataConnectionActiveAsync({
     ///   "Name": "MyDataConnection",
     ///   "Active": false
     /// });
@@ -127,7 +127,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Sets a telemetry key to the active or deactivated state.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.SetTelemetryKeyActiveAsync({
+    /// var response = await eventsApi.SetTelemetryKeyActiveAsync({
     ///   "KeyName": "MyTelemetryKey",
     ///   "Active": false
     /// });
@@ -138,7 +138,7 @@ public interface IPlayFabEventsApi {
     /// <summary>
     /// Write batches of entity based events to PlayStream. The namespace of the Event must be 'custom' or start with 'custom.'.
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.WriteEventsAsync({
+    /// var response = await eventsApi.WriteEventsAsync({
     ///   "Events": [
     ///     {
     ///       "Entity": {
@@ -167,7 +167,7 @@ public interface IPlayFabEventsApi {
     /// Write batches of entity based events to as Telemetry events (bypass PlayStream). The namespace must be 'custom' or
     /// start with 'custom.'
     /// <example><br/>Example:<code>
-    /// var response = await playstream-eventsApi.WriteTelemetryEventsAsync({
+    /// var response = await eventsApi.WriteTelemetryEventsAsync({
     ///   "Events": [
     ///     {
     ///       "Entity": {

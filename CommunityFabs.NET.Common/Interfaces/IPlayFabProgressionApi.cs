@@ -5,7 +5,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Creates a new leaderboard definition.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.CreateLeaderboardDefinitionAsync({
+    /// var response = await progressionApi.CreateLeaderboardDefinitionAsync({
     ///   "Name": "HighestScoresByLevel",
     ///   "EntityType": "title_player_account",
     ///   "VersionConfiguration": {
@@ -36,7 +36,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Create a new entity statistic definition.
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.CreateStatisticDefinitionAsync({
+    /// var response = await progressionApi.CreateStatisticDefinitionAsync({
     ///   "Name": "HighestScoresByLevel",
     ///   "AggregationMethod": "Last",
     ///   "Columns": [
@@ -57,7 +57,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Deletes a leaderboard definition.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.DeleteLeaderboardDefinitionAsync({
+    /// var response = await progressionApi.DeleteLeaderboardDefinitionAsync({
     ///   "Name": "HighestScoresByLevel"
     /// });
     /// </code></example>
@@ -67,7 +67,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Deletes the specified entries from the given leaderboard.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.DeleteLeaderboardEntriesAsync({
+    /// var response = await progressionApi.DeleteLeaderboardEntriesAsync({
     ///   "Name": "Points",
     ///   "EntityIds": [
     ///     "12802710371",
@@ -81,7 +81,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Delete an entity statistic definition. Will delete all statistics on entity profiles and leaderboards.
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.DeleteStatisticDefinitionAsync({
+    /// var response = await progressionApi.DeleteStatisticDefinitionAsync({
     ///   "Name": "HighestScoresByLevel"
     /// });
     /// </code></example>
@@ -91,7 +91,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Delete statistics on an entity profile. This will remove all rankings from associated leaderboards.
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.DeleteStatisticsAsync({
+    /// var response = await progressionApi.DeleteStatisticsAsync({
     ///   "Statistics": [
     ///     {
     ///       "Name": "TotalCarTime"
@@ -109,7 +109,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Get the friend leaderboard for the specified entity. A maximum of 25 friend entries are listed in the leaderboard.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.GetFriendLeaderboardForEntityAsync({
+    /// var response = await progressionApi.GetFriendLeaderboardForEntityAsync({
     ///   "LeaderboardName": "Points",
     ///   "ExternalFriendSources": "None"
     /// });
@@ -120,7 +120,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Get the leaderboard for a specific entity type and statistic.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.GetLeaderboardAsync({
+    /// var response = await progressionApi.GetLeaderboardAsync({
     ///   "LeaderboardName": "Points",
     ///   "Version": 2,
     ///   "StartingPosition": 100,
@@ -133,7 +133,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Get the leaderboard around a specific entity.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.GetLeaderboardAroundEntityAsync({
+    /// var response = await progressionApi.GetLeaderboardAroundEntityAsync({
     ///   "LeaderboardName": "Points",
     ///   "Version": 2,
     ///   "MaxSurroundingEntries": 0,
@@ -150,7 +150,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Gets the specified leaderboard definition.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.GetLeaderboardDefinitionAsync({
+    /// var response = await progressionApi.GetLeaderboardDefinitionAsync({
     ///   "Name": "HighestScoresByLevel"
     /// });
     /// </code></example>
@@ -160,7 +160,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Get the leaderboard limited to a set of entities.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.GetLeaderboardForEntitiesAsync({
+    /// var response = await progressionApi.GetLeaderboardForEntitiesAsync({
     ///   "LeaderboardName": "Points",
     ///   "Version": 2,
     ///   "EntityIds": [
@@ -175,7 +175,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Get current statistic definition information
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.GetStatisticDefinitionAsync({
+    /// var response = await progressionApi.GetStatisticDefinitionAsync({
     ///   "Name": "Points"
     /// });
     /// </code></example>
@@ -185,7 +185,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Get all current statistic definitions information
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.GetStatisticDefinitionsAsync({});
+    /// var response = await progressionApi.GetStatisticDefinitionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/getstatisticdefinitions">Microsoft Documentation</see>
     /// </summary>
@@ -193,7 +193,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Gets statistics for the specified entity.
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.GetStatisticsAsync({
+    /// var response = await progressionApi.GetStatisticsAsync({
     ///   "StatisticNames": [
     ///     "SpeedRuns",
     ///     "Boosts"
@@ -211,7 +211,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Gets statistics for the specified collection of entities.
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.GetStatisticsForEntitiesAsync({
+    /// var response = await progressionApi.GetStatisticsForEntitiesAsync({
     ///   "Entities": [
     ///     {
     ///       "Id": "A197412JDA",
@@ -236,7 +236,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Increment a leaderboard version.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.IncrementLeaderboardVersionAsync({
+    /// var response = await progressionApi.IncrementLeaderboardVersionAsync({
     ///   "Name": "HighestScoresByLevel"
     /// });
     /// </code></example>
@@ -246,7 +246,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Increment an entity statistic definition version.
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.IncrementStatisticVersionAsync({
+    /// var response = await progressionApi.IncrementStatisticVersionAsync({
     ///   "Name": "HighestScoresByLevel"
     /// });
     /// </code></example>
@@ -256,7 +256,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Lists the leaderboard definitions defined for the Title.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.ListLeaderboardDefinitionsAsync({});
+    /// var response = await progressionApi.ListLeaderboardDefinitionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/listleaderboarddefinitions">Microsoft Documentation</see>
     /// </summary>
@@ -264,7 +264,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Get all current statistic definitions information
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.ListStatisticDefinitionsAsync({});
+    /// var response = await progressionApi.ListStatisticDefinitionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/statistic/statistics/liststatisticdefinitions">Microsoft Documentation</see>
     /// </summary>
@@ -272,7 +272,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Unlinks an aggregation source from a statistic definition.
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.UnlinkAggregationSourceFromStatisticAsync({
+    /// var response = await progressionApi.UnlinkAggregationSourceFromStatisticAsync({
     ///   "Name": "TotalKills",
     ///   "SourceStatisticName": "KillsPerPlayer"
     /// });
@@ -283,7 +283,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Unlinks a leaderboard definition from it's linked statistic definition.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.UnlinkLeaderboardFromStatisticAsync({
+    /// var response = await progressionApi.UnlinkLeaderboardFromStatisticAsync({
     ///   "Name": "HighestScoresByLevel",
     ///   "StatisticName": "HighestScoresByLevel"
     /// });
@@ -294,7 +294,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Updates a leaderboard definition.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.UpdateLeaderboardDefinitionAsync({
+    /// var response = await progressionApi.UpdateLeaderboardDefinitionAsync({
     ///   "Name": "HighestScoresByLevel",
     ///   "VersionConfiguration": {
     ///     "ResetInterval": "Manual",
@@ -318,7 +318,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Adds or updates entries on the specified leaderboard.
     /// <example><br/>Example:<code>
-    /// var response = await leaderboardsApi.UpdateLeaderboardEntriesAsync({
+    /// var response = await progressionApi.UpdateLeaderboardEntriesAsync({
     ///   "LeaderboardName": "Points",
     ///   "Entries": [
     ///     {
@@ -344,7 +344,7 @@ public interface IPlayFabProgressionApi {
     /// <summary>
     /// Update an existing entity statistic definition.
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.UpdateStatisticDefinitionAsync({
+    /// var response = await progressionApi.UpdateStatisticDefinitionAsync({
     ///   "Name": "HighestScoresByLevel",
     ///   "VersionConfiguration": {
     ///     "ResetInterval": "Manual",
@@ -364,7 +364,7 @@ public interface IPlayFabProgressionApi {
     /// Update statistics on an entity profile. Depending on the statistic definition, this may result in entity being ranked
     /// on various leaderboards.
     /// <example><br/>Example:<code>
-    /// var response = await statisticsApi.UpdateStatisticsAsync({
+    /// var response = await progressionApi.UpdateStatisticsAsync({
     ///   "Statistics": [
     ///     {
     ///       "Name": "RoundsWon",

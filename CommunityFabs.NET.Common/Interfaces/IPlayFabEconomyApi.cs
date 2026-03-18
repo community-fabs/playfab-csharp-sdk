@@ -5,7 +5,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Add inventory items. Up to 10,000 stacks of items can be added to a single inventory collection. Stack size is uncapped.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.AddInventoryItemsAsync({
+    /// var response = await economyApi.AddInventoryItemsAsync({
     ///   "Item": {
     ///     "Id": "11111111-1111-1111-1111-111111111111"
     ///   },
@@ -19,7 +19,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Given an existing Versioned Catalog, begin the process of validating the uploaded JSON and creating the described items.
     /// <example><br/>Example:<code>
-    /// var response = await versionedcatalogApi.CompleteVersionedCatalogUploadAsync({});
+    /// var response = await economyApi.CompleteVersionedCatalogUploadAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/versionedcatalog/versionedcatalog/completeversionedcatalogupload">Microsoft Documentation</see>
     /// </summary>
@@ -27,7 +27,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Creates a new item in the working catalog using provided metadata. Note: SAS tokens provided are valid for 1 hour.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.CreateDraftItemAsync({
+    /// var response = await economyApi.CreateDraftItemAsync({
     ///   "Item": {
     ///     "Type": "ugc",
     ///     "Title": {
@@ -96,7 +96,7 @@ public interface IPlayFabEconomyApi {
     /// around uploading content can be found here:
     /// https://learn.microsoft.com/en-us/gaming/playfab/features/pricing/meters/catalog-meters
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.CreateUploadUrlsAsync({
+    /// var response = await economyApi.CreateUploadUrlsAsync({
     ///   "Files": [
     ///     {
     ///       "FileName": "textures.zip"
@@ -114,7 +114,7 @@ public interface IPlayFabEconomyApi {
     /// Given an existing Catalog Version, create an URL location where titles can upload a JSON schema of a catalog, if the
     /// catalog is empty.
     /// <example><br/>Example:<code>
-    /// var response = await versionedcatalogApi.CreateVersionedCatalogUploadURLAsync({});
+    /// var response = await economyApi.CreateVersionedCatalogUploadURLAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/versionedcatalog/versionedcatalog/createversionedcataloguploadurl">Microsoft Documentation</see>
     /// </summary>
@@ -122,7 +122,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Creates a new view in the catalog using provided metadata.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.CreateViewAsync({
+    /// var response = await economyApi.CreateViewAsync({
     ///   "View": {
     ///     "FriendlyId": "exampleView",
     ///     "IsTitleView": false,
@@ -139,7 +139,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Deletes all reviews, helpfulness votes, and ratings submitted by the entity specified.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.DeleteEntityItemReviewsAsync({
+    /// var response = await economyApi.DeleteEntityItemReviewsAsync({
     ///   "Entity": {
     ///     "Id": "ABC123",
     ///     "Type": "title_player_account",
@@ -154,7 +154,7 @@ public interface IPlayFabEconomyApi {
     /// Delete an Inventory Collection. More information about Inventory Collections can be found here:
     /// https://learn.microsoft.com/en-us/gaming/playfab/features/economy-v2/inventory/collections
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.DeleteInventoryCollectionAsync({
+    /// var response = await economyApi.DeleteInventoryCollectionAsync({
     ///   "CollectionId": "backpack"
     /// });
     /// </code></example>
@@ -164,7 +164,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Delete inventory items
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.DeleteInventoryItemsAsync({
+    /// var response = await economyApi.DeleteInventoryItemsAsync({
     ///   "Item": {
     ///     "Id": "11111111-1111-1111-1111-111111111111"
     ///   }
@@ -176,7 +176,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Removes an item from working catalog and all published versions from the public catalog.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.DeleteItemAsync({
+    /// var response = await economyApi.DeleteItemAsync({
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
     /// </code></example>
@@ -186,7 +186,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Delete versioned catalog.
     /// <example><br/>Example:<code>
-    /// var response = await versionedcatalogApi.DeleteVersionedCatalogAsync({});
+    /// var response = await economyApi.DeleteVersionedCatalogAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/versionedcatalog/versionedcatalog/deleteversionedcatalog">Microsoft Documentation</see>
     /// </summary>
@@ -194,7 +194,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Deletes a catalog view and the associated blob.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.DeleteViewAsync({
+    /// var response = await economyApi.DeleteViewAsync({
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
     /// </code></example>
@@ -207,7 +207,7 @@ public interface IPlayFabEconomyApi {
     /// counts as 50 items modified. All operations must be done within a single inventory collection. This API has a reduced
     /// RPS compared to an individual inventory operation with Player Entities limited to 60 requests in 90 seconds.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.ExecuteInventoryOperationsAsync({
+    /// var response = await economyApi.ExecuteInventoryOperationsAsync({
     ///   "Operations": [
     ///     {
     ///       "Add": {
@@ -238,7 +238,7 @@ public interface IPlayFabEconomyApi {
     /// pending operations by looking for OperationStatus = 'InProgress'. You can check on the operation status at anytime
     /// within 1 day of the request by passing the TransactionToken to the GetInventoryOperationStatus API.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.ExecuteTransferOperationsAsync({
+    /// var response = await economyApi.ExecuteTransferOperationsAsync({
     ///   "Operations": [
     ///     {
     ///       "GivingItem": {
@@ -273,7 +273,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Export versioned catalog.
     /// <example><br/>Example:<code>
-    /// var response = await versionedcatalogApi.ExportVersionedCatalogAsync({});
+    /// var response = await economyApi.ExportVersionedCatalogAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/versionedcatalog/versionedcatalog/exportversionedcatalog">Microsoft Documentation</see>
     /// </summary>
@@ -283,7 +283,7 @@ public interface IPlayFabEconomyApi {
     /// seconds for this API. More information about the Catalog Config can be found here:
     /// https://learn.microsoft.com/en-us/gaming/playfab/features/economy-v2/settings
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetCatalogConfigAsync({});
+    /// var response = await economyApi.GetCatalogConfigAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/catalog/catalog/getcatalogconfig">Microsoft Documentation</see>
     /// </summary>
@@ -294,7 +294,7 @@ public interface IPlayFabEconomyApi {
     /// note that item references data is cached and may take a few moments for changes to propagate. Note: SAS tokens provided
     /// are valid for 1 hour.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetDraftItemAsync({
+    /// var response = await economyApi.GetDraftItemAsync({
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
     /// </code></example>
@@ -306,7 +306,7 @@ public interface IPlayFabEconomyApi {
     /// GetDraftItems does not work off a cache of the Catalog and should be used when trying to get recent item updates. Note:
     /// SAS tokens provided are valid for 1 hour.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetDraftItemsAsync({
+    /// var response = await economyApi.GetDraftItemsAsync({
     ///   "Ids": [
     ///     "dddddddd-dddd-dddd-dddd-dddddddddddd",
     ///     "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee"
@@ -321,7 +321,7 @@ public interface IPlayFabEconomyApi {
     /// once. You can use continuation tokens to paginate through results that return greater than the limit.
     /// GetEntityDraftItems does not work off a cache of the Catalog and should be used when trying to get recent item updates.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetEntityDraftItemsAsync({
+    /// var response = await economyApi.GetEntityDraftItemsAsync({
     ///   "Count": 2,
     ///   "Entity": {
     ///     "Id": "someId",
@@ -337,7 +337,7 @@ public interface IPlayFabEconomyApi {
     /// Gets the submitted review for the specified item by the authenticated entity. Individual ratings and reviews data
     /// update in near real time with delays within a few seconds.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetEntityItemReviewAsync({
+    /// var response = await economyApi.GetEntityItemReviewAsync({
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
     /// </code></example>
@@ -349,7 +349,7 @@ public interface IPlayFabEconomyApi {
     /// use continuation tokens to paginate through results that return greater than the limit. It can take a few seconds for
     /// new collection Ids to show up.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.GetInventoryCollectionIdsAsync({
+    /// var response = await economyApi.GetInventoryCollectionIdsAsync({
     ///   "Count": 5
     /// });
     /// </code></example>
@@ -359,7 +359,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Get current inventory items.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.GetInventoryItemsAsync({
+    /// var response = await economyApi.GetInventoryItemsAsync({
     ///   "Count": 5
     /// });
     /// </code></example>
@@ -370,7 +370,7 @@ public interface IPlayFabEconomyApi {
     /// Get the status of an inventory operation using an OperationToken. You can check on the operation status at anytime
     /// within 1 day of the request by passing the TransactionToken to the this API.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.GetInventoryOperationStatusAsync({
+    /// var response = await economyApi.GetInventoryOperationStatusAsync({
     ///   "OperationToken": "token"
     /// });
     /// </code></example>
@@ -382,7 +382,7 @@ public interface IPlayFabEconomyApi {
     /// trying to get recent item updates. However, please note that item references data is cached and may take a few moments
     /// for changes to propagate.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetItemAsync({
+    /// var response = await economyApi.GetItemAsync({
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
     /// </code></example>
@@ -395,7 +395,7 @@ public interface IPlayFabEconomyApi {
     /// intended for tooling/automation scenarios and has a reduced RPS with Player Entities limited to 30 requests in 300
     /// seconds and Title Entities limited to 100 requests in 10 seconds.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetItemContainersAsync({
+    /// var response = await economyApi.GetItemContainersAsync({
     ///   "Count": 5,
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
@@ -407,7 +407,7 @@ public interface IPlayFabEconomyApi {
     /// Gets the moderation state for an item, including the concern category and string reason. More information about
     /// moderation states can be found here: https://learn.microsoft.com/en-us/gaming/playfab/features/economy-v2/ugc/moderation
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetItemModerationStateAsync({
+    /// var response = await economyApi.GetItemModerationStateAsync({
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
     /// </code></example>
@@ -417,7 +417,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Gets the status of a publish of an item.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetItemPublishStatusAsync({
+    /// var response = await economyApi.GetItemPublishStatusAsync({
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
     /// </code></example>
@@ -428,7 +428,7 @@ public interface IPlayFabEconomyApi {
     /// Get a paginated set of reviews associated with the specified item. Individual ratings and reviews data update in near
     /// real time with delays within a few seconds.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetItemReviewsAsync({
+    /// var response = await economyApi.GetItemReviewsAsync({
     ///   "Count": 2,
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
@@ -440,7 +440,7 @@ public interface IPlayFabEconomyApi {
     /// Get a summary of all ratings and reviews associated with the specified item. Summary ratings data is cached with update
     /// data coming within 15 minutes.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetItemReviewSummaryAsync({
+    /// var response = await economyApi.GetItemReviewSummaryAsync({
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
     /// </code></example>
@@ -452,7 +452,7 @@ public interface IPlayFabEconomyApi {
     /// the Catalog and should be used when trying to get recent item updates. However, please note that item references data
     /// is cached and may take a few moments for changes to propagate.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetItemsAsync({
+    /// var response = await economyApi.GetItemsAsync({
     ///   "Ids": [
     ///     "dddddddd-dddd-dddd-dddd-dddddddddddd",
     ///     "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee"
@@ -467,7 +467,7 @@ public interface IPlayFabEconomyApi {
     /// paginate through results that return greater than the limit. Getting transaction history has a lower RPS limit than
     /// getting a Player's inventory with Player Entities having a limit of 30 requests in 300 seconds.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.GetTransactionHistoryAsync({
+    /// var response = await economyApi.GetTransactionHistoryAsync({
     ///   "Count": 10,
     ///   "CollectionId": "default"
     /// });
@@ -483,7 +483,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Returns the current status of a Versioned Catalog upload.
     /// <example><br/>Example:<code>
-    /// var response = await versionedcatalogApi.GetVersionedCatalogUploadStatusAsync({});
+    /// var response = await economyApi.GetVersionedCatalogUploadStatusAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/versionedcatalog/versionedcatalog/getversionedcataloguploadstatus">Microsoft Documentation</see>
     /// </summary>
@@ -491,7 +491,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Retrieves a specific catalog view.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetViewAsync({
+    /// var response = await economyApi.GetViewAsync({
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
     /// </code></example>
@@ -501,7 +501,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Retrieves a paginated list of the catalog views.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.GetViewsAsync({
+    /// var response = await economyApi.GetViewsAsync({
     ///   "Count": 5,
     ///   "Entity": {
     ///     "Id": "someId",
@@ -516,7 +516,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// List versioned catalogs.
     /// <example><br/>Example:<code>
-    /// var response = await versionedcatalogApi.ListVersionedCatalogsAsync({});
+    /// var response = await economyApi.ListVersionedCatalogsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/versionedcatalog/versionedcatalog/listversionedcatalogs">Microsoft Documentation</see>
     /// </summary>
@@ -525,7 +525,7 @@ public interface IPlayFabEconomyApi {
     /// Initiates a publish of an item from the working catalog to the public catalog. You can use the GetItemPublishStatus API
     /// to track the state of the item publish.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.PublishDraftItemAsync({
+    /// var response = await economyApi.PublishDraftItemAsync({
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
     /// });
     /// </code></example>
@@ -536,7 +536,7 @@ public interface IPlayFabEconomyApi {
     /// Purchase an item or bundle. Up to 10,000 stacks of items can be added to a single inventory collection. Stack size is
     /// uncapped.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.PurchaseInventoryItemsAsync({
+    /// var response = await economyApi.PurchaseInventoryItemsAsync({
     ///   "Item": {
     ///     "Id": "11111111-1111-1111-1111-111111111111"
     ///   },
@@ -556,7 +556,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Redeem items.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.RedeemAppleAppStoreInventoryItemsAsync({
+    /// var response = await economyApi.RedeemAppleAppStoreInventoryItemsAsync({
     ///   "Receipt": "receipt"
     /// });
     /// </code></example>
@@ -566,7 +566,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Redeem items.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.RedeemAppleAppStoreWithJwsInventoryItemsAsync({
+    /// var response = await economyApi.RedeemAppleAppStoreWithJwsInventoryItemsAsync({
     ///   "JWSTransactions": [
     ///     "JWS1",
     ///     "JWS2"
@@ -579,7 +579,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Redeem items.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.RedeemGooglePlayInventoryItemsAsync({
+    /// var response = await economyApi.RedeemGooglePlayInventoryItemsAsync({
     ///   "Purchases": [
     ///     {
     ///       "ProductId": "productId",
@@ -594,7 +594,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Redeem items from the Microsoft Store. Supported entitlement types are Developer Manager Consumable and Durable.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.RedeemMicrosoftStoreInventoryItemsAsync({});
+    /// var response = await economyApi.RedeemMicrosoftStoreInventoryItemsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/inventory/inventory/redeemmicrosoftstoreinventoryitems">Microsoft Documentation</see>
     /// </summary>
@@ -602,7 +602,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Redeem items.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.RedeemNintendoEShopInventoryItemsAsync({
+    /// var response = await economyApi.RedeemNintendoEShopInventoryItemsAsync({
     ///   "NintendoServiceAccountIdToken": "nsaIdToken"
     /// });
     /// </code></example>
@@ -612,7 +612,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Redeem items.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.RedeemPlayStationStoreInventoryItemsAsync({
+    /// var response = await economyApi.RedeemPlayStationStoreInventoryItemsAsync({
     ///   "AuthorizationCode": "authorizationCode",
     ///   "RedirectUri": "orbis://games",
     ///   "ServiceLabel": "0"
@@ -624,7 +624,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Redeem items.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.RedeemSteamInventoryItemsAsync({});
+    /// var response = await economyApi.RedeemSteamInventoryItemsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/inventory/inventory/redeemsteaminventoryitems">Microsoft Documentation</see>
     /// </summary>
@@ -632,7 +632,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Submit a report for an item, indicating in what way the item is inappropriate.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.ReportItemAsync({
+    /// var response = await economyApi.ReportItemAsync({
     ///   "ConcernCategory": "Profanity",
     ///   "Reason": "There was swearing in the description.",
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
@@ -644,7 +644,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Submit a report for a review
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.ReportItemReviewAsync({
+    /// var response = await economyApi.ReportItemReviewAsync({
     ///   "ReviewId": "dddddddd-dddd-dddd-dddd-dddddddddddd",
     ///   "ItemId": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
     ///   "ConcernCategory": "OffensiveContent",
@@ -659,7 +659,7 @@ public interface IPlayFabEconomyApi {
     /// reviews can be found here:
     /// https://learn.microsoft.com/en-us/gaming/playfab/features/economy-v2/catalog/ratings#ratings-design-and-caching
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.ReviewItemAsync({
+    /// var response = await economyApi.ReviewItemAsync({
     ///   "Review": {
     ///     "ItemVersion": "2.4.1",
     ///     "Title": "Best Game Ever",
@@ -682,7 +682,7 @@ public interface IPlayFabEconomyApi {
     /// use the GetItem API for when trying to immediately get recent item updates. More information about the Search API can
     /// be found here: https://learn.microsoft.com/en-us/gaming/playfab/features/economy-v2/catalog/search
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.SearchItemsAsync({
+    /// var response = await economyApi.SearchItemsAsync({
     ///   "Search": "Pirates",
     ///   "Filter": "tags/any(t:t eq 'desert') and contentType eq 'map'",
     ///   "OrderBy": "lastModifiedDate asc",
@@ -697,7 +697,7 @@ public interface IPlayFabEconomyApi {
     /// Sets the moderation state for an item, including the concern category and string reason. More information about
     /// moderation states can be found here: https://learn.microsoft.com/en-us/gaming/playfab/features/economy-v2/ugc/moderation
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.SetItemModerationStateAsync({
+    /// var response = await economyApi.SetItemModerationStateAsync({
     ///   "Status": "AwaitingModeration",
     ///   "Reason": "User reports over threshold",
     ///   "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd"
@@ -709,7 +709,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Submit a vote for a review, indicating whether the review was helpful or unhelpful.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.SubmitItemReviewVoteAsync({
+    /// var response = await economyApi.SubmitItemReviewVoteAsync({
     ///   "ReviewId": "dddddddd-dddd-dddd-dddd-dddddddddddd",
     ///   "ItemId": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
     ///   "Vote": "Helpful"
@@ -721,7 +721,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Subtract inventory items.
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.SubtractInventoryItemsAsync({
+    /// var response = await economyApi.SubtractInventoryItemsAsync({
     ///   "Item": {
     ///     "Id": "11111111-1111-1111-1111-111111111111"
     ///   },
@@ -736,7 +736,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Submit a request to takedown one or more reviews.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.TakedownItemReviewsAsync({
+    /// var response = await economyApi.TakedownItemReviewsAsync({
     ///   "Reviews": [
     ///     {
     ///       "ItemId": "00000000-0000-0000-0000-000000000003",
@@ -757,7 +757,7 @@ public interface IPlayFabEconomyApi {
     /// https://learn.microsoft.com/en-us/gaming/playfab/features/economy-v2/inventory/?tabs=inventory-game-manager#transfer-inv
     /// entory-items
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.TransferInventoryItemsAsync({
+    /// var response = await economyApi.TransferInventoryItemsAsync({
     ///   "GivingItem": {
     ///     "Id": "11111111-1111-1111-1111-111111111111"
     ///   },
@@ -778,7 +778,7 @@ public interface IPlayFabEconomyApi {
     /// seconds for this API. More information about the Catalog Config can be found here:
     /// https://learn.microsoft.com/en-us/gaming/playfab/features/economy-v2/settings
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.UpdateCatalogConfigAsync({
+    /// var response = await economyApi.UpdateCatalogConfigAsync({
     ///   "Config": {
     ///     "IsCatalogEnabled": true,
     ///     "AdminEntities": [
@@ -821,7 +821,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Update the metadata for an item in the working catalog. Note: SAS tokens provided are valid for 1 hour.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.UpdateDraftItemAsync({
+    /// var response = await economyApi.UpdateDraftItemAsync({
     ///   "Item": {
     ///     "Id": "qqqqqqqq-qqqq-qqqq-qqqq-qqqqqqqqqqqq",
     ///     "Type": "ugc",
@@ -888,7 +888,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Update inventory items
     /// <example><br/>Example:<code>
-    /// var response = await inventoryApi.UpdateInventoryItemsAsync({
+    /// var response = await economyApi.UpdateInventoryItemsAsync({
     ///   "Item": {
     ///     "Id": "11111111-1111-1111-1111-111111111111",
     ///     "Amount": 3
@@ -902,7 +902,7 @@ public interface IPlayFabEconomyApi {
     /// <summary>
     /// Updates an existing view in the catalog using provided metadata.
     /// <example><br/>Example:<code>
-    /// var response = await catalogApi.UpdateViewAsync({
+    /// var response = await economyApi.UpdateViewAsync({
     ///   "View": {
     ///     "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd",
     ///     "FriendlyId": "exampleView",
