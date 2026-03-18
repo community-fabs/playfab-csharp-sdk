@@ -5,7 +5,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel all active tickets the player is a member of in a given queue.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CancelAllMatchmakingTicketsForPlayerAsync({
+    /// var response = await matchmakingApi.CancelAllMatchmakingTicketsForPlayerAsync({
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -20,7 +20,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel all active backfill tickets the player is a member of in a given queue.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CancelAllServerBackfillTicketsForPlayerAsync({
+    /// var response = await matchmakingApi.CancelAllServerBackfillTicketsForPlayerAsync({
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -35,7 +35,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel a matchmaking ticket.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CancelMatchmakingTicketAsync({
+    /// var response = await matchmakingApi.CancelMatchmakingTicketAsync({
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123"
     /// });
@@ -46,7 +46,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel a batch model creation.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.CancelModelAsync({
+    /// var response = await trueskill-adminApi.CancelModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
@@ -57,7 +57,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Cancel a server backfill ticket.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CancelServerBackfillTicketAsync({
+    /// var response = await matchmakingApi.CancelServerBackfillTicketAsync({
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123"
     /// });
@@ -68,7 +68,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Create a base model with default settings.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.CreateBaseModelAsync({
+    /// var response = await trueskill-adminApi.CreateBaseModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelName": "Test Batch Model",
     ///   "Conditions": [
@@ -89,7 +89,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Creates a batch model that is learned from a title's match results in a scenario.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.CreateBatchModelAsync({
+    /// var response = await trueskill-adminApi.CreateBatchModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelName": "Test Batch Model",
     ///   "Conditions": [
@@ -447,7 +447,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Create a matchmaking ticket as a client.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CreateMatchmakingTicketAsync({
+    /// var response = await matchmakingApi.CreateMatchmakingTicketAsync({
     ///   "Creator": {},
     ///   "MembersToMatchWith": [],
     ///   "GiveUpAfterSeconds": 100,
@@ -475,7 +475,7 @@ public interface IPlayFabMultiplayerApi {
     /// Create a scenario to specify which conditions, conditions values and events will be allowed when submitting match
     /// results.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.CreateScenarioAsync({
+    /// var response = await trueskill-adminApi.CreateScenarioAsync({
     ///   "Name": "Test Scenario",
     ///   "Conditions": [
     ///     {
@@ -507,7 +507,7 @@ public interface IPlayFabMultiplayerApi {
     /// automatically starts matching the backfill ticket against other matchmaking tickets. Backfill tickets cannot match with
     /// other backfill tickets.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CreateServerBackfillTicketAsync({
+    /// var response = await matchmakingApi.CreateServerBackfillTicketAsync({
     ///   "Members": [],
     ///   "GiveUpAfterSeconds": 100,
     ///   "ServerDetails": {
@@ -533,7 +533,7 @@ public interface IPlayFabMultiplayerApi {
     /// Create a matchmaking ticket as a server. The matchmaking service automatically starts matching the ticket against other
     /// matchmaking tickets.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.CreateServerMatchmakingTicketAsync({
+    /// var response = await matchmakingApi.CreateServerMatchmakingTicketAsync({
     ///   "Members": [
     ///     null
     ///   ],
@@ -572,7 +572,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Switch a model's state from Active to Deactivated.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.DeactivateModelAsync({
+    /// var response = await trueskill-adminApi.DeactivateModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
@@ -654,7 +654,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Delete a model.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.DeleteModelAsync({
+    /// var response = await trueskill-adminApi.DeleteModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
@@ -678,7 +678,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Delete a scenario.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.DeleteScenarioAsync({
+    /// var response = await trueskill-adminApi.DeleteScenarioAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ForceDelete": true
     /// });
@@ -707,7 +707,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Enables the parties feature for a title.
     /// <example><br/>Example:<code>
-    /// var response = await partyApi.EnablePartiesForTitleAsync({});
+    /// var response = await multiplayerserverApi.EnablePartiesForTitleAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/party/multiplayerserver/enablepartiesfortitle">Microsoft Documentation</see>
     /// </summary>
@@ -831,7 +831,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get a match.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.GetMatchAsync({
+    /// var response = await matchmakingApi.GetMatchAsync({
     ///   "MatchId": "4e0c5fd7-80e9-4744-b0ce-061a7f067ff5",
     ///   "QueueName": "custom123",
     ///   "EscapeObject": false,
@@ -844,7 +844,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// SDK support is limited to C# and Java for this API. Get a matchmaking queue configuration.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.GetMatchmakingQueueAsync({
+    /// var response = await matchmaking-adminApi.GetMatchmakingQueueAsync({
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
@@ -854,7 +854,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get a matchmaking ticket by ticket Id.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.GetMatchmakingTicketAsync({
+    /// var response = await matchmakingApi.GetMatchmakingTicketAsync({
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123",
     ///   "EscapeObject": false
@@ -866,7 +866,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Gets the details of a Model.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.GetModelDetailsAsync({
+    /// var response = await trueskill-adminApi.GetModelDetailsAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
@@ -877,7 +877,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get all of the models assigned to a specific scenario.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.GetModelsByScenarioAsync({
+    /// var response = await trueskill-adminApi.GetModelsByScenarioAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d"
     /// });
     /// </code></example>
@@ -1082,7 +1082,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get the statistics for a queue.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.GetQueueStatisticsAsync({
+    /// var response = await matchmakingApi.GetQueueStatisticsAsync({
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
@@ -1104,7 +1104,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get a scenario configuration.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.GetScenarioConfigurationAsync({
+    /// var response = await trueskill-adminApi.GetScenarioConfigurationAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d"
     /// });
     /// </code></example>
@@ -1119,7 +1119,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Get a matchmaking backfill ticket by ticket Id.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.GetServerBackfillTicketAsync({
+    /// var response = await matchmakingApi.GetServerBackfillTicketAsync({
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123",
     ///   "EscapeObject": false
@@ -1236,7 +1236,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Join a matchmaking ticket.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.JoinMatchmakingTicketAsync({
+    /// var response = await matchmakingApi.JoinMatchmakingTicketAsync({
     ///   "TicketId": "1c4b0daa-150e-47ae-9923-d770c0f9b07c",
     ///   "QueueName": "custom123",
     ///   "Member": {}
@@ -1363,7 +1363,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// SDK support is limited to C# and Java for this API. List all matchmaking queue configs.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.ListMatchmakingQueuesAsync({});
+    /// var response = await matchmaking-adminApi.ListMatchmakingQueuesAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking-admin/listmatchmakingqueues">Microsoft Documentation</see>
     /// </summary>
@@ -1371,7 +1371,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// List all matchmaking ticket Ids the user is a member of.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.ListMatchmakingTicketsForPlayerAsync({
+    /// var response = await matchmakingApi.ListMatchmakingTicketsForPlayerAsync({
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -1437,7 +1437,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// List all server backfill ticket Ids the user is a member of.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.ListServerBackfillTicketsForPlayerAsync({
+    /// var response = await matchmakingApi.ListServerBackfillTicketsForPlayerAsync({
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
@@ -1472,7 +1472,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// SDK support is limited to C# and Java for this API. Remove a matchmaking queue config.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.RemoveMatchmakingQueueAsync({
+    /// var response = await matchmaking-adminApi.RemoveMatchmakingQueueAsync({
     ///   "QueueName": "custom123"
     /// });
     /// </code></example>
@@ -1544,7 +1544,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Request a party session.
     /// <example><br/>Example:<code>
-    /// var response = await partyApi.RequestPartyAsync({
+    /// var response = await multiplayerserverApi.RequestPartyAsync({
     ///   "PartyId": "23781fa9-e01e-4b29-4f0b-dd9f37a06a1e",
     ///   "PreferredRegions": [
     ///     "EastUs",
@@ -1560,7 +1560,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Request a party session.
     /// <example><br/>Example:<code>
-    /// var response = await partyApi.RequestPartyServiceAsync({
+    /// var response = await multiplayerserverApi.RequestPartyServiceAsync({
     ///   "TitleId": "12345",
     ///   "PartyId": "23781fa9-e01e-4b29-4f0b-dd9f37a06a1e",
     ///   "PreferredRegions": [
@@ -1596,7 +1596,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// SDK support is limited to C# and Java for this API. Create or update a matchmaking queue configuration.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.SetMatchmakingQueueAsync({
+    /// var response = await matchmaking-adminApi.SetMatchmakingQueueAsync({
     ///   "MatchmakingQueue": {
     ///     "Name": "ExampleQueueName",
     ///     "MinMatchSize": 7,
@@ -1790,7 +1790,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Subscribe to match resource notifications.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.SubscribeToMatchmakingResourceAsync({
+    /// var response = await matchmakingApi.SubscribeToMatchmakingResourceAsync({
     ///   "Type": "MatchTicketStatusChange",
     ///   "ResourceId": "5a58afee-a9d7-4a47-875b-48bae4dc0590",
     ///   "SubscriptionVersion": 1,
@@ -1822,7 +1822,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Unsubscribe from match resource notifications.
     /// <example><br/>Example:<code>
-    /// var response = await matchApi.UnsubscribeFromMatchmakingResourceAsync({
+    /// var response = await matchmakingApi.UnsubscribeFromMatchmakingResourceAsync({
     ///   "Type": "MatchTicketStatusChange",
     ///   "ResourceId": "5a58afee-a9d7-4a47-875b-48bae4dc0590",
     ///   "SubscriptionVersion": 1,
@@ -1975,7 +1975,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Update a model.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.UpdateModelAsync({
+    /// var response = await trueskill-adminApi.UpdateModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf",
     ///   "ModelName": "New Model Name",
@@ -1988,7 +1988,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Mark a model as primary for a scenario.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.UpdatePrimaryModelAsync({
+    /// var response = await trueskill-adminApi.UpdatePrimaryModelAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf"
     /// });
@@ -1999,7 +1999,7 @@ public interface IPlayFabMultiplayerApi {
     /// <summary>
     /// Update a scenario configuration.
     /// <example><br/>Example:<code>
-    /// var response = await trueskillApi.UpdateScenarioConfigurationAsync({
+    /// var response = await trueskill-adminApi.UpdateScenarioConfigurationAsync({
     ///   "ScenarioId": "f9f0331e-0149-42ba-a994-29b18cac4e4d",
     ///   "ConditionsToUpdateOrAdd": [
     ///     {

@@ -6,7 +6,7 @@ public interface IPlayFabCloudScriptApi {
     /// Cloud Script is one of PlayFab's most versatile features. It allows client code to request execution of any kind of
     /// custom server-side functionality you can implement, and it can be used in conjunction with virtually anything.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.ExecuteEntityCloudScriptAsync({
+    /// var response = await server-side-cloud-scriptApi.ExecuteEntityCloudScriptAsync({
     ///   "FunctionName": "levelCompleted",
     ///   "FunctionParameter": {
     ///     "level": 3,
@@ -28,7 +28,7 @@ public interface IPlayFabCloudScriptApi {
     /// Cloud Script is one of PlayFab's most versatile features. It allows client code to request execution of any kind of
     /// custom server-side functionality you can implement, and it can be used in conjunction with virtually anything.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.ExecuteFunctionAsync({
+    /// var response = await server-side-cloud-scriptApi.ExecuteFunctionAsync({
     ///   "FunctionName": "LevelCompleted",
     ///   "FunctionParameter": {
     ///     "level": 3,
@@ -48,7 +48,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Gets registered Azure Functions for a given title id and function name.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.GetFunctionAsync({
+    /// var response = await server-side-cloud-scriptApi.GetFunctionAsync({
     ///   "FunctionName": "LevelCompleted"
     /// });
     /// </code></example>
@@ -58,7 +58,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Lists all currently registered Event Hub triggered Azure Functions for a given title.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.ListEventHubFunctionsAsync({});
+    /// var response = await server-side-cloud-scriptApi.ListEventHubFunctionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/listeventhubfunctions">Microsoft Documentation</see>
     /// </summary>
@@ -66,7 +66,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Lists all currently registered Azure Functions for a given title.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.ListFunctionsAsync({});
+    /// var response = await server-side-cloud-scriptApi.ListFunctionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/listfunctions">Microsoft Documentation</see>
     /// </summary>
@@ -74,7 +74,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Lists all currently registered HTTP triggered Azure Functions for a given title.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.ListHttpFunctionsAsync({});
+    /// var response = await server-side-cloud-scriptApi.ListHttpFunctionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/listhttpfunctions">Microsoft Documentation</see>
     /// </summary>
@@ -82,7 +82,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Lists all currently registered Queue triggered Azure Functions for a given title.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.ListQueuedFunctionsAsync({});
+    /// var response = await server-side-cloud-scriptApi.ListQueuedFunctionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/cloudscript/server-side-cloud-script/listqueuedfunctions">Microsoft Documentation</see>
     /// </summary>
@@ -90,7 +90,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Generate an entity PlayStream event for the provided function result.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.PostFunctionResultForEntityTriggeredActionAsync({
+    /// var response = await server-side-cloud-scriptApi.PostFunctionResultForEntityTriggeredActionAsync({
     ///   "FunctionResult": {
     ///     "ExecutionTimeMilliseconds": 367,
     ///     "FunctionName": "LevelCompleted",
@@ -113,7 +113,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Generate an entity PlayStream event for the provided function result.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.PostFunctionResultForFunctionExecutionAsync({
+    /// var response = await server-side-cloud-scriptApi.PostFunctionResultForFunctionExecutionAsync({
     ///   "FunctionResult": {
     ///     "ExecutionTimeMilliseconds": 367,
     ///     "FunctionName": "LevelCompleted",
@@ -136,7 +136,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Generate a player PlayStream event for the provided function result.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.PostFunctionResultForPlayerTriggeredActionAsync({
+    /// var response = await server-side-cloud-scriptApi.PostFunctionResultForPlayerTriggeredActionAsync({
     ///   "PlayStreamEventEnvelope": {
     ///     "EntityId": "1234ABCD",
     ///     "EntityType": "title_player_account",
@@ -170,7 +170,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Generate a PlayStream event for the provided function result.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.PostFunctionResultForScheduledTaskAsync({
+    /// var response = await server-side-cloud-scriptApi.PostFunctionResultForScheduledTaskAsync({
     ///   "ScheduledTaskId": {
     ///     "Name": "MyTask",
     ///     "Id": "d739e188-22f6-4d13-a4d5-df2e93d4d2f7"
@@ -192,7 +192,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Registers an event hub triggered Azure Function with a title.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.RegisterEventHubFunctionAsync({
+    /// var response = await server-side-cloud-scriptApi.RegisterEventHubFunctionAsync({
     ///   "EventHubName": "fn-eventhub",
     ///   "ConnectionString": "SampleConnectionString",
     ///   "FunctionName": "functionName"
@@ -204,7 +204,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Registers an HTTP triggered Azure function with a title.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.RegisterHttpFunctionAsync({
+    /// var response = await server-side-cloud-scriptApi.RegisterHttpFunctionAsync({
     ///   "FunctionUrl": "http://function.url",
     ///   "FunctionName": "functionName"
     /// });
@@ -215,7 +215,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Registers a queue triggered Azure Function with a title.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.RegisterQueuedFunctionAsync({
+    /// var response = await server-side-cloud-scriptApi.RegisterQueuedFunctionAsync({
     ///   "QueueName": "fn-queue",
     ///   "ConnectionString": "SampleConnectionString",
     ///   "FunctionName": "functionName"
@@ -227,7 +227,7 @@ public interface IPlayFabCloudScriptApi {
     /// <summary>
     /// Unregisters an Azure Function with a title.
     /// <example><br/>Example:<code>
-    /// var response = await cloudscriptApi.UnregisterFunctionAsync({
+    /// var response = await server-side-cloud-scriptApi.UnregisterFunctionAsync({
     ///   "FunctionName": "functionName"
     /// });
     /// </code></example>

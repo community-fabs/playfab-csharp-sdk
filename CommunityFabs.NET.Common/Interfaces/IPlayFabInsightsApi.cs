@@ -6,7 +6,7 @@ public interface IPlayFabInsightsApi {
     /// Gets the current values for the Insights performance and data storage retention, list of pending operations, and the
     /// performance and data storage retention limits.
     /// <example><br/>Example:<code>
-    /// var response = await insightsApi.GetDetailsAsync({});
+    /// var response = await analyticsApi.GetDetailsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/insights/analytics/getdetails">Microsoft Documentation</see>
     /// </summary>
@@ -15,7 +15,7 @@ public interface IPlayFabInsightsApi {
     /// Retrieves the range of allowed values for performance and data storage retention values as well as the submeter details
     /// for each performance level.
     /// <example><br/>Example:<code>
-    /// var response = await insightsApi.GetLimitsAsync({});
+    /// var response = await analyticsApi.GetLimitsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/insights/analytics/getlimits">Microsoft Documentation</see>
     /// </summary>
@@ -23,7 +23,7 @@ public interface IPlayFabInsightsApi {
     /// <summary>
     /// Gets the status of a SetPerformance or SetStorageRetention operation.
     /// <example><br/>Example:<code>
-    /// var response = await insightsApi.GetOperationStatusAsync({
+    /// var response = await analyticsApi.GetOperationStatusAsync({
     ///   "OperationId": "3ee468c4-ad09-4bb1-bccf-209ef5abfb96"
     /// });
     /// </code></example>
@@ -33,7 +33,7 @@ public interface IPlayFabInsightsApi {
     /// <summary>
     /// Gets a list of pending SetPerformance and/or SetStorageRetention operations for the title.
     /// <example><br/>Example:<code>
-    /// var response = await insightsApi.GetPendingOperationsAsync({
+    /// var response = await analyticsApi.GetPendingOperationsAsync({
     ///   "OperationType": "SetPerformance"
     /// });
     /// </code></example>
@@ -43,7 +43,7 @@ public interface IPlayFabInsightsApi {
     /// <summary>
     /// Sets the Insights performance level value for the title.
     /// <example><br/>Example:<code>
-    /// var response = await insightsApi.SetPerformanceAsync({
+    /// var response = await analyticsApi.SetPerformanceAsync({
     ///   "PerformanceLevel": 3
     /// });
     /// </code></example>
@@ -53,7 +53,7 @@ public interface IPlayFabInsightsApi {
     /// <summary>
     /// Sets the Insights data storage retention days value for the title.
     /// <example><br/>Example:<code>
-    /// var response = await insightsApi.SetStorageRetentionAsync({
+    /// var response = await analyticsApi.SetStorageRetentionAsync({
     ///   "RetentionDays": 30
     /// });
     /// </code></example>
