@@ -5,7 +5,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Abort an ongoing task instance.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.AbortTaskInstanceAsync({
+    /// var response = await adminApi.AbortTaskInstanceAsync({
     ///   "TaskInstanceId": "E52531B47B1761C7-4"
     /// });
     /// </code></example>
@@ -15,7 +15,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Update news item to include localized version
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.AddLocalizedNewsAsync({
+    /// var response = await adminApi.AddLocalizedNewsAsync({
     ///   "NewsId": "74623b12-6c80-ee4b-7c3b-58e638aa62bd",
     ///   "Language": "en",
     ///   "Title": "News of the Day",
@@ -28,7 +28,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Adds a new news item to the title's news feed
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.AddNewsAsync({
+    /// var response = await adminApi.AddNewsAsync({
     ///   "Timestamp": "2014-04-06T00:00:00Z",
     ///   "Title": "News of the Day",
     ///   "Body": "&lt;b&gt;We have a new object to buy!&lt;/b&gt;"
@@ -40,7 +40,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Adds a given tag to a player profile. The tag's namespace is automatically generated based on the source of the tag.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.AddPlayerTagAsync({
+    /// var response = await adminApi.AddPlayerTagAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "TagName": "MostKilled"
     /// });
@@ -52,7 +52,7 @@ public interface IPlayFabAdminApi {
     /// Adds the game server executable specified (previously uploaded - see GetServerBuildUploadUrl) to the set of those a
     /// client is permitted to request in a call to StartGame
     /// <example><br/>Example:<code>
-    /// var response = await custom-server-managementApi.AddServerBuildAsync({
+    /// var response = await adminApi.AddServerBuildAsync({
     ///   "BuildId": "5.0.1",
     ///   "CommandLineTemplate": "-game_id=&lt;game_id&gt; -game_build_version=&lt;game_build_version&gt; -game_mode=&lt;game_mode&gt; -server_host_domain=&lt;server_host_domain&gt; -server_host_port=&lt;server_host_port&gt; -server_host_region=&lt;server_host_region&gt; -playfab_api_endpoint=&lt;playfab_api_endpoint&gt; -title_secret_key=&lt;title_secret_key&gt; -custom_data=&lt;custom_data&gt; -log_file_path=&lt;log_file_path&gt; -output_files_directory_path=&lt;output_files_directory_path&gt;",
     ///   "ExecutablePath": "\\ShooterGame\\Binaries\\Win64\\ShooterGameServer.exe",
@@ -72,7 +72,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Increments the specified virtual currency by the stated amount
     /// <example><br/>Example:<code>
-    /// var response = await player-item-managementApi.AddUserVirtualCurrencyAsync({
+    /// var response = await adminApi.AddUserVirtualCurrencyAsync({
     ///   "PlayFabId": "20394883",
     ///   "VirtualCurrency": "GC",
     ///   "Amount": 100
@@ -86,7 +86,7 @@ public interface IPlayFabAdminApi {
     /// version 2._ Adds one or more virtual currencies to the set defined for the title. Virtual Currencies have a maximum
     /// value of 2,147,483,647 when granted to a player. Any value over that will be discarded.
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.AddVirtualCurrencyTypesAsync({
+    /// var response = await adminApi.AddVirtualCurrencyTypesAsync({
     ///   "VirtualCurrencies": [
     ///     {
     ///       "CurrencyCode": "CC",
@@ -107,7 +107,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Bans users by PlayFab ID with optional IP address for the provided game.
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.BanUsersAsync({
+    /// var response = await adminApi.BanUsersAsync({
     ///   "Bans": [
     ///     {
     ///       "PlayFabId": "1679AF5CD04BD838",
@@ -129,7 +129,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Checks the global count for the limited edition item.
     /// <example><br/>Example:<code>
-    /// var response = await player-item-managementApi.CheckLimitedEditionItemAvailabilityAsync({
+    /// var response = await adminApi.CheckLimitedEditionItemAvailabilityAsync({
     ///   "CatalogVersion": "Rares",
     ///   "ItemId": "FreeHoodie"
     /// });
@@ -140,7 +140,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Create an ActionsOnPlayersInSegment task, which iterates through all players in a segment to execute action.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.CreateActionsOnPlayersInSegmentTaskAsync({
+    /// var response = await adminApi.CreateActionsOnPlayersInSegmentTaskAsync({
     ///   "Name": "PushNotificationVIP_Halloween",
     ///   "Description": "Send push notification to VIP players about Halloween event",
     ///   "IsActive": false,
@@ -164,7 +164,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Create a CloudScript task, which can run a CloudScript on a schedule.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.CreateCloudScriptAzureFunctionsTaskAsync({
+    /// var response = await adminApi.CreateCloudScriptAzureFunctionsTaskAsync({
     ///   "Name": "EnableWeekdayHappyHour",
     ///   "Description": "Turn on special pricing for weekday happy hour.",
     ///   "Schedule": "0 17 * * 1-5",
@@ -183,7 +183,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Create a CloudScript task, which can run a CloudScript on a schedule.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.CreateCloudScriptTaskAsync({
+    /// var response = await adminApi.CreateCloudScriptTaskAsync({
     ///   "Name": "EnableWeekdayHappyHour",
     ///   "Description": "Turn on special pricing for weekday happy hour.",
     ///   "Schedule": "0 17 * * 1-5",
@@ -202,7 +202,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Create a Insights Scheduled Scaling task, which can scale Insights Performance Units on a schedule
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.CreateInsightsScheduledScalingTaskAsync({
+    /// var response = await adminApi.CreateInsightsScheduledScalingTaskAsync({
     ///   "Name": "EnableWeekdayPerformance",
     ///   "Description": "Scale up Insights Performance Units during weekdays.",
     ///   "Schedule": "0 0 * * 1-5",
@@ -218,7 +218,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Registers a relationship between a title and an Open ID Connect provider.
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.CreateOpenIdConnectionAsync({
+    /// var response = await adminApi.CreateOpenIdConnectionAsync({
     ///   "ConnectionId": "oidconnection1",
     ///   "ClientId": "example_id_1",
     ///   "ClientSecret": "example_secret_1",
@@ -243,7 +243,7 @@ public interface IPlayFabAdminApi {
     /// Creates a new Player Shared Secret Key. It may take up to 5 minutes for this key to become generally available after
     /// this API returns.
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.CreatePlayerSharedSecretAsync({
+    /// var response = await adminApi.CreatePlayerSharedSecretAsync({
     ///   "FriendlyName": "iOS Users"
     /// });
     /// </code></example>
@@ -254,7 +254,7 @@ public interface IPlayFabAdminApi {
     /// Adds a new player statistic configuration to the title, optionally allowing the developer to specify a reset interval
     /// and an aggregation method.
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.CreatePlayerStatisticDefinitionAsync({
+    /// var response = await adminApi.CreatePlayerStatisticDefinitionAsync({
     ///   "StatisticName": "headshots",
     ///   "VersionChangeInterval": "Never",
     ///   "ShouldProvisionLeaderboard": false
@@ -267,7 +267,7 @@ public interface IPlayFabAdminApi {
     /// Creates a new player segment by defining the conditions on player properties. Also, create actions to target the player
     /// segments for a title.
     /// <example><br/>Example:<code>
-    /// var response = await segmentsApi.CreateSegmentAsync({
+    /// var response = await adminApi.CreateSegmentAsync({
     ///   "SegmentModel": {
     ///     "Name": "My user segment",
     ///     "LastUpdateTime": "0001-01-01T00:00:00Z",
@@ -306,7 +306,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Delete a content file from the title. When deleting a file that does not exist, it returns success.
     /// <example><br/>Example:<code>
-    /// var response = await contentApi.DeleteContentAsync({
+    /// var response = await adminApi.DeleteContentAsync({
     ///   "Key": "images/sword_icon.png"
     /// });
     /// </code></example>
@@ -316,7 +316,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Deletes a sink to stop sending PlayStream and Telemetry event data
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.DeleteEventSinkAsync({
+    /// var response = await adminApi.DeleteEventSinkAsync({
     ///   "Name": "MyStorage"
     /// });
     /// </code></example>
@@ -326,7 +326,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Removes a master player account entirely from all titles and deletes all associated data
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.DeleteMasterPlayerAccountAsync({
+    /// var response = await adminApi.DeleteMasterPlayerAccountAsync({
     ///   "PlayFabId": "A68C908B66C23C5",
     ///   "MetaData": "Identifying info"
     /// });
@@ -337,7 +337,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Deletes PlayStream and telemetry event data associated with the master player account from PlayFab storage
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.DeleteMasterPlayerEventDataAsync({
+    /// var response = await adminApi.DeleteMasterPlayerEventDataAsync({
     ///   "PlayFabId": "A68C908B66C23C5"
     /// });
     /// </code></example>
@@ -347,7 +347,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Deletes a player's subscription
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.DeleteMembershipSubscriptionAsync({
+    /// var response = await adminApi.DeleteMembershipSubscriptionAsync({
     ///   "MembershipId": "ShieldBonusMembership",
     ///   "SubscriptionId": "39F6B89A-0F0C-4D96-B12C-BA89543A11A1",
     ///   "PlayFabId": "204883457"
@@ -359,7 +359,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Removes a relationship between a title and an OpenID Connect provider.
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.DeleteOpenIdConnectionAsync({
+    /// var response = await adminApi.DeleteOpenIdConnectionAsync({
     ///   "ConnectionId": "oidconnection1"
     /// });
     /// </code></example>
@@ -369,7 +369,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Removes a user's player account from a title and deletes all associated data
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.DeletePlayerAsync({
+    /// var response = await adminApi.DeletePlayerAsync({
     ///   "PlayFabId": "A68C908B66C23C5"
     /// });
     /// </code></example>
@@ -379,7 +379,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Deletes title-specific custom properties for a player
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.DeletePlayerCustomPropertiesAsync({
+    /// var response = await adminApi.DeletePlayerCustomPropertiesAsync({
     ///   "PlayFabId": "2039475",
     ///   "PropertyNames": [
     ///     "level",
@@ -395,7 +395,7 @@ public interface IPlayFabAdminApi {
     /// Deletes an existing Player Shared Secret Key. It may take up to 5 minutes for this delete to be reflected after this
     /// API returns.
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.DeletePlayerSharedSecretAsync({
+    /// var response = await adminApi.DeletePlayerSharedSecretAsync({
     ///   "SecretKey": "keysaresecret"
     /// });
     /// </code></example>
@@ -405,7 +405,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Deletes an existing player segment and its associated action(s) for a title.
     /// <example><br/>Example:<code>
-    /// var response = await segmentsApi.DeleteSegmentAsync({
+    /// var response = await adminApi.DeleteSegmentAsync({
     ///   "SegmentId": "97EF0E9302CBE996"
     /// });
     /// </code></example>
@@ -416,7 +416,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Deletes an existing virtual item store
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.DeleteStoreAsync({
+    /// var response = await adminApi.DeleteStoreAsync({
     ///   "StoreId": "BonusStore"
     /// });
     /// </code></example>
@@ -426,7 +426,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Delete a task.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.DeleteTaskAsync({
+    /// var response = await adminApi.DeleteTaskAsync({
     ///   "Identifier": {
     ///     "Id": "E1772FD927D8539D"
     ///   }
@@ -438,7 +438,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Permanently deletes a title and all associated configuration
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.DeleteTitleAsync({});
+    /// var response = await adminApi.DeleteTitleAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/account-management/deletetitle">Microsoft Documentation</see>
     /// </summary>
@@ -446,7 +446,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Deletes a specified set of title data overrides.
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.DeleteTitleDataOverrideAsync({
+    /// var response = await adminApi.DeleteTitleDataOverrideAsync({
     ///   "OverrideLabel": "LaunchData"
     /// });
     /// </code></example>
@@ -457,7 +457,7 @@ public interface IPlayFabAdminApi {
     /// Deletes the users for the provided game. Deletes custom data, all account linkages, and statistics. This method does
     /// not remove the player's event history, login history, inventory items, nor virtual currencies.
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.DeleteUsersAsync({
+    /// var response = await adminApi.DeleteUsersAsync({
     ///   "PlayFabIds": [
     ///     "203945882"
     ///   ]
@@ -469,7 +469,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Exports all associated data of a master player account
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.ExportMasterPlayerDataAsync({
+    /// var response = await adminApi.ExportMasterPlayerDataAsync({
     ///   "PlayFabId": "A68C908B66C23C5"
     /// });
     /// </code></example>
@@ -481,7 +481,7 @@ public interface IPlayFabAdminApi {
     /// match the segment definition at the time of the API call. Profiles which change while an export is in progress will not
     /// be reflected in the results.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.ExportPlayersInSegmentAsync({
+    /// var response = await adminApi.ExportPlayersInSegmentAsync({
     ///   "SegmentId": "ABCDEF1234567890"
     /// });
     /// </code></example>
@@ -491,7 +491,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Get information about a ActionsOnPlayersInSegment task instance.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.GetActionsOnPlayersInSegmentTaskInstanceAsync({
+    /// var response = await adminApi.GetActionsOnPlayersInSegmentTaskInstanceAsync({
     ///   "TaskInstanceId": "E52531B47B1761C7-4"
     /// });
     /// </code></example>
@@ -501,7 +501,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieve a list of all PlayStream actions groups.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.GetAllActionGroupsAsync({});
+    /// var response = await adminApi.GetAllActionGroupsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/playstream/getallactiongroups">Microsoft Documentation</see>
     /// </summary>
@@ -510,7 +510,7 @@ public interface IPlayFabAdminApi {
     /// Retrieves an array of player segment definitions. Results from this can be used in subsequent API calls such as
     /// GetPlayersInSegment which requires a Segment ID. While segment names can change the ID for that segment will not change.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.GetAllSegmentsAsync({});
+    /// var response = await adminApi.GetAllSegmentsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/playstream/getallsegments">Microsoft Documentation</see>
     /// </summary>
@@ -519,7 +519,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the specified version of the title's catalog of virtual goods, including all defined properties
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.GetCatalogItemsAsync({
+    /// var response = await adminApi.GetCatalogItemsAsync({
     ///   "CatalogVersion": "1"
     /// });
     /// </code></example>
@@ -529,7 +529,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Get detail information about a CloudScript Azure Functions task instance.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.GetCloudScriptAzureFunctionsTaskInstanceAsync({
+    /// var response = await adminApi.GetCloudScriptAzureFunctionsTaskInstanceAsync({
     ///   "TaskInstanceId": "E52531B47B1761C7-4"
     /// });
     /// </code></example>
@@ -539,7 +539,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Gets the contents and information of a specific Cloud Script revision.
     /// <example><br/>Example:<code>
-    /// var response = await server-side-cloud-scriptApi.GetCloudScriptRevisionAsync({
+    /// var response = await adminApi.GetCloudScriptRevisionAsync({
     ///   "Version": 1,
     ///   "Revision": 3
     /// });
@@ -550,7 +550,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Get detail information about a CloudScript task instance.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.GetCloudScriptTaskInstanceAsync({
+    /// var response = await adminApi.GetCloudScriptTaskInstanceAsync({
     ///   "TaskInstanceId": "E52531B47B1761C7-4"
     /// });
     /// </code></example>
@@ -561,7 +561,7 @@ public interface IPlayFabAdminApi {
     /// Lists all the current cloud script versions. For each version, information about the current published and latest
     /// revisions is also listed.
     /// <example><br/>Example:<code>
-    /// var response = await server-side-cloud-scriptApi.GetCloudScriptVersionsAsync({});
+    /// var response = await adminApi.GetCloudScriptVersionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/server-side-cloud-script/getcloudscriptversions">Microsoft Documentation</see>
     /// </summary>
@@ -569,7 +569,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// List all contents of the title and get statistics such as size
     /// <example><br/>Example:<code>
-    /// var response = await contentApi.GetContentListAsync({
+    /// var response = await adminApi.GetContentListAsync({
     ///   "Prefix": "2016/1"
     /// });
     /// </code></example>
@@ -581,7 +581,7 @@ public interface IPlayFabAdminApi {
     /// content. Also, please be aware that the Content service is specifically PlayFab's CDN offering, for which standard CDN
     /// rates apply.
     /// <example><br/>Example:<code>
-    /// var response = await contentApi.GetContentUploadUrlAsync({
+    /// var response = await adminApi.GetContentUploadUrlAsync({
     ///   "Key": "images/sword_icon.png",
     ///   "ContentType": "image/png"
     /// });
@@ -592,7 +592,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves a download URL for the requested report
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.GetDataReportAsync({
+    /// var response = await adminApi.GetDataReportAsync({
     ///   "ReportName": "PurchaseDataReport",
     ///   "Year": 2014,
     ///   "Month": 12,
@@ -605,7 +605,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the set of sinks to which to route PlayStream and Telemetry event data.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.GetEventSinksAsync({});
+    /// var response = await adminApi.GetEventSinksAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/playstream/geteventsinks">Microsoft Documentation</see>
     /// </summary>
@@ -613,7 +613,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the details for a specific completed session, including links to standard out and standard error logs
     /// <example><br/>Example:<code>
-    /// var response = await matchmakingApi.GetMatchmakerGameInfoAsync({
+    /// var response = await adminApi.GetMatchmakerGameInfoAsync({
     ///   "LobbyId": "2938488"
     /// });
     /// </code></example>
@@ -623,7 +623,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the details of defined game modes for the specified game server executable
     /// <example><br/>Example:<code>
-    /// var response = await matchmakingApi.GetMatchmakerGameModesAsync({
+    /// var response = await adminApi.GetMatchmakerGameModesAsync({
     ///   "BuildVersion": "5.0.1"
     /// });
     /// </code></example>
@@ -633,7 +633,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Get the list of titles that the player has played
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.GetPlayedTitleListAsync({
+    /// var response = await adminApi.GetPlayedTitleListAsync({
     ///   "PlayFabId": "A68C908B66C23C5"
     /// });
     /// </code></example>
@@ -643,7 +643,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves a title-specific custom property value for a player.
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.GetPlayerCustomPropertyAsync({
+    /// var response = await adminApi.GetPlayerCustomPropertyAsync({
     ///   "PlayFabId": "2039475",
     ///   "PropertyName": "level"
     /// });
@@ -654,7 +654,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Gets a player's ID from an auth token.
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.GetPlayerIdFromAuthTokenAsync({
+    /// var response = await adminApi.GetPlayerIdFromAuthTokenAsync({
     ///   "Token": "3F584AD0EF943E2",
     ///   "TokenType": "Email"
     /// });
@@ -665,7 +665,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the player's profile
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.GetPlayerProfileAsync({
+    /// var response = await adminApi.GetPlayerProfileAsync({
     ///   "PlayFabId": "621EF20237534A44"
     /// });
     /// </code></example>
@@ -675,7 +675,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// List all segments that a player currently belongs to at this moment in time.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.GetPlayerSegmentsAsync({
+    /// var response = await adminApi.GetPlayerSegmentsAsync({
     ///   "PlayFabId": "1337AA00"
     /// });
     /// </code></example>
@@ -685,7 +685,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Returns all Player Shared Secret Keys including disabled and expired.
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.GetPlayerSharedSecretsAsync({});
+    /// var response = await adminApi.GetPlayerSharedSecretsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/authentication/getplayersharedsecrets">Microsoft Documentation</see>
     /// </summary>
@@ -697,7 +697,7 @@ public interface IPlayFabAdminApi {
     /// reflected in the results. AB Test segments are currently not supported by this operation. NOTE: This API is limited to
     /// being called 30 times in one minute. You will be returned an error if you exceed this threshold.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.GetPlayersInSegmentAsync({
+    /// var response = await adminApi.GetPlayersInSegmentAsync({
     ///   "SegmentId": "1337AA00",
     ///   "SecondsToLive": 5,
     ///   "MaxBatchSize": 500
@@ -710,7 +710,7 @@ public interface IPlayFabAdminApi {
     /// Retrieves the configuration information for all player statistics defined in the title, regardless of whether they have
     /// a reset interval.
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.GetPlayerStatisticDefinitionsAsync({});
+    /// var response = await adminApi.GetPlayerStatisticDefinitionsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/player-data-management/getplayerstatisticdefinitions">Microsoft Documentation</see>
     /// </summary>
@@ -718,7 +718,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the information on the available versions of the specified statistic.
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.GetPlayerStatisticVersionsAsync({
+    /// var response = await adminApi.GetPlayerStatisticVersionsAsync({
     ///   "StatisticName": "headshots"
     /// });
     /// </code></example>
@@ -728,7 +728,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Get all tags with a given Namespace (optional) from a player profile.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.GetPlayerTagsAsync({
+    /// var response = await adminApi.GetPlayerTagsAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "Namespace": "title.AAA"
     /// });
@@ -739,7 +739,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Gets the requested policy.
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.GetPolicyAsync({
+    /// var response = await adminApi.GetPolicyAsync({
     ///   "PolicyName": "ApiPolicy"
     /// });
     /// </code></example>
@@ -749,7 +749,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the key-value store of custom publisher settings
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.GetPublisherDataAsync({
+    /// var response = await adminApi.GetPublisherDataAsync({
     ///   "Keys": [
     ///     "color",
     ///     "propertyA"
@@ -763,7 +763,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the random drop table configuration for the title
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.GetRandomResultTablesAsync({});
+    /// var response = await adminApi.GetRandomResultTablesAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/getrandomresulttables">Microsoft Documentation</see>
     /// </summary>
@@ -774,7 +774,7 @@ public interface IPlayFabAdminApi {
     /// urls from which the files containing the player profile data can be downloaded. Otherwise, it returns the current
     /// 'State' of the export
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.GetSegmentExportAsync({
+    /// var response = await adminApi.GetSegmentExportAsync({
     ///   "ExportId": "ABCDEF1234567890"
     /// });
     /// </code></example>
@@ -784,7 +784,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Get detail information of a segment and its associated definition(s) and action(s) for a title.
     /// <example><br/>Example:<code>
-    /// var response = await segmentsApi.GetSegmentsAsync({
+    /// var response = await adminApi.GetSegmentsAsync({
     ///   "SegmentIds": [
     ///     "B05FC8CB558A6570",
     ///     "97EF0E9302CBE996"
@@ -797,7 +797,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the build details for the specified game server executable
     /// <example><br/>Example:<code>
-    /// var response = await custom-server-managementApi.GetServerBuildInfoAsync({
+    /// var response = await adminApi.GetServerBuildInfoAsync({
     ///   "BuildId": "5.0.1"
     /// });
     /// </code></example>
@@ -808,7 +808,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the set of items defined for the specified store, including all prices defined
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.GetStoreItemsAsync({
+    /// var response = await adminApi.GetStoreItemsAsync({
     ///   "StoreId": "BonusStore"
     /// });
     /// </code></example>
@@ -819,7 +819,7 @@ public interface IPlayFabAdminApi {
     /// Retrieves Xbox Store metric data for the authenticated title, based on the specified metric name, time window, and
     /// optional dimension filters.
     /// <example><br/>Example:<code>
-    /// var response = await xbox-storeApi.GetStoreMetricsAsync({
+    /// var response = await adminApi.GetStoreMetricsAsync({
     ///   "MetricName": "page_view_count",
     ///   "LookbackPeriod": "24h",
     ///   "DimensionFilters": {
@@ -842,7 +842,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Query for task instances by task, status, or time range.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.GetTaskInstancesAsync({
+    /// var response = await adminApi.GetTaskInstancesAsync({
     ///   "StatusFilter": "Failed",
     ///   "StartedAtRangeFrom": "2016-08-23T11:00:00Z"
     /// });
@@ -853,7 +853,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Get definition information on a specified task or all tasks within a title.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.GetTasksAsync({
+    /// var response = await adminApi.GetTasksAsync({
     ///   "Identifier": {
     ///     "Name": "EnableDailyHappyHour"
     ///   }
@@ -865,7 +865,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the key-value store of custom title settings which can be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.GetTitleDataAsync({
+    /// var response = await adminApi.GetTitleDataAsync({
     ///   "Keys": [
     ///     "color",
     ///     "propertyA"
@@ -878,7 +878,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the key-value store of custom title settings which cannot be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.GetTitleInternalDataAsync({
+    /// var response = await adminApi.GetTitleInternalDataAsync({
     ///   "Keys": [
     ///     "color",
     ///     "propertyA"
@@ -891,7 +891,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the relevant details for a specified user, based upon a match against a supplied unique identifier
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.GetUserAccountInfoAsync({
+    /// var response = await adminApi.GetUserAccountInfoAsync({
     ///   "PlayFabId": "293753934",
     ///   "IgnoreMissingTitleActivation": false
     /// });
@@ -902,7 +902,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Gets all bans for a user.
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.GetUserBansAsync({
+    /// var response = await adminApi.GetUserBansAsync({
     ///   "PlayFabId": "1679AF5CD04BD838"
     /// });
     /// </code></example>
@@ -912,7 +912,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.GetUserDataAsync({
+    /// var response = await adminApi.GetUserDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -927,7 +927,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.GetUserInternalDataAsync({
+    /// var response = await adminApi.GetUserInternalDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -943,7 +943,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retrieves the specified user's current inventory of virtual goods
     /// <example><br/>Example:<code>
-    /// var response = await player-item-managementApi.GetUserInventoryAsync({
+    /// var response = await adminApi.GetUserInventoryAsync({
     ///   "PlayFabId": "204883457"
     /// });
     /// </code></example>
@@ -953,7 +953,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.GetUserPublisherDataAsync({
+    /// var response = await adminApi.GetUserPublisherDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -968,7 +968,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.GetUserPublisherInternalDataAsync({
+    /// var response = await adminApi.GetUserPublisherInternalDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -983,7 +983,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the publisher-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.GetUserPublisherReadOnlyDataAsync({
+    /// var response = await adminApi.GetUserPublisherReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -998,7 +998,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the title-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.GetUserReadOnlyDataAsync({
+    /// var response = await adminApi.GetUserReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Keys": [
     ///     "preferences",
@@ -1014,7 +1014,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Adds the specified items to the specified user inventories
     /// <example><br/>Example:<code>
-    /// var response = await player-item-managementApi.GrantItemsToUsersAsync({
+    /// var response = await adminApi.GrantItemsToUsersAsync({
     ///   "CatalogVersion": "5",
     ///   "ItemGrants": [
     ///     {
@@ -1041,7 +1041,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Increases the global count for the given scarce resource.
     /// <example><br/>Example:<code>
-    /// var response = await player-item-managementApi.IncrementLimitedEditionItemAvailabilityAsync({
+    /// var response = await adminApi.IncrementLimitedEditionItemAvailabilityAsync({
     ///   "CatalogVersion": "Rares",
     ///   "ItemId": "FreeHoodie",
     ///   "Amount": 50
@@ -1053,7 +1053,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Resets the indicated statistic, removing all player entries for it and backing up the old values.
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.IncrementPlayerStatisticVersionAsync({
+    /// var response = await adminApi.IncrementPlayerStatisticVersionAsync({
     ///   "StatisticName": "headshots"
     /// });
     /// </code></example>
@@ -1063,7 +1063,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves a list of all Open ID Connect providers registered to a title.
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.ListOpenIdConnectionAsync({});
+    /// var response = await adminApi.ListOpenIdConnectionAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/authentication/listopenidconnection">Microsoft Documentation</see>
     /// </summary>
@@ -1071,7 +1071,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves title-specific custom property values for a player.
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.ListPlayerCustomPropertiesAsync({
+    /// var response = await adminApi.ListPlayerCustomPropertiesAsync({
     ///   "PlayFabId": "2039475"
     /// });
     /// </code></example>
@@ -1081,7 +1081,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Retrieves the build details for all game server executables which are currently defined for the title
     /// <example><br/>Example:<code>
-    /// var response = await custom-server-managementApi.ListServerBuildsAsync({});
+    /// var response = await adminApi.ListServerBuildsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/listserverbuilds">Microsoft Documentation</see>
     /// </summary>
@@ -1090,7 +1090,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Retuns the list of all defined virtual currencies for the title
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.ListVirtualCurrencyTypesAsync({});
+    /// var response = await adminApi.ListVirtualCurrencyTypesAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/listvirtualcurrencytypes">Microsoft Documentation</see>
     /// </summary>
@@ -1098,7 +1098,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the game server mode details for the specified game server executable
     /// <example><br/>Example:<code>
-    /// var response = await matchmakingApi.ModifyMatchmakerGameModesAsync({
+    /// var response = await adminApi.ModifyMatchmakerGameModesAsync({
     ///   "BuildVersion": "5.0.1",
     ///   "GameModes": [
     ///     {
@@ -1121,7 +1121,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the build details for the specified game server executable
     /// <example><br/>Example:<code>
-    /// var response = await custom-server-managementApi.ModifyServerBuildAsync({
+    /// var response = await adminApi.ModifyServerBuildAsync({
     ///   "BuildId": "5.0.1",
     ///   "Timestamp": "2014-03-24T00:00:00Z",
     ///   "ActiveRegions": [
@@ -1141,7 +1141,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Attempts to process an order refund through the original real money payment provider.
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.RefundPurchaseAsync({
+    /// var response = await adminApi.RefundPurchaseAsync({
     ///   "PlayFabId": "20394883",
     ///   "OrderId": "B456AE0",
     ///   "Reason": "Customer Request"
@@ -1153,7 +1153,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Remove a given tag from a player profile. The tag's namespace is automatically generated based on the source of the tag.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.RemovePlayerTagAsync({
+    /// var response = await adminApi.RemovePlayerTagAsync({
     ///   "PlayFabId": "10931252888739651331",
     ///   "TagName": "MostKilled"
     /// });
@@ -1165,7 +1165,7 @@ public interface IPlayFabAdminApi {
     /// Removes the game server executable specified from the set of those a client is permitted to request in a call to
     /// StartGame
     /// <example><br/>Example:<code>
-    /// var response = await custom-server-managementApi.RemoveServerBuildAsync({
+    /// var response = await adminApi.RemoveServerBuildAsync({
     ///   "BuildId": "5.0.1"
     /// });
     /// </code></example>
@@ -1176,7 +1176,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Removes one or more virtual currencies from the set defined for the title.
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.RemoveVirtualCurrencyTypesAsync({
+    /// var response = await adminApi.RemoveVirtualCurrencyTypesAsync({
     ///   "VirtualCurrencies": [
     ///     {
     ///       "CurrencyCode": "CC"
@@ -1193,7 +1193,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Completely removes all statistics for the specified character, for the current game
     /// <example><br/>Example:<code>
-    /// var response = await charactersApi.ResetCharacterStatisticsAsync({
+    /// var response = await adminApi.ResetCharacterStatisticsAsync({
     ///   "PlayFabId": "293753934",
     ///   "CharacterId": "7654321"
     /// });
@@ -1204,7 +1204,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Reset a player's password for a given title.
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.ResetPasswordAsync({
+    /// var response = await adminApi.ResetPasswordAsync({
     ///   "Token": "2B584FA1DF645E4",
     ///   "Password": "ExampleSecret@r"
     /// });
@@ -1216,7 +1216,7 @@ public interface IPlayFabAdminApi {
     /// Resets all title-specific information about a particular account, including user data, virtual currency balances,
     /// inventory, purchase history, and statistics
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.ResetUsersAsync({
+    /// var response = await adminApi.ResetUsersAsync({
     ///   "Users": [
     ///     {
     ///       "Username": "John"
@@ -1230,7 +1230,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Completely removes all statistics for the specified user, for the current game
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.ResetUserStatisticsAsync({
+    /// var response = await adminApi.ResetUserStatisticsAsync({
     ///   "PlayFabId": "293753934"
     /// });
     /// </code></example>
@@ -1241,7 +1241,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Attempts to resolve a dispute with the original order's payment provider.
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.ResolvePurchaseDisputeAsync({
+    /// var response = await adminApi.ResolvePurchaseDisputeAsync({
     ///   "PlayFabId": "20394883",
     ///   "OrderId": "B456AE0",
     ///   "Reason": "Customer Request",
@@ -1254,7 +1254,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Revoke all active bans for a user.
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.RevokeAllBansForUserAsync({
+    /// var response = await adminApi.RevokeAllBansForUserAsync({
     ///   "PlayFabId": "1679AF5CD04BD838"
     /// });
     /// </code></example>
@@ -1264,7 +1264,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Revoke all active bans specified with BanId.
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.RevokeBansAsync({
+    /// var response = await adminApi.RevokeBansAsync({
     ///   "BanIds": [
     ///     "E0B5FF89542D413C",
     ///     "EF43FF89542G1546"
@@ -1278,7 +1278,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Revokes access to an item in a user's inventory
     /// <example><br/>Example:<code>
-    /// var response = await player-item-managementApi.RevokeInventoryItemAsync({
+    /// var response = await adminApi.RevokeInventoryItemAsync({
     ///   "PlayFabId": "203945882",
     ///   "ItemInstanceId": "2048583045"
     /// });
@@ -1290,7 +1290,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Revokes access for up to 25 items across multiple users and characters.
     /// <example><br/>Example:<code>
-    /// var response = await player-item-managementApi.RevokeInventoryItemsAsync({
+    /// var response = await adminApi.RevokeInventoryItemsAsync({
     ///   "Items": [
     ///     {
     ///       "PlayFabId": "203945882",
@@ -1305,7 +1305,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Run a task immediately regardless of its schedule.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.RunTaskAsync({
+    /// var response = await adminApi.RunTaskAsync({
     ///   "Identifier": {
     ///     "Id": "E1772FD927D8539D"
     ///   }
@@ -1319,7 +1319,7 @@ public interface IPlayFabAdminApi {
     /// change the password.If an account recovery email template ID is provided, an email using the custom email template will
     /// be used.
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.SendAccountRecoveryEmailAsync({
+    /// var response = await adminApi.SendAccountRecoveryEmailAsync({
     ///   "Email": "assignedemail@here.com",
     ///   "EmailTemplateId": "D53AB15D8F12E330"
     /// });
@@ -1331,7 +1331,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Creates the catalog configuration of all virtual goods for the specified catalog version
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.SetCatalogItemsAsync({
+    /// var response = await adminApi.SetCatalogItemsAsync({
     ///   "CatalogVersion": "5",
     ///   "Catalog": [
     ///     {
@@ -1630,7 +1630,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the sink to which to route PlayStream and Telemetry event data.
     /// <example><br/>Example:<code>
-    /// var response = await playstreamApi.SetEventSinkAsync({
+    /// var response = await adminApi.SetEventSinkAsync({
     ///   "Sink": {
     ///     "Name": "MyStorage",
     ///     "DestinationType": "AzureBlobStorage",
@@ -1652,7 +1652,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Sets the override expiration for a membership subscription
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.SetMembershipOverrideAsync({
+    /// var response = await adminApi.SetMembershipOverrideAsync({
     ///   "ExpirationTime": "2014-04-06T00:00:00Z",
     ///   "MembershipId": "ShieldBonusMembership",
     ///   "PlayFabId": "204883457"
@@ -1664,7 +1664,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Sets or resets the player's secret. Player secrets are used to sign API requests.
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.SetPlayerSecretAsync({
+    /// var response = await adminApi.SetPlayerSecretAsync({
     ///   "PlayerSecret": "ExampleSecret",
     ///   "PlayFabId": "ABCD1234"
     /// });
@@ -1675,7 +1675,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Sets the currently published revision of a title Cloud Script
     /// <example><br/>Example:<code>
-    /// var response = await server-side-cloud-scriptApi.SetPublishedRevisionAsync({
+    /// var response = await adminApi.SetPublishedRevisionAsync({
     ///   "Version": 1,
     ///   "Revision": 3
     /// });
@@ -1686,7 +1686,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the key-value store of custom publisher settings
     /// <example><br/>Example:<code>
-    /// var response = await shared-group-dataApi.SetPublisherDataAsync({
+    /// var response = await adminApi.SetPublisherDataAsync({
     ///   "Key": "Running Speed",
     ///   "Value": "1.03"
     /// });
@@ -1698,7 +1698,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Sets all the items in one virtual store
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.SetStoreItemsAsync({
+    /// var response = await adminApi.SetStoreItemsAsync({
     ///   "StoreId": "BonusStore",
     ///   "Store": [
     ///     {
@@ -1736,7 +1736,7 @@ public interface IPlayFabAdminApi {
     /// movement speeds, etc. This allows a developer to update the title without the need to create, test, and ship a new
     /// build.
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.SetTitleDataAsync({
+    /// var response = await adminApi.SetTitleDataAsync({
     ///   "Key": "Running Speed",
     ///   "Value": "1.03"
     /// });
@@ -1747,7 +1747,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Set and delete key-value pairs in a title data override instance.
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.SetTitleDataAndOverridesAsync({
+    /// var response = await adminApi.SetTitleDataAndOverridesAsync({
     ///   "OverrideLabel": "Holiday title data",
     ///   "TitleId": "8FF3A797",
     ///   "KeyValues": [
@@ -1769,7 +1769,7 @@ public interface IPlayFabAdminApi {
     /// Updates the key-value store of custom title settings which cannot be read by the client. These values can be used to
     /// tweak settings used by game servers and Cloud Scripts without the need to update and re-deploy.
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.SetTitleInternalDataAsync({
+    /// var response = await adminApi.SetTitleInternalDataAsync({
     ///   "Key": "Running Speed",
     ///   "Value": "1.03"
     /// });
@@ -1782,7 +1782,7 @@ public interface IPlayFabAdminApi {
     /// be found at: http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html. Currently, Amazon device
     /// Messaging is not supported.
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.SetupPushNotificationAsync({
+    /// var response = await adminApi.SetupPushNotificationAsync({
     ///   "Platform": "APNS_SANDBOX",
     ///   "Key": "MyKey123",
     ///   "Credential": "MyCredentialsXYZ",
@@ -1796,7 +1796,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Decrements the specified virtual currency by the stated amount
     /// <example><br/>Example:<code>
-    /// var response = await player-item-managementApi.SubtractUserVirtualCurrencyAsync({
+    /// var response = await adminApi.SubtractUserVirtualCurrencyAsync({
     ///   "PlayFabId": "20394883",
     ///   "VirtualCurrency": "GC",
     ///   "Amount": 100
@@ -1808,7 +1808,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates information of a list of existing bans specified with Ban Ids.
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.UpdateBansAsync({
+    /// var response = await adminApi.UpdateBansAsync({
     ///   "Bans": [
     ///     {
     ///       "BanId": "E0B5FF89542D413C",
@@ -1830,7 +1830,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Updates the catalog configuration for virtual goods in the specified catalog version
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.UpdateCatalogItemsAsync({
+    /// var response = await adminApi.UpdateCatalogItemsAsync({
     ///   "CatalogVersion": "5",
     ///   "Catalog": [
     ///     {
@@ -2130,7 +2130,7 @@ public interface IPlayFabAdminApi {
     /// Creates a new Cloud Script revision and uploads source code to it. Note that at this time, only one file should be
     /// submitted in the revision.
     /// <example><br/>Example:<code>
-    /// var response = await server-side-cloud-scriptApi.UpdateCloudScriptAsync({
+    /// var response = await adminApi.UpdateCloudScriptAsync({
     ///   "Files": [
     ///     {
     ///       "Filename": "main.js",
@@ -2146,7 +2146,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Modifies data and credentials for an existing relationship between a title and an Open ID Connect provider
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.UpdateOpenIdConnectionAsync({
+    /// var response = await adminApi.UpdateOpenIdConnectionAsync({
     ///   "ConnectionId": "oidconnection1",
     ///   "ClientId": "example_id_1",
     ///   "ClientSecret": "new_example_secret",
@@ -2169,7 +2169,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the title-specific custom property values for a player
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.UpdatePlayerCustomPropertiesAsync({
+    /// var response = await adminApi.UpdatePlayerCustomPropertiesAsync({
     ///   "PlayFabId": "2039475",
     ///   "Properties": [
     ///     {
@@ -2191,7 +2191,7 @@ public interface IPlayFabAdminApi {
     /// Updates a existing Player Shared Secret Key. It may take up to 5 minutes for this update to become generally available
     /// after this API returns.
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.UpdatePlayerSharedSecretAsync({
+    /// var response = await adminApi.UpdatePlayerSharedSecretAsync({
     ///   "SecretKey": "keysaresecret",
     ///   "FriendlyName": "XBox Users",
     ///   "Disabled": false
@@ -2203,7 +2203,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates a player statistic configuration for the title, optionally allowing the developer to specify a reset interval.
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.UpdatePlayerStatisticDefinitionAsync({
+    /// var response = await adminApi.UpdatePlayerStatisticDefinitionAsync({
     ///   "StatisticName": "headshots",
     ///   "VersionChangeInterval": "Day",
     ///   "ShouldProvisionLeaderboard": false
@@ -2215,7 +2215,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Changes a policy for a title
     /// <example><br/>Example:<code>
-    /// var response = await authenticationApi.UpdatePolicyAsync({
+    /// var response = await adminApi.UpdatePolicyAsync({
     ///   "PolicyName": "ApiPolicy",
     ///   "Statements": [
     ///     {
@@ -2244,7 +2244,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Updates the random drop table configuration for the title
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.UpdateRandomResultTablesAsync({
+    /// var response = await adminApi.UpdateRandomResultTablesAsync({
     ///   "Tables": [
     ///     {
     ///       "TableId": "DropTable 1",
@@ -2275,7 +2275,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates an existing player segment and its associated definition(s) and action(s) for a title.
     /// <example><br/>Example:<code>
-    /// var response = await segmentsApi.UpdateSegmentAsync({
+    /// var response = await adminApi.UpdateSegmentAsync({
     ///   "SegmentModel": {
     ///     "SegmentId": "B05FC8CB558A6570",
     ///     "Name": "My user segment",
@@ -2316,7 +2316,7 @@ public interface IPlayFabAdminApi {
     /// _NOTE: This is a Legacy Economy API, and is in bugfix-only mode. All new Economy features are being developed only for
     /// version 2._ Updates an existing virtual item store with new or modified items
     /// <example><br/>Example:<code>
-    /// var response = await title-wide-data-managementApi.UpdateStoreItemsAsync({
+    /// var response = await adminApi.UpdateStoreItemsAsync({
     ///   "StoreId": "BonusStore",
     ///   "Store": [
     ///     {
@@ -2351,7 +2351,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Update an existing task.
     /// <example><br/>Example:<code>
-    /// var response = await scheduledtaskApi.UpdateTaskAsync({
+    /// var response = await adminApi.UpdateTaskAsync({
     ///   "Identifier": {
     ///     "Name": "PushEventNotificationVIP_Halloween"
     ///   },
@@ -2379,7 +2379,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the title-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.UpdateUserDataAsync({
+    /// var response = await adminApi.UpdateUserDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2396,7 +2396,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the title-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.UpdateUserInternalDataAsync({
+    /// var response = await adminApi.UpdateUserInternalDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2412,7 +2412,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the publisher-specific custom data for the user which is readable and writable by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.UpdateUserPublisherDataAsync({
+    /// var response = await adminApi.UpdateUserPublisherDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2429,7 +2429,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the publisher-specific custom data for the user which cannot be accessed by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.UpdateUserPublisherInternalDataAsync({
+    /// var response = await adminApi.UpdateUserPublisherInternalDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2445,7 +2445,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the publisher-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.UpdateUserPublisherReadOnlyDataAsync({
+    /// var response = await adminApi.UpdateUserPublisherReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2462,7 +2462,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the title-specific custom data for the user which can only be read by the client
     /// <example><br/>Example:<code>
-    /// var response = await player-data-managementApi.UpdateUserReadOnlyDataAsync({
+    /// var response = await adminApi.UpdateUserReadOnlyDataAsync({
     ///   "PlayFabId": "2039475",
     ///   "Data": {
     ///     "Class": "Fighter",
@@ -2479,7 +2479,7 @@ public interface IPlayFabAdminApi {
     /// <summary>
     /// Updates the title specific display name for a user
     /// <example><br/>Example:<code>
-    /// var response = await account-managementApi.UpdateUserTitleDisplayNameAsync({
+    /// var response = await adminApi.UpdateUserTitleDisplayNameAsync({
     ///   "PlayFabId": "293438",
     ///   "DisplayName": "New Display Name"
     /// });
