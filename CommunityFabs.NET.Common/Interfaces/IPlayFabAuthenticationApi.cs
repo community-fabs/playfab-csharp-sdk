@@ -5,7 +5,7 @@ public interface IPlayFabAuthenticationApi {
     /// <summary>
     /// Create a game_server entity token and return a new or existing game_server entity.
     /// <example><br/>Example:<code>
-    /// var response = await gameserveridentityApi.AuthenticateGameServerWithCustomIdAsync({
+    /// var response = await authenticationApi.AuthenticateGameServerWithCustomIdAsync({
     ///   "CustomId": "12345678123412341234123456789abc"
     /// });
     /// </code></example>
@@ -15,7 +15,7 @@ public interface IPlayFabAuthenticationApi {
     /// <summary>
     /// Delete a game_server entity.
     /// <example><br/>Example:<code>
-    /// var response = await gameserveridentityApi.DeleteAsync({
+    /// var response = await authenticationApi.DeleteAsync({
     ///   "Entity": {
     ///     "Id": "3D00C64954",
     ///     "Type": "game_server",

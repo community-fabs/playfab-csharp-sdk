@@ -10,7 +10,7 @@ public interface IPlayFabStateApi {
     /// <summary>
     /// Create state.
     /// <example><br/>Example:<code>
-    /// var response = await stateshareApi.CreateStateAsync({
+    /// var response = await player-data-managementApi.CreateStateAsync({
     ///   "Description": "Specific map location",
     ///   "Expiry": "2023-12-01T20:20:20Z",
     ///   "Label": "Map location",
@@ -27,7 +27,7 @@ public interface IPlayFabStateApi {
     /// <summary>
     /// Deletes a link.
     /// <example><br/>Example:<code>
-    /// var response = await stateshareApi.DeleteLinkForStateAsync({
+    /// var response = await player-data-managementApi.DeleteLinkForStateAsync({
     ///   "StateId": "77a00990-50d1-4703-a018-68bfa2c46750"
     /// });
     /// </code></example>
@@ -37,7 +37,7 @@ public interface IPlayFabStateApi {
     /// <summary>
     /// Delete state.
     /// <example><br/>Example:<code>
-    /// var response = await stateshareApi.DeleteStateAsync({
+    /// var response = await player-data-managementApi.DeleteStateAsync({
     ///   "Id": "4eb6d9f2-bc22-4d3d-823e-8ada5773a41a"
     /// });
     /// </code></example>
@@ -47,7 +47,7 @@ public interface IPlayFabStateApi {
     /// <summary>
     /// Get public and private metadata for a link.
     /// <example><br/>Example:<code>
-    /// var response = await stateshareApi.GetLinkMetadataAsync({
+    /// var response = await player-data-managementApi.GetLinkMetadataAsync({
     ///   "LinkToken": "sometoken"
     /// });
     /// </code></example>
@@ -57,7 +57,7 @@ public interface IPlayFabStateApi {
     /// <summary>
     /// Get state.
     /// <example><br/>Example:<code>
-    /// var response = await stateshareApi.GetStateAsync({
+    /// var response = await player-data-managementApi.GetStateAsync({
     ///   "Id": "25078688-3905-4b10-a780-374a2e4364f3",
     ///   "PlatformToken": "sometoken"
     /// });
@@ -68,7 +68,7 @@ public interface IPlayFabStateApi {
     /// <summary>
     /// List state ids.
     /// <example><br/>Example:<code>
-    /// var response = await stateshareApi.ListStateIdsAsync({});
+    /// var response = await player-data-managementApi.ListStateIdsAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/stateshare/player-data-management/liststateids">Microsoft Documentation</see>
     /// </summary>

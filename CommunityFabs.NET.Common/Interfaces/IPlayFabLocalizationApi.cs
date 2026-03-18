@@ -5,7 +5,7 @@ public interface IPlayFabLocalizationApi {
     /// <summary>
     /// Retrieves the list of allowed languages, only accessible by title entities
     /// <example><br/>Example:<code>
-    /// var response = await localeApi.GetLanguageListAsync({});
+    /// var response = await localizationApi.GetLanguageListAsync({});
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/locale/localization/getlanguagelist">Microsoft Documentation</see>
     /// </summary>
