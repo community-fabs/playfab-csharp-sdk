@@ -6,7 +6,7 @@ namespace CommunityFabs.NET.Common.Interfaces;
 public interface @($"IPlayFab{Model.Name}Api") {
 @foreach (var apiCall in Model.Calls!)
 {
-    @(Html.Raw(apiCall.GetSummary("    /// ")))
+    @(Html.Raw(apiCall.GetSummary("    /// ", Model.Name)))
     @Html.Raw($"    public Task<PlayFabResult<{apiCall.Result}>> {apiCall.Name}Async({apiCall.Request} request, Dictionary<string, string>? extraHeaders);\r\n")
 }
 }

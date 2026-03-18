@@ -305,7 +305,7 @@ public class LegacyApiCall
         return $"https://docs.microsoft.com/rest/api/playfab/{apiName}/{apiCategory}/{Name?.ToLowerInvariant()}";
     }
 
-    public string GetSummary(string prefix = "/// ")
+    public string GetSummary(string prefix = "/// ", string docName = "")
     {
         if (string.IsNullOrEmpty(Summary))
         {
@@ -325,16 +325,18 @@ public class LegacyApiCall
 
         if (!string.IsNullOrEmpty(RequestExample))
         {
-            var apiCategory = Subgroup?.ToLowerInvariant().Replace(" ", "-") ?? "unknown";
+            var category = string.IsNullOrEmpty(docName) ? 
+                Url!.Split('/')[1]!.ToLowerInvariant() :
+                char.ToLowerInvariant(docName[0]) + docName[1..];
             var requestLines = RequestExample.Split("\n");
             summary.AppendLine($"{prefix}<example><br/>Example:<code>");
             if (requestLines.Length == 1)
             {
-                summary.AppendLine($"{prefix}var response = await {apiCategory}Api.{Name}Async({requestLines[0]});");
+                summary.AppendLine($"{prefix}var response = await {category}Api.{Name}Async({requestLines[0]});");
             }
             else
             {
-                summary.AppendLine($"{prefix}var response = await {apiCategory}Api.{Name}Async({requestLines[0]}");
+                summary.AppendLine($"{prefix}var response = await {category}Api.{Name}Async({requestLines[0]}");
                 for (int i = 1; i < requestLines.Length; i++)
                 {
                     var requestLine = requestLines[i].TrimEnd()
