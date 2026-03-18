@@ -36,6 +36,10 @@ jobs:
             </packageSources>
           </configuration>' > nuget.config
 
+      - name: Create local nupkg folder
+        run: |
+          mkdir nupkgs
+
       - name: 📦 Pack CommunityFabs.NET.Common
         run: |
           dotnet pack ./CommunityFabs.NET.Common/CommunityFabs.NET.Common.csproj -c Release -o ./nupkgs
