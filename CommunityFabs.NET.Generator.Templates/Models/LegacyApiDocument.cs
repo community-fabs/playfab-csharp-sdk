@@ -325,16 +325,16 @@ public class LegacyApiCall
 
         if (!string.IsNullOrEmpty(RequestExample))
         {
-            var apiName = Url!.Split('/')[1]!.ToLowerInvariant();
+            var apiCategory = Subgroup?.ToLowerInvariant().Replace(" ", "-") ?? "unknown";
             var requestLines = RequestExample.Split("\n");
             summary.AppendLine($"{prefix}<example><br/>Example:<code>");
             if (requestLines.Length == 1)
             {
-                summary.AppendLine($"{prefix}var response = await {apiName}Api.{Name}Async({requestLines[0]});");
+                summary.AppendLine($"{prefix}var response = await {apiCategory}Api.{Name}Async({requestLines[0]});");
             }
             else
             {
-                summary.AppendLine($"{prefix}var response = await {apiName}Api.{Name}Async({requestLines[0]}");
+                summary.AppendLine($"{prefix}var response = await {apiCategory}Api.{Name}Async({requestLines[0]}");
                 for (int i = 1; i < requestLines.Length; i++)
                 {
                     var requestLine = requestLines[i].TrimEnd()
