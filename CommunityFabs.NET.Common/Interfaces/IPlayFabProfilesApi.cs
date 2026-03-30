@@ -14,6 +14,7 @@ public interface IPlayFabProfilesApi {
     /// Retrieves the entity's profile.
     /// <example><br/>Example:<code>
     /// var response = await profilesApi.GetProfileAsync({
+    ///   "IncludeStatistics": false,
     ///   "Entity": {
     ///     "Id": "1234567787392",
     ///     "Type": "title_player_account",
@@ -28,6 +29,7 @@ public interface IPlayFabProfilesApi {
     /// Retrieves the entity's profile.
     /// <example><br/>Example:<code>
     /// var response = await profilesApi.GetProfilesAsync({
+    ///   "IncludeStatistics": false,
     ///   "Entities": [
     ///     {
     ///       "Id": "1234567787392",

@@ -2977,6 +2977,7 @@ public enum GenericErrorCodes {
     ParentCustomerAccountNotFound,
     AccountLinkedToABannedPlayer,
     AzureSubscriptionNotEligibleForLinking,
+    EntityIsNotAMember,
     MatchmakingEntityInvalid,
     MatchmakingPlayerAttributesInvalid,
     MatchmakingQueueNotFound,
@@ -3094,6 +3095,8 @@ public enum GenericErrorCodes {
     ExperimentationExclusionGroupInvalidName,
     ExperimentationLegacyExperimentInvalidOperation,
     ExperimentationExperimentStopFailed,
+    ExperimentationExperimentDeleteFailed,
+    ExperimentationExperimentStartFailed,
     MaxActionDepthExceeded,
     TitleNotOnUpdatedPricingPlan,
     SegmentManagementTitleNotInFlight,
@@ -3291,6 +3294,7 @@ public enum GenericErrorCodes {
     GameSaveConflict,
     GameSaveManifestNotEligibleForRollback,
     GameSaveTitleClientAnonymousAccountCreationNotDisabled,
+    GameSaveTitleConfigNoUpdatesRequested,
     StateShareForbidden,
     StateShareTitleNotInFlight,
     StateShareStateNotFound,
@@ -3914,12 +3918,17 @@ public class GetPlayerTagsResult : PlayFabResultCommon {
 /// </summary>
 public class GetPolicyRequest : PlayFabRequestCommon {
     /// <summary>
-    /// The name of the policy to read. Only supported name is 'ApiPolicy'.
+    /// The name of the policy to read. Only 'ApiPolicy' is supported. This parameter is optional and defaults to 'ApiPolicy'
+    /// if omitted.
     /// </summary>
     public string? PolicyName { get; set; }
 }
 
 public class GetPolicyResponse : PlayFabResultCommon {
+    /// <summary>
+    /// The UTC date and time when the policy was last updated. Null if the policy has never been customized.
+    /// </summary>
+    public DateTime? LastUpdated { get; set; }
     /// <summary>
     /// The name of the policy read.
     /// </summary>
@@ -5087,9 +5096,9 @@ public class OpenIdIssuerInformation {
 
 public class PermissionStatement {
     /// <summary>
-    /// The action this statement effects. The only supported action is 'Execute'.
+    /// The action this statement effects. May only be '*'. This parameter is optional and defaults to '*' if omitted.
     /// </summary>
-    public required string Action { get; set; }
+    public string? Action { get; set; }
     /// <summary>
     /// Additional conditions to be applied for API Resources.
     /// </summary>
@@ -5103,7 +5112,8 @@ public class PermissionStatement {
     /// </summary>
     public EffectType Effect { get; set; }
     /// <summary>
-    /// The principal this statement will effect. The only supported principal is '*'.
+    /// The principal this statement will effect. May be '*' to match all callers, or a JSON object targeting a specific entity
+    /// type, e.g. {"title_player_account":"*"} for players or {"master_player_account":"*"} for master player accounts.
     /// </summary>
     public required string Principal { get; set; }
     /// <summary>
@@ -7507,9 +7517,10 @@ public class UpdatePolicyRequest : PlayFabRequestCommon {
     /// </summary>
     public bool OverwritePolicy { get; set; }
     /// <summary>
-    /// The name of the policy being updated. Only supported name is 'ApiPolicy'
+    /// The name of the policy being updated. Only 'ApiPolicy' is supported. This parameter is optional and defaults to
+    /// 'ApiPolicy' if omitted.
     /// </summary>
-    public required string PolicyName { get; set; }
+    public string? PolicyName { get; set; }
     /// <summary>
     /// Version of the policy to update. Must be the latest (as returned by GetPolicy).
     /// </summary>
@@ -7529,6 +7540,11 @@ public class UpdatePolicyResponse : PlayFabResultCommon {
     /// The statements included in the new version of the policy.
     /// </summary>
     public List<PermissionStatement>? Statements { get; set; }
+    /// <summary>
+    /// Optional warnings about policy statements that may not have the intended effect. For example, resource paths that don't
+    /// match any known API endpoint. The policy update still succeeds when warnings are present.
+    /// </summary>
+    public List<string>? Warnings { get; set; }
 }
 
 public class UpdateProperty {

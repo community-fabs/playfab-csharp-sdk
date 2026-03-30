@@ -149,6 +149,10 @@ public class EntityProfileBody {
     /// </summary>
     public Dictionary<string, EntityStatisticValue>? Statistics { get; set; }
     /// <summary>
+    /// A mapping of statistic name to the columns defined in the corresponding definition.
+    /// </summary>
+    public Dictionary<string, StatisticColumnCollection>? StatisticsColumnDetails { get; set; }
+    /// <summary>
     /// The version number of the profile in persistent storage at the time of the read. Used for optional optimistic
     /// concurrency during update.
     /// </summary>
@@ -217,6 +221,10 @@ public class GetEntityProfileRequest : PlayFabRequestCommon {
     /// The optional entity to perform this action on. Defaults to the currently logged in entity.
     /// </summary>
     public EntityKey? Entity { get; set; }
+    /// <summary>
+    /// Determines whether the entity statistics will be returned in the entity profile. Default is false.
+    /// </summary>
+    public bool IncludeStatistics { get; set; }
 }
 
 public class GetEntityProfileResponse : PlayFabResultCommon {
@@ -244,6 +252,10 @@ public class GetEntityProfilesRequest : PlayFabRequestCommon {
     /// Entity keys of the profiles to load. Must be between 1 and 25
     /// </summary>
     public required List<EntityKey> Entities { get; set; }
+    /// <summary>
+    /// Determines whether the entity statistics will be returned in the entity profile. Default is false.
+    /// </summary>
+    public bool IncludeStatistics { get; set; }
 }
 
 public class GetEntityProfilesResponse : PlayFabResultCommon {
@@ -494,5 +506,30 @@ public class SetProfileLanguageResponse : PlayFabResultCommon {
     /// The updated version of the profile after the language update
     /// </summary>
     public int? VersionNumber { get; set; }
+}
+
+public enum StatisticAggregationMethod {
+    Last,
+    Min,
+    Max,
+    Sum,
+}
+
+public class StatisticColumn {
+    /// <summary>
+    /// Aggregation method for calculating new value of a statistic.
+    /// </summary>
+    public StatisticAggregationMethod AggregationMethod { get; set; }
+    /// <summary>
+    /// Name of the statistic column, as originally configured.
+    /// </summary>
+    public required string Name { get; set; }
+}
+
+public class StatisticColumnCollection {
+    /// <summary>
+    /// Columns for the statistic defining the aggregation method for each column.
+    /// </summary>
+    public List<StatisticColumn>? Columns { get; set; }
 }
 
