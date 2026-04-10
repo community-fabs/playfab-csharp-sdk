@@ -1392,6 +1392,27 @@ public class ExecuteCloudScriptServerRequest : PlayFabRequestCommon {
     public int? SpecificRevision { get; set; }
 }
 
+/// <summary>
+/// Request must contain the Segment ID
+/// </summary>
+public class ExportPlayersInSegmentRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// Unique identifier of the requested segment.
+    /// </summary>
+    public required string SegmentId { get; set; }
+}
+
+public class ExportPlayersInSegmentResult : PlayFabResultCommon {
+    /// <summary>
+    /// Unique identifier of the export for the requested Segment.
+    /// </summary>
+    public string? ExportId { get; set; }
+    /// <summary>
+    /// Unique identifier of the requested Segment.
+    /// </summary>
+    public string? SegmentId { get; set; }
+}
+
 public enum ExternalFriendSources {
     None,
     Steam,
@@ -2217,6 +2238,8 @@ public enum GenericErrorCodes {
     AsyncExportRateLimitExceeded,
     AnalyticsSegmentCountOverLimit,
     GetPlayersInSegmentRetired,
+    GetSegmentPlayerCountNotInFlight,
+    GetSegmentPlayerCountRateLimitExceeded,
     SnapshotNotFound,
     InventoryApiNotImplemented,
     InventoryCollectionDeletionDisallowed,
@@ -2397,6 +2420,7 @@ public enum GenericErrorCodes {
     GameSaveManifestNotEligibleForRollback,
     GameSaveTitleClientAnonymousAccountCreationNotDisabled,
     GameSaveTitleConfigNoUpdatesRequested,
+    GameSavePlayerNotEligibleForTransfer,
     StateShareForbidden,
     StateShareTitleNotInFlight,
     StateShareStateNotFound,
@@ -3151,6 +3175,27 @@ public class GetPlayerSegmentsResult : PlayFabResultCommon {
     /// Array of segments the requested player currently belongs to.
     /// </summary>
     public List<GetSegmentResult>? Segments { get; set; }
+}
+
+/// <summary>
+/// Request must contain the ExportId
+/// </summary>
+public class GetPlayersInSegmentExportRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// Unique identifier of the export for the requested Segment.
+    /// </summary>
+    public required string ExportId { get; set; }
+}
+
+public class GetPlayersInSegmentExportResponse : PlayFabResultCommon {
+    /// <summary>
+    /// Url from which the index file can be downloaded.
+    /// </summary>
+    public string? IndexUrl { get; set; }
+    /// <summary>
+    /// Shows the current status of the export
+    /// </summary>
+    public string? State { get; set; }
 }
 
 /// <summary>

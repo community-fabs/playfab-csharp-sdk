@@ -287,6 +287,18 @@ public interface IPlayFabServerApi {
     /// </summary>
     public Task<PlayFabResult<ExecuteCloudScriptResult>> ExecuteCloudScriptAsync(ExecuteCloudScriptServerRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Starts an export for the player profiles in a segment. This API creates a snapshot of all the player profiles which
+    /// match the segment definition at the time of the API call. Profiles which change while an export is in progress will not
+    /// be reflected in the results.
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.ExportPlayersInSegmentAsync({
+    ///   "SegmentId": "ABCDEF1234567890"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/exportplayersinsegment">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<ExportPlayersInSegmentResult>> ExportPlayersInSegmentAsync(ExportPlayersInSegmentRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Retrieve a list of all PlayStream actions groups.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.GetAllActionGroupsAsync({});
@@ -829,6 +841,19 @@ public interface IPlayFabServerApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/player-item-management/getrandomresulttables">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<GetRandomResultTablesResult>> GetRandomResultTablesAsync(GetRandomResultTablesRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Retrieves the result of an export started by ExportPlayersInSegment API. If the ExportPlayersInSegment is successful
+    /// and complete, this API returns the IndexUrl from which the index file can be downloaded. The index file has a list of
+    /// urls from which the files containing the player profile data can be downloaded. Otherwise, it returns the current
+    /// 'State' of the export
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.GetSegmentExportAsync({
+    ///   "ExportId": "ABCDEF1234567890"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/getsegmentexport">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<GetPlayersInSegmentExportResponse>> GetSegmentExportAsync(GetPlayersInSegmentExportRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the associated PlayFab account identifiers for the given set of server custom identifiers.
     /// <example><br/>Example:<code>

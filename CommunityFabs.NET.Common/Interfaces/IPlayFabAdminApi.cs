@@ -2487,4 +2487,25 @@ public interface IPlayFabAdminApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/account-management/updateusertitledisplayname">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<UpdateUserTitleDisplayNameResult>> UpdateUserTitleDisplayNameAsync(UpdateUserTitleDisplayNameRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Validates the result of a policy update without persisting it.
+    /// <example><br/>Example:<code>
+    /// var response = await adminApi.ValidateApiPolicyAsync({
+    ///   "PolicyName": "ApiPolicy",
+    ///   "Statements": [
+    ///     {
+    ///       "Resource": "pfrn:api--/Client/*",
+    ///       "Action": "*",
+    ///       "Effect": "Allow",
+    ///       "Principal": "*",
+    ///       "Comment": "Allow all client APIs"
+    ///     }
+    ///   ],
+    ///   "OverwritePolicy": true,
+    ///   "PolicyVersion": 13
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/authentication/validateapipolicy">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<ValidateApiPolicyResponse>> ValidateApiPolicyAsync(ValidateApiPolicyRequest request, Dictionary<string, string>? extraHeaders);
 }

@@ -3115,6 +3115,8 @@ public enum GenericErrorCodes {
     AsyncExportRateLimitExceeded,
     AnalyticsSegmentCountOverLimit,
     GetPlayersInSegmentRetired,
+    GetSegmentPlayerCountNotInFlight,
+    GetSegmentPlayerCountRateLimitExceeded,
     SnapshotNotFound,
     InventoryApiNotImplemented,
     InventoryCollectionDeletionDisallowed,
@@ -3295,6 +3297,7 @@ public enum GenericErrorCodes {
     GameSaveManifestNotEligibleForRollback,
     GameSaveTitleClientAnonymousAccountCreationNotDisabled,
     GameSaveTitleConfigNoUpdatesRequested,
+    GameSavePlayerNotEligibleForTransfer,
     StateShareForbidden,
     StateShareTitleNotInFlight,
     StateShareStateNotFound,
@@ -5529,6 +5532,30 @@ public class PlayerStatisticVersion {
     /// version of the statistic
     /// </summary>
     public uint Version { get; set; }
+}
+
+public class PolicyDiffSummary {
+    /// <summary>
+    /// Number of new statements that would be added.
+    /// </summary>
+    public int StatementsAdded { get; set; }
+    /// <summary>
+    /// Number of existing statements that would be removed. Only applicable when OverwritePolicy is true.
+    /// </summary>
+    public int StatementsRemoved { get; set; }
+    /// <summary>
+    /// Number of existing statements that would be replaced by functionally equivalent incoming statements (e.g., same
+    /// resource/effect/principal but different comment).
+    /// </summary>
+    public int StatementsReplaced { get; set; }
+    /// <summary>
+    /// Number of existing statements that would remain unchanged.
+    /// </summary>
+    public int StatementsUnchanged { get; set; }
+    /// <summary>
+    /// Total number of statements in the resulting policy.
+    /// </summary>
+    public int TotalResultingStatements { get; set; }
 }
 
 public class PushNotificationContent {
@@ -8197,6 +8224,62 @@ public class UserXboxInfo {
     /// XBox user sandbox
     /// </summary>
     public string? XboxUserSandbox { get; set; }
+}
+
+/// <summary>
+/// Validates the proposed policy change and returns the resulting merged policy, validation errors, warnings, and a diff
+/// summary showing what would change. Use this to validate the impact of a policy update before calling UpdatePolicy. No
+/// changes are saved.
+/// </summary>
+public class ValidateApiPolicyRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// Whether the validation should simulate overwriting or appending to the existing policy.
+    /// </summary>
+    public bool OverwritePolicy { get; set; }
+    /// <summary>
+    /// The name of the policy to validate. Only 'ApiPolicy' is supported. This parameter is optional and defaults to
+    /// 'ApiPolicy' if omitted.
+    /// </summary>
+    public string? PolicyName { get; set; }
+    /// <summary>
+    /// Version of the policy to validate against. Must be the latest (as returned by GetPolicy).
+    /// </summary>
+    public int PolicyVersion { get; set; }
+    /// <summary>
+    /// The statements to validate.
+    /// </summary>
+    public required List<PermissionStatement> Statements { get; set; }
+}
+
+public class ValidateApiPolicyResponse : PlayFabResultCommon {
+    /// <summary>
+    /// Summary of what would change compared to the current policy.
+    /// </summary>
+    public PolicyDiffSummary? Diff { get; set; }
+    /// <summary>
+    /// Whether the proposed policy is valid and would be accepted by UpdatePolicy.
+    /// </summary>
+    public bool IsValid { get; set; }
+    /// <summary>
+    /// The name of the policy validated.
+    /// </summary>
+    public string? PolicyName { get; set; }
+    /// <summary>
+    /// Policy version.
+    /// </summary>
+    public int PolicyVersion { get; set; }
+    /// <summary>
+    /// The full set of statements that would result from applying this update.
+    /// </summary>
+    public List<PermissionStatement>? ResultingStatements { get; set; }
+    /// <summary>
+    /// Validation errors that would cause UpdatePolicy to reject this request. Empty if IsValid is true.
+    /// </summary>
+    public List<string>? ValidationErrors { get; set; }
+    /// <summary>
+    /// Non-blocking warnings about the proposed policy (e.g., near statement limit, duplicate statements).
+    /// </summary>
+    public List<string>? Warnings { get; set; }
 }
 
 public class ValueToDateModel {

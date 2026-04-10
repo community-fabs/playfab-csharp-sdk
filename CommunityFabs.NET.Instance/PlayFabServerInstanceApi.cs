@@ -432,6 +432,25 @@ public class PlayFabServerInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
     }
 
     /// <inheritdoc />
+    public async Task<PlayFabResult<ExportPlayersInSegmentResult>> ExportPlayersInSegmentAsync(ExportPlayersInSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Server/ExportPlayersInSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<ExportPlayersInSegmentResult> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<ExportPlayersInSegmentResult>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<ExportPlayersInSegmentResult> { Result = result };
+    }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<GetAllActionGroupsResult>> GetAllActionGroupsAsync(GetAllActionGroupsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1189,6 +1208,25 @@ public class PlayFabServerInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
         var result = resultData!.data;
 
         return new PlayFabResult<GetRandomResultTablesResult> { Result = result };
+    }
+
+    /// <inheritdoc />
+    public async Task<PlayFabResult<GetPlayersInSegmentExportResponse>> GetSegmentExportAsync(GetPlayersInSegmentExportRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Server/GetSegmentExport", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<GetPlayersInSegmentExportResponse> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetPlayersInSegmentExportResponse>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<GetPlayersInSegmentExportResponse> { Result = result };
     }
 
     /// <inheritdoc />
