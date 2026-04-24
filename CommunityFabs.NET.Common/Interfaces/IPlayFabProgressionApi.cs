@@ -110,8 +110,7 @@ public interface IPlayFabProgressionApi {
     /// Get the friend leaderboard for the specified entity. A maximum of 25 friend entries are listed in the leaderboard.
     /// <example><br/>Example:<code>
     /// var response = await progressionApi.GetFriendLeaderboardForEntityAsync({
-    ///   "LeaderboardName": "Points",
-    ///   "ExternalFriendSources": "None"
+    ///   "LeaderboardName": "Points"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/leaderboard/leaderboards/getfriendleaderboardforentity">Microsoft Documentation</see>

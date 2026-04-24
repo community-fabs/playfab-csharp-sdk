@@ -1747,7 +1747,8 @@ public class GetTransactionHistoryRequest : PlayFabRequestCommon {
     /// </summary>
     public string? ContinuationToken { get; set; }
     /// <summary>
-    /// Number of items to retrieve. This value is optional. The default value is 10
+    /// Number of items to retrieve. This value is optional. The default value is 10. The maximum value is 50, or 250 if
+    /// response compression is enabled.
     /// </summary>
     public int Count { get; set; }
     /// <summary>

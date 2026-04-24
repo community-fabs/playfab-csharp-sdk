@@ -6,12 +6,12 @@ public interface IPlayFabMultiplayerApi {
     /// Cancel all active tickets the player is a member of in a given queue.
     /// <example><br/>Example:<code>
     /// var response = await multiplayerApi.CancelAllMatchmakingTicketsForPlayerAsync({
+    ///   "QueueName": "custom123",
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
     ///     "TypeString": "title_player_account"
-    ///   },
-    ///   "QueueName": "custom123"
+    ///   }
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/cancelallmatchmakingticketsforplayer">Microsoft Documentation</see>
@@ -21,12 +21,12 @@ public interface IPlayFabMultiplayerApi {
     /// Cancel all active backfill tickets the player is a member of in a given queue.
     /// <example><br/>Example:<code>
     /// var response = await multiplayerApi.CancelAllServerBackfillTicketsForPlayerAsync({
+    ///   "QueueName": "custom123",
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
     ///     "TypeString": "title_player_account"
-    ///   },
-    ///   "QueueName": "custom123"
+    ///   }
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/cancelallserverbackfillticketsforplayer">Microsoft Documentation</see>
@@ -107,8 +107,8 @@ public interface IPlayFabMultiplayerApi {
     ///     "Deaths"
     ///   ],
     ///   "InitialSettingsModelId": "73a2506e-9fd3-4d84-8dd7-570c8e9e02cf",
-    ///   "MatchResultStartTimeUtc": "2026-04-10T13:33:13.627Z",
-    ///   "MatchResultEndTimeUtc": "2026-04-10T14:03:13.627Z",
+    ///   "MatchResultStartTimeUtc": "2026-04-24T13:31:41.698Z",
+    ///   "MatchResultEndTimeUtc": "2026-04-24T14:01:41.698Z",
     ///   "MaxIterations": 100,
     ///   "AnomalousMatchResultIgnoreThreshold": -20.0
     /// });
@@ -1372,12 +1372,12 @@ public interface IPlayFabMultiplayerApi {
     /// List all matchmaking ticket Ids the user is a member of.
     /// <example><br/>Example:<code>
     /// var response = await multiplayerApi.ListMatchmakingTicketsForPlayerAsync({
+    ///   "QueueName": "custom123",
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
     ///     "TypeString": "title_player_account"
-    ///   },
-    ///   "QueueName": "custom123"
+    ///   }
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/listmatchmakingticketsforplayer">Microsoft Documentation</see>
@@ -1438,12 +1438,12 @@ public interface IPlayFabMultiplayerApi {
     /// List all server backfill ticket Ids the user is a member of.
     /// <example><br/>Example:<code>
     /// var response = await multiplayerApi.ListServerBackfillTicketsForPlayerAsync({
+    ///   "QueueName": "custom123",
     ///   "Entity": {
     ///     "Id": "123123123",
     ///     "Type": "title_player_account",
     ///     "TypeString": "title_player_account"
-    ///   },
-    ///   "QueueName": "custom123"
+    ///   }
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/match/matchmaking/listserverbackfillticketsforplayer">Microsoft Documentation</see>
@@ -2131,8 +2131,8 @@ public interface IPlayFabMultiplayerApi {
     ///         "Rank": 1
     ///       }
     ///     ],
-    ///     "StartDateTimeUtc": "2026-04-10T13:33:13.618Z",
-    ///     "EndDateTimeUtc": "2026-04-10T14:03:13.619Z"
+    ///     "StartDateTimeUtc": "2026-04-24T13:31:41.687Z",
+    ///     "EndDateTimeUtc": "2026-04-24T14:01:41.687Z"
     ///   }
     /// });
     /// </code></example>

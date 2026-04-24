@@ -434,7 +434,7 @@ public class CancelAllMatchmakingTicketsForPlayerRequest : PlayFabRequestCommon 
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// The entity key of the player whose tickets should be canceled.
+    /// The optional entity to perform this action on. Defaults to the currently logged in entity.
     /// </summary>
     public EntityKey? Entity { get; set; }
     /// <summary>
@@ -457,7 +457,7 @@ public class CancelAllServerBackfillTicketsForPlayerRequest : PlayFabRequestComm
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// The entity key of the player whose backfill tickets should be canceled.
+    /// The entity to perform this action on.
     /// </summary>
     public required EntityKey Entity { get; set; }
     /// <summary>
@@ -3807,7 +3807,7 @@ public class ListMatchmakingTicketsForPlayerRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// The entity key for which to find the ticket Ids.
+    /// The optional entity to perform this action on. Defaults to the currently logged in entity.
     /// </summary>
     public EntityKey? Entity { get; set; }
     /// <summary>
@@ -3996,7 +3996,7 @@ public class ListServerBackfillTicketsForPlayerRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// The entity key for which to find the ticket Ids.
+    /// The entity to perform this action on.
     /// </summary>
     public required EntityKey Entity { get; set; }
     /// <summary>
@@ -5301,6 +5301,10 @@ public class RequestPartyServiceResponse : PlayFabResultCommon {
     /// The guid string party ID of the party session.
     /// </summary>
     public string? PartyId { get; set; }
+    /// <summary>
+    /// The region the party session is located in.
+    /// </summary>
+    public string? Region { get; set; }
     /// <summary>
     /// A base-64 encoded string containing the serialized network descriptor for this party.
     /// </summary>
