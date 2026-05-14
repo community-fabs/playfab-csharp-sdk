@@ -809,9 +809,10 @@ public class UpdateGroupRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Optional field used for concurrency control. By specifying the previously returned value of ProfileVersion from the
-    /// GetGroup API, you can ensure that the group data update will only be performed if the group has not been updated by any
-    /// other clients since the version you last loaded.
+    /// Optional field used for concurrency control. By specifying the previously returned ProfileVersion value from the
+    /// GetGroup API, you can ensure that the group data update is performed only if the group has not been updated since you
+    /// last loaded that version. If the same group has been updated, the requested update will not occur and the returned
+    /// SetResult value will be None.
     /// </summary>
     public int? ExpectedProfileVersion { get; set; }
     /// <summary>
@@ -852,9 +853,10 @@ public class UpdateGroupRoleRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Optional field used for concurrency control. By specifying the previously returned value of ProfileVersion from the
-    /// GetGroup API, you can ensure that the group data update will only be performed if the group has not been updated by any
-    /// other clients since the version you last loaded.
+    /// Optional field used for concurrency control. By specifying the previously returned ProfileVersion value from the
+    /// GetGroup API, you can ensure that the group role update is performed only if the group has not been updated since you
+    /// last loaded that version. If the same group has been updated, the requested update will not occur and the returned
+    /// SetResult value will be None.
     /// </summary>
     public int? ExpectedProfileVersion { get; set; }
     /// <summary>

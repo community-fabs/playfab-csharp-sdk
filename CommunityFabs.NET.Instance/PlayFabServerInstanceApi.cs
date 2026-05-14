@@ -2693,6 +2693,25 @@ public class PlayFabServerInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
     }
 
     /// <inheritdoc />
+    public async Task<PlayFabResult<UnlinkAppleResult>> UnlinkAppleAsync(UnlinkAppleRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Server/UnlinkApple", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<UnlinkAppleResult> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<UnlinkAppleResult>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<UnlinkAppleResult> { Result = result };
+    }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<EmptyResponse>> UnlinkBattleNetAccountAsync(UnlinkBattleNetAccountRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -2747,6 +2766,25 @@ public class PlayFabServerInstanceApi(PlayFabApiSettings? apiSettings = null, Pl
         var result = resultData!.data;
 
         return new PlayFabResult<UnlinkFacebookInstantGamesIdResult> { Result = result };
+    }
+
+    /// <inheritdoc />
+    public async Task<PlayFabResult<UnlinkGameCenterAccountResult>> UnlinkGameCenterAccountAsync(UnlinkGameCenterAccountRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Server/UnlinkGameCenterAccount", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<UnlinkGameCenterAccountResult> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<UnlinkGameCenterAccountResult>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<UnlinkGameCenterAccountResult> { Result = result };
     }
 
     /// <inheritdoc />

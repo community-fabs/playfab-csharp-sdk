@@ -2447,6 +2447,7 @@ public enum GenericErrorCodes {
     PlayFabErrorEventNotSupportedForEntityType,
     MetadataLengthExceeded,
     MaxQueryableVersionsExceeded,
+    StatisticVersionIncrementNotAllowedWhileLinked,
     StoreMetricsRequestInvalidInput,
     StoreMetricsErrorRetrievingMetrics,
 }
@@ -6742,6 +6743,20 @@ public class TwitchPlayFabIdPair {
     public string? TwitchId { get; set; }
 }
 
+public class UnlinkAppleRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
+    public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
+    /// </summary>
+    public required string PlayFabId { get; set; }
+}
+
+public class UnlinkAppleResult : PlayFabResultCommon {
+}
+
 public class UnlinkBattleNetAccountRequest : PlayFabRequestCommon {
     /// <summary>
     /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
@@ -6783,6 +6798,20 @@ public class UnlinkFacebookInstantGamesIdRequest : PlayFabRequestCommon {
 }
 
 public class UnlinkFacebookInstantGamesIdResult : PlayFabResultCommon {
+}
+
+public class UnlinkGameCenterAccountRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
+    public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
+    /// </summary>
+    public required string PlayFabId { get; set; }
+}
+
+public class UnlinkGameCenterAccountResult : PlayFabResultCommon {
 }
 
 public class UnlinkNintendoServiceAccountRequest : PlayFabRequestCommon {

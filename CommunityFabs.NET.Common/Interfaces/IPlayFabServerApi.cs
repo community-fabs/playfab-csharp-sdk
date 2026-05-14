@@ -1851,6 +1851,16 @@ public interface IPlayFabServerApi {
     /// </summary>
     public Task<PlayFabResult<ModifyUserVirtualCurrencyResult>> SubtractUserVirtualCurrencyAsync(SubtractUserVirtualCurrencyRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Unlinks the related Apple account from the specified user's PlayFab account.
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.UnlinkAppleAsync({
+    ///   "PlayFabId": "1234FA342"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinkapple">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<UnlinkAppleResult>> UnlinkAppleAsync(UnlinkAppleRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Unlinks the related Battle.net account from the user's PlayFab account.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.UnlinkBattleNetAccountAsync({
@@ -1881,6 +1891,16 @@ public interface IPlayFabServerApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinkfacebookinstantgamesid">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<UnlinkFacebookInstantGamesIdResult>> UnlinkFacebookInstantGamesIdAsync(UnlinkFacebookInstantGamesIdRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Unlinks the related Game Center account from the specified user's PlayFab account.
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.UnlinkGameCenterAccountAsync({
+    ///   "PlayFabId": "1234FA342"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/unlinkgamecenteraccount">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<UnlinkGameCenterAccountResult>> UnlinkGameCenterAccountAsync(UnlinkGameCenterAccountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Unlinks the related Nintendo account from the user's PlayFab account
     /// <example><br/>Example:<code>
