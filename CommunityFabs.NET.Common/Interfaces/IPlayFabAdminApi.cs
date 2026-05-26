@@ -31,7 +31,8 @@ public interface IPlayFabAdminApi {
     /// var response = await adminApi.AddNewsAsync({
     ///   "Timestamp": "2014-04-06T00:00:00Z",
     ///   "Title": "News of the Day",
-    ///   "Body": "&lt;b&gt;We have a new object to buy!&lt;/b&gt;"
+    ///   "Body": "&lt;b&gt;We have a new object to buy!&lt;/b&gt;",
+    ///   "Status": "Published"
     /// });
     /// </code></example>
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/addnews">Microsoft Documentation</see>
@@ -508,7 +509,8 @@ public interface IPlayFabAdminApi {
     public Task<PlayFabResult<GetAllActionGroupsResult>> GetAllActionGroupsAsync(GetAllActionGroupsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves an array of player segment definitions. Results from this can be used in subsequent API calls such as
-    /// GetPlayersInSegment which requires a Segment ID. While segment names can change the ID for that segment will not change.
+    /// ExportPlayersInSegment which requires a Segment ID. While segment names can change the ID for that segment will not
+    /// change.
     /// <example><br/>Example:<code>
     /// var response = await adminApi.GetAllSegmentsAsync({});
     /// </code></example>
@@ -691,22 +693,6 @@ public interface IPlayFabAdminApi {
     /// </summary>
     public Task<PlayFabResult<GetPlayerSharedSecretsResult>> GetPlayerSharedSecretsAsync(GetPlayerSharedSecretsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
-    /// Allows for paging through all players in a given segment. This API creates a snapshot of all player profiles that match
-    /// the segment definition at the time of its creation and lives through the Total Seconds to Live, refreshing its life
-    /// span on each subsequent use of the Continuation Token. Profiles that change during the course of paging will not be
-    /// reflected in the results. AB Test segments are currently not supported by this operation. NOTE: This API is limited to
-    /// being called 30 times in one minute. You will be returned an error if you exceed this threshold.
-    /// <example><br/>Example:<code>
-    /// var response = await adminApi.GetPlayersInSegmentAsync({
-    ///   "SegmentId": "1337AA00",
-    ///   "SecondsToLive": 5,
-    ///   "MaxBatchSize": 500
-    /// });
-    /// </code></example>
-    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/playstream/getplayersinsegment">Microsoft Documentation</see>
-    /// </summary>
-    public Task<PlayFabResult<GetPlayersInSegmentResult>> GetPlayersInSegmentAsync(GetPlayersInSegmentRequest request, Dictionary<string, string>? extraHeaders);
-    /// <summary>
     /// Retrieves the configuration information for all player statistics defined in the title, regardless of whether they have
     /// a reset interval.
     /// <example><br/>Example:<code>
@@ -781,6 +767,16 @@ public interface IPlayFabAdminApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/playstream/getsegmentexport">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<GetPlayersInSegmentExportResponse>> GetSegmentExportAsync(GetPlayersInSegmentExportRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Returns the total number of players in a given segment.
+    /// <example><br/>Example:<code>
+    /// var response = await adminApi.GetSegmentPlayerCountAsync({
+    ///   "SegmentId": "1337AA00"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/playstream/getsegmentplayercount">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<GetSegmentPlayerCountResult>> GetSegmentPlayerCountAsync(GetSegmentPlayerCountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Get detail information of a segment and its associated definition(s) and action(s) for a title.
     /// <example><br/>Example:<code>

@@ -208,6 +208,10 @@ public class CreateOrUpdateNintendoRequest : PlayFabRequestCommon {
     /// If an error should be returned if the addon already exists.
     /// </summary>
     public bool? ErrorIfExists { get; set; }
+    /// <summary>
+    /// List of Nintendo Subscription Environments, currently supporting up to 4. Needs Catalog enabled.
+    /// </summary>
+    public List<NintendoEnvironment>? SubscriptionEnvironments { get; set; }
 }
 
 public class CreateOrUpdateNintendoResponse : PlayFabResultCommon {
@@ -651,6 +655,10 @@ public class GetNintendoResponse : PlayFabResultCommon {
     /// List of Nintendo Environments, currently supporting up to 4.
     /// </summary>
     public List<NintendoEnvironment>? Environments { get; set; }
+    /// <summary>
+    /// List of Nintendo Subscription Environments, currently supporting up to 4.
+    /// </summary>
+    public List<NintendoEnvironment>? SubscriptionEnvironments { get; set; }
 }
 
 public class GetPSNRequest : PlayFabRequestCommon {

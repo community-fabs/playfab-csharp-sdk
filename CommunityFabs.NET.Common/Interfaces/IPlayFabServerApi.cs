@@ -308,7 +308,8 @@ public interface IPlayFabServerApi {
     public Task<PlayFabResult<GetAllActionGroupsResult>> GetAllActionGroupsAsync(GetAllActionGroupsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves an array of player segment definitions. Results from this can be used in subsequent API calls such as
-    /// GetPlayersInSegment which requires a Segment ID. While segment names can change the ID for that segment will not change.
+    /// ExportPlayersInSegment which requires a Segment ID. While segment names can change the ID for that segment will not
+    /// change.
     /// <example><br/>Example:<code>
     /// var response = await serverApi.GetAllSegmentsAsync({});
     /// </code></example>
@@ -570,22 +571,6 @@ public interface IPlayFabServerApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/getplayersegments">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<GetPlayerSegmentsResult>> GetPlayerSegmentsAsync(GetPlayersSegmentsRequest request, Dictionary<string, string>? extraHeaders);
-    /// <summary>
-    /// Allows for paging through all players in a given segment. This API creates a snapshot of all player profiles that match
-    /// the segment definition at the time of its creation and lives through the Total Seconds to Live, refreshing its life
-    /// span on each subsequent use of the Continuation Token. Profiles that change during the course of paging will not be
-    /// reflected in the results. AB Test segments are currently not supported by this operation. NOTE: This API is limited to
-    /// being called 30 times in one minute. You will be returned an error if you exceed this threshold.
-    /// <example><br/>Example:<code>
-    /// var response = await serverApi.GetPlayersInSegmentAsync({
-    ///   "SegmentId": "1337AA00",
-    ///   "SecondsToLive": 5,
-    ///   "MaxBatchSize": 500
-    /// });
-    /// </code></example>
-    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/getplayersinsegment">Microsoft Documentation</see>
-    /// </summary>
-    public Task<PlayFabResult<GetPlayersInSegmentResult>> GetPlayersInSegmentAsync(GetPlayersInSegmentRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the current version and values for the indicated statistics, for the local player.
     /// <example><br/>Example:<code>
@@ -854,6 +839,16 @@ public interface IPlayFabServerApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/getsegmentexport">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<GetPlayersInSegmentExportResponse>> GetSegmentExportAsync(GetPlayersInSegmentExportRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Returns the total number of players in a given segment.
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.GetSegmentPlayerCountAsync({
+    ///   "SegmentId": "1337AA00"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/playstream/getsegmentplayercount">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<GetSegmentPlayerCountResult>> GetSegmentPlayerCountAsync(GetSegmentPlayerCountRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the associated PlayFab account identifiers for the given set of server custom identifiers.
     /// <example><br/>Example:<code>

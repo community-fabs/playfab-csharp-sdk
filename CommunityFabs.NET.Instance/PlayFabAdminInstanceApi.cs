@@ -1059,25 +1059,6 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
     }
 
     /// <inheritdoc />
-    public async Task<PlayFabResult<GetPlayersInSegmentResult>> GetPlayersInSegmentAsync(GetPlayersInSegmentRequest? request, Dictionary<string, string>? extraHeaders = null) {
-        var requestContext = request?.AuthenticationContext ?? authContext;
-        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
-
-        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
-
-        var httpResult = await PlayFabHttp.Post("/Admin/GetPlayersInSegment", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
-        if (httpResult is PlayFabError error)
-        {
-            return new PlayFabResult<GetPlayersInSegmentResult> { Error = error };
-        }
-
-        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetPlayersInSegmentResult>>((string)httpResult);
-        var result = resultData!.data;
-
-        return new PlayFabResult<GetPlayersInSegmentResult> { Result = result };
-    }
-
-    /// <inheritdoc />
     public async Task<PlayFabResult<GetPlayerStatisticDefinitionsResult>> GetPlayerStatisticDefinitionsAsync(GetPlayerStatisticDefinitionsRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
@@ -1208,6 +1189,25 @@ public class PlayFabAdminInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
         var result = resultData!.data;
 
         return new PlayFabResult<GetPlayersInSegmentExportResponse> { Result = result };
+    }
+
+    /// <inheritdoc />
+    public async Task<PlayFabResult<GetSegmentPlayerCountResult>> GetSegmentPlayerCountAsync(GetSegmentPlayerCountRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestSettings?.DeveloperSecretKey == null) throw new PlayFabException(PlayFabExceptionCode.DeveloperKeyNotSet, "DeveloperSecretKey must be set in your local or global settings to call this method");
+
+        var httpResult = await PlayFabHttp.Post("/Admin/GetSegmentPlayerCount", request, "X-SecretKey", requestSettings.DeveloperSecretKey, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<GetSegmentPlayerCountResult> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<GetSegmentPlayerCountResult>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<GetSegmentPlayerCountResult> { Result = result };
     }
 
     /// <inheritdoc />

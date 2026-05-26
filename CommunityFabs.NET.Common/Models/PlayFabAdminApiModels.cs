@@ -132,22 +132,6 @@ public class ActionsOnPlayersInSegmentTaskSummary {
     public int? TotalPlayersProcessed { get; set; }
 }
 
-[Obsolete("Do not use")]
-public class AdCampaignAttribution {
-    /// <summary>
-    /// UTC time stamp of attribution
-    /// </summary>
-    public required DateTime AttributedAt { get; set; }
-    /// <summary>
-    /// Attribution campaign identifier
-    /// </summary>
-    public string? CampaignId { get; set; }
-    /// <summary>
-    /// Attribution network name
-    /// </summary>
-    public string? Platform { get; set; }
-}
-
 public class AdCampaignAttributionModel {
     /// <summary>
     /// UTC time stamp of attribution
@@ -259,6 +243,10 @@ public class AddNewsRequest : PlayFabRequestCommon {
     /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// Optional status for the new news item. If not set, defaults to Published.
+    /// </summary>
+    public NewsStatus? Status { get; set; }
     /// <summary>
     /// Time this news was published. If not set, defaults to now.
     /// </summary>
@@ -871,22 +859,6 @@ public enum Conditionals {
     Any,
     True,
     False,
-}
-
-[Obsolete("Do not use")]
-public class ContactEmailInfo {
-    /// <summary>
-    /// The email address
-    /// </summary>
-    public string? EmailAddress { get; set; }
-    /// <summary>
-    /// The name of the email info data
-    /// </summary>
-    public string? Name { get; set; }
-    /// <summary>
-    /// The verification status of the email
-    /// </summary>
-    public EmailVerificationStatus? VerificationStatus { get; set; }
 }
 
 public class ContactEmailInfoModel {
@@ -2855,7 +2827,6 @@ public enum GenericErrorCodes {
     InsightsManagementGetOperationStatusInvalidParameter,
     DuplicatePurchaseTransactionId,
     EvaluationModePlayerCountExceeded,
-    GetPlayersInSegmentRateLimitExceeded,
     CloudScriptFunctionNameSizeExceeded,
     PaidInsightsFeaturesNotEnabled,
     CloudScriptAzureFunctionsQueueRequestError,
@@ -3114,7 +3085,6 @@ public enum GenericErrorCodes {
     AsyncExportNotFound,
     AsyncExportRateLimitExceeded,
     AnalyticsSegmentCountOverLimit,
-    GetPlayersInSegmentRetired,
     GetSegmentPlayerCountNotInFlight,
     GetSegmentPlayerCountRateLimitExceeded,
     SnapshotNotFound,
@@ -3192,8 +3162,6 @@ public enum GenericErrorCodes {
     PlayerCustomPropertiesPropertyDoesNotExist,
     AddonAlreadyExists,
     AddonDoesntExist,
-    CopilotDisabled,
-    CopilotInvalidRequest,
     TrueSkillUnauthorized,
     TrueSkillInvalidTitleId,
     TrueSkillInvalidScenarioId,
@@ -3768,63 +3736,6 @@ public class GetPlayersInSegmentExportResponse : PlayFabResultCommon {
     public string? State { get; set; }
 }
 
-/// <summary>
-/// Initial request must contain at least a Segment ID. Subsequent requests must contain the Segment ID as well as the
-/// Continuation Token. Failure to send the Continuation Token will result in a new player segment list being generated.
-/// Each time the Continuation Token is passed in the length of the Total Seconds to Live is refreshed. If too much time
-/// passes between requests to the point that a subsequent request is past the Total Seconds to Live an error will be
-/// returned and paging will be terminated. This API is resource intensive and should not be used in scenarios which might
-/// generate high request volumes. Only one request to this API at a time should be made per title. Concurrent requests to
-/// the API may be rejected with the APIConcurrentRequestLimitExceeded error.
-/// </summary>
-[Obsolete("Do not use")]
-public class GetPlayersInSegmentRequest : PlayFabRequestCommon {
-    /// <summary>
-    /// Continuation token if retrieving subsequent pages of results.
-    /// </summary>
-    public string? ContinuationToken { get; set; }
-    /// <summary>
-    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-    /// </summary>
-    public Dictionary<string, string>? CustomTags { get; set; }
-    /// <summary>
-    /// If set to true, the profiles are loaded asynchronously and the response will include a continuation token and
-    /// approximate profile count until the first batch of profiles is loaded. Use this parameter to help avoid network
-    /// timeouts.
-    /// </summary>
-    public bool? GetProfilesAsync { get; set; }
-    /// <summary>
-    /// Maximum is 10,000. The value 0 will prevent loading any profiles and return only the count of profiles matching this
-    /// segment.
-    /// </summary>
-    public uint? MaxBatchSize { get; set; }
-    /// <summary>
-    /// Number of seconds to keep the continuation token active. After token expiration it is not possible to continue paging
-    /// results. Default is 300 (5 minutes). Maximum is 5,400 (90 minutes).
-    /// </summary>
-    public uint? SecondsToLive { get; set; }
-    /// <summary>
-    /// Unique identifier for this segment.
-    /// </summary>
-    public required string SegmentId { get; set; }
-}
-
-[Obsolete("Do not use")]
-public class GetPlayersInSegmentResult : PlayFabResultCommon {
-    /// <summary>
-    /// Continuation token to use to retrieve subsequent pages of results. If token returns null there are no more results.
-    /// </summary>
-    public string? ContinuationToken { get; set; }
-    /// <summary>
-    /// Array of player profiles in this segment.
-    /// </summary>
-    public List<PlayerProfile>? PlayerProfiles { get; set; }
-    /// <summary>
-    /// Count of profiles matching this segment.
-    /// </summary>
-    public int ProfilesInSegment { get; set; }
-}
-
 public class GetPlayersSegmentsRequest : PlayFabRequestCommon {
     /// <summary>
     /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
@@ -3979,6 +3890,23 @@ public class GetRandomResultTablesResult : PlayFabResultCommon {
     /// array of random result tables currently available
     /// </summary>
     public Dictionary<string, RandomResultTableListing>? Tables { get; set; }
+}
+
+/// <summary>
+/// Request must contain a valid Segment ID.
+/// </summary>
+public class GetSegmentPlayerCountRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// Unique identifier for the requested segment.
+    /// </summary>
+    public required string SegmentId { get; set; }
+}
+
+public class GetSegmentPlayerCountResult : PlayFabResultCommon {
+    /// <summary>
+    /// Count of profiles matching this segment.
+    /// </summary>
+    public int ProfilesInSegment { get; set; }
 }
 
 public class GetSegmentResult {
@@ -5048,6 +4976,13 @@ public class NameIdentifier {
     public string? Name { get; set; }
 }
 
+public enum NewsStatus {
+    None,
+    Unpublished,
+    Published,
+    Archived,
+}
+
 public class OpenIdConnection {
     /// <summary>
     /// The client ID given by the ID provider.
@@ -5158,146 +5093,6 @@ public class PlayerChurnPreviousPredictionSegmentFilter {
     /// RiskLevel
     /// </summary>
     public ChurnRiskLevel? RiskLevel { get; set; }
-}
-
-[Obsolete("Do not use")]
-public class PlayerLinkedAccount {
-    /// <summary>
-    /// Linked account's email
-    /// </summary>
-    public string? Email { get; set; }
-    /// <summary>
-    /// Authentication platform
-    /// </summary>
-    public LoginIdentityProvider? Platform { get; set; }
-    /// <summary>
-    /// Platform user identifier
-    /// </summary>
-    public string? PlatformUserId { get; set; }
-    /// <summary>
-    /// Linked account's username
-    /// </summary>
-    public string? Username { get; set; }
-}
-
-[Obsolete("Do not use")]
-public class PlayerLocation {
-    /// <summary>
-    /// City of the player's geographic location.
-    /// </summary>
-    public string? City { get; set; }
-    /// <summary>
-    /// The two-character continent code for this location
-    /// </summary>
-    public ContinentCode ContinentCode { get; set; }
-    /// <summary>
-    /// The two-character ISO 3166-1 country code for the country associated with the location
-    /// </summary>
-    public CountryCode CountryCode { get; set; }
-    /// <summary>
-    /// Latitude coordinate of the player's geographic location.
-    /// </summary>
-    public double? Latitude { get; set; }
-    /// <summary>
-    /// Longitude coordinate of the player's geographic location.
-    /// </summary>
-    public double? Longitude { get; set; }
-}
-
-[Obsolete("Do not use")]
-public class PlayerProfile {
-    /// <summary>
-    /// Array of ad campaigns player has been attributed to
-    /// </summary>
-    public List<AdCampaignAttribution>? AdCampaignAttributions { get; set; }
-    /// <summary>
-    /// Image URL of the player's avatar.
-    /// </summary>
-    public string? AvatarUrl { get; set; }
-    /// <summary>
-    /// Banned until UTC Date. If permanent ban this is set for 20 years after the original ban date.
-    /// </summary>
-    public DateTime? BannedUntil { get; set; }
-    /// <summary>
-    /// The prediction of the player to churn within the next seven days.
-    /// </summary>
-    public ChurnRiskLevel? ChurnPrediction { get; set; }
-    /// <summary>
-    /// Array of contact email addresses associated with the player
-    /// </summary>
-    public List<ContactEmailInfo>? ContactEmailAddresses { get; set; }
-    /// <summary>
-    /// Player record created
-    /// </summary>
-    public DateTime? Created { get; set; }
-    /// <summary>
-    /// Dictionary of player's custom properties.
-    /// </summary>
-    public Dictionary<string, object>? CustomProperties { get; set; }
-    /// <summary>
-    /// Player Display Name
-    /// </summary>
-    public string? DisplayName { get; set; }
-    /// <summary>
-    /// Last login
-    /// </summary>
-    public DateTime? LastLogin { get; set; }
-    /// <summary>
-    /// Array of third party accounts linked to this player
-    /// </summary>
-    public List<PlayerLinkedAccount>? LinkedAccounts { get; set; }
-    /// <summary>
-    /// Dictionary of player's locations by type.
-    /// </summary>
-    public Dictionary<string, PlayerLocation>? Locations { get; set; }
-    /// <summary>
-    /// Player account origination
-    /// </summary>
-    public LoginIdentityProvider? Origination { get; set; }
-    /// <summary>
-    /// List of player variants for experimentation
-    /// </summary>
-    public List<string>? PlayerExperimentVariants { get; set; }
-    /// <summary>
-    /// PlayFab Player ID
-    /// </summary>
-    public string? PlayerId { get; set; }
-    /// <summary>
-    /// Array of player statistics
-    /// </summary>
-    public List<PlayerStatistic>? PlayerStatistics { get; set; }
-    /// <summary>
-    /// Publisher this player belongs to
-    /// </summary>
-    public string? PublisherId { get; set; }
-    /// <summary>
-    /// Array of configured push notification end points
-    /// </summary>
-    public List<PushNotificationRegistration>? PushNotificationRegistrations { get; set; }
-    /// <summary>
-    /// Dictionary of player's statistics using only the latest version's value
-    /// </summary>
-    public Dictionary<string, int>? Statistics { get; set; }
-    /// <summary>
-    /// List of player's tags for segmentation.
-    /// </summary>
-    public List<string>? Tags { get; set; }
-    /// <summary>
-    /// Title ID this profile applies to
-    /// </summary>
-    public string? TitleId { get; set; }
-    /// <summary>
-    /// A sum of player's total purchases in USD across all currencies.
-    /// </summary>
-    public uint? TotalValueToDateInUSD { get; set; }
-    /// <summary>
-    /// Dictionary of player's total purchases by currency.
-    /// </summary>
-    public Dictionary<string, uint>? ValuesToDate { get; set; }
-    /// <summary>
-    /// Dictionary of player's virtual currency balances
-    /// </summary>
-    public Dictionary<string, int>? VirtualCurrencyBalances { get; set; }
 }
 
 public class PlayerProfileModel {
@@ -5457,26 +5252,6 @@ public class PlayerProfileViewConstraints {
     public bool ShowValuesToDate { get; set; }
 }
 
-[Obsolete("Do not use")]
-public class PlayerStatistic {
-    /// <summary>
-    /// Statistic ID
-    /// </summary>
-    public string? Id { get; set; }
-    /// <summary>
-    /// Statistic name
-    /// </summary>
-    public string? Name { get; set; }
-    /// <summary>
-    /// Current statistic value
-    /// </summary>
-    public int StatisticValue { get; set; }
-    /// <summary>
-    /// Statistic version (0 if not a versioned statistic)
-    /// </summary>
-    public int StatisticVersion { get; set; }
-}
-
 public class PlayerStatisticDefinition {
     /// <summary>
     /// the aggregation method to use in updating the statistic (defaults to last)
@@ -5577,18 +5352,6 @@ public class PushNotificationContent {
 public enum PushNotificationPlatform {
     ApplePushNotificationService,
     GoogleCloudMessaging,
-}
-
-[Obsolete("Do not use")]
-public class PushNotificationRegistration {
-    /// <summary>
-    /// Notification configured endpoint
-    /// </summary>
-    public string? NotificationEndpointARN { get; set; }
-    /// <summary>
-    /// Push notification platform
-    /// </summary>
-    public PushNotificationPlatform? Platform { get; set; }
 }
 
 public class PushNotificationRegistrationModel {
