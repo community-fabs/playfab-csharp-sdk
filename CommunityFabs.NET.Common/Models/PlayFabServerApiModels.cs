@@ -3420,6 +3420,24 @@ public class GetPlayFabIDsFromPSNOnlineIDsResult : PlayFabResultCommon {
     public List<PSNOnlinePlayFabIdPair>? Data { get; set; }
 }
 
+public class GetPlayFabIDsFromServerCustomIDsRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// Array of unique server custom player identifiers for which the title needs to get PlayFab identifiers. Cannot contain
+    /// more than 25 identifiers.
+    /// </summary>
+    public required List<string> ServerCustomIds { get; set; }
+}
+
+/// <summary>
+/// For a server player that is not linked to a PlayFab account the PlayFabId will be returned null.
+/// </summary>
+public class GetPlayFabIDsFromServerCustomIDsResult : PlayFabResultCommon {
+    /// <summary>
+    /// Mapping of server custom identifiers to PlayFab identifiers.
+    /// </summary>
+    public List<ServerCustomIDPlayFabIDPair>? Data { get; set; }
+}
+
 public class GetPlayFabIDsFromSteamIDsRequest : PlayFabRequestCommon {
     /// <summary>
     /// Deprecated: Please use SteamStringIDs
@@ -4800,7 +4818,7 @@ public class LoginWithServerCustomIdRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -6135,7 +6153,7 @@ public class SetGameServerInstanceTagsResult : PlayFabResultCommon {
 /// </summary>
 public class SetPlayerSecretRequest : PlayFabRequestCommon {
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>

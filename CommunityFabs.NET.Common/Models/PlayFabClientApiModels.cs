@@ -4192,7 +4192,7 @@ public class LoginWithAndroidDeviceIDRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4208,7 +4208,7 @@ public class LoginWithAndroidDeviceIDRequest : PlayFabRequestCommon {
     /// </summary>
     public string? OS { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4228,7 +4228,7 @@ public class LoginWithAppleRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4246,7 +4246,7 @@ public class LoginWithAppleRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4266,7 +4266,7 @@ public class LoginWithBattleNetRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4282,7 +4282,7 @@ public class LoginWithBattleNetRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4313,7 +4313,7 @@ public class LoginWithCustomIDRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4325,7 +4325,7 @@ public class LoginWithCustomIDRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4378,7 +4378,7 @@ public class LoginWithFacebookInstantGamesIdRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4394,7 +4394,7 @@ public class LoginWithFacebookInstantGamesIdRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4436,7 +4436,7 @@ public class LoginWithFacebookRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4448,7 +4448,7 @@ public class LoginWithFacebookRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4479,7 +4479,7 @@ public class LoginWithGameCenterRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4495,7 +4495,7 @@ public class LoginWithGameCenterRequest : PlayFabRequestCommon {
     /// </summary>
     public string? PlayerId { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4552,7 +4552,7 @@ public class LoginWithGoogleAccountRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4564,7 +4564,7 @@ public class LoginWithGoogleAccountRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4610,7 +4610,7 @@ public class LoginWithGooglePlayGamesServicesRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4622,7 +4622,7 @@ public class LoginWithGooglePlayGamesServicesRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4668,7 +4668,7 @@ public class LoginWithIOSDeviceIDRequest : PlayFabRequestCommon {
     /// </summary>
     public string? DeviceModel { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4684,7 +4684,7 @@ public class LoginWithIOSDeviceIDRequest : PlayFabRequestCommon {
     /// </summary>
     public string? OS { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4717,7 +4717,7 @@ public class LoginWithKongregateRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4733,7 +4733,7 @@ public class LoginWithKongregateRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4753,7 +4753,7 @@ public class LoginWithNintendoServiceAccountRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4769,7 +4769,7 @@ public class LoginWithNintendoServiceAccountRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4789,7 +4789,7 @@ public class LoginWithNintendoSwitchDeviceIdRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4805,7 +4805,7 @@ public class LoginWithNintendoSwitchDeviceIdRequest : PlayFabRequestCommon {
     /// </summary>
     public string? NintendoSwitchDeviceId { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4829,7 +4829,7 @@ public class LoginWithOpenIdConnectRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4846,7 +4846,7 @@ public class LoginWithOpenIdConnectRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4910,7 +4910,7 @@ public class LoginWithPSNRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4926,7 +4926,7 @@ public class LoginWithPSNRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -4960,7 +4960,7 @@ public class LoginWithSteamRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -4972,7 +4972,7 @@ public class LoginWithSteamRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -5015,7 +5015,7 @@ public class LoginWithTwitchRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -5027,7 +5027,7 @@ public class LoginWithTwitchRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -5053,7 +5053,7 @@ public class LoginWithXboxRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -5065,7 +5065,7 @@ public class LoginWithXboxRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -5863,7 +5863,7 @@ public class RegisterPlayFabUserRequest : PlayFabRequestCommon {
     /// </summary>
     public string? Email { get; set; }
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
@@ -5884,7 +5884,7 @@ public class RegisterPlayFabUserRequest : PlayFabRequestCommon {
     /// </summary>
     public string? Password { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
     /// <summary>
@@ -6258,11 +6258,11 @@ public class SetFriendTagsResult : PlayFabResultCommon {
 /// </summary>
 public class SetPlayerSecretRequest : PlayFabRequestCommon {
     /// <summary>
-    /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+    /// Base64 encoded body that is encrypted with the Title's public RSA key.
     /// </summary>
     public string? EncryptedRequest { get; set; }
     /// <summary>
-    /// Player secret that is used to verify API request signatures (Enterprise Only).
+    /// Player secret that is used to verify API request signatures.
     /// </summary>
     public string? PlayerSecret { get; set; }
 }

@@ -740,6 +740,18 @@ public interface IPlayFabServerApi {
     /// </summary>
     public Task<PlayFabResult<GetPlayFabIDsFromPSNOnlineIDsResult>> GetPlayFabIDsFromPSNOnlineIDsAsync(GetPlayFabIDsFromPSNOnlineIDsRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Retrieves the associated PlayFab account identifiers for the given set of server custom player identifiers.
+    /// <example><br/>Example:<code>
+    /// var response = await serverApi.GetPlayFabIDsFromServerCustomIDsAsync({
+    ///   "ServerCustomIds": [
+    ///     "asdjas09u23jfa"
+    ///   ]
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/server/account-management/getplayfabidsfromservercustomids">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<GetPlayFabIDsFromServerCustomIDsResult>> GetPlayFabIDsFromServerCustomIDsAsync(GetPlayFabIDsFromServerCustomIDsRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers are the profile
     /// IDs for the user accounts, available as SteamId in the Steamworks Community API calls.
     /// <example><br/>Example:<code>

@@ -656,6 +656,10 @@ public class GetNintendoResponse : PlayFabResultCommon {
     /// </summary>
     public List<NintendoEnvironment>? Environments { get; set; }
     /// <summary>
+    /// List of Nintendo Subscription Environments associated to a secondary AppId, currently supporting up to 4.
+    /// </summary>
+    public List<NintendoEnvironment>? SecondarySubscriptionEnvironments { get; set; }
+    /// <summary>
     /// List of Nintendo Subscription Environments, currently supporting up to 4.
     /// </summary>
     public List<NintendoEnvironment>? SubscriptionEnvironments { get; set; }
