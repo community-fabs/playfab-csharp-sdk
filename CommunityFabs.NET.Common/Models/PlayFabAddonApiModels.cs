@@ -2,6 +2,24 @@ using CommunityFabs.NET.Common.Http;
 
 namespace CommunityFabs.NET.Common.Models.Addon;
 
+public class ConfigurePSNEventStreamsRequest : PlayFabRequestCommon {
+    /// <summary>
+    /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+    /// </summary>
+    public Dictionary<string, string>? CustomTags { get; set; }
+    /// <summary>
+    /// The optional entity to perform this action on. Defaults to the currently logged in entity.
+    /// </summary>
+    public EntityKey? Entity { get; set; }
+    /// <summary>
+    /// Title name obtained after setting a back server for PS5. Used for clawback event listeners.
+    /// </summary>
+    public string? TitleName { get; set; }
+}
+
+public class ConfigurePSNEventStreamsResponse : PlayFabResultCommon {
+}
+
 public class CreateOrUpdateAppleRequest : PlayFabRequestCommon {
     /// <summary>
     /// Allow validation of receipts from the Apple production environment. Required for app releases.

@@ -2729,6 +2729,11 @@ public class GetFriendsListRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? IncludeSteamFriends { get; set; }
     /// <summary>
+    /// If true, include friends from the same namespace even if they have not logged in to the current title. Defaults to
+    /// false.
+    /// </summary>
+    public bool? NamespaceWide { get; set; }
+    /// <summary>
     /// PlayFab identifier of the player whose friend list to get.
     /// </summary>
     public required string PlayFabId { get; set; }
@@ -2751,7 +2756,7 @@ public class GetFriendsListRequest : PlayFabRequestCommon {
 /// recently, and only friends who also plays this game will be included. For Xbox Live, user has to have logged into the
 /// Xbox Live recently, and only friends who also play this game will be included. Xbox Live friends include all users the
 /// caller is following, regardless of whether those users follow the caller back. This differs from FindFriendLobbies,
-/// which only considers mutual Xbox Live friends (where both users follow each other).
+/// which only considers mutual Xbox Live friends.
 /// </summary>
 public class GetFriendsListResult : PlayFabResultCommon {
     /// <summary>

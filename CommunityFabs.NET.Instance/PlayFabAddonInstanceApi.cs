@@ -33,6 +33,25 @@ public class PlayFabAddonInstanceApi(PlayFabApiSettings? apiSettings = null, Pla
     }
 
     /// <inheritdoc />
+    public async Task<PlayFabResult<ConfigurePSNEventStreamsResponse>> ConfigurePSNEventStreamsAsync(ConfigurePSNEventStreamsRequest? request, Dictionary<string, string>? extraHeaders = null) {
+        var requestContext = request?.AuthenticationContext ?? authContext;
+        var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;
+
+        if (requestContext?.EntityToken == null) throw new PlayFabException(PlayFabExceptionCode.EntityTokenNotSet, "Must call Client Login or GetEntityToken before calling this method");
+
+        var httpResult = await PlayFabHttp.Post("/Addon/ConfigurePSNEventStreams", request, "X-EntityToken", requestContext.EntityToken, extraHeaders, requestSettings, httpClient);
+        if (httpResult is PlayFabError error)
+        {
+            return new PlayFabResult<ConfigurePSNEventStreamsResponse> { Error = error };
+        }
+
+        var resultData = JsonSerializer.Deserialize<PlayFabJsonSuccess<ConfigurePSNEventStreamsResponse>>((string)httpResult);
+        var result = resultData!.data;
+
+        return new PlayFabResult<ConfigurePSNEventStreamsResponse> { Result = result };
+    }
+
+    /// <inheritdoc />
     public async Task<PlayFabResult<CreateOrUpdateAppleResponse>> CreateOrUpdateAppleAsync(CreateOrUpdateAppleRequest? request, Dictionary<string, string>? extraHeaders = null) {
         var requestContext = request?.AuthenticationContext ?? authContext;
         var requestSettings = apiSettings ?? PlayFabSettings.staticSettings;

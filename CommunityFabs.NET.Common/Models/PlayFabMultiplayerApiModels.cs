@@ -102,6 +102,9 @@ public enum AzureVmFamily {
     Easv4,
     Ev4,
     Esv4,
+    Edsv4,
+    Edsv5,
+    Edsv6,
     Dsv3,
     Dsv2,
     NCasT4_v3,
@@ -118,6 +121,7 @@ public enum AzureVmFamily {
     Eadsv6,
     Eadsv7,
     Dadsv7,
+    Dpdsv6,
 }
 
 public enum AzureVmSize {
@@ -199,6 +203,18 @@ public enum AzureVmSize {
     Standard_E4ads_v7,
     Standard_E8ads_v7,
     Standard_E16ads_v7,
+    Standard_E2ds_v4,
+    Standard_E4ds_v4,
+    Standard_E8ds_v4,
+    Standard_E16ds_v4,
+    Standard_E2ds_v5,
+    Standard_E4ds_v5,
+    Standard_E8ds_v5,
+    Standard_E16ds_v5,
+    Standard_E2ds_v6,
+    Standard_E4ds_v6,
+    Standard_E8ds_v6,
+    Standard_E16ds_v6,
     Standard_D2s_v3,
     Standard_D4s_v3,
     Standard_D8s_v3,
@@ -236,6 +252,10 @@ public enum AzureVmSize {
     Standard_D4ds_v6,
     Standard_D8ds_v6,
     Standard_D16ds_v6,
+    Standard_D2pds_v6,
+    Standard_D4pds_v6,
+    Standard_D8pds_v6,
+    Standard_D16pds_v6,
 }
 
 public class BatchParameters {

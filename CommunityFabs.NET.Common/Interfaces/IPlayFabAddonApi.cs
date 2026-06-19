@@ -3,6 +3,24 @@ namespace CommunityFabs.NET.Common.Interfaces;
 
 public interface IPlayFabAddonApi {
     /// <summary>
+    /// Configures PSN event streams for an existing PSN addon on a title, without requiring a full addon upsert.
+    /// <example><br/>Example:<code>
+    /// var response = await addonApi.ConfigurePSNEventStreamsAsync({
+    ///   "BackOfficeClientID": "backOfficeId",
+    ///   "BackOfficeClientSecret": "backOfficeSecret",
+    ///   "EventStreamInformation": [
+    ///     {
+    ///       "StreamURL": "https://example.com/stream",
+    ///       "EnableEventListener": true,
+    ///       "TitleId": "NP-TITLE-001"
+    ///     }
+    ///   ]
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/addon/addon/configurepsneventstreams">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<ConfigurePSNEventStreamsResponse>> ConfigurePSNEventStreamsAsync(ConfigurePSNEventStreamsRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Creates the Apple addon on a title, or updates it if it already exists.
     /// <example><br/>Example:<code>
     /// var response = await addonApi.CreateOrUpdateAppleAsync({
