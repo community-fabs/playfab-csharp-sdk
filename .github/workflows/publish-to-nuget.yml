@@ -57,10 +57,10 @@ jobs:
 
       - name: 🎉 Publish Common & Instance
         run: |
-          dotnet nuget push ./nupkgs/CommunityFabs.NET.Common.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source ${{ github.event.inputs.package_source }}
-          dotnet nuget push ./nupkgs/CommunityFabs.NET.Instance.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source ${{ github.event.inputs.package_source }}
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Common.*.nupkg --source ${{ github.event.inputs.package_source }}
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Instance.*.nupkg --source ${{ github.event.inputs.package_source }}
 
       - name: 🎉 Publish Functions
         if: ${{ github.event.inputs.publish_functions_pkg == 'true' }}
         run: |
-          dotnet nuget push ./nupkgs/CommunityFabs.NET.Functions.*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source ${{ github.event.inputs.package_source }}
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Functions.*.nupkg --source ${{ github.event.inputs.package_source }}
