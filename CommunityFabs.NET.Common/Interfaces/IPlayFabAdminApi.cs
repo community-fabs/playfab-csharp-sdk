@@ -217,6 +217,18 @@ public interface IPlayFabAdminApi {
     /// </summary>
     public Task<PlayFabResult<CreateTaskResult>> CreateInsightsScheduledScalingTaskAsync(CreateInsightsScheduledScalingTaskRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
+    /// Bans an IP address or CIDR range for a title.
+    /// <example><br/>Example:<code>
+    /// var response = await adminApi.CreateIPBanAsync({
+    ///   "IPAddress": "192.168.1.1",
+    ///   "Reason": "Suspected Bot Farm",
+    ///   "Expires": "2024-06-08T00:00:00Z"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/account-management/createipban">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<CreateIPBanResult>> CreateIPBanAsync(CreateIPBanRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
     /// Registers a relationship between a title and an Open ID Connect provider.
     /// <example><br/>Example:<code>
     /// var response = await adminApi.CreateOpenIdConnectionAsync({
@@ -612,6 +624,24 @@ public interface IPlayFabAdminApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/playstream/geteventsinks">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<GetEventSinksResult>> GetEventSinksAsync(GetEventSinksRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Gets all IP bans that apply to a specific IP address.
+    /// <example><br/>Example:<code>
+    /// var response = await adminApi.GetIPBansForIPAsync({
+    ///   "IPAddress": "192.168.1.1"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/account-management/getipbansforip">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<GetIPBanResult>> GetIPBansForIPAsync(GetIPBanRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Gets all IP bans for a title.
+    /// <example><br/>Example:<code>
+    /// var response = await adminApi.GetIPBansForTitleAsync({});
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/account-management/getipbansfortitle">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<GetAllIPBansResult>> GetIPBansForTitleAsync(GetAllIPBansRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Retrieves the details for a specific completed session, including links to standard out and standard error logs
     /// <example><br/>Example:<code>
@@ -1298,6 +1328,16 @@ public interface IPlayFabAdminApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/player-item-management/revokeinventoryitems">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<RevokeInventoryItemsResult>> RevokeInventoryItemsAsync(RevokeInventoryItemsRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Revokes an active IP ban.
+    /// <example><br/>Example:<code>
+    /// var response = await adminApi.RevokeIPBanAsync({
+    ///   "IPAddress": "192.168.1.1"
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/account-management/revokeipban">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<RevokeIPBanResult>> RevokeIPBanAsync(RevokeIPBanRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Run a task immediately regardless of its schedule.
     /// <example><br/>Example:<code>
@@ -2139,6 +2179,20 @@ public interface IPlayFabAdminApi {
     /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/server-side-cloud-script/updatecloudscript">Microsoft Documentation</see>
     /// </summary>
     public Task<PlayFabResult<UpdateCloudScriptResult>> UpdateCloudScriptAsync(UpdateCloudScriptRequest request, Dictionary<string, string>? extraHeaders);
+    /// <summary>
+    /// Updates an existing IP ban.
+    /// <example><br/>Example:<code>
+    /// var response = await adminApi.UpdateIPBanAsync({
+    ///   "IPAddress": "192.168.1.1",
+    ///   "Reason": "Suspected Bot Farm",
+    ///   "Expires": "2024-06-08T00:00:00Z",
+    ///   "Permanent": false,
+    ///   "Active": true
+    /// });
+    /// </code></example>
+    /// <br/><see href="https://docs.microsoft.com/rest/api/playfab/admin/account-management/updateipban">Microsoft Documentation</see>
+    /// </summary>
+    public Task<PlayFabResult<UpdateIPBanResult>> UpdateIPBanAsync(UpdateIPBanRequest request, Dictionary<string, string>? extraHeaders);
     /// <summary>
     /// Modifies data and credentials for an existing relationship between a title and an Open ID Connect provider
     /// <example><br/>Example:<code>

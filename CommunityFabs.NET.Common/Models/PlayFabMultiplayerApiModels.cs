@@ -85,6 +85,33 @@ public enum AzureRegion {
     CanadaCentral,
     MexicoCentral,
     WestUs3,
+    CanadaEast,
+    UkWest,
+    FranceSouth,
+    SouthIndia,
+    SpainCentral,
+    GermanyWestCentral,
+    ItalyNorth,
+    IndonesiaCentral,
+    ChileCentral,
+    PolandCentral,
+    NewZealandNorth,
+    BrazilSoutheast,
+    NorwayEast,
+    SwitzerlandNorth,
+    MalaysiaWest,
+    IsraelCentral,
+    QatarCentral,
+    UaeCentral,
+    GermanyNorth,
+    AustriaEast,
+    BelgiumCentral,
+    DenmarkEast,
+    SwitzerlandWest,
+    SwedenSouth,
+    NorwayWest,
+    SouthAfricaWest,
+    MalaysiaSouth,
 }
 
 public enum AzureVmFamily {
@@ -854,10 +881,6 @@ public class CreateBuildWithCustomContainerRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? Metadata { get; set; }
     /// <summary>
-    /// The configuration for the monitoring application on the build
-    /// </summary>
-    public MonitoringApplicationConfigurationParams? MonitoringApplicationConfiguration { get; set; }
-    /// <summary>
     /// The number of multiplayer servers to host on a single VM.
     /// </summary>
     public int MultiplayerServerCountPerVm { get; set; }
@@ -873,11 +896,6 @@ public class CreateBuildWithCustomContainerRequest : PlayFabRequestCommon {
     /// The resource constraints to apply to each server on the VM (EXPERIMENTAL API)
     /// </summary>
     public ServerResourceConstraintParams? ServerResourceConstraints { get; set; }
-    /// <summary>
-    /// DEPRECATED - this is always true. Assets are downloaded and uncompressed in memory, without the compressedversion being
-    /// written first to disc.
-    /// </summary>
-    public bool? UseStreamingForAssetDownloads { get; set; }
     /// <summary>
     /// The VM size to create the build on.
     /// </summary>
@@ -939,10 +957,6 @@ public class CreateBuildWithCustomContainerResponse : PlayFabResultCommon {
     /// </summary>
     public Dictionary<string, string>? Metadata { get; set; }
     /// <summary>
-    /// The configuration for the monitoring application for the build
-    /// </summary>
-    public MonitoringApplicationConfiguration? MonitoringApplicationConfiguration { get; set; }
-    /// <summary>
     /// The number of multiplayer servers to host on a single VM of the build.
     /// </summary>
     public int MultiplayerServerCountPerVm { get; set; }
@@ -966,11 +980,6 @@ public class CreateBuildWithCustomContainerResponse : PlayFabResultCommon {
     /// The type of game server being hosted.
     /// </summary>
     public string? ServerType { get; set; }
-    /// <summary>
-    /// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to
-    /// disc.
-    /// </summary>
-    public bool? UseStreamingForAssetDownloads { get; set; }
     /// <summary>
     /// The VM size the build was created on.
     /// </summary>
@@ -1029,10 +1038,6 @@ public class CreateBuildWithManagedContainerRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? Metadata { get; set; }
     /// <summary>
-    /// The configuration for the monitoring application on the build
-    /// </summary>
-    public MonitoringApplicationConfigurationParams? MonitoringApplicationConfiguration { get; set; }
-    /// <summary>
     /// The number of multiplayer servers to host on a single VM.
     /// </summary>
     public int MultiplayerServerCountPerVm { get; set; }
@@ -1052,11 +1057,6 @@ public class CreateBuildWithManagedContainerRequest : PlayFabRequestCommon {
     /// The command to run when the multiplayer server is started, including any arguments.
     /// </summary>
     public required string StartMultiplayerServerCommand { get; set; }
-    /// <summary>
-    /// DEPRECATED - this is always true. Assets are downloaded and uncompressed in memory, without the compressedversion being
-    /// written first to disc.
-    /// </summary>
-    public bool? UseStreamingForAssetDownloads { get; set; }
     /// <summary>
     /// The VM size to create the build on.
     /// </summary>
@@ -1119,10 +1119,6 @@ public class CreateBuildWithManagedContainerResponse : PlayFabResultCommon {
     /// </summary>
     public Dictionary<string, string>? Metadata { get; set; }
     /// <summary>
-    /// The configuration for the monitoring application for the build
-    /// </summary>
-    public MonitoringApplicationConfiguration? MonitoringApplicationConfiguration { get; set; }
-    /// <summary>
     /// The number of multiplayer servers to host on a single VM of the build.
     /// </summary>
     public int MultiplayerServerCountPerVm { get; set; }
@@ -1150,11 +1146,6 @@ public class CreateBuildWithManagedContainerResponse : PlayFabResultCommon {
     /// The command to run when the multiplayer server has been allocated, including any arguments.
     /// </summary>
     public string? StartMultiplayerServerCommand { get; set; }
-    /// <summary>
-    /// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to
-    /// disc.
-    /// </summary>
-    public bool? UseStreamingForAssetDownloads { get; set; }
     /// <summary>
     /// The VM size the build was created on.
     /// </summary>
@@ -1219,10 +1210,6 @@ public class CreateBuildWithProcessBasedServerRequest : PlayFabRequestCommon {
     /// </summary>
     public Dictionary<string, string>? Metadata { get; set; }
     /// <summary>
-    /// The configuration for the monitoring application on the build
-    /// </summary>
-    public MonitoringApplicationConfigurationParams? MonitoringApplicationConfiguration { get; set; }
-    /// <summary>
     /// The number of multiplayer servers to host on a single VM.
     /// </summary>
     public int MultiplayerServerCountPerVm { get; set; }
@@ -1243,11 +1230,6 @@ public class CreateBuildWithProcessBasedServerRequest : PlayFabRequestCommon {
     /// be relative to the root asset folder when unzipped.
     /// </summary>
     public required string StartMultiplayerServerCommand { get; set; }
-    /// <summary>
-    /// DEPRECATED - this is always true. Assets are downloaded and uncompressed in memory, without the compressedversion being
-    /// written first to disc.
-    /// </summary>
-    public bool? UseStreamingForAssetDownloads { get; set; }
     /// <summary>
     /// The VM size to create the build on.
     /// </summary>
@@ -1315,10 +1297,6 @@ public class CreateBuildWithProcessBasedServerResponse : PlayFabResultCommon {
     /// </summary>
     public Dictionary<string, string>? Metadata { get; set; }
     /// <summary>
-    /// The configuration for the monitoring application for the build
-    /// </summary>
-    public MonitoringApplicationConfiguration? MonitoringApplicationConfiguration { get; set; }
-    /// <summary>
     /// The number of multiplayer servers to host on a single VM of the build.
     /// </summary>
     public int MultiplayerServerCountPerVm { get; set; }
@@ -1343,11 +1321,6 @@ public class CreateBuildWithProcessBasedServerResponse : PlayFabResultCommon {
     /// relative to the root asset folder when unzipped.
     /// </summary>
     public string? StartMultiplayerServerCommand { get; set; }
-    /// <summary>
-    /// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to
-    /// disc.
-    /// </summary>
-    public bool? UseStreamingForAssetDownloads { get; set; }
     /// <summary>
     /// The VM size the build was created on.
     /// </summary>
@@ -2409,11 +2382,6 @@ public class GetBuildResponse : PlayFabResultCommon {
     /// managed builds. If the build is a custom build, this field will be null.
     /// </summary>
     public string? StartMultiplayerServerCommand { get; set; }
-    /// <summary>
-    /// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to
-    /// disc.
-    /// </summary>
-    public bool? UseStreamingForAssetDownloads { get; set; }
     /// <summary>
     /// The VM size the build was created on.
     /// </summary>
@@ -4577,44 +4545,6 @@ public class ModelSummary {
     /// CatchingUp, CatchUpFailed, Active, Cancelled, BatchFailed, or Deactivated.
     /// </summary>
     public string? ModelState { get; set; }
-}
-
-public class MonitoringApplicationConfiguration {
-    /// <summary>
-    /// Asset which contains the monitoring application files and scripts.
-    /// </summary>
-    public required AssetReference AssetReference { get; set; }
-    /// <summary>
-    /// Execution script name, this will be the main executable for the monitoring application.
-    /// </summary>
-    public required string ExecutionScriptName { get; set; }
-    /// <summary>
-    /// Installation script name, this will be run before the ExecutionScript.
-    /// </summary>
-    public string? InstallationScriptName { get; set; }
-    /// <summary>
-    /// Timespan the monitoring application will be kept alive when running from the start of the VM
-    /// </summary>
-    public double? OnStartRuntimeInMinutes { get; set; }
-}
-
-public class MonitoringApplicationConfigurationParams {
-    /// <summary>
-    /// Asset which contains the monitoring application files and scripts.
-    /// </summary>
-    public required AssetReferenceParams AssetReference { get; set; }
-    /// <summary>
-    /// Execution script name, this will be the main executable for the monitoring application.
-    /// </summary>
-    public required string ExecutionScriptName { get; set; }
-    /// <summary>
-    /// Installation script name, this will be run before the ExecutionScript.
-    /// </summary>
-    public string? InstallationScriptName { get; set; }
-    /// <summary>
-    /// Timespan the monitoring application will be kept alive when running from the start of the VM
-    /// </summary>
-    public double? OnStartRuntimeInMinutes { get; set; }
 }
 
 public class MultiplayerServerSummary {

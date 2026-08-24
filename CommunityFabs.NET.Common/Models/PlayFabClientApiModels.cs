@@ -2809,6 +2809,11 @@ public class GetPlayFabIDsFromKongregateIDsResult : PlayFabResultCommon {
 
 public class GetPlayFabIDsFromNintendoServiceAccountIdsRequest : PlayFabRequestCommon {
     /// <summary>
+    /// Nintendo NSA issuer URL identifying the environment. When provided, only accounts registered in that environment are
+    /// returned. If null or empty, falls back to the default environment.
+    /// </summary>
+    public string? Issuer { get; set; }
+    /// <summary>
     /// Array of unique Nintendo Switch Account identifiers for which the title needs to get PlayFab identifiers. The array
     /// cannot exceed 25 in length.
     /// </summary>
@@ -2871,6 +2876,10 @@ public class GetPlayFabIDsFromPSNAccountIDsRequest : PlayFabRequestCommon {
     /// cannot exceed 25 in length.
     /// </summary>
     public required List<string> PSNAccountIDs { get; set; }
+    /// <summary>
+    /// Optional sandbox id. When provided, resolves players that logged in from that PlayStation :tm: Network sandbox.
+    /// </summary>
+    public string? SandboxId { get; set; }
 }
 
 /// <summary>
@@ -2893,6 +2902,10 @@ public class GetPlayFabIDsFromPSNOnlineIDsRequest : PlayFabRequestCommon {
     /// cannot exceed 25 in length.
     /// </summary>
     public required List<string> PSNOnlineIDs { get; set; }
+    /// <summary>
+    /// Optional sandbox id. When provided, resolves players that logged in from that PlayStation :tm: Network sandbox.
+    /// </summary>
+    public string? SandboxId { get; set; }
 }
 
 /// <summary>
@@ -3918,6 +3931,11 @@ public class LinkPSNAccountRequest : PlayFabRequestCommon {
     /// </summary>
     public required string AuthCode { get; set; }
     /// <summary>
+    /// Optional PlayStation :tm: Network auth version. Controls which PlayStation :tm: Network auth version is used. Accepted
+    /// values are "v2" and "v3".
+    /// </summary>
+    public string? AuthVersion { get; set; }
+    /// <summary>
     /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
     /// </summary>
     public Dictionary<string, string>? CustomTags { get; set; }
@@ -4906,6 +4924,11 @@ public class LoginWithPSNRequest : PlayFabRequestCommon {
     /// Auth code provided by the PlayStation :tm: Network OAuth provider.
     /// </summary>
     public string? AuthCode { get; set; }
+    /// <summary>
+    /// Optional PlayStation :tm: Network auth version. Controls which PlayStation :tm: Network auth version is used. Accepted
+    /// values are "v2" and "v3".
+    /// </summary>
+    public string? AuthVersion { get; set; }
     /// <summary>
     /// Automatically create a PlayFab account if one is not currently linked to this ID.
     /// </summary>
@@ -7594,6 +7617,10 @@ public class UserPsnInfo {
     /// PlayStation :tm: Network online ID
     /// </summary>
     public string? PsnOnlineId { get; set; }
+    /// <summary>
+    /// PlayStation :tm: Network sandbox ID
+    /// </summary>
+    public string? PsnSandboxId { get; set; }
 }
 
 public class UserServerCustomIdInfo {
