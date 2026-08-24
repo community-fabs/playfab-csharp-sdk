@@ -55,12 +55,18 @@ jobs:
           dotnet restore ./CommunityFabs.NET.Functions/CommunityFabs.NET.Functions.csproj --configfile nuget.config
           dotnet pack ./CommunityFabs.NET.Functions/CommunityFabs.NET.Functions.csproj -c Release -o ./nupkgs
 
+      - name: NuGet login (temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+          
       - name: 🎉 Publish Common & Instance
         run: |
-          dotnet nuget push ./nupkgs/CommunityFabs.NET.Common.*.nupkg --source ${{ github.event.inputs.package_source }}
-          dotnet nuget push ./nupkgs/CommunityFabs.NET.Instance.*.nupkg --source ${{ github.event.inputs.package_source }}
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Common.*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ github.event.inputs.package_source }}
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Instance.*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ github.event.inputs.package_source }}
 
       - name: 🎉 Publish Functions
         if: ${{ github.event.inputs.publish_functions_pkg == 'true' }}
         run: |
-          dotnet nuget push ./nupkgs/CommunityFabs.NET.Functions.*.nupkg --source ${{ github.event.inputs.package_source }}
+          dotnet nuget push ./nupkgs/CommunityFabs.NET.Functions.*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ github.event.inputs.package_source }}
