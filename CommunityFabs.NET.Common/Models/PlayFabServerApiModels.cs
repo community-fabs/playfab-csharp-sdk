@@ -3394,7 +3394,8 @@ public class GetPlayFabIDsFromOpenIdsResult : PlayFabResultCommon {
 
 public class GetPlayFabIDsFromPSNAccountIDsRequest : PlayFabRequestCommon {
     /// <summary>
-    /// Id of the PlayStation :tm: Network issuer environment. If null, defaults to production environment.
+    /// Id of the PlayStation :tm: Network issuer environment. If null, defaults to the production environment. This must match
+    /// the issuer the account signed in under, otherwise the lookup returns a null PlayFabId rather than an error.
     /// </summary>
     public int? IssuerId { get; set; }
     /// <summary>
@@ -3403,7 +3404,10 @@ public class GetPlayFabIDsFromPSNAccountIDsRequest : PlayFabRequestCommon {
     /// </summary>
     public required List<string> PSNAccountIDs { get; set; }
     /// <summary>
-    /// Optional sandbox id. When provided, resolves players that logged in from that PlayStation :tm: Network sandbox.
+    /// The PlayStation :tm: Network sandbox the account is keyed under. Sandbox membership is per account, not per title:
+    /// supply this only for accounts that sign in from a sandbox, and omit it for accounts that do not, including all retail
+    /// accounts. Supplying a sandbox id that an account is not keyed under, or omitting one that it is, returns a null
+    /// PlayFabId rather than an error.
     /// </summary>
     public string? SandboxId { get; set; }
 }
@@ -3420,7 +3424,8 @@ public class GetPlayFabIDsFromPSNAccountIDsResult : PlayFabResultCommon {
 
 public class GetPlayFabIDsFromPSNOnlineIDsRequest : PlayFabRequestCommon {
     /// <summary>
-    /// Id of the PlayStation :tm: Network issuer environment. If null, defaults to production environment.
+    /// Id of the PlayStation :tm: Network issuer environment. If null, defaults to the production environment. This must match
+    /// the issuer the account signed in under, otherwise the lookup returns a null PlayFabId rather than an error.
     /// </summary>
     public int? IssuerId { get; set; }
     /// <summary>
@@ -3429,7 +3434,10 @@ public class GetPlayFabIDsFromPSNOnlineIDsRequest : PlayFabRequestCommon {
     /// </summary>
     public required List<string> PSNOnlineIDs { get; set; }
     /// <summary>
-    /// Optional sandbox id. When provided, resolves players that logged in from that PlayStation :tm: Network sandbox.
+    /// The PlayStation :tm: Network sandbox the account is keyed under. Sandbox membership is per account, not per title:
+    /// supply this only for accounts that sign in from a sandbox, and omit it for accounts that do not, including all retail
+    /// accounts. Supplying a sandbox id that an account is not keyed under, or omitting one that it is, returns a null
+    /// PlayFabId rather than an error.
     /// </summary>
     public string? SandboxId { get; set; }
 }
@@ -4379,7 +4387,8 @@ public class LinkPSNIdRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? ForceLink { get; set; }
     /// <summary>
-    /// Id of the PlayStation :tm: Network issuer environment. If null, defaults to production environment.
+    /// Id of the PlayStation :tm: Network issuer environment. If null, defaults to the production environment. This must match
+    /// the issuer the account signs in under, otherwise the link will not be resolved by that sign in.
     /// </summary>
     public int? IssuerId { get; set; }
     /// <summary>
@@ -4391,7 +4400,9 @@ public class LinkPSNIdRequest : PlayFabRequestCommon {
     /// </summary>
     public required string PSNUserId { get; set; }
     /// <summary>
-    /// Optional sandbox id. When provided, resolves and links the player on that PlayStation :tm: Network sandbox.
+    /// The PlayStation :tm: Network sandbox to key the link under. Sandbox membership is per account, not per title: supply
+    /// this only when the account signs in from a sandbox, and omit it otherwise, including for all retail accounts. This must
+    /// match the sandbox the account signs in from, otherwise the link will not be resolved by that sign in.
     /// </summary>
     public string? SandboxId { get; set; }
 }
@@ -4704,6 +4715,13 @@ public class LoginWithAndroidDeviceIDRequest : PlayFabRequestCommon {
     /// </summary>
     public GetPlayerCombinedInfoRequestParams? InfoRequestParameters { get; set; }
     /// <summary>
+    /// The IP address of the player this login is being performed on behalf of. Only honored on server-tier APIs authenticated
+    /// with a title secret key. When supplied, this address is used for ban enforcement and geo-location instead of the
+    /// address of the calling server. Must be a single, public IPv4 or IPv6 address; CIDR ranges and private addresses are
+    /// rejected.
+    /// </summary>
+    public string? OriginatingIP { get; set; }
+    /// <summary>
     /// Specific Operating System version for the user's device.
     /// </summary>
     public string? OS { get; set; }
@@ -4730,6 +4748,13 @@ public class LoginWithBattleNetRequest : PlayFabRequestCommon {
     /// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
+    /// <summary>
+    /// The IP address of the player this login is being performed on behalf of. Only honored on server-tier APIs authenticated
+    /// with a title secret key. When supplied, this address is used for ban enforcement and geo-location instead of the
+    /// address of the calling server. Must be a single, public IPv4 or IPv6 address; CIDR ranges and private addresses are
+    /// rejected.
+    /// </summary>
+    public string? OriginatingIP { get; set; }
 }
 
 /// <summary>
@@ -4756,6 +4781,13 @@ public class LoginWithCustomIDRequest : PlayFabRequestCommon {
     /// Flags for which pieces of info to return for the user.
     /// </summary>
     public GetPlayerCombinedInfoRequestParams? InfoRequestParameters { get; set; }
+    /// <summary>
+    /// The IP address of the player this login is being performed on behalf of. Only honored on server-tier APIs authenticated
+    /// with a title secret key. When supplied, this address is used for ban enforcement and geo-location instead of the
+    /// address of the calling server. Must be a single, public IPv4 or IPv6 address; CIDR ranges and private addresses are
+    /// rejected.
+    /// </summary>
+    public string? OriginatingIP { get; set; }
 }
 
 /// <summary>
@@ -4789,6 +4821,13 @@ public class LoginWithIOSDeviceIDRequest : PlayFabRequestCommon {
     /// Flags for which pieces of info to return for the user.
     /// </summary>
     public GetPlayerCombinedInfoRequestParams? InfoRequestParameters { get; set; }
+    /// <summary>
+    /// The IP address of the player this login is being performed on behalf of. Only honored on server-tier APIs authenticated
+    /// with a title secret key. When supplied, this address is used for ban enforcement and geo-location instead of the
+    /// address of the calling server. Must be a single, public IPv4 or IPv6 address; CIDR ranges and private addresses are
+    /// rejected.
+    /// </summary>
+    public string? OriginatingIP { get; set; }
     /// <summary>
     /// Specific Operating System version for the user's device.
     /// </summary>
@@ -4833,6 +4872,13 @@ public class LoginWithPSNRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
+    /// The IP address of the player this login is being performed on behalf of. Only honored on server-tier APIs authenticated
+    /// with a title secret key. When supplied, this address is used for ban enforcement and geo-location instead of the
+    /// address of the calling server. Must be a single, public IPv4 or IPv6 address; CIDR ranges and private addresses are
+    /// rejected.
+    /// </summary>
+    public string? OriginatingIP { get; set; }
+    /// <summary>
     /// Redirect URI supplied to PlayStation :tm: Network when requesting an auth code
     /// </summary>
     public required string RedirectUri { get; set; }
@@ -4855,6 +4901,13 @@ public class LoginWithServerCustomIdRequest : PlayFabRequestCommon {
     /// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
+    /// <summary>
+    /// The IP address of the player this login is being performed on behalf of. Only honored on server-tier APIs authenticated
+    /// with a title secret key. When supplied, this address is used for ban enforcement and geo-location instead of the
+    /// address of the calling server. Must be a single, public IPv4 or IPv6 address; CIDR ranges and private addresses are
+    /// rejected.
+    /// </summary>
+    public string? OriginatingIP { get; set; }
     /// <summary>
     /// Player secret that is used to verify API request signatures.
     /// </summary>
@@ -4891,6 +4944,13 @@ public class LoginWithSteamIdRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
+    /// The IP address of the player this login is being performed on behalf of. Only honored on server-tier APIs authenticated
+    /// with a title secret key. When supplied, this address is used for ban enforcement and geo-location instead of the
+    /// address of the calling server. Must be a single, public IPv4 or IPv6 address; CIDR ranges and private addresses are
+    /// rejected.
+    /// </summary>
+    public string? OriginatingIP { get; set; }
+    /// <summary>
     /// Unique Steam identifier for a user.
     /// </summary>
     public required string SteamId { get; set; }
@@ -4922,6 +4982,13 @@ public class LoginWithTwitchRequest : PlayFabRequestCommon {
     /// Parameters for requesting additional player info.
     /// </summary>
     public GetPlayerCombinedInfoRequestParams? InfoRequestParameters { get; set; }
+    /// <summary>
+    /// The IP address of the player this login is being performed on behalf of. Only honored on server-tier APIs authenticated
+    /// with a title secret key. When supplied, this address is used for ban enforcement and geo-location instead of the
+    /// address of the calling server. Must be a single, public IPv4 or IPv6 address; CIDR ranges and private addresses are
+    /// rejected.
+    /// </summary>
+    public string? OriginatingIP { get; set; }
     /// <summary>
     /// Player secret for additional authentication.
     /// </summary>
@@ -4956,6 +5023,13 @@ public class LoginWithXboxIdRequest : PlayFabRequestCommon {
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
     /// <summary>
+    /// The IP address of the player this login is being performed on behalf of. Only honored on server-tier APIs authenticated
+    /// with a title secret key. When supplied, this address is used for ban enforcement and geo-location instead of the
+    /// address of the calling server. Must be a single, public IPv4 or IPv6 address; CIDR ranges and private addresses are
+    /// rejected.
+    /// </summary>
+    public string? OriginatingIP { get; set; }
+    /// <summary>
     /// The id of Xbox Live sandbox.
     /// </summary>
     public required string Sandbox { get; set; }
@@ -4988,6 +5062,13 @@ public class LoginWithXboxRequest : PlayFabRequestCommon {
     /// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
     /// </summary>
     public bool? LoginTitlePlayerAccountEntity { get; set; }
+    /// <summary>
+    /// The IP address of the player this login is being performed on behalf of. Only honored on server-tier APIs authenticated
+    /// with a title secret key. When supplied, this address is used for ban enforcement and geo-location instead of the
+    /// address of the calling server. Must be a single, public IPv4 or IPv6 address; CIDR ranges and private addresses are
+    /// rejected.
+    /// </summary>
+    public string? OriginatingIP { get; set; }
     /// <summary>
     /// Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com/", "").
     /// </summary>
@@ -7486,6 +7567,11 @@ public class UserPrivateAccountInfo {
 }
 
 public class UserPsnInfo {
+    /// <summary>
+    /// Id of the PlayStation :tm: Network issuer environment this account is keyed under. Supply this value as IssuerId when
+    /// looking the account up.
+    /// </summary>
+    public int? IssuerId { get; set; }
     /// <summary>
     /// PlayStation :tm: Network account ID
     /// </summary>

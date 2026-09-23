@@ -2345,6 +2345,10 @@ public class GetBuildResponse : PlayFabResultCommon {
     /// </summary>
     public List<GameCertificateReference>? GameCertificateReferences { get; set; }
     /// <summary>
+    /// The game secrets for the build.
+    /// </summary>
+    public List<GameSecretReference>? GameSecretReferences { get; set; }
+    /// <summary>
     /// The instrumentation configuration of the build.
     /// </summary>
     public InstrumentationConfiguration? InstrumentationConfiguration { get; set; }

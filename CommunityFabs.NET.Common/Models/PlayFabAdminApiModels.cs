@@ -8057,6 +8057,11 @@ public class UserPrivateAccountInfo {
 
 public class UserPsnInfo {
     /// <summary>
+    /// Id of the PlayStation :tm: Network issuer environment this account is keyed under. Supply this value as IssuerId when
+    /// looking the account up.
+    /// </summary>
+    public int? IssuerId { get; set; }
+    /// <summary>
     /// PlayStation :tm: Network account ID
     /// </summary>
     public string? PsnAccountId { get; set; }
